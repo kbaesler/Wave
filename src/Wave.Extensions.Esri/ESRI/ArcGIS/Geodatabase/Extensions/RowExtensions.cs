@@ -10,14 +10,14 @@ namespace ESRI.ArcGIS.Geodatabase
     {
         #region Fields
 
-        private static readonly Dictionary<IRow, ReentrancyMonitor> _ReentrancyMonitors = new Dictionary<IRow, ReentrancyMonitor>();
+        private static readonly Dictionary<IRow, ReentrancyMonitor> _ReentrancyMonitors = new Dictionary<IRow, ReentrancyMonitor>(new RowEqualityComparer());
 
         #endregion
 
         #region Public Methods
 
         /// <summary>
-        ///     Disallow reentrant attempts to save changes to the object (E.g calling store in an AU that was the source trigger).
+        ///     Disallow reentrant attempts to save changes to the object.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>
@@ -237,7 +237,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     There was a call to BlockReentrancy of which the IDisposable return
         ///     value has not yet been disposed of.
         /// </exception>
-        private static void CheckReentrancy(this IRow source)
+        public static void CheckReentrancy(this IRow source)
         {
             if (_ReentrancyMonitors.ContainsKey(source))
             {

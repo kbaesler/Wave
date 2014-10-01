@@ -16,7 +16,7 @@ namespace ESRI.ArcGIS.esriSystem.Internal
         /// <summary>
         ///     The COM stream being wrapped
         /// </summary>
-        private System.Runtime.InteropServices.ComTypes.IStream _Stream;
+        private global::System.Runtime.InteropServices.ComTypes.IStream _Stream;
 
         #endregion
 
@@ -27,7 +27,7 @@ namespace ESRI.ArcGIS.esriSystem.Internal
         /// </summary>
         /// <param name="stream">The stream.</param>
         public ComStream(IStream stream)
-            : this((System.Runtime.InteropServices.ComTypes.IStream) stream)
+            : this((global::System.Runtime.InteropServices.ComTypes.IStream) stream)
         {
         }
 
@@ -35,7 +35,7 @@ namespace ESRI.ArcGIS.esriSystem.Internal
         ///     Initializes a new instance of the <see cref="ComStream" /> class.
         /// </summary>
         /// <param name="stream">The stream.</param>
-        public ComStream(System.Runtime.InteropServices.ComTypes.IStream stream)
+        public ComStream(global::System.Runtime.InteropServices.ComTypes.IStream stream)
         {
             _Stream = stream;
         }

@@ -195,6 +195,8 @@
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxToolbar.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxDockableWindow.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\EditorExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RowEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ComReleaserExtensions.cs" />
