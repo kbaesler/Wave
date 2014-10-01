@@ -648,7 +648,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 return false;
             }
 
-            RowEqualityComparer equalityComparer = new RowEqualityComparer();
+            FieldsEqualityComparer equalityComparer = new FieldsEqualityComparer();
             List<IConflictRow> rows = new List<IConflictRow>();
             IEnumIDs enumIDs = set.IDs;
             enumIDs.Reset();
