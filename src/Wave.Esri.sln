@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri", "Wave.Extensions.Esri\Wave.Extensions.Esri.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions", "Wave.Extensions\Wave.Extensions.csproj", "{363E34DD-2272-455E-AE1F-903C57469AF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{056D1A53-FEF4-49C5-B811-6D251CA9E149}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|x86.ActiveCfg = Debug|x86
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|x86.Build.0 = Debug|x86
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|x86.ActiveCfg = Release|x86
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|x86.Build.0 = Release|x86
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Debug|x86.ActiveCfg = Debug|x86
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Debug|x86.Build.0 = Debug|x86
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Release|x86.ActiveCfg = Release|x86
+		{363E34DD-2272-455E-AE1F-903C57469AF7}.Release|x86.Build.0 = Release|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|x86.ActiveCfg = Debug|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|x86.Build.0 = Debug|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5224C687-F534-4120-8998-FA242556A7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5224C687-F534-4120-8998-FA242556A7CD}.Release|x86.ActiveCfg = Release|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

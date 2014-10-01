@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EdmRepository">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="WorkRequest" type="EdmTable" minOccurs="1" maxOccurs="1" />
+        <xs:element name="Design" type="EdmTable" minOccurs="1" maxOccurs="1" />
+        <xs:element name="WorkLocation" type="EdmTable" minOccurs="1" maxOccurs="1" />
+        <xs:element name="CompatibleUnit" type="EdmTable" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="Type" type="xs:string" default="2" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="EdmField">
+    <xs:attribute name="Name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="EdmTable">
+    <xs:sequence>
+      <xs:element name="Fields">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Field" type="EdmField" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="TableName" type="xs:string" use="required" />
+  </xs:complexType>
+</xs:schema>

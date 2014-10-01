@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EdmRepository Type="2">
+  <WorkRequest TableName="">
+    <Fields>
+      <Field Name="" />
+    </Fields>
+  </WorkRequest>
+  <Design TableName="">
+    <Fields>
+      <Field Name="" />
+    </Fields>
+  </Design>
+  <WorkLocation TableName="">
+    <Fields>
+      <Field Name="" />
+    </Fields>
+  </WorkLocation>
+  <CompatibleUnit TableName="">
+    <Fields>
+      <Field Name="" />
+    </Fields>
+  </CompatibleUnit>
+</EdmRepository>
