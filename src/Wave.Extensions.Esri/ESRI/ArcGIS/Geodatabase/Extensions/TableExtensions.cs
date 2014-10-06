@@ -106,7 +106,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="ArgumentNullException">action</exception>
         public static int Fetch(this ITable source, IEnumerable<int> oids, bool recycling, Action<IRow> action)
         {
             if (action == null)
@@ -164,7 +164,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="ArgumentNullException">action</exception>
         public static int Fetch(this ITable source, IQueryFilter filter, bool recycling, Action<IRow> action)
         {
             if (action == null)
@@ -227,7 +227,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="string" /> representing the name of the delta table.
         /// </returns>
-        /// <exception cref="System.ArgumentException">
+        /// <exception cref="ArgumentException">
         ///     The delta string must be 1 char long.
         ///     or
         ///     The delta string must contain only 'A' or 'D' chars.

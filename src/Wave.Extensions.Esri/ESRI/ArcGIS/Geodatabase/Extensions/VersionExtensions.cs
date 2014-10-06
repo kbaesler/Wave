@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
@@ -350,7 +351,21 @@ namespace ESRI.ArcGIS.Geodatabase
                 ITable table = fws.OpenTable(this.TableName);
                 cr.ManageLifetime(table);
 
-                return table.GetRow(this.OID);
+                try
+                {
+                    return table.GetRow(this.OID);
+                }
+                catch (COMException ex)
+                {
+                    switch (ex.ErrorCode)
+                    {
+                        case (int) fdoError.FDO_E_FEATURE_NOT_FOUND:
+                        case (int) fdoError.FDO_E_ROW_NOT_FOUND:
+                            return null;
+                        default:
+                            throw;
+                    }
+                }
             }
         }
 
