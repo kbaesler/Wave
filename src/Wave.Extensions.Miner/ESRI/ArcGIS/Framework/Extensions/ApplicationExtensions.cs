@@ -74,6 +74,20 @@ namespace ESRI.ArcGIS.Framework
             return source.FindExtensionByName(ArcFM.Extensions.Name.Designer) as IMMDesignerImpl;
         }
 
+        /// <summary>
+        ///     Returns the contents of the Feeder Manager information that are used for Electric networks.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IMMFeederSpace" /> representing the contents of Feeder Manager.
+        /// </returns>
+        public static IMMFeederSpace GetFeederSpace(this IApplication source)
+        {
+            if (source == null) return null;
+
+            return source.FindExtensionByName(ArcFM.Extensions.Name.FeederSpace) as IMMFeederSpace;
+        }
+
 
         /// <summary>
         ///     Returns the login object from the <paramref name="source" /> reference.
@@ -97,8 +111,9 @@ namespace ESRI.ArcGIS.Framework
         {
             if (source == null) return null;
 
-            var login = source.GetProperties() as IMMLogin2;
-            if (login != null) return login.LoginObject.LoginWorkspace;
+            var login = source.GetLogin();
+            if (login != null && login.LoginObject != null)
+                return login.LoginObject.LoginWorkspace;
 
             return null;
         }
@@ -165,6 +180,20 @@ namespace ESRI.ArcGIS.Framework
             if (source == null) return null;
 
             return source.FindExtensionByName(ArcFM.Extensions.Name.TargetsTab) as ID8List;
+        }
+
+        /// <summary>
+        ///     Returns the trace bridge for all of the ArcFM traces.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IMMTraceBridge" /> representing the bridge for the traces.
+        /// </returns>
+        public static IMMTraceBridge GetTraceBridge(this IApplication source)
+        {
+            if (source == null) return null;
+
+            return source.FindExtensionByName(ArcFM.Extensions.Name.TraceBridge) as IMMTraceBridge;
         }
 
 
