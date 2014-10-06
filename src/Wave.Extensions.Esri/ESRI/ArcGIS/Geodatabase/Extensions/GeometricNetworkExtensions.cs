@@ -121,7 +121,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             string[] names = new[] {weightName, weightName.ToLower(), weightName.ToUpper()};
             INetSchema netSchema = (INetSchema) source.Network;
-            return names.Select(name => netSchema.get_WeightByName(name)).Any(netWeight => netWeight != null);
+            return names.Select(name => netSchema.WeightByName[name]).Any(netWeight => netWeight != null);
         }
 
         #endregion

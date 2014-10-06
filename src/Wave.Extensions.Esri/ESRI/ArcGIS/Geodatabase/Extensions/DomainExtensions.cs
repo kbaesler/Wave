@@ -53,7 +53,15 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns a <see cref="TValue" /> representing the name (or description) otherwise the fallback value is used.</returns>
         public static TValue GetValue<TValue>(this ICodedValueDomain source, string name, TValue fallbackValue)
         {
-            object o = (from entry in source.AsEnumerable() where entry.Key.Equals(name) select entry.Value).FirstOrDefault();
+            object o = null;
+            foreach (KeyValuePair<string, string> entry in source.AsEnumerable())
+            {
+                if (entry.Key.Equals(name))
+                {
+                    o = entry.Value;
+                    break;
+                }
+            }
             return TypeCast.Cast(o, fallbackValue);
         }
 

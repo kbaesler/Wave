@@ -34,9 +34,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static XmlDocument GetAsXmlDocument(this ICursor source, string elementName)
         {
-            return source.GetAsXmlDocument(elementName, field => (field.Type != esriFieldType.esriFieldTypeOID &&
-                                                                  field.Type != esriFieldType.esriFieldTypeGlobalID &&
-                                                                  field.Type != esriFieldType.esriFieldTypeGeometry &&
+            return source.GetAsXmlDocument(elementName, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
                                                                   field.Type != esriFieldType.esriFieldTypeBlob &&
                                                                   field.Type != esriFieldType.esriFieldTypeRaster &&
                                                                   field.Type != esriFieldType.esriFieldTypeXML));

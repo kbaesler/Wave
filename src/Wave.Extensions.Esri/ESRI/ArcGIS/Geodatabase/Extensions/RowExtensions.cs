@@ -46,7 +46,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IDomain" /> representing the domain for the field.
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public static IDomain GetDomain(this IRow source, int index)
         {
             if (index < 0 || index > source.Fields.FieldCount)
@@ -74,7 +74,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="object" /> representing the converted value to the specified type.
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public static TValue GetValue<TValue>(this IRow source, int index, TValue fallbackValue)
         {
             if (index < 0 || index > source.Fields.FieldCount)
@@ -145,7 +145,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">fieldName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
         public static bool Update(this IRow source, string fieldName, object value)
         {
             int i = source.Fields.FindField(fieldName);
@@ -165,7 +165,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public static bool Update(this IRow source, int index, object value)
         {
             return source.Update(index, value, null);
@@ -185,7 +185,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public static bool Update(this IRow source, int index, object value, IEqualityComparer<object> equalityComparer)
         {
             if (index < 0 || index > source.Fields.FieldCount)
@@ -233,11 +233,11 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Checks and aserts for reentrant attempts to change the object.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <exception cref="System.InvalidOperationException">
+        /// <exception cref="InvalidOperationException">
         ///     There was a call to BlockReentrancy of which the IDisposable return
         ///     value has not yet been disposed of.
         /// </exception>
-        public static void CheckReentrancy(this IRow source)
+        private static void CheckReentrancy(this IRow source)
         {
             if (_ReentrancyMonitors.ContainsKey(source))
             {
