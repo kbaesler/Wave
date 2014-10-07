@@ -10,17 +10,47 @@ namespace Samples
     internal class Program
     {
         #region Public Methods
-
+        
         /// <summary>
-        ///     Clears the layer definitions.
+        /// Clears the layer definitions.
         /// </summary>
-        public void ClearLayerDefinitions()
+        /// <param name="map">The map document within ArcMap.</param>
+        public void ClearDefinitions(IMap map)
         {
-            IMap map = ArcMap.Application.GetActiveMap();
             foreach (var layerDefinition in map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o))
             {
                 layerDefinition.DefinitionExpression = null;
             }
+        }
+
+        /// <summary>
+        ///     Creates a connection to the workspace using the sde connection file
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspace" /> representing the connection to the database.
+        /// </returns>
+        public IWorkspace CreateWorkspace(string fileName)
+        {
+            return WorkspaceFactories.Open(fileName);
+        }
+
+
+        /// <summary>
+        ///     Creates the workspace based on the connection properties.
+        /// </summary>
+        /// <param name="server">The server.</param>
+        /// <param name="instance">The instance.</param>
+        /// <param name="version">The version.</param>
+        /// <param name="database">The database.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="username">The username.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspace" /> representing the connection to the database.
+        /// </returns>
+        public IWorkspace CreateWorkspace(string server, string instance, string version, string database, string password, string username)
+        {
+            return WorkspaceFactories.Open(server, instance, version, database, password, username);
         }
 
         /// <summary>
@@ -47,17 +77,28 @@ namespace Samples
             return recordsAffected;
         }
 
+
         /// <summary>
-        /// Creates a connection to the workspace using the sde connection file
+        /// Validates the changes made within a version by performing 
+        /// a version difference between the child and it's parent version.
         /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns>
-        /// Returns a <see cref="IWorkspace" /> representing the connection to the database.
-        /// </returns>
-        public IWorkspace CreateWorkspace(string fileName)
+        public void ValidateUpdates(IVersion childVersion, IVersion parentVersion)
         {
-            IWorkspaceFactory factory = WorkspaceFactories.GetFactory(fileName);
-            return factory.OpenFromFile(fileName, 0);
+            var differences = childVersion.GetDifferences(parentVersion, null, (s, table) => table is IFeatureClass, esriDifferenceType.esriDifferenceTypeUpdateDelete, esriDifferenceType.esriDifferenceTypeUpdateNoChange, esriDifferenceType.esriDifferenceTypeUpdateUpdate);            
+            foreach (var table in differences)
+            {
+                Console.WriteLine("Table: {0}", table.Key);
+
+                foreach (var differenceRow in table.Value)
+                {
+                    Console.WriteLine("+++++++++++ {0} +++++++++++", differenceRow.OID);
+
+                    foreach (var index in differenceRow.FieldIndices.AsEnumerable())
+                    {
+                        Console.WriteLine("Original: {0} -> Changed: {1}", differenceRow.Original.GetValue(index, DBNull.Value), differenceRow.Changed.GetValue(index, DBNull.Value));
+                    }
+                }
+            }
         }
 
         #endregion
