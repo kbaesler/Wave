@@ -208,13 +208,6 @@ namespace ESRI.ArcGIS.Geodatabase
                 ICursor cursor = source.Search(filter, true);
                 cr.ManageLifetime(cursor);
 
-                if (predicate == null)
-                    return cursor.GetAsXmlDocument(elementName, field => (
-                        field.Type != esriFieldType.esriFieldTypeGeometry &&
-                        field.Type != esriFieldType.esriFieldTypeBlob &&
-                        field.Type != esriFieldType.esriFieldTypeRaster &&
-                        field.Type != esriFieldType.esriFieldTypeXML));
-
                 return cursor.GetAsXmlDocument(elementName, predicate);
             }
         }
