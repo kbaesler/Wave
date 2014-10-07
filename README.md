@@ -26,7 +26,7 @@ public void ClearDefinitions(IMap map)
 {
     foreach (var layerDefinition in map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o))
     {
-	layerDefinition.DefinitionExpression = null;
+		layerDefinition.DefinitionExpression = null;
     }
 }
 ```
@@ -61,13 +61,15 @@ public int UpdateTimeCreated(IFeatureClass featureClass)
 Analyzing the changes made within a version has been simplified allowing for filtering for those only those features or tables that are truely needed.
 ```c#
 /// <summary>
-/// Validates the inserts made within a version by performing 
+/// Validates the updates made within a version by performing 
 /// a version difference between the child and it's parent version.
 /// </summary>
-public void ValidateInserts(IVersion childVersion, IVersion parentVersion)
+public void ValidateUpdates(IVersion childVersion, IVersion parentVersion)
 {
     // Iterate through all of the differences to feature classes.
-    var differences = childVersion.GetDifferences(parentVersion, null, (s, table) => table is IFeatureClass, esriDifferenceType.esriDifferenceTypeInsert);   
+     var differences = childVersion.GetDifferences(parentVersion, null, (s, table) => table is IFeatureClass, esriDifferenceType.esriDifferenceTypeUpdateDelete,
+                                                                                                                     esriDifferenceType.esriDifferenceTypeUpdateNoChange,
+                                                                                                                     esriDifferenceType.esriDifferenceTypeUpdateUpdate);
     
     foreach (var table in differences)
     {
