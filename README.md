@@ -66,11 +66,7 @@ Analyzing the changes made within a version has been simplified allowing for fil
 /// </summary>
 public void ValidateUpdates(IVersion childVersion, IVersion parentVersion)
 {
-    // Iterate through all of the differences to feature classes.
-     var differences = childVersion.GetDifferences(parentVersion, null, (s, table) => table is IFeatureClass, esriDifferenceType.esriDifferenceTypeUpdateDelete,
-                                                                                                                     esriDifferenceType.esriDifferenceTypeUpdateNoChange,
-                                                                                                                     esriDifferenceType.esriDifferenceTypeUpdateUpdate);
-    
+    var differences = childVersion.GetDifferences(parentVersion, null, (s, table) => table is IFeatureClass, esriDifferenceType.esriDifferenceTypeUpdateDelete, esriDifferenceType.esriDifferenceTypeUpdateNoChange, esriDifferenceType.esriDifferenceTypeUpdateUpdate);            
     foreach (var table in differences)
     {
 		Console.WriteLine("Table: {0}", table.Key);
