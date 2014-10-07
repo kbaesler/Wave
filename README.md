@@ -1,5 +1,5 @@
 # Wave #
-[![Documentation Status](https://readthedocs.org/projects/wave/badge/?version=latest)](https://readthedocs.org/projects/wave/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/wave/badge/?version=latest)](http://wave.readthedocs.org/en/latest/)
 
 Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric ArcFM APIs by developing classes as extension methods whenever possible. This design concept eliminates the need for the developer to learn new namespaces and allow them to take advantage of intelisense to identify the new methods for objects.
 
