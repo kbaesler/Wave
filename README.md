@@ -1,6 +1,6 @@
 # Wave #
 
-[Wave](http://jumpercables.github.io/Wave "Wave") is a C# library that extends the ESRI ArcObjects and Schneider Electric ArcFM APIs by developing classes as extension methods whenever possible. This design concept eliminates the need for the developer to learn new namespaces and allow them to take advantage of intelisense to identify the new methods for objects.
+Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric ArcFM APIs by developing classes as extension methods whenever possible. This design concept eliminates the need for the developer to learn new namespaces and allow them to take advantage of intelisense to identify the new methods for objects.
 
 ## Motivation ##
 
@@ -21,13 +21,13 @@ Previously, you'd have to create a recursive method every time you needed to tra
 /// <summary>
 /// Clears the layer definitions.
 /// </summary>
-private void ClearLayerDefinitions()
+/// <param name="map">The map document within ArcMap.</param>
+public void ClearDefinitions(IMap map)
 {
-	IMap map = ArcMap.Application.GetActiveMap();
-	foreach (var layerDefinition in map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o))
-	{
-		layerDefinition.DefinitionExpression = null;
-	}
+    foreach (var layerDefinition in map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o))
+    {
+	layerDefinition.DefinitionExpression = null;
+    }
 }
 ```
 
@@ -56,6 +56,33 @@ public int UpdateTimeCreated(IFeatureClass featureClass)
     });
 
     return recordsAffected;
+}
+```
+Analyzing the changes made within a version has been simplified allowing for filtering for those only those features or tables that are truely needed.
+```c#
+/// <summary>
+/// Validates the inserts made within a version by performing 
+/// a version difference between the child and it's parent version.
+/// </summary>
+public void ValidateInserts(IVersion childVersion, IVersion parentVersion)
+{
+    // Iterate through all of the differences to feature classes.
+    var differences = childVersion.GetDifferences(parentVersion, null, (s, table) => table is IFeatureClass, esriDifferenceType.esriDifferenceTypeInsert);   
+    
+    foreach (var table in differences)
+    {
+		Console.WriteLine("Table: {0}", table.Key);
+
+		foreach (var differenceRow in table.Value)
+		{
+			Console.WriteLine("+++++++++++ {0} +++++++++++", differenceRow.OID);
+
+			foreach (var index in differenceRow.FieldIndices.AsEnumerable())
+			{
+				Console.WriteLine("Original: {0} -> Changed: {1}", differenceRow.Original.GetValue(index, DBNull.Value), differenceRow.Changed.GetValue(index, DBNull.Value));
+			}
+		}
+    }
 }
 ```
 
