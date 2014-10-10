@@ -6,7 +6,7 @@ Recursion with LINQ
 ----------------------
 Those interfaces that require recursion can now be accessed using ``LINQ`` syntax.
  
-The ``IEnumLayer`` interface is used to traverse through the layers in the ``ArcGIS`` map document. Recursion must be used in order to traverse the group layers and composite layers that can be in the map. Previously, you'd have to create a recursive method every time you needed to traverse the table of contents. However, now you can use the ``Where`` method in conjunction with ``LINQ`` statements.
+The ``IEnumLayer`` interface is used to traverse through the layers in the ArcGIS map document. Recursion must be used in order to traverse the group layers and composite layers that can be in the map. Previously, you'd have to create a recursive method every time you needed to traverse the table of contents. However, now you can use the ``Where`` method in conjunction with ``LINQ`` statements.
 
 .. code-block:: c
 	:linenos:	
@@ -23,7 +23,7 @@ The ``IEnumLayer`` interface is used to traverse through the layers in the ``Arc
 	    }
 	}
 
-The ``ID8List`` interface is used throughout the ``ArcFM`` to represent a tree structure of the features and related objects. Recursion must be used in order to traverse the entire structure of the tree. Previously, you'd have to create a recursive method every time you needed to traverse the contents of the tree structure. However, now you can use the ``Where`` method in conjunction with ``LINQ`` statements.
+The ``ID8List`` interface is used throughout the ArcFM to represent a tree structure of the features and related objects. Recursion must be used in order to traverse the entire structure of the tree. Previously, you'd have to create a recursive method every time you needed to traverse the contents of the tree structure. However, now you can use the ``Where`` method in conjunction with ``LINQ`` statements.
 
 .. code-block:: c
 	:linenos:	
@@ -79,16 +79,16 @@ The management of memory is always a constant concern while working within the A
 
 Common Base Classes 
 -----------------------------------
-The ``ArcFM`` and ``ArcGIS`` platform provides many extension points and while we cannot address them all we have included base class implementations for the most common extension made while working with these platforms. 
+The ArcFM and ArcGIS platform provides many extension points and while we cannot address them all we have included base class implementations for the most common extension made while working with these platforms. 
  
 * ``BaseMxCommand``: Used for creating a button within the ``ArcMap`` application
 * ``BaseGxCommand``: Used for creating a button within the ``ArcCatalog`` application.
 * ``BaseExtension``: Used for creating an extension within the ``ArcMap`` application.
 * ``BaseTool``: Used for creating a tool within the ``ArcMap`` application.
-* ``BaseAbandonAU``: Used for creating a custom trigger for abandoning features in ``ArcFM``.
-* ``BaseAttributeAU``: Used for creating a custom trigger for an attribute when the object is created, updated or deleted in ``ArcFM``.
-* ``BaseSpecialAU``: Uses for creating a custom trigger for the object when it is created, updated or deleted in ``ArcFM``.
-* ``BaseRelationshipAU``: Used for creating a custom trigger for when a relationship is created, updated or deleted in ``ArcFM``.
+* ``BaseAbandonAU``: Used for creating a custom trigger for abandoning features in ArcFM.
+* ``BaseAttributeAU``: Used for creating a custom trigger for an attribute when the object is created, updated or deleted in ArcFM.
+* ``BaseSpecialAU``: Uses for creating a custom trigger for the object when it is created, updated or deleted in ArcFM.
+* ``BaseRelationshipAU``: Used for creating a custom trigger for when a relationship is created, updated or deleted in ArcFM.
 
 There are many more that haven't been listed for the sake of brevity.
 
