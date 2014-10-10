@@ -43,7 +43,7 @@ if read_the_docs:
 else:
 
     # For our usual dev build we'll be in the 'docs' directory
-    sys.path.append(u'C:\Python27\Lib\site-packages\breathe-3.1.0-py2.7.egg\breathe')
+    sys.path.append('../')
     documentation_build = 'development'
 
 # Breathe configuration parameters
