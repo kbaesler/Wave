@@ -29,7 +29,7 @@ import re
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['breathe']
+extensions = []
 
 # Determine if sphinx is running on the ReadTheDocs.org server.
 read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
@@ -45,9 +45,6 @@ else:
     # For our usual dev build we'll be in the 'docs' directory
     sys.path.append('../')
     documentation_build = 'development'
-
-# Breathe configuration parameters
-breathe_projects = {'path': '../doxygen/xml/'}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
