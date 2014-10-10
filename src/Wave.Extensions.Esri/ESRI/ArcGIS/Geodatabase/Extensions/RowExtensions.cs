@@ -10,6 +10,7 @@ namespace ESRI.ArcGIS.Geodatabase
     {
         #region Fields
 
+        private static readonly Dictionary<IRow, Dictionary<string, int>> _FieldIndexes = new Dictionary<IRow, Dictionary<string, int>>(new RowEqualityComparer());
         private static readonly Dictionary<IRow, ReentrancyMonitor> _ReentrancyMonitors = new Dictionary<IRow, ReentrancyMonitor>(new RowEqualityComparer());
 
         #endregion
@@ -148,9 +149,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
         public static bool Update(this IRow source, string fieldName, object value)
         {
-            int i = source.Fields.FindField(fieldName);
-            if (i == -1)
-                throw new ArgumentOutOfRangeException("fieldName");
+            if (!_FieldIndexes.ContainsKey(source))
+                _FieldIndexes.Add(source, new Dictionary<string, int>());
+
+            int i;
+
+            var fieldIndexes = _FieldIndexes[source];
+            if (fieldIndexes.ContainsKey(fieldName))
+            {
+                i = fieldIndexes[fieldName];
+            }
+            else
+            {
+                i = source.Fields.FindField(fieldName);
+                if (i == -1)
+                    throw new ArgumentOutOfRangeException("fieldName");
+
+                fieldIndexes.Add(fieldName, i);
+            }
 
             return source.Update(i, value);
         }
