@@ -1,10 +1,10 @@
 Features
 ================================
-This will serve as a list of all of the features that Wave currently has. Some features are important enough to have their own page in the docs, others will simply be listed here.
+This will serve as a list of all of the features that are currently available in Wave. Some features are important enough to have their own page in the docs, others will simply be listed.
 
 Recursion with LINQ
 ----------------------
-Those interfaces that require recursion can now be accessed using ``LINQ`` syntax.
+There are several objects that require recursion to obtain all of the information in both ArcFM and ArcGIS. These objects can now be traversed recursively using ``LINQ``.
  
 The ``IEnumLayer`` interface is used to traverse through the layers in the ArcGIS map document. Recursion must be used in order to traverse the group layers and composite layers that can be in the map. Previously, you'd have to create a recursive method every time you needed to traverse the table of contents. However, now you can use the ``Where`` method in conjunction with ``LINQ`` statements.
 
