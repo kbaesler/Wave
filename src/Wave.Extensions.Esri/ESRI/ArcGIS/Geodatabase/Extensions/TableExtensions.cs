@@ -14,67 +14,13 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class TableExtensions
     {
-        #region Public Methods
+        #region Fields
 
-        /// <summary>
-        /// Gets index of the <see cref="IField"/> that has the specified <paramref name="fieldName"/>.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="fieldName">Name of the field.</param>
-        /// <returns>
-        /// Returns a <see cref="int"/> representing the index of the field.
-        /// </returns>
-        /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
-        public static int GetFieldIndex(this ITable source, string fieldName)
-        {
-            return ((IObjectClass) source).GetFieldIndex(fieldName);
-        }
+        private static readonly Dictionary<ITable, Dictionary<string, int>> _FieldIndexes = new Dictionary<ITable, Dictionary<string, int>>();
 
-        /// <summary>
-        ///     Converts the <paramref name="source" /> into a <see cref="DataTable" /> and loads it with the results from the
-        ///     query using the <paramref name="filter" />.
-        /// </summary>
-        /// <param name="source">The table.</param>
-        /// <param name="filter">The where clause used to filter the results in the table.</param>
-        /// <returns>
-        ///     Returns a <see cref="DataTable" /> representing the contents of the results from the query.
-        /// </returns>
-        public static DataTable AsDataTable(this ITable source, IQueryFilter filter)
-        {
-            DataTable table = new DataTable(((IDataset) source).Name)
-            {
-                Locale = CultureInfo.InvariantCulture
-            };
+        #endregion
 
-            // Add each field as a column in the data table.
-            foreach (IField field in source.Fields.AsEnumerable())
-            {
-                if (field.Type != esriFieldType.esriFieldTypeGeometry)
-                {
-                    DataColumn column = new DataColumn(field.Name, field.Type.AsType());
-                    column.Caption = field.AliasName;
-                    table.Columns.Add(column);
-                }
-            }
-
-            // Fetch the records matching the query and add them them to the data table.
-            source.Fetch(filter, true, row =>
-            {
-                DataRow newRow = table.NewRow();
-
-                // Update each column in the table.
-                foreach (DataColumn column in table.Columns)
-                {
-                    int pos = row.Fields.FindField(column.ColumnName);
-                    newRow[column] = row.Value[pos];
-                }
-
-                table.Rows.Add(newRow);
-            });
-
-
-            return table;
-        }
+        #region Public Methods        
 
         /// <summary>
         ///     Returns a list of the unique values in the column for the table.
@@ -279,6 +225,40 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return null;
+        }
+
+        /// <summary>
+        ///     Gets index of the <see cref="IField" /> that has the specified <paramref name="fieldName" />.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the index of the field.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
+        public static int GetFieldIndex(this ITable source, string fieldName)
+        {
+            int i;
+
+            if (!_FieldIndexes.ContainsKey(source))
+                _FieldIndexes.Add(source, new Dictionary<string, int>());
+
+
+            var indexes = _FieldIndexes[source];
+            if (indexes.ContainsKey(fieldName))
+            {
+                i = indexes[fieldName];
+            }
+            else
+            {
+                i = source.Fields.FindField(fieldName);
+                if (i == -1)
+                    throw new ArgumentOutOfRangeException("fieldName");
+
+                indexes.Add(fieldName, i);
+            }
+
+            return i;
         }
 
 
