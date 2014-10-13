@@ -84,8 +84,8 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include me
 	    return recordsAffected;
 	}
 
-Support Common Implementations 
------------------------------------
+Support Typical Extensions
+-------------------------------------
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included base class implementations for the most common extension made while working with these platforms. 
  
 * ``BaseMxCommand``: Used for creating a button within the ArcMap application
