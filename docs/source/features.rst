@@ -1,3 +1,4 @@
+================================
 Features
 ================================
 This will serve as a list of all of the features that are currently available in Wave. Some features are important enough to have their own page in the docs, others will simply be listed.
