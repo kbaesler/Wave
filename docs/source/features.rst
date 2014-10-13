@@ -2,14 +2,21 @@ Features
 ================================
 This will serve as a list of all of the features that are currently available in Wave. Some features are important enough to have their own page in the docs, others will simply be listed.
 
-Recursion with LINQ
-----------------------
-There are several objects that require recursion to obtain all of the information in both ArcFM and ArcGIS. These objects can now be traversed recursively using ``LINQ``.
- 
-The ``IEnumLayer`` interface is used to traverse through the layers in the ArcGIS map document. Recursion must be used in order to traverse the group layers and composite layers that can be in the map. Previously, you'd have to create a recursive method every time you needed to traverse the table of contents. However, now you can use the ``Where`` method in conjunction with ``LINQ`` statements.
+Extending Namespaces
+--------------------------
+Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/library/bb383977.aspx>`_ and each object that is extended in the ArcFM or ArcGIS  uses the namespace it exists within the API, which eliminate the need to learn new namespaces and allows Wave's features to be available without adding new namespace delcarations.
+
+Simplifying Complexity
+--------------------------
+
+
+Hierarchical Data Structures
+++++++++++++++++++++++++++++++
+There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you'd have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using ``LINQ``.
+
+For example, in ArcGIS traversing the contents of the map document can be simplified using the ``Where`` extension method on the ``IMap`` interface.
 
 .. code-block:: c
-	:linenos:	
 
 	/// <summary>
 	/// Clears the layer definitions.
@@ -17,25 +24,24 @@ The ``IEnumLayer`` interface is used to traverse through the layers in the ArcGI
 	/// <param name="map">The map document within ArcMap.</param>
 	public void ClearDefinitions(IMap map)
 	{
-		foreach (var layerDefinition in map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o))
+        foreach (var layerDefinition in map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o))
 	    {
 		   layerDefinition.DefinitionExpression = null;
 	    }
 	}
-
-The ``ID8List`` interface is used throughout the ArcFM to represent a tree structure of the features and related objects. Recursion must be used in order to traverse the entire structure of the tree. Previously, you'd have to create a recursive method every time you needed to traverse the contents of the tree structure. However, now you can use the ``Where`` method in conjunction with ``LINQ`` statements.
+    
+For example, in ArcFM traversing the Design Tab in the ArcFM Attribute Editor can be simplified using the ``Where`` extension method on the ``ID8List`` interface.
 
 .. code-block:: c
-	:linenos:	
 
-	/// <summary>
+    /// <summary>
 	/// Update all of the TAG field with the specified value for all features
 	/// that reside within the Design Tab.
 	/// </summary>
+    /// <param name="list">The tree structure for the Design tab on the ArcFM attribute editor.</param>
 	/// <param name="tag">The tag information.</param>
-	public void UpdateTags(string tag)
+	public void UpdateTags(ID8List list, string tag)
 	{
-		ID8List list = ArcMap.Application.GetDesignTab();
 		foreach (var item in list.Where(o => o is IMMProposedObject).Select(o => (IMMProposedObject) o.Value))
 		{
 			IMMFieldManager fieldManager = item.FieldManager;
@@ -45,13 +51,14 @@ The ``ID8List`` interface is used throughout the ArcFM to represent a tree struc
 		}		
 	}
 
-Memory Management
-------------------------------
-The management of memory is always a constant concern while working within the ArcGIS and ArcFM environment, thus several extension methods have been created to eliminate these concerns by wrapping up the proper memory management while still providing the information necessary to the developer.
+Data Queries
++++++++++++++
+One of the major benifts of using the ESRI platform it allows you to perform location and attribute based queries against the data to validate and perform analysis. However, this always becomes the most frequent operation made within customizations, which leads to code-duplication and/or memory management issues if used improperly.
+
+The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include methods that simplify and implement the proper handle memory management of the COM objects.
 
 .. code-block:: c
-	:linenos:	
-
+	
 	/// <summary>
 	///     Updates all of the features 'TIMECREATED' field to the current date time for
 	///     those features that have NULLs.
@@ -77,56 +84,44 @@ The management of memory is always a constant concern while working within the A
 	    return recordsAffected;
 	}
 
-Common Base Classes 
+Support Common Implementations 
 -----------------------------------
-The ArcFM and ArcGIS platform provides many extension points and while we cannot address them all we have included base class implementations for the most common extension made while working with these platforms. 
+The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included base class implementations for the most common extension made while working with these platforms. 
  
-* ``BaseMxCommand``: Used for creating a button within the ``ArcMap`` application
-* ``BaseGxCommand``: Used for creating a button within the ``ArcCatalog`` application.
-* ``BaseExtension``: Used for creating an extension within the ``ArcMap`` application.
-* ``BaseTool``: Used for creating a tool within the ``ArcMap`` application.
+* ``BaseMxCommand``: Used for creating a button within the ArcMap application
+* ``BaseGxCommand``: Used for creating a button within the ArcCatalog application.
+* ``BaseExtension``: Used for creating an extension within the ArcMap application.
+* ``BaseTool``: Used for creating a tool within the ArcMap application.
 * ``BaseAbandonAU``: Used for creating a custom trigger for abandoning features in ArcFM.
 * ``BaseAttributeAU``: Used for creating a custom trigger for an attribute when the object is created, updated or deleted in ArcFM.
 * ``BaseSpecialAU``: Uses for creating a custom trigger for the object when it is created, updated or deleted in ArcFM.
 * ``BaseRelationshipAU``: Used for creating a custom trigger for when a relationship is created, updated or deleted in ArcFM.
 
-There are many more that haven't been listed for the sake of brevity.
+.. note::
 
-Class & Field Model Names
+    There are many more that haven't been listed for the sake of brevity.
+
+ArcFM Model Names
 ------------------------------
-Accessing object classes by ``Class Model Names`` and fields by ``Field Model Names`` has been simplified due to the extension methods added to the objects and interfaces.
+The ArcFM Solution provides a way to identify ESRI tables based on a user defined key that they call ArcFM Model Names. These model names that can be assigned at the table and field level allow for cross database implementations of customziations. However, they must be accessed using a singleton object that tends to lead to another duplicated class helper in developers code and no connection to the objects that they support. In order to simplfy the need for duplication or knowing singleton, several extension methods were added to those ESRI objects that can be assigned the ArcFM Model Names.
 
-.. code-block:: c
-	:linenos:	
+The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that have been added.
 
-	/// <summary>
-	///     Updates the KVA on the transformer unit records.
-	/// </summary>
-	/// <param name="transformerClass">The transformer class.</param>
-	/// <param name="oids">The list of the object ids that identify the features.</param>
-	/// <param name="kva">The kva rating.</param>
-	/// <returns>
-	///     Returns a <see cref="int" /> representing the records affected.
-	/// </returns>
-	public int UpdateKva(IFeatureClass transformerClass, int[] oids, int kva)
-	{
-		IRelationshipClass relationshipClas = transformerClass.GetRelationshipClass(esriRelRole.esriRelRoleAny, "TRANSFORMERUNIT");
-	    int recordsAffected = transformerClass.Fetch(oids, true, feature =>
-	    {
-			// Iterate through all of the related objects for the transformer.
-			ISet set = relationshipClas.GetObjectsRelatedToObject((IObject)feature);
-			foreach (IRow row in set.AsEnumerable<IRow>())
-			{
-				row.Update("KVA", kva, true); 	// Use the "Update" extension method because it will only update the field when the values are different.
-				row.SaveChanges(); 				// Use the "SaveChanges" extension method because it will only call store when one or more fields have changed.
-			}
-	    });
-	
-	    return recordsAffected;
-	}
+* ``IsAssignedClassModelName``: Used to determine if a class model name(s) has been assigned.
+* ``IsAssignedFieldModelName``: Used to determine if a field model name(s) has been assigned.
+* ``GetRelationshipClass``: Used to locate the relationship that has been assigned the class model name(s).
+* ``GetRelationshipClasses``: Used to gather a list of the relationships that has been assigned the class model name(s).
+* ``GetField``: Used to locate the ``IField`` that has been assigned the field model name(s).
+* ``GetFields``: Used to gather a list of of the ``IField`` objects that has been assigned the field model name(s).
+* ``GetFieldIndex``: Used to locate the field index that has been assigned the field model name(s).
+* ``GetFieldIndexes``: Used to gather a list of all of the field indexes that has been assigned the field model name(s).
+* ``GetFieldName``: Used to locate the field name that has been assigned the field model name(s).
+* ``GetFieldNames``: Used to gather a list of all of the field names that has been assigned the field model name(s).
 
-Best Practices
----------------
+The extension methods for the ``IWorkspace`` interface that have been added.
 
-Process Framework Extensions
--------------------------------
+* ``IsAssignedDatabaseModelName``: Use to determine if the database model name(s) has been assigned.
+* ``GetFeatureClass``: Used to obtain the ``IFeatureClass`` that has been assigned the class model name(s).
+* ``GetFeatureClasses``: Used to obtain all of the ``IFeatureClass`` tables that have been assigned the class model name(s).
+* ``GetTable``: Used to obtain the ``ITable`` that has been assigned the class model name(s).
+* ``GetTables``: Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).
