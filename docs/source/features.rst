@@ -8,7 +8,7 @@ Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/lib
 
 Simplifying Complexity
 --------------------------
-
+Wave is designed to simplify those tasks that are performed frequently while considering performance, memory consumption and easy of use.
 
 Hierarchical Data Structures
 ++++++++++++++++++++++++++++++
