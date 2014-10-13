@@ -12,6 +12,25 @@ namespace Miner.Interop
         #region Public Methods
 
         /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IMMEnumField" />
+        /// </summary>
+        /// <param name="source">An <see cref="IMMEnumField" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the feature classes from the input source.</returns>
+        public static IEnumerable<IField> AsEnumerable(this IMMEnumField source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                IField field = source.Next();
+                while (field != null)
+                {
+                    yield return field;
+                    field = source.Next();
+                }
+            }
+        }
+
+        /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IMMEnumTable" />
         /// </summary>
         /// <param name="source">An <see cref="IMMEnumTable" /> to create an <see cref="IEnumerable{T}" /> from.</param>

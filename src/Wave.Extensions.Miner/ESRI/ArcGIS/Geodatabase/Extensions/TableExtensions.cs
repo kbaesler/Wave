@@ -1,4 +1,9 @@
-﻿namespace ESRI.ArcGIS.Geodatabase
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+
+namespace ESRI.ArcGIS.Geodatabase
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="ESRI.ArcGIS.Geodatabase.ITable" /> interface.
@@ -24,6 +29,35 @@
         public static IField GetField(this ITable source, string modelName, bool throwException = true)
         {
             return ((IObjectClass)source).GetField(modelName, throwException);
+        }
+
+        /// <summary>
+        ///     Gets a dictionary of the fields that are assigned the <paramref name="modelNames" /> organized by the model name
+        ///     followed by the field indexes.
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class</param>
+        /// <param name="modelNames">The model names.</param>
+        /// <returns>
+        ///     Returns the  <see cref="Dictionary{TKey,TValue}" /> representing the field model name for the field indexes.
+        /// </returns>
+        public static Dictionary<string, List<int>> GetFieldIndexes(this ITable source, params string[] modelNames)
+        {
+            return ((IObjectClass)source).GetFieldIndexes(modelNames);
+        }
+
+        /// <summary>
+        ///     Gets all of the fields that has been assigned the <paramref name="modelNames" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class to check for model names</param>
+        /// <param name="modelNames">The model names.</param>
+        /// <returns>
+        ///     Returns the  <see cref="IEnumerable{IField}" /> that has been assigned the model name.
+        /// </returns>
+        public static IEnumerable<IField> GetFields(this ITable source, params string[] modelNames)
+        {
+            return ((IObjectClass)source).GetFields(modelNames);
         }
 
         /// <summary>

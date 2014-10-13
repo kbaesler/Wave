@@ -9,8 +9,30 @@ namespace ESRI.ArcGIS.Geodatabase
     ///     Provides extension methods for the <see cref="ESRI.ArcGIS.Geodatabase.IRow" /> interface.
     /// </summary>
     public static class RowExtensions
-    {     
+    {
         #region Public Methods
+
+        /// <summary>
+        ///     Gets the indexes of the field that have been assigned the model name and have changed values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{Int32}" /> representing the indexes of the fields that have changed.
+        /// </returns>
+        public static IEnumerable<int> GetChanges(this IRow source, string modelName)
+        {
+            IObjectClass table = (IObjectClass) source.Table;
+            IRowChanges rowChanges = (IRowChanges) source;
+            for (int i = 0; i < source.Fields.FieldCount; i++)
+            {
+                if (rowChanges.ValueChanged[i])
+                {
+                    if (table.IsAssignedFieldModelName(source.Fields.Field[i], modelName))
+                        yield return i;
+                }
+            }
+        }
 
         /// <summary>
         ///     Returns the domain assigned to the <see cref="IField" /> that is assigned the field model name
@@ -36,12 +58,12 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Gets the field manager for the specified <paramref name="source" />
+        ///     Gets the field manager for the specified <paramref name="source" />
         /// </summary>
         /// <param name="source">The row.</param>
         /// <param name="auxiliaryFieldBuilder">The auxiliary field builder.</param>
         /// <returns>
-        /// Returns the <see cref="IMMFieldManager" /> representing the properties for the row.
+        ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the row.
         /// </returns>
         public static IMMFieldManager GetFieldManager(this IRow source, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder = null)
         {
@@ -93,8 +115,10 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
         /// </param>
-        /// <param name="equalityComparer">The equality comparer to use to determine whether or not values are equal.
-        /// If null, the default equality comparer for object is used.</param>
+        /// <param name="equalityComparer">
+        ///     The equality comparer to use to determine whether or not values are equal.
+        ///     If null, the default equality comparer for object is used.
+        /// </param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>

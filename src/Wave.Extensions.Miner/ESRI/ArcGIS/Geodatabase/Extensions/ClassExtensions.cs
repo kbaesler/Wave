@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 using ESRI.ArcGIS.esriSystem;
@@ -100,6 +102,35 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets a dictionary of the fields that are assigned the <paramref name="modelNames" /> organized by the model name
+        ///     followed by the field indexes.
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class</param>
+        /// <param name="modelNames">The model names.</param>
+        /// <returns>
+        ///     Returns the  <see cref="Dictionary{Key, Value}" /> representing the field model name for the field indexes.
+        /// </returns>
+        public static Dictionary<string, List<int>> GetFieldIndexes(this IObjectClass source, params string[] modelNames)
+        {
+            Dictionary<string, List<int>> indexes = new Dictionary<string, List<int>>(StringComparer.Create(CultureInfo.CurrentCulture, true));
+
+            foreach (var modelName in modelNames)
+            {
+                var list = new List<int>();
+
+                if (indexes.ContainsKey(modelName))
+                    list = indexes[modelName];
+                else
+                    indexes.Add(modelName, list);
+
+                list.AddRange(source.GetFields(modelName).Select(field => source.FindField(field.Name)));
+            }
+
+            return indexes;
+        }
+
+        /// <summary>
         ///     Gets the field manager for the specified <paramref name="source" />
         /// </summary>
         /// <param name="source">The class.</param>
@@ -113,7 +144,7 @@ namespace ESRI.ArcGIS.Geodatabase
             builder.Build(source, subtype);
 
             IMMFieldManager fieldManager = new MMFieldManagerClass();
-            fieldManager.Build((IMMFieldBuilder)builder, null);
+            fieldManager.Build((IMMFieldBuilder) builder, null);
 
             return fieldManager;
         }
@@ -187,6 +218,26 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets all of the fields that has been assigned the <paramref name="modelNames" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class to check for model names</param>
+        /// <param name="modelNames">The model names.</param>
+        /// <returns>
+        ///     Returns the  <see cref="IEnumerable{IField}" /> that has been assigned the model name.
+        /// </returns>
+        public static IEnumerable<IField> GetFields(this IObjectClass source, params string[] modelNames)
+        {
+            foreach (var modelName in modelNames)
+            {
+                var fields = ModelNameManager.Instance.FieldsFromModelName(source, modelName);
+                return fields.AsEnumerable();
+            }
+
+            return new IField[] {};
+        }
+
+        /// <summary>
         ///     Finds the <see cref="IRelationshipClass" /> using the specified <paramref name="source" /> and
         ///     <paramref name="relationshipRole" /> that has been assigned the <paramref name="modelName" />.
         /// </summary>
@@ -204,7 +255,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IRelationshipClass GetRelationshipClass(this IObjectClass source, esriRelRole relationshipRole, string modelName, bool throwException = true)
         {
-            return source.GetRelationshipClass(relationshipRole, new[] { modelName }, throwException);
+            return source.GetRelationshipClass(relationshipRole, new[] {modelName}, throwException);
         }
 
         /// <summary>
@@ -288,7 +339,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string GetSchemaName(this IObjectClass source)
         {
-            return ((ITable)source).GetSchemaName();
+            return ((ITable) source).GetSchemaName();
         }
 
         /// <summary>
@@ -299,7 +350,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns a <see cref="int" /> representing the code of the subtype; otherwise <c>-1</c>.</returns>
         public static int GetSubtypeCode(this IObjectClass source, string subtypeName)
         {
-            return ((ITable)source).GetSubtypeCode(subtypeName);
+            return ((ITable) source).GetSubtypeCode(subtypeName);
         }
 
         /// <summary>
@@ -311,7 +362,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string GetTableName(this IObjectClass source)
         {
-            return ((ITable)source).GetTableName();
+            return ((ITable) source).GetTableName();
         }
 
         /// <summary>
@@ -356,6 +407,23 @@ namespace ESRI.ArcGIS.Geodatabase
         public static bool IsAssignedFieldModelName(this IObjectClass source, string modelName)
         {
             return ModelNameManager.Instance.FieldFromModelName(source, modelName) != null;
+        }
+
+        /// <summary>
+        ///     Determines if the <paramref name="field" /> on the <paramref name="source" /> contains any of the field model names
+        ///     specified in the <paramref name="modelNames" /> array.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <param name="field">The field.</param>
+        /// <param name="modelNames">The model names.</param>
+        /// <returns>
+        ///     <c>true</c> if object class contains any of the field model name; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsAssignedFieldModelName(this IObjectClass source, IField field, params string[] modelNames)
+        {
+            if (modelNames == null || source == null) return false;
+
+            return modelNames.Any(name => ModelNameManager.Instance.ContainsFieldModelName(source, field, name));
         }
 
         /// <summary>
