@@ -51,7 +51,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="ArgumentNullException">action</exception>
         public static int Fetch(this IFeatureClass source, IQueryFilter filter, bool recycling, Func<IFeature, bool> action)
         {
             if (action == null)
@@ -91,12 +91,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="ArgumentNullException">action</exception>
         public static int Fetch(this IFeatureClass source, IEnumerable<int> oids, bool recycling, Action<IFeature> action)
         {
             if (action == null)
                 throw new ArgumentNullException("action");
-             
+
             int recordsAffected = 0;
 
             using (ComReleaser cr = new ComReleaser())
@@ -125,7 +125,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="string" /> representing the name of the delta table.
         /// </returns>
-        /// <exception cref="System.ArgumentException">
+        /// <exception cref="ArgumentException">
         ///     Delta string must be 1 char long.
         ///     or
         ///     Delta string must contain only 'A' or 'D' chars.

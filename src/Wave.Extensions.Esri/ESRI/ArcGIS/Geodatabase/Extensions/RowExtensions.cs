@@ -40,6 +40,25 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets the indexes of the fields that have changed values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{Int32}" /> representing the indexes of the fields that have changed.
+        /// </returns>
+        public static IEnumerable<int> GetChanges(this IRow source)
+        {
+            IRowChanges rowChanges = (IRowChanges) source;
+            for (int i = 0; i < source.Fields.FieldCount; i++)
+            {
+                if (rowChanges.ValueChanged[i])
+                {
+                    yield return i;
+                }
+            }
+        }
+
+        /// <summary>
         ///     Gets the domain that is assigned to the field.
         /// </summary>
         /// <param name="source">The row.</param>
