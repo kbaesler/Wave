@@ -19,38 +19,38 @@ For example, in ArcGIS traversing the contents of the map document can be simpli
 
 .. code-block:: c
 
-	/// <summary>
-	/// Clears the layer definitions.
-	/// </summary>
-	/// <param name="map">The map document within ArcMap.</param>
-	public void ClearDefinitions(IMap map)
-	{
+    /// <summary>
+    /// Clears the layer definitions.
+    /// </summary>
+    /// <param name="map">The map document within ArcMap.</param>
+    public void ClearDefinitions(IMap map)
+    {
         foreach (var layerDefinition in map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o))
-	    {
-		   layerDefinition.DefinitionExpression = null;
-	    }
-	}
+        {
+            layerDefinition.DefinitionExpression = null;
+        }
+    }
     
 For example, in ArcFM traversing the Design Tab in the ArcFM Attribute Editor can be simplified using the ``Where`` extension method on the ``ID8List`` interface.
 
 .. code-block:: c
 
     /// <summary>
-	/// Update all of the TAG field with the specified value for all features
-	/// that reside within the Design Tab.
-	/// </summary>
+    /// Update all of the TAG field with the specified value for all features
+    /// that reside within the Design Tab.
+    /// </summary>
     /// <param name="list">The tree structure for the Design tab on the ArcFM attribute editor.</param>
-	/// <param name="tag">The tag information.</param>
-	public void UpdateTags(ID8List list, string tag)
-	{
-		foreach (var item in list.Where(o => o is IMMProposedObject).Select(o => (IMMProposedObject) o.Value))
-		{
-			IMMFieldManager fieldManager = item.FieldManager;
-			IMMFieldAdapter fieldAdapter = fieldManager.FieldByName("TAG");
-			fieldAdapter.Value = tag;
-			item.Update(null);
-		}		
-	}
+    /// <param name="tag">The tag information.</param>
+    public void UpdateTags(ID8List list, string tag)
+    {
+        foreach (var item in list.Where(o => o is IMMProposedObject).Select(o => (IMMProposedObject) o.Value))
+        {
+            IMMFieldManager fieldManager = item.FieldManager;
+            IMMFieldAdapter fieldAdapter = fieldManager.FieldByName("TAG");
+            fieldAdapter.Value = tag;
+            item.Update(null);
+        }		
+    }
 
 Data Queries
 +++++++++++++
@@ -58,45 +58,45 @@ One of the major benifts of using the ESRI platform it allows you to perform loc
 
 The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include methods that simplify and implement the proper handle memory management of the COM objects.
 
-.. code-block:: c
-	
-	/// <summary>
-	///     Updates all of the features 'TIMECREATED' field to the current date time for
-	///     those features that have NULLs.
-	/// </summary>
-	/// <param name="featureClass">The feature class.</param>
-	/// <returns>
-	///     Returns a <see cref="int" /> representing the number of records updated.
-	/// </returns>
-	public int UpdateTimeCreated(IFeatureClass featureClass)
-	{
-	    IQueryFilter filter = new QueryFilterClass();
-	    filter.WhereClause = "TIMECREATED IS NULL";
-	
-	    int recordsAffected = featureClass.Fetch(filter, true, feature =>
-	    {		   
-		   feature.Update("TIMECREATED", DateTime.Now);
-		   feature.Store();
-	         
-		   // Return true, to continue to the next feature.
-		   return true;
-	    });
-	
-	    return recordsAffected;
-	}
+.. code-block:: c	
+
+    /// <summary>
+    ///     Updates all of the features 'TIMECREATED' field to the current date time for
+    ///     those features that have NULLs.
+    /// </summary>
+    /// <param name="featureClass">The feature class.</param>
+    /// <returns>
+    ///     Returns a <see cref="int" /> representing the number of records updated.
+    /// </returns>
+    public int UpdateTimeCreated(IFeatureClass featureClass)
+    {
+        IQueryFilter filter = new QueryFilterClass();
+        filter.WhereClause = "TIMECREATED IS NULL";
+
+        int recordsAffected = featureClass.Fetch(filter, true, feature =>
+        {		   
+            feature.Update("TIMECREATED", DateTime.Now);
+            feature.Store();
+
+            // Return true, to continue to the next feature.
+            return true;
+        });
+
+        return recordsAffected;
+    }
 
 Support Typical Extensions
 -------------------------------------
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included base class implementations for the most common extension made while working with these platforms. 
  
-* ``BaseMxCommand``: Used for creating a button within the ArcMap application
-* ``BaseGxCommand``: Used for creating a button within the ArcCatalog application.
-* ``BaseExtension``: Used for creating an extension within the ArcMap application.
-* ``BaseTool``: Used for creating a tool within the ArcMap application.
-* ``BaseAbandonAU``: Used for creating a custom trigger for abandoning features in ArcFM.
-* ``BaseAttributeAU``: Used for creating a custom trigger for an attribute when the object is created, updated or deleted in ArcFM.
-* ``BaseSpecialAU``: Uses for creating a custom trigger for the object when it is created, updated or deleted in ArcFM.
-* ``BaseRelationshipAU``: Used for creating a custom trigger for when a relationship is created, updated or deleted in ArcFM.
+- ``BaseMxCommand``: Used for creating a button within the ArcMap application
+- ``BaseGxCommand``: Used for creating a button within the ArcCatalog application.
+- ``BaseExtension``: Used for creating an extension within the ArcMap application.
+- ``BaseTool``: Used for creating a tool within the ArcMap application.
+- ``BaseAbandonAU``: Used for creating a custom trigger for abandoning features in ArcFM.
+- ``BaseAttributeAU``: Used for creating a custom trigger for an attribute when the object is created, updated or deleted in ArcFM.
+- ``BaseSpecialAU``: Uses for creating a custom trigger for the object when it is created, updated or deleted in ArcFM.
+- ``BaseRelationshipAU``: Used for creating a custom trigger for when a relationship is created, updated or deleted in ArcFM.
 
 .. note::
 
@@ -108,21 +108,21 @@ The ArcFM Solution provides a way to identify ESRI tables based on a user define
 
 The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that have been added.
 
-* ``IsAssignedClassModelName``: Used to determine if a class model name(s) has been assigned.
-* ``IsAssignedFieldModelName``: Used to determine if a field model name(s) has been assigned.
-* ``GetRelationshipClass``: Used to locate the relationship that has been assigned the class model name(s).
-* ``GetRelationshipClasses``: Used to gather a list of the relationships that has been assigned the class model name(s).
-* ``GetField``: Used to locate the ``IField`` that has been assigned the field model name(s).
-* ``GetFields``: Used to gather a list of of the ``IField`` objects that has been assigned the field model name(s).
-* ``GetFieldIndex``: Used to locate the field index that has been assigned the field model name(s).
-* ``GetFieldIndexes``: Used to gather a list of all of the field indexes that has been assigned the field model name(s).
-* ``GetFieldName``: Used to locate the field name that has been assigned the field model name(s).
-* ``GetFieldNames``: Used to gather a list of all of the field names that has been assigned the field model name(s).
+- ``IsAssignedClassModelName``: Used to determine if a class model name(s) has been assigned.
+- ``IsAssignedFieldModelName``: Used to determine if a field model name(s) has been assigned.
+- ``GetRelationshipClass``: Used to locate the relationship that has been assigned the class model name(s).
+- ``GetRelationshipClasses``: Used to gather a list of the relationships that has been assigned the class model name(s).
+- ``GetField``: Used to locate the ``IField`` that has been assigned the field model name(s).
+- ``GetFields``: Used to gather a list of of the ``IField`` objects that has been assigned the field model name(s).
+- ``GetFieldIndex``: Used to locate the field index that has been assigned the field model name(s).
+- ``GetFieldIndexes``: Used to gather a list of all of the field indexes that has been assigned the field model name(s).
+- ``GetFieldName``: Used to locate the field name that has been assigned the field model name(s).
+- ``GetFieldNames``: Used to gather a list of all of the field names that has been assigned the field model name(s).
 
 The extension methods for the ``IWorkspace`` interface that have been added.
 
-* ``IsAssignedDatabaseModelName``: Use to determine if the database model name(s) has been assigned.
-* ``GetFeatureClass``: Used to obtain the ``IFeatureClass`` that has been assigned the class model name(s).
-* ``GetFeatureClasses``: Used to obtain all of the ``IFeatureClass`` tables that have been assigned the class model name(s).
-* ``GetTable``: Used to obtain the ``ITable`` that has been assigned the class model name(s).
-* ``GetTables``: Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).
+- ``IsAssignedDatabaseModelName``: Use to determine if the database model name(s) has been assigned.
+- ``GetFeatureClass``: Used to obtain the ``IFeatureClass`` that has been assigned the class model name(s).
+- ``GetFeatureClasses``: Used to obtain all of the ``IFeatureClass`` tables that have been assigned the class model name(s).
+- ``GetTable``: Used to obtain the ``ITable`` that has been assigned the class model name(s).
+- ``GetTables``: Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).

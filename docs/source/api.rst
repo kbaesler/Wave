@@ -2,6 +2,6 @@ API
 ================================
 
 
-.. Warning::
+.. warning::
 
     Under construction. Check back later.

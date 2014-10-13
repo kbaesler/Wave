@@ -10,10 +10,6 @@ APIs that are used for developing extensions to the ArcMap and ArcFM platforms. 
 
 The concept is to eliminate the need for the developer to learn new namespaces and api, but allow them to take advantage of the Visual Studio IDE to identify the new methods for objects. That being said, it's always best to consult the :doc:`api` documentation to understand the purpose of the methods and classes.
 
-.. Warning::
-
-    The documentation for Wave is a work in progress.  Please check back frequently for the latest updates.
-
 .. toctree::
     :maxdepth: 1
 
