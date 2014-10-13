@@ -14,7 +14,44 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class ClassExtensions
     {
+        private static readonly Dictionary<IObjectClass, Dictionary<string, int>> _FieldIndexes = new Dictionary<IObjectClass, Dictionary<string, int>>();
+
         #region Public Methods
+
+
+        /// <summary>
+        /// Gets index of the <see cref="IField" /> that has the specified <paramref name="fieldName" />.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns>
+        /// Returns a <see cref="int" /> representing the index of the field.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
+        public static int GetFieldIndex(this IObjectClass source, string fieldName)
+        {
+            int i;
+
+            if (!_FieldIndexes.ContainsKey(source))
+                _FieldIndexes.Add(source, new Dictionary<string, int>());
+
+            
+            var indexes = _FieldIndexes[source];
+            if (indexes.ContainsKey(fieldName))
+            {
+                i = indexes[fieldName];
+            }
+            else
+            {
+                i = source.Fields.FindField(fieldName);
+                if (i == -1)
+                    throw new ArgumentOutOfRangeException("fieldName");
+
+                indexes.Add(fieldName, i);
+            }
+
+            return i;
+        }
 
         /// <summary>
         ///     Searches for the features that satisfies the attribute and/or spatial query as specified by an

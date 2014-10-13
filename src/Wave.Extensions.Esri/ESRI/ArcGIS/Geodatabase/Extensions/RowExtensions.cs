@@ -10,7 +10,6 @@ namespace ESRI.ArcGIS.Geodatabase
     {
         #region Fields
 
-        private static readonly Dictionary<IRow, Dictionary<string, int>> _FieldIndexes = new Dictionary<IRow, Dictionary<string, int>>(new RowEqualityComparer());
         private static readonly Dictionary<IRow, ReentrancyMonitor> _ReentrancyMonitors = new Dictionary<IRow, ReentrancyMonitor>(new RowEqualityComparer());
 
         #endregion
@@ -54,6 +53,32 @@ namespace ESRI.ArcGIS.Geodatabase
                 if (rowChanges.ValueChanged[i])
                 {
                     yield return i;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets the original value for those fields that have changed.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="fieldNames">The field names.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{Object}" /> representing the original values for those fields that have changed.
+        /// </returns>
+        public static IEnumerable<object> GetChanges(this IRow source, params string[] fieldNames)
+        {
+            IRowChanges rowChanges = (IRowChanges) source;
+            for (int i = 0; i < source.Fields.FieldCount; i++)
+            {
+                foreach (var fieldName in fieldNames)
+                {
+                    if (source.Fields.Field[i].Name.Equals(fieldName))
+                    {
+                        if (rowChanges.ValueChanged[i])
+                        {
+                            yield return rowChanges.OriginalValue[i];
+                        }
+                    }
                 }
             }
         }
@@ -168,25 +193,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
         public static bool Update(this IRow source, string fieldName, object value)
         {
-            if (!_FieldIndexes.ContainsKey(source))
-                _FieldIndexes.Add(source, new Dictionary<string, int>());
-
-            int i;
-
-            var fieldIndexes = _FieldIndexes[source];
-            if (fieldIndexes.ContainsKey(fieldName))
-            {
-                i = fieldIndexes[fieldName];
-            }
-            else
-            {
-                i = source.Fields.FindField(fieldName);
-                if (i == -1)
-                    throw new ArgumentOutOfRangeException("fieldName");
-
-                fieldIndexes.Add(fieldName, i);
-            }
-
+            int i = source.Table.GetFieldIndex(fieldName);
             return source.Update(i, value);
         }
 

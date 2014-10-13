@@ -17,6 +17,20 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        /// Gets index of the <see cref="IField"/> that has the specified <paramref name="fieldName"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns>
+        /// Returns a <see cref="int"/> representing the index of the field.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
+        public static int GetFieldIndex(this ITable source, string fieldName)
+        {
+            return ((IObjectClass) source).GetFieldIndex(fieldName);
+        }
+
+        /// <summary>
         ///     Converts the <paramref name="source" /> into a <see cref="DataTable" /> and loads it with the results from the
         ///     query using the <paramref name="filter" />.
         /// </summary>
