@@ -62,8 +62,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
         /// <summary>
         ///     Finds index of the <see cref="IField" /> that has been assigned the <paramref name="modelName" /> that is within
-        ///     the
-        ///     specified <paramref name="source" />.
+        ///     the specified <paramref name="source" />.
         /// </summary>
         /// <param name="source">The table.</param>
         /// <param name="modelName">The field modelname.</param>

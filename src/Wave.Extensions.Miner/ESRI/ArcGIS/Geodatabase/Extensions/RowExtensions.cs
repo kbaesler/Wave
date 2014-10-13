@@ -47,7 +47,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IDomain" /> representing the domain.
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static IDomain GetDomain(this IRow source, string modelName, bool throwException = true)
         {
@@ -74,8 +74,7 @@ namespace ESRI.ArcGIS.Geodatabase
             fieldManager.Build((IMMFieldBuilder) builder, auxiliaryFieldBuilder);
 
             return fieldManager;
-        }
-
+        }       
 
         /// <summary>
         ///     Returns the field value that has been assigned the <paramref name="modelName" /> that is within the specified
@@ -92,7 +91,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="object" /> representing the converted value to the specified type.
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static TValue GetValue<TValue>(this IRow source, string modelName, TValue fallbackValue, bool throwException = true)
         {
@@ -122,7 +121,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static bool Update(this IRow source, string modelName, object value, bool throwException, IEqualityComparer<object> equalityComparer = null)
         {
