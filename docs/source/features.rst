@@ -55,7 +55,7 @@ Data Queries
 +++++++++++++
 One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. Resulting in this operation being heavily used, which leads to code-duplication and/or memory management issues if used improperly.
 
-The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplify this operation by abstracting the bulk of the logic and enforcing the proper memory management for the COM objects.
+The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplifies the operation by abstracting the logic and enforcing the proper memory management for the COM objects.
 
 .. code-block:: c	
 
@@ -83,7 +83,7 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
 
 Support Typical Extensions
 -------------------------------------
-The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extension made while working with these platforms. 
+The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages. 
  
 - ``BaseMxCommand``: Used for creating a button within the ArcMap application
 - ``BaseGxCommand``: Used for creating a button within the ArcCatalog application.
@@ -93,6 +93,7 @@ The ArcFM and ArcGIS platform provides multiple extension points and while we ca
 - ``BaseAttributeAU``: Used for creating a custom trigger for an attribute when the object is created, updated or deleted in ArcFM.
 - ``BaseSpecialAU``: Uses for creating a custom trigger for the object when it is created, updated or deleted in ArcFM.
 - ``BaseRelationshipAU``: Used for creating a custom trigger for when a relationship is created, updated or deleted in ArcFM.
+- ``BasePxSubtask``: Used for creating a sub-routine that can be assigned to tasks within the Process Framework.
 
 .. note::
 
@@ -100,9 +101,9 @@ The ArcFM and ArcGIS platform provides multiple extension points and while we ca
 
 ArcFM Model Names
 ------------------------------
-The ArcFM Solution provides a way to identify ESRI tables based on a user defined key that they call ArcFM Model Names. These model names can be assigned at the table and field level allow for cross database or generic implementations of customziations. However, they must be accessed using a singleton object that tends to lead to another duplicated class helper in developers code and no connection to the objects that they support.
+The ArcFM Solution provides a way to identify ESRI tables based on a user defined key that they call ArcFM Model Names. These model names can be assigned at the table and field level allow for cross-database or generic implementations of customziations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.
 
-In order to simplfy the need for duplication, several extension methods were added to those ESRI objects that can be assigned the ArcFM Model Names.
+In order to simplfy the accessing of model name information, several extension methods were added to those ESRI objects that support ArcFM Model Names.
 
 The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that have been added.
 
@@ -116,7 +117,7 @@ The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that h
 - ``GetFieldIndexes``: Used to gather a list of all of the field indexes that has been assigned the field model name(s).
 - ``GetFieldName``: Used to locate the field name that has been assigned the field model name(s).
 - ``GetFieldNames``: Used to gather a list of all of the field names that has been assigned the field model name(s).
-
+    
 The extension methods for the ``IWorkspace`` interface that have been added.
 
 - ``IsAssignedDatabaseModelName``: Use to determine if the database model name(s) has been assigned.
@@ -124,3 +125,41 @@ The extension methods for the ``IWorkspace`` interface that have been added.
 - ``GetFeatureClasses``: Used to obtain all of the ``IFeatureClass`` tables that have been assigned the class model name(s).
 - ``GetTable``: Used to obtain the ``ITable`` that has been assigned the class model name(s).
 - ``GetTables``: Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).
+
+.. code-block:: c	
+
+    /// <summary>
+    ///     Exports the data based on model name assignments.
+    /// </summary>
+    /// <param name="workspace">The workspace connection to the data storage.</param>  
+    /// <param name="uniqueId">The unique identifier that should be exported.</param>  
+    /// <param name="directory">The output directory that will contain the xml files.</param>  
+    public void Export(IWorkspace workspace, int uniqueId, string directory)
+    {
+        var featureClasses = workspace.GetFeatureClasses("EXTRACT");
+        foreach(var featureClass in featureClasses)
+        {
+            string whereClause;
+            
+            if(featureClass.IsAssignedFieldModelName("FEEDERID"))
+            {
+                whereClause = string.Format("{0} = {1}", featureClass.GetFieldName("FEEDERID"), uniqueId);
+            }
+            else if(featureClass.IsAssignedFieldModelName("SERVICEID"))
+            {
+                whereClause = string.Format("{0} = {1}", featureClass.GetFieldName("SERVICEID"), uniqueId);
+            }
+            else
+            {
+                whereClause = string.Format("{0} = {1}", featureClass.OIDFieldName, uniqueId);
+            }
+            
+            var doc = featureClass.GetAsXmlDocument(whereClause, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
+                                                                          field.Type != esriFieldType.esriFieldTypeBlob &&
+                                                                          field.Type != esriFieldType.esriFieldTypeRaster &&
+                                                                          field.Type != esriFieldType.esriFieldTypeXML));
+            
+            string fileName = Path.Combine(directory, featureClass.GetTableName() + ".xml");                                                   
+            doc.Save(fileName);                     
+        }        
+    }

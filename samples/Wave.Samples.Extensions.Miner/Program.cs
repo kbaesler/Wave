@@ -1,4 +1,6 @@
-﻿using ESRI.ArcGIS.esriSystem;
+﻿using System.IO;
+
+using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Framework;
 using ESRI.ArcGIS.Geodatabase;
 using Miner.Interop;
@@ -12,7 +14,43 @@ namespace Samples
     internal class Program
     {
         #region Public Methods
-        
+        /// <summary>
+        ///     Exports the data based on model name assignments.
+        /// </summary>
+        /// <param name="workspace">The workspace connection to the data storage.</param>  
+        /// <param name="uniqueId">The unique identifier that should be exported.</param>  
+        /// <param name="directory">The output directory that will contain the xml files.</param>  
+        public void Export(IWorkspace workspace, int uniqueId, string directory)
+        {
+            var featureClasses = workspace.GetFeatureClasses("EXTRACT");
+
+            foreach (var featureClass in featureClasses)
+            {
+                string whereClause;
+
+                if (featureClass.IsAssignedFieldModelName("FEEDERID"))
+                {
+                    whereClause = string.Format("{0} = {1}", featureClass.GetFieldName("FEEDERID"), uniqueId);
+                }
+                else if (featureClass.IsAssignedFieldModelName("SERVICEID"))
+                {
+                    whereClause = string.Format("{0} = {1}", featureClass.GetFieldName("SERVICEID"), uniqueId);
+                }
+                else
+                {
+                    whereClause = string.Format("EXTRACTIONID = {0}", uniqueId);
+                }
+
+                var doc = featureClass.GetAsXmlDocument(whereClause, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
+                                                                              field.Type != esriFieldType.esriFieldTypeBlob &&
+                                                                              field.Type != esriFieldType.esriFieldTypeRaster &&
+                                                                              field.Type != esriFieldType.esriFieldTypeXML));
+
+                string fileName = Path.Combine(directory, featureClass.GetTableName() + ".xml");
+                doc.Save(fileName);
+            }
+        }
+
         /// <summary>
         ///     Updates the KVA on the transformer unit records.
         /// </summary>
