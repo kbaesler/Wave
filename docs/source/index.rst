@@ -18,4 +18,5 @@ The concept is to eliminate the need for the developer to learn new namespaces a
     faq
     examples
     contribute
+    change_log
     api
