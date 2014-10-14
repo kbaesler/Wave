@@ -86,7 +86,7 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include me
 
 Support Typical Extensions
 -------------------------------------
-The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included base class implementations for the most common extension made while working with these platforms. 
+The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extension made while working with these platforms. 
  
 - ``BaseMxCommand``: Used for creating a button within the ArcMap application
 - ``BaseGxCommand``: Used for creating a button within the ArcCatalog application.
@@ -103,7 +103,7 @@ The ArcFM and ArcGIS platform provides multiple extension points and while we ca
 
 ArcFM Model Names
 ------------------------------
-The ArcFM Solution provides a way to identify ESRI tables based on a user defined key that they call ArcFM Model Names. These model names that can be assigned at the table and field level allow for cross database implementations of customziations. However, they must be accessed using a singleton object that tends to lead to another duplicated class helper in developers code and no connection to the objects that they support. In order to simplfy the need for duplication or knowing singleton, several extension methods were added to those ESRI objects that can be assigned the ArcFM Model Names.
+The ArcFM Solution provides a way to identify ESRI tables based on a user defined key that they call ArcFM Model Names. These model names can be assigned at the table and field level allow for cross database or generic implementations of customziations. However, they must be accessed using a singleton object that tends to lead to another duplicated class helper in developers code and no connection to the objects that they support. In order to simplfy the need for duplication or knowing singleton, several extension methods were added to those ESRI objects that can be assigned the ArcFM Model Names.
 
 The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that have been added.
 
