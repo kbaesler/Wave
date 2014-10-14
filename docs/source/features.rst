@@ -55,7 +55,7 @@ Data Queries
 +++++++++++++
 One of the major benefits of using the ESRI platform it allows you to perform location and attribute based queries against the data to validate and perform analysis. However, this always becomes the most frequent operation made within customizations, which leads to code-duplication and/or memory management issues if used improperly.
 
-The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include methods that simplify and implement the proper handle memory management of the COM objects.
+The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include methods that simplify and implement the proper memory management for the COM objects.
 
 .. code-block:: c	
 
