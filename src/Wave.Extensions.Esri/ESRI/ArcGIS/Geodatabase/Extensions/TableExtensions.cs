@@ -193,6 +193,29 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Converts the contents returned from the attribute query into an XML document.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="whereClause">The where clause for the attribute query.</param>
+        /// <param name="predicate">
+        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
+        ///     fields.
+        /// </param>
+        /// <param name="elementName">Name of the element.</param>
+        /// <returns>
+        ///     Returns a <see cref="XmlDocument" /> representing the contents of the query.
+        /// </returns>
+        public static XmlDocument GetAsXmlDocument(this ITable source, string whereClause, Predicate<IField> predicate, string elementName = "Table")
+        {
+            IQueryFilter filter = new QueryFilterClass()
+            {
+                WhereClause = whereClause
+            };
+
+            return source.GetAsXmlDocument(filter, predicate, elementName);
+        }
+
+        /// <summary>
+        ///     Converts the contents returned from the attribute query into an XML document.
+        /// </summary>
+        /// <param name="source">The source.</param>
         /// <param name="filter">The attribute query filter.</param>
         /// <param name="predicate">
         ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all

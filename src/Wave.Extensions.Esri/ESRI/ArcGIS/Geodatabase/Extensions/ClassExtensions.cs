@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
@@ -161,74 +162,52 @@ namespace ESRI.ArcGIS.Geodatabase
             return recordsAffected;
         }
 
-
         /// <summary>
-        ///     Gets the name of the delta (either the A or D) table for the versioned <paramref name="source" />.
-        /// </summary>
-        /// <param name="source">The versioned table or feature class.</param>
-        /// <param name="delta">The delta (indicate the A or D) table.</param>
-        /// <returns>
-        ///     Returns a <see cref="string" /> representing the name of the delta table.
-        /// </returns>
-        /// <exception cref="ArgumentException">
-        ///     Delta string must be 1 char long.
-        ///     or
-        ///     Delta string must contain only 'A' or 'D' chars.
-        /// </exception>
-        public static string GetDeltaTableName(this IObjectClass source, string delta)
-        {
-            return ((ITable) source).GetDeltaTableName(delta);
-        }
-
-        /// <summary>
-        ///     Gets index of the <see cref="IField" /> that has the specified <paramref name="fieldName" />.
+        ///     Converts the contents returned from the attribute query into an XML document.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="whereClause">The where clause for the attribute query.</param>
+        /// <param name="predicate">
+        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
+        ///     fields.
+        /// </param>
+        /// <param name="elementName">Name of the element.</param>
         /// <returns>
-        ///     Returns a <see cref="int" /> representing the index of the field.
+        ///     Returns a <see cref="XmlDocument" /> representing the contents of the query.
         /// </returns>
-        /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
-        public static int GetFieldIndex(this IObjectClass source, string fieldName)
+        public static XmlDocument GetAsXmlDocument(this IFeatureClass source, string whereClause, Predicate<IField> predicate, string elementName = "Table")
         {
-            return ((ITable) source).GetFieldIndex(fieldName);
+            IQueryFilter filter = new QueryFilterClass()
+            {
+                WhereClause = whereClause
+            };
+
+            return source.GetAsXmlDocument(filter, predicate, elementName);
         }
 
-
         /// <summary>
-        ///     Gets the name of the owner or schema name of the table.
+        ///     Converts the contents returned from the attribute or spatial query into an XML document.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute or spatial query filter.</param>
+        /// <param name="predicate">
+        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
+        ///     fields.
+        /// </param>
+        /// <param name="elementName">Name of the element.</param>
         /// <returns>
-        ///     Returns a <see cref="string" /> representing the name of the owner.
+        ///     Returns a <see cref="XmlDocument" /> representing the contents of the query.
         /// </returns>
-        public static string GetSchemaName(this IObjectClass source)
+        public static XmlDocument GetAsXmlDocument(this IFeatureClass source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
         {
-            return ((ITable) source).GetSchemaName();
-        }
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IFeatureCursor cursor = source.Search(filter, true);
+                cr.ManageLifetime(cursor);
 
-        /// <summary>
-        ///     Finds the code of the subtype that has the specified <paramref name="subtypeName" />.
-        /// </summary>
-        /// <param name="source">The object class.</param>
-        /// <param name="subtypeName">Name of the subtype.</param>
-        /// <returns>Returns a <see cref="int" /> representing the code of the subtype; otherwise <c>-1</c>.</returns>
-        public static int GetSubtypeCode(this IObjectClass source, string subtypeName)
-        {
-            return ((ITable) source).GetSubtypeCode(subtypeName);
-        }
-
-        /// <summary>
-        ///     Gets the name of the table (without the owner or schema name).
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns>
-        ///     Returns a <see cref="string" /> representing the name of the table.
-        /// </returns>
-        public static string GetTableName(this IObjectClass source)
-        {
-            return ((ITable) source).GetTableName();
-        }
+                return ((ICursor) cursor).GetAsXmlDocument(elementName, predicate);
+            }
+        }              
 
         /// <summary>
         ///     Determines whether the connected user has the specificed privileges to the feature class.
