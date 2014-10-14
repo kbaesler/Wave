@@ -17,7 +17,26 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Searches for the features that satisfies the attribute and/or spatial query as specified by an
+        ///     Queries for the features that satisfies the attribute query as specified by an
+        ///     <paramref name="whereClause" /> statement.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="whereClause">The where clause for the attribute query.</param>
+        /// <returns>
+        ///     Returns a <see cref="List{IFeature}" /> representing the features returned from the query.
+        /// </returns>
+        public static List<IFeature> Fetch(this IFeatureClass source, string whereClause)
+        {
+            var filter = new QueryFilterClass
+            {
+                WhereClause = whereClause
+            };
+
+            return source.Fetch(filter);
+        }
+
+        /// <summary>
+        ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
         ///     <paramref name="filter" /> object.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -37,7 +56,33 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Searches for the features that satisfies the attribute and/or spatial query as specified by an
+        ///     Queries for the features that satisfies the attribute query as specified by an
+        ///     <paramref name="whereClause" /> statement.
+        ///     and executes the specified <paramref name="action" /> on each feature returned from the query.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="whereClause">The where clause for the attribute query.</param>
+        /// <param name="recycling">
+        ///     The recycling parameter controls row object allocation behavior. Recycling cursors rehydrate a
+        ///     single feature object on each fetch and can be used to optimize read-only access.
+        /// </param>
+        /// <param name="action">The action to take for each feature in the cursor.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of features affected by the action.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">action</exception>
+        public static int Fetch(this IFeatureClass source, string whereClause, bool recycling, Func<IFeature, bool> action)
+        {
+            var filter = new QueryFilterClass
+            {
+                WhereClause = whereClause
+            };
+
+            return source.Fetch(filter, recycling, action);
+        }
+
+        /// <summary>
+        ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
         ///     <paramref name="filter" /> object
         ///     and executes the specified <paramref name="action" /> on each feature returned from the query.
         /// </summary>

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Globalization;
 using System.Linq;
 using System.Xml;
 
@@ -20,7 +18,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
         #endregion
 
-        #region Public Methods        
+        #region Public Methods
 
         /// <summary>
         ///     Returns a list of the unique values in the column for the table.
@@ -92,7 +90,25 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Searches for the rows that satisfy the attribute query as specified by an <paramref name="filter" /> object.
+        ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="whereClause" /> statement.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="whereClause">The where clause used for the attribute query.</param>
+        /// <returns>
+        ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
+        /// </returns>
+        public static List<IRow> Fetch(this ITable source, string whereClause)
+        {
+            var filter = new QueryFilterClass
+            {
+                WhereClause = whereClause
+            };
+
+            return source.Fetch(filter);
+        }
+
+        /// <summary>
+        ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="filter" /> object.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="filter">The attribute requirement that the rows must satisify.</param>
@@ -111,7 +127,32 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Searches for the rows that satisfy the attribute query as specified by an <paramref name="filter" /> object
+        ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="whereClause" /> statement
+        ///     and executes the specified <paramref name="action" /> on each row returned from the query.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="whereClause">The where clause used for the attribute query.</param>
+        /// <param name="recycling">
+        ///     The recycling parameter controls row object allocation behavior. Recycling cursors rehydrate a
+        ///     single row object on each fetch and can be used to optimize read-only access.
+        /// </param>
+        /// <param name="action">The action to take for each feature in the cursor.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">action</exception>
+        public static int Fetch(this ITable source, string whereClause, bool recycling, Action<IRow> action)
+        {
+            var filter = new QueryFilterClass
+            {
+                WhereClause = whereClause
+            };
+
+            return source.Fetch(filter, recycling, action);
+        }
+
+        /// <summary>
+        ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="filter" /> object
         ///     and executes the specified <paramref name="action" /> on each row returned from the query.
         /// </summary>
         /// <param name="source">The source.</param>
