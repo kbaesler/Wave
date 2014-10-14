@@ -4,7 +4,9 @@ This will serve as a list of all of the features that are currently available in
 
 Extending Namespaces
 --------------------------
-Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/library/bb383977.aspx>`_ and each object that is extended in the ArcFM or ArcGIS  uses the namespace it exists within the API, which eliminate the need to learn new namespaces and allows Wave's features to be available without adding new namespace delcarations.
+Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/library/bb383977.aspx>`_ and objects that are extended use the namespace of the object in the ArcFM or ArcGIS API, which eliminate the need to learn new namespaces and allows Wave's features to be available without adding new namespace delcarations.
+
+- For instance, the ``RowExtensions.cs`` that contains extension methods for the ``IRow`` interface uses the ``ESRI.ArcGIS.Geodatabase`` namespace because that is the namespace that contains the ``IRow`` interface.
 
 Simplifying Complexity
 --------------------------
@@ -135,7 +137,7 @@ The extension methods for the ``IWorkspace`` interface that have been added.
     /// <param name="uniqueId">The unique identifier that should be exported.</param>  
     /// <param name="directory">The output directory that will contain the xml files.</param>  
     public void Export(IWorkspace workspace, int uniqueId, string directory)
-    {
+    {        
         var featureClasses = workspace.GetFeatureClasses("EXTRACT");
         foreach(var featureClass in featureClasses)
         {

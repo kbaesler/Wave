@@ -14,7 +14,7 @@ In the future, Wave will be publicly distributed using the `Nuget <http://www.nu
 
 - This will allow users the option to simply install the assemblies without having to compile the source code.
 
-.. note::
+.. warning::
 
     This is on the roadmap but not implemented yet.
 
