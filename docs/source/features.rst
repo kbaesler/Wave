@@ -53,9 +53,9 @@ For example, in ArcFM traversing the Design Tab in the ArcFM Attribute Editor ca
 
 Data Queries
 +++++++++++++
-One of the major benefits of using the ESRI platform it allows you to perform location and attribute based queries against the data to validate and perform analysis. However, this always becomes the most frequent operation made within customizations, which leads to code-duplication and/or memory management issues if used improperly.
+One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. Resulting in this operation being heavily used, which leads to code-duplication and/or memory management issues if used improperly.
 
-The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include methods that simplify and implement the proper memory management for the COM objects.
+The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplify this operation by abstracting the bulk of the logic and enforcing the proper memory management for the COM objects.
 
 .. code-block:: c	
 
@@ -69,10 +69,7 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include me
     /// </returns>
     public int UpdateTimeCreated(IFeatureClass featureClass)
     {
-        IQueryFilter filter = new QueryFilterClass();
-        filter.WhereClause = "TIMECREATED IS NULL";
-
-        int recordsAffected = featureClass.Fetch(filter, true, feature =>
+        int recordsAffected = featureClass.Fetch("TIMECREATED IS NULL", true, feature =>          
         {		   
             feature.Update("TIMECREATED", DateTime.Now);
             feature.Store();
