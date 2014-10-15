@@ -12,21 +12,38 @@ Enumerable Types
 -----------------------
 The ``while`` statement is used throught the ArcFM and ArcGIS API to iterate through collections using the ``Reset()`` and ``Next()`` method combinations. However, in most cases the ``foreach`` statement is the preferred method, thus the most frequently used iterators can be converted to an enumerable type using the ``AsEnumerable()`` extension method.
 
-.. code-block:: c#
+The following is a short list of the interfaces that support enumerable types:
 
-    /// <summary>
-    ///     An example used to illustrate the ``foreach`` statement support.
-    /// </summary>
-    /// <param name="featureClass">The feature class.</param>   
-    public void IllustrateEnumerableTypes(IFeatureClass featureClass)
-    {
-        IFeatureCursor cursor = featureClass.Search(filter, true);
-        foreach(var feature in cursor.AsEnumerable())
-        {
-            // Do something
-        }
-    }
++-------------------------------+-------------------------------+
+| ESRI                          | ArcFM                         |
++===============================+===============================+
+| ``ILongArray``                | ``IMMEnumField``              |
++-------------------------------+-------------------------------+
+| ``IArray``                    | ``IMMEnumTable``              |
++-------------------------------+-------------------------------+
+| ``IEnumDomain``               | ``IMMEnumObjectClass``        |
++-------------------------------+-------------------------------+
+| ``IEnumBSTR``                 | ``IMMEnumFeederSource``       |
++-------------------------------+-------------------------------+
+| ``IEnumIDs``                  | ``IMMPxNodeHistory``          |
++-------------------------------+-------------------------------+
+| ``IFields``                   | ``IMMEnumPxTransition``       |
++-------------------------------+-------------------------------+
+| ``IEnumRelationshipClass``    | ``IMMPxNode``                 |
++-------------------------------+-------------------------------+
+| ``IEnumFeatureClass``         | ``IMMEnumPxState``            |
++-------------------------------+-------------------------------+
+| ``ICursor``                   | ``IMMEnumPxTasks``            |
++-------------------------------+-------------------------------+
+| ``IFeatureCursor``            | ``IMMEnumPxUser``             |
++-------------------------------+-------------------------------+
+| ``ISet``                      | ``IMMEnumPxFilter``           |
++-------------------------------+-------------------------------+
 
+.. note::
+
+    There are many more that haven't been listed for the sake of brevity.
+    
 Simplifying Complexity
 --------------------------
 Wave is designed to simplify those tasks that are performed frequently while considering performance, memory consumption and easy of use.
@@ -90,7 +107,10 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
     /// </returns>
     public int UpdateTimeCreated(IFeatureClass featureClass)
     {
-        int recordsAffected = featureClass.Fetch("TIMECREATED IS NULL", true, feature =>          
+        IQueryFilter filter = new QueryFilterClass();
+        filter.WhereClause = "TIMECREATED IS NULL";
+        
+        int recordsAffected = featureClass.Fetch(filter, true, feature =>          
         {		   
             feature.Update("TIMECREATED", DateTime.Now);
             feature.Store();
@@ -105,16 +125,28 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
 Support Typical Extensions
 -------------------------------------
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages. 
- 
-- ``BaseMxCommand``: Used for creating a button within the ArcMap application
-- ``BaseGxCommand``: Used for creating a button within the ArcCatalog application.
-- ``BaseExtension``: Used for creating an extension within the ArcMap application.
-- ``BaseTool``: Used for creating a tool within the ArcMap application.
-- ``BaseAbandonAU``: Used for creating a custom trigger for abandoning features in ArcFM.
-- ``BaseAttributeAU``: Used for creating a custom trigger for an attribute when the object is created, updated or deleted in ArcFM.
-- ``BaseSpecialAU``: Uses for creating a custom trigger for the object when it is created, updated or deleted in ArcFM.
-- ``BaseRelationshipAU``: Used for creating a custom trigger for when a relationship is created, updated or deleted in ArcFM.
-- ``BasePxSubtask``: Used for creating a sub-routine that can be assigned to tasks within the Process Framework.
+  
++-----------------------+-------------------------------------------------------------------------------------+
+| Class                 | Description                                                                         |
++=======================+=====================================================================================+
+| ``BaseMxCommand``     | Creating a button within the ArcMap application.                                    |
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BaseGxCommand``     | Creating a button within the ArcCatalog application.                                |
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BaseExtension``     | Creating an extension within the ArcMap application.                                |
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BaseTool``          | Creating a tool within the ArcMap application.                                      |
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BaseAbandonAU``     | Creating a custom trigger for abandoning features.                                  |
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BaseAttributeAU``   | Creating a custom trigger for a fieldwhen the object is created, updated or deleted.|
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BaseSpecialAU``     | Creating a custom trigger for the object when it is created, updated or deleted.    |
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BaseRelationshipAU``| Creating a custom trigger for when a relationship is created, updated or deleted.   |
++-----------------------+-------------------------------------------------------------------------------------+
+| ``BasePxSubtask``     | Creating a sub-routine that can be assigned to tasks within the Process Framework.  |
++-----------------------+-------------------------------------------------------------------------------------+
 
 .. note::
 
@@ -175,10 +207,13 @@ The extension methods for the ``IWorkspace`` interface that have been added.
                 whereClause = string.Format("{0} = {1}", featureClass.OIDFieldName, uniqueId);
             }
             
-            var xdoc = featureClass.GetXDocument(whereClause, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
-                                                                          field.Type != esriFieldType.esriFieldTypeBlob &&
-                                                                          field.Type != esriFieldType.esriFieldTypeRaster &&
-                                                                          field.Type != esriFieldType.esriFieldTypeXML));
+            IQueryFilter filter = new QueryFilterClass();
+            filter.WhereClause = whereClause;
+            
+            var xdoc = featureClass.GetXDocument(filter, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
+                                                                    field.Type != esriFieldType.esriFieldTypeBlob &&
+                                                                    field.Type != esriFieldType.esriFieldTypeRaster &&
+                                                                    field.Type != esriFieldType.esriFieldTypeXML));
             
             string fileName = Path.Combine(directory, featureClass.GetTableName() + ".xml");                                                   
             xdoc.Save(fileName);                     
