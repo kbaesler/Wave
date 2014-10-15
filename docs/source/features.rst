@@ -182,18 +182,20 @@ The extension methods for the ``IWorkspace`` interface that have been added.
 .. code-block:: c#	
 
     /// <summary>
-    ///     Exports the data based on model name assignments.
+    ///     Creates HTML reports of the data based on model name assignments.
     /// </summary>
     /// <param name="workspace">The workspace connection to the data storage.</param>  
     /// <param name="uniqueId">The unique identifier that should be exported.</param>  
     /// <param name="directory">The output directory that will contain the xml files.</param>  
-    public void Export(IWorkspace workspace, int uniqueId, string directory)
+    /// <param name="styleSheet">The stream that contains the XML to HTML stylesheet.</param>  
+    public void CreateHtml(IWorkspace workspace, int uniqueId, string directory, Stream styleSheet)
     {        
         var featureClasses = workspace.GetFeatureClasses("EXTRACT");
         foreach(var featureClass in featureClasses)
         {
             string whereClause;
             
+            // Make the filter, which is based on the uniqueId.
             if(featureClass.IsAssignedFieldModelName("FEEDERID"))
             {
                 whereClause = string.Format("{0} = {1}", featureClass.GetFieldName("FEEDERID"), uniqueId);
@@ -210,12 +212,14 @@ The extension methods for the ``IWorkspace`` interface that have been added.
             IQueryFilter filter = new QueryFilterClass();
             filter.WhereClause = whereClause;
             
+            // Extract the data into an XML document format, excluding none readable fields.
             var xdoc = featureClass.GetXDocument(filter, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
                                                                     field.Type != esriFieldType.esriFieldTypeBlob &&
                                                                     field.Type != esriFieldType.esriFieldTypeRaster &&
-                                                                    field.Type != esriFieldType.esriFieldTypeXML));
+                                                                    field.Type != esriFieldType.esriFieldTypeXML));            
             
-            string fileName = Path.Combine(directory, featureClass.GetTableName() + ".xml");                                                   
-            xdoc.Save(fileName);                     
+            // Convert the XDocument to an HTML table using the stylesheet.
+            string fileName = Path.Combine(directory, featureClass.GetTableName() + ".html");                                                   
+            xdoc.Transform(styleSheet, fileName);                    
         }        
     }
