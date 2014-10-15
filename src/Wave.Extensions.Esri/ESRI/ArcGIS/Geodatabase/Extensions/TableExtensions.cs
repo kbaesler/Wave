@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
+using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
-using System.Xml.Linq;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -90,23 +89,6 @@ namespace ESRI.ArcGIS.Geodatabase
             return recordsAffected;
         }
 
-        /// <summary>
-        ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="whereClause" /> statement.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="whereClause">The where clause used for the attribute query.</param>
-        /// <returns>
-        ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
-        /// </returns>
-        public static List<IRow> Fetch(this ITable source, string whereClause)
-        {
-            var filter = new QueryFilterClass
-            {
-                WhereClause = whereClause
-            };
-
-            return source.Fetch(filter);
-        }
 
         /// <summary>
         ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="filter" /> object.
@@ -127,30 +109,6 @@ namespace ESRI.ArcGIS.Geodatabase
             }
         }
 
-        /// <summary>
-        ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="whereClause" /> statement
-        ///     and executes the specified <paramref name="action" /> on each row returned from the query.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="whereClause">The where clause used for the attribute query.</param>
-        /// <param name="recycling">
-        ///     The recycling parameter controls row object allocation behavior. Recycling cursors rehydrate a
-        ///     single row object on each fetch and can be used to optimize read-only access.
-        /// </param>
-        /// <param name="action">The action to take for each feature in the cursor.</param>
-        /// <returns>
-        ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">action</exception>
-        public static int Fetch(this ITable source, string whereClause, bool recycling, Action<IRow> action)
-        {
-            var filter = new QueryFilterClass
-            {
-                WhereClause = whereClause
-            };
-
-            return source.Fetch(filter, recycling, action);
-        }
 
         /// <summary>
         ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="filter" /> object
@@ -190,52 +148,6 @@ namespace ESRI.ArcGIS.Geodatabase
             return recordsAffected;
         }
 
-        /// <summary>
-        ///     Converts the contents returned from the attribute query into an XML document.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="whereClause">The where clause for the attribute query.</param>
-        /// <param name="predicate">
-        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
-        ///     fields.
-        /// </param>
-        /// <param name="elementName">Name of the element.</param>
-        /// <returns>
-        ///     Returns a <see cref="XDocument" /> representing the contents of the query.
-        /// </returns>
-        public static XDocument GetXDocument(this ITable source, string whereClause, Predicate<IField> predicate, string elementName = "Table")
-        {
-            IQueryFilter filter = new QueryFilterClass()
-            {
-                WhereClause = whereClause
-            };
-
-            return source.GetXDocument(filter, predicate, elementName);
-        }
-
-        /// <summary>
-        ///     Converts the contents returned from the attribute query into an XML document.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="filter">The attribute query filter.</param>
-        /// <param name="predicate">
-        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
-        ///     fields.
-        /// </param>
-        /// <param name="elementName">Name of the element.</param>
-        /// <returns>
-        ///     Returns a <see cref="XDocument" /> representing the contents of the query.
-        /// </returns>
-        public static XDocument GetXDocument(this ITable source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
-        {
-            using (ComReleaser cr = new ComReleaser())
-            {
-                ICursor cursor = source.Search(filter, true);
-                cr.ManageLifetime(cursor);
-
-                return cursor.GetXDocument(elementName, predicate);
-            }
-        }
 
         /// <summary>
         ///     Gets the name of the delta (either the A or D) table for the versioned <paramref name="source" />.
@@ -307,7 +219,6 @@ namespace ESRI.ArcGIS.Geodatabase
 
             if (!_FieldIndexes.ContainsKey(source))
                 _FieldIndexes.Add(source, new Dictionary<string, int>());
-
 
             var indexes = _FieldIndexes[source];
             if (indexes.ContainsKey(fieldName))
@@ -407,6 +318,30 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return className;
+        }
+
+        /// <summary>
+        ///     Converts the contents returned from the attribute query into an XML document.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute query filter.</param>
+        /// <param name="predicate">
+        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
+        ///     fields.
+        /// </param>
+        /// <param name="elementName">Name of the element.</param>
+        /// <returns>
+        ///     Returns a <see cref="XDocument" /> representing the contents of the query.
+        /// </returns>
+        public static XDocument GetXDocument(this ITable source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
+        {
+            using (ComReleaser cr = new ComReleaser())
+            {
+                ICursor cursor = source.Search(filter, true);
+                cr.ManageLifetime(cursor);
+
+                return cursor.GetXDocument(elementName, predicate);
+            }
         }
 
         #endregion

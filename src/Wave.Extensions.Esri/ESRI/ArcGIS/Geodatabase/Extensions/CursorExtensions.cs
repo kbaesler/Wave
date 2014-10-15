@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Xml;
-
-using ESRI.ArcGIS.ADF;
 using System.Xml.Linq;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -36,9 +33,9 @@ namespace ESRI.ArcGIS.Geodatabase
         public static XDocument GetXDocument(this ICursor source, string elementName)
         {
             return source.GetXDocument(elementName, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
-                                                                  field.Type != esriFieldType.esriFieldTypeBlob &&
-                                                                  field.Type != esriFieldType.esriFieldTypeRaster &&
-                                                                  field.Type != esriFieldType.esriFieldTypeXML));
+                                                              field.Type != esriFieldType.esriFieldTypeBlob &&
+                                                              field.Type != esriFieldType.esriFieldTypeRaster &&
+                                                              field.Type != esriFieldType.esriFieldTypeXML));
         }
 
         /// <summary>
@@ -55,38 +52,29 @@ namespace ESRI.ArcGIS.Geodatabase
             XElement xtable = new XElement("Table", new XAttribute("Timestamp", DateTime.Now.ToString("f")));
             XDocument xdoc = new XDocument(xtable);
 
-            // An element that contains the individual rows (or records).
-            using (ComReleaser cr = new ComReleaser())
+            // Iterate through all of the records.
+            foreach (var row in source.AsEnumerable())
             {
-                IRow row;
-                while ((row = source.NextRow()) != null)
+                // An element that represents a row.
+                XElement xrow = new XElement("Row");
+
+                // Iterate through all of the fields and output their values.
+                for (int i = 0; i < row.Fields.FieldCount; i++)
                 {
-                    cr.ManageLifetime(row);
-
-                    // An element that represents a row.
-                    XElement xrow = new XElement("Row");
-
-                    // Iterate through all of the fields and output their values.
-                    for (int i = 0; i < row.Fields.FieldCount; i++)
+                    IField field = row.Fields.Field[i];
+                    if (predicate(field))
                     {
-                        IField field = row.Fields.Field[i];
-                        if (predicate(field))
-                        {
-                            object o = row.Value[i];
-                            object value = (DBNull.Value == o || o == null) ? "" : o.ToString();
+                        object o = row.Value[i];
+                        object value = (DBNull.Value == o || o == null) ? "" : o.ToString();
 
-                            XElement xfield = new XElement("Field");
-                            xfield.Add(new XAttribute("Name", field.Name));
-                            xfield.Add(new XAttribute("Value", value));
-
-                            // Add to the collection of field values.
-                            xrow.Add(xfield);
-                        }
+                        xrow.Add(new XElement("Field"),
+                            new XAttribute("Name", field.Name),
+                            new XAttribute("Value", value));
                     }
-
-                    // Add the rows to the table.
-                    xtable.Add(xrow);
                 }
+
+                // Add the rows to the table.
+                xtable.Add(xrow);
             }
 
             return xdoc;
