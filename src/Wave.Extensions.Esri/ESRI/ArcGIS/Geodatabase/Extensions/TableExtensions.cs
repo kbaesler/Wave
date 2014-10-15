@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml;
 
 using ESRI.ArcGIS.ADF;
+using System.Xml.Linq;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -200,16 +201,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </param>
         /// <param name="elementName">Name of the element.</param>
         /// <returns>
-        ///     Returns a <see cref="XmlDocument" /> representing the contents of the query.
+        ///     Returns a <see cref="XDocument" /> representing the contents of the query.
         /// </returns>
-        public static XmlDocument GetAsXmlDocument(this ITable source, string whereClause, Predicate<IField> predicate, string elementName = "Table")
+        public static XDocument GetXDocument(this ITable source, string whereClause, Predicate<IField> predicate, string elementName = "Table")
         {
             IQueryFilter filter = new QueryFilterClass()
             {
                 WhereClause = whereClause
             };
 
-            return source.GetAsXmlDocument(filter, predicate, elementName);
+            return source.GetXDocument(filter, predicate, elementName);
         }
 
         /// <summary>
@@ -223,16 +224,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </param>
         /// <param name="elementName">Name of the element.</param>
         /// <returns>
-        ///     Returns a <see cref="XmlDocument" /> representing the contents of the query.
+        ///     Returns a <see cref="XDocument" /> representing the contents of the query.
         /// </returns>
-        public static XmlDocument GetAsXmlDocument(this ITable source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
+        public static XDocument GetXDocument(this ITable source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
         {
             using (ComReleaser cr = new ComReleaser())
             {
                 ICursor cursor = source.Search(filter, true);
                 cr.ManageLifetime(cursor);
 
-                return cursor.GetAsXmlDocument(elementName, predicate);
+                return cursor.GetXDocument(elementName, predicate);
             }
         }
 
