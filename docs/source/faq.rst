@@ -27,5 +27,5 @@ Do I need ArcFM?
 ----------------
 Wave has been developed with it's dependencies in mind allow the library to be in two different ways:
 
-#. Use the ESRI extensions only, when ArcFM is not used.    
-#. Use the ESRI and ArcFM extensions, when ArcFM is used.    
+#. Use the ESRI extensions only.
+#. Use the ESRI and ArcFM extensions.

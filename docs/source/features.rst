@@ -2,11 +2,30 @@ Features
 ================================
 This will serve as a list of all of the features that are currently available in Wave. Some features are important enough to have their own page in the docs, others will simply be listed.
 
-Extending Namespaces
+Namespaces Extensions
 --------------------------
 Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/library/bb383977.aspx>`_ and objects that are extended use the namespace of the object in the ArcFM or ArcGIS API, which eliminate the need to learn new namespaces and allows Wave's features to be available without adding new namespace delcarations.
 
 - For instance, the ``RowExtensions.cs`` that contains extension methods for the ``IRow`` interface uses the ``ESRI.ArcGIS.Geodatabase`` namespace because that is the namespace that contains the ``IRow`` interface.
+
+Enumerable Types 
+-----------------------
+The ``while`` statement is used throught the ArcFM and ArcGIS API to iterate through collections using the ``Reset()`` and ``Next()`` method combinations. However, in most cases the ``foreach`` statement is the preferred method, thus the most frequently used iterators can be converted to an enumerable type using the ``AsEnumerable()`` extension method.
+
+.. code-block:: c#
+
+    /// <summary>
+    ///     An example used to illustrate the ``foreach`` statement support.
+    /// </summary>
+    /// <param name="featureClass">The feature class.</param>   
+    public void IllustrateEnumerableTypes(IFeatureClass featureClass)
+    {
+        IFeatureCursor cursor = featureClass.Search(filter, true);
+        foreach(var feature in cursor.AsEnumerable())
+        {
+            // Do something
+        }
+    }
 
 Simplifying Complexity
 --------------------------
@@ -18,7 +37,7 @@ There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM 
 
 For example, in ArcGIS traversing the contents of the map document can be simplified using the ``Where`` extension method on the ``IMap`` interface.
 
-.. code-block:: c
+.. code-block:: c#
 
     /// <summary>
     /// Clears the layer definitions.
@@ -34,7 +53,7 @@ For example, in ArcGIS traversing the contents of the map document can be simpli
     
 For example, in ArcFM traversing the Design Tab in the ArcFM Attribute Editor can be simplified using the ``Where`` extension method on the ``ID8List`` interface.
 
-.. code-block:: c
+.. code-block:: c#
 
     /// <summary>
     /// Update all of the TAG field with the specified value for all features
@@ -59,7 +78,7 @@ One of the major benefits of using the ESRI platform it allows you to perform sp
 
 The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplifies the operation by abstracting the logic and enforcing the proper memory management for the COM objects.
 
-.. code-block:: c	
+.. code-block:: c#	
 
     /// <summary>
     ///     Updates all of the features 'TIMECREATED' field to the current date time for
@@ -128,7 +147,7 @@ The extension methods for the ``IWorkspace`` interface that have been added.
 - ``GetTable``: Used to obtain the ``ITable`` that has been assigned the class model name(s).
 - ``GetTables``: Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).
 
-.. code-block:: c	
+.. code-block:: c#	
 
     /// <summary>
     ///     Exports the data based on model name assignments.
@@ -156,12 +175,12 @@ The extension methods for the ``IWorkspace`` interface that have been added.
                 whereClause = string.Format("{0} = {1}", featureClass.OIDFieldName, uniqueId);
             }
             
-            var doc = featureClass.GetAsXmlDocument(whereClause, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
+            var xdoc = featureClass.GetXDocument(whereClause, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
                                                                           field.Type != esriFieldType.esriFieldTypeBlob &&
                                                                           field.Type != esriFieldType.esriFieldTypeRaster &&
                                                                           field.Type != esriFieldType.esriFieldTypeXML));
             
             string fileName = Path.Combine(directory, featureClass.GetTableName() + ".xml");                                                   
-            doc.Save(fileName);                     
+            xdoc.Save(fileName);                     
         }        
     }
