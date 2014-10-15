@@ -213,6 +213,7 @@
     <Compile Include="System\UX\Windows\Converters\BoolToValueConverter.cs" />
     <Compile Include="System\UX\Windows\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="System\UX\Windows\Converters\ValueConverterGroup.cs" />
+    <Compile Include="System\Xml\Extensions\XDocumentExtensions.cs" />
     <Compile Include="System\Xml\Extensions\XmlDocumentExtensions.cs" />
     <Compile Include="System\Xml\XmlSerialization.cs" />
     <Compile Include="System\Xml\XmlTransformation.cs" />
