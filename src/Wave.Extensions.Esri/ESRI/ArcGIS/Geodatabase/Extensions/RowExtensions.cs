@@ -108,6 +108,23 @@ namespace ESRI.ArcGIS.Geodatabase
             return source.Fields.Field[index].Domain;
         }
 
+        /// <summary>
+        ///     Returns the field value that has the specified <paramref name="fieldName" /> field name for the
+        ///     <paramref name="source" />.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The row.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="fallbackValue">The default value.</param>
+        /// <returns>
+        ///     Returns an <see cref="object" /> representing the converted value to the specified type.
+        /// </returns>
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        public static TValue GetValue<TValue>(this IRow source, string fieldName, TValue fallbackValue)
+        {
+            int index = source.Table.FindField(fieldName);
+            return source.GetValue(index, fallbackValue);
+        }
 
         /// <summary>
         ///     Returns the field value that at the specified <paramref name="index" /> for the <paramref name="source" />.
@@ -193,7 +210,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
         public static bool Update(this IRow source, string fieldName, object value)
         {
-            int i = source.Table.GetFieldIndex(fieldName);
+            int i = source.Table.FindField(fieldName);
             return source.Update(i, value);
         }
 
