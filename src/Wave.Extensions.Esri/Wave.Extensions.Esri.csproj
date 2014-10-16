@@ -264,7 +264,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Wave.Extensions\Wave.Extensions.csproj">
       <Project>{363e34dd-2272-455e-ae1f-903c57469af7}</Project>
-      <Name>Arcem.Extensions</Name>
+      <Name>Wave.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

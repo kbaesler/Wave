@@ -65,6 +65,49 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Gets the database management system that is used with conjunction of the <paramref name="workspace" />.
+        /// </summary>
+        /// <param name="workspace">The workspace.</param>
+        /// <returns>
+        ///     The <see cref="DBMS" /> enumeration value.
+        /// </returns>
+        public static DBMS GetDBMS(this IWorkspace workspace)
+        {
+            if (workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+            {
+                UID uid = workspace.WorkspaceFactory.GetClassID();
+                if (uid.Value.ToString() == "{71FE75F0-EA0C-4406-873E-B7D53748AE7E}")
+                    return DBMS.File;
+
+                return DBMS.Access;
+            }
+
+            IDatabaseConnectionInfo2 dci = workspace as IDatabaseConnectionInfo2;
+            if (dci != null)
+            {
+                switch (dci.ConnectionDBMS)
+                {
+                    case esriConnectionDBMS.esriDBMS_DB2:
+                        return DBMS.Db2;
+
+                    case esriConnectionDBMS.esriDBMS_Informix:
+                        return DBMS.Informix;
+
+                    case esriConnectionDBMS.esriDBMS_Oracle:
+                        return DBMS.Oracle;
+
+                    case esriConnectionDBMS.esriDBMS_PostgreSQL:
+                        return DBMS.PostgreSql;
+
+                    case esriConnectionDBMS.esriDBMS_SQLServer:
+                        return DBMS.SqlServer;
+                }
+            }
+
+            return DBMS.Unknown;
+        }
+
+        /// <summary>
         ///     Finds the <see cref="IDomain" /> that equals the specified <paramref name="domainName" /> using a non case
         ///     sensitive comparison.
         /// </summary>
@@ -263,53 +306,6 @@ namespace ESRI.ArcGIS.Geodatabase
                     source.ExecuteSQL(commandText);
                 }
             }
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Gets the database management system that is used with conjunction of the <paramref name="workspace" />.
-        /// </summary>
-        /// <param name="workspace">The workspace.</param>
-        /// <returns>
-        ///     The <see cref="DBMS" /> enumeration value.
-        /// </returns>
-        private static DBMS GetDBMS(IWorkspace workspace)
-        {
-            if (workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
-            {
-                UID uid = workspace.WorkspaceFactory.GetClassID();
-                if (uid.Value.ToString() == "{71FE75F0-EA0C-4406-873E-B7D53748AE7E}")
-                    return DBMS.File;
-
-                return DBMS.Access;
-            }
-
-            IDatabaseConnectionInfo2 dci = workspace as IDatabaseConnectionInfo2;
-            if (dci != null)
-            {
-                switch (dci.ConnectionDBMS)
-                {
-                    case esriConnectionDBMS.esriDBMS_DB2:
-                        return DBMS.Db2;
-
-                    case esriConnectionDBMS.esriDBMS_Informix:
-                        return DBMS.Informix;
-
-                    case esriConnectionDBMS.esriDBMS_Oracle:
-                        return DBMS.Oracle;
-
-                    case esriConnectionDBMS.esriDBMS_PostgreSQL:
-                        return DBMS.PostgreSql;
-
-                    case esriConnectionDBMS.esriDBMS_SQLServer:
-                        return DBMS.SqlServer;
-                }
-            }
-
-            return DBMS.Unknown;
         }
 
         #endregion
