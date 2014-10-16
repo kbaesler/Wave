@@ -75,6 +75,47 @@ namespace ESRI.ArcGIS.BaseClasses
         #region Public Methods
 
         /// <summary>
+        ///     Initialize the application with the specified product code.
+        /// </summary>
+        /// <param name="licenseProduct">The product codes.</param>
+        /// <returns>
+        ///     <c>true</c> when the initialization is successful; otherwise <c>false</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     productCodes
+        ///     or
+        ///     extensionCodes
+        /// </exception>
+        /// <remarks>
+        ///     Make sure an active ArcGIS runtime has been bound before license initialization.
+        /// </remarks>
+        public bool Initialize(TLicenseProduct licenseProduct)
+        {
+            return this.Initialize(new[] {licenseProduct}, new TLicenseExtension[] {});
+        }
+
+        /// <summary>
+        ///     Initialize the application with the specified product and extension codes.
+        /// </summary>
+        /// <param name="licenseProduct">The product codes.</param>
+        /// <param name="licenseExtensions">The license extensions.</param>
+        /// <returns>
+        ///     <c>true</c> when the initialization is successful; otherwise <c>false</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     productCodes
+        ///     or
+        ///     extensionCodes
+        /// </exception>
+        /// <remarks>
+        ///     Make sure an active ArcGIS runtime has been bound before license initialization.
+        /// </remarks>
+        public bool Initialize(TLicenseProduct licenseProduct, params TLicenseExtension[] licenseExtensions)
+        {
+            return this.Initialize(new[] {licenseProduct}, licenseExtensions);
+        }
+
+        /// <summary>
         ///     Initialize the application with the specified product and extension license codes.
         /// </summary>
         /// <param name="licenseProducts">The product codes.</param>
@@ -82,7 +123,7 @@ namespace ESRI.ArcGIS.BaseClasses
         /// <returns>
         ///     <c>true</c> when the initialization is successful; otherwise <c>false</c>.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         ///     productCodes
         ///     or
         ///     extensionCodes
