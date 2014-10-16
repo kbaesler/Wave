@@ -67,33 +67,7 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region Public Methods
-
-        /// <summary>
-        ///     Delete all the EDM data from the Work Request, Design, Work Locaiton and CUs associated with the current design id.
-        /// </summary>
-        /// <param name="designID">The design ID.</param>
-        /// <returns>
-        ///     The number of records that have been deleted.
-        /// </returns>
-        public int Delete(int designID)
-        {
-            int recordsAffected = 0;
-
-            // Iterate through all of the valid tables.
-            foreach (var o in this.Tables)
-            {
-                // Only proceed if the table is valid.
-                if (o.Valid)
-                {
-                    // Delete all of the records matching the given design ID.
-                    string sql = string.Format(CultureInfo.InvariantCulture, "DELETE FROM {0} WHERE {1} = {2}", _PxApp.GetQualifiedTableName(o.TableName), Fields.DesignID, designID);
-                    recordsAffected += _PxApp.ExecuteNonQuery(sql);
-                }
-            }
-
-            return recordsAffected;
-        }
+        #region IMMWMSExtendedData Members
 
         /// <summary>
         ///     Returns the "EDM" node and child EDMPROP elements containing Extended Data associated with the specified WFM node.
@@ -195,6 +169,36 @@ namespace Miner.Interop.Process
 
             // Use the OOTB component to save Site Condition info.
             _WmsExtendedData.WriteEDMFromXML(wmsNode, edmNode);
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Delete all the EDM data from the Work Request, Design, Work Locaiton and CUs associated with the current design id.
+        /// </summary>
+        /// <param name="designID">The design ID.</param>
+        /// <returns>
+        ///     The number of records that have been deleted.
+        /// </returns>
+        public int Delete(int designID)
+        {
+            int recordsAffected = 0;
+
+            // Iterate through all of the valid tables.
+            foreach (var o in this.Tables)
+            {
+                // Only proceed if the table is valid.
+                if (o.Valid)
+                {
+                    // Delete all of the records matching the given design ID.
+                    string sql = string.Format(CultureInfo.InvariantCulture, "DELETE FROM {0} WHERE {1} = {2}", _PxApp.GetQualifiedTableName(o.TableName), Fields.DesignID, designID);
+                    recordsAffected += _PxApp.ExecuteNonQuery(sql);
+                }
+            }
+
+            return recordsAffected;
         }
 
         #endregion

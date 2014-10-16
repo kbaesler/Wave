@@ -24,7 +24,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
         /// <returns>
-        ///     Returns a <see cref="List{IFeature}" /> representing the features returned from the query.
+        ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
         public static List<IFeature> Fetch(this IFeatureClass source, IQueryFilter filter)
         {
@@ -42,19 +42,19 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     the query.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="recycling">
-        ///     The recycling parameter controls row object allocation behavior. Recycling cursors rehydrate a
-        ///     single feature object on each fetch and can be used to optimize read-only access.
-        /// </param>
         /// <param name="action">The action to take for each feature in the cursor.</param>
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static int Fetch(this IFeatureClass source, bool recycling, Func<IFeature, bool> action)
+        /// <remarks>
+        ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
+        ///     access
+        /// </remarks>
+        public static int Fetch(this IFeatureClass source, Func<IFeature, bool> action)
         {
             IQueryFilter filter = new QueryFilterClass();
-            return source.Fetch(filter, recycling, action);
+            return source.Fetch(filter, action);
         }
 
         /// <summary>
@@ -64,16 +64,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
-        /// <param name="recycling">
-        ///     The recycling parameter controls row object allocation behavior. Recycling cursors rehydrate a
-        ///     single feature object on each fetch and can be used to optimize read-only access.
-        /// </param>
         /// <param name="action">The action to take for each feature in the cursor.</param>
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static int Fetch(this IFeatureClass source, IQueryFilter filter, bool recycling, Func<IFeature, bool> action)
+        /// <remarks>
+        ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
+        ///     access
+        /// </remarks>
+        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action)
         {
             if (action == null)
                 throw new ArgumentNullException("action");
@@ -82,7 +82,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             using (ComReleaser cr = new ComReleaser())
             {
-                IFeatureCursor cursor = source.Search(filter, recycling);
+                IFeatureCursor cursor = source.Search(filter, true);
                 cr.ManageLifetime(cursor);
 
                 foreach (var feature in cursor.AsEnumerable())
@@ -103,17 +103,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="oids">The list of object ids.</param>
-        /// <param name="recycling">
-        ///     The recycling parameter controls row object allocation behavior. Recycling cursors rehydrate a single row object on
-        ///     each fetch and
-        ///     can be used to optimize read-only access.
-        /// </param>
         /// <param name="action">The action to take for each feature in the cursor.</param>
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
         /// </returns>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static int Fetch(this IFeatureClass source, IEnumerable<int> oids, bool recycling, Action<IFeature> action)
+        /// <remarks>
+        ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
+        ///     access
+        /// </remarks>
+        public static int Fetch(this IFeatureClass source, IEnumerable<int> oids, Action<IFeature> action)
         {
             if (action == null)
                 throw new ArgumentNullException("action");
@@ -123,7 +122,7 @@ namespace ESRI.ArcGIS.Geodatabase
             using (ComReleaser cr = new ComReleaser())
             {
                 object values = oids.ToArray();
-                IFeatureCursor cursor = source.GetFeatures(values, recycling);
+                IFeatureCursor cursor = source.GetFeatures(values, true);
                 cr.ManageLifetime(cursor);
 
                 foreach (var row in cursor.AsEnumerable())
@@ -135,29 +134,6 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return recordsAffected;
-        }
-
-        /// <summary>
-        ///     Converts the contents returned from the attribute query into an XML document.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="whereClause">The where clause for the attribute query.</param>
-        /// <param name="predicate">
-        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
-        ///     fields.
-        /// </param>
-        /// <param name="elementName">Name of the element.</param>
-        /// <returns>
-        ///     Returns a <see cref="XDocument" /> representing the contents of the query.
-        /// </returns>
-        public static XDocument GetXDocument(this IFeatureClass source, string whereClause, Predicate<IField> predicate, string elementName = "Table")
-        {
-            IQueryFilter filter = new QueryFilterClass()
-            {
-                WhereClause = whereClause
-            };
-
-            return source.GetXDocument(filter, predicate, elementName);
         }
 
         /// <summary>

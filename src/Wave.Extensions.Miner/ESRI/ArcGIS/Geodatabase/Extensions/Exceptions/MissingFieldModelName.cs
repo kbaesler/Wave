@@ -13,7 +13,7 @@
         /// <param name="oclass">The object class.</param>
         /// <param name="modelName">Name of the model.</param>
         public MissingFieldModelNameException(IObjectClass oclass, string modelName)
-            : base(string.Format("The '{0}' is not assigned the '{1}' field model name.", ((IDataset)oclass).Name, modelName), modelName)
+            : base(string.Format("The '{0}' is not assigned the '{1}' field model name.", ((IDataset) oclass).Name, modelName), modelName)
         {
         }
 

@@ -74,7 +74,7 @@ namespace ESRI.ArcGIS.Geodatabase
             fieldManager.Build((IMMFieldBuilder) builder, auxiliaryFieldBuilder);
 
             return fieldManager;
-        }       
+        }
 
         /// <summary>
         ///     Returns the field value that has been assigned the <paramref name="modelName" /> that is within the specified

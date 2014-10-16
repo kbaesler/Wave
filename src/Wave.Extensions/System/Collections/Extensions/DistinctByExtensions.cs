@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace System.Collections
 {
     /// <summary>
-    /// Provides a LINQ implmentation for returning distinct eleemnts of the given source.
+    ///     Provides a LINQ implmentation for returning distinct eleemnts of the given source.
     /// </summary>
     public static class DistinctByExtensions
     {

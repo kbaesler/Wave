@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -28,36 +25,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static IField GetField(this ITable source, string modelName, bool throwException = true)
         {
-            return ((IObjectClass)source).GetField(modelName, throwException);
-        }
-
-        /// <summary>
-        ///     Gets a dictionary of the fields that are assigned the <paramref name="modelNames" /> organized by the model name
-        ///     followed by the field indexes.
-        ///     specified <paramref name="source" />.
-        /// </summary>
-        /// <param name="source">The object class</param>
-        /// <param name="modelNames">The model names.</param>
-        /// <returns>
-        ///     Returns the  <see cref="Dictionary{TKey,TValue}" /> representing the field model name for the field indexes.
-        /// </returns>
-        public static Dictionary<string, List<int>> GetFieldIndexes(this ITable source, params string[] modelNames)
-        {
-            return ((IObjectClass)source).GetFieldIndexes(modelNames);
-        }
-
-        /// <summary>
-        ///     Gets all of the fields that has been assigned the <paramref name="modelNames" /> that is within the
-        ///     specified <paramref name="source" />.
-        /// </summary>
-        /// <param name="source">The object class to check for model names</param>
-        /// <param name="modelNames">The model names.</param>
-        /// <returns>
-        ///     Returns the  <see cref="IEnumerable{IField}" /> that has been assigned the model name.
-        /// </returns>
-        public static IEnumerable<IField> GetFields(this ITable source, params string[] modelNames)
-        {
-            return ((IObjectClass)source).GetFields(modelNames);
+            return ((IObjectClass) source).GetField(modelName, throwException);
         }
 
         /// <summary>
@@ -76,7 +44,22 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static int GetFieldIndex(this ITable source, string modelName, bool throwException = true)
         {
-            return ((IObjectClass)source).GetFieldIndex(modelName, throwException);
+            return ((IObjectClass) source).GetFieldIndex(modelName, throwException);
+        }
+
+        /// <summary>
+        ///     Gets a dictionary of the fields that are assigned the <paramref name="modelNames" /> organized by the model name
+        ///     followed by the field indexes.
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class</param>
+        /// <param name="modelNames">The model names.</param>
+        /// <returns>
+        ///     Returns the  <see cref="Dictionary{TKey,TValue}" /> representing the field model name for the field indexes.
+        /// </returns>
+        public static Dictionary<string, List<int>> GetFieldIndexes(this ITable source, params string[] modelNames)
+        {
+            return ((IObjectClass) source).GetFieldIndexes(modelNames);
         }
 
         /// <summary>
@@ -95,7 +78,21 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static string GetFieldName(this ITable source, string modelName, bool throwException = true)
         {
-            return ((IObjectClass)source).GetFieldName(modelName, throwException);
+            return ((IObjectClass) source).GetFieldName(modelName, throwException);
+        }
+
+        /// <summary>
+        ///     Gets all of the fields that has been assigned the <paramref name="modelNames" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class to check for model names</param>
+        /// <param name="modelNames">The model names.</param>
+        /// <returns>
+        ///     Returns the  <see cref="IEnumerable{IField}" /> that has been assigned the model name.
+        /// </returns>
+        public static IEnumerable<IField> GetFields(this ITable source, params string[] modelNames)
+        {
+            return ((IObjectClass) source).GetFields(modelNames);
         }
 
         /// <summary>
@@ -117,7 +114,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string modelName, bool throwException = true)
         {
-            return ((IObjectClass)source).GetRelationshipClass(relationshipRole, modelName, throwException);
+            return ((IObjectClass) source).GetRelationshipClass(relationshipRole, modelName, throwException);
         }
 
         /// <summary>
@@ -139,7 +136,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string[] modelNames, bool throwException = true)
         {
-            return ((IObjectClass)source).GetRelationshipClass(relationshipRole, modelNames, throwException);
+            return ((IObjectClass) source).GetRelationshipClass(relationshipRole, modelNames, throwException);
         }
 
         /// <summary>
@@ -154,7 +151,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedClassModelName(this ITable source, string modelName)
         {
-            return ((IObjectClass)source).IsAssignedClassModelName(modelName);
+            return ((IObjectClass) source).IsAssignedClassModelName(modelName);
         }
 
         /// <summary>
@@ -169,7 +166,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedClassModelName(this ITable source, params string[] modelNames)
         {
-            return ((IObjectClass)source).IsAssignedClassModelName(modelNames);
+            return ((IObjectClass) source).IsAssignedClassModelName(modelNames);
         }
 
         /// <summary>
@@ -184,7 +181,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedFieldModelName(this ITable source, string modelName)
         {
-            return ((IObjectClass)source).IsAssignedFieldModelName(modelName);
+            return ((IObjectClass) source).IsAssignedFieldModelName(modelName);
         }
 
         /// <summary>
@@ -199,7 +196,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedFieldModelName(this ITable source, params string[] modelNames)
         {
-            return ((IObjectClass)source).IsAssignedFieldModelName(modelNames);
+            return ((IObjectClass) source).IsAssignedFieldModelName(modelNames);
         }
 
         #endregion

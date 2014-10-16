@@ -27,7 +27,7 @@ namespace System.Windows
         protected BackgroundViewModel(string displayName)
             : base(displayName)
         {
-            _Worker = new BackgroundWorker { WorkerSupportsCancellation = true, WorkerReportsProgress = true };
+            _Worker = new BackgroundWorker {WorkerSupportsCancellation = true, WorkerReportsProgress = true};
         }
 
         #endregion
@@ -92,8 +92,8 @@ namespace System.Windows
         }
 
         /// <summary>
-        /// Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
-        /// passed to the methods.
+        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        ///     passed to the methods.
         /// </summary>
         /// <param name="execute">The delegate that handles the execution on the work.</param>
         /// <param name="completion">The delegate that handles when the work has completed.</param>
@@ -103,8 +103,8 @@ namespace System.Windows
         }
 
         /// <summary>
-        /// Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
-        /// passed to the methods.
+        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        ///     passed to the methods.
         /// </summary>
         /// <param name="arguments">The arguments.</param>
         /// <param name="execute">The delegate that handles the execution on the work.</param>

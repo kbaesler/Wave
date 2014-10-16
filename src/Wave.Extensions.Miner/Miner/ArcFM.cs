@@ -7,7 +7,7 @@ namespace Miner
 {
     /// <summary>
     ///     Container class for <see cref="Miner.ArcFM" /> classes.
-    /// </summary>    
+    /// </summary>
     public static class ArcFM
     {
         #region Nested Type: Commands

@@ -366,11 +366,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Wave.Extensions.Esri\Wave.Extensions.Esri.csproj">
       <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
-      <Name>Arcem.Extensions.Esri</Name>
+      <Name>Wave.Extensions.Esri</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wave.Extensions\Wave.Extensions.csproj">
       <Project>{363e34dd-2272-455e-ae1f-903c57469af7}</Project>
-      <Name>Arcem.Extensions</Name>
+      <Name>Wave.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

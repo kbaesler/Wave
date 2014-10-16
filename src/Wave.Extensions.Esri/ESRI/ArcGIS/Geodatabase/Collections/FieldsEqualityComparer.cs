@@ -38,7 +38,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </exception>
         public int GetHashCode(IRow obj)
         {
-            return new { A = ((IDataset)obj.Table).Name, B = obj.OID }.GetHashCode();
+            return new {A = ((IDataset) obj.Table).Name, B = obj.OID}.GetHashCode();
         }
 
         #endregion

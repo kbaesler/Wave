@@ -54,20 +54,6 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region Public Properties
-
-        /// <summary>
-        ///     Gets the large image.
-        /// </summary>
-        public virtual IPictureDisp LargeImage { get; protected set; }
-
-        /// <summary>
-        ///     Gets the small image.
-        /// </summary>
-        public virtual IPictureDisp SmallImage { get; protected set; }
-
-        #endregion
-
         #region Protected Properties
 
         /// <summary>
@@ -81,6 +67,16 @@ namespace Miner.Interop.Process
         #endregion
 
         #region IMMPxFilter Members
+
+        /// <summary>
+        ///     Gets the large image.
+        /// </summary>
+        public virtual IPictureDisp LargeImage { get; protected set; }
+
+        /// <summary>
+        ///     Gets the small image.
+        /// </summary>
+        public virtual IPictureDisp SmallImage { get; protected set; }
 
         /// <summary>
         ///     Gets the category.

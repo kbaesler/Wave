@@ -1,6 +1,9 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
+using log4net;
 using log4net.Appender;
 using log4net.Core;
 using log4net.Layout;
@@ -191,7 +194,7 @@ namespace System.Diagnostics.Appenders
             if (control == null)
                 return false;
 
-            foreach (RichTextBoxAppender appender in Log.GetAppenders<RichTextBoxAppender>(o => o.Name.Equals(appenderName)))
+            foreach (RichTextBoxAppender appender in GetAppenders<RichTextBoxAppender>(o => o.Name.Equals(appenderName)))
             {
                 appender.Control = control;
                 return true;
@@ -228,6 +231,20 @@ namespace System.Diagnostics.Appenders
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        ///     Returns the appenders that exist in the repository of the given type.
+        /// </summary>
+        /// <typeparam name="TAppender">The type of the appender.</typeparam>
+        /// <param name="selector">A function used to select the appenders.</param>
+        /// <returns>
+        ///     Returns an enumeration of <see cref="IAppender" /> interfaces.
+        /// </returns>
+        private static IEnumerable<TAppender> GetAppenders<TAppender>(Func<TAppender, bool> selector)
+            where TAppender : IAppender
+        {
+            return LogManager.GetAllRepositories().SelectMany(o => o.GetAppenders()).OfType<TAppender>().Where(selector);
+        }
 
         /// <summary>
         ///     Add logging event to configured control

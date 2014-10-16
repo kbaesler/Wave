@@ -59,19 +59,6 @@ namespace Miner.Framework
 
         #endregion
 
-        #region Public Properties
-
-        /// <summary>
-        ///     Gets the bitmap.
-        /// </summary>
-        /// <value>The bitmap.</value>
-        public virtual IPictureDisp Bitmap
-        {
-            get { return null; }
-        }
-
-        #endregion
-
         #region IDisposable Members
 
         /// <summary>
@@ -87,6 +74,15 @@ namespace Miner.Framework
         #endregion
 
         #region IMMExtObject Members
+
+        /// <summary>
+        ///     Gets the bitmap.
+        /// </summary>
+        /// <value>The bitmap.</value>
+        public virtual IPictureDisp Bitmap
+        {
+            get { return null; }
+        }
 
         /// <summary>
         ///     Gets the name.

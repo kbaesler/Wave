@@ -46,16 +46,6 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region Public Properties
-
-        /// <summary>
-        ///     Gets the bitmap.
-        /// </summary>
-        /// <value>The bitmap.</value>
-        public IPictureDisp Bitmap { get; protected set; }
-
-        #endregion
-
         #region Protected Properties
 
         /// <summary>
@@ -148,6 +138,12 @@ namespace Miner.Interop.Process
         #endregion
 
         #region IMMTreeViewToolEx Members
+
+        /// <summary>
+        ///     Gets the bitmap.
+        /// </summary>
+        /// <value>The bitmap.</value>
+        public IPictureDisp Bitmap { get; protected set; }
 
         /// <summary>
         ///     Gets the name of the category.

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.esriSystem;
@@ -19,22 +20,29 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IWorkspaceFactory" /> representing the supported factory for the file.
         /// </returns>
-        /// <exception cref="System.NotSupportedException">The workspace factory for the file is not supported</exception>
+        /// <exception cref="FileNotFoundException">The workspace factory cannot be determined because the file was not found.</exception>
+        /// <exception cref="NotSupportedException">The workspace factory for the file is not supported</exception>
         public static IWorkspaceFactory GetFactory(string fileName)
         {
-            IWorkspaceFactory[] list =
+            if (!string.IsNullOrEmpty(fileName))
             {
-                new AccessWorkspaceFactoryClass(),
-                new FileGDBWorkspaceFactoryClass(),
-                new SdeWorkspaceFactoryClass(),
-                new InMemoryWorkspaceFactoryClass(),
-                new PlugInWorkspaceFactoryClass(),
-            };
+                if (!File.Exists(fileName))
+                    throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found.", fileName);
 
-            foreach (var l in list)
-            {
-                if (l.IsWorkspace(fileName))
-                    return l;
+                IWorkspaceFactory[] list =
+                {
+                    new AccessWorkspaceFactoryClass(),
+                    new FileGDBWorkspaceFactoryClass(),
+                    new SdeWorkspaceFactoryClass(),
+                    new InMemoryWorkspaceFactoryClass(),
+                    new PlugInWorkspaceFactoryClass(),
+                };
+
+                foreach (var l in list)
+                {
+                    if (l.IsWorkspace(fileName))
+                        return l;
+                }
             }
 
             throw new NotSupportedException("The workspace factory for the file is not supported");

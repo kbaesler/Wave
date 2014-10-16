@@ -35,7 +35,7 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             // Create the version
-            IVersion parentVersion = (IVersion)source;
+            IVersion parentVersion = (IVersion) source;
             IVersion childVersion = parentVersion.CreateVersion(name);
             childVersion.Access = access;
             childVersion.Description = description;
@@ -62,7 +62,7 @@ namespace ESRI.ArcGIS.Geodatabase
             catch (COMException ex)
             {
                 // When the version has already been deleted.
-                if (ex.ErrorCode != (int)fdoError.FDO_E_OBJECT_IS_DELETED)
+                if (ex.ErrorCode != (int) fdoError.FDO_E_OBJECT_IS_DELETED)
                     throw;
             }
         }
@@ -286,7 +286,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 IWorkspaceExtension ext = manager.FindExtension(uid);
                 if (ext != null)
                 {
-                    IMMModelNameInfo modelNameInfo = (IMMModelNameInfo)ext;
+                    IMMModelNameInfo modelNameInfo = (IMMModelNameInfo) ext;
                     return modelNames.Any(name => modelNameInfo.ModelNameExists(name));
                 }
             }

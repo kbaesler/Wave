@@ -70,7 +70,7 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region Public Methods
+        #region IMMWMSReportingEngine Members
 
         /// <summary>
         ///     Executes the cost engine for the specified report.
