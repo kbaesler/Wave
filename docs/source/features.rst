@@ -1,10 +1,10 @@
 Features
 ================================
-This will serve as a list of all of the features that are currently available in Wave. Some features are important enough to have their own page in the docs, others will simply be listed.
+This will serve as a list of all of the features that are currently available. Some features are important enough to have their own page in the docs, others will simply be listed.
 
-Namespaces Extensions
+Namespaceless
 --------------------------
-Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/library/bb383977.aspx>`_ and objects that are extended use the namespace of the object in the ArcFM or ArcGIS API, which eliminate the need to learn new namespaces and allows Wave's features to be available without adding new namespace delcarations.
+Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/library/bb383977.aspx>`_ which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave's features to be available without adding new namespace delcarations.
 
 - For instance, the ``RowExtensions.cs`` that contains extension methods for the ``IRow`` interface uses the ``ESRI.ArcGIS.Geodatabase`` namespace because that is the namespace that contains the ``IRow`` interface.
 
@@ -46,13 +46,13 @@ The following is a short list of the interfaces that support enumerable types:
     
 Simplifying Complexity
 --------------------------
-Wave is designed to simplify those tasks that are performed frequently while considering performance, memory consumption and easy of use.
+Wave is designed to simplify complex and frequently used tasks all while considering performance, memory consumption and easy of use.
 
 Hierarchical Data Structures
 ++++++++++++++++++++++++++++++
 There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you'd have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using ``LINQ``.
 
-For example, in ArcGIS traversing the contents of the map document can be simplified using the ``Where`` extension method on the ``IMap`` interface.
+For example, in ArcGIS traversing the contents of the map document has been simplified with the introduction of the ``Where`` extension method on the ``IMap`` interface.
 
 .. code-block:: c#
 
@@ -68,7 +68,7 @@ For example, in ArcGIS traversing the contents of the map document can be simpli
         }
     }
     
-For example, in ArcFM traversing the Design Tab in the ArcFM Attribute Editor can be simplified using the ``Where`` extension method on the ``ID8List`` interface.
+For example, in ArcFM traversing the Design Tab in the ArcFM Attribute Editor has been simplified with the introduction of the ``Where`` extension method on the ``ID8List`` interface.
 
 .. code-block:: c#
 
@@ -91,9 +91,9 @@ For example, in ArcFM traversing the Design Tab in the ArcFM Attribute Editor ca
 
 Data Queries
 +++++++++++++
-One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. Resulting in this operation being heavily used, which leads to code-duplication and/or memory management issues if used improperly.
+One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As side-effect, the same APIs are used repeatively, which leads to code-duplication and/or memory management issues if used improperly.
 
-The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplifies the operation by abstracting the logic and enforcing the proper memory management for the COM objects.
+The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.
 
 .. code-block:: c#	
 
@@ -110,7 +110,7 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
         IQueryFilter filter = new QueryFilterClass();
         filter.WhereClause = "TIMECREATED IS NULL";
         
-        int recordsAffected = featureClass.Fetch(filter, true, feature =>          
+        int recordsAffected = featureClass.Fetch(filter, feature =>          
         {		   
             feature.Update("TIMECREATED", DateTime.Now);
             feature.Store();
@@ -154,9 +154,9 @@ The ArcFM and ArcGIS platform provides multiple extension points and while we ca
 
 ArcFM Model Names
 ------------------------------
-The ArcFM Solution provides a way to identify ESRI tables based on a user defined key that they call ArcFM Model Names. These model names can be assigned at the table and field level allow for cross-database or generic implementations of customziations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.
+The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call ArcFM Model Names. These model names can be for cross-database or generic implementations for customziations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.
 
-In order to simplfy the accessing of model name information, several extension methods were added to those ESRI objects that support ArcFM Model Names.
+In order to simplfy the accessing of model name information, several extension methods were added to the ESRI objects that support ArcFM Model Names.
 
 The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that have been added.
 
@@ -188,7 +188,8 @@ The extension methods for the ``IWorkspace`` interface that have been added.
     /// <param name="uniqueId">The unique identifier that should be exported.</param>  
     /// <param name="directory">The output directory that will contain the xml files.</param>  
     /// <param name="styleSheet">The stream that contains the XML to HTML stylesheet.</param>  
-    public void CreateHtml(IWorkspace workspace, int uniqueId, string directory, Stream styleSheet)
+    /// <returns>An <see cref="IEnumerable{String}"/> representing the paths to the HTML files created.</returns>
+    public IEnumerable<string> CreateHtml(IWorkspace workspace, int uniqueId, string directory, Stream styleSheet)
     {        
         var featureClasses = workspace.GetFeatureClasses("EXTRACT");
         foreach(var featureClass in featureClasses)
@@ -220,6 +221,9 @@ The extension methods for the ``IWorkspace`` interface that have been added.
             
             // Convert the XDocument to an HTML table using the stylesheet.
             string fileName = Path.Combine(directory, featureClass.GetTableName() + ".html");                                                   
-            xdoc.Transform(styleSheet, fileName);                    
+            xdoc.Transform(styleSheet, fileName); 
+            
+            // Return the file name of the HTML created.
+            yield return fileName;
         }        
     }
