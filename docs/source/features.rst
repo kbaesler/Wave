@@ -160,24 +160,45 @@ In order to simplfy the accessing of model name information, several extension m
 
 The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that have been added.
 
-- ``IsAssignedClassModelName``: Used to determine if a class model name(s) has been assigned.
-- ``IsAssignedFieldModelName``: Used to determine if a field model name(s) has been assigned.
-- ``GetRelationshipClass``: Used to locate the relationship that has been assigned the class model name(s).
-- ``GetRelationshipClasses``: Used to gather a list of the relationships that has been assigned the class model name(s).
-- ``GetField``: Used to locate the ``IField`` that has been assigned the field model name(s).
-- ``GetFields``: Used to gather a list of of the ``IField`` objects that has been assigned the field model name(s).
-- ``GetFieldIndex``: Used to locate the field index that has been assigned the field model name(s).
-- ``GetFieldIndexes``: Used to gather a list of all of the field indexes that has been assigned the field model name(s).
-- ``GetFieldName``: Used to locate the field name that has been assigned the field model name(s).
-- ``GetFieldNames``: Used to gather a list of all of the field names that has been assigned the field model name(s).
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| Method                        | Description                                                                                       |
++===============================+===================================================================================================+
+| ``IsAssignedClassModelName``  | Used to determine if a class model name(s) has been assigned.                                     |
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``IsAssignedFieldModelName``  | Used to determine if a field model name(s) has been assigned.                                     |
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetRelationshipClass``      | Used to locate the relationship that has been assigned the class model name(s).                   |
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetRelationshipClasses``    | Used to gather a list of the relationships that has been assigned the class model name(s).        |            
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetField``                  | Used to locate the ``IField`` that has been assigned the field model name(s).                     |
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetFields``                 | Used to gather a list of of the ``IField`` objects that has been assigned the field model name(s).|
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetFieldIndex``             | Used to locate the field index that has been assigned the field model name(s).                    |
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetFieldIndexes``           | Used to gather a list of all of the field indexes that has been assigned the field model name(s). |            
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetFieldName``              | Used to locate the field name that has been assigned the field model name(s).                     |
++-------------------------------+---------------------------------------------------------------------------------------------------+
+| ``GetFieldNames``             | Used to gather a list of all of the field names that has been assigned the field model name(s).   |
++-------------------------------+---------------------------------------------------------------------------------------------------+
     
 The extension methods for the ``IWorkspace`` interface that have been added.
 
-- ``IsAssignedDatabaseModelName``: Use to determine if the database model name(s) has been assigned.
-- ``GetFeatureClass``: Used to obtain the ``IFeatureClass`` that has been assigned the class model name(s).
-- ``GetFeatureClasses``: Used to obtain all of the ``IFeatureClass`` tables that have been assigned the class model name(s).
-- ``GetTable``: Used to obtain the ``ITable`` that has been assigned the class model name(s).
-- ``GetTables``: Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).
++-----------------------------------+----------------------------------------------------------------------------------------------------+
+| Method                            | Description                                                                                        |
++===================================+====================================================================================================+
+| ``IsAssignedDatabaseModelName``   | Use to determine if the database model name(s) has been assigned.                                  |
++-----------------------------------+----------------------------------------------------------------------------------------------------+
+| ``GetFeatureClass``               | Used to obtain the ``IFeatureClass`` that has been assigned the class model name(s).               |
++-----------------------------------+----------------------------------------------------------------------------------------------------+
+| ``GetFeatureClasses``             | Used to obtain all of the ``IFeatureClass`` tables that have been assigned the class model name(s).|
++-----------------------------------+----------------------------------------------------------------------------------------------------+
+| ``GetTable``                      | Used to obtain the ``ITable`` that has been assigned the class model name(s).                      |            
++-----------------------------------+----------------------------------------------------------------------------------------------------+
+| ``GetTables``                     | Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).       |
++-----------------------------------+----------------------------------------------------------------------------------------------------+
 
 .. code-block:: c#	
 
