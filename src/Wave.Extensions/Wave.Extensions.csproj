@@ -85,6 +85,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System\Collections\ReentrancyMonitor.cs" />
     <Compile Include="System\Collections\Extensions\BatchExtensions.cs" />
     <Compile Include="System\Collections\Extensions\CollectionsExtensions.cs" />
     <Compile Include="System\Collections\Extensions\DistinctByExtensions.cs" />
