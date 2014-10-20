@@ -8,8 +8,8 @@ Wave is built using `.NET Extension Methods <http://msdn.microsoft.com/en-us/lib
 
 - For instance, the ``RowExtensions.cs`` that contains extension methods for the ``IRow`` interface uses the ``ESRI.ArcGIS.Geodatabase`` namespace because that is the namespace that contains the ``IRow`` interface.
 
-Enumerable Types 
------------------------
+Enumerations
+------------------------
 The ``while`` statement is used throught the ArcFM and ArcGIS API to iterate through collections using the ``Reset()`` and ``Next()`` method combinations. However, in most cases the ``foreach`` statement is the preferred method, thus the most frequently used iterators can be converted to an enumerable type using the ``AsEnumerable()`` extension method.
 
 The following is a short list of the interfaces that support enumerable types:
@@ -122,7 +122,7 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
         return recordsAffected;
     }
 
-Support Typical Extensions
+Supporting Extensions
 -------------------------------------
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages. 
   
