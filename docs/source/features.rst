@@ -69,7 +69,7 @@ Recursion
 ++++++++++
 There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you'd have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using ``LINQ``.
 
-- Traversing the contents of the ``IMap`` document has been simplified.
+- Traversing the contents of the ``IMap``.
 
 .. code-block:: c#
 
@@ -81,7 +81,7 @@ There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM 
         }
     }
 
-- Traversing the contents of the ``ID8List`` structure has been simplified.
+- Traversing the contents of the ``ID8List``.
 
 .. code-block:: c#
 
@@ -98,7 +98,7 @@ There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM 
 
 Querying Data
 ---------------
-One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As side-effect, the same APIs are used repeatively, which leads to code-duplication and/or memory management issues if used improperly.
+One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.
 
 The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.
 
