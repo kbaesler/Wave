@@ -102,7 +102,7 @@ One of the major benefits of using the ESRI platform it allows you to perform sp
 
 The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.
 
-- ``Fetch`` features or rows with the specific OBJECTIDs.
+- ``Fetch`` features or rows with a list of OBJECTIDs.
 
 .. code-block:: c#
 
@@ -224,7 +224,7 @@ The extension methods for the ``IWorkspace`` interface that have been added.
     /// <param name="styleSheet">The stream that contains the XML to HTML stylesheet.</param>
     /// <returns>An <see cref="IEnumerable{String}"/> representing the paths to the HTML files created.</returns>
     public IEnumerable<string> CreateHtml(IWorkspace workspace, int uniqueId, string directory, Stream styleSheet)
-    {        
+    {
         var featureClasses = workspace.GetFeatureClasses("EXTRACT");
         foreach(var featureClass in featureClasses)
         {
