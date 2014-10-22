@@ -27,9 +27,9 @@ Do I need both software packages installed?
 -------------------------------------------
 Wave has been developed with it's dependencies in mind allow the library to be in two different ways:
 
-#. When only the ArcGIS Desktop is installed:
+1. When only the ArcGIS Desktop is installed:
   - You can use the Wave.Extensions.ESRI assembly only.
-#. When both the ArcGIS Desktop and ArcFM Solution is installed:
+2. When both the ArcGIS Desktop and ArcFM Solution is installed:
   - You can use the Wave.Extensions.ESRI and Wave.Extensions.Miner assemblies.
 
 Is it compatible with 10?
