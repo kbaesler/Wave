@@ -100,20 +100,16 @@
     <Reference Include="Miner.System, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Extensions">
-      <HintPath>..\..\src\bin\Debug\System.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wave.Esri.Extensions">
+    <Reference Include="Wave.Esri.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\src\bin\Debug\Wave.Esri.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Wave.Extensions">
-      <HintPath>..\..\src\bin\Debug\Wave.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Wave.Miner.Extensions">
+    <Reference Include="Wave.Miner.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\src\bin\Debug\Wave.Miner.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>

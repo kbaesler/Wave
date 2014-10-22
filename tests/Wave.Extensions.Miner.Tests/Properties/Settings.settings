@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Wave.Extensions.Miner.Tests.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SessionManager" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\ad-kbaesler\Documents\GitHub\Wave\tests\Sample Data\Databases\SessionManager.mdb</Value>
+    </Setting>
+    <Setting Name="WorkflowManager" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\ad-kbaesler\Documents\GitHub\Wave\tests\Sample Data\Databases\WorkflowManager.mdb</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

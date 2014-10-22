@@ -23,10 +23,10 @@ namespace Miner.Interop
         /// <param name="mode">The mode.</param>
         public AutoUpdaterModeReverter(mmAutoUpdaterMode mode)
         {
-#if V_10
+#if ARCGIS_10
             _Instance = AutoUpdater.Instance;
 #else
-            _Instance = new MMAutoUpdaterClass();
+            _Instance = Instance;
 #endif
             _PreviousMode = _Instance.AutoUpdaterMode;
             _Instance.AutoUpdaterMode = mode;
@@ -54,10 +54,13 @@ namespace Miner.Interop
         {
             get
             {
-#if V_10
+#if ARCGIS_10
                 return AutoUpdater.Instance;
 #else
-                return new MMAutoUpdaterClass();
+                Type type = Type.GetTypeFromProgID("mmGeodatabase.MMAutoUpdater");
+                object obj = Activator.CreateInstance(type);
+                IMMAutoUpdater autoupdater = obj as IMMAutoUpdater;
+                return autoupdater;
 #endif
             }
         }

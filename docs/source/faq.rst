@@ -1,19 +1,19 @@
 Frequently Asked Questions
 ================================
 
-This will serve as a list of all of the frequently ask questions. 
+This will serve as a list of all of the frequently ask questions.
 
 .. note::
 
-    If you don't see your question answered here, please submit an issue on the `GitHub <https://github.com/Jumpercables/Wave/issues>`_ page with your question. 
+    If you don't see your question answered here, please submit an issue on the `GitHub <https://github.com/Jumpercables/Wave/issues>`_ page with your question.
 
 What is Wave?
 ------------------
-Wave is meant to provide a simplistic approach to extending the ArcGIS and ArcFM platforms by providing simplified implementations for complex operations, frequently use call stacks, enforcing the recommended best practices and create a seamless integration with the ArcFM Solution. 
+Wave is meant to provide a simplistic approach to extending the ArcGIS and ArcFM platforms by providing simplified implementations for complex operations, frequently use call stacks, enforcing the recommended best practices and create a seamless integration with the ArcFM Solution.
 
 What was the motivation?
 ---------------------------
-Over that years as a developer in the Geographic Information System (GIS) for Electric & Gas Utlities there's been an increasing need for a way to make development easier as the industries needs increase in complexity. 
+Over that years as a developer in the Geographic Information System (GIS) for Electric & Gas Utlities there's been an increasing need for a way to make development easier as the industries needs increase in complexity.
 
 What is ArcGIS?
 ----------------
@@ -29,3 +29,17 @@ Wave has been developed with it's dependencies in mind allow the library to be i
 
 #. Use the ESRI extensions only.
 #. Use the ESRI and ArcFM extensions.
+
+Will it work with ArcGIS/ArcFM 10.x?
+------------------------------------
+Most of the content is non-specific to the version of ArcGIS/ArcFM but there some dependencies or assumptions about the version(s) of the core software used.  However, not all of classes will also work in the 10.x environment with a few minor changes.
+
+#.	The assembly references will need to be updated in the project files.
+#.	The sample data used for the unit tests will need to be upgraded.
+#.	The licensing classes for both ArcGIS and ArcFM will need to be modified to support the new checkout for ArcGIS 10.
+    -	EsriRuntimeAuthorization.cs
+    -	MinerRuntimeAuthorization.cs
+
+.. todo::
+
+  In the future, the code up for multiple versions, which will probably be accomplished via a new solution file / project files or compiler directives.

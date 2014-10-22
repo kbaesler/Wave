@@ -7,7 +7,7 @@
     {
         #region Public Methods
 
-#if V_10
+#if ARCGIS_10
     /// <summary>
     ///     Flashes the feature for the specified interval (in milliseconds) a set number of times using the color specified by
     ///     the ArcFM Properties.

@@ -44,42 +44,22 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Queries all of the rows that have the specified <paramref name="oids" /> in the array and
-        ///     executes the specified <paramref name="action" /> on each row returned from the query.
+        ///     Queries for the rows that have the specified object ids.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="oids">The list of object ids.</param>
-        /// <param name="action">The action to take for each row in the cursor.</param>
         /// <returns>
-        ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
+        ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
-        /// <exception cref="ArgumentNullException">action</exception>
-        /// <remarks>
-        ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
-        ///     access
-        /// </remarks>
-        public static int Fetch(this ITable source, IEnumerable<int> oids, Action<IRow> action)
+        public static List<IRow> Fetch(this ITable source, params int[] oids)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
-
-            int recordsAffected = 0;
-
             using (ComReleaser cr = new ComReleaser())
             {
-                object values = oids.ToArray();
-                ICursor cursor = source.GetRows(values, true);
+                ICursor cursor = source.GetRows(oids, false);
                 cr.ManageLifetime(cursor);
 
-                foreach (var row in cursor.AsEnumerable())
-                {
-                    action(row);
-
-                    recordsAffected++;
-                }
+                return cursor.AsEnumerable().ToList();
             }
-
-            return recordsAffected;
         }
 
 
@@ -102,6 +82,45 @@ namespace ESRI.ArcGIS.Geodatabase
             }
         }
 
+        /// <summary>
+        ///     Queries for the rows that satisfies the attribute and/or spatial query as specified by an
+        ///     <paramref name="filter" /> object
+        ///     and executes the specified <paramref name="action" /> on each feature returned from the query.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute and/or spatial requirement that the rows must satisify.</param>
+        /// <param name="action">The action to take for each row in the cursor.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of features affected by the action.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">action</exception>
+        /// <remarks>
+        ///     Uses a recycling cursors rehydrate a single row object on each fetch and can be used to optimize read-only
+        ///     access
+        /// </remarks>
+        public static int Fetch(this ITable source, IQueryFilter filter, Func<IRow, bool> action)
+        {
+            if (action == null)
+                throw new ArgumentNullException("action");
+
+            int recordsAffected = 0;
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                ICursor cursor = source.Search(filter, true);
+                cr.ManageLifetime(cursor);
+
+                foreach (var row in cursor.AsEnumerable())
+                {
+                    if (!action(row))
+                        return recordsAffected;
+
+                    recordsAffected++;
+                }
+            }
+
+            return recordsAffected;
+        }
 
         /// <summary>
         ///     Queries for the rows that satisfy the attribute query as specified by an <paramref name="filter" /> object

@@ -7,32 +7,10 @@ namespace System.Windows
     ///     An abstract view model that is used to execute operations on a background thread using a
     ///     <see cref="BackgroundWorker" /> component.
     /// </summary>
-    [ComVisible(false)]
-    [ClassInterface(ClassInterfaceType.None)]
-    public abstract class BackgroundViewModel : BackgroundViewModel<object>
-    {
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BackgroundViewModel" /> class.
-        /// </summary>
-        /// <param name="displayName">The display name.</param>
-        protected BackgroundViewModel(string displayName)
-            : base(displayName)
-        {
-        }
-
-        #endregion
-    }
-
-    /// <summary>
-    ///     An abstract view model that is used to execute operations on a background thread using a
-    ///     <see cref="BackgroundWorker" /> component.
-    /// </summary>
     /// <typeparam name="T">The type of the arguments.</typeparam>
     [ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
-    public abstract class BackgroundViewModel<T> : BaseViewModel
+    public abstract class BackgroundViewModel : BaseViewModel
     {
         #region Fields
 
@@ -98,21 +76,6 @@ namespace System.Windows
         }
 
         /// <summary>
-        ///     Handles when the DoWork event of the BackgroundWorker thread.
-        /// </summary>
-        /// <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs" /> instance containing the event data.</param>
-        protected abstract void OnRun(DoWorkEventArgs e);
-
-        /// <summary>
-        ///     Handles when the RunWorkerCompleted event of the BackgroundWorker thread.
-        /// </summary>
-        /// <param name="e">
-        ///     The <see cref="System.ComponentModel.RunWorkerCompletedEventArgs" /> instance containing the event
-        ///     data.
-        /// </param>
-        protected abstract void OnRunCompleted(RunWorkerCompletedEventArgs e);
-
-        /// <summary>
         ///     Raises the System.ComponentModel.BackgroundWorker.ProgressChanged event.
         /// </summary>
         /// <param name="percentProgress">The percentage, from 0 to 100, of the background operation that is complete.</param>
@@ -131,22 +94,44 @@ namespace System.Windows
         /// <summary>
         ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
         ///     passed to the methods.
-        ///     You must override the <see cref="OnRun" /> and <see cref="OnRunCompleted" /> methods.
+        /// </summary>
+        /// <param name="execute">The delegate that handles the execution on the work.</param>
+        /// <param name="completion">The delegate that handles when the work has completed.</param>
+        protected void Run(Func<object, object> execute, Action<object, bool, Exception, object> completion)
+        {
+            this.Run(null, execute, completion);
+        }
+
+        /// <summary>
+        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        ///     passed to the methods.
         /// </summary>
         /// <param name="arguments">The arguments.</param>
-        protected void Run(T arguments)
+        /// <param name="execute">The delegate that handles the execution on the work.</param>
+        /// <param name="completion">The delegate that handles when the work has completed.</param>
+        /// <exception cref="System.ArgumentNullException">execute</exception>
+        protected void Run(object arguments, Func<object, object> execute, Action<object, bool, Exception, object> completion)
         {
+            if (execute == null)
+                throw new ArgumentNullException("execute");
+
             // The work event handler.
             _Worker.DoWork += delegate(object sender, DoWorkEventArgs e)
             {
                 this.OnPropertyChanged("IsBusy");
-                this.OnRun(e);
+
+                e.Result = execute(arguments);
             };
 
             // The complete event handler.
             _Worker.RunWorkerCompleted += delegate(object sender, RunWorkerCompletedEventArgs e)
             {
-                this.OnRunCompleted(e);
+                if (completion != null)
+                {
+                    object result = (e.Error == null) ? e.Result : null;
+                    completion(result, e.Cancelled, e.Error, e.UserState);
+                }
+
                 this.OnPropertyChanged("IsBusy");
             };
 

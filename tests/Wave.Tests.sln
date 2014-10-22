@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.Tests", "Wave.Extensions.Esri.Tests\Wave.Extensions.Esri.Tests.csproj", "{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.Tests", "Wave.Extensions.Miner.Tests\Wave.Extensions.Miner.Tests.csproj", "{380FE243-F916-4D4A-A4CF-7E326756DEFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

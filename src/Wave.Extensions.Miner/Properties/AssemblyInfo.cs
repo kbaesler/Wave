@@ -8,11 +8,11 @@ using log4net.Config;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Miner.Extensions")]
+[assembly: AssemblyTitle("Wave.Extensions.Miner")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Metis LLC")]
-[assembly: AssemblyProduct("Miner.Extensions")]
+[assembly: AssemblyProduct("Wave.Extensions.Miner")]
 [assembly: AssemblyCopyright("Copyright © Metis LLC 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

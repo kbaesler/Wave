@@ -24,7 +24,7 @@ namespace Miner.System.Internal
         {
             _AppInit = new MMAppInitializeClass();
 
-#if V_10
+#if ARCGIS_10
             IMMEsriBind bind = new MMEsriBindClass();
             bind.AutoBind();
 #endif

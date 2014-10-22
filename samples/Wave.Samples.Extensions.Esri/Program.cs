@@ -66,7 +66,7 @@ namespace Samples
             IQueryFilter filter = new QueryFilterClass();
             filter.WhereClause = "TIMECREATED IS NULL";
 
-            int recordsAffected = featureClass.Fetch(filter, true, feature =>
+            int recordsAffected = featureClass.Fetch(filter, feature =>
             {
                 feature.Update("TIMECREATED", DateTime.Now);
                 feature.SaveChanges();

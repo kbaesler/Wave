@@ -38,6 +38,25 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Queries for the features that have the specified object ids.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="oids">The list of object ids.</param>
+        /// <returns>
+        ///     Returns a <see cref="List{IFeature}" /> representing the features returned from the query.
+        /// </returns>
+        public static List<IFeature> Fetch(this IFeatureClass source, params int[] oids)
+        {
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IFeatureCursor cursor = source.GetFeatures(oids, false);
+                cr.ManageLifetime(cursor);
+
+                return cursor.AsEnumerable().ToList();
+            }
+        }
+
+        /// <summary>
         ///     Queries for the all features and executes the specified <paramref name="action" /> on each feature returned from
         ///     the query.
         /// </summary>
@@ -55,6 +74,44 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             IQueryFilter filter = new QueryFilterClass();
             return source.Fetch(filter, action);
+        }
+
+        /// <summary>
+        ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
+        ///     <paramref name="filter" /> object
+        ///     and executes the specified <paramref name="action" /> on each feature returned from the query.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
+        /// <param name="action">The action to take for each feature in the cursor.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of features affected by the action.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">action</exception>
+        /// <remarks>
+        ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
+        ///     access
+        /// </remarks>
+        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action)
+        {
+            if (action == null)
+                throw new ArgumentNullException("action");
+
+            int recordsAffected = 0;
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IFeatureCursor cursor = source.Search(filter, true);
+                cr.ManageLifetime(cursor);
+
+                foreach (var feature in cursor.AsEnumerable())
+                {
+                    action(feature);
+                    recordsAffected++;
+                }
+            }
+
+            return recordsAffected;
         }
 
         /// <summary>
@@ -97,44 +154,6 @@ namespace ESRI.ArcGIS.Geodatabase
             return recordsAffected;
         }
 
-        /// <summary>
-        ///     Queries all of the rows that have the specified <paramref name="oids" /> in the array and
-        ///     executes the specified <paramref name="action" /> on each row returned from the query.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="oids">The list of object ids.</param>
-        /// <param name="action">The action to take for each feature in the cursor.</param>
-        /// <returns>
-        ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">action</exception>
-        /// <remarks>
-        ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
-        ///     access
-        /// </remarks>
-        public static int Fetch(this IFeatureClass source, IEnumerable<int> oids, Action<IFeature> action)
-        {
-            if (action == null)
-                throw new ArgumentNullException("action");
-
-            int recordsAffected = 0;
-
-            using (ComReleaser cr = new ComReleaser())
-            {
-                object values = oids.ToArray();
-                IFeatureCursor cursor = source.GetFeatures(values, true);
-                cr.ManageLifetime(cursor);
-
-                foreach (var row in cursor.AsEnumerable())
-                {
-                    action(row);
-
-                    recordsAffected++;
-                }
-            }
-
-            return recordsAffected;
-        }
 
         /// <summary>
         ///     Converts the contents returned from the attribute or spatial query into an XML document.

@@ -29,7 +29,7 @@ namespace Samples
             IRelationshipClass relationshipClas = transformerClass.GetRelationshipClass(esriRelRole.esriRelRoleAny, "TRANSFORMERUNIT");
 
            
-            int recordsAffected = transformerClass.Fetch(oids, true, feature =>
+            int recordsAffected = transformerClass.Fetch(oids, feature =>
             {
                 // Iterate through all of the related objects for the transformer.
                 ISet set = relationshipClas.GetObjectsRelatedToObject((IObject) feature);
