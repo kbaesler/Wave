@@ -23,14 +23,16 @@ What is ArcFM?
 ----------------
 `ArcFM <http://www.schneider-electric.com/solutions/ww/en/sol/26048721-geospatial-intelligence--arcfm-solution?other=-1>`_ is an Enterprise GIS with reliable network intelligence that provides information such as pipe water direction flows, the number of customers attached to a gas meter, and what devices are downstream of a particular fuse.
 
-Do I need ArcFM?
-----------------
+Do I need both software packages installed?
+-------------------------------------------
 Wave has been developed with it's dependencies in mind allow the library to be in two different ways:
 
-#. Use the ESRI extensions only.
-#. Use the ESRI and ArcFM extensions.
+#. When only the ArcGIS Desktop is installed:
+  - You can use the Wave.Extensions.ESRI assembly only.
+#. When both the ArcGIS Desktop and ArcFM Solution is installed:
+  - You can use the Wave.Extensions.ESRI and Wave.Extensions.Miner assemblies.
 
-Is it compatible with ArcFM / ArcGIS 10?
+Is it compatible with 10?
 ------------------------------------------
 Most of the content is non-specific to the version of ArcGIS/ArcFM but there are some dependencies and assumptions about the version(s) of the core software used.
 
