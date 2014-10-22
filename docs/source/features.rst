@@ -54,7 +54,7 @@ These new extension methods allow you to write code like this:
 
     int count = cursor.AsEnumerable().Count();
 
-or
+and:
 
 .. code-block:: c#
 
@@ -69,7 +69,7 @@ Recursion
 ++++++++++
 There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you'd have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using ``LINQ``.
 
-Traversing the contents of the ``IMap`` document has been simplified.
+- Traversing the contents of the ``IMap`` document has been simplified.
 
 .. code-block:: c#
 
@@ -81,7 +81,7 @@ Traversing the contents of the ``IMap`` document has been simplified.
         }
     }
 
-Traversing the contents of the ``ID8List`` structure has been simplified.
+- Traversing the contents of the ``ID8List`` structure has been simplified.
 
 .. code-block:: c#
 
@@ -108,7 +108,7 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
 
     List<IFeature> features = featureClass.Fetch(1,2,3,4,5,6);
 
-- ``Fetch`` features or rows that need a spatial and attribute to filter the results.
+- ``Fetch`` features or rows that need a spatial and/or attribute dependencies to filter the results.
 
 .. code-block:: c#
 
@@ -120,7 +120,7 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
 
     List<IFeature> features = featureClass.Fetch(filter);
 
-- ``Fetch`` features or rows that need additional action but the memory can be recycled.
+- ``Fetch`` features or rows that need actions performed but the memory can be recycled.
 
 .. code-block:: c#
 
@@ -224,7 +224,7 @@ The extension methods for the ``IWorkspace`` interface that have been added.
     /// <param name="styleSheet">The stream that contains the XML to HTML stylesheet.</param>
     /// <returns>An <see cref="IEnumerable{String}"/> representing the paths to the HTML files created.</returns>
     public IEnumerable<string> CreateHtml(IWorkspace workspace, int uniqueId, string directory, Stream styleSheet)
-    {
+    {        
         var featureClasses = workspace.GetFeatureClasses("EXTRACT");
         foreach(var featureClass in featureClasses)
         {

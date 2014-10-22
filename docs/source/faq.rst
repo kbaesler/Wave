@@ -32,7 +32,7 @@ Wave has been developed with it's dependencies in mind allow the library to be i
 
 Will it work with ArcGIS/ArcFM 10.x?
 ------------------------------------
-Most of the content is non-specific to the version of ArcGIS/ArcFM but there some dependencies or assumptions about the version(s) of the core software used.  However, not all of classes will also work in the 10.x environment with a few minor changes.
+Most of the content is non-specific to the version of ArcGIS/ArcFM but there are some dependencies and assumptions about the version(s) of the core software used.  Making Wave work on a 10.x environment would take a few minor changes.
 
 #.	The assembly references will need to be updated in the project files.
 #.	The sample data used for the unit tests will need to be upgraded.
