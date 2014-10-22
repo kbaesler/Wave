@@ -30,16 +30,16 @@ Wave has been developed with it's dependencies in mind allow the library to be i
 #. Use the ESRI extensions only.
 #. Use the ESRI and ArcFM extensions.
 
-Will it work with ArcGIS/ArcFM 10.x?
-------------------------------------
-Most of the content is non-specific to the version of ArcGIS/ArcFM but there are some dependencies and assumptions about the version(s) of the core software used.  Making Wave work on a 10.x environment would take a few minor changes.
+Is it compatible with ArcFM / ArcGIS 10?
+------------------------------------------
+Most of the content is non-specific to the version of ArcGIS/ArcFM but there are some dependencies and assumptions about the version(s) of the core software used.
+
+Making the library compatible with 10.x would take a few minor changes:
 
 #.	The assembly references will need to be updated in the project files.
 #.	The sample data used for the unit tests will need to be upgraded.
 #.	The licensing classes for both ArcGIS and ArcFM will need to be modified to support the new checkout for ArcGIS 10.
-    -	EsriRuntimeAuthorization.cs
-    -	MinerRuntimeAuthorization.cs
 
 .. todo::
 
-  In the future, the code up for multiple versions, which will probably be accomplished via a new solution file / project files or compiler directives.
+  In the future, the code will support multiple versions of the software either using solution / project files or compiler directives.
