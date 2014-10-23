@@ -32,11 +32,15 @@ read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.viewcode', 'sphinx.ext.todo']
-	 
+extensions = ['sphinx.ext.viewcode', 'sphinx.ext.todo', 'breathe']
+
+# The breathe configurations.
+breathe_projects = { "wave": "../doxygen/xml/" }
+breathe_default_project = "wave"
+
 # If this is True, todo and todolist produce output, else they produce nothing. The default is False.
 todo_include_todos = True
-	
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -100,7 +104,7 @@ pygments_style = 'sphinx'
 # If true, keep warnings as "system message" paragraphs in the built documents.
 #keep_warnings = False
 
-# -- Options for HTML output 
+# -- Options for HTML output
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of built-in themes.
@@ -267,3 +271,29 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+def run_doxygen(folder):
+    """Run the doxygen make command in the designated folder"""
+
+    try:
+        retcode = subprocess.call("cd %s; make" % folder, shell=True)
+        if retcode < 0:
+            sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+    except OSError as e:
+        sys.stderr.write("doxygen execution failed: %s" % e)
+
+
+def generate_doxygen_xml(app):
+    """Run the doxygen make commands if we're on the ReadTheDocs server"""
+
+    read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+
+    if read_the_docs_build:
+
+        run_doxygen("../../doxygen/xml")
+
+
+def setup(app):
+
+    # Add hook for building doxygen xml when needed
+    app.connect("builder-inited", generate_doxygen_xml)
