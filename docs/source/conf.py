@@ -35,8 +35,8 @@ read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 extensions = ['sphinx.ext.viewcode', 'sphinx.ext.todo', 'breathe']
 
 # The breathe configurations.
-breathe_projects = { "wave": "../doxygen/xml/" }
-breathe_default_project = "wave"
+breathe_projects = { "Wave": "../doxygen/xml/" }
+breathe_default_project = "Wave"
 
 # If this is True, todo and todolist produce output, else they produce nothing. The default is False.
 todo_include_todos = True
