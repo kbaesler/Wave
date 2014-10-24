@@ -27,7 +27,7 @@ read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 if read_the_docs:
 
     # On RTD we'll be in the 'source' directory
-    subprocess.call('make DOXYGEN=doxygen', shell=True)
+    subprocess.call('DOXYGEN', shell=True)
 
 # -- General configuration ------------------------------------------------
 
