@@ -21,6 +21,14 @@ import re
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
+# Determine if sphinx is running on the ReadTheDocs.org server.
+read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
+
+if read_the_docs:
+
+    # On RTD we'll be in the 'source' directory
+    subprocess.call('DOXYGEN', shell=True)
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -31,24 +39,8 @@ import re
 # ones.
 extensions = ['sphinx.ext.viewcode', 'sphinx.ext.todo', 'breathe']
 
-# Determine if sphinx is running on the ReadTheDocs.org server.
-read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
-
-if read_the_docs:
-
-    # On RTD we'll be in the 'source' directory
-    sys.path.append('../../')
-
-    # Run doxygen to build the XML files
-    subprocess.call('cd ../doxygen; doxygen doxyfile', shell=True)
-
-else:
-
-    # For our usual dev build we'll be in the 'docs' directory
-    sys.path.append('../')
-
 # The breathe configurations.
-breathe_projects = { "Wave": "../doxygen/xml/" }
+breathe_projects = { "Wave": "./xml/" }
 breathe_default_project = "Wave"
 
 # If this is True, todo and todolist produce output, else they produce nothing. The default is False.
