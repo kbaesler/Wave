@@ -288,24 +288,14 @@ def generate_doxygen_xml(app):
 
     read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 
-    if read_the_docs:
+    # Attempt to build the doxygen files on the RTD server. Explicitly override the path/name used
+    # for executing doxygen to simply be 'doxygen' to stop the makefiles looking for the executable.
+    # This is because the `which doxygen` effort seemed to fail when tested on the RTD server.
+    #run_doxygen("../doxygen/xml")
 
-        # Attempt to build the doxygen files on the RTD server. Explicitly override the path/name used
-        # for executing doxygen to simply be 'doxygen' to stop the makefiles looking for the executable.
-        # This is because the `which doxygen` effort seemed to fail when tested on the RTD server.
-        run_doxygen("../doxygen/xml")
+
 
 def setup(app):
 
-    # Approach borrowed from the Sphinx docs
-    app.add_object_type(
-            'confval',
-            'confval',
-            objname='configuration value',
-            indextemplate='pair: %s; configuration value'
-            )
-
     # Add hook for building doxygen xml when needed
     app.connect("builder-inited", generate_doxygen_xml)
-
-    app.add_config_value('documentation_build', 'development', True)
