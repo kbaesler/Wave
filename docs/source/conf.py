@@ -21,9 +21,6 @@ import re
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-# Determine if sphinx is running on the ReadTheDocs.org server.
-read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
-
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -33,6 +30,22 @@ read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.viewcode', 'sphinx.ext.todo', 'breathe']
+
+# Determine if sphinx is running on the ReadTheDocs.org server.
+read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
+
+if read_the_docs:
+
+    # On RTD we'll be in the 'source' directory
+    sys.path.append('../../')
+
+    # Run doxygen to build the XML files
+    subprocess.call('cd ../doxygen; doxygen doxyfile', shell=True)
+
+else:
+
+    # For our usual dev build we'll be in the 'docs' directory
+    sys.path.append('../')
 
 # The breathe configurations.
 breathe_projects = { "Wave": "../doxygen/xml/" }
@@ -271,31 +284,3 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
-
-def run_doxygen(folder):
-    """Run the doxygen make command in the designated folder"""
-
-    try:
-        retcode = subprocess.call("cd %s; make DOXYGEN=doxygen" % folder, shell=True)
-        if retcode < 0:
-            sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
-    except OSError as e:
-        sys.stderr.write("doxygen execution failed: %s" % e)
-
-
-def generate_doxygen_xml(app):
-    """Run the doxygen make commands if we're on the ReadTheDocs server"""
-
-    read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
-
-    # Attempt to build the doxygen files on the RTD server. Explicitly override the path/name used
-    # for executing doxygen to simply be 'doxygen' to stop the makefiles looking for the executable.
-    # This is because the `which doxygen` effort seemed to fail when tested on the RTD server.
-    #run_doxygen("../doxygen/xml")
-
-
-
-def setup(app):
-
-    # Add hook for building doxygen xml when needed
-    app.connect("builder-inited", generate_doxygen_xml)
