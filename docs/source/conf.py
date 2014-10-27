@@ -24,14 +24,16 @@ import re
 # Determine if sphinx is running on the ReadTheDocs.org server.
 read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 
-# For our usual dev build we'll be in the 'docs' directory
-dir = os.getcwd()
-os.chdir('../doxygen/Wave.Extensions.Esri')
-subprocess.call('DOXYGEN -s Doxyfile', shell=True)
+if not read_the_docs:
 
-os.chdir('../Wave.Extensions.Miner')
-subprocess.call('DOXYGEN -s Doxyfile', shell=True)
-os.chdir(dir)    
+    # For our usual dev build we'll be in the 'docs' directory
+    dir = os.getcwd()
+    os.chdir('../doxygen/Wave.Extensions.Esri')
+    subprocess.call('DOXYGEN -s Doxyfile', shell=True)
+
+    os.chdir('../Wave.Extensions.Miner')
+    subprocess.call('DOXYGEN -s Doxyfile', shell=True)
+    os.chdir(dir)
 
 # Breathe extension configurations
 # --------------------------------
