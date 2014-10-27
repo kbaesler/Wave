@@ -24,10 +24,19 @@ import re
 # Determine if sphinx is running on the ReadTheDocs.org server.
 read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 
-if read_the_docs:
+# For our usual dev build we'll be in the 'docs' directory
+dir = os.getcwd()
+os.chdir('../doxygen/Wave.Extensions.Esri')
+subprocess.call('DOXYGEN -s Doxyfile', shell=True)
 
-    # On RTD we'll be in the 'source' directory
-    subprocess.call('DOXYGEN', shell=True)
+os.chdir('../Wave.Extensions.Miner')
+subprocess.call('DOXYGEN -s Doxyfile', shell=True)
+os.chdir(dir)    
+
+# Breathe extension configurations
+# --------------------------------
+breathe_projects = { "Wave": "../doxygen/Wave.Extensions.Esri/xml/", "Wave": "../doxygen/Wave.Extensions.Miner/xml/" }
+breathe_default_project = "Wave"
 
 # -- General configuration ------------------------------------------------
 
@@ -38,10 +47,6 @@ if read_the_docs:
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.viewcode', 'sphinx.ext.todo', 'breathe']
-
-# The breathe configurations.
-breathe_projects = { "Wave": "../doxygen/Wave.Extensions.Esri/xml/", "Wave": "../doxygen/Wave.Extensions.Miner/xml/" }
-breathe_default_project = "Wave"
 
 # If this is True, todo and todolist produce output, else they produce nothing. The default is False.
 todo_include_todos = True
@@ -114,7 +119,9 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of built-in themes.
 
-if not read_the_docs:  # only import and set the theme if we're building docs locally
+if not read_the_docs:
+
+    # Only import and set the theme if we're building docs locally
     import sphinx_rtd_theme
 
     html_theme = 'sphinx_rtd_theme'
