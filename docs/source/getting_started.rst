@@ -2,7 +2,7 @@ Getting Started
 ================================
 Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric ArcFM APIs that are used for developing Geographical Information System (GIS) extensions to the ArcMap and ArcFM software or stand-alone applications. The library uses extension methods to extend the functionality of existing objects and provide workable wrappers around commonly used COM objects.
 
-The concept is to eliminate the need for the developer to learn new namespaces, but allow them to take advantage of the Visual Studio IDE to identify the new features for objects. 
+The concept is to eliminate the need for the developer to learn new namespaces, but allow them to take advantage of the Visual Studio IDE to identify the new features for objects.
 
 .. note::
     It's always best to consult the :doc:`api` documentation to understand the purpose of the methods and classes provided by Wave.
@@ -17,7 +17,7 @@ You can visit `GitHub <https://github.com/Jumpercables/Wave>`_ to download and c
 
 Microsoft Package Manager
 --------------------------------------
-In the future, Wave will be publicly distributed using the `Nuget <http://www.nuget.org>`_ service that is available to the .NET community within Visual Studios. 
+In the future, Wave will be publicly distributed using the `Nuget <http://www.nuget.org>`_ service that is available to the .NET community within Visual Studios.
 
 - This will allow users the option to simply install the assemblies without having to compile the source code.
 
