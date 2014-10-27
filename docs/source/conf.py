@@ -40,7 +40,7 @@ if read_the_docs:
 extensions = ['sphinx.ext.viewcode', 'sphinx.ext.todo', 'breathe']
 
 # The breathe configurations.
-breathe_projects = { "Wave": "./xml/" }
+breathe_projects = { "Wave": "../doxygen/xml/" }
 breathe_default_project = "Wave"
 
 # If this is True, todo and todolist produce output, else they produce nothing. The default is False.
