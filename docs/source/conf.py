@@ -45,7 +45,7 @@ else:
 
     # On RTD we'll be on linux environment.
     for doxyfile in doxyfiles:
-        subprocess.call('cd %s; make DOXYGEN=doxygen -u' % doxyfile, shell=True)
+        subprocess.call('cd %s; make DOXYGEN=doxygen' % doxyfile, shell=True)
 
 # Breathe extension configurations
 # --------------------------------
