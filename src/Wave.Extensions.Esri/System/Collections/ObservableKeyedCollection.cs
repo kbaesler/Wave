@@ -144,8 +144,7 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Removes the element at the specified index of the <see cref="T:System.Collections.ObjectModel.KeyedCollection`2" />
-        ///     .
+        ///     Removes the element at the specified index of the <see cref="T:System.Collections.ObjectModel.KeyedCollection`2" />.        
         /// </summary>
         /// <param name="index">The index of the element to remove.</param>
         protected override void RemoveItem(int index)

@@ -295,9 +295,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="modelNames">The class model names.</param>
         /// <returns>
         ///     Returns a
-        ///     <see>
-        ///         <cref>T:IList{ESRI.ArcGIS.Geodatabase.IRelationshipClass}</cref>
-        ///     </see>
+        ///     <see cref="T:IList{ESRI.ArcGIS.Geodatabase.IRelationshipClass}" />
         ///     representing those relationships that are assigned one or more of the class model names.
         /// </returns>
         public static IEnumerable<IRelationshipClass> GetRelationshipClasses(this IObjectClass source, esriRelRole relationshipRole, params string[] modelNames)

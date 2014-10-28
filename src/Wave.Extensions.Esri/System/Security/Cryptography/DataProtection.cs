@@ -41,8 +41,7 @@ namespace System.Security.Cryptography
         }
 
         /// <summary>
-        ///     Protects the specified data by applying an encryption algorthim specified by the <see cref="DataProtectionScope" />
-        ///     .
+        ///     Protects the specified data by applying an encryption algorthim specified by the <see cref="DataProtectionScope" />.        
         /// </summary>
         /// <param name="unencryptedData">The unencrypted data.</param>
         /// <param name="optionalEntropy">The optional entropy.</param>
@@ -59,8 +58,7 @@ namespace System.Security.Cryptography
         }
 
         /// <summary>
-        ///     Protects the specified data by applying an encryption algorthim specified by the <see cref="DataProtectionScope" />
-        ///     .
+        ///     Protects the specified data by applying an encryption algorthim specified by the <see cref="DataProtectionScope" />.
         /// </summary>
         /// <param name="unencryptedData">The unencrypted data.</param>
         /// <param name="optionalEntropy">The optional entropy.</param>

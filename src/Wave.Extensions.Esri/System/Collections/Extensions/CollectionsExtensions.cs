@@ -38,8 +38,8 @@ namespace System.Collections
         ///     </para>
         ///     <para>
         ///         Yes, this does basically the same thing as the
-        ///         <see cref="System.Linq.Enumerable.Any{TSource}(IEnumerable{TSource})" />
-        ///         extension. The differences: 'IsEmpty' is easier to remember and it leverages
+        ///         <see cref="System.Linq.Enumerable.Any{TSource}(IEnumerable{TSource})" /> extension. The differences: 'IsEmpty'
+        ///         is easier to remember and it leverages
         ///         <see cref="ICollection{TSource}.Count">ICollection.Count</see> if it exists.
         ///     </para>
         /// </remarks>
@@ -59,7 +59,6 @@ namespace System.Collections
 
         /// <summary>
         ///     Removes each element from the <paramref name="source" /> if it satisfies the specific <paramref name="predicate" />
-        ///     .
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
         /// <param name="source">The list from which to remove the elements that satisfy the <paramref name="predicate" />.</param>

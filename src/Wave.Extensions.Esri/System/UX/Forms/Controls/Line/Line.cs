@@ -151,7 +151,7 @@ namespace System.Forms
         #region Protected Methods
 
         /// <summary>
-        ///     Raises the <see cref="E:System.Windows.Forms.Control.FontChanged"></see> event.
+        ///     Raises the <see cref="System.Windows.Forms.Control.FontChanged"></see> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
         protected override void OnFontChanged(EventArgs e)
@@ -161,7 +161,7 @@ namespace System.Forms
         }
 
         /// <summary>
-        ///     Raises the <see cref="E:System.Windows.Forms.Control.Paint"></see> event.
+        ///     Raises the <see cref="System.Windows.Forms.Control.Paint"></see> event.
         /// </summary>
         /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"></see> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)

@@ -49,11 +49,9 @@ namespace System.Windows
         /// <summary>
         ///     Determines whether this command can execute.
         /// </summary>
-        /// <param name="parameter">
-        ///     The command parameter.
-        /// </param>
+        /// <param name="parameter">The command parameter.</param>
         /// <returns>
-        ///     <see langword="true" /> if the command can execute, otherwise <see langword="false" />.
+        ///     Returns <see cref="bool" /> representing <c>true</c> if the command can execute, otherwise <c>false</c>.
         /// </returns>
         public abstract bool CanExecute(object parameter);
 

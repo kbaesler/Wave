@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace System.Configuration
 {
     /// <summary>
-    ///     A collection of <see cref="System.Configuration.KeyedElement" /> configuration elements within a configuration
+    ///     A collection of <see cref="T:System.Configuration.KeyedElement" /> configuration elements within a configuration
     ///     file.
     /// </summary>
     /// <typeparam name="TElement">The type of the configuration element.</typeparam>

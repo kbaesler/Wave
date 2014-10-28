@@ -181,8 +181,7 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
-        ///     Gets the workspace that is assigned the <paramref name="modelName" />
-        ///     <param ref="source" />
+        ///     Gets the workspace that is assigned the <paramref name="modelName" /> to the database level that resides within the
         ///     map.
         /// </summary>
         /// <param name="source">The source.</param>

@@ -4,11 +4,7 @@ using System.Linq;
 namespace System
 {
     /// <summary>
-    ///     Provides extension methods for the
-    ///     <see>
-    ///         <cref>T:System.IRecursion{TValue}</cref>
-    ///     </see>
-    ///     interface.
+    ///     Provides extension methods for the <see cref="T:System.IRecursion{TValue}"/> interface.
     /// </summary>
     public static class RecursionExtensions
     {

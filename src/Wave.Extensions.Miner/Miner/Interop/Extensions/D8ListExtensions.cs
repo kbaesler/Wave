@@ -158,9 +158,7 @@ namespace Miner.Interop
         /// <param name="depth">The maximum depth of the recursion.</param>
         /// <returns>
         ///     Returns an
-        ///     <see>
-        ///         <cref>T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}</cref>
-        ///     </see>
+        ///     <see cref="T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}" />
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
@@ -179,9 +177,7 @@ namespace Miner.Interop
         /// <param name="depth">The maximum depth of the recursion.</param>
         /// <returns>
         ///     Returns an
-        ///     <see>
-        ///         <cref>T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}</cref>
-        ///     </see>
+        ///     <see cref="T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}" />
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
@@ -199,9 +195,7 @@ namespace Miner.Interop
         /// <param name="selector">A function to test each element for a condition in each recursion.</param>
         /// <returns>
         ///     Returns an
-        ///     <see>
-        ///         <cref>T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}</cref>
-        ///     </see>
+        ///     <see cref="T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}" />
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
@@ -219,9 +213,7 @@ namespace Miner.Interop
         /// <param name="selector">A function to test each element for a condition in each recursion.</param>
         /// <returns>
         ///     Returns an
-        ///     <see>
-        ///         <cref>T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}</cref>
-        ///     </see>
+        ///     <see cref="T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}" />
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
@@ -245,9 +237,7 @@ namespace Miner.Interop
         /// <param name="maximum">The maximum depth of the recursion.</param>
         /// <returns>
         ///     Returns an
-        ///     <see>
-        ///         <cref>T:System.Collections.Generic.IEnumerable{Miner.Collection.IRecursion{Miner.Interop.ID8ListItem}}</cref>
-        ///     </see>
+        ///     <see cref="T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}" />
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
@@ -285,9 +275,7 @@ namespace Miner.Interop
         /// <param name="maximum">The maximum depth of the recursion.</param>
         /// <returns>
         ///     Returns an
-        ///     <see>
-        ///         <cref>T:System.Collections.Generic.IEnumerable{Miner.Collection.IRecursion{Miner.Interop.ID8ListItem}}</cref>
-        ///     </see>
+        ///     <see cref="T:System.Collections.Generic.IEnumerable{Miner.Collections.IRecursion{Miner.Interop.ID8ListItem}}" />
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
