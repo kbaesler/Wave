@@ -35,6 +35,12 @@ if not read_the_docs:
     subprocess.call('DOXYGEN -s Doxyfile', shell=True)
     os.chdir(dir)
 
+else
+
+    # On RTD we'll be in the 'source' directory
+    subprocess.call('../doxygen/Wave.Extensions.Esri; DOXYGEN -s Doxyfile', shell=True)
+    subprocess.call('../doxygen/Wave.Extensions.Miner; DOXYGEN -s Doxyfile', shell=True)
+
 # Breathe extension configurations
 # --------------------------------
 breathe_projects = { "Wave": "../doxygen/Wave.Extensions.Esri/xml/", "Wave": "../doxygen/Wave.Extensions.Miner/xml/" }
