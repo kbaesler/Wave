@@ -24,4 +24,4 @@ clean:
 	rm -rf  Wave.Extensions.Esri
 
 Wave.Extensions.Esri/xml/index.xml:
-	$(DOXYGEN) Doxyfile
+	$(DOXYGEN) -u Doxyfile
