@@ -13,7 +13,6 @@ CP        = cp
 VERSION   = 1.5.7.1
 INSTALL   = /tmp
 INSTTOOL  = /usr/bin/install
-DOXYDOCS  = ..
 DOCDIR    = $(INSTALL)/share/doc/packages/doxygen
 QTDIR     =
 HAVE_DOT  = /usr/bin/dot
@@ -21,7 +20,7 @@ HAVE_DOT  = /usr/bin/dot
 all: Wave.Extensions.Miner/xml/index.xml
 
 clean:
-	rm -rf  Wave.Extensions.Esri
+	rm -rf  Wave.Extensions.Miner
 
 Wave.Extensions.Miner/xml/index.xml:
-	$(DOXYGEN) -u Doxyfile
+	$(DOXYGEN)
