@@ -38,8 +38,8 @@ if not read_the_docs:
 else:
 
     # On RTD we'll be in the 'source' directory
-    subprocess.call('../doxygen/Wave.Extensions.Esri; DOXYGEN -s Doxyfile', shell=True)
-    subprocess.call('../doxygen/Wave.Extensions.Miner; DOXYGEN -s Doxyfile', shell=True)
+    subprocess.call('cd ../doxygen/Wave.Extensions.Esri; make DOXYGEN=doxygen', shell=True)
+    subprocess.call('cd ../doxygen/Wave.Extensions.Miner; make DOXYGEN=doxygen', shell=True)
 
 # Breathe extension configurations
 # --------------------------------
