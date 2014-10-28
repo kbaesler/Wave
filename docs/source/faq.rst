@@ -13,7 +13,7 @@ Wave is meant to provide a simplistic approach to extending the ArcGIS and ArcFM
 
 What was the motivation?
 ---------------------------
-Over that years as a developer in the Geographic Information System (GIS) for Electric & Gas Utlities there's been an increasing need for a way to make development easier as the industries needs increase in complexity.
+Over the years as a developer in the Geographic Information System (GIS) for Utilities industry there's been an increasing need for a way to make development easier as the industries needs increase in complexity.
 
 What is ArcGIS?
 ----------------
@@ -25,11 +25,11 @@ What is ArcFM?
 
 Do I need both software packages installed?
 -------------------------------------------
-Wave has been developed with it's dependencies in mind allow the library to be in two different ways:
+Wave has been developed with it's dependencies in mind to allow the library to be used in two different ways:
 
 1. When only the ArcGIS Desktop is installed:
 
-    - You can use the Wave.Extensions.ESRI assembly only.
+    - You can use the Wave.Extensions.ESRI assembly.
 
 2. When both the ArcGIS Desktop and ArcFM Solution is installed:
 

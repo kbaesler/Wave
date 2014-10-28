@@ -21,25 +21,31 @@ import re
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
+# The directories that contain the doxyfiles relative to the conf.py file.
+doxyfiles = ['../doxygen/Wave.Extensions.Esri', '../doxygen/Wave.Extensions.Miner']
+
 # Determine if sphinx is running on the ReadTheDocs.org server.
 read_the_docs = os.environ.get('READTHEDOCS', None) == 'True'
 
 if not read_the_docs:
 
-    # For our usual dev build we'll be in the 'docs' directory
-    dir = os.getcwd()
-    os.chdir('../doxygen/Wave.Extensions.Esri')
-    subprocess.call('DOXYGEN -s Doxyfile', shell=True)
+    # For our usual dev build we'll be on a windows environment.
+    cwd = os.getcwd()
 
-    os.chdir('../Wave.Extensions.Miner')
-    subprocess.call('DOXYGEN -s Doxyfile', shell=True)
-    os.chdir(dir)
+    # Change the current working directory to the doxygen directories.
+    for doxyfile in doxyfiles:
+        os.chdir(doxyfile)
+        subprocess.call('DOXYGEN -s Doxyfile', shell=True)
+        os.chdir(cwd)
+
+    # Revert back to the original working directory.
+    os.chdir(cwd)
 
 else:
 
-    # On RTD we'll be in the 'source' directory
-    subprocess.call('cd ../doxygen/Wave.Extensions.Esri; make DOXYGEN=doxygen', shell=True)
-    subprocess.call('cd ../doxygen/Wave.Extensions.Miner; make DOXYGEN=doxygen', shell=True)
+    # On RTD we'll be on linux environment.
+    for doxyfile in doxyfiles:
+        subprocess.call('cd %s; make DOXYGEN=doxygen' % doxyfile, shell=True)
 
 # Breathe extension configurations
 # --------------------------------
