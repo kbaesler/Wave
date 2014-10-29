@@ -5,7 +5,7 @@ using ESRI.ArcGIS.Geodatabase;
 
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     An abstract Relationship Auto Updater (AU) that is used to to execute multiple <see cref="BaseRelationshipAU" />

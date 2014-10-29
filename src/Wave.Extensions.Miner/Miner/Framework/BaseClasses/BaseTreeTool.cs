@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Miner.ComCategories;
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     Provides an abstract implementation for Tree Tools used to execute in ArcMap and ArcFM Viewer.

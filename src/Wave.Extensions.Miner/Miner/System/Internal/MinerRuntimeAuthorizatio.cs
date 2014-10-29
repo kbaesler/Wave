@@ -1,4 +1,4 @@
-﻿using ESRI.ArcGIS.BaseClasses;
+﻿using ESRI.ArcGIS.esriSystem.BaseClasses;
 
 using Miner.Interop;
 

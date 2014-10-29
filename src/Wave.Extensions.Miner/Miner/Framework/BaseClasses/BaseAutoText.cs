@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     Provides autotext elements with access to text strings which are updated in various ways and at various times

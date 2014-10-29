@@ -9,7 +9,7 @@ using ESRI.ArcGIS.Geometry;
 
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     An abstract namer that supports providing the unique name the files for the map production export.

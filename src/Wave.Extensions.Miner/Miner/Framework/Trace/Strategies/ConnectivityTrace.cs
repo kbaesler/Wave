@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
+using Miner.Framework.BaseClasses;
 using Miner.Framework.Search;
 using Miner.Interop;
 
@@ -74,7 +75,7 @@ namespace Miner.Framework.Trace
     /// <typeparam name="TResults">The type of the results.</typeparam>
     [ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
-    public abstract class ConnectivityTrace<TResults> : BaseTraceStrategy<TResults>
+    public abstract class ConnectivityTrace<TResults> : BaseTrace<TResults>
         where TResults : EidSearchResults
     {
         #region Constructors

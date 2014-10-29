@@ -10,7 +10,7 @@ using Miner.Controls.XmlLogin;
 using Miner.FrameworkUI;
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     An abstract implementation of the ArcFM Viewer for Engine login that avoids displaying the login screen to the

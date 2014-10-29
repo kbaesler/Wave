@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     An abstract class used to implement custom <see cref="IMMSearchStrategy" /> search strategies.

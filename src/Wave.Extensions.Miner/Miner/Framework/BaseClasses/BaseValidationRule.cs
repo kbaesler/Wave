@@ -8,7 +8,7 @@ using Miner.Interop;
 
 using stdole;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     Base class for QA/QC validation rules.

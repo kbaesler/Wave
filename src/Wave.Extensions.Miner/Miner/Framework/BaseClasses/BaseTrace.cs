@@ -9,7 +9,7 @@ using ESRI.ArcGIS.NetworkAnalysis;
 
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     An abstract tracing strategy that can be used for network tracing.
@@ -17,7 +17,7 @@ namespace Miner.Framework
     /// <typeparam name="TResults">The type of the results.</typeparam>
     [ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
-    public abstract class BaseTraceStrategy<TResults>
+    public abstract class BaseTrace<TResults>
         where TResults : IMMSearchResults
     {
         #region Fields
@@ -32,9 +32,9 @@ namespace Miner.Framework
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseTraceStrategy&lt;TResults&gt;" /> class.
+        ///     Initializes a new instance of the <see cref="BaseTrace&lt;TResults&gt;" /> class.
         /// </summary>
-        protected BaseTraceStrategy()
+        protected BaseTrace()
         {
             _EdgesByEID = new Dictionary<int, IEIDInfo>();
             _JunctionsByEID = new Dictionary<int, IEIDInfo>();

@@ -10,7 +10,7 @@ using Miner.Framework.Search;
 using Miner.FrameworkUI.Search;
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     An abstract class that is used to display the user interface for the locator strategies.

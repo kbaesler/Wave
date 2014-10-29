@@ -253,7 +253,7 @@
     <Compile Include="Miner\Framework\BaseClasses\BaseSearchStrategyUI.cs" />
     <Compile Include="Miner\Framework\BaseClasses\BaseSequenceAU.cs" />
     <Compile Include="Miner\Framework\BaseClasses\BaseSpecialAU.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseTraceStrategy.cs" />
+    <Compile Include="Miner\Framework\BaseClasses\BaseTrace.cs" />
     <Compile Include="Miner\Framework\BaseClasses\BaseTreeTool.cs" />
     <Compile Include="Miner\Framework\BaseClasses\BaseValidationRule.cs" />
     <Compile Include="Miner\Framework\Trace\Results\AdjacencyEidResults.cs" />

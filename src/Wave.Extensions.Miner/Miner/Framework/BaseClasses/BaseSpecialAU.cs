@@ -6,7 +6,7 @@ using ESRI.ArcGIS.Geodatabase;
 
 using Miner.Interop;
 
-namespace Miner.Framework
+namespace Miner.Framework.BaseClasses
 {
     /// <summary>
     ///     Abstract base class for Special AutoUpdaters.
