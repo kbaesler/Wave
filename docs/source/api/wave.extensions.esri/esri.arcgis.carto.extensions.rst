@@ -1,0 +1,10 @@
+Extensions
+========================
+
+.. doxygenclass:: ESRI::ArcGIS::Carto::LayerExtensions
+    :project: Wave.Extensions.Esri
+    :members:
+
+.. doxygenclass:: ESRI::ArcGIS::Carto::MapExtensions
+    :project: Wave.Extensions.Esri
+    :members:

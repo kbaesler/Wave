@@ -7,3 +7,4 @@ extension for `Sphinx <http://sphinx-doc.org/index.html>`_ and is organized base
     :maxdepth: 2
 
     api/wave.extensions.esri
+    api/wave.extensions.miner

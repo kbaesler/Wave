@@ -6,7 +6,7 @@ namespace Miner.Interop.Process
     /// <summary>
     ///     Provides extension methods for the <see cref="Miner.Interop.Process.IMMWMSPropertySet" /> interface.
     /// </summary>
-    public static class PxPropertySetExtension
+    public static class PxPropertySetExtensions
     {
         #region Public Methods
 

@@ -302,7 +302,7 @@
     <Compile Include="Miner\Interop\Process\Extensions\PxEnumerableExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxHelperExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxNodeExtensions.cs" />
-    <Compile Include="Miner\Interop\Process\Extensions\PxPropertySetExtension.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxPropertySetExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxStateExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxTransitionExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxUserExtensions.cs" />

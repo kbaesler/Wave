@@ -49,8 +49,7 @@ else:
 
 # Breathe extension configurations
 # --------------------------------
-breathe_projects = { "Wave": "../doxygen/Wave.Extensions.Esri/xml/", "Wave": "../doxygen/Wave.Extensions.Miner/xml/" }
-breathe_default_project = "Wave"
+breathe_projects = { "Wave.Extensions.Esri": "../doxygen/Wave.Extensions.Esri/xml/", "Wave.Extensions.Miner": "../doxygen/Wave.Extensions.Miner/xml/" }
 
 # -- General configuration ------------------------------------------------
 
