@@ -2,5 +2,5 @@ Extensions
 ========================
 
 .. doxygenclass:: ESRI::ArcGIS::Carto::MapExtensions
-    :project: Wave.Extensions.Esri
+    :project: Wave.Extensions.Miner
     :members:
