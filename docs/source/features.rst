@@ -135,6 +135,18 @@ The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``
          feature.Store();
     });
 
+- ``Fetch`` features or rows with a projection.
+
+.. code-block:: c#
+
+    ISpatialFilter filter = new SpatialFilterClass();
+    filter.WhereClause = featureClass.OIDFieldName + " IN (1,2,3,4,5,6)";
+    filter.Geometry = geometry;
+    filter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
+    filter.GeometryField = "SHAPE";
+
+    List<int> oids = featureClass.Fetch(filter, feature => feature.OID);
+
 Common Customizations
 -------------------------------------
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages.

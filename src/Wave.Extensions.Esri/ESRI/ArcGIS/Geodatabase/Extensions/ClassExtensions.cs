@@ -19,12 +19,34 @@ namespace ESRI.ArcGIS.Geodatabase
 
         /// <summary>
         ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
+        ///     <paramref name="filter" /> object and projects the results into a new form.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
+        /// <param name="selector">Projects each element of a sequence into a new form.</param>
+        /// <returns>
+        ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
+        /// </returns>
+        public static List<TResult> Fetch<TResult>(this IFeatureClass source, IQueryFilter filter, Func<IFeature, TResult> selector)
+        {
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IFeatureCursor cursor = source.Search(filter, false);
+                cr.ManageLifetime(cursor);
+
+                return cursor.AsEnumerable().Select(selector).ToList();
+            }
+        }
+
+        /// <summary>
+        ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
         ///     <paramref name="filter" /> object.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
         /// <returns>
-        ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
+        ///     Returns a <see cref="List{IFeature}" /> representing the results of the query projected to the type.
         /// </returns>
         public static List<IFeature> Fetch(this IFeatureClass source, IQueryFilter filter)
         {
@@ -34,6 +56,27 @@ namespace ESRI.ArcGIS.Geodatabase
                 cr.ManageLifetime(cursor);
 
                 return cursor.AsEnumerable().ToList();
+            }
+        }
+
+        /// <summary>
+        ///     Queries for the features that have the specified object ids and projects the results into a new form.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="selector">Projects each element of a sequence into a new form.</param>
+        /// <param name="oids">The list of object ids.</param>
+        /// <returns>
+        ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
+        /// </returns>
+        public static List<TResult> Fetch<TResult>(this IFeatureClass source, Func<IFeature, TResult> selector, params int[] oids)
+        {
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IFeatureCursor cursor = source.GetFeatures(oids, false);
+                cr.ManageLifetime(cursor);
+
+                return cursor.AsEnumerable().Select(selector).ToList();
             }
         }
 

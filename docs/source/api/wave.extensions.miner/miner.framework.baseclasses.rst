@@ -29,7 +29,7 @@ BaseClasses
     :project: Wave.Extensions.Miner
     :members:
 
-.. doxygenclass:: Miner::Framework::BaseClasses::BaseMxLogin
+.. doxygenclass:: Miner::Framework::BaseClasses::BaseMxLogin<TWindow>
     :project: Wave.Extensions.Miner
     :members:
 

@@ -21,7 +21,7 @@ namespace Wave.Extensions.Esri.Tests
 
 
         [TestMethod]
-        public void ITable_Fetch_Action_Filter_Equals_6()
+        public void ITable_Fetch_Filter_Action_Equals_6()
         {
             var testClass = base.GetTestTable();
 
@@ -33,7 +33,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void ITable_Fetch_Func_Filter_Equals_1()
+        public void ITable_Fetch_Filter_Func_Equals_1()
         {
             var testClass = base.GetTestTable();
 
@@ -42,6 +42,19 @@ namespace Wave.Extensions.Esri.Tests
 
             int rowsAffected = testClass.Fetch(filter, row => true);
             Assert.AreEqual(1, rowsAffected);
+        }
+
+        [TestMethod]
+        public void ITable_Fetch_Filter_Projection_Equals_6()
+        {
+            var testClass = base.GetTestTable();
+
+            IQueryFilter filter = new QueryFilterClass();
+            filter.WhereClause = testClass.OIDFieldName + " IN (1,2,3,4,5,6)";
+
+            var list = testClass.Fetch(filter, row => row.OID);
+
+            Assert.AreEqual(6, list.Count);
         }
 
         [TestMethod]
