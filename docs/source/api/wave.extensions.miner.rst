@@ -9,3 +9,4 @@ The API documentation for the contents of the Wave.Extensions.Miner assembly are
     wave.extensions.miner/esri.arcgis.framework
     wave.extensions.miner/esri.arcgis.geodatabase
     wave.extensions.miner/miner.interop.process
+    wave.extensions.miner/miner.framework

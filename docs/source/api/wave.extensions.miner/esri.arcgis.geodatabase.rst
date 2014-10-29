@@ -5,4 +5,5 @@ The Geodatabase namespace contains types for all the definitions relating to dat
 .. toctree::
     :maxdepth: 2
 
-    esri.arcgis.geodatabase.extensions  
+    esri.arcgis.geodatabase.extensions
+    esri.arcgis.geodatabase.classes

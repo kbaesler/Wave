@@ -17,6 +17,10 @@ Extensions
     :project: Wave.Extensions.Miner
     :members:
 
+.. doxygenclass:: ESRI::ArcGIS::Geodatabase::VersionExtensions
+    :project: Wave.Extensions.Miner
+    :members:
+
 .. doxygenclass:: ESRI::ArcGIS::Geodatabase::WorkspaceExtensions
     :project: Wave.Extensions.Miner
     :members:

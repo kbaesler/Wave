@@ -7,3 +7,4 @@ The Geodatabase namespace contains types for all the definitions relating to dat
 
     esri.arcgis.geodatabase.extensions
     esri.arcgis.geodatabase.collections
+    esri.arcgis.geodatabase.classes
