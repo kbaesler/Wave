@@ -17,6 +17,27 @@ namespace ESRI.ArcGIS.Framework
         #region Public Methods
 
         /// <summary>
+        ///     Refresh the cached ArcFM properties (such as the model names and AU properties).
+        /// </summary>
+        /// <param name="source">The application reference.</param>
+        public static void FlushCache(this IApplication source)
+        {
+            if (source == null) return;
+
+            IMMConfigTopLevel ctl = ConfigTopLevel.Instance;
+            ctl.Workspace = null;
+
+            var au = (IMMAutoUpdater3) AutoUpdaterModeReverter.Instance;
+            au.FlushCache();
+
+            var ext = (IExtension) ModelNameManager.Instance;
+            ext.Shutdown();
+
+            object application = source;
+            ext.Startup(ref application);
+        }
+
+        /// <summary>
         ///     Returns the reference to the ArcFM Attribute Editor.
         /// </summary>
         /// <param name="source">The application reference.</param>
@@ -194,28 +215,6 @@ namespace ESRI.ArcGIS.Framework
             if (source == null) return null;
 
             return source.FindExtensionByName(ArcFM.Extensions.Name.TraceBridge) as IMMTraceBridge;
-        }
-
-
-        /// <summary>
-        ///     Refresh the cached ArcFM properties (such as the model names and AU properties).
-        /// </summary>
-        /// <param name="source">The application reference.</param>
-        public static void Reset(this IApplication source)
-        {
-            if (source == null) return;
-
-            IMMConfigTopLevel ctl = ConfigTopLevel.Instance;
-            ctl.Workspace = null;
-
-            var au = (IMMAutoUpdater3) AutoUpdaterModeReverter.Instance;
-            au.FlushCache();
-
-            var ext = (IExtension) ModelNameManager.Instance;
-            ext.Shutdown();
-
-            object application = source;
-            ext.Startup(ref application);
         }
 
         #endregion
