@@ -9,8 +9,11 @@ The ArcFM and ArcGIS software packages require a license when using the APIs out
 
   using(RuntimeAuthorization lic = new RuntimeAuthorization())
   {
+
+      // Check-out the licenses specified by the enumerations.
       if(lic.Initialize(esriLicensedProductCode.esriLicensedProductCodeArcEditor, mmLicensedProductCode.mmLPArcFM))
       {
           // Do work.
       }
-  }
+
+  } // Check-in the licenses.
