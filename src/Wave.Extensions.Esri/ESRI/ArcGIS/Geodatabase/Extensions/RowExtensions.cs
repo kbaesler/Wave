@@ -199,73 +199,81 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Updates the column on the row with the value when the original value and the specified
-        ///     <paramref name="value" /> are different.
+        /// Updates the column on the row with the value when the original value and the specified
+        /// <paramref name="value" /> are different.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="fieldName">Name of the field.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="value">The value for the field.</param>
+        /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
-        public static bool Update(this IRow source, string fieldName, object value)
+        public static bool Update(this IRow source, string fieldName, object value, bool compareChanges = false)
         {
             int i = source.Table.FindField(fieldName);
-            return source.Update(i, value);
+            return source.Update(i, value, compareChanges);
         }
 
         /// <summary>
-        ///     Updates the column index on the row with the value when the original value and the specified
-        ///     <paramref name="value" /> are different.
+        /// Updates the column index on the row with the value when the original value and the specified
+        /// <paramref name="value" /> are different.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="index">The index of the field.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="value">The value for the field.</param>
+        /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        public static bool Update(this IRow source, int index, object value)
+        public static bool Update(this IRow source, int index, object value, bool compareChanges = false)
         {
-            return source.Update(index, value, null);
+            return source.Update(index, value, null, compareChanges);
         }
 
         /// <summary>
-        ///     Updates the column index on the row with the value when the original value and the specified
-        ///     <paramref name="value" /> are different.
+        /// Updates the column index on the row with the value when the original value and the specified
+        /// <paramref name="value" /> are different.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="index">The index of the field.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="equalityComparer">
-        ///     The equality comparer to use to determine whether or not values are equal.
-        ///     If null, the default equality comparer for object is used.
-        /// </param>
+        /// <param name="value">The value for the field.</param>
+        /// <param name="equalityComparer">The equality comparer to use to determine whether or not values are equal.
+        /// If null, the default equality comparer for object is used.</param>
+        /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        public static bool Update(this IRow source, int index, object value, IEqualityComparer<object> equalityComparer)
+        public static bool Update(this IRow source, int index, object value, IEqualityComparer<object> equalityComparer = null, bool compareChanges = false)
         {
             if (index < 0 || index > source.Fields.FieldCount)
                 throw new IndexOutOfRangeException();
-
-            if (equalityComparer == null)
-                equalityComparer = EqualityComparer<object>.Default;
-
-            bool pendingChanges = false;
-
-            IRowChanges rowChanges = (IRowChanges) source;
-            object oldValue = rowChanges.OriginalValue[index];
-
-            if (!equalityComparer.Equals(oldValue, value))
+            
+            IRowChanges rowChanges = (IRowChanges)source;
+            if (compareChanges)
             {
-                source.Value[index] = value;
-                pendingChanges = true;
-            }
+                if (equalityComparer == null)
+                    equalityComparer = EqualityComparer<object>.Default;
 
-            return pendingChanges;
+                bool pendingChanges = false;
+
+                object oldValue = rowChanges.OriginalValue[index];
+
+                if (!equalityComparer.Equals(oldValue, value))
+                {
+                    source.Value[index] = value;
+                    pendingChanges = true;
+                }
+
+                return pendingChanges;
+            }
+            
+            source.Value[index] = value;
+            return rowChanges.ValueChanged[index];
         }
 
         /// <summary>
