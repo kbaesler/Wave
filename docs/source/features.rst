@@ -179,9 +179,9 @@ The ArcFM and ArcGIS platform provides multiple extension points and while we ca
 
 ArcFM Model Names
 ------------------------------
-The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call ArcFM Model Names. These model names can be for cross-database or generic implementations for customziations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.
+The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call Class, Field and Database Model Names. These model names can be for cross-database or generic implementations for customziations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.
 
-In order to simplfy the accessing of model name information, several extension methods were added to the ESRI objects that support ArcFM Model Names.
+In order to simplify the accessing of model name information, several extension methods were added to the ESRI objects that support ArcFM Model Names.
 
 The extension methods for the ``IFeatureClass`` and ``ITable`` interfaces that have been added.
 
