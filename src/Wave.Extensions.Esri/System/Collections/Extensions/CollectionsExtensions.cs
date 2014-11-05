@@ -10,17 +10,33 @@ namespace System.Collections
         #region Public Methods
 
         /// <summary>
-        ///     Adds the <paramref name="collection" /> to the <paramref name="items" /> collection.
+        ///     Adds the <paramref name="collection" /> to the <paramref name="source" /> collection.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
-        /// <param name="items">The items.</param>
+        /// <param name="source">The items.</param>
         /// <param name="collection">The collection.</param>
-        public static void AddRange<TSource>(this ICollection<TSource> items, IEnumerable<TSource> collection)
+        public static void AddRange<TSource>(this ICollection<TSource> source, IEnumerable<TSource> collection)
         {
             foreach (var item in collection)
             {
-                items.Add(item);
+                source.Add(item);
             }
+        }
+
+        /// <summary>
+        ///     Performs that specified <paramref name="action" /> on all of the items prior to clearing the collection.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="action">The action.</param>
+        public static void Clear<TSource>(this ICollection<TSource> source, Action<TSource> action)
+        {
+            foreach (var item in source)
+            {
+                action(item);
+            }
+
+            source.Clear();
         }
 
         /// <summary>

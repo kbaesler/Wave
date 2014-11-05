@@ -71,9 +71,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wave.Esri.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\src\bin\Debug\Wave.Esri.Extensions.dll</HintPath>
+    <Reference Include="Wave.Extensions.Esri">
+      <HintPath>..\..\src\bin\Debug\Wave.Extensions.Esri.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
