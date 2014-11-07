@@ -4,7 +4,7 @@
 Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric ArcFM APIs that are used for developing Geographical Information System (GIS) extensions to the ArcMap and ArcFM software or stand-alone applications. The library uses extension methods to extend the functionality of existing objects and provide workable wrappers around commonly used COM objects.
 
 ## Documentation ##
-The documentation has been moved to http://wave.readthedocs.org.
+The documentation has been moved to [wave.readthedocs.org](http://wave.readthedocs.org).
 
 ## Installation ##
 
@@ -19,4 +19,3 @@ In the future, installation will be provided by a a nuget package, however, unti
 ### Third Party Libraries ###
 
 - log4net 2.0.3
-
