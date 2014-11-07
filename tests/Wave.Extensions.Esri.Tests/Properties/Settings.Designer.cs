@@ -25,8 +25,7 @@ namespace Wave.Extensions.Esri.Tests.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\ad-kbaesler\\Documents\\GitHub\\Wave\\tests\\Sample Data\\Geodatabases\\Tests.m" +
-            "db")]
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\tests\\Sample Data\\Geodatabases\\Tests.mdb")]
         public string TestData {
             get {
                 return ((string)(this["TestData"]));

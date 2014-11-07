@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="TestData" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\ad-kbaesler\Documents\GitHub\Wave\tests\Sample Data\Geodatabases\Tests.mdb</Value>
+      <Value Profile="(Default)">.\tests\Sample Data\Geodatabases\Tests.mdb</Value>
     </Setting>
   </Settings>
 </SettingsFile>
