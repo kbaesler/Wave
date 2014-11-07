@@ -71,7 +71,7 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
     <RegisterForComInterop>false</RegisterForComInterop>
-    <DocumentationFile>..\bin\x86\Debug\Miner.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\x86\Debug\Wave.Extensions.Miner.XML</DocumentationFile>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
