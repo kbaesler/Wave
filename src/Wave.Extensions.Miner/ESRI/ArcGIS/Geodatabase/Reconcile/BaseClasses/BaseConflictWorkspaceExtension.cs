@@ -580,7 +580,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 foreach (var delta in dc.Value)
                 {
-                    IRow row = delta.GetRow(DeltaRow.RowState.ChildVersion);
+                    IRow row = delta.GetRow();
                     this.RebuildConnectivity(row as INetworkFeature);
                 }
             }

@@ -300,17 +300,17 @@ namespace ESRI.ArcGIS.Geodatabase
         public enum RowState
         {
             /// <summary>
-            ///     The current version state of the row.
+            ///     The state of the row in the current (child) version.
             /// </summary>
             ChildVersion,
 
             /// <summary>
-            ///     The parent version state of the row.
+            ///     The state of the row in the target (parent) version.
             /// </summary>
             ParentVersion,
 
             /// <summary>
-            ///     The common ancestor version state of the row.
+            ///     The state of the row in the common ancestor (prior to edits) version.
             /// </summary>
             CommonAncestorVersion
         }
@@ -322,17 +322,17 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     The common ancestor workspace.
         /// </summary>
-        private readonly IWorkspace CommonAncestorWorkspace;
+        private readonly IWorkspace _CommonAncestorWorkspace;
 
         /// <summary>
         ///     The source workspace or child workspace.
         /// </summary>
-        private readonly IWorkspace SourceWorkspace;
+        private readonly IWorkspace _SourceWorkspace;
 
         /// <summary>
         ///     The target workspace or parent workspace.
         /// </summary>
-        private readonly IWorkspace TargetWorkspace;
+        private readonly IWorkspace _TargetWorkspace;
 
         /// <summary>
         ///     The type of data changes.
@@ -373,9 +373,10 @@ namespace ESRI.ArcGIS.Geodatabase
             this.OID = oid;
             this.TableName = tableName;
             this.IsFeatureClass = isFeatureClass;
-            this.TargetWorkspace = (IWorkspace) target;
-            this.SourceWorkspace = (IWorkspace) source;
-            this.CommonAncestorWorkspace = (IWorkspace) ((IVersion2) source).GetCommonAncestor(target);
+
+            _TargetWorkspace = (IWorkspace) target;
+            _SourceWorkspace = (IWorkspace) source;
+            _CommonAncestorWorkspace = (IWorkspace) ((IVersion2) source).GetCommonAncestor(target);
         }
 
         #endregion
@@ -390,22 +391,22 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IRow" /> representing the row.
         /// </returns>
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
-        public IRow GetRow(RowState rowState)
+        public IRow GetRow(RowState rowState = RowState.ChildVersion)
         {
             IWorkspace workspace;
 
             switch (rowState)
             {
                 case RowState.ChildVersion:
-                    workspace = this.SourceWorkspace;
+                    workspace = _SourceWorkspace;
                     break;
 
                 case RowState.ParentVersion:
-                    workspace = this.TargetWorkspace;
+                    workspace = _TargetWorkspace;
                     break;
 
                 case RowState.CommonAncestorVersion:
-                    workspace = this.CommonAncestorWorkspace;
+                    workspace = _CommonAncestorWorkspace;
                     break;
 
                 default:
