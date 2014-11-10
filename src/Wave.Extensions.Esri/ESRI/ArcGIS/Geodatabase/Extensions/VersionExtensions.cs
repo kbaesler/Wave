@@ -50,6 +50,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             var list = new Dictionary<string, List<DeltaRow>>();
 
+
             IVersionDataChangesInit vdci = new VersionDataChangesClass();
             IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
             IWorkspaceName wsNameTarget = (IWorkspaceName) ((IDataset) target).FullName;
@@ -91,7 +92,7 @@ namespace ESRI.ArcGIS.Geodatabase
                             set.Next(out oid);
                             while (oid != -1)
                             {
-                                var row = new DeltaRow(dataChangeType, oid, tableName, isFeatureClass);
+                                var row = new DeltaRow(dataChangeType, oid, tableName, isFeatureClass, source, target);
                                 rows.Add(row);
 
                                 set.Next(out oid);
@@ -291,7 +292,47 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public struct DeltaRow
     {
+        #region Enumerations
+
+        /// <summary>
+        ///     The state of the row.
+        /// </summary>
+        public enum RowState
+        {
+            /// <summary>
+            ///     The current version state of the row.
+            /// </summary>
+            ChildVersion,
+
+            /// <summary>
+            ///     The parent version state of the row.
+            /// </summary>
+            ParentVersion,
+
+            /// <summary>
+            ///     The common ancestor version state of the row.
+            /// </summary>
+            CommonAncestorVersion
+        }
+
+        #endregion
+
         #region Fields
+
+        /// <summary>
+        ///     The common ancestor workspace.
+        /// </summary>
+        private readonly IWorkspace CommonAncestorWorkspace;
+
+        /// <summary>
+        ///     The source workspace or child workspace.
+        /// </summary>
+        private readonly IWorkspace SourceWorkspace;
+
+        /// <summary>
+        ///     The target workspace or parent workspace.
+        /// </summary>
+        private readonly IWorkspace TargetWorkspace;
 
         /// <summary>
         ///     The type of data changes.
@@ -324,12 +365,17 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="oid">The object id of the row.</param>
         /// <param name="tableName">Name of the table.</param>
         /// <param name="isFeatureClass">if set to <c>true</c> if the row represents a feature class.</param>
-        public DeltaRow(esriDataChangeType dataChangeType, int oid, string tableName, bool isFeatureClass)
+        /// <param name="source">The source (or child) version.</param>
+        /// <param name="target">The target (or parent) version.</param>
+        public DeltaRow(esriDataChangeType dataChangeType, int oid, string tableName, bool isFeatureClass, IVersion source, IVersion target)
         {
             this.DataChangeType = dataChangeType;
             this.OID = oid;
             this.TableName = tableName;
             this.IsFeatureClass = isFeatureClass;
+            this.TargetWorkspace = (IWorkspace) target;
+            this.SourceWorkspace = (IWorkspace) source;
+            this.CommonAncestorWorkspace = (IWorkspace) ((IVersion2) source).GetCommonAncestor(target);
         }
 
         #endregion
@@ -339,12 +385,33 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Gets the row from the specified workspace.
         /// </summary>
-        /// <param name="workspace">The workspace representing the child or parent, depending on the row state needed.</param>
+        /// <param name="rowState">The state representing the child or parent or common, depending on the row state needed.</param>
         /// <returns>
         ///     Returns a <see cref="IRow" /> representing the row.
         /// </returns>
-        public IRow GetRow(IWorkspace workspace)
+        /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
+        public IRow GetRow(RowState rowState)
         {
+            IWorkspace workspace;
+
+            switch (rowState)
+            {
+                case RowState.ChildVersion:
+                    workspace = this.SourceWorkspace;
+                    break;
+
+                case RowState.ParentVersion:
+                    workspace = this.TargetWorkspace;
+                    break;
+
+                case RowState.CommonAncestorVersion:
+                    workspace = this.CommonAncestorWorkspace;
+                    break;
+
+                default:
+                    throw new NotSupportedException("The row state is not supported.");
+            }
+
             using (ComReleaser cr = new ComReleaser())
             {
                 IFeatureWorkspace fws = (IFeatureWorkspace) workspace;
