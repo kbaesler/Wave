@@ -51,4 +51,4 @@ Making the library compatible with 10.x would take a few minor changes:
 
 Do I need a license for Wave?
 --------------------------------
-Wave is open-source and doesn't directly require an licenses, however since both ArcFM and ArcGIS are commercial software packages that require licenses. You will need a license for ArcGIS and/or ArcFM to use Wave.
+Wave is open-source and doesn't directly require any licenses, however since both ArcFM and ArcGIS are commercial software packages that require licenses. You will need a license for ArcGIS and/or ArcFM to use Wave.

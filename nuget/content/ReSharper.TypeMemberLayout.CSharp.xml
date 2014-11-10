@@ -3,7 +3,7 @@
 <!--
 I. Overall
 
-I.1 Each pattern can have <Match>....</Match> element. For the given type declaration, the pattern with the match, evaluated to 'true' with the largest weight, will be used 
+I.1 Each pattern can have <Match>....</Match> element. For the given type declaration, the pattern with the match, evaluated to 'true' with the largest weight, will be used
 I.2 Each pattern consists of the sequence of <Entry>...</Entry> elements. Type member declarations are distributed between entries
 I.3 If pattern has RemoveAllRegions="true" attribute, then all regions will be cleared prior to reordering. Otherwise, only auto-generated regions will be cleared
 I.4 The contents of each entry is sorted by given keys (First key is primary,  next key is secondary, etc). Then the declarations are grouped and en-regioned by given property
@@ -105,8 +105,8 @@ II.2.12 <HandlesEvent />
         <Name/>
       </Sort>
       <Group Region="Delegates"/>
-    </Entry>    
-    
+    </Entry>
+
     <!-- enum-->
     <Entry>
       <Match>
@@ -121,15 +121,15 @@ II.2.12 <HandlesEvent />
     <!--constants-->
     <Entry>
       <Match>
-        <Kind Is="constant"/>        
+        <Kind Is="constant"/>
       </Match>
       <Sort>
         <Readonly/>
-        <Name/>       
+        <Name/>
       </Sort>
       <Group Region="Constants"/>
     </Entry>
-    
+
     <!--instance fields-->
     <Entry>
       <Match>
@@ -174,7 +174,7 @@ II.2.12 <HandlesEvent />
       </Sort>
       <Group Region="Events"/>
     </Entry>
-    
+
     <!--public properties, indexers-->
     <Entry>
       <Match>
@@ -210,7 +210,7 @@ II.2.12 <HandlesEvent />
       </Sort>
       <Group Region="Internal Properties"/>
     </Entry>
-    
+
     <!--protected-internal properties, indexers-->
     <Entry>
       <Match>
@@ -227,8 +227,8 @@ II.2.12 <HandlesEvent />
         <Name/>
       </Sort>
       <Group Region="Protected Internal Properties"/>
-    </Entry>   
-    
+    </Entry>
+
     <!--protected properties, indexers-->
     <Entry>
       <Match>
@@ -264,7 +264,7 @@ II.2.12 <HandlesEvent />
       </Sort>
       <Group Region="Private Properties"/>
     </Entry>
-        
+
     <!--interface implementations-->
     <Entry>
       <Match>
@@ -308,7 +308,7 @@ II.2.12 <HandlesEvent />
         <Readonly/>
         <Name/>
       </Sort>
-      <Group Region="Internal Methods"/>       
+      <Group Region="Internal Methods"/>
     </Entry>
 
     <!--protected-internal methods-->
@@ -319,7 +319,7 @@ II.2.12 <HandlesEvent />
           <Kind Is="method"/>
         </And>
       </Match>
-      <Sort>        
+      <Sort>
         <Name/>
       </Sort>
       <Group Region="Protected Internal Methods"/>
@@ -333,7 +333,7 @@ II.2.12 <HandlesEvent />
           <Kind Is="method"/>
         </And>
       </Match>
-      <Sort>        
+      <Sort>
         <Name/>
       </Sort>
       <Group Region="Protected Methods"/>
@@ -347,12 +347,12 @@ II.2.12 <HandlesEvent />
           <Kind Is="method"/>
         </And>
       </Match>
-      <Sort>        
+      <Sort>
         <Name/>
       </Sort>
       <Group Region="Private Methods"/>
     </Entry>
-    
+
     <!--all other members-->
     <Entry/>
 
