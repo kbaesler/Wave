@@ -231,3 +231,6 @@ $RECYCLE.BIN/
 
 # Windows Access Files
 *.mdb
+
+# ArcGIS Geodatabase Files
+*.gdb
