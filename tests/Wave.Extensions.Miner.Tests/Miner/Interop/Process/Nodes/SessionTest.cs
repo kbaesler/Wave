@@ -35,7 +35,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
-        public void IsTrueIPxSession_CreateNew_IsTrue()
+        public void IPxSession_CreateNew_IsTrue()
         {
             IPxSession session = new Session(base.PxApplication);
 
