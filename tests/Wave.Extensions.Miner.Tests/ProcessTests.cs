@@ -1,4 +1,6 @@
-﻿using ESRI.ArcGIS.Geodatabase;
+﻿using System.IO;
+
+using ESRI.ArcGIS.Geodatabase;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -46,7 +48,6 @@ namespace Wave.Extensions.Miner.Tests
         {
             base.Cleanup();
 
-
             if (_PxApplication != null)
                 _PxApplication.Shutdown();
         }
@@ -60,11 +61,11 @@ namespace Wave.Extensions.Miner.Tests
 
             if (_ProductInstallation != mmProductInstallation.mmPIDesigner)
             {
-                _PxApplication = factory.Open("adams", "", Settings.Default.SessionManager, "", false, ArcFM.Process.SessionManager.Name);
+                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Settings.Default.SessionManager), "", false, ArcFM.Process.SessionManager.Name);
             }
             else
             {
-                _PxApplication = factory.Open("adams", "", Settings.Default.WorkflowManager, "", false, ArcFM.Process.WorkflowManager.Name);
+                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Settings.Default.WorkflowManager), "", false, ArcFM.Process.WorkflowManager.Name);
             }
 
             Assert.IsNull(_PxApplication);

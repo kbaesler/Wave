@@ -24,7 +24,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestMethod]
         public void WorkspaceFactories_GetFactory_NotNull()
         {
-            Assert.IsNotNull(WorkspaceFactories.GetFactory(Settings.Default.TestData));
+            Assert.IsNotNull(WorkspaceFactories.GetFactory(Settings.Default.Minerville));
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestMethod]
         public void WorkspaceFactories_Open_NotNull()
         {
-            Assert.IsNotNull(WorkspaceFactories.Open(Settings.Default.TestData));
+            Assert.IsNotNull(WorkspaceFactories.Open(Settings.Default.Minerville));
         }
 
         [TestMethod]

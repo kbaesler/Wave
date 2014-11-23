@@ -97,7 +97,7 @@ namespace SE.Tests.Process
                 {
                     if (lic.Initialize(mmLicensedProductCode.mmLPArcFM))
                     {
-                        IWorkspace workspace = WorkspaceFactories.Open(Settings.Default.TestData);
+                        IWorkspace workspace = WorkspaceFactories.Open(Settings.Default.Minerville);
                         string xml = design.GetDesignXml(workspace);
                         Assert.IsNotNull(xml);
                     }

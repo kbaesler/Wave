@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
@@ -55,7 +57,7 @@ namespace Wave.Extensions.Esri.Tests
 
             Assert.IsTrue(_RuntimeAuthorization.Initialize(esriLicenseProductCode.esriLicenseProductCodeArcEditor));
 
-            _Workspace = WorkspaceFactories.Open(Settings.Default.TestData);
+            _Workspace = WorkspaceFactories.Open(Path.GetFullPath(Settings.Default.Minerville));
             _ComReleaser.ManageLifetime(_Workspace);
         }
 
