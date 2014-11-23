@@ -12,8 +12,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Determines whether the specified objects are equal.
         /// </summary>
-        /// <param name="x">The first object of type <paramref name="T" /> to compare.</param>
-        /// <param name="y">The second object of type <paramref name="T" /> to compare.</param>
+        /// <param name="x">The first object of type <see cref="IObject"/> to compare.</param>
+        /// <param name="y">The second object of type <see cref="IObject"/> to compare.</param>
         /// <returns>
         ///     true if the specified objects are equal; otherwise, false.
         /// </returns>

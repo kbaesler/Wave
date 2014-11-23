@@ -151,12 +151,12 @@ namespace Miner.Framework.BaseClasses
 
         /// <summary>
         ///     Returns an <see cref="Miner.Interop.IMMSearchConfiguration" /> object that contains the
-        ///     <see cref="ArcFM.ArcGIS.esriSystem.IPropertySet" /> specific to the search being conducted.
+        ///     <see cref="ESRI.ArcGIS.esriSystem.IPropertySet" /> specific to the search being conducted.
         /// </summary>
         /// <param name="optionFlags">The option flags.</param>
         /// <returns>
         ///     Returns the <see cref="Miner.Interop.IMMSearchConfiguration" /> that contains the
-        ///     <see cref="ArcFM.ArcGIS.esriSystem.IPropertySet" /> specific to the search.
+        ///     <see cref="ESRI.ArcGIS.esriSystem.IPropertySet" /> specific to the search.
         /// </returns>
         public virtual IMMSearchConfiguration GetSearchConfiguration(mmSearchOptionFlags optionFlags)
         {

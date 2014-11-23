@@ -7,7 +7,6 @@ namespace System.Windows
     ///     An abstract view model that is used to execute operations on a background thread using a
     ///     <see cref="BackgroundWorker" /> component.
     /// </summary>
-    /// <typeparam name="T">The type of the arguments.</typeparam>
     [ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
     public abstract class BackgroundViewModel : BaseViewModel

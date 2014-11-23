@@ -119,7 +119,7 @@ namespace Miner.Framework.BaseClasses
         ///     object.
         /// </summary>
         /// <param name="parameters">The parameters.</param>
-        /// <exception cref="System.ArgumentNullException">parameters</exception>
+        /// <exception cref="ArgumentNullException">parameters</exception>
         [Conditional("DEBUG")]
         [DebuggerStepThrough]
         private void VerifyType(object parameters)

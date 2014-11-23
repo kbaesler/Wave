@@ -26,7 +26,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <remarks>
         ///     The reentrancy is only implemented in the <see cref="SaveChanges" /> method. The blocking will not take affect if
-        ///     the <see cref="IRow.Store" /> method is invoked.
+        ///     the Store method is invoked.
         /// </remarks>
         public static IDisposable BlockReentrancy(this IRow source)
         {
@@ -152,7 +152,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <remarks>
         ///     Any associated object behavior is not triggered, thus should only be used when implementing custom features that
-        ///     bypass <see cref="IRow.Store" /> method.
+        ///     bypass store method.
         /// </remarks>
         public static void Remove(this IRow source)
         {
@@ -282,7 +282,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <remarks>
         ///     Any associated object behavior is not triggered, thus should only be used when implementing custom features that
-        ///     bypass <see cref="IRow.Store" /> method.
+        ///     bypass store method.
         /// </remarks>
         public static void Write(this IRow source)
         {

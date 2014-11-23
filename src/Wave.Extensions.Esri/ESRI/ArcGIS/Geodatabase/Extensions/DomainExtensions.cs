@@ -50,7 +50,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="name">The name.</param>
         /// <param name="fallbackValue">The fallback value.</param>
-        /// <returns>Returns a <see cref="TValue" /> representing the name (or description) otherwise the fallback value is used.</returns>
+        /// <returns>Returns the value representing the name (or description) otherwise the fallback value is used.</returns>
         public static TValue GetValue<TValue>(this ICodedValueDomain source, string name, TValue fallbackValue)
         {
             object o = null;

@@ -112,7 +112,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Returns all of the feature classes that have been assigned the <paramref name="modelNames" /> in the given
+        ///     Returns all of the feature classes that have been assigned the <paramref name="modelName" /> in the given
         ///     workspace.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -173,7 +173,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Returns all of the object classes that have been assigned the <paramref name="modelNames" /> in the given
+        ///     Returns all of the object classes that have been assigned the <paramref name="modelName" /> in the given
         ///     workspace.
         /// </summary>
         /// <param name="source">The source.</param>

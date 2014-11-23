@@ -3,7 +3,7 @@
 namespace ESRI.ArcGIS.Geoprocessing
 {
     /// <summary>
-    ///     Provides extension methods for the <see cref="IGPUtilities3" /> interface.
+    ///     Provides extension methods for the <see cref="IGPUtilities" /> interface.
     /// </summary>
     public static class GPUtilitiesExtensions
     {

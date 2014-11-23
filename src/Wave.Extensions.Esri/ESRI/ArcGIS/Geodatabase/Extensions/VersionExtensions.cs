@@ -23,7 +23,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="target">The target (or parent) version.</param>
         /// <param name="dataChangeTypes">The data change types.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{string, List{DeltaRow}}" /> representing the differences for the table (or
+        ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
         ///     key).
         /// </returns>
         public static Dictionary<string, List<DeltaRow>> GetDataChanges(this IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
@@ -43,7 +43,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </param>
         /// <param name="dataChangeTypes">The data change types.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{string, List{DeltaRow}}" /> representing the differences for the table (or
+        ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
         ///     key).
         /// </returns>
         public static Dictionary<string, List<DeltaRow>> GetDataChanges(this IVersion source, IVersion target, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
@@ -167,7 +167,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="filter">The predicate to filter the results.</param>
         /// <param name="differenceTypes">The type of differences that will be determined.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{string, IEnumerable{DifferenceRow}}" /> representing the differences for the
+        ///     Returns a <see cref="Dictionary{String, DifferenceRow}" /> representing the differences for the
         ///     table (or key).
         /// </returns>
         public static Dictionary<string, IEnumerable<DifferenceRow>> GetDifferences(this IVersion source, IVersion target, IQueryFilter filter, params esriDifferenceType[] differenceTypes)
@@ -187,7 +187,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </param>
         /// <param name="differenceTypes">The type of differences that will be determined.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{string, IEnumerable{DifferenceRow}}" /> representing the differences for the
+        ///     Returns a <see cref="Dictionary{String, DifferenceRow}" /> representing the differences for the
         ///     table (or key).
         /// </returns>
         public static Dictionary<string, IEnumerable<DifferenceRow>> GetDifferences(this IVersion source, IVersion target, IQueryFilter filter, Func<string, ITable, bool> predicate, params esriDifferenceType[] differenceTypes)
@@ -230,7 +230,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="editDataChangesType">Type of the edit data changes.</param>
         /// <param name="differenceTypes">The type of differences.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{string, List{DifferenceRow}}" /> representing the differences for the table
+        ///     Returns a <see cref="Dictionary{String, DifferenceRow}" /> representing the differences for the table
         ///     (or key).
         /// </returns>
         /// <exception cref="System.InvalidOperationException">

@@ -41,21 +41,21 @@ namespace Miner.Framework.Trace
         public IEIDInfo Edge { get; private set; }
 
         /// <summary>
-        ///     Gets a value indicating whether the <see cref="Miner.Theory.Edge{TVertex}.Source" /> junction participates in a
+        ///     Gets a value indicating whether the source junction participates in a
         ///     loop.
         /// </summary>
         /// <value>
-        ///     <c>true</c> if the <see cref="Miner.Theory.Edge{TVertex}.Source" /> junction participates in a loop; otherwise,
+        ///     <c>true</c> if the source junction participates in a loop; otherwise,
         ///     <c>false</c>.
         /// </value>
         public bool SourceAlreadyVisited { get; private set; }
 
         /// <summary>
-        ///     Gets a value indicating whether the <see cref="Miner.Theory.Edge{TVertex}.Target" /> junction participates in a
+        ///     Gets a value indicating whether the target junction participates in a
         ///     loop.
         /// </summary>
         /// <value>
-        ///     <c>true</c> if the <see cref="Miner.Theory.Edge{TVertex}.Target" /> jnuction participates in a loop; otherwise,
+        ///     <c>true</c> if the target jnuction participates in a loop; otherwise,
         ///     <c>false</c>.
         /// </value>
         public bool TargetAlreadyVisited { get; private set; }
@@ -65,11 +65,11 @@ namespace Miner.Framework.Trace
         #region Public Methods
 
         /// <summary>
-        ///     Determines whether the specified <see cref="System.Object" /> is equal to this instance.
+        ///     Determines whether the specified <see cref="object" /> is equal to this instance.
         /// </summary>
-        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
         /// <returns>
-        ///     <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         /// <exception cref="T:System.NullReferenceException">
         ///     The <paramref name="obj" /> parameter is null.
@@ -95,10 +95,10 @@ namespace Miner.Framework.Trace
         }
 
         /// <summary>
-        ///     Returns a <see cref="System.String" /> that represents this instance.
+        ///     Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
-        ///     A <see cref="System.String" /> that represents this instance.
+        ///     A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {

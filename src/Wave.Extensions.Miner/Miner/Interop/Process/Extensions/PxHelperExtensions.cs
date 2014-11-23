@@ -17,7 +17,7 @@ namespace Miner.Interop.Process
         /// <param name="configName">Name of the configuration.</param>
         /// <param name="fallbackValue">The fallback value.</param>
         /// <returns>
-        ///     Returns a <see cref="TSource" /> representing the configuration value.
+        ///     Returns an object representing the configuration value.
         /// </returns>
         public static TSource GetConfigValue<TSource>(this IMMPxHelper2 source, string configName, TSource fallbackValue)
         {

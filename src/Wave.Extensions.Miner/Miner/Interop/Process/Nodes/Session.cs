@@ -75,7 +75,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The create user.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The create user cannot be larger then 32 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The create user cannot be larger then 32 characters.</exception>
         public string CreateUser
         {
             get { return _Session.get_CreateUser(); }
@@ -98,7 +98,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The database.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The database cannot be larger then 64 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The database cannot be larger then 64 characters.</exception>
         public string Database
         {
             get { return ((IMMSession3) _Session).get_DatabaseId(); }
@@ -121,7 +121,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The description.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The description cannot be larger then 255 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The description cannot be larger then 255 characters.</exception>
         public string Description
         {
             get { return _Session.get_Description(); }
@@ -172,7 +172,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The owner.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The owner cannot be larger then 32 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The owner cannot be larger then 32 characters.</exception>
         public string Owner
         {
             get { return _Session.get_Owner(); }
@@ -256,7 +256,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The name.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The name cannot be larger then 64 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The name cannot be larger then 64 characters.</exception>
         public override string Name
         {
             get { return _Session.get_Name(); }

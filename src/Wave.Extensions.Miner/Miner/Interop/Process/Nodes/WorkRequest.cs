@@ -61,7 +61,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The comments.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The comments cannot be larger then 255 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The comments cannot be larger then 255 characters.</exception>
         public string Comments
         {
             get
@@ -103,7 +103,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The description.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The description cannot be larger then 128 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The description cannot be larger then 128 characters.</exception>
         public string Description
         {
             get { return _WorkRequest.get_Description(); }
@@ -254,7 +254,7 @@ namespace Miner.Interop.Process
         ///     Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
-        /// <exception cref="System.ArgumentOutOfRangeException">The name cannot be larger then 64 characters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The name cannot be larger then 64 characters.</exception>
         public override string Name
         {
             get { return _WorkRequest.get_Name(); }
