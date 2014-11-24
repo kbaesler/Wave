@@ -67,7 +67,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void IFeatureClass_Fetch_List_Use_Filter_Equals_1()
+        public void IFeatureClass_Fetch_List_Query_Equals_1()
         {
             var testClass = base.GetTestClass();
 

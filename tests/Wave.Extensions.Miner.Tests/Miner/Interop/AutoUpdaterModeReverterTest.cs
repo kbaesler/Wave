@@ -13,9 +13,10 @@ namespace Wave.Extensions.Miner.Tests
         [TestMethod]
         public void AutoUpdaterModeReverter_Equals_NoEvents()
         {
+            IMMAutoUpdater o = new MMAutoupdaterDispatch();
+
             using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
-            {
-                IMMAutoUpdater o = new MMAutoupdaterDispatch();
+            {               
                 Assert.AreEqual(mmAutoUpdaterMode.mmAUMNoEvents, o.AutoUpdaterMode);
             }
         }
