@@ -12,19 +12,6 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
-        public void IFeatureClass_Fetch_Filter_Projection_Equals_6()
-        {
-            var testClass = base.GetTestClass();
-
-            IQueryFilter filter = new QueryFilterClass();
-            filter.WhereClause = testClass.OIDFieldName + " IN (1,2,3,4,5,6)";
-
-            var list = testClass.Fetch(filter, feature => feature.OID);
-
-            Assert.AreEqual(6, list.Count);
-        }
-
-        [TestMethod]
         public void IFeatureClass_Fetch_Filter_Action_Equals_6()
         {
             var testClass = base.GetTestClass();
@@ -55,6 +42,19 @@ namespace Wave.Extensions.Esri.Tests
             });
 
             Assert.AreEqual(rowsAffected, testCount);
+        }
+
+        [TestMethod]
+        public void IFeatureClass_Fetch_Filter_Projection_Equals_6()
+        {
+            var testClass = base.GetTestClass();
+
+            IQueryFilter filter = new QueryFilterClass();
+            filter.WhereClause = testClass.OIDFieldName + " IN (1,2,3,4,5,6)";
+
+            var list = testClass.Fetch(filter, feature => feature.OID);
+
+            Assert.AreEqual(6, list.Count);
         }
 
         [TestMethod]

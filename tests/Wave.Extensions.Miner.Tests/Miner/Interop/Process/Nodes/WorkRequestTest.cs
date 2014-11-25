@@ -43,11 +43,14 @@ namespace Wave.Extensions.Miner.Tests
                 IPxWorkRequest request = new WorkRequest(base.PxApplication);
                 Assert.AreEqual(true, request.Initialize(nodeID));
 
-                request.Customer.FirstName = "John";
-                request.Customer.LastName = "Doe";
-                request.Customer.Update();
+                if (request.Customer != null)
+                {
+                    request.Customer.FirstName = "John";
+                    request.Customer.LastName = "Doe";
+                    request.Customer.Update();
 
-                Assert.AreEqual("John", request.Customer.FirstName);
+                    Assert.AreEqual("John", request.Customer.FirstName);
+                }
             }
         }
 
@@ -74,11 +77,14 @@ namespace Wave.Extensions.Miner.Tests
                 IPxWorkRequest request = new WorkRequest(base.PxApplication);
                 Assert.AreEqual(true, request.Initialize(nodeID));
 
-                request.Location.FacilityDisplayField = "FacilityID";
-                Assert.AreEqual("FacilityID", request.Location.FacilityDisplayField);
+                if (request.Location != null)
+                {
+                    request.Location.FacilityDisplayField = "FacilityID";
+                    Assert.AreEqual("FacilityID", request.Location.FacilityDisplayField);
 
-                request.Location.Address.Address1 = " 380 New York Street, Redlands, CA 92373-8100";
-                Assert.AreEqual(" 380 New York Street, Redlands, CA 92373-8100", request.Location.Address.Address1);
+                    request.Location.Address.Address1 = " 380 New York Street, Redlands, CA 92373-8100";
+                    Assert.AreEqual(" 380 New York Street, Redlands, CA 92373-8100", request.Location.Address.Address1);
+                }
             }
         }
 

@@ -12,15 +12,6 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
-        public void ITable_Distinct_LessThan_100()
-        {
-            var testClass = base.GetTestTable();
-            var rows = testClass.Distinct(testClass.OIDFieldName, testClass.OIDFieldName + " < 100");
-            Assert.IsTrue(rows.Count < 100);
-        }
-
-
-        [TestMethod]
         public void ITable_Fetch_Filter_Action_Equals_6()
         {
             var testClass = base.GetTestTable();
@@ -41,7 +32,7 @@ namespace Wave.Extensions.Esri.Tests
             filter.WhereClause = testClass.OIDFieldName + " IN (1,2,3,4,5,6)";
 
             int rowsAffected = testClass.Fetch(filter, row => true);
-            Assert.AreEqual(1, rowsAffected);
+            Assert.AreEqual(6, rowsAffected);
         }
 
         [TestMethod]

@@ -66,9 +66,7 @@ namespace Wave.Extensions.Miner.Tests
             else
             {
                 _PxApplication = factory.Open("adams", "", Path.GetFullPath(Settings.Default.WorkflowManager), "", false, ArcFM.Process.WorkflowManager.Name);
-            }
-
-            Assert.IsNull(_PxApplication);
+            }      
         }
 
         #endregion

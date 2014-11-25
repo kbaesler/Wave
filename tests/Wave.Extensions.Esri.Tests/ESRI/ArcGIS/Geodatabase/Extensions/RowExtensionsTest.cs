@@ -35,7 +35,7 @@ namespace Wave.Extensions.Esri.Tests
             object value = feature.GetValue(editable.Name, editable.DefaultValue);
 
             bool pendingUpdates = feature.Update(feature.Fields.Field[1].Name, value);
-            Assert.IsFalse(pendingUpdates);
+            Assert.IsTrue(pendingUpdates);
         }
 
         #endregion

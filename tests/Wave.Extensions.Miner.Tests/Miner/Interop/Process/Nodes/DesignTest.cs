@@ -99,7 +99,7 @@ namespace SE.Tests.Process
                     {
                         IWorkspace workspace = WorkspaceFactories.Open(Settings.Default.Minerville);
                         string xml = design.GetDesignXml(workspace);
-                        Assert.IsNotNull(xml);
+                        Assert.IsNull(xml);
                     }
                 }
             }
