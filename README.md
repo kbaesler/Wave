@@ -14,7 +14,7 @@ In the future, installation will be provided by a a nuget package, however, unti
 - ArcGIS 9.3.1 SP2
 - ArcFM 9.3.1 SP2
 - 3.5 SP 1 .NET Framework
-- Visual Studio 2013
+- Visual Studio 2010+
 
 ### Third Party Libraries ###
 

@@ -17,3 +17,14 @@ The ArcFM and ArcGIS software packages require a license when using the APIs out
       }
 
   } // Check-in the licenses.
+
+Switching ArcFM Auto Updater Modes
+--------------------------------------
+The ArcFM Solution provides a very useful edit based triggers that allow for adding behaviors to features and tables while editing. However, an edit can cause a cascading effect when AUs are assigned to features that update another feature. You can disable the event cascading by telling the ArcFM Framework to temporarily disable the executing of AUs using the ``AutoUpdaterModeReverter`` class.
+
+.. code-block:: c#
+
+  using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
+  {
+      // Do something that shouldn't trigger additional ArcFM AUs.
+  }
