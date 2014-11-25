@@ -26,16 +26,21 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (!string.IsNullOrEmpty(fileName))
             {
+                if ((fileName.EndsWith(".gdb", StringComparison.OrdinalIgnoreCase)))
+                {
+                    if(!Directory.Exists(fileName))
+                        throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found", fileName);
+
+                    return new FileGDBWorkspaceFactoryClass();
+                }
+
                 if (!File.Exists(fileName))
-                    throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found.", fileName);
+                    throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found", fileName);
 
                 IWorkspaceFactory[] list =
                 {
                     new AccessWorkspaceFactoryClass(),
-                    new FileGDBWorkspaceFactoryClass(),
                     new SdeWorkspaceFactoryClass(),
-                    new InMemoryWorkspaceFactoryClass(),
-                    new PlugInWorkspaceFactoryClass(),
                 };
 
                 foreach (var l in list)
