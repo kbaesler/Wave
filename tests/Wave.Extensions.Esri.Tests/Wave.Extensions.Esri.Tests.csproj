@@ -119,12 +119,16 @@
     <Compile Include="EsriTests.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RowEqualityComparerTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparerTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\DomainExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\PropertySetExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\FieldExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\CursorExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\WorkspaceFactoriesTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensionsTest.cs" />
@@ -143,7 +147,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ESRI\ArcGIS\Framework\Extensions\" />
+    <Folder Include="ESRI\ArcGIS\System\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

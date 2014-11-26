@@ -11,6 +11,29 @@ namespace Wave.Extensions.Esri.Tests
     public class RowExtensionTest : EsriTests
     {
         #region Public Methods
+        [TestMethod]
+        public void IRow_TryGetValue_Equals_True()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+
+            int value;
+            bool condition = feature.TryGetValue(testClass.OIDFieldName, -1, out value);
+            Assert.IsTrue(condition);
+            Assert.AreNotEqual(-1, value);
+        }
+
+        [TestMethod]
+        public void IRow_TryGetValue_Equals_False()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+
+            bool value;
+            bool condition = feature.TryGetValue("FIELD_DOES_NOT_EXISTS", false, out value);
+            Assert.IsFalse(condition);
+            Assert.IsFalse(value);
+        }
 
         [TestMethod]
         [ExpectedException(typeof (InvalidOperationException))]
