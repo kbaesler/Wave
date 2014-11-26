@@ -67,9 +67,9 @@ namespace ESRI.ArcGIS.Geodatabase
                         object o = row.Value[i];
                         object value = (DBNull.Value == o || o == null) ? "" : o.ToString();
 
-                        xrow.Add(new XElement("Field"),
+                        xrow.Add(new XElement("Field",
                             new XAttribute("Name", field.Name),
-                            new XAttribute("Value", value));
+                            new XAttribute("Value", value)));
                     }
                 }
 
