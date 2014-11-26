@@ -199,15 +199,65 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Updates the column on the row with the value when the original value and the specified
-        /// <paramref name="value" /> are different.
+        ///     Returns the field value that at the specified <paramref name="fieldName" /> for the <paramref name="source" />.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The row.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="fallbackValue">The default value.</param>
+        /// <param name="value">
+        ///     When this method returns, contains the value associat/ed with the specified
+        ///     index, if the index is found; otherwise, the default value for the type of the
+        ///     value parameter. This parameter is passed uninitialized.
+        /// </param>
+        /// <returns>
+        ///     Returns an <see cref="bool" /> representing <c>true</c> if the field index is valid; otherwise, false.
+        /// </returns>
+        public static bool TryGetValue<TValue>(this IRow source, string fieldName, TValue fallbackValue, out TValue value)
+        {
+            int index = source.Table.FindField(fieldName);
+            return source.TryGetValue(index, fallbackValue, out value);
+        }
+
+        /// <summary>
+        ///     Returns the field value that at the specified <paramref name="index" /> for the <paramref name="source" />.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The row.</param>
+        /// <param name="index">The field index.</param>
+        /// <param name="fallbackValue">The default value.</param>
+        /// <param name="value">
+        ///     When this method returns, contains the value associat/ed with the specified
+        ///     index, if the index is found; otherwise, the default value for the type of the
+        ///     value parameter. This parameter is passed uninitialized.
+        /// </param>
+        /// <returns>
+        ///     Returns an <see cref="bool" /> representing <c>true</c> if the field index is valid; otherwise, false.
+        /// </returns>
+        public static bool TryGetValue<TValue>(this IRow source, int index, TValue fallbackValue, out TValue value)
+        {
+            try
+            {
+                value = source.GetValue(index, fallbackValue);
+                return true;
+            }
+            catch (Exception)
+            {
+                value = fallbackValue;
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///     Updates the column on the row with the value when the original value and the specified
+        ///     <paramref name="value" /> are different.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="value">The value for the field.</param>
         /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
-        /// Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
         public static bool Update(this IRow source, string fieldName, object value, bool compareChanges = false)
@@ -217,15 +267,15 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Updates the column index on the row with the value when the original value and the specified
-        /// <paramref name="value" /> are different.
+        ///     Updates the column index on the row with the value when the original value and the specified
+        ///     <paramref name="value" /> are different.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="index">The index of the field.</param>
         /// <param name="value">The value for the field.</param>
         /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
-        /// Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static bool Update(this IRow source, int index, object value, bool compareChanges = false)
@@ -234,17 +284,19 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Updates the column index on the row with the value when the original value and the specified
-        /// <paramref name="value" /> are different.
+        ///     Updates the column index on the row with the value when the original value and the specified
+        ///     <paramref name="value" /> are different.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="index">The index of the field.</param>
         /// <param name="value">The value for the field.</param>
-        /// <param name="equalityComparer">The equality comparer to use to determine whether or not values are equal.
-        /// If null, the default equality comparer for object is used.</param>
+        /// <param name="equalityComparer">
+        ///     The equality comparer to use to determine whether or not values are equal.
+        ///     If null, the default equality comparer for object is used.
+        /// </param>
         /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
-        /// Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="System.IndexOutOfRangeException"></exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
@@ -252,8 +304,8 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (index < 0 || index > source.Fields.FieldCount)
                 throw new IndexOutOfRangeException();
-            
-            IRowChanges rowChanges = (IRowChanges)source;
+
+            IRowChanges rowChanges = (IRowChanges) source;
             if (compareChanges)
             {
                 if (equalityComparer == null)
@@ -271,7 +323,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 return pendingChanges;
             }
-            
+
             source.Value[index] = value;
             return rowChanges.ValueChanged[index];
         }

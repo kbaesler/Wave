@@ -1,5 +1,6 @@
 ﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -9,6 +10,26 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class FeatureExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Gets the difference in shape between the original and existing shape.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IGeometry" /> representing the difference in the shape; otherwise <c>null</c>
+        /// </returns>
+        public static IGeometry GetShapeDifference(this IFeature source)
+        {
+            IFeatureChanges featureChanges = (IFeatureChanges) source;
+            if (featureChanges.ShapeChanged && featureChanges.OriginalShape != null)
+            {
+                ITopologicalOperator topologicalOperator = (ITopologicalOperator) source.ShapeCopy;
+                return topologicalOperator.Difference(featureChanges.OriginalShape);
+            }
+
+            return null;
+        }
+
 
         /// <summary>
         ///     Updates the minimum display extent to reflect the changes to the feature to provide visual feedback.

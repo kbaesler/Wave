@@ -51,11 +51,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
         ///     <c>null</c>.
         /// </returns>
-        /// <exception cref="System.ArgumentException">The application framework has not been fully initialized.</exception>
-        /// <remarks>
-        ///     The <paramref name="commandName" /> can be either the name of the command or the ProgID (i.e.
-        ///     "esriFramework.HelpContentsCommand" or "{D74B2F25-AC90-11D2-87F8-0000F8751720}").
-        /// </remarks>
+        /// <exception cref="System.ArgumentException">The application framework has not been fully initialized.</exception>       
         public static ICommandItem GetCommandItem(this IApplication source, string commandName)
         {
             if (source == null) return null;
