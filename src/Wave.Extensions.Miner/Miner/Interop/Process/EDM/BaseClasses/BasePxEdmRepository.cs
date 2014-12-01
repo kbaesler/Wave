@@ -16,7 +16,7 @@ namespace Miner.Interop.Process
     ///     and formulated into the "EDM" structure (this EDM element and children are the return value from this method).
     ///     In both the save and open cases, the Design object is always the first to be sent to this component
     /// </summary>
-    public abstract class BasePxEdmRepository : IMMWMSExtendedData, IDisposable
+    public abstract class BasePxEdmRepository : IMMWMSExtendedData, IDisposable, IPxEdmRepository
     {
         #region Fields
 
@@ -26,6 +26,19 @@ namespace Miner.Interop.Process
         private bool _IsDeleted;
         private IMMPxApplication _PxApp;
         private IMMWMSExtendedData _WmsExtendedData;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BasePxEdmRepository" /> class.
+        /// </summary>
+        /// <param name="pxApplication">The process framework application reference.</param>
+        protected BasePxEdmRepository(IMMPxApplication pxApplication)
+        {
+            _PxApp = pxApplication;
+        }
 
         #endregion
 
@@ -173,16 +186,16 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region Public Methods
+        #region IPxEdmRepository Members
 
         /// <summary>
         ///     Delete all the EDM data from the Work Request, Design, Work Locaiton and CUs associated with the current design id.
         /// </summary>
-        /// <param name="designID">The design ID.</param>
+        /// <param name="designId">The design ID.</param>
         /// <returns>
-        ///     The number of records that have been deleted.
+        ///     Returns a <see cref="int" /> representing the number of records that have been deleted.
         /// </returns>
-        public int Delete(int designID)
+        public int Delete(int designId)
         {
             int recordsAffected = 0;
 
@@ -193,12 +206,36 @@ namespace Miner.Interop.Process
                 if (o.Valid)
                 {
                     // Delete all of the records matching the given design ID.
-                    string sql = string.Format(CultureInfo.InvariantCulture, "DELETE FROM {0} WHERE {1} = {2}", _PxApp.GetQualifiedTableName(o.TableName), Fields.DesignID, designID);
+                    string sql = string.Format(CultureInfo.InvariantCulture, "DELETE FROM {0} WHERE {1} = {2}", _PxApp.GetQualifiedTableName(o.TableName), Fields.DesignID, designId);
                     recordsAffected += _PxApp.ExecuteNonQuery(sql);
                 }
             }
 
             return recordsAffected;
+        }
+
+        /// <summary>
+        ///     Loads all of the EDM data from the Work Request Design, Work Location and CUs associated with the design id.
+        /// </summary>
+        /// <param name="designId">The design identifier.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{K, V}" /> representing the table and EDMs for the design.
+        /// </returns>
+        public Dictionary<string, List<EDM>> GetEdms(int designId)
+        {
+            var list = new Dictionary<string, List<EDM>>();
+
+            // Iterate through all of the valid tables.
+            foreach (var o in this.Tables)
+            {
+                if (o.Valid)
+                {
+                    var rows = this.GetRows(o, string.Format(CultureInfo.InvariantCulture, "WHERE {0} = {1}", Fields.DesignID, designId)).Select(row => new EDM(row)).ToList();
+                    list.Add(o.TableName, rows);
+                }
+            }
+
+            return list;
         }
 
         #endregion

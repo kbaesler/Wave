@@ -278,6 +278,7 @@
     <Compile Include="Miner\Interop\Process\EDM\Configuration\EdmTable.cs" />
     <Compile Include="Miner\Interop\Process\EDM\Deleters\BaseClasses\BasePxEdmDeleter.cs" />
     <Compile Include="Miner\Interop\Process\EDM\EDM.cs" />
+    <Compile Include="Miner\Interop\Process\EDM\Interfaces\IPxEdmRepository.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxApplicationExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxEnumerableExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Extensions\PxHelperExtensions.cs" />
