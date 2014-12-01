@@ -10,7 +10,7 @@ using ESRI.ArcGIS.Geodatabase;
 namespace Miner.Interop.Process
 {
     /// <summary>
-    ///     Wraps the product <see cref="Miner.Interop.Process.IMMWMSDesign" /> interface into an workable object.
+    /// Wraps the product <see cref="Miner.Interop.Process.IMMWMSDesign" /> interface into an workable object.
     /// </summary>
     [DebuggerDisplay("Name = {Name}, ID = {ID}")]
     [SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
@@ -224,14 +224,18 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Loads the package XML given the <paramref name="workspace" />
+        /// Loads the package XML from the underlying workspace.
         /// </summary>
-        /// <param name="workspace">The workspace.</param>
         /// <returns>
-        ///     Returns a <see cref="string" /> representing the design XML; otherwise <c>null</c>
+        /// Returns a <see cref="string" /> representing the design XML; otherwise <c>null</c>
         /// </returns>
-        public string GetDesignXml(IWorkspace workspace)
+        /// <exception cref="NullReferenceException">The process framework workspace is null.</exception>
+        public string GetDesignXml()
         {
+            IWorkspace workspace = ((IMMPxApplicationEx2) base.PxApplication).Workspace;
+            if(workspace == null)
+                throw new NullReferenceException("The process framework workspace is null.");
+
             string name = this.ID.ToString(CultureInfo.InvariantCulture);
             IMMPackageName packageName = new MMPackageNameClass();
             packageName.Category = mmPackageCategory.mmPCDesignXML;

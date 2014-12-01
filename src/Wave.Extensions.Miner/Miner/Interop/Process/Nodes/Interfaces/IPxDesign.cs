@@ -73,13 +73,12 @@ namespace Miner.Interop.Process
         #region Public Methods
 
         /// <summary>
-        ///     Loads the package XML given the <paramref name="workspace" />
+        ///     Loads the package XML from the underlying workspace.
         /// </summary>
-        /// <param name="workspace">The workspace.</param>
         /// <returns>
         ///     Returns a <see cref="String" /> representing the design XML; otherwise <c>null</c>
         /// </returns>
-        string GetDesignXml(IWorkspace workspace);
+        string GetDesignXml();
 
         #endregion
     }
