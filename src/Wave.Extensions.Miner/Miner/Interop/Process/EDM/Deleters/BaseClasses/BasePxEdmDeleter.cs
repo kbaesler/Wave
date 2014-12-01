@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace Miner.Interop.Process
 {
@@ -24,13 +25,35 @@ namespace Miner.Interop.Process
         #region Protected Methods
 
         /// <summary>
-        ///     Gets the <see cref="BasePxEdmRepository" /> repository used to manage the extended data.
+        /// Gets the <see cref="BasePxEdmRepository" /> repository used to manage the extended data.
         /// </summary>
         /// <param name="pxApp">The process framework application reference.</param>
         /// <returns>
-        ///     Returns the <see cref="BasePxEdmRepository" /> representing the EDM management controller.
+        /// Returns the <see cref="BasePxEdmRepository" /> representing the EDM management controller.
         /// </returns>
-        protected abstract BasePxEdmRepository GetEdmRepository(IMMPxApplication pxApp);
+        /// <exception cref="NullReferenceException">The WMSEDM process framework configuration value is null.</exception>
+        protected virtual BasePxEdmRepository GetEdmRepository(IMMPxApplication pxApp)
+        {
+            IMMPxHelper2 helper = (IMMPxHelper2)pxApp.Helper;
+            string progId = helper.GetConfigValue("WMSEDM", string.Empty);
+            if (string.IsNullOrEmpty(progId))
+            {
+                throw new NullReferenceException("The WMSEDM process framework configuration value is null.");
+            }
+
+            try
+            {
+                Type type = Type.GetTypeFromProgID(progId);
+                object obj = Activator.CreateInstance(type);
+
+                BasePxEdmRepository extendedData = obj as BasePxEdmRepository;
+                return extendedData;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         ///     Deletes the specified <paramref name="node" />from the process framework database table
