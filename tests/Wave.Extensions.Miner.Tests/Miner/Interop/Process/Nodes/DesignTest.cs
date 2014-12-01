@@ -93,15 +93,8 @@ namespace SE.Tests.Process
                 IPxDesign design = new Design(base.PxApplication);
                 Assert.AreEqual(true, design.Initialize(nodeID));
 
-                using (RuntimeAuthorization lic = new RuntimeAuthorization())
-                {
-                    if (lic.Initialize(mmLicensedProductCode.mmLPArcFM))
-                    {
-                        IWorkspace workspace = WorkspaceFactories.Open(Settings.Default.Minerville);
-                        string xml = design.GetDesignXml(workspace);
-                        Assert.IsNull(xml);
-                    }
-                }
+                string xml = design.GetDesignXml();
+                Assert.IsNull(xml);                 
             }
         }
 
