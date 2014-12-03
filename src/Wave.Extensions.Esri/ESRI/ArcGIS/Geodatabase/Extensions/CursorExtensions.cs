@@ -49,7 +49,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static XDocument GetXDocument(this ICursor source, string elementName, Predicate<IField> predicate)
         {
-            XElement xtable = new XElement("Table", new XAttribute("Timestamp", DateTime.Now.ToString("f")));
+            XElement xtable = new XElement(elementName, new XAttribute("Timestamp", DateTime.Now.ToString("f")));
             XDocument xdoc = new XDocument(xtable);
 
             // Iterate through all of the records.
