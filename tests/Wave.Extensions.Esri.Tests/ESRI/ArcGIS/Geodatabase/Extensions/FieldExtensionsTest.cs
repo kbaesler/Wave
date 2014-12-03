@@ -28,6 +28,14 @@ namespace Wave.Extensions.Esri.Tests
             Assert.AreEqual(testClass.Fields.FieldCount, dictionary.Count);
         }
 
+        [TestMethod]
+        public void IFields_ToDictionary_IgnoreCase_True()
+        {
+            var testClass = base.GetTestClass();
+            var dictionary = testClass.Fields.ToDictionary();
+
+            Assert.IsTrue(dictionary.ContainsKey(testClass.Fields.Field[0].Name.ToLower()));
+        }
         #endregion
     }
 }
