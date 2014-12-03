@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -18,7 +20,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IDictionary<string, int> ToDictionary(this IFields source)
         {
-            IDictionary<string, int> dictionary = new Dictionary<string, int>();
+            IDictionary<string, int> dictionary = new Dictionary<string, int>(StringComparer.Create(CultureInfo.CurrentCulture, true));
 
             if (source != null)
             {
