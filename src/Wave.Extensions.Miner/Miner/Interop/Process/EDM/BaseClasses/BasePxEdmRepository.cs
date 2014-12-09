@@ -25,7 +25,7 @@ namespace Miner.Interop.Process
         private int _ID;
         private bool _IsDeleted;
         private IMMPxApplication _PxApp;
-        private IMMWMSExtendedData _WmsExtendedData;
+        private IMMWMSExtendedData _WmsExtendedData;        
 
         #endregion
 
@@ -52,6 +52,9 @@ namespace Miner.Interop.Process
             get
             {
                 if (_EdmRepository == null)
+                    _EdmRepository = this.GetRepository(_PxApp);
+
+                if (_EdmRepository == null)
                     return new Collection<EdmTable>();
 
                 return new[]
@@ -60,7 +63,7 @@ namespace Miner.Interop.Process
                     _EdmRepository.Design,
                     _EdmRepository.WorkLocation,
                     _EdmRepository.CompatibleUnit
-                };
+                }.Where(o => o != null);
             }
         }
 
@@ -230,8 +233,11 @@ namespace Miner.Interop.Process
             {
                 if (o.Valid)
                 {
-                    var rows = this.GetRows(o, string.Format(CultureInfo.InvariantCulture, "WHERE {0} = {1}", Fields.DesignID, designId)).Select(row => new EDM(row)).ToList();
-                    list.Add(o.TableName, rows);
+                    var rows = this.GetRows(o, string.Format(CultureInfo.InvariantCulture, "WHERE {0} = {1}", Fields.DesignID, designId));
+                    if (rows != null)
+                    {
+                        list.Add(o.TableName, rows.Select(row => new EDM(row)).ToList());
+                    }
                 }
             }
 
@@ -291,8 +297,12 @@ namespace Miner.Interop.Process
             if (edmTable == null || !edmTable.Valid)
                 return null;
 
+            string tableName = _PxApp.GetQualifiedTableName(edmTable.TableName);
+            if (!_Dataset.Tables.Contains(tableName))
+                return null;
+
             // Locate the table within the dataset that matches the given name.
-            DataTable table = _Dataset.Tables[_PxApp.GetQualifiedTableName(edmTable.TableName)];
+            DataTable table = _Dataset.Tables[tableName];
             if (table == null) return null;
 
             // Obtain all of the rows the satisfy the given filter.

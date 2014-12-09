@@ -95,7 +95,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static IDomain GetDomain(this IRow source, int index)
         {
-            if (index < 0 || index > source.Fields.FieldCount)
+            if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
             ISubtypes subtypes = (ISubtypes) source.Table;
@@ -140,7 +140,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static TValue GetValue<TValue>(this IRow source, int index, TValue fallbackValue)
         {
-            if (index < 0 || index > source.Fields.FieldCount)
+            if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
             return TypeCast.Cast(source.Value[index], fallbackValue);
@@ -302,7 +302,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static bool Update(this IRow source, int index, object value, IEqualityComparer<object> equalityComparer = null, bool compareChanges = false)
         {
-            if (index < 0 || index > source.Fields.FieldCount)
+            if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
             IRowChanges rowChanges = (IRowChanges) source;
