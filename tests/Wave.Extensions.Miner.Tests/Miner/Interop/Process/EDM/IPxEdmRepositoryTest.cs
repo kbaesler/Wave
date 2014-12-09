@@ -69,12 +69,12 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
-        public void IPxEdmRepository_GetEdms_Count_Equals_2()
+        public void IPxEdmRepository_GetEdms_Count_Equals_0()
         {
             IPxEdmRepository repository = new TestPxEdmRepository(base.PxApplication);
             var list = repository.GetEdms(1);
 
-            Assert.IsTrue(list.Count == 2);
+            Assert.IsTrue(list.Count == 0);
         }
 
         #endregion

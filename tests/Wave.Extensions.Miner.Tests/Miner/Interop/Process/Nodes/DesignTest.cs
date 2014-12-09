@@ -97,6 +97,7 @@ namespace SE.Tests.Process
                 Assert.IsNull(xml);                 
             }
         }
+        
 
         [TestMethod]
         public void IPxDesign_Initialize_Inheritance_IsTrue()

@@ -61,6 +61,27 @@ namespace Wave.Extensions.Esri.Tests
             Assert.IsTrue(pendingUpdates);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void IRow_Update_IndexOutOfRangeException_Min()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            feature.Update(-1, null, false);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void IRow_Update_IndexOutOfRangeException_Max()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            feature.Update(feature.Fields.FieldCount, null, false);
+        }
         #endregion
     }
 }
