@@ -40,48 +40,55 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Gets the indexes of the fields that have changed values.
+        ///     Gets the indexes and field names for all of the fields that have changed values.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{Int32}" /> representing the indexes of the fields that have changed.
+        ///     Returns a <see cref="Dictionary{Int32, String}" /> representing the indexes/names of the fields that have changed.
         /// </returns>
-        public static IEnumerable<int> GetChanges(this IRow source)
+        public static Dictionary<int, string> GetChanges(this IRow source)
         {
+            Dictionary<int, string> list = new Dictionary<int, string>();
             IRowChanges rowChanges = (IRowChanges) source;
             for (int i = 0; i < source.Fields.FieldCount; i++)
             {
                 if (rowChanges.ValueChanged[i])
                 {
-                    yield return i;
+                    list.Add(i, source.Fields.Field[i].Name);
                 }
             }
+
+            return list;
         }
 
         /// <summary>
-        ///     Gets the original value for those fields that have changed.
+        ///     Gets the field name and original value for those fields that have changed.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="fieldNames">The field names.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{Object}" /> representing the original values for those fields that have changed.
+        ///     Returns a <see cref="Dictionary{String, Object}" /> representing the field name / original values for those fields
+        ///     that have changed.
         /// </returns>
-        public static IEnumerable<object> GetChanges(this IRow source, params string[] fieldNames)
+        public static Dictionary<string, object> GetChanges(this IRow source, params string[] fieldNames)
         {
+            Dictionary<string, object> list = new Dictionary<string, object>();
             IRowChanges rowChanges = (IRowChanges) source;
             for (int i = 0; i < source.Fields.FieldCount; i++)
             {
                 foreach (var fieldName in fieldNames)
                 {
-                    if (source.Fields.Field[i].Name.Equals(fieldName))
+                    if (source.Fields.Field[i].Name.Equals(fieldName, StringComparison.OrdinalIgnoreCase))
                     {
                         if (rowChanges.ValueChanged[i])
                         {
-                            yield return rowChanges.OriginalValue[i];
+                            list.Add(fieldName, rowChanges.OriginalValue[i]);
                         }
                     }
                 }
             }
+
+            return list;
         }
 
         /// <summary>

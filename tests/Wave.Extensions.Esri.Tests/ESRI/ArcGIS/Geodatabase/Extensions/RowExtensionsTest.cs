@@ -11,16 +11,46 @@ namespace Wave.Extensions.Esri.Tests
     public class RowExtensionTest : EsriTests
     {
         #region Public Methods
+
         [TestMethod]
-        public void IRow_TryGetValue_Equals_True()
+        [ExpectedException(typeof (InvalidOperationException))]
+        public void IRow_BlockReentrancy_InvalidOperationException()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
 
-            int value;
-            bool condition = feature.TryGetValue(testClass.OIDFieldName, -1, out value);
-            Assert.IsTrue(condition);
-            Assert.AreNotEqual(-1, value);
+            feature.BlockReentrancy();
+            feature.SaveChanges();
+        }
+
+        [TestMethod]
+        public void IRow_GetChanges_Dictionary_Contains_2()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            feature.Update("DATEMODIFIED", DateTime.Now);
+            feature.Update("LASTUSER", Environment.UserName);
+
+            var list = feature.GetChanges();
+            Assert.IsTrue(list.Values.Contains("DATEMODIFIED"));
+            Assert.IsTrue(list.Values.Contains("LASTUSER"));
+        }
+
+        [TestMethod]
+        public void IRow_GetChanges_List_Equals_1()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            feature.Update("DATEMODIFIED", DateTime.Now);
+            feature.Update("LASTUSER", Environment.UserName);
+
+            var list = feature.GetChanges("DATEMODIFIED", "OBJECTID");
+            Assert.IsTrue(list.Count == 1);
         }
 
         [TestMethod]
@@ -36,15 +66,37 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (InvalidOperationException))]
-        public void IRow_BlockReentrancy_InvalidOperationException()
+        public void IRow_TryGetValue_Equals_True()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+
+            int value;
+            bool condition = feature.TryGetValue(testClass.OIDFieldName, -1, out value);
+            Assert.IsTrue(condition);
+            Assert.AreNotEqual(-1, value);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (IndexOutOfRangeException))]
+        public void IRow_Update_IndexOutOfRangeException_Negative()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
             Assert.IsNotNull(feature);
 
-            feature.BlockReentrancy();
-            feature.SaveChanges();
+            feature.Update(-1, null, false);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (IndexOutOfRangeException))]
+        public void IRow_Update_IndexOutOfRangeException_Positive()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            feature.Update(feature.Fields.FieldCount, null, false);
         }
 
         [TestMethod]
@@ -61,27 +113,6 @@ namespace Wave.Extensions.Esri.Tests
             Assert.IsTrue(pendingUpdates);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_Min()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1).FirstOrDefault();
-            Assert.IsNotNull(feature);
-
-            feature.Update(-1, null, false);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_Max()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1).FirstOrDefault();
-            Assert.IsNotNull(feature);
-
-            feature.Update(feature.Fields.FieldCount, null, false);
-        }
         #endregion
     }
 }
