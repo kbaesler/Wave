@@ -74,7 +74,7 @@ namespace ESRI.ArcGIS.esriSystem
             {
                 string name = e.Name.Split(",".ToCharArray())[0];
                 Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-                return assemblies.FirstOrDefault(resolve => { return (name.Equals(resolve.FullName.Split(",".ToCharArray())[0], StringComparison.OrdinalIgnoreCase)); });
+                return assemblies.FirstOrDefault(resolve => (name.Equals(resolve.FullName.Split(",".ToCharArray())[0], StringComparison.OrdinalIgnoreCase)));
             });
         }
 

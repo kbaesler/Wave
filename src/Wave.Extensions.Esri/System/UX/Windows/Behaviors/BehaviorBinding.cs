@@ -90,12 +90,7 @@ namespace System.Windows.Behaviors
         /// </summary>
         internal CommandBehaviorBinding Behavior
         {
-            get
-            {
-                if (_Behavior == null)
-                    _Behavior = new CommandBehaviorBinding();
-                return _Behavior;
-            }
+            get { return _Behavior ?? (_Behavior = new CommandBehaviorBinding()); }
         }
 
         #endregion

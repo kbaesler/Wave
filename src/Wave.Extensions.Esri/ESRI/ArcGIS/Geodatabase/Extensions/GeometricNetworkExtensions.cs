@@ -60,10 +60,7 @@ namespace ESRI.ArcGIS.Geodatabase
             INetElements netElements = (INetElements) network;
 
             ISimpleJunctionFeature sjf = source as ISimpleJunctionFeature;
-            if (sjf != null)
-                elementType = esriElementType.esriETJunction;
-            else
-                elementType = esriElementType.esriETEdge;
+            elementType = sjf != null ? esriElementType.esriETJunction : esriElementType.esriETEdge;
 
             IFeature feature = (IFeature) source;
             int eid = netElements.GetEID(feature.Class.ObjectClassID, feature.OID, -1, elementType);

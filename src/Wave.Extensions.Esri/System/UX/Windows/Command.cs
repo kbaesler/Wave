@@ -22,14 +22,7 @@ namespace System.Windows
         /// </summary>
         protected Command()
         {
-            if (Application.Current != null)
-            {
-                _Dispatcher = Application.Current.Dispatcher;
-            }
-            else
-            {
-                _Dispatcher = Dispatcher.CurrentDispatcher;
-            }
+            _Dispatcher = Application.Current != null ? Application.Current.Dispatcher : Dispatcher.CurrentDispatcher;
         }
 
         #endregion

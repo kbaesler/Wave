@@ -93,10 +93,7 @@ namespace System.Windows.Behaviors
                 if (string.IsNullOrEmpty(propertyName))
                     continue;
 
-                if (column.Header == null)
-                    columnName = propertyName;
-                else
-                    columnName = string.Format(CultureInfo.InvariantCulture, "{0}", column.Header);
+                columnName = column.Header == null ? propertyName : string.Format(CultureInfo.InvariantCulture, "{0}", column.Header);
 
                 // Create the new binding.
                 DataColumn header = table.Columns.Add(columnName);

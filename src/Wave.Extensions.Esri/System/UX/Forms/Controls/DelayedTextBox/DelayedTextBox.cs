@@ -64,15 +64,15 @@ namespace System.Forms.Controls
             }
 
             // Recreate the timer everytime the text changes
-            _Timer = new Timer(new TimerCallback(o =>
+            _Timer = new Timer(o =>
             {
                 // Invoke the delegate to update the binding source on the main (ui) thread
-                this.Invoke((MethodInvoker) delegate { base.OnTextChanged(e); }, new object[] {}
+                this.Invoke((MethodInvoker) (() => base.OnTextChanged(e)), new object[] {}
                     );
 
                 // Dispose of the timer so that it wont get called again
                 _Timer.Dispose();
-            }), null, this.DelayTime, Timeout.Infinite);
+            }, null, this.DelayTime, Timeout.Infinite);
         }
 
         #endregion

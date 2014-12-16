@@ -353,8 +353,7 @@ namespace Miner.Interop.Process
                         // Add the table to the dataset.
                         _Dataset.Tables.Add(table);
                     }
-                }
-                ;
+                }                
             }
         }
 

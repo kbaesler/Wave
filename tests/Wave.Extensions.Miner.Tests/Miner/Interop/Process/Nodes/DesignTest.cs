@@ -77,7 +77,7 @@ namespace SE.Tests.Process
         {
             IPxDesign design = new Design(base.PxApplication);
 
-            Assert.AreEqual(true, design.CreateNew(base.PxApplication.User));
+            Assert.IsTrue(design.CreateNew(base.PxApplication.User));
             Assert.AreEqual(base.PxApplication.User.Name, design.Owner.Name);
 
             design.Delete();
@@ -91,10 +91,10 @@ namespace SE.Tests.Process
             {
                 int nodeID = table.Rows[0].Field<int>(0);
                 IPxDesign design = new Design(base.PxApplication);
-                Assert.AreEqual(true, design.Initialize(nodeID));
+                Assert.IsTrue(design.Initialize(nodeID));
 
                 string xml = design.GetDesignXml();
-                Assert.IsNull(xml);                 
+                Assert.IsNotNull(xml);                 
             }
         }
         
@@ -107,7 +107,8 @@ namespace SE.Tests.Process
             {
                 int nodeID = table.Rows[0].Field<int>(0);
                 TestDesign design = new TestDesign(base.PxApplication);
-                Assert.AreEqual(true, design.Initialize(nodeID));
+                
+                Assert.IsTrue(design.Initialize(nodeID));
                 Assert.IsTrue(design.IsNew);
             }
         }
@@ -121,7 +122,7 @@ namespace SE.Tests.Process
             {
                 int nodeID = table.Rows[0].Field<int>(0);
                 IPxDesign design = new Design(base.PxApplication);
-                Assert.AreEqual(true, design.Initialize(nodeID));
+                Assert.IsTrue(design.Initialize(nodeID));
             }
         }
 

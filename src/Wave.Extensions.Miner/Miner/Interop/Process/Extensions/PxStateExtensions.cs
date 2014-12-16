@@ -1,4 +1,6 @@
-﻿namespace Miner.Interop.Process
+﻿using System.Linq;
+
+namespace Miner.Interop.Process
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="Miner.Interop.Process.IMMPxState" /> interface.
@@ -17,13 +19,7 @@
         /// </returns>
         public static bool Contains(this IMMEnumPxState source, IMMPxState state)
         {
-            foreach (var testState in source.AsEnumerable())
-            {
-                if (testState.Name == state.Name && testState.NodeType == state.NodeType)
-                    return true;
-            }
-
-            return false;
+            return source.AsEnumerable().Any(testState => testState.Name == state.Name && testState.NodeType == state.NodeType);
         }
 
         #endregion

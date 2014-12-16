@@ -287,7 +287,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 if (ext != null)
                 {
                     IMMModelNameInfo modelNameInfo = (IMMModelNameInfo) ext;
-                    return modelNames.Any(name => modelNameInfo.ModelNameExists(name));
+                    return modelNames.Any(modelNameInfo.ModelNameExists);
                 }
             }
 

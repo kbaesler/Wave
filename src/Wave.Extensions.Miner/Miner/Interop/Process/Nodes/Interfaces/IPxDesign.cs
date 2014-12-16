@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-using ESRI.ArcGIS.Geodatabase;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
