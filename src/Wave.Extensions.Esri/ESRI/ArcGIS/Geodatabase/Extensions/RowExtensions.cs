@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -25,7 +26,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IDisposable" /> implementation used to remove the block on dispose.
         /// </returns>
         /// <remarks>
-        ///     The reentrancy is only implemented in the <see cref="SaveChanges" /> method. The blocking will not take affect if
+        ///     The reentrancy is only implemented in the <see cref="M:SaveChanges" /> method. The blocking will not take affect if
         ///     the Store method is invoked.
         /// </remarks>
         public static IDisposable BlockReentrancy(this IRow source)
@@ -72,7 +73,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static Dictionary<string, object> GetChanges(this IRow source, params string[] fieldNames)
         {
-            Dictionary<string, object> list = new Dictionary<string, object>();
+            Dictionary<string, object> list = new Dictionary<string, object>(StringComparer.Create(CultureInfo.CurrentCulture, true));
+
             IRowChanges rowChanges = (IRowChanges) source;
             for (int i = 0; i < source.Fields.FieldCount; i++)
             {
@@ -82,7 +84,10 @@ namespace ESRI.ArcGIS.Geodatabase
                     {
                         if (rowChanges.ValueChanged[i])
                         {
-                            list.Add(fieldName, rowChanges.OriginalValue[i]);
+                            if (!list.ContainsKey(fieldName))
+                            {
+                                list.Add(fieldName, rowChanges.OriginalValue[i]);
+                            }
                         }
                     }
                 }
@@ -183,6 +188,39 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static bool SaveChanges(this IRow source)
         {
+            return source.SaveChanges(field =>
+            {
+                if (field.Editable && !field.Name.Equals("SHAPE.LEN"))
+                {
+                    switch (field.Type)
+                    {
+                        case esriFieldType.esriFieldTypeBlob:
+                        case esriFieldType.esriFieldTypeRaster:
+                        case esriFieldType.esriFieldTypeXML:
+                            return false;
+                        default:
+                            return true;
+                    }
+                }
+
+                return false;
+            });
+        }
+
+        /// <summary>
+        ///     Commits the changes to the database when one or more field values have changed.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The predicate that indicates if the field should be checked for changes.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the store was called on the row; otherwise <c>false</c>
+        /// </returns>
+        /// <remarks>
+        ///     The changes will not be saved, if there was a call to BlockReentrancy of which the IDisposable return value has not
+        ///     yet been disposed of.
+        /// </remarks>
+        public static bool SaveChanges(this IRow source, Predicate<IField> predicate)
+        {
             source.CheckReentrancy();
 
             bool saveChanges = false;
@@ -190,7 +228,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             for (int i = 0; i < source.Fields.FieldCount; i++)
             {
-                if (rowChanges.ValueChanged[i])
+                if (predicate(source.Fields.Field[i]) && rowChanges.ValueChanged[i])
                 {
                     saveChanges = true;
                     break;
@@ -262,15 +300,15 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="value">The value for the field.</param>
-        /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
+        /// <param name="equalityCompare">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
-        public static bool Update(this IRow source, string fieldName, object value, bool compareChanges = false)
+        public static bool Update(this IRow source, string fieldName, object value, bool equalityCompare = true)
         {
             int i = source.Table.FindField(fieldName);
-            return source.Update(i, value, compareChanges);
+            return source.Update(i, value, equalityCompare);
         }
 
         /// <summary>
@@ -280,59 +318,44 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="index">The index of the field.</param>
         /// <param name="value">The value for the field.</param>
-        /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
+        /// <param name="equalityCompare">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        public static bool Update(this IRow source, int index, object value, bool compareChanges = false)
-        {
-            return source.Update(index, value, null, compareChanges);
-        }
-
-        /// <summary>
-        ///     Updates the column index on the row with the value when the original value and the specified
-        ///     <paramref name="value" /> are different.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="index">The index of the field.</param>
-        /// <param name="value">The value for the field.</param>
-        /// <param name="equalityComparer">
-        ///     The equality comparer to use to determine whether or not values are equal.
-        ///     If null, the default equality comparer for object is used.
-        /// </param>
-        /// <param name="compareChanges">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
-        /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
-        /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
-        /// <exception cref="IndexOutOfRangeException"></exception>
-        public static bool Update(this IRow source, int index, object value, IEqualityComparer<object> equalityComparer = null, bool compareChanges = false)
+        public static bool Update(this IRow source, int index, object value, bool equalityCompare = true)
         {
             if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
-            IRowChanges rowChanges = (IRowChanges) source;
-            if (compareChanges)
+            if (equalityCompare)
             {
-                if (equalityComparer == null)
-                    equalityComparer = EqualityComparer<object>.Default;
-
-                bool pendingChanges = false;
-
-                object oldValue = rowChanges.OriginalValue[index];
-
-                if (!equalityComparer.Equals(oldValue, value))
+                switch (source.Table.Fields.Field[index].Type)
                 {
-                    source.Value[index] = value;
-                    pendingChanges = true;
+                    case esriFieldType.esriFieldTypeOID:
+                    case esriFieldType.esriFieldTypeInteger:
+                        return source.Update(index, TypeCast.Cast(value, default(long)), EqualityComparer<long>.Default);
+
+                    case esriFieldType.esriFieldTypeSmallInteger:
+                        return source.Update(index, TypeCast.Cast(value, default(float)), EqualityComparer<float>.Default);
+
+                    case esriFieldType.esriFieldTypeSingle:
+                        return source.Update(index, TypeCast.Cast(value, default(int)), EqualityComparer<int>.Default);
+
+                    case esriFieldType.esriFieldTypeDouble:
+                        return source.Update(index, TypeCast.Cast(value, default(double)), EqualityComparer<double>.Default);
+
+                    case esriFieldType.esriFieldTypeString:
+                    case esriFieldType.esriFieldTypeDate:
+                    case esriFieldType.esriFieldTypeGUID:
+                    case esriFieldType.esriFieldTypeGlobalID:
+                        return source.Update(index, TypeCast.Cast(value, default(string)), EqualityComparer<string>.Default);
                 }
 
-                return pendingChanges;
+                return source.Update(index, value, EqualityComparer<object>.Default);
             }
 
-            source.Value[index] = value;
-            return rowChanges.ValueChanged[index];
+            return source.Update(index, value, null);
         }
 
         /// <summary>
@@ -372,6 +395,43 @@ namespace ESRI.ArcGIS.Geodatabase
                 if (reentrancyMonitor.IsBusy)
                     throw new InvalidOperationException("There was a call to BlockReentrancy of which the IDisposable return value has not yet been disposed of.");
             }
+        }
+
+        /// <summary>
+        ///     Updates the column index on the row with the value when the original value and the specified
+        ///     <paramref name="value" /> are different.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="index">The index of the field.</param>
+        /// <param name="value">The value for the field.</param>
+        /// <param name="equalityComparer">
+        ///     The equality comparer to use to determine whether or not values are equal.
+        ///     If null, the default equality comparer for object is used.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        /// </returns>
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        private static bool Update<TValue>(this IRow source, int index, TValue value, IEqualityComparer<TValue> equalityComparer)
+        {
+            IRowChanges rowChanges = (IRowChanges) source;
+            if (equalityComparer != null)
+            {
+                bool pendingChanges = false;
+                TValue oldValue = TypeCast.Cast(rowChanges.OriginalValue[index], default(TValue));
+
+                if (!equalityComparer.Equals(oldValue, value))
+                {
+                    source.Value[index] = value;
+                    pendingChanges = true;
+                }
+
+                return pendingChanges;
+            }
+
+            source.Value[index] = value;
+            return rowChanges.ValueChanged[index];
         }
 
         #endregion

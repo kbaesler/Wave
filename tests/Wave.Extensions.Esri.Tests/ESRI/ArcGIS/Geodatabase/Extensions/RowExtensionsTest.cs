@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using ESRI.ArcGIS.Geodatabase;
@@ -25,6 +26,20 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        public void IRow_GetChanges_By_Field_Name_Equals_1()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            feature.Update("DATEMODIFIED", DateTime.Now);
+            feature.Update("LASTUSER", Environment.UserName);
+
+            var list = feature.GetChanges("DATEMODIFIED", "OBJECTID");
+            Assert.IsTrue(list.Count == 1);
+        }
+
+        [TestMethod]
         public void IRow_GetChanges_Dictionary_Contains_2()
         {
             var testClass = base.GetTestClass();
@@ -37,20 +52,6 @@ namespace Wave.Extensions.Esri.Tests
             var list = feature.GetChanges();
             Assert.IsTrue(list.Values.Contains("DATEMODIFIED"));
             Assert.IsTrue(list.Values.Contains("LASTUSER"));
-        }
-
-        [TestMethod]
-        public void IRow_GetChanges_List_Equals_1()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1).FirstOrDefault();
-            Assert.IsNotNull(feature);
-
-            feature.Update("DATEMODIFIED", DateTime.Now);
-            feature.Update("LASTUSER", Environment.UserName);
-
-            var list = feature.GetChanges("DATEMODIFIED", "OBJECTID");
-            Assert.IsTrue(list.Count == 1);
         }
 
         [TestMethod]
@@ -79,7 +80,7 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_Negative()
+        public void IRow_Update_IndexOutOfRangeException_EqualityCompare_False_Lower()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
@@ -90,7 +91,7 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_Positive()
+        public void IRow_Update_IndexOutOfRangeException_EqualityCompare_False_Upper()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
@@ -100,7 +101,50 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void IRow_Update_PendingChanges_IsFalse()
+        [ExpectedException(typeof (InvalidCastException))]
+        public void IRow_Update_InvalidCastException_Double()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeInteger);
+            Assert.IsNotNull(testField);
+
+            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
+        }        
+
+        [TestMethod]
+        [ExpectedException(typeof (InvalidCastException))]
+        public void IRow_Update_InvalidCastException_Int32()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeSmallInteger);
+            Assert.IsNotNull(testField);
+
+            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
+        }
+        
+
+        [TestMethod]
+        [ExpectedException(typeof (InvalidCastException))]
+        public void IRow_Update_InvalidCastException_String()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeString);
+            Assert.IsNotNull(testField);
+
+            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
+        }
+
+        [TestMethod]
+        public void IRow_Update_IsFalse()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
@@ -110,6 +154,19 @@ namespace Wave.Extensions.Esri.Tests
             object value = feature.GetValue(editable.Name, editable.DefaultValue);
 
             bool pendingUpdates = feature.Update(feature.Fields.Field[1].Name, value);
+            Assert.IsFalse(pendingUpdates);
+        }
+
+        [TestMethod]
+        public void IRow_Update_IsTrue()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            var editable = testClass.Fields.AsEnumerable().First(field => field.Editable && field.Type == esriFieldType.esriFieldTypeString);
+
+            bool pendingUpdates = feature.Update(editable.Name, "ABC");
             Assert.IsTrue(pendingUpdates);
         }
 

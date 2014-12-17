@@ -9,7 +9,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class FieldExtensions
     {
-        #region Public Methods
+        #region Public Methods        
 
         /// <summary>
         ///     Creates an <see cref="IDictionary{TKey, TValue}" /> from an <see cref="IFields" />
