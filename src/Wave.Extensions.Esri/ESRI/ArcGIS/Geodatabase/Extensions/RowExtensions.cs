@@ -188,23 +188,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static bool SaveChanges(this IRow source)
         {
-            return source.SaveChanges(field =>
-            {
-                if (field.Editable && !field.Name.Equals("SHAPE.LEN"))
-                {
-                    switch (field.Type)
-                    {
-                        case esriFieldType.esriFieldTypeBlob:
-                        case esriFieldType.esriFieldTypeRaster:
-                        case esriFieldType.esriFieldTypeXML:
-                            return false;
-                        default:
-                            return true;
-                    }
-                }
-
-                return false;
-            });
+            return source.SaveChanges(field => field.Editable);
         }
 
         /// <summary>
