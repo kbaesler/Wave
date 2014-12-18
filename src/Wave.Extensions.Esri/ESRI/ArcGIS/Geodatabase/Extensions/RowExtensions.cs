@@ -321,10 +321,10 @@ namespace ESRI.ArcGIS.Geodatabase
                         return source.Update(index, TypeCast.Cast(value, default(long)), EqualityComparer<long>.Default);
 
                     case esriFieldType.esriFieldTypeSmallInteger:
-                        return source.Update(index, TypeCast.Cast(value, default(float)), EqualityComparer<float>.Default);
+                        return source.Update(index, TypeCast.Cast(value, default(int)), EqualityComparer<int>.Default);
 
                     case esriFieldType.esriFieldTypeSingle:
-                        return source.Update(index, TypeCast.Cast(value, default(int)), EqualityComparer<int>.Default);
+                        return source.Update(index, TypeCast.Cast(value, default(float)), EqualityComparer<float>.Default);
 
                     case esriFieldType.esriFieldTypeDouble:
                         return source.Update(index, TypeCast.Cast(value, default(double)), EqualityComparer<double>.Default);
