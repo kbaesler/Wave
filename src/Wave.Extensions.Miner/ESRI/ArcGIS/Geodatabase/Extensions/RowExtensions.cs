@@ -226,25 +226,29 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         private static bool Update<TValue>(this IRow source, int index, TValue value, IEqualityComparer<TValue> equalityComparer, IMMFieldAdapter fieldAdapter)
         {
-            IRowChanges rowChanges = (IRowChanges) source;
+            bool pendingChanges = true;
             if (equalityComparer != null)
             {
-                bool pendingChanges = false;
-
+                IRowChanges rowChanges = (IRowChanges)source;
                 object originalValue = (fieldAdapter != null) ? fieldAdapter.OriginalValue : rowChanges.OriginalValue[index];
+
                 TValue oldValue = TypeCast.Cast(originalValue, default(TValue));
-
-                if (!equalityComparer.Equals(oldValue, value))
-                {
-                    source.Value[index] = value;
-                    pendingChanges = true;
-                }
-
-                return pendingChanges;
+                pendingChanges = !equalityComparer.Equals(oldValue, value);
             }
 
-            source.Value[index] = value;
-            return rowChanges.ValueChanged[index];
+            if (pendingChanges)
+            {
+                if (Equals(value, default(TValue)) && source.Fields.Field[index].IsNullable)
+                {
+                    source.Value[index] = DBNull.Value;
+                }
+                else
+                {
+                    source.Value[index] = value;
+                }
+            }
+
+            return true;
         }
 
         #endregion
