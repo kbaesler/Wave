@@ -248,7 +248,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 }
             }
 
-            return true;
+            return pendingChanges;
         }
 
         #endregion
