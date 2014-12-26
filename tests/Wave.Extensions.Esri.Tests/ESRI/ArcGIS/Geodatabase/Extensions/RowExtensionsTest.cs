@@ -26,7 +26,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void IRow_GetChanges_By_Field_Name_Equals_1()
+        public void IRow_GetChanges_By_FieldName_Equals_1()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
@@ -80,7 +80,7 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_EqualityCompare_False_Lower()
+        public void IRow_Update_IndexOutOfRangeException_False_Lower()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
@@ -91,7 +91,7 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_EqualityCompare_False_Upper()
+        public void IRow_Update_IndexOutOfRangeException_False_Upper()
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1).FirstOrDefault();
@@ -108,11 +108,25 @@ namespace Wave.Extensions.Esri.Tests
             var feature = testClass.Fetch(1).FirstOrDefault();
             Assert.IsNotNull(feature);
 
-            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeInteger);
+            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeDouble);
             Assert.IsNotNull(testField);
 
             feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
-        }        
+        }
+
+        [TestMethod]
+        public void IRow_Update_DateTime()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeDate);
+            Assert.IsNotNull(testField);
+
+            object date = feature.GetValue(testField.Name, default(DateTime?));
+            Assert.IsFalse(feature.Update(testField.Name, date));
+        }
 
         [TestMethod]
         [ExpectedException(typeof (InvalidCastException))]
