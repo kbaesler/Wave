@@ -5,3 +5,4 @@ Miner.Framework
     :maxdepth: 2
 
     miner.framework.baseclasses
+    miner.framework.trace
