@@ -56,7 +56,6 @@ namespace System.Windows
         }
 
         /// <summary>
-        ///     5
         ///     Opens a window and returns only when the newly opened window is closed.
         /// </summary>
         /// <param name="window">The window.</param>
