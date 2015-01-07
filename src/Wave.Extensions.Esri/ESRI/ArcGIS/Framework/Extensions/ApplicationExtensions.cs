@@ -13,12 +13,6 @@ namespace ESRI.ArcGIS.Framework
     /// </summary>
     public static class ApplicationExtensions
     {
-        #region Fields
-
-        private static MouseCursorReverter _MouseCursorReverter;
-
-        #endregion
-
         #region Public Methods
 
         /// <summary>
@@ -51,7 +45,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
         ///     <c>null</c>.
         /// </returns>
-        /// <exception cref="System.ArgumentException">The application framework has not been fully initialized.</exception>       
+        /// <exception cref="System.ArgumentException">The application framework has not been fully initialized.</exception>
         public static ICommandItem GetCommandItem(this IApplication source, string commandName)
         {
             if (source == null) return null;
@@ -126,36 +120,107 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
-        ///     Starts or stops spinning globe in ArcMap.
+        ///     Starts spinning globe in ArcMap and updates the status bar message.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="play">if set to <c>true</c> if the animation should be shown; otherwise <c>false</c>.</param>
-        /// <param name="statusMessage">The message that will appear in the status bar.</param>
-        public static void PlayAnimation(this IApplication source, bool play, string statusMessage = null)
+        /// <param name="statusMessage">The status message.</param>
+        /// <returns>
+        ///     Returns a <see cref="IDisposable" /> representing the a disposable object that will stop the spinning globle
+        ///     when disposed.
+        /// </returns>
+        public static IDisposable PlayAnimation(this IApplication source, string statusMessage = null)
         {
-            if (source == null || !source.Visible) return;
+            ProgressAnimationMonitor monitor = new ProgressAnimationMonitor(source);
+            monitor.Play(MouseCursorImage.Wait, statusMessage);
 
-            if (play)
-            {
-                _MouseCursorReverter = new MouseCursorReverter(MouseCursorImage.Wait);
+            return monitor;
+        }
 
-                IAnimationProgressor animation = source.StatusBar.ProgressAnimation;
-                animation.Show();
-            }
-            else
+        #endregion
+    }
+
+    /// <summary>
+    ///     An internal class used to handle starting and stopping the ArcMap progress animation.
+    /// </summary>
+    internal class ProgressAnimationMonitor : IDisposable
+    {
+        #region Fields
+
+        private readonly IApplication _Application;
+        private MouseCursorReverter _MouseCursorReverter;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ProgressAnimationMonitor" /> class.
+        /// </summary>
+        /// <param name="application">The application.</param>
+        public ProgressAnimationMonitor(IApplication application)
+        {
+            _Application = application;
+        }
+
+        #endregion
+
+        #region IDisposable Members
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Starts the global spinning in ArcMap and updates the message on the status bar.
+        /// </summary>
+        /// <param name="cursor">The cursor.</param>
+        /// <param name="statusMessage">The status message.</param>
+        public void Play(MouseCursorImage cursor, string statusMessage)
+        {
+            _MouseCursorReverter = new MouseCursorReverter(cursor);
+
+            IAnimationProgressor animation = _Application.StatusBar.ProgressAnimation;
+            animation.Show();
+
+            _Application.StatusBar.PlayProgressAnimation(true);
+            _Application.StatusBar.Message[0] = statusMessage;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+        ///     unmanaged resources.
+        /// </param>
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
             {
                 if (_MouseCursorReverter != null)
                 {
                     _MouseCursorReverter.Dispose();
-                    _MouseCursorReverter = null;
                 }
 
-                IAnimationProgressor animation = source.StatusBar.ProgressAnimation;
+                _Application.StatusBar.PlayProgressAnimation(false);
+                _Application.StatusBar.Message[0] = null;
+
+                IAnimationProgressor animation = _Application.StatusBar.ProgressAnimation;
                 animation.Hide();
             }
-
-            source.StatusBar.PlayProgressAnimation(play);
-            source.StatusBar.Message[0] = statusMessage;
         }
 
         #endregion
