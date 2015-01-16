@@ -223,65 +223,6 @@ namespace ESRI.ArcGIS.Geodatabase
             return list;
         }
 
-        /// <summary>
-        ///     Gets the changes (or edits) that have been made in the current edit session.
-        /// </summary>
-        /// <param name="source">The source version.</param>
-        /// <param name="editDataChangesType">Type of the edit data changes.</param>
-        /// <param name="differenceTypes">The type of differences.</param>
-        /// <returns>
-        ///     Returns a <see cref="Dictionary{String, DifferenceRow}" /> representing the differences for the table
-        ///     (or key).
-        /// </returns>
-        /// <exception cref="System.InvalidOperationException">
-        ///     The version must be within an edit session in order to determine the
-        ///     edit changes.
-        /// </exception>
-        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IVersion source, esriEditDataChangesType editDataChangesType, params esriDifferenceType[] differenceTypes)
-        {
-            var list = new Dictionary<string, List<DifferenceRow>>();
-
-            IWorkspaceEdit2 workspaceEdit2 = (IWorkspaceEdit2) source;
-            if (!workspaceEdit2.IsBeingEdited())
-                throw new InvalidOperationException("The version must be within an edit session in order to determine the edit changes.");
-
-            IDataChangesEx dataChanges = workspaceEdit2.EditDataChanges[editDataChangesType];
-            IEnumBSTR enumMci = dataChanges.ModifiedClasses;
-            enumMci.Reset();
-            string tableName;
-            while ((tableName = enumMci.Next()) != null)
-            {
-                var rows = new List<DifferenceRow>();
-
-                foreach (var differenceType in differenceTypes)
-                {
-                    using (ComReleaser cr = new ComReleaser())
-                    {
-                        IDifferenceCursorEx cursor = dataChanges.ExtractEx(tableName, differenceType);
-                        cr.ManageLifetime(cursor);
-
-                        IRow sourceRow;
-                        IRow differenceRow;
-                        int oid;
-                        ILongArray fieldIndices;
-
-                        cursor.Next(out oid, out sourceRow, out differenceRow, out fieldIndices);
-                        while (oid != -1)
-                        {
-                            var row = new DifferenceRow(differenceType, oid, differenceRow, sourceRow, fieldIndices);
-                            rows.Add(row);
-
-                            cursor.Next(out oid, out sourceRow, out differenceRow, out fieldIndices);
-                        }
-                    }
-                }
-
-                list.Add(tableName, rows);
-            }
-
-            return list;
-        }
-
         #endregion
     }
 
