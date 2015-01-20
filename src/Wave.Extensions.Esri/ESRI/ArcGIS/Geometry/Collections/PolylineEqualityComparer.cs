@@ -1,9 +1,8 @@
 ﻿using System;
 
 using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Geometry;
 
-namespace ESRI.ArcGIS.Geodatabase
+namespace ESRI.ArcGIS.Geometry
 {
     /// <summary>
     ///     Compares two <see cref="IGeometry" /> objects based on the <see cref="IClone" /> equality.
@@ -72,19 +71,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             return true;
         }
-
-        /// <summary>
-        ///     Returns a hash code for this instance.
-        /// </summary>
-        /// <param name="obj">The object.</param>
-        /// <returns>
-        ///     A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-        /// </returns>
-        public int GetHashCode(IGeometry obj)
-        {
-            return obj.GetHashCode();
-        }
-
+        
         #endregion
     }
 }

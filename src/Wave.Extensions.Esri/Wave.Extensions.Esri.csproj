@@ -34,7 +34,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Wave-sn.pfx</AssemblyOriginatorKeyFile>
@@ -185,12 +185,15 @@
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxCommand.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxToolbar.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxDockableWindow.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Extensions\ArcCatalog.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Extensions\ArcMap.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\EditorExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\PolylineEqualityComparer.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RelationalEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparer.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\GeometryEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\GeometryEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RowEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ComReleaserExtensions.cs" />

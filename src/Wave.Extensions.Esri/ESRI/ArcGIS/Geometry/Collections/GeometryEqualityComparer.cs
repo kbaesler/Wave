@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 
 using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Geometry;
 
-namespace ESRI.ArcGIS.Geodatabase
+namespace ESRI.ArcGIS.Geometry
 {
     /// <summary>
     ///     Compares two <see cref="IGeometry" /> objects based on the <see cref="IClone"/> equality.
