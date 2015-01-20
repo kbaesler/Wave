@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 using ESRI.ArcGIS.Geodatabase;
 
@@ -61,11 +62,11 @@ namespace Wave.Extensions.Miner.Tests
 
             if (_ProductInstallation != mmProductInstallation.mmPIDesigner)
             {
-                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Settings.Default.SessionManager), "", false, ArcFM.Process.SessionManager.Name);
+                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,Settings.Default.SessionManager)), "", false, ArcFM.Process.SessionManager.Name);
             }
             else
             {
-                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Settings.Default.WorkflowManager), "", false, ArcFM.Process.WorkflowManager.Name);
+                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.WorkflowManager)), "", false, ArcFM.Process.WorkflowManager.Name);
             }
 
             ((IMMPxApplicationEx2) _PxApplication).Workspace = base.Workspace;

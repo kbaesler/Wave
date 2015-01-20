@@ -122,6 +122,7 @@
     <Compile Include="EsriTests.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\GeometryEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RowEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparerTest.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\CursorExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\WorkspaceFactoriesTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

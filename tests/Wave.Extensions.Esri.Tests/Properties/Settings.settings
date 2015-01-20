@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Minerville" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\\..\\..\\Sample Data\\Geodatabases\\Minerville.gdb</Value>
+      <Value Profile="(Default)">..\\..\\..\\..\\Sample Data\\Geodatabases\\Minerville.gdb</Value>
     </Setting>
   </Settings>
 </SettingsFile>

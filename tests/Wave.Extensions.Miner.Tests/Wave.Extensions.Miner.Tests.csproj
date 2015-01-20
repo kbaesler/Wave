@@ -165,7 +165,7 @@
     <Compile Include="Miner\Interop\Process\PxApplicationExtensionsTest.cs" />
     <Compile Include="Miner\Interop\Process\PxApplicationFactoriesTest.cs" />
     <Compile Include="MinerTests.cs" />
-    <Compile Include="Miner\Interop\Collections\TreeViewCollectionTest.cs" />
+    <Compile Include="Miner\Interop\Collections\TreeViewSelectionEnumeratorTest.cs" />
     <Compile Include="Miner\Interop\Process\PxApplicationFactoryTest.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

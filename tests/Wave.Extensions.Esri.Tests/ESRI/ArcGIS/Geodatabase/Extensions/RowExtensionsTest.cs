@@ -36,7 +36,7 @@ namespace Wave.Extensions.Esri.Tests
             feature.Update("LASTUSER", Environment.UserName);
 
             var list = feature.GetChanges("DATEMODIFIED", "OBJECTID");
-            Assert.IsTrue(list.Count == 1);
+            Assert.IsTrue(list.Count() == 1);
         }
 
         [TestMethod]

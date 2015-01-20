@@ -7,12 +7,12 @@ using Miner.Interop;
 namespace Wave.Extensions.Miner.Tests
 {
     [TestClass]
-    public class TreeViewCollectionTest : MinerTests
+    public class TreeViewSelectionEnumeratorTest : MinerTests
     {
         #region Public Methods
 
         [TestMethod]
-        public void TreeViewCollection_EOF_IsTrue()
+        public void TreeViewSelectionEnumerator_EOF_IsTrue()
         {
             IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
             Assert.IsNotNull(testClass);
@@ -21,24 +21,24 @@ namespace Wave.Extensions.Miner.Tests
             filter.WhereClause = "OBJECTID < 10";
 
             var list = testClass.Fetch(filter);
-            TreeViewCollection collection = new TreeViewCollection(list);
+            TreeViewSelectionEnumerator enumerator = new TreeViewSelectionEnumerator(list);
 
-            while ((collection.Next) != null)
+            while ((enumerator.Next) != null)
             {
             }
 
-            Assert.IsTrue(collection.EOF);
+            Assert.IsTrue(enumerator.EOF);
         }
 
         [TestMethod]
-        public void TreeViewCollection_IsEmpty_IsTrue()
+        public void TreeViewSelectionEnumerator_IsEmpty_IsTrue()
         {
-            TreeViewCollection collection = new TreeViewCollection();
-            Assert.IsTrue(collection.EOF);
+            TreeViewSelectionEnumerator enumerator = new TreeViewSelectionEnumerator();
+            Assert.IsTrue(enumerator.EOF);
         }
 
         [TestMethod]
-        public void TreeViewCollection_Next_IsTrue()
+        public void TreeViewSelectionEnumerator_Next_IsTrue()
         {
             IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
             Assert.IsNotNull(testClass);
@@ -47,14 +47,14 @@ namespace Wave.Extensions.Miner.Tests
             filter.WhereClause = "OBJECTID < 10";
 
             var list = testClass.Fetch(filter);
-            TreeViewCollection collection = new TreeViewCollection(list);
+            TreeViewSelectionEnumerator enumerator = new TreeViewSelectionEnumerator(list);
 
-            ID8ListItem item = collection.Next;
+            ID8ListItem item = enumerator.Next;
             Assert.IsTrue(item is ID8Feature);
         }
 
         [TestMethod]
-        public void TreeViewCollection_Reset_Equal()
+        public void TreeViewSelectionEnumerator_Reset_Equal()
         {
             IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
             Assert.IsNotNull(testClass);
@@ -63,14 +63,14 @@ namespace Wave.Extensions.Miner.Tests
             filter.WhereClause = "OBJECTID < 10";
 
             var list = testClass.Fetch(filter);
-            TreeViewCollection collection = new TreeViewCollection(list);
+            TreeViewSelectionEnumerator enumerator = new TreeViewSelectionEnumerator(list);
 
-            ID8GeoAssoc x = collection.Next as ID8GeoAssoc;
+            ID8GeoAssoc x = enumerator.Next as ID8GeoAssoc;
             Assert.IsNotNull(x);
 
-            collection.Reset();
+            enumerator.Reset();
 
-            ID8GeoAssoc y = collection.Next as ID8GeoAssoc;
+            ID8GeoAssoc y = enumerator.Next as ID8GeoAssoc;
             Assert.IsNotNull(y);
 
             Assert.AreEqual(x.TableName, y.TableName);

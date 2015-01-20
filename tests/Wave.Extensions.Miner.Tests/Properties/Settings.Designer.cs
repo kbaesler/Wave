@@ -25,7 +25,7 @@ namespace Wave.Extensions.Miner.Tests.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\..\\\\Sample Data\\Databases\\SessionManager.mdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\..\\\\..\\\\Sample Data\\Databases\\SessionManager.mdb")]
         public string SessionManager {
             get {
                 return ((string)(this["SessionManager"]));
@@ -37,7 +37,7 @@ namespace Wave.Extensions.Miner.Tests.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\..\\\\Sample Data\\Databases\\WorkflowManager.mdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\..\\\\..\\\\Sample Data\\Databases\\WorkflowManager.mdb")]
         public string WorkflowManager {
             get {
                 return ((string)(this["WorkflowManager"]));
