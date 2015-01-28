@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Jumpercables/Wave.png?label=ready&title=Ready)](https://waffle.io/Jumpercables/Wave)
 # Wave #
 [![Documentation Status](https://readthedocs.org/projects/wave/badge/?version=latest)](http://wave.readthedocs.org/en/latest/)
 
