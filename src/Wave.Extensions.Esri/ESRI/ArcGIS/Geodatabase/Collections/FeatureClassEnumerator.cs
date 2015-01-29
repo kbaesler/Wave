@@ -21,7 +21,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="list">The feature classes.</param>
         public FeatureClassEnumerator(IEnumerable<IFeatureClass> list)
         {
-            _Enumerator = new List<IFeatureClass>(list).GetEnumerator();
+            _Enumerator = list.GetEnumerator();
         }
 
         /// <summary>

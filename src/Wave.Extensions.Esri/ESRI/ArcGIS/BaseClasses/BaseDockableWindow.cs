@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Framework;
 
@@ -6,6 +8,7 @@ namespace ESRI.ArcGIS.BaseClasses
     /// <summary>
     ///     An abstract class that is used for creating dockable windows.
     /// </summary>
+    [ComVisible(true)]
     public abstract class BaseDockableWindow : IDockableWindowDef
     {
         #region Constructors

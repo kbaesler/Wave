@@ -30,6 +30,16 @@ namespace ESRI.ArcGIS.Geodatabase
             return null;
         }
 
+        /// <summary>
+        /// Updates the minimum display extent to reflect the changes to the feature to provide visual feedback.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="display">The display.</param>
+        /// <param name="featureRenderer">The feature renderer.</param>
+        public static void Invalidate(this IFeature source, IScreenDisplay display, IFeatureRenderer featureRenderer)
+        {
+            source.Invalidate(display, featureRenderer, esriScreenCache.esriAllScreenCaches);
+        }
 
         /// <summary>
         ///     Updates the minimum display extent to reflect the changes to the feature to provide visual feedback.
@@ -38,7 +48,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="display">The display.</param>
         /// <param name="featureRenderer">The feature renderer.</param>
         /// <param name="screenCache">The screen cache.</param>
-        public static void Invalidate(this IFeature source, IScreenDisplay display, IFeatureRenderer featureRenderer, esriScreenCache screenCache = esriScreenCache.esriAllScreenCaches)
+        public static void Invalidate(this IFeature source, IScreenDisplay display, IFeatureRenderer featureRenderer, esriScreenCache screenCache)
         {
             if (display == null || source == null || featureRenderer == null)
                 return;

@@ -10,7 +10,7 @@ namespace System.Windows.Controls
     /// <summary>
     ///     A <see cref="TextBox" /> control that supports type-ahead (or auto complete).
     /// </summary>
-    public class AutoCompleteTextBox : Control
+    public class AutoCompleteTextBox : Control, IDisposable
     {
         #region Fields
 
@@ -158,6 +158,18 @@ namespace System.Windows.Controls
 
         #endregion
 
+        #region IDisposable Members
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+        }
+
+        #endregion
+
         #region Protected Methods
 
         /// <summary>
@@ -208,6 +220,21 @@ namespace System.Windows.Controls
             {
                 var item = (ComboBoxItem) _ComboBox.SelectedItem;
                 this.Text = string.Format("{0}", item.Tag);
+            }
+        }
+
+        /// <summary>
+        ///     Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="dissposing">
+        ///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+        ///     unmanaged resources.
+        /// </param>
+        private void Dispose(bool dissposing)
+        {
+            if (dissposing)
+            {
+                _KeypressTimer.Dispose();
             }
         }
 

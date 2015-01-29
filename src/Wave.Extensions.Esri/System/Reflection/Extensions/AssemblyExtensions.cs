@@ -17,6 +17,8 @@ namespace System.Reflection
         /// <returns>Returns a <see cref="string" /> representing the description; otherwise <c>null</c>.</returns>
         public static string GetCopyrights(this Assembly assembly)
         {
+            if(assembly == null) return null;
+            
             AssemblyCopyrightAttribute[] array = (AssemblyCopyrightAttribute[]) assembly.GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
             return (array.Length > 0) ? array[0].Copyright : null;
         }
@@ -28,8 +30,10 @@ namespace System.Reflection
         /// <returns>Returns a <see cref="string" /> representing the directory that contains the assembly; otherwise <c>null</c>.</returns>
         public static string GetDirectory(this Assembly assembly)
         {
+            if (assembly == null) return null;
+
             string codeBase = assembly.CodeBase;
-            UriBuilder uri = new UriBuilder(codeBase);
+            UriBuilder uri = new UriBuilder(new Uri(codeBase));
             string path = Path.GetDirectoryName(Uri.UnescapeDataString(uri.Path));
             return path;
         }
@@ -42,6 +46,8 @@ namespace System.Reflection
         /// <returns>Returns a <see cref="string" /> representing the description; otherwise <c>null</c>.</returns>
         public static string GetProductDescription(this Assembly assembly)
         {
+            if (assembly == null) return null;
+
             AssemblyDescriptionAttribute[] array = (AssemblyDescriptionAttribute[]) assembly.GetCustomAttributes(typeof (AssemblyDescriptionAttribute), false);
             return (array.Length > 0) ? array[0].Description : null;
         }
@@ -54,6 +60,8 @@ namespace System.Reflection
         /// <returns>Returns a <see cref="string" /> representing the description; otherwise <c>null</c>.</returns>
         public static string GetProductName(this Assembly assembly)
         {
+            if (assembly == null) return null;
+
             AssemblyProductAttribute[] array = (AssemblyProductAttribute[]) assembly.GetCustomAttributes(typeof (AssemblyProductAttribute), false);
             return (array.Length > 0) ? array[0].Product : null;
         }

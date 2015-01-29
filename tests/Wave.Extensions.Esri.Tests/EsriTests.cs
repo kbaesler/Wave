@@ -14,7 +14,7 @@ using Wave.Extensions.Esri.Tests.Properties;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public abstract class EsriTests
+    public abstract class EsriTests : IDisposable
     {
         #region Fields
 
@@ -27,11 +27,23 @@ namespace Wave.Extensions.Esri.Tests
 
         #region Protected Properties
 
+        /// <summary>
+        ///     Gets the COM releaser.
+        /// </summary>
+        /// <value>
+        ///     The COM releaser.
+        /// </value>
         protected ComReleaser ComReleaser
         {
             get { return _ComReleaser; }
         }
 
+        /// <summary>
+        ///     Gets the workspace.
+        /// </summary>
+        /// <value>
+        ///     The workspace.
+        /// </value>
         protected IWorkspace Workspace
         {
             get { return _Workspace; }
@@ -39,8 +51,25 @@ namespace Wave.Extensions.Esri.Tests
 
         #endregion
 
+        #region IDisposable Members
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
         #region Public Methods
 
+        /// <summary>
+        ///     Cleanups this instance.
+        /// </summary>
         [TestCleanup]
         public virtual void Cleanup()
         {
@@ -49,6 +78,9 @@ namespace Wave.Extensions.Esri.Tests
             _Workspace = null;
         }
 
+        /// <summary>
+        ///     Setups this instance.
+        /// </summary>
         [TestInitialize]
         public virtual void Setup()
         {
@@ -65,6 +97,10 @@ namespace Wave.Extensions.Esri.Tests
 
         #region Protected Methods
 
+        /// <summary>
+        ///     Creates the map.
+        /// </summary>
+        /// <returns></returns>
         protected virtual IMap CreateMap()
         {
             if (_Map != null)
@@ -85,6 +121,10 @@ namespace Wave.Extensions.Esri.Tests
             return _Map;
         }
 
+        /// <summary>
+        ///     Gets the test class.
+        /// </summary>
+        /// <returns></returns>
         protected virtual IFeatureClass GetTestClass()
         {
             IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
@@ -95,6 +135,10 @@ namespace Wave.Extensions.Esri.Tests
             return testClass;
         }
 
+        /// <summary>
+        ///     Gets the test classes.
+        /// </summary>
+        /// <returns></returns>
         protected virtual IEnumerable<IFeatureClass> GetTestClasses()
         {
             IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
@@ -110,6 +154,10 @@ namespace Wave.Extensions.Esri.Tests
             }
         }
 
+        /// <summary>
+        ///     Gets the test table.
+        /// </summary>
+        /// <returns></returns>
         protected virtual ITable GetTestTable()
         {
             IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
@@ -118,6 +166,26 @@ namespace Wave.Extensions.Esri.Tests
             _ComReleaser.ManageLifetime(testTable);
 
             return testTable;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+        ///     unmanaged resources.
+        /// </param>
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _ComReleaser.Dispose();
+                _RuntimeAuthorization.Dispose();
+            }
         }
 
         #endregion

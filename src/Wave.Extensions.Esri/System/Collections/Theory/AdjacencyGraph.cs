@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Messaging;
 
 namespace System.Collections
 {
@@ -356,12 +357,17 @@ namespace System.Collections
         #region Protected Methods
 
         /// <summary>
-        ///     Handles the dictionary changed event of the vertex / edges dictionary.
+        /// Handles the dictionary changed event of the vertex / edges dictionary.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event instance data.</param>
+        /// <exception cref="System.ArgumentNullException">e</exception>
+        [Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected void OnDictionaryChanged(object sender, NotifyDictionaryChangedEventArgs<TVertex, EdgeCollection<TVertex, TEdge>> e)
         {
+            if (e == null)
+                throw new ArgumentNullException("e");
+
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:

@@ -13,6 +13,7 @@ namespace ESRI.ArcGIS.Framework
         ///     This returns the current running instance of application.
         /// </summary>
         /// <value>The application.</value>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public static IApplication Application
         {
             get

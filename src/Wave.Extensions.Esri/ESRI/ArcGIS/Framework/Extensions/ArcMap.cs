@@ -13,6 +13,7 @@ namespace ESRI.ArcGIS.Framework
         ///     This returns the current running instance of application.
         /// </summary>
         /// <value>The application.</value>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public static IApplication Application
         {
             get
@@ -39,14 +40,14 @@ namespace ESRI.ArcGIS.Framework
         ///     <see cref="ESRI.ArcGIS.Framework.ArcMap.Extensions.Guid" /> classes used
         ///     to identify the common extensions for the ArcFM extensions which may be used for customization.
         /// </summary>
-        public static class Extensions
+        internal static class Extensions
         {
             #region Nested Type: Guid
 
             /// <summary>
             ///     Represents the common extension GUIDs for the ESRI extensions which may be used for customization.
             /// </summary>
-            public static class Guid
+            internal static class Guid
             {
                 #region Constants
 
@@ -70,7 +71,7 @@ namespace ESRI.ArcGIS.Framework
             /// <summary>
             ///     Represents the extension names for the ESRI extensions which may be used for customization.
             /// </summary>
-            public static class Name
+            internal static class Name
             {
                 #region Constants
 

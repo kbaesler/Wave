@@ -243,6 +243,17 @@ namespace ESRI.ArcGIS.Geodatabase
             return supportedPrivileges > 0;
         }
 
+        /// <summary>
+        ///     Updates the minimum display extent to reflect the changes to the features to provide visual feedback.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="display">The display.</param>
+        /// <param name="featureRenderer">The feature renderer.</param>
+        /// <param name="features">The features.</param>
+        public static void Invalidate(this IFeatureClass source, IScreenDisplay display, IFeatureRenderer featureRenderer, params IFeature[] features)
+        {
+            source.Invalidate(display, featureRenderer, esriScreenCache.esriAllScreenCaches, features);
+        }
 
         /// <summary>
         ///     Updates the minimum display extent to reflect the changes to the features to provide visual feedback.
@@ -252,9 +263,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="featureRenderer">The feature renderer.</param>
         /// <param name="screenCache">The screen cache.</param>
         /// <param name="features">The features.</param>
-        public static void Invalidate(this IFeatureClass source, IScreenDisplay display, IFeatureRenderer featureRenderer, esriScreenCache screenCache = esriScreenCache.esriAllScreenCaches, params IFeature[] features)
+        public static void Invalidate(this IFeatureClass source, IScreenDisplay display, IFeatureRenderer featureRenderer, esriScreenCache screenCache, params IFeature[] features)
         {
-            if (display == null || source == null || featureRenderer == null)
+            if (display == null || source == null || featureRenderer == null || features == null)
                 return;
 
             IInvalidArea3 invalidArea = new InvalidAreaClass();
