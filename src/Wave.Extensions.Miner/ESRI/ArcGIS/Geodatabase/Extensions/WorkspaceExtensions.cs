@@ -35,13 +35,8 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             // Create the version
-            IVersion parentVersion = (IVersion) source;
-            IVersion childVersion = parentVersion.CreateVersion(name);
-            childVersion.Access = access;
-            childVersion.Description = description;
-            childVersion.RefreshVersion();
-
-            return childVersion;
+            IMMVersioningUtils versioningUtils = new MMVersioningUtilsClass();
+            return versioningUtils.CreateVersionFromBase(source, name, description, access);
         }
 
         /// <summary>
