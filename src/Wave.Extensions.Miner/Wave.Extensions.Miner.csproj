@@ -240,10 +240,13 @@
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyQueue.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyTrace.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\ConnectivityTrace.cs" />
-    <Compile Include="Miner\Geodatabase\AutoValueRules.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverter.cs" />
+    <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\Internal\EditNotificationQueue.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxActionHandler.cs" />
