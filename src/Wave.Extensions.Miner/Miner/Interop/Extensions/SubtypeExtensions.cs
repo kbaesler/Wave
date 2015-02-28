@@ -48,6 +48,59 @@ namespace Miner.Interop.Extensions
         }
 
         /// <summary>
+        ///     Changes the field visibility for the ArcFM Properties.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="visible">if set to <c>true</c> if the field is visible.</param>
+        /// <exception cref="ArgumentNullException">fieldName</exception>
+        public static void ChangeVisibility(this IMMSubtype source, string fieldName, bool visible)
+        {
+            if (source == null) return;
+            if (fieldName == null) throw new ArgumentNullException("fieldName");
+
+            var list = source as ID8List;
+            if (list == null) return;
+
+            var item = list.Where(o => o.ItemType == mmd8ItemType.mmitField && ((IMMField) o).FieldName == fieldName).FirstOrDefault();
+            if (item != null)
+            {
+                ID8List fields = item.Value as ID8List;
+                if (fields != null)
+                {
+                    // Update the simple cases for true and false.
+                    foreach (IMMSimpleSetting simple in fields.AsEnumerable().OfType<IMMSimpleSetting>().Where(setting => setting.SettingType == mmFieldSettingType.mmFSVisible))
+                    {
+                        simple.SettingValue = visible;
+                    }
+
+                    // Update the custom cases for ArcMap Only, Phase A, etc.
+                    foreach (ID8ListItem custom in fields.AsEnumerable().Where(o => o.ItemType == mmd8ItemType.mmitCustomSetting))
+                    {
+                        IMMSimpleSetting simple = custom as IMMSimpleSetting;
+                        if (simple != null && simple.SettingType == mmFieldSettingType.mmFSVisible)
+                        {
+                            var index = simple.DisplayOrder;
+
+                            // Remove custom setting
+                            var containedBy = custom.ContainedBy;
+                            fields.Remove(custom);
+
+                            MMSimpleSetting setting = new MMSimpleSettingClass();
+                            setting.ContainedBy = containedBy;
+
+                            ((IMMSimpleSetting) setting).SettingType = mmFieldSettingType.mmFSVisible;
+                            ((IMMSimpleSetting) setting).SettingValue = visible;
+
+                            // Replace with simple setting
+                            fields.AddSorted(setting, index);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         ///     Gets the automatic value (i.e. ArcFM Auto Updater) for the specified <paramref name="editEvent" /> and
         ///     <paramref name="guid" />.
         /// </summary>
@@ -110,15 +163,18 @@ namespace Miner.Interop.Extensions
         public static List<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, int index, mmEditEvent editEvent)
         {
             if (source == null) return null;
+
             if (index < 0 || objectClass.Fields.FieldCount > 0)
                 throw new IndexOutOfRangeException();
 
-            IMMField mmfield = null;
-            source.GetField(index, ref mmfield);
-            if (mmfield == null) return null;
+            IMMField field = null;
+            source.GetField(index, ref field);
+            if (field == null) return null;
 
-            List<IMMAutoValue> list = ((ID8List) mmfield).AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent).ToList();
-            return list;
+            var list = field as ID8List;
+            if (list == null) return null;
+
+            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent).ToList();
         }
 
         /// <summary>
@@ -165,59 +221,6 @@ namespace Miner.Interop.Extensions
             }
 
             return true;
-        }
-
-        /// <summary>
-        ///     Sets the field visibility.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="fieldName">Name of the field.</param>
-        /// <param name="visible">if set to <c>true</c> if the field is visible.</param>
-        /// <exception cref="ArgumentNullException">fieldName</exception>
-        public static void SetFieldVisibility(this IMMSubtype source, string fieldName, bool visible)
-        {
-            if (source == null) return;
-            if (fieldName == null) throw new ArgumentNullException("fieldName");
-
-            var list = source as ID8List;
-            if (list == null) return;
-
-            var item = list.Where(o => o.ItemType == mmd8ItemType.mmitField && ((IMMField) o).FieldName == fieldName).FirstOrDefault();
-            if (item != null)
-            {
-                ID8List fields = item.Value as ID8List;
-                if (fields != null)
-                {
-                    // Update the simple cases for true and false.
-                    foreach (IMMSimpleSetting simple in fields.AsEnumerable().OfType<IMMSimpleSetting>().Where(setting => setting.SettingType == mmFieldSettingType.mmFSVisible))
-                    {
-                        simple.SettingValue = visible;
-                    }
-
-                    // Update the custom cases for ArcMap Only, Phase A, etc.
-                    foreach (ID8ListItem custom in fields.AsEnumerable().Where(o => o.ItemType == mmd8ItemType.mmitCustomSetting))
-                    {
-                        IMMSimpleSetting simple = custom as IMMSimpleSetting;
-                        if (simple != null && simple.SettingType == mmFieldSettingType.mmFSVisible)
-                        {
-                            var index = simple.DisplayOrder;
-
-                            // Remove custom setting
-                            var containedBy = custom.ContainedBy;
-                            fields.Remove(custom);
-
-                            MMSimpleSetting setting = new MMSimpleSettingClass();
-                            setting.ContainedBy = containedBy;
-
-                            ((IMMSimpleSetting) setting).SettingType = mmFieldSettingType.mmFSVisible;
-                            ((IMMSimpleSetting) setting).SettingValue = visible;
-
-                            // Replace with simple setting
-                            fields.AddSorted(setting, index);
-                        }
-                    }
-                }
-            }
         }
 
         #endregion
