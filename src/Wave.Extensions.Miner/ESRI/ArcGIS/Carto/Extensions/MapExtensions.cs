@@ -31,6 +31,9 @@ namespace ESRI.ArcGIS.Carto
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IFeatureClass GetFeatureClass(this IMap source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             var list = source.GetFeatureClasses(modelName);
             var oclass = list.FirstOrDefault();
 
@@ -49,8 +52,12 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.IFeatureClass" /> representing the feature class that is assigned
         ///     the model name.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         public static IEnumerable<IFeatureClass> GetFeatureClasses(this IMap source, string modelName)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             return source.Where(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName)).Select(o => o.FeatureClass);
         }
 
@@ -67,9 +74,13 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns the <see cref="ESRI.ArcGIS.Carto.IFeatureLayer" /> representing the layer that is assigned the model
         ///     name.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IFeatureLayer GetFeatureLayer(this IMap source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             var list = source.GetFeatureLayers(modelName);
             var layer = list.FirstOrDefault();
 
@@ -80,17 +91,20 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
-        ///     Returns the layers that are associated with the <paramref name="featureClass" /> that resides the map.
+        ///     Returns the layers that are associated with the matching object class identifier that resides the map.
         /// </summary>
         /// <param name="source">The map.</param>
-        /// <param name="featureClass">The feature class.</param>
+        /// <param name="objectClassID">The object class identifier.</param>
         /// <returns>
         ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers are associated with the feature
         ///     class.
         /// </returns>
-        public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source, IFeatureClass featureClass)
+        /// <exception cref="ArgumentNullException">featureClass</exception>
+        public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source, int objectClassID)
         {
-            return source.Where(o => o.Valid && o.FeatureClass.ObjectClassID == featureClass.ObjectClassID);
+            if (source == null) return null;
+
+            return source.Where(o => o.Valid && o.FeatureClass.ObjectClassID == objectClassID);
         }
 
         /// <summary>
@@ -101,8 +115,12 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>
         ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers that are assigned the model name.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source, string modelName)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             return source.Where(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName));
         }
 
@@ -119,9 +137,13 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.ITable" /> representing the table that is assigned the model
         ///     name.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
         public static ITable GetTable(this IMap source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             var list = source.GetTables(modelName);
             var table = list.FirstOrDefault();
 
@@ -140,8 +162,11 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns a <see cref="IEnumerable{ITable}" /> representing the tables that are assigned the model
         ///     name.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         public static IEnumerable<ITable> GetTables(this IMap source, string modelName)
         {
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             var standaloneTableCollection = source as IStandaloneTableCollection;
             if (standaloneTableCollection != null)
             {
@@ -166,8 +191,12 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>
         ///     Returns a <see cref="IWorkspace" /> representing the workspace in the map that is being edited.
         /// </returns>
+        /// <exception cref="ArgumentNullException">predicate</exception>
         public static IWorkspace GetWorkspace(this IMap source, Predicate<IWorkspace> predicate)
         {
+            if (source == null) return null;
+            if (predicate == null) throw new ArgumentNullException("predicate");
+
             IMMWorkspaceManagerMap manager = new MMWorkspaceManagerClass();
             IEnumWorkspaceEx workspaces = manager.GetMapWorkspaces(source);
 
@@ -193,9 +222,13 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>
         ///     Returns a <see cref="IWorkspace" /> representing the workspace in the map that is assigned the database model name.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingDatabaseModelNameException"></exception>
         public static IWorkspace GetWorkspace(this IMap source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             IWorkspace workspace = source.GetWorkspace(o => o.IsAssignedDatabaseModelName(modelName));
 
             if (workspace == null && throwException)

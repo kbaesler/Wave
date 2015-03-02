@@ -2,10 +2,9 @@ using System;
 
 using ESRI.ArcGIS.esriSystem;
 
-using Miner.Interop;
-using Miner.System.Internal;
+using Miner.Interop.Internal;
 
-namespace Miner.System
+namespace Miner.Interop
 {
     /// <summary>
     ///     A supporting class used to check out the licenses necessary to run applications outside of Miner and Miner and ESRI

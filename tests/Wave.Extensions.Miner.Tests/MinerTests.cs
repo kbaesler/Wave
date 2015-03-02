@@ -6,7 +6,6 @@ using ESRI.ArcGIS.Geodatabase;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Miner.Interop;
-using Miner.System;
 
 using Wave.Extensions.Esri.Tests;
 

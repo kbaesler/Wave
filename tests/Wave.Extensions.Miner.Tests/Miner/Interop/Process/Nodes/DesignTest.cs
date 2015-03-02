@@ -7,9 +7,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Miner;
 using Miner.Interop;
 using Miner.Interop.Process;
-using Miner.System;
-
-using Wave.Extensions.Esri.Tests.Properties;
 using Wave.Extensions.Miner.Tests;
 
 namespace SE.Tests.Process

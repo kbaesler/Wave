@@ -156,7 +156,10 @@
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensionsTest.cs" />
-    <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensionsTest.cs" />
+    <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensionsTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Miner\Interop\Process\EDM\IPxEdmRepositoryTest.cs" />
     <Compile Include="ProcessTests.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListClassExtensionsTest.cs" />

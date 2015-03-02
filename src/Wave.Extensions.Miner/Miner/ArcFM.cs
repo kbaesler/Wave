@@ -18,6 +18,7 @@ namespace Miner
         ///     may be
         ///     used for customization.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         public static class Commands
         {
             #region Nested Type: Name
@@ -25,6 +26,7 @@ namespace Miner
             /// <summary>
             ///     Represents the common command names for the ArcFM commands which may be used for customization.
             /// </summary>
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             public static class Name
             {
                 #region Constants
@@ -54,6 +56,7 @@ namespace Miner
             /// <summary>
             ///     Provides access to the product trace commands.
             /// </summary>
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
             public static class Trace
             {
                 #region Public Properties
@@ -109,6 +112,7 @@ namespace Miner
         ///     <see cref="Miner.ArcFM.Extensions.Guid" />
         ///     classes used to identify the common extensions for the ArcFM extensions which may be used for customization.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         public static class Extensions
         {
             #region Nested Type: Guid
@@ -116,6 +120,7 @@ namespace Miner
             /// <summary>
             ///     Represents the common extension GUIDs for the ArcFM extensions which may be used for customization.
             /// </summary>
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             public static class Guid
             {
                 #region Constants
@@ -154,6 +159,7 @@ namespace Miner
                 /// <summary>
                 ///     The GUID of the QAQC tab extension for the ArcFM Attribute Editor.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")]
                 public const string QAQCTab = "{E5AC0B62-E4BE-11D3-B4A0-006008AD9A5E}";
 
                 /// <summary>
@@ -176,6 +182,7 @@ namespace Miner
             /// <summary>
             ///     Represents the extension names for the ArcFM extensions which may be used for customization.
             /// </summary>
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             public static class Name
             {
                 #region Constants
@@ -219,6 +226,7 @@ namespace Miner
                 /// <summary>
                 ///     The name of the QAQC tab extension for the ArcFM Attribute Editor.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")]
                 public const string QAQCTab = "QAQCTopLevel";
 
                 /// <summary>
@@ -250,6 +258,7 @@ namespace Miner
         ///     Container class for <see cref="Miner.ArcFM.Process.SessionManager" /> and
         ///     <see cref="Miner.ArcFM.Process.WorkflowManager" /> classes.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
         public static class Process
         {
             #region Nested Type: SessionManager
@@ -259,6 +268,7 @@ namespace Miner
             ///     <see cref="SessionManager.Tables" />, <see cref="SessionManager.Filters" /> and <see cref="SessionManager.Roles" />
             ///     classes class used to identify the common configurations for Session Manager.
             /// </summary>
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             public static class SessionManager
             {
                 #region Constants

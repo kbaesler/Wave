@@ -237,3 +237,4 @@ $RECYCLE.BIN/
 src/Wave.Esri.sln.GhostDoc.xml
 src/Wave.sln.GhostDoc.xml
 tests/Sample Data/Databases/WorkflowManager.ldb
+/tests/Wave.Tests.sln.GhostDoc.xml

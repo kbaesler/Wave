@@ -23,7 +23,9 @@ namespace Miner.Interop
         /// </returns>
         public static IEnumerable<ID8ListItem> AsEnumerable(this ID8EnumListItem source, int depth)
         {
-            return Where(source, o => o != null, depth).Select(o => o.Value);
+            if (source == null) return null;
+
+            return source.Where(o => o != null, depth).Select(o => o.Value);
         }
 
         /// <summary>
@@ -35,6 +37,8 @@ namespace Miner.Interop
         /// </returns>
         public static IEnumerable<ID8ListItem> AsEnumerable(this ID8EnumListItem source)
         {
+            if (source == null) return null;
+
             return source.AsEnumerable(Recursion<ID8ListItem>.Infinite);
         }
 
@@ -48,7 +52,9 @@ namespace Miner.Interop
         /// </returns>
         public static IEnumerable<ID8ListItem> AsEnumerable(this ID8List source, int depth)
         {
-            return Where(source, o => o != null, depth).Select(o => o.Value);
+            if (source == null) return null;
+
+            return source.Where(o => o != null, depth).Select(o => o.Value);
         }
 
         /// <summary>
@@ -60,6 +66,8 @@ namespace Miner.Interop
         /// </returns>
         public static IEnumerable<ID8ListItem> AsEnumerable(this ID8List source)
         {
+            if (source == null) return null;
+
             return source.AsEnumerable(Recursion<ID8ListItem>.Infinite);
         }
 
@@ -73,7 +81,9 @@ namespace Miner.Interop
         /// </returns>
         public static int Count(this ID8List source)
         {
-            return Where(source, o => o != null).Count();
+            if (source == null) return 0;
+
+            return source.Where(o => o != null).Count();
         }
 
         /// <summary>
@@ -87,9 +97,13 @@ namespace Miner.Interop
         /// <returns>
         ///     Returns the <see cref="Int32" /> representing the number of elements that match the selector.
         /// </returns>
+        /// <exception cref="ArgumentNullException">selector</exception>
         public static int Count(this ID8List source, Func<ID8ListItem, bool> selector, int depth)
         {
-            return Where(source, selector, depth).Count();
+            if (source == null) return 0;
+            if (selector == null) throw new ArgumentNullException("selector");
+
+            return source.Where(selector, depth).Count();
         }
 
         /// <summary>
@@ -102,9 +116,13 @@ namespace Miner.Interop
         /// <returns>
         ///     Returns the <see cref="Int32" /> representing the number of elements that match the selector.
         /// </returns>
+        /// <exception cref="ArgumentNullException">selector</exception>
         public static int Count(this ID8List source, Func<ID8ListItem, bool> selector)
         {
-            return Where(source, selector).Count();
+            if (source == null) return 0;
+            if (selector == null) throw new ArgumentNullException("selector");
+
+            return source.Where(selector).Count();
         }
 
         /// <summary>
@@ -118,9 +136,13 @@ namespace Miner.Interop
         /// <returns>
         ///     Returns the <see cref="Int32" /> representing the number of elements that match the selector.
         /// </returns>
+        /// <exception cref="ArgumentNullException">selector</exception>
         public static int Count(this ID8EnumListItem source, Func<ID8ListItem, bool> selector, int depth)
         {
-            return Where(source, selector, depth).Count();
+            if (source == null) return 0;
+            if (selector == null) throw new ArgumentNullException("selector");
+
+            return source.Where(selector, depth).Count();
         }
 
         /// <summary>
@@ -133,9 +155,13 @@ namespace Miner.Interop
         /// <returns>
         ///     Returns the <see cref="Int32" /> representing the number of elements that match the selector.
         /// </returns>
+        /// <exception cref="ArgumentNullException">selector</exception>
         public static int Count(this ID8EnumListItem source, Func<ID8ListItem, bool> selector)
         {
-            return Where(source, selector).Count();
+            if (source == null) return 0;
+            if (selector == null) throw new ArgumentNullException("selector");
+
+            return source.Where(selector).Count();
         }
 
         /// <summary>
@@ -144,6 +170,8 @@ namespace Miner.Interop
         /// <param name="source">The source.</param>
         public static void Notify(this ID8List source)
         {
+            if (source == null) return;
+
             IMMCoreEvents eventHandler = (IMMCoreEvents) source;
             eventHandler.ItemRebuilt(source as ID8ListItem);
         }
@@ -162,8 +190,12 @@ namespace Miner.Interop
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">selector</exception>
         public static IEnumerable<IRecursion<ID8ListItem>> Where(this ID8List source, Func<ID8ListItem, bool> selector, int depth)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+
             return WhereImpl(source, selector, 0, depth);
         }
 
@@ -181,8 +213,12 @@ namespace Miner.Interop
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">selector</exception>
         public static IEnumerable<IRecursion<ID8ListItem>> Where(this ID8EnumListItem source, Func<ID8ListItem, bool> selector, int depth)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+
             return WhereImpl(source, selector, 0, depth);
         }
 
@@ -199,8 +235,12 @@ namespace Miner.Interop
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">selector</exception>
         public static IEnumerable<IRecursion<ID8ListItem>> Where(this ID8List source, Func<ID8ListItem, bool> selector)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+
             return Where(source, selector, Recursion<ID8ListItem>.Infinite);
         }
 
@@ -219,7 +259,10 @@ namespace Miner.Interop
         /// </returns>
         public static IEnumerable<IRecursion<ID8ListItem>> Where(this ID8EnumListItem source, Func<ID8ListItem, bool> selector)
         {
-            return Where(source, selector, Recursion<ID8ListItem>.Infinite);
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+
+            return source.Where(selector, Recursion<ID8ListItem>.Infinite);
         }
 
         #endregion
@@ -241,15 +284,23 @@ namespace Miner.Interop
         ///     whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     source
+        ///     or
+        ///     selector
+        /// </exception>
         private static IEnumerable<IRecursion<ID8ListItem>> WhereImpl(ID8List source, Func<ID8ListItem, bool> selector, int depth, int maximum)
         {
+            if (source == null) throw new ArgumentNullException("source");
+            if (selector == null) throw new ArgumentNullException("selector");
+
             depth++;
 
             source.Reset();
             ID8ListItem child;
             while ((child = source.Next()) != null)
             {
-                if (selector != null && selector(child))
+                if (selector(child))
                     yield return new Recursion<ID8ListItem>(depth, child);
 
                 if ((depth <= maximum) || (maximum == Recursion<ID8ListItem>.Infinite))
@@ -281,23 +332,29 @@ namespace Miner.Interop
         /// </returns>
         private static IEnumerable<IRecursion<ID8ListItem>> WhereImpl(ID8EnumListItem source, Func<ID8ListItem, bool> selector, int depth, int maximum)
         {
+            if (source == null) throw new ArgumentNullException("source");
+            if (selector == null) throw new ArgumentNullException("selector");
+
             depth++;
 
             source.Reset();
             ID8ListItem child;
             while ((child = source.Next()) != null)
             {
-                if (selector != null && selector(child))
+                if (selector(child))
                     yield return new Recursion<ID8ListItem>(depth, child);
 
-                if ((depth <= maximum) || (maximum == -1))
+                if ((depth <= maximum) || (maximum == Recursion<ID8ListItem>.Infinite))
                 {
                     ID8List2 list = child as ID8List2;
                     if (list != null)
                     {
                         ID8EnumListItem children = list.Items;
-                        foreach (var item in WhereImpl(children, selector, depth, maximum))
-                            yield return item;
+                        if (children != null)
+                        {
+                            foreach (var item in WhereImpl(children, selector, depth, maximum))
+                                yield return item;
+                        }
                     }
                 }
             }

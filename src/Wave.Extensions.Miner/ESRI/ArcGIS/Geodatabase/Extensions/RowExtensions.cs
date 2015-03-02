@@ -27,8 +27,12 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="Dictionary{TKey, TValue}" /> representing the model name and values of the fields that have
         ///     changed.
         /// </returns>
+        /// <exception cref="ArgumentNullException">names</exception>
         public static Dictionary<string, Dictionary<string, object>> GetChanges(this IRow source, bool checkFields, params string[] names)
         {
+            if (source == null) return null;
+            if (names == null) throw new ArgumentNullException("names");
+
             Dictionary<string, Dictionary<string, object>> list = new Dictionary<string, Dictionary<string, object>>();
 
             IObjectClass table = (IObjectClass) source.Table;
@@ -72,10 +76,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IDomain" /> representing the domain.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static IDomain GetDomain(this IRow source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             int index = source.Table.GetFieldIndex(modelName, throwException);
             if (index == -1) throw new IndexOutOfRangeException();
 
@@ -92,6 +100,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IMMFieldManager GetFieldManager(this IRow source, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder = null)
         {
+            if (source == null) return null;
+
             IMMObjectBuilder builder = new MMObjectBuilderClass();
             builder.Build(source);
 
@@ -116,10 +126,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="object" /> representing the converted value to the specified type.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static TValue GetValue<TValue>(this IRow source, string modelName, TValue fallbackValue, bool throwException = true)
         {
+            if (source == null) return fallbackValue;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             int index = source.Table.GetFieldIndex(modelName, throwException);
             if (index == -1)
                 throw new IndexOutOfRangeException();
@@ -143,10 +157,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static bool Update(this IRow source, string modelName, object value, bool throwException, bool equalityComparer = true)
         {
+            if (source == null) return false;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             int index = source.Table.GetFieldIndex(modelName, throwException);
             if (index == -1)
                 throw new IndexOutOfRangeException();
@@ -229,7 +247,7 @@ namespace ESRI.ArcGIS.Geodatabase
             bool pendingChanges = true;
             if (equalityComparer != null)
             {
-                IRowChanges rowChanges = (IRowChanges)source;
+                IRowChanges rowChanges = (IRowChanges) source;
                 object originalValue = (fieldAdapter != null) ? fieldAdapter.OriginalValue : rowChanges.OriginalValue[index];
 
                 TValue oldValue = TypeCast.Cast(originalValue, default(TValue));

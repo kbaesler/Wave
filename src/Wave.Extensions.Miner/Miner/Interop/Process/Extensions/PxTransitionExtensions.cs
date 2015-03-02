@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Miner.Interop.Process
 {
@@ -10,18 +11,30 @@ namespace Miner.Interop.Process
         #region Public Methods
 
         /// <summary>
-        ///     Determines if a transition exists between the <paramref name="fromState" /> and
-        ///     the <paramref name="toState" /> states for the specified <paramref name="user" />.
+        /// Determines if a transition exists between the <paramref name="fromState" /> and
+        /// the <paramref name="toState" /> states for the specified <paramref name="user" />.
         /// </summary>
         /// <param name="source">The transitions.</param>
         /// <param name="user">The user.</param>
         /// <param name="fromState">The From state.</param>
         /// <param name="toState">The To state.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> if there exists a transition; otherwise, <c>false</c>.
+        /// Returns a <see cref="bool" /> representing <c>true</c> if there exists a transition; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// user
+        /// or
+        /// fromState
+        /// or
+        /// toState
+        /// </exception>
         public static bool IsValidTransition(this IMMPxTransition source, IMMPxUser user, IMMPxState fromState, IMMPxState toState)
         {
+            if (source == null) return false;
+            if (user == null) throw new ArgumentNullException("user");
+            if (fromState == null) throw new ArgumentNullException("fromState");
+            if (toState == null) throw new ArgumentNullException("toState");
+
             // Compare the from and to states from the enumerations.
             if (source.FromStates.Contains(fromState) && source.ToStates.Contains(toState))
             {
@@ -35,18 +48,30 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Determines if a transition exists between the <paramref name="fromState" /> and
-        ///     the <paramref name="toState" /> states for the specified <paramref name="user" />.
+        /// Determines if a transition exists between the <paramref name="fromState" /> and
+        /// the <paramref name="toState" /> states for the specified <paramref name="user" />.
         /// </summary>
         /// <param name="source">The transitions.</param>
         /// <param name="user">The user.</param>
         /// <param name="fromState">The From state.</param>
         /// <param name="toState">The To state.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> if there exists a transition; otherwise, <c>false</c>.
+        /// Returns a <see cref="bool" /> representing <c>true</c> if there exists a transition; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// user
+        /// or
+        /// fromState
+        /// or
+        /// toState
+        /// </exception>
         public static bool IsValidTransition(this IMMEnumPxTransition source, IMMPxUser user, IMMPxState fromState, IMMPxState toState)
         {
+            if (source == null) return false;
+            if (user == null) throw new ArgumentNullException("user");
+            if (fromState == null) throw new ArgumentNullException("fromState");
+            if (toState == null) throw new ArgumentNullException("toState");
+
             return source.AsEnumerable().Any(transition => transition.IsValidTransition(user, fromState, toState));
         }
 

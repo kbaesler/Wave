@@ -88,7 +88,7 @@
         ///     Gets the ID.
         /// </summary>
         /// <value>The ID.</value>
-        public int ID
+        public int Id
         {
             get { return _Address.ID; }
         }

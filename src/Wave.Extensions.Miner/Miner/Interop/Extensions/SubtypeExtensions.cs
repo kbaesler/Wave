@@ -5,7 +5,7 @@ using System.Linq;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-namespace Miner.Interop.Extensions
+namespace Miner.Interop
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="IMMSubtype" /> interface.
@@ -21,34 +21,38 @@ namespace Miner.Interop.Extensions
         /// <param name="editEvent">The edit event.</param>
         /// <param name="guid">The unique identifier.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> if the value was added; otherwise <C>false</C>
+        ///     Returns a <see cref="IMMAutoValue" /> representing the value that was added; otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="ArgumentNullException">guid</exception>
-        public static bool AddAutoValue(this IMMSubtype source, mmEditEvent editEvent, Guid guid)
+        public static IMMAutoValue AddAutoValue(this IMMSubtype source, mmEditEvent editEvent, Guid guid)
         {
-            if (source == null) return false;
+            if (source == null) return null;
             if (guid == Guid.Empty) throw new ArgumentNullException("guid");
 
-            if (source.GetAutoValue(editEvent, guid) != null)
-                return false;
-
             var list = source as ID8List;
-            if (list == null) return false;
+            if (list == null) return null;
+
+            var item = source.GetAutoValue(editEvent, guid);
+            if (item != null)
+                return item;
 
             UID uid = new UIDClass();
             uid.Value = guid.ToString("B");
 
-            list.Add(new MMAutoValueClass
+            item = new MMAutoValueClass
             {
                 AutoGenID = uid,
                 EditEvent = editEvent
-            });
+            };
 
-            return true;
+            list.Add((ID8ListItem) item);
+
+            return item;
         }
 
         /// <summary>
-        ///     Changes the field visibility for the ArcFM Properties.
+        ///     Changes the field visibility to the specified <paramref name="visible" /> value for the fields in the specified
+        ///     that match the field names.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="fieldName">Name of the field.</param>
@@ -62,19 +66,19 @@ namespace Miner.Interop.Extensions
             var list = source as ID8List;
             if (list == null) return;
 
-            var item = list.Where(o => o.ItemType == mmd8ItemType.mmitField && ((IMMField) o).FieldName == fieldName).FirstOrDefault();
+            var item = list.AsEnumerable().OfType<IMMField>().FirstOrDefault(o => o.FieldName == fieldName);
             if (item != null)
             {
-                ID8List fields = item.Value as ID8List;
+                ID8List fields = item as ID8List;
                 if (fields != null)
                 {
-                    // Update the simple cases for true and false.
+                    // Update the simple settings.
                     foreach (IMMSimpleSetting simple in fields.AsEnumerable().OfType<IMMSimpleSetting>().Where(setting => setting.SettingType == mmFieldSettingType.mmFSVisible))
                     {
                         simple.SettingValue = visible;
                     }
 
-                    // Update the custom cases for ArcMap Only, Phase A, etc.
+                    // Update the custom settings.
                     foreach (ID8ListItem custom in fields.AsEnumerable().Where(o => o.ItemType == mmd8ItemType.mmitCustomSetting))
                     {
                         IMMSimpleSetting simple = custom as IMMSimpleSetting;
@@ -112,17 +116,16 @@ namespace Miner.Interop.Extensions
         /// </returns>
         public static IMMAutoValue GetAutoValue(this IMMSubtype source, mmEditEvent editEvent, Guid guid)
         {
-            ID8List list = (ID8List) source;
+            if (source == null) return null;
 
-            foreach (IMMAutoValue autoValue in list.AsEnumerable().OfType<IMMAutoValue>())
+            ID8List list = source as ID8List;
+            if (list == null) return null;
+
+            foreach (IMMAutoValue autoValue in list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o != null && o.EditEvent == editEvent && o.AutoGenID != null))
             {
-                if (autoValue == null) continue;
-                if (autoValue.EditEvent != editEvent) continue;
-                if (autoValue.AutoGenID == null) continue;
                 if (autoValue.AutoGenID.Value == null) continue;
 
                 string autoGenID = autoValue.AutoGenID.Value.ToString();
-
                 if (string.Equals(autoGenID, guid.ToString("B"), StringComparison.InvariantCultureIgnoreCase))
                     return autoValue;
             }
@@ -138,14 +141,16 @@ namespace Miner.Interop.Extensions
         /// <param name="objectClass">The object class.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
-        ///     Returns a <see cref="List{IMMAutoValue}" /> objects that have been assigned to the field.
+        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
         /// </returns>
-        public static List<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, mmEditEvent editEvent)
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, mmEditEvent editEvent)
         {
             if (source == null) return null;
 
-            List<IMMAutoValue> list = ((ID8List) source).AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent).ToList();
-            return list;
+            var list = source as ID8List;
+            if (list == null) return null;
+
+            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -157,10 +162,10 @@ namespace Miner.Interop.Extensions
         /// <param name="index">The index of the field.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
-        ///     Returns a <see cref="List{IMMAutoValue}" /> objects that have been assigned to the field.
+        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        public static List<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, int index, mmEditEvent editEvent)
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, int index, mmEditEvent editEvent)
         {
             if (source == null) return null;
 
@@ -174,7 +179,7 @@ namespace Miner.Interop.Extensions
             var list = field as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent).ToList();
+            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -186,9 +191,9 @@ namespace Miner.Interop.Extensions
         /// <param name="field">The field in the object class.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
-        ///     Returns a <see cref="List{IMMAutoValue}" /> objects that have been assigned to the field.
+        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
         /// </returns>
-        public static List<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, IField field, mmEditEvent editEvent)
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, IField field, mmEditEvent editEvent)
         {
             if (source == null) return null;
 
@@ -211,12 +216,12 @@ namespace Miner.Interop.Extensions
             if (source == null) return false;
             if (guid == Guid.Empty) throw new ArgumentNullException("guid");
 
+            var list = source as ID8List;
+            if (list == null) return false;
+
             IMMAutoValue item = source.GetAutoValue(editEvent, guid);
             if (item != null)
             {
-                var list = source as ID8List;
-                if (list == null) return false;
-
                 list.Remove((ID8ListItem) item);
             }
 

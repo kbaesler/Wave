@@ -4,7 +4,7 @@ using System.Linq;
 
 using ESRI.ArcGIS.Geodatabase;
 
-namespace Miner.Interop.Extensions
+namespace Miner.Interop
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="IMMConfigTopLevel" /> interface.
@@ -22,14 +22,21 @@ namespace Miner.Interop.Extensions
         /// <param name="table">The object class.</param>
         /// <param name="visible">if set to <c>true</c> if the field is visible.</param>
         /// <param name="fieldNames">The field names.</param>
-        /// <exception cref="ArgumentNullException">fieldName</exception>
+        /// <exception cref="ArgumentNullException">
+        ///     fieldNames
+        ///     or
+        ///     table
+        /// </exception>
         public static void ChangeVisibility(this IMMConfigTopLevel source, IObjectClass table, bool visible, params string[] fieldNames)
         {
             if (source == null) return;
             if (fieldNames == null) throw new ArgumentNullException("fieldNames");
+            if (table == null) throw new ArgumentNullException("table");
 
             ISubtypes subtypes = (ISubtypes) table;
-            foreach (var subtypeCode in subtypes.Subtypes.AsEnumerable().Select(o => o.Key))
+            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new int[] {subtypes.DefaultSubtypeCode};
+
+            foreach (var subtypeCode in subtypeCodes)
             {
                 source.ChangeVisibility(table, subtypeCode, visible, fieldNames);
             }
@@ -45,13 +52,20 @@ namespace Miner.Interop.Extensions
         /// <param name="subtypeCode">The subtype code.</param>
         /// <param name="visible">if set to <c>true</c> if the field is visible.</param>
         /// <param name="fieldNames">The field names.</param>
-        /// <exception cref="ArgumentNullException">fieldName</exception>
+        /// <exception cref="ArgumentNullException">
+        ///     fieldNames
+        ///     or
+        ///     table
+        /// </exception>
         public static void ChangeVisibility(this IMMConfigTopLevel source, IObjectClass table, int subtypeCode, bool visible, params string[] fieldNames)
         {
             if (source == null) return;
             if (fieldNames == null) throw new ArgumentNullException("fieldNames");
+            if (table == null) throw new ArgumentNullException("table");
 
             IMMSubtype subtype = source.GetSubtypeByID(table, subtypeCode, false);
+            if (subtype == null) return;
+
             foreach (var fieldName in fieldNames)
             {
                 subtype.ChangeVisibility(fieldName, visible);
@@ -70,12 +84,13 @@ namespace Miner.Interop.Extensions
         ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
         ///     object class.
         /// </returns>
-        public static Dictionary<int, List<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)
+        public static Dictionary<int, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)
         {
-            Dictionary<int, List<IMMAutoValue>> list = new Dictionary<int, List<IMMAutoValue>>();
+            Dictionary<int, IEnumerable<IMMAutoValue>> list = new Dictionary<int, IEnumerable<IMMAutoValue>>();
 
             ISubtypes subtypes = (ISubtypes) table;
-            foreach (var subtypeCode in subtypes.Subtypes.AsEnumerable().Select(o => o.Key))
+            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new int[] {subtypes.DefaultSubtypeCode};
+            foreach (var subtypeCode in subtypeCodes)
             {
                 IMMSubtype subtype = source.GetSubtypeByID(table, subtypeCode, false);
                 if (subtype == null) continue;
@@ -88,13 +103,12 @@ namespace Miner.Interop.Extensions
         }
 
         /// <summary>
-        ///     Get the value of ArcFM Primary Display field.
+        ///     Get the value of field that has been configured to be the primary display field.
         /// </summary>
-        /// <param name="source">An Instance of IMMConfigTopLevel.</param>
+        /// <param name="source">The source.</param>
         /// <param name="table">The object class.</param>
         /// <returns>
-        ///     The value of the ArcFM Primary Display field.
-        ///     If the value is null the object ID will be returned surrounded with parentheses.
+        ///     Returns a <see cref="IField" /> representing the field for the primary display.
         /// </returns>
         public static IField GetPrimaryDisplayField(this IMMConfigTopLevel source, IObjectClass table)
         {

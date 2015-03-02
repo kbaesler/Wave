@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 
@@ -27,8 +28,17 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns the <see cref="IVersion" /> representing the version that was created; otherwise <c>null</c>
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     name
+        ///     or
+        ///     description
+        /// </exception>
         public static IVersion CreateVersion(this IWorkspace source, string name, esriVersionAccess access, string description, bool deleteExisting)
         {
+            if (source == null) return null;
+            if (name == null) throw new ArgumentNullException("name");
+            if (description == null) throw new ArgumentNullException("description");
+
             if (deleteExisting)
             {
                 source.DeleteVersion(name);
@@ -44,10 +54,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The workspace connection to the database.</param>
         /// <param name="name">The name of the version to delete.</param>
+        /// <exception cref="ArgumentNullException">name</exception>
         public static void DeleteVersion(this IWorkspace source, string name)
         {
             try
             {
+                if (source == null) return;
+                if (name == null) throw new ArgumentNullException("name");
+
                 IVersion version = source.FindVersion(name);
                 if (version != null)
                 {
@@ -70,11 +84,15 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IVersion" /> representing the version with the name; otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">name</exception>
         /// <remarks>
         ///     The name must include the owner i.e. to get the DEFAULT version you would pass is SDE.DEFAULT.
         /// </remarks>
         public static IVersion FindVersion(this IWorkspace source, string name)
         {
+            if (source == null) return null;
+            if (name == null) throw new ArgumentNullException("name");
+
             IMMVersioningUtils versionUtils = new MMVersioningUtilsClass();
             return versionUtils.FindVersion(source, name);
         }
@@ -97,6 +115,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IFeatureClass GetFeatureClass(this IWorkspace source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             var list = source.GetFeatureClasses(modelName);
             var table = list.FirstOrDefault();
 
@@ -115,8 +136,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     An <see cref="IEnumerable{T}" /> that contains the feature classes from the input source.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         public static IEnumerable<IFeatureClass> GetFeatureClasses(this IWorkspace source, string modelName)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             IEnumFeatureClass list = ModelNameManager.Instance.FeatureClassesFromModelNameWS(source, modelName);
             return list.AsEnumerable();
         }
@@ -130,8 +155,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     An <see cref="IEnumerable{T}" /> that contains the feature classes from the input source.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelNames</exception>
         public static IEnumerable<IFeatureClass> GetFeatureClasses(this IWorkspace source, params string[] modelNames)
         {
+            if (modelNames == null) throw new ArgumentNullException("modelNames");
+
             foreach (var modelName in modelNames)
             {
                 IEnumFeatureClass list = ModelNameManager.Instance.FeatureClassesFromModelNameWS(source, modelName);
@@ -155,9 +183,13 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IObjectClass" /> representing the object class that has been assigned the class model name,
         ///     otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IObjectClass GetObjectClass(this IWorkspace source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             var list = source.GetObjectClasses(modelName);
             var table = list.FirstOrDefault();
 
@@ -176,8 +208,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     An <see cref="IEnumerable{T}" /> that contains the object classes from the input source.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         public static IEnumerable<IObjectClass> GetObjectClasses(this IWorkspace source, string modelName)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             IMMEnumObjectClass list = ModelNameManager.Instance.ObjectClassesFromModelNameWS(source, modelName);
             return list.AsEnumerable();
         }
@@ -191,8 +227,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     An <see cref="IEnumerable{T}" /> that contains the object classes from the input source.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         public static IEnumerable<IObjectClass> GetObjectClasses(this IWorkspace source, params string[] modelNames)
         {
+            if (modelNames == null) throw new ArgumentNullException("modelNames");
+
             foreach (var modelName in modelNames)
             {
                 IMMEnumObjectClass list = ModelNameManager.Instance.ObjectClassesFromModelNameWS(source, modelName);
@@ -215,9 +254,13 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="ITable" /> representing the table that has been assigned the class model name, otherwise
         ///     <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
         public static ITable GetTable(this IWorkspace source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             var list = source.GetTables(modelName);
             var table = list.FirstOrDefault();
 
@@ -235,8 +278,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     An <see cref="IEnumerable{T}" /> that contains the tables from the input source.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
         public static IEnumerable<ITable> GetTables(this IWorkspace source, string modelName)
         {
+            if (source == null) return null;
+            if (modelName == null) throw new ArgumentNullException("modelName");
+
             IMMEnumTable list = ModelNameManager.Instance.TablesFromModelNameWS(source, modelName);
             return list.AsEnumerable();
         }
@@ -249,8 +296,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     An <see cref="IEnumerable{T}" /> that contains the tables from the input source.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelNames</exception>
         public static IEnumerable<ITable> GetTables(this IWorkspace source, params string[] modelNames)
         {
+            if (modelNames == null) throw new ArgumentNullException("modelNames");
+
             foreach (var modelName in modelNames)
             {
                 IMMEnumTable list = ModelNameManager.Instance.TablesFromModelNameWS(source, modelName);
@@ -268,9 +318,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns <c>true</c> if the workspace contains any of the database model names; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">modelNames</exception>
         public static bool IsAssignedDatabaseModelName(this IWorkspace source, params string[] modelNames)
         {
-            if (modelNames == null || source == null) return false;
+            if (source == null) return false;
+            if (modelNames == null) throw new ArgumentNullException("modelNames");
 
             IWorkspaceExtensionManager manager = source as IWorkspaceExtensionManager;
             if (manager != null)
@@ -294,15 +346,18 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Determines whether the workspaces are the same database.
         /// </summary>
         /// <param name="source">The workspace.</param>
-        /// <param name="target">The target.</param>
+        /// <param name="other">The other workspace.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> if the workspaces point to the same database; otherwise,
         ///     <c>false</c>.
         /// </returns>
-        public static bool IsEqual(this IWorkspace source, IWorkspace target)
+        public static bool IsEqual(this IWorkspace source, IWorkspace other)
         {
+            if (source == null) return false;
+            if (other == null) throw new ArgumentNullException("other");
+
             IMMWorkspaceManager manager = new MMWorkspaceManagerClass();
-            return manager.IsSameDatabase(source, target);
+            return manager.IsSameDatabase(source, other);
         }
 
         #endregion

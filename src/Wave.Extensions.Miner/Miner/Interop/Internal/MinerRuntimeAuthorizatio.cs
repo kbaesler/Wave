@@ -2,7 +2,7 @@
 
 using Miner.Interop;
 
-namespace Miner.System.Internal
+namespace Miner.Interop.Internal
 {
     /// <summary>
     ///     A helper class used to handle initialize the ArcFM licenses.
@@ -24,7 +24,7 @@ namespace Miner.System.Internal
         {
             _AppInit = new MMAppInitializeClass();
 
-#if ARCGIS_10
+#if ARCFM_10
             IMMEsriBind bind = new MMEsriBindClass();
             bind.AutoBind();
 #endif

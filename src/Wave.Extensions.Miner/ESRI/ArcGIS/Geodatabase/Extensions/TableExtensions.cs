@@ -25,6 +25,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static IField GetField(this ITable source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+
             return ((IObjectClass) source).GetField(modelName, throwException);
         }
 
@@ -44,6 +46,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static int GetFieldIndex(this ITable source, string modelName, bool throwException = true)
         {
+            if (source == null) return -1;
+
             return ((IObjectClass) source).GetFieldIndex(modelName, throwException);
         }
 
@@ -59,6 +63,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static Dictionary<string, List<int>> GetFieldIndexes(this ITable source, params string[] modelNames)
         {
+            if (source == null) return null;
+
             return ((IObjectClass) source).GetFieldIndexes(modelNames);
         }
 
@@ -78,6 +84,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingFieldModelNameException"></exception>
         public static string GetFieldName(this ITable source, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+
             return ((IObjectClass) source).GetFieldName(modelName, throwException);
         }
 
@@ -92,7 +100,23 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IEnumerable<IField> GetFields(this ITable source, params string[] modelNames)
         {
+            if (source == null) return null;
+
             return ((IObjectClass) source).GetFields(modelNames);
+        }
+
+        /// <summary>
+        ///     Get the value of field that has been configured to be the primary display field.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IField" /> representing the field for the primary display.
+        /// </returns>
+        public static IField GetPrimaryDisplayField(this ITable source)
+        {
+            if (source == null) return null;
+
+            return ((IObjectClass) source).GetPrimaryDisplayField();
         }
 
         /// <summary>
@@ -114,6 +138,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string modelName, bool throwException = true)
         {
+            if (source == null) return null;
+
             return ((IObjectClass) source).GetRelationshipClass(relationshipRole, modelName, throwException);
         }
 
@@ -136,6 +162,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="MissingClassModelNameException"></exception>
         public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string[] modelNames, bool throwException = true)
         {
+            if (source == null) return null;
+
             return ((IObjectClass) source).GetRelationshipClass(relationshipRole, modelNames, throwException);
         }
 
@@ -151,6 +179,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedClassModelName(this ITable source, string modelName)
         {
+            if (source == null) return false;
+
             return ((IObjectClass) source).IsAssignedClassModelName(modelName);
         }
 
@@ -166,6 +196,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedClassModelName(this ITable source, params string[] modelNames)
         {
+            if (source == null) return false;
+
             return ((IObjectClass) source).IsAssignedClassModelName(modelNames);
         }
 
@@ -181,6 +213,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedFieldModelName(this ITable source, string modelName)
         {
+            if (source == null) return false;
+
             return ((IObjectClass) source).IsAssignedFieldModelName(modelName);
         }
 
@@ -196,6 +230,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool IsAssignedFieldModelName(this ITable source, params string[] modelNames)
         {
+            if (source == null) return false;
+
             return ((IObjectClass) source).IsAssignedFieldModelName(modelNames);
         }
 

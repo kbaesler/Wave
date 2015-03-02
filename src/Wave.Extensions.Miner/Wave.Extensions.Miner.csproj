@@ -215,6 +215,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Miner\ArcFM.cs" />
     <Compile Include="Miner\Framework\BaseClasses\BaseAbandonAU.cs" />
     <Compile Include="Miner\Framework\BaseClasses\BaseActionHandler.cs" />
@@ -309,8 +310,8 @@
     <Compile Include="Miner\Interop\Process\PxIntegrationCache.cs" />
     <Compile Include="Miner\Interop\Process\PxUser.cs" />
     <Compile Include="Miner\Interop\Process\PxVersionStatus.cs" />
-    <Compile Include="Miner\System\Internal\MinerRuntimeAuthorizatio.cs" />
-    <Compile Include="Miner\System\RuntimeAuthorization.cs" />
+    <Compile Include="Miner\Interop\Internal\MinerRuntimeAuthorizatio.cs" />
+    <Compile Include="Miner\Interop\RuntimeAuthorization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Miner\Interop\Collections\TreeViewSelectionEnumerator.cs" />
   </ItemGroup>

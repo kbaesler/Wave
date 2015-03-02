@@ -115,6 +115,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns the <see cref="Miner.Interop.IMMLogin2" /> representing the object that was used to log into ArcFM.</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
         public static IMMLogin2 GetLogin(this IApplication source)
         {
             if (source == null) return null;
@@ -128,6 +129,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns the <see cref="IWorkspace" /> representing database that was logged into from the ArcFM Login screen.</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
         public static IWorkspace GetLoginWorkspace(this IApplication source)
         {
             if (source == null) return null;
@@ -159,6 +161,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns the <see cref="Miner.Interop.Process.IMMPxApplication" /> representing the process framework
         ///     reference.
         /// </returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Px"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Px")]
         public static IMMPxApplication GetPxApplication(this IApplication source)
         {
             if (source == null) return null;
@@ -172,6 +175,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns a <see cref="Miner.Interop.ID8List" /> representing the contents on the tab.</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")]
         public static ID8List GetQAQCTab(this IApplication source)
         {
             if (source == null) return null;

@@ -1,4 +1,6 @@
-﻿namespace Miner.Interop.Process
+﻿using System;
+
+namespace Miner.Interop.Process
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="Miner.Interop.Process.IMMPxUser" /> interface.
@@ -8,16 +10,20 @@
         #region Public Methods
 
         /// <summary>
-        ///     Determines whether the given <paramref name="source" /> has at least one matching
-        ///     role for the <paramref name="transition" />.
+        /// Determines whether the given <paramref name="source" /> has at least one matching
+        /// role for the <paramref name="transition" />.
         /// </summary>
         /// <param name="source">The user.</param>
         /// <param name="transition">The transition.</param>
         /// <returns>
-        ///     <c>true</c> if the user has at least one matching role with the transition; otherwise, <c>false</c>.
+        ///   <c>true</c> if the user has at least one matching role with the transition; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">transition</exception>
         public static bool AnyRoleForTransition(this IMMPxUser source, IMMPxTransition transition)
         {
+            if (source == null) return false;
+            if (transition == null) throw new ArgumentNullException("transition");
+
             foreach (var userRole in source.Roles.AsEnumerable())
             {
                 foreach (var transitionRole in transition.Roles.AsEnumerable())

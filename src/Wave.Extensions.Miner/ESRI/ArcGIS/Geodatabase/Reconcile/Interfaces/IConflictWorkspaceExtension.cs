@@ -91,7 +91,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="workspace">The workspace.</param>
         /// <returns>
         ///     Returns a
-        ///     <see cref="T:System.Collections.Generic.IList{ESRI.ArcGIS.Geodatabase.IConflictFilter}"/>
+        ///     <see cref="T:System.Collections.Generic.IList{ESRI.ArcGIS.Geodatabase.IConflictFilter}" />
         ///     implementations that are used to resolve the row conflicts.
         /// </returns>
         IList<IConflictFilter> GetFilters(IWorkspace workspace);

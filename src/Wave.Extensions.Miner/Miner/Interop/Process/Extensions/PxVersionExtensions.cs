@@ -16,6 +16,8 @@ namespace Miner.Interop.Process
         /// <returns>Returns a <see cref="string" /> representing the name of the version.</returns>
         public static string GetVersionName(this IMMPxSDEVersion source)
         {
+            if (source == null) return null;
+
             string ownerName = source.get_UserName();
             if (string.IsNullOrEmpty(ownerName))
                 return source.get_Name();
@@ -33,6 +35,8 @@ namespace Miner.Interop.Process
         /// </returns>
         public static bool IsStatus(this IMMPxSDEVersion source, PxVersionStatus versionStatus)
         {
+            if (source == null) return false;
+
             return source.get_Status() == (short) versionStatus;
         }
 

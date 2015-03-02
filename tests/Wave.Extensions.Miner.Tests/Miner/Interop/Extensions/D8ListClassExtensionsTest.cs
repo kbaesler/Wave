@@ -22,6 +22,13 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        public void ID8List_AsEnumerable_Equals_9()
+        {
+            var iter = _List.AsEnumerable().OfType<ID8Feature>();
+            Assert.AreEqual(9, iter.Count());
+        }
+
+        [TestMethod]
         public void ID8List_Count_Equals_12()
         {
             int count = _List.Count();

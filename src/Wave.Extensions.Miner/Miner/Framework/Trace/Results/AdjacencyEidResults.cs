@@ -11,7 +11,7 @@ namespace Miner.Framework.Trace
     ///     A supporting class used to contain the memory graph of the results from a trace using the
     ///     <see cref="AdjacencyTrace" /> strategy.
     /// </summary>
-    [ComVisible(false)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Eid"), ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
     public class AdjacencyEidResults : AdjacencyEidResults<AdjacencyNode>
     {
@@ -22,7 +22,7 @@ namespace Miner.Framework.Trace
     ///     <see cref="AdjacencyTrace" /> strategy.
     /// </summary>
     /// <typeparam name="TEdge">The type of the edge.</typeparam>
-    [ComVisible(false)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Eid"), ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
     public abstract class AdjacencyEidResults<TEdge> : EidSearchResults
         where TEdge : AdjacencyNode

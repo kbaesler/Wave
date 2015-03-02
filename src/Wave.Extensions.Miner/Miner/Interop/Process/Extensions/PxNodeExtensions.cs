@@ -12,12 +12,16 @@ namespace Miner.Interop.Process
         #region Public Methods
 
         /// <summary>
-        ///     Adds the node as a child to the specified <paramref name="parent" />.
+        /// Adds the node as a child to the specified <paramref name="parent" />.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="parent">The parent.</param>
+        /// <exception cref="ArgumentNullException">parent</exception>
         public static void Add(this IMMPxNode source, IMMPxNode parent)
         {
+            if (source == null) return;
+            if (parent == null) throw new ArgumentNullException("parent");
+
             ID8List list = (ID8List) parent;
             ((ID8ListEx) parent).BuildChildren = true;
 
@@ -25,17 +29,21 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Finds the task using the specified <paramref name="source" /> and <paramref name="taskName" />.
+        /// Finds the task using the specified <paramref name="source" /> and <paramref name="taskName" />.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="taskName">Name of the task.</param>
         /// <param name="enabledTask">if set to <c>true</c> if the task must be enabled.</param>
         /// <returns>
-        ///     Returns a <see cref="IMMPxTask" /> representing the tasks that matches specified task name for the given node;
-        ///     otherwise <c>null</c>.
+        /// Returns a <see cref="IMMPxTask" /> representing the tasks that matches specified task name for the given node;
+        /// otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">taskName</exception>
         public static IMMPxTask GetTask(this IMMPxNode source, string taskName, bool enabledTask = false)
         {
+            if (source == null) return null;
+            if (taskName == null) throw new ArgumentNullException("taskName");
+
             IEnumerable<IMMPxTask> tasks;
             if (enabledTask)
             {
@@ -90,6 +98,8 @@ namespace Miner.Interop.Process
         /// </returns>
         public static IMMPxNode GetTopLevelNode(this IMMPxNode source)
         {
+            if (source == null) return null;
+            
             foreach (var node in source.AsEnumerable())
             {
                 if (((IMMPxNode2) node).IsPxTopLevel) return node;
@@ -99,16 +109,20 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Finds the transition that matches the specified <paramref name="transitionName" /> in the name or display name for
-        ///     the available transitions.
+        /// Finds the transition that matches the specified <paramref name="transitionName" /> in the name or display name for
+        /// the available transitions.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="transitionName">Name of the transition.</param>
         /// <returns>
-        ///     Returns a <see cref="IMMPxTransition" /> representing the state that matches the identifier; otherwise <c>null</c>.
+        /// Returns a <see cref="IMMPxTransition" /> representing the state that matches the identifier; otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">transitionName</exception>
         public static IMMPxTransition GetTransition(this IMMPxNode source, string transitionName)
         {
+            if (source == null) return null;
+            if (transitionName == null) throw new ArgumentNullException("transitionName");
+
             foreach (var transition in source.Transitions.AsEnumerable())
             {
                 if (string.Equals(transition.Name, transitionName, StringComparison.CurrentCultureIgnoreCase))
@@ -122,15 +136,17 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Finds the transition using the specified <paramref name="transitionID" />.
+        /// Finds the transition using the specified <paramref name="transitionID" />.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="transitionID">The transition ID.</param>
         /// <returns>
-        ///     The <see cref="IMMPxTransition" /> matching the specified transition name; otherwise <c>null</c>.
+        /// The <see cref="IMMPxTransition" /> matching the specified transition name; otherwise <c>null</c>.
         /// </returns>
         public static IMMPxTransition GetTransition(this IMMPxNode source, int transitionID)
         {
+            if (source == null) return null;            
+
             foreach (var transition in source.Transitions.AsEnumerable())
             {
                 if (transition.TransitionID == transitionID)

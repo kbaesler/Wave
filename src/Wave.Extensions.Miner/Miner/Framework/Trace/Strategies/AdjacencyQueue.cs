@@ -6,7 +6,7 @@ namespace Miner.Framework.Trace
     /// <summary>
     ///     A queue of edges and vertices for the a graph.
     /// </summary>
-    [ComVisible(false)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix"), ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
     public class AdjacencyQueue<TVertex, TEdge>
     {

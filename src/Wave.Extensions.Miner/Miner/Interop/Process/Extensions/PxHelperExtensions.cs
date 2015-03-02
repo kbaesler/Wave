@@ -12,16 +12,16 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the configuration value that is stored in the MM_PX_CONFIG table and converts the value to the specified type.
         /// </summary>
-        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="source">The helper application reference.</param>
         /// <param name="configName">Name of the configuration.</param>
         /// <param name="fallbackValue">The fallback value.</param>
         /// <returns>
         ///     Returns an object representing the configuration value.
         /// </returns>
-        public static TSource GetConfigValue<TSource>(this IMMPxHelper2 source, string configName, TSource fallbackValue)
+        public static TValue GetConfigValue<TValue>(this IMMPxHelper2 source, string configName, TValue fallbackValue)
         {
-            if (source == null) return default(TSource);
+            if (source == null) return default(TValue);
 
             object configValue = source.GetConfigValue(configName);
 

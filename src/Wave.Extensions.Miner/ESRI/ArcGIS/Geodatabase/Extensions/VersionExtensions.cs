@@ -1,4 +1,6 @@
-﻿using Miner.Interop;
+﻿using System;
+
+using Miner.Interop;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -31,12 +33,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when conflicts were detected; otherwise <c>false</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">targetVersionName</exception>
         /// <remarks>
         ///     The Reconcile4 function reconciles the current source version with the specified target version.
         ///     The target version must be an ancestor of the current version or an error will be returned.
         /// </remarks>
         public static bool Reconcile(this IVersion source, string targetVersionName, bool acquireLock, bool abortIfConflicts, bool childWins, bool columnLevel, mmAutoUpdaterMode autoUpdaterMode)
         {
+            if (source == null) return false;
+            if (targetVersionName == null) throw new ArgumentNullException("targetVersionName");
+
             using (new AutoUpdaterModeReverter(autoUpdaterMode))
             {
                 IVersionEdit4 versionEdit = (IVersionEdit4) source;

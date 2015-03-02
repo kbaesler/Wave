@@ -20,6 +20,8 @@ namespace Miner.Interop
         /// <param name="source">The source.</param>
         public static void Notify(this IRelationshipClass source)
         {
+            if (source == null) return;
+
             IMMEditNotificationQueue notifyQueue = EditNotificationQueue.Instance;
             if (notifyQueue != null)
             {
@@ -29,7 +31,7 @@ namespace Miner.Interop
                 }
                 catch (COMException com)
                 {
-                    Log.Error(typeof (RelationshipClassExtensions), "You must be in an edit operation.\n" + com.GetErrorMessage(), com);
+                    Log.Error(typeof (IMMEditNotificationQueue), "You must be in an edit operation.\n" + com.GetErrorMessage(), com);
                 }
             }
         }
