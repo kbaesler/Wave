@@ -73,7 +73,7 @@ namespace Miner.Interop
                 if (fields != null)
                 {
                     // Update the simple settings.
-                    foreach (IMMSimpleSetting simple in fields.AsEnumerable().OfType<IMMSimpleSetting>().Where(setting => setting.SettingType == mmFieldSettingType.mmFSVisible))
+                    foreach (IMMSimpleSetting simple in fields.AsEnumerable().OfType<IMMSimpleSetting>().Where(o => o.SettingType == mmFieldSettingType.mmFSVisible))
                     {
                         simple.SettingValue = visible;
                     }
@@ -105,18 +105,20 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets the automatic value (i.e. ArcFM Auto Updater) for the specified <paramref name="editEvent" /> and
-        ///     <paramref name="guid" />.
+        /// Gets the automatic value (i.e. ArcFM Auto Updater) for the specified <paramref name="editEvent" /> and
+        /// <paramref name="guid" />.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <param name="guid">The unique identifier.</param>
         /// <returns>
-        ///     Returns a <see cref="IMMAutoValue" /> representign the automatic value; otherwise <c>null</c>.
+        /// Returns a <see cref="IMMAutoValue" /> representign the automatic value; otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">guid</exception>
         public static IMMAutoValue GetAutoValue(this IMMSubtype source, mmEditEvent editEvent, Guid guid)
         {
             if (source == null) return null;
+            if (guid == Guid.Empty) throw new ArgumentNullException("guid");
 
             ID8List list = source as ID8List;
             if (list == null) return null;
@@ -134,18 +136,20 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="objectClass" />
+        /// Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        /// <paramref name="table" />
         /// </summary>
         /// <param name="source">The object representing the specific subtype being analyzed.</param>
-        /// <param name="objectClass">The object class.</param>
+        /// <param name="table">The object class.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
+        /// Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
         /// </returns>
-        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, mmEditEvent editEvent)
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass table, mmEditEvent editEvent)
         {
             if (source == null) return null;
+            if (table == null) throw new ArgumentNullException("table");
 
             var list = source as ID8List;
             if (list == null) return null;
@@ -154,22 +158,24 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="index" />
+        /// Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        /// <paramref name="index" />
         /// </summary>
         /// <param name="source">The object representing the specific subtype being analyzed.</param>
-        /// <param name="objectClass">The object class.</param>
+        /// <param name="table">The object class.</param>
         /// <param name="index">The index of the field.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
+        /// Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
         /// </returns>
-        /// <exception cref="IndexOutOfRangeException"></exception>
-        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, int index, mmEditEvent editEvent)
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass table, int index, mmEditEvent editEvent)
         {
             if (source == null) return null;
+            if (table == null) throw new ArgumentNullException("table");
 
-            if (index < 0 || objectClass.Fields.FieldCount > 0)
+            if (index < 0 || table.Fields.FieldCount > 0)
                 throw new IndexOutOfRangeException();
 
             IMMField field = null;
@@ -183,22 +189,24 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="field" />
+        /// Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        /// <paramref name="field" />
         /// </summary>
         /// <param name="source">The object representing the specific subtype being analyzed.</param>
-        /// <param name="objectClass">The object class.</param>
+        /// <param name="table">The object class.</param>
         /// <param name="field">The field in the object class.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
+        /// Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
         /// </returns>
-        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass objectClass, IField field, mmEditEvent editEvent)
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, IObjectClass table, IField field, mmEditEvent editEvent)
         {
             if (source == null) return null;
+            if (table == null) throw new ArgumentNullException("table");
 
-            int index = objectClass.FindField(field.Name);
-            return source.GetAutoValues(objectClass, index, editEvent);
+            int index = table.FindField(field.Name);
+            return source.GetAutoValues(table, index, editEvent);
         }
 
         /// <summary>
