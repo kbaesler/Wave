@@ -34,7 +34,7 @@ namespace Miner.Interop
             if (table == null) throw new ArgumentNullException("table");
 
             ISubtypes subtypes = (ISubtypes) table;
-            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new int[] {subtypes.DefaultSubtypeCode};
+            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new[] {subtypes.DefaultSubtypeCode};
 
             foreach (var subtypeCode in subtypeCodes)
             {
@@ -62,7 +62,7 @@ namespace Miner.Interop
             if (source == null) return;
             if (fieldNames == null) throw new ArgumentNullException("fieldNames");
             if (table == null) throw new ArgumentNullException("table");
-
+            
             IMMSubtype subtype = source.GetSubtypeByID(table, subtypeCode, false);
             if (subtype == null) return;
 
@@ -73,23 +73,27 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="editEvent" /> for all subtypes
-        ///     of the <see cref="table" />.
+        /// Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        /// <paramref name="editEvent" /> for all subtypes
+        /// of the <paramref name="table"/> object class.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="table">The object representing the specific subtype being analyzed.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
-        ///     object class.
+        /// Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
+        /// object class.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">table</exception>
         public static Dictionary<int, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)
         {
+            if (source == null) return null;
+            if (table == null) throw new ArgumentNullException("table");
+
             Dictionary<int, IEnumerable<IMMAutoValue>> list = new Dictionary<int, IEnumerable<IMMAutoValue>>();
 
             ISubtypes subtypes = (ISubtypes) table;
-            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new int[] {subtypes.DefaultSubtypeCode};
+            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new[] {subtypes.DefaultSubtypeCode};
             foreach (var subtypeCode in subtypeCodes)
             {
                 IMMSubtype subtype = source.GetSubtypeByID(table, subtypeCode, false);
@@ -103,17 +107,18 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Get the value of field that has been configured to be the primary display field.
+        /// Get the value of field that has been configured to be the primary display field.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="table">The object class.</param>
         /// <returns>
-        ///     Returns a <see cref="IField" /> representing the field for the primary display.
+        /// Returns a <see cref="IField" /> representing the field for the primary display.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">table</exception>
         public static IField GetPrimaryDisplayField(this IMMConfigTopLevel source, IObjectClass table)
         {
             if (source == null) return null;
-            if (table == null) return null;
+            if (table == null) throw new ArgumentNullException("table");
 
             var featureClass = source.GetFeatureClassOnly(table);
             if (featureClass == null) return null;
