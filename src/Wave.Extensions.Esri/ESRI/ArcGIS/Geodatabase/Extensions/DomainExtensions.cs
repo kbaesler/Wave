@@ -50,9 +50,15 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="name">The name.</param>
         /// <param name="fallbackValue">The fallback value.</param>
-        /// <returns>Returns the value representing the name (or description) otherwise the fallback value is used.</returns>
+        /// <returns>
+        ///     Returns the value representing the name (or description) otherwise the fallback value is used.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">name</exception>
         public static TValue GetValue<TValue>(this ICodedValueDomain source, string name, TValue fallbackValue)
         {
+            if (source == null) return fallbackValue;
+            if (name == null) throw new ArgumentNullException("name");
+
             object o = null;
             foreach (KeyValuePair<string, string> entry in source.AsEnumerable())
             {

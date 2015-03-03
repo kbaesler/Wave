@@ -28,7 +28,7 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 if ((fileName.EndsWith(".gdb", StringComparison.OrdinalIgnoreCase)))
                 {
-                    if(!Directory.Exists(fileName))
+                    if (!Directory.Exists(fileName))
                         throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found", fileName);
 
                     return new FileGDBWorkspaceFactoryClass();

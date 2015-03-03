@@ -23,8 +23,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IEnumerable{T}" /> of unique objects for the given column.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">columnName</exception>
         public static List<IRow> Distinct(this ITable source, string columnName, string whereClause)
         {
+            if (source == null) return null;
+            if (columnName == null) throw new ArgumentNullException("columnName");
+
             IDataset dataset = (IDataset) source;
             IWorkspace workspace = dataset.Workspace;
             IFeatureWorkspace fws = (IFeatureWorkspace) workspace;
@@ -51,8 +55,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">oids</exception>
         public static List<IRow> Fetch(this ITable source, params int[] oids)
         {
+            if (source == null) return null;
+            if (oids == null) throw new ArgumentNullException("oids");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 ICursor cursor = source.GetRows(oids, false);
@@ -73,8 +81,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">selector</exception>
         public static List<TResult> Fetch<TResult>(this ITable source, IQueryFilter filter, Func<IRow, TResult> selector)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 ICursor cursor = source.Search(filter, false);
@@ -94,8 +106,17 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     selector
+        ///     or
+        ///     oids
+        /// </exception>
         public static List<TResult> Fetch<TResult>(this ITable source, Func<IRow, TResult> selector, params int[] oids)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+            if (oids == null) throw new ArgumentNullException("oids");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 ICursor cursor = source.GetRows(oids, false);
@@ -115,6 +136,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static List<IRow> Fetch(this ITable source, IQueryFilter filter)
         {
+            if (source == null) return null;
+
             using (ComReleaser cr = new ComReleaser())
             {
                 ICursor cursor = source.Search(filter, false);
@@ -142,8 +165,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static int Fetch(this ITable source, IQueryFilter filter, Func<IRow, bool> action)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
+            if (source == null) return 0;
+            if (action == null) throw new ArgumentNullException("action");
 
             int recordsAffected = 0;
 
@@ -174,6 +197,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
         /// <remarks>
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
@@ -181,8 +205,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static int Fetch(this ITable source, IQueryFilter filter, Action<IRow> action)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
+            if (source == null) return 0;
+            if (action == null) throw new ArgumentNullException("action");
 
             int recordsAffected = 0;
 
@@ -211,6 +235,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="string" /> representing the name of the delta table.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">delta</exception>
+        /// <exception cref="System.ArgumentException">
+        ///     The delta string must be 1 char long.
+        ///     or
+        ///     The delta string must contain only 'A' or 'D' chars.
+        ///     or
+        ///     The table must be versioned for it have a delta table.
+        /// </exception>
         /// <exception cref="ArgumentException">
         ///     The delta string must be 1 char long.
         ///     or
@@ -218,6 +250,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </exception>
         public static string GetDeltaTableName(this ITable source, string delta)
         {
+            if (source == null) return null;
+            if (delta == null) throw new ArgumentNullException("delta");
+
             if (delta.Length != 1)
                 throw new ArgumentException("The delta string must be 1 char long.");
 
@@ -267,6 +302,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string GetSchemaName(this ITable source)
         {
+            if (source == null) return null;
+
             string className = ((IDataset) source).Name;
             int index = className.IndexOf('.');
             if (index > 0)
@@ -286,10 +323,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the code of the subtype; otherwise <c>-1</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">subtypeName</exception>
         public static int GetSubtypeCode(this ITable source, string subtypeName)
         {
+            if (source == null) return -1;
+            if (subtypeName == null) throw new ArgumentNullException("subtypeName");
+
             ISubtypes subtypes = (ISubtypes) source;
-            if (subtypes.HasSubtype) return -1;
+            if (subtypes.HasSubtype) return subtypes.DefaultSubtypeCode;
 
             foreach (var subtype in subtypes.Subtypes.AsEnumerable().Where(subtype => subtype.Value.Equals(subtypeName, StringComparison.OrdinalIgnoreCase)))
             {
@@ -309,6 +350,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string GetSubtypeName(this ITable source, int subtypeCode)
         {
+            if (source == null) return null;
+
             ISubtypes subtypes = (ISubtypes) source;
             if (subtypes.HasSubtype) return null;
 
@@ -329,6 +372,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string GetTableName(this ITable source)
         {
+            if (source == null) return null;
+
             string className = ((IDataset) source).Name;
             int index = className.IndexOf('.');
             if (index > 0)
@@ -353,8 +398,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="XDocument" /> representing the contents of the query.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">predicate</exception>
         public static XDocument GetXDocument(this ITable source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
         {
+            if (source == null) return null;
+            if (predicate == null) throw new ArgumentNullException("predicate");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 ICursor cursor = source.Search(filter, true);

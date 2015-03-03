@@ -9,7 +9,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class FieldExtensions
     {
-        #region Public Methods        
+        #region Public Methods
 
         /// <summary>
         ///     Creates an <see cref="IDictionary{TKey, TValue}" /> from an <see cref="IFields" />
@@ -20,14 +20,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IDictionary<string, int> ToDictionary(this IFields source)
         {
-            IDictionary<string, int> dictionary = new Dictionary<string, int>(StringComparer.Create(CultureInfo.CurrentCulture, true));
+            if (source == null) return null;
 
-            if (source != null)
+            IDictionary<string, int> dictionary = new Dictionary<string, int>(StringComparer.Create(CultureInfo.CurrentCulture, true));
+            for (int i = 0; i < source.FieldCount; i++)
             {
-                for (int i = 0; i < source.FieldCount; i++)
-                {
-                    dictionary.Add(source.Field[i].Name, i);
-                }
+                dictionary.Add(source.Field[i].Name, i);
             }
 
             return dictionary;

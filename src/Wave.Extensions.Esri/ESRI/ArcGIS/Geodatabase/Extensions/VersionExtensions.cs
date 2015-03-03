@@ -26,8 +26,17 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
         ///     key).
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     target
+        ///     or
+        ///     dataChangeTypes
+        /// </exception>
         public static Dictionary<string, List<DeltaRow>> GetDataChanges(this IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
         {
+            if (source == null) return null;
+            if (target == null) throw new ArgumentNullException("target");
+            if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
+
             return source.GetDataChanges(target, (s, t) => t != null, dataChangeTypes);
         }
 
@@ -46,10 +55,21 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
         ///     key).
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     target
+        ///     or
+        ///     predicate
+        ///     or
+        ///     dataChangeTypes
+        /// </exception>
         public static Dictionary<string, List<DeltaRow>> GetDataChanges(this IVersion source, IVersion target, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
         {
-            var list = new Dictionary<string, List<DeltaRow>>();
+            if (source == null) return null;
+            if (target == null) throw new ArgumentNullException("target");
+            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
 
+            var list = new Dictionary<string, List<DeltaRow>>();
 
             IVersionDataChangesInit vdci = new VersionDataChangesClass();
             IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
@@ -115,9 +135,19 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="table">The table (or parent) version.</param>
         /// <param name="filter">The predicate used to filter the differences.</param>
         /// <param name="differenceTypes">The types of differences that are detected.</param>
-        /// <returns>Returns a <see cref="IEnumerable{DifferenceRow}" /> representing the differences for the table.</returns>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{DifferenceRow}" /> representing the differences for the table.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     table
+        ///     or
+        ///     differenceTypes
+        /// </exception>
         public static IEnumerable<DifferenceRow> GetDifferences(this IVersionedTable source, ITable table, IQueryFilter filter, params esriDifferenceType[] differenceTypes)
         {
+            if (table == null) throw new ArgumentNullException("table");
+            if (differenceTypes == null) throw new ArgumentNullException("differenceTypes");
+
             foreach (var differenceType in differenceTypes)
             {
                 using (ComReleaser cr = new ComReleaser())
@@ -170,8 +200,17 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="Dictionary{String, DifferenceRow}" /> representing the differences for the
         ///     table (or key).
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     target
+        ///     or
+        ///     differenceTypes
+        /// </exception>
         public static Dictionary<string, IEnumerable<DifferenceRow>> GetDifferences(this IVersion source, IVersion target, IQueryFilter filter, params esriDifferenceType[] differenceTypes)
         {
+            if (source == null) return null;
+            if (target == null) throw new ArgumentNullException("target");
+            if (differenceTypes == null) throw new ArgumentNullException("differenceTypes");
+
             return source.GetDifferences(target, filter, (s, t) => t != null, differenceTypes);
         }
 
@@ -190,8 +229,17 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="Dictionary{String, DifferenceRow}" /> representing the differences for the
         ///     table (or key).
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     target
+        ///     or
+        ///     differenceTypes
+        /// </exception>
         public static Dictionary<string, IEnumerable<DifferenceRow>> GetDifferences(this IVersion source, IVersion target, IQueryFilter filter, Func<string, ITable, bool> predicate, params esriDifferenceType[] differenceTypes)
         {
+            if (source == null) return null;
+            if (target == null) throw new ArgumentNullException("target");
+            if (differenceTypes == null) throw new ArgumentNullException("differenceTypes");
+
             var list = new Dictionary<string, IEnumerable<DifferenceRow>>();
 
             IVersionDataChangesInit vdci = new VersionDataChangesClass();

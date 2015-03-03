@@ -29,31 +29,38 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
-        ///     Returns the layer that is associated with the <paramref name="featureClass" /> that resides the maps.
+        ///     Returns the layer that is associated with the <paramref name="table" /> that resides the maps.
         /// </summary>
         /// <param name="source">The map.</param>
-        /// <param name="featureClass">The feature class.</param>
+        /// <param name="table">The feature class.</param>
         /// <returns>
         ///     Returns the <see cref="IFeatureLayer" /> representing the layer is associated with the feature class.
         /// </returns>
-        public static IFeatureLayer GetFeatureLayer(this IMap source, IFeatureClass featureClass)
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        public static IFeatureLayer GetFeatureLayer(this IMap source, IFeatureClass table)
         {
-            var list = source.GetFeatureLayers(featureClass);
+            if (source == null) return null;
+            if (table == null) throw new ArgumentNullException("table");
+
+            var list = source.GetFeatureLayers(table);
             return list.FirstOrDefault();
         }
 
         /// <summary>
-        ///     Returns the layers that are associated with the <paramref name="featureClass" /> that resides the map.
+        ///     Returns the layers that are associated with the <paramref name="table" /> that resides the map.
         /// </summary>
         /// <param name="source">The map.</param>
-        /// <param name="featureClass">The feature class.</param>
+        /// <param name="table">The feature class.</param>
         /// <returns>
         ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers are associated with the feature
         ///     class.
         /// </returns>
-        public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source, IFeatureClass featureClass)
+        public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source, IFeatureClass table)
         {
-            return source.Where(o => o.Valid && o.FeatureClass.ObjectClassID == featureClass.ObjectClassID);
+            if (source == null) return null;
+            if (table == null) throw new ArgumentNullException("table");
+
+            return source.Where(o => o.Valid && o.FeatureClass.ObjectClassID == table.ObjectClassID);
         }
 
 
@@ -68,8 +75,12 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns an <see cref="IEnumerable{IFeatureLayer}" /> enumeration whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">selector</exception>
         public static IEnumerable<IFeatureLayer> Where(this IMaps source, Func<IFeatureLayer, bool> selector)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+
             return source.AsEnumerable().SelectMany(map => map.Where(selector));
         }
 
@@ -84,10 +95,11 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns an <see cref="IEnumerable{IFeatureLayer}" /> enumeration whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">selector</exception>
         public static IEnumerable<IFeatureLayer> Where(this IMap source, Func<IFeatureLayer, bool> selector)
         {
-            if (source == null)
-                return null;
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
 
             UID uid = new UIDClass();
             uid.Value = LayerExtensions.Guid.FeatureLayers;

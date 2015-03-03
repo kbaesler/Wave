@@ -25,6 +25,8 @@ namespace ESRI.ArcGIS.Framework
         /// </remarks>
         public static IConflictsWindow GetConflictsWindow(this IEditor source)
         {
+            if (source == null) return null;
+
             UID uid = new UIDClass();
             uid.Value = "esriEditor.ConflictsWindow";
 

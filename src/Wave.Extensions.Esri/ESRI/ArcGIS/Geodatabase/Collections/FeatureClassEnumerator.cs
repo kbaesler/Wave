@@ -3,7 +3,7 @@
 namespace ESRI.ArcGIS.Geodatabase
 {
     /// <summary>
-    /// An iterator used to enumerate through a collection of <see cref="IFeatureClass"/> interfaces.
+    ///     An iterator used to enumerate through a collection of <see cref="IFeatureClass" /> interfaces.
     /// </summary>
     public class FeatureClassEnumerator : IEnumFeatureClass
     {
@@ -38,8 +38,8 @@ namespace ESRI.ArcGIS.Geodatabase
         #region IEnumFeatureClass Members
 
         /// <summary>
-        ///    Sets the enumerator to its initial position, which is before the first element
-        ///    in the collection.
+        ///     Sets the enumerator to its initial position, which is before the first element
+        ///     in the collection.
         /// </summary>
         public void Reset()
         {

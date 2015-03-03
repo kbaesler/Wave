@@ -21,6 +21,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IIntermediateRelationship GetIntermediateRelationship(this IRelationshipClass source)
         {
+            if (source == null) return null;
+
             IIntermediateRelationship o = new IntermediateRelationship(source);
             return o;
         }

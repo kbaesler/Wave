@@ -28,8 +28,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     filter
+        ///     or
+        ///     selector
+        /// </exception>
         public static List<TResult> Fetch<TResult>(this IFeatureClass source, IQueryFilter filter, Func<IFeature, TResult> selector)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 IFeatureCursor cursor = source.Search(filter, false);
@@ -48,8 +56,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{IFeature}" /> representing the results of the query projected to the type.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">filter</exception>
         public static List<IFeature> Fetch(this IFeatureClass source, IQueryFilter filter)
         {
+            if (source == null) return null;
+
             using (ComReleaser cr = new ComReleaser())
             {
                 IFeatureCursor cursor = source.Search(filter, false);
@@ -69,8 +80,17 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     selector
+        ///     or
+        ///     oids
+        /// </exception>
         public static List<TResult> Fetch<TResult>(this IFeatureClass source, Func<IFeature, TResult> selector, params int[] oids)
         {
+            if (source == null) return null;
+            if (selector == null) throw new ArgumentNullException("selector");
+            if (oids == null) throw new ArgumentNullException("oids");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 IFeatureCursor cursor = source.GetFeatures(oids, false);
@@ -88,8 +108,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{IFeature}" /> representing the features returned from the query.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">oids</exception>
         public static List<IFeature> Fetch(this IFeatureClass source, params int[] oids)
         {
+            if (source == null) return null;
+            if (oids == null) throw new ArgumentNullException("oids");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 IFeatureCursor cursor = source.GetFeatures(oids, false);
@@ -108,6 +132,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
         /// <remarks>
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
@@ -115,6 +140,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static int Fetch(this IFeatureClass source, Func<IFeature, bool> action)
         {
+            if (source == null) return 0;
+            if (action == null) throw new ArgumentNullException("action");
+
             IQueryFilter filter = new QueryFilterClass();
             return source.Fetch(filter, action);
         }
@@ -130,6 +158,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
         /// <remarks>
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
@@ -137,8 +166,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static int Fetch(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
+            if (source == null) return 0;
+            if (action == null) throw new ArgumentNullException("action");
 
             int recordsAffected = 0;
 
@@ -168,6 +197,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
         /// <remarks>
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
@@ -175,8 +205,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static int Fetch(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
+            if (source == null) return 0;
+            if (action == null) throw new ArgumentNullException("action");
 
             int recordsAffected = 0;
 
@@ -211,8 +241,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="XDocument" /> representing the contents of the query.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">predicate</exception>
         public static XDocument GetXDocument(this IFeatureClass source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
         {
+            if (source == null) return null;
+            if (predicate == null) throw new ArgumentNullException("predicate");
+
             using (ComReleaser cr = new ComReleaser())
             {
                 IFeatureCursor cursor = source.Search(filter, true);
@@ -250,8 +284,20 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="display">The display.</param>
         /// <param name="featureRenderer">The feature renderer.</param>
         /// <param name="features">The features.</param>
+        /// <exception cref="System.ArgumentNullException">
+        ///     display
+        ///     or
+        ///     featureRenderer
+        ///     or
+        ///     features
+        /// </exception>
         public static void Invalidate(this IFeatureClass source, IScreenDisplay display, IFeatureRenderer featureRenderer, params IFeature[] features)
         {
+            if (source == null) return;
+            if (display == null) throw new ArgumentNullException("display");
+            if (featureRenderer == null) throw new ArgumentNullException("featureRenderer");
+            if (features == null) throw new ArgumentNullException("features");
+
             source.Invalidate(display, featureRenderer, esriScreenCache.esriAllScreenCaches, features);
         }
 
@@ -263,10 +309,20 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="featureRenderer">The feature renderer.</param>
         /// <param name="screenCache">The screen cache.</param>
         /// <param name="features">The features.</param>
+        /// <exception cref="System.ArgumentNullException">
+        ///     display
+        ///     or
+        ///     featureRenderer
+        ///     or
+        ///     features
+        /// </exception>
         public static void Invalidate(this IFeatureClass source, IScreenDisplay display, IFeatureRenderer featureRenderer, esriScreenCache screenCache, params IFeature[] features)
         {
-            if (display == null || source == null || featureRenderer == null || features == null)
-                return;
+            if (source == null) return;
+            if (display == null) throw new ArgumentNullException("display");
+            if (featureRenderer == null) throw new ArgumentNullException("featureRenderer");
+            if (features == null) throw new ArgumentNullException("features");
+
 
             IInvalidArea3 invalidArea = new InvalidAreaClass();
             invalidArea.Display = display;

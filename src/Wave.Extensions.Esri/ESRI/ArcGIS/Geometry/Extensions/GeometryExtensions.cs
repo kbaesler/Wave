@@ -24,6 +24,8 @@
         /// </remarks>
         public static IGeometry Buffer(this IGeometry source, double distance)
         {
+            if (source == null) return null;
+
             ITopologicalOperator topOp = (ITopologicalOperator) source;
             return topOp.Buffer(distance);
         }

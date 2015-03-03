@@ -14,6 +14,8 @@
         /// <returns>Returns a <see cref="double" /> representing the angle.</returns>
         public static double GetAngle(this IPolyline source)
         {
+            if (source == null) return 0;
+
             ILine line = new LineClass();
             line.PutCoords(source.FromPoint, source.ToPoint);
             return line.Angle;
@@ -26,6 +28,8 @@
         /// <returns>Returns a <see cref="double" /> representing the angle.</returns>
         public static double GetArithmeticAngle(this IPolyline source)
         {
+            if (source == null) return 0;
+
             ILine line = new LineClass();
             line.PutCoords(source.FromPoint, source.ToPoint);
             return line.GetArithmeticAngle();
@@ -38,6 +42,8 @@
         /// <returns>Returns a <see cref="double" /> representing the angle.</returns>
         public static double GetGeographicAngle(this IPolyline source)
         {
+            if (source == null) return 0;
+
             ILine line = new LineClass();
             line.PutCoords(source.FromPoint, source.ToPoint);
             return line.GetGeographicAngle();

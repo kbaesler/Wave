@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using ESRI.ArcGIS.NetworkAnalysis;
@@ -21,8 +22,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     A <see cref="IEnumNetEID" /> from the list of elements.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">eids</exception>
         public static IEnumNetEID CreateEnumNetEID(this IGeometricNetwork source, esriElementType elementType, List<int> eids)
         {
+            if (source == null) return null;
+            if (eids == null) throw new ArgumentNullException("eids");
+
             return source.CreateEnumNetEID(elementType, eids.ToArray());
         }
 
@@ -35,8 +40,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     A <see cref="IEnumNetEID" /> from the list of elements.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">eids</exception>
         public static IEnumNetEID CreateEnumNetEID(this IGeometricNetwork source, esriElementType elementType, params int[] eids)
         {
+            if (source == null) return null;
+            if (eids == null) throw new ArgumentNullException("eids");
+
             IEnumNetEIDBuilderGEN builder = new EnumNetEIDArrayClass();
             builder.ElementType = elementType;
             builder.Network = source.Network;
@@ -94,6 +103,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IEIDInfo GetEIDInfo(this IGeometricNetwork source, int eid, esriElementType elementType, bool returnFeatures = true, bool returnGeometries = true)
         {
+            if (source == null) return null;
+
             IEnumNetEID enumNetEID = source.CreateEnumNetEID(elementType, eid);
 
             IEIDHelper eidHelper = new EIDHelperClass();
@@ -114,9 +125,13 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> if the weight exists; otherwise <c>false</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">weightName</exception>
         public static bool IsAssignedWeightName(this IGeometricNetwork source, string weightName)
         {
-            string[] names = new[] {weightName, weightName.ToLower(), weightName.ToUpper()};
+            if (source == null) return false;
+            if (weightName == null) throw new ArgumentNullException("weightName");
+
+            string[] names = {weightName, weightName.ToLower(), weightName.ToUpper()};
             INetSchema netSchema = (INetSchema) source.Network;
             return names.Select(name => netSchema.WeightByName[name]).Any(netWeight => netWeight != null);
         }

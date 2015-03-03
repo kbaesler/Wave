@@ -31,6 +31,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static IDisposable BlockReentrancy(this IRow source)
         {
+            if (source == null) return null;
+
             if (!_ReentrancyMonitors.ContainsKey(source))
                 _ReentrancyMonitors.Add(source, new ReentrancyMonitor());
 
@@ -49,6 +51,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static Dictionary<int, string> GetChanges(this IRow source)
         {
+            if (source == null) return null;
+
             Dictionary<int, string> list = new Dictionary<int, string>();
             IRowChanges rowChanges = (IRowChanges) source;
             for (int i = 0; i < source.Fields.FieldCount; i++)
@@ -71,8 +75,12 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="Dictionary{String, Object}" /> representing the field name / original values for those fields
         ///     that have changed.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">fieldNames</exception>
         public static Dictionary<string, object> GetChanges(this IRow source, params string[] fieldNames)
         {
+            if (source == null) return null;
+            if (fieldNames == null) throw new ArgumentNullException("fieldNames");
+
             Dictionary<string, object> list = new Dictionary<string, object>(StringComparer.Create(CultureInfo.CurrentCulture, true));
 
             IRowChanges rowChanges = (IRowChanges) source;
@@ -107,6 +115,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static IDomain GetDomain(this IRow source, int index)
         {
+            if (source == null) return null;
             if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
@@ -132,9 +141,13 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="object" /> representing the converted value to the specified type.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">fieldName</exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static TValue GetValue<TValue>(this IRow source, string fieldName, TValue fallbackValue)
         {
+            if (source == null) return fallbackValue;
+            if (fieldName == null) throw new ArgumentNullException("fieldName");
+
             int index = source.Table.FindField(fieldName);
             return source.GetValue(index, fallbackValue);
         }
@@ -152,6 +165,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static TValue GetValue<TValue>(this IRow source, int index, TValue fallbackValue)
         {
+            if (source == null) return fallbackValue;
             if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
@@ -168,6 +182,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static void Remove(this IRow source)
         {
+            if (source == null) return;
+
             ITableWrite tableWrite = source.Table as ITableWrite;
             if (tableWrite != null)
             {
@@ -188,6 +204,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static bool SaveChanges(this IRow source)
         {
+            if (source == null) return false;
+
             return source.SaveChanges(field => field.Editable);
         }
 
@@ -199,12 +217,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the store was called on the row; otherwise <c>false</c>
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">predicate</exception>
         /// <remarks>
         ///     The changes will not be saved, if there was a call to BlockReentrancy of which the IDisposable return value has not
         ///     yet been disposed of.
         /// </remarks>
         public static bool SaveChanges(this IRow source, Predicate<IField> predicate)
         {
+            if (source == null) return false;
+            if (predicate == null) throw new ArgumentNullException("predicate");
+
             source.CheckReentrancy();
 
             bool saveChanges = false;
@@ -242,8 +264,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="bool" /> representing <c>true</c> if the field index is valid; otherwise, false.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">fieldName</exception>
         public static bool TryGetValue<TValue>(this IRow source, string fieldName, TValue fallbackValue, out TValue value)
         {
+            value = fallbackValue;
+
+            if (source == null) return false;
+            if (fieldName == null) throw new ArgumentNullException("fieldName");
+
             int index = source.Table.FindField(fieldName);
             return source.TryGetValue(index, fallbackValue, out value);
         }
@@ -288,9 +316,13 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">fieldName</exception>
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
         public static bool Update(this IRow source, string fieldName, object value, bool equalityCompare = true)
         {
+            if (source == null) return false;
+            if (fieldName == null) throw new ArgumentNullException("fieldName");
+
             int i = source.Table.FindField(fieldName);
             return source.Update(i, value, equalityCompare);
         }
@@ -309,6 +341,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="IndexOutOfRangeException"></exception>
         public static bool Update(this IRow source, int index, object value, bool equalityCompare = true)
         {
+            if (source == null) return false;
             if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
@@ -352,6 +385,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </remarks>
         public static void Write(this IRow source)
         {
+            if (source == null) return;
+
             ITableWrite tableWrite = source.Table as ITableWrite;
             if (tableWrite != null)
             {
@@ -367,12 +402,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Checks and aserts for reentrant attempts to change the object.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         ///     There was a call to BlockReentrancy of which the IDisposable return
         ///     value has not yet been disposed of.
         /// </exception>
         private static void CheckReentrancy(this IRow source)
         {
+            if (source == null) return;
+
             if (_ReentrancyMonitors.ContainsKey(source))
             {
                 var reentrancyMonitor = _ReentrancyMonitors[source];
@@ -402,7 +439,7 @@ namespace ESRI.ArcGIS.Geodatabase
             bool pendingChanges = true;
             if (equalityComparer != null)
             {
-                IRowChanges rowChanges = (IRowChanges)source;
+                IRowChanges rowChanges = (IRowChanges) source;
                 object originalValue = rowChanges.OriginalValue[index];
 
                 TValue oldValue = TypeCast.Cast(originalValue, default(TValue));
@@ -422,7 +459,6 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return pendingChanges;
-
         }
 
         #endregion

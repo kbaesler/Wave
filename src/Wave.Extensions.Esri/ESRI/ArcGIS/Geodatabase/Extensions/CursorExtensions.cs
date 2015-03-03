@@ -19,6 +19,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static XDocument GetXDocument(this ICursor source)
         {
+            if (source == null) return null;
+
             return source.GetXDocument("Table");
         }
 
@@ -30,8 +32,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="XDocument" /> representing the contents of the cursor.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">elementName</exception>
         public static XDocument GetXDocument(this ICursor source, string elementName)
         {
+            if (source == null) return null;
+            if (elementName == null) throw new ArgumentNullException("elementName");
+
             return source.GetXDocument(elementName, field => (field.Type != esriFieldType.esriFieldTypeGeometry &&
                                                               field.Type != esriFieldType.esriFieldTypeBlob &&
                                                               field.Type != esriFieldType.esriFieldTypeRaster &&
@@ -49,6 +55,10 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static XDocument GetXDocument(this ICursor source, string elementName, Predicate<IField> predicate)
         {
+            if (source == null) return null;
+            if (elementName == null) throw new ArgumentNullException("elementName");
+            if (predicate == null) throw new ArgumentNullException("predicate");
+
             XElement xtable = new XElement(elementName, new XAttribute("Timestamp", DateTime.Now.ToString("f")));
             XDocument xdoc = new XDocument(xtable);
 

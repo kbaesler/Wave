@@ -16,6 +16,8 @@ namespace ESRI.ArcGIS.Geometry
         /// <returns>Returns a <see cref="double" /> representing the angle.</returns>
         public static double GetArithmeticAngle(this ILine source)
         {
+            if (source == null) return 0;
+
             //      Calculated Angle          Arithmetic Angle         
             //            90                        90                     
             //             |                         |                   
@@ -41,6 +43,8 @@ namespace ESRI.ArcGIS.Geometry
         /// <returns>Returns a <see cref="double" /> representing the angle.</returns>
         public static double GetGeographicAngle(this ILine source)
         {
+            if (source == null) return 0;
+
             //      Calculated Angle          Geographic Angle         
             //            90                         0                     
             //             |                         |                   

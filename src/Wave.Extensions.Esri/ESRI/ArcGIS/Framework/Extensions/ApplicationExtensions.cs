@@ -49,19 +49,20 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
-        ///     Returns the command that has the specified <paramref name="commandName" />.
+        /// Returns the command that has the specified <paramref name="commandName" />.
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <param name="commandName">Name of the command.</param>
         /// <returns>
-        ///     Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
-        ///     <c>null</c>.
+        /// Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
+        /// <c>null</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">commandName</exception>
         /// <exception cref="System.ArgumentException">The application framework has not been fully initialized.</exception>
         public static ICommandItem GetCommandItem(this IApplication source, string commandName)
         {
-            if (source == null)
-                return null;
+            if (source == null) return null;
+            if (commandName == null) throw new ArgumentNullException("commandName");
 
             var status = (IApplicationStatus) source;
             if (!status.Initialized)
@@ -75,21 +76,20 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
-        ///     Returns the command that has the specified <paramref name="type" />.
+        /// Returns the command that has the specified <paramref name="type" />.
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <param name="type">Type of the command.</param>
         /// <returns>
-        ///     Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
-        ///     <c>null</c>.
+        /// Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
+        /// <c>null</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">type</exception>
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static ICommandItem GetCommandItem(this IApplication source, Type type)
         {
             if (source == null) return null;
-
-            if (type == null)
-                throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException("type");
 
             object[] attributes = type.GetCustomAttributes(typeof (GuidAttribute), false);
             if (attributes.Length == 0) return null;
@@ -100,22 +100,20 @@ namespace ESRI.ArcGIS.Framework
 
 
         /// <summary>
-        ///     Gets the dockable window for the given type.
+        /// Gets the dockable window for the given type.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="type">The dockable window type.</param>
         /// <returns>
-        ///     Returns the <see cref="ESRI.ArcGIS.Framework.IDockableWindow" /> representing the window; otherwise
-        ///     <c>null</c>.
+        /// Returns the <see cref="ESRI.ArcGIS.Framework.IDockableWindow" /> representing the window; otherwise
+        /// <c>null</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">type</exception>
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Dockable")]
         public static IDockableWindow GetDockableWindow(this IApplication source, Type type)
         {
-            if (source == null)
-                return null;
-
-            if (type == null)
-                throw new ArgumentNullException("type");
+            if (source == null) return null;
+            if (type == null) throw new ArgumentNullException("type");
 
             object[] attributes = type.GetCustomAttributes(typeof (ProgIdAttribute), false);
             if (attributes.Length == 0) return null;
@@ -158,6 +156,8 @@ namespace ESRI.ArcGIS.Framework
         /// </returns>
         public static IProgressBarAnimation InitializeAnimation(this IApplication source, int min, int max, int position = 0, int step = 1)
         {
+            if(source == null) return null;
+
             if (_ProgressBarAnimation != null)
                 _ProgressBarAnimation.Dispose();
 
@@ -177,6 +177,8 @@ namespace ESRI.ArcGIS.Framework
         /// </returns>
         public static IDisposable PlayAnimation(this IApplication source)
         {
+            if(source == null) return null;
+            
             return source.PlayAnimation(null);
         }
 
