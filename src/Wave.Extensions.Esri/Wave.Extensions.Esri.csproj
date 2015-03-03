@@ -188,6 +188,8 @@
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\ArcCatalog.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\ArcMap.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\EditorExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressBarAnimation.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />

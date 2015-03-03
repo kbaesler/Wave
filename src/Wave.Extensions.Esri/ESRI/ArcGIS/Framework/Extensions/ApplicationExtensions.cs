@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Framework.Internal;
 
 namespace ESRI.ArcGIS.Framework
 {
@@ -13,7 +15,12 @@ namespace ESRI.ArcGIS.Framework
     /// </summary>
     public static class ApplicationExtensions
     {
-        private static ProgressAnimationMonitor _ProgressAnimationMonitor;
+        #region Fields
+
+        private static ProgressBarAnimation _ProgressBarAnimation;
+        private static ProgressGlobeAnimation _ProgressGlobeAnimation;
+
+        #endregion
 
         #region Public Methods
 
@@ -76,7 +83,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
         ///     <c>null</c>.
         /// </returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static ICommandItem GetCommandItem(this IApplication source, Type type)
         {
             if (source == null) return null;
@@ -101,7 +108,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns the <see cref="ESRI.ArcGIS.Framework.IDockableWindow" /> representing the window; otherwise
         ///     <c>null</c>.
         /// </returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Dockable")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Dockable")]
         public static IDockableWindow GetDockableWindow(this IApplication source, Type type)
         {
             if (source == null)
@@ -138,12 +145,35 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
-        /// Starts spinning globe in ArcMap.
+        ///     Initializes the animation of the progress bar.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <param name="position">The position.</param>
+        /// <param name="step">The step.</param>
+        /// <returns>
+        ///     Returns a <see cref="IProgressBarAnimation" /> representing the object that controls the actions of the progress
+        ///     bar.
+        /// </returns>
+        public static IProgressBarAnimation InitializeAnimation(this IApplication source, int min, int max, int position = 0, int step = 1)
+        {
+            if (_ProgressBarAnimation != null)
+                _ProgressBarAnimation.Dispose();
+
+            _ProgressBarAnimation = new ProgressBarAnimation(source);
+            _ProgressBarAnimation.Initialize(min, max, position, step);
+
+            return _ProgressBarAnimation;
+        }
+
+        /// <summary>
+        ///     Starts spinning globe in ArcMap.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>
-        /// Returns a <see cref="IDisposable" /> representing the a disposable object that will stop the spinning globle
-        /// when disposed.
+        ///     Returns a <see cref="IDisposable" /> representing the disposable object that will stop the spinning globle
+        ///     when disposed.
         /// </returns>
         public static IDisposable PlayAnimation(this IApplication source)
         {
@@ -156,7 +186,7 @@ namespace ESRI.ArcGIS.Framework
         /// <param name="source">The source.</param>
         /// <param name="statusMessage">The status message.</param>
         /// <returns>
-        ///     Returns a <see cref="IDisposable" /> representing the a disposable object that will stop the spinning globle
+        ///     Returns a <see cref="IDisposable" /> representing the disposable object that will stop the spinning globle
         ///     when disposed.
         /// </returns>
         public static IDisposable PlayAnimation(this IApplication source, string statusMessage)
@@ -164,102 +194,15 @@ namespace ESRI.ArcGIS.Framework
             if (source == null)
                 return null;
 
-            if(_ProgressAnimationMonitor != null)
-                _ProgressAnimationMonitor.Dispose();
+            if (_ProgressGlobeAnimation != null)
+                _ProgressGlobeAnimation.Dispose();
 
-            _ProgressAnimationMonitor = new ProgressAnimationMonitor(source);
-            _ProgressAnimationMonitor.Play(MouseCursorImage.Wait, statusMessage);
+            _ProgressGlobeAnimation = new ProgressGlobeAnimation(source);
+            _ProgressGlobeAnimation.Play(MouseCursorImage.Wait, statusMessage);
 
-            return _ProgressAnimationMonitor;
+            return _ProgressGlobeAnimation;
         }
 
         #endregion
     }
-
-    /// <summary>
-    ///     An internal class used to handle starting and stopping the ArcMap progress animation.
-    /// </summary>
-    internal class ProgressAnimationMonitor : IDisposable
-    {
-        #region Fields
-
-        private readonly IApplication _Application;
-        private MouseCursorReverter _MouseCursorReverter;
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ProgressAnimationMonitor" /> class.
-        /// </summary>
-        /// <param name="application">The application.</param>
-        public ProgressAnimationMonitor(IApplication application)
-        {
-            _Application = application;
-        }
-
-        #endregion
-
-        #region IDisposable Members
-
-        /// <summary>
-        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        ///     Starts the global spinning in ArcMap and updates the message on the status bar.
-        /// </summary>
-        /// <param name="cursor">The cursor.</param>
-        /// <param name="statusMessage">The status message.</param>
-        public void Play(MouseCursorImage cursor, string statusMessage)
-        {
-            _MouseCursorReverter = new MouseCursorReverter(cursor);
-
-            IAnimationProgressor animation = _Application.StatusBar.ProgressAnimation;
-            animation.Show();
-
-            _Application.StatusBar.PlayProgressAnimation(true);
-            _Application.StatusBar.Message[0] = statusMessage;
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Releases unmanaged and - optionally - managed resources.
-        /// </summary>
-        /// <param name="disposing">
-        ///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
-        ///     unmanaged resources.
-        /// </param>
-        private void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_MouseCursorReverter != null)
-                {
-                    _MouseCursorReverter.Dispose();
-                }
-
-                _Application.StatusBar.PlayProgressAnimation(false);
-                _Application.StatusBar.Message[0] = null;
-
-                IAnimationProgressor animation = _Application.StatusBar.ProgressAnimation;
-                animation.Hide();
-            }
-        }
-
-        #endregion
-    }    
 }
