@@ -39,8 +39,7 @@ namespace ESRI.ArcGIS.Framework.Internal
         {
             base.Application.StatusBar.ProgressBar.Step();
             base.Application.StatusBar.ProgressBar.Show();
-
-            base.Play(MouseCursorImage.Wait, statusMessage);
+            base.Application.StatusBar.Message[0] = statusMessage;
         }
 
         #endregion
@@ -77,6 +76,7 @@ namespace ESRI.ArcGIS.Framework.Internal
             base.Application.StatusBar.ProgressBar.MaxRange = max;
             base.Application.StatusBar.ProgressBar.MinRange = min;
             base.Application.StatusBar.ProgressBar.StepValue = step;
+            base.Play(MouseCursorImage.Wait, "");
         }
 
         #endregion
