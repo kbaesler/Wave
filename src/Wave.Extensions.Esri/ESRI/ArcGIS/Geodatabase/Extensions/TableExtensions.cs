@@ -13,40 +13,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class TableExtensions
     {
-        #region Public Methods
-
-        /// <summary>
-        ///     Returns a list of the unique values in the column for the table.
-        /// </summary>
-        /// <param name="source">The table.</param>
-        /// <param name="columnName">Name of the column.</param>
-        /// <param name="whereClause">The where clause.</param>
-        /// <returns>
-        ///     Returns a <see cref="IEnumerable{T}" /> of unique objects for the given column.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">columnName</exception>
-        public static List<IRow> Distinct(this ITable source, string columnName, string whereClause)
-        {
-            if (source == null) return null;
-            if (columnName == null) throw new ArgumentNullException("columnName");
-
-            IDataset dataset = (IDataset) source;
-            IWorkspace workspace = dataset.Workspace;
-            IFeatureWorkspace fws = (IFeatureWorkspace) workspace;
-
-            IQueryDef queryDef = fws.CreateQueryDef();
-            queryDef.Tables = dataset.Name;
-            queryDef.SubFields = string.Format("DISTINCT({0})", columnName);
-            queryDef.WhereClause = whereClause;
-
-            using (ComReleaser cr = new ComReleaser())
-            {
-                ICursor cursor = queryDef.Evaluate();
-                cr.ManageLifetime(cursor);
-
-                return cursor.AsEnumerable().ToList();
-            }
-        }
+        #region Public Methods        
 
         /// <summary>
         ///     Queries for the rows that have the specified object ids.
