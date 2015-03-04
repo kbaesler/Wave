@@ -24,7 +24,7 @@ namespace Miner.Interop
         /// <param name="mode">The mode.</param>
         public AutoUpdaterModeReverter(mmAutoUpdaterMode mode)
         {
-#if ARCGIS_10
+#if ARCFM_10
             _Instance = AutoUpdater.Instance;
 #else
             _Instance = Instance;

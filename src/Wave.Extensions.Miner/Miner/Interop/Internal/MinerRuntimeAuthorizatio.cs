@@ -1,6 +1,8 @@
 ﻿using ESRI.ArcGIS.esriSystem.BaseClasses;
 
+#if ARCFM_10 
 using Miner.Interop;
+#endif 
 
 namespace Miner.Interop.Internal
 {

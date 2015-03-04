@@ -1,4 +1,8 @@
-﻿namespace ESRI.ArcGIS.Geodatabase
+﻿#if ARCFM_10
+using ESRI.ArcGIS.Carto;
+#endif
+
+namespace ESRI.ArcGIS.Geodatabase
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="ESRI.ArcGIS.Geodatabase.IFeature" /> interface.
@@ -54,18 +58,19 @@
         ///     Selects the specified feature in the map.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="map">The active map.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> if the feature was selected; otherwise <c>false</c>
         /// </returns>
-        public static bool Select(this IFeature source)
+        public static bool Select(this IFeature source, IMap map)
         {
-            if (source == null || Document.ActiveMap == null)
+            if (source == null || map == null)
                 return false;
 
-            IFeatureLayer layer = Document.ActiveMap.GetFeatureLayer((IFeatureClass) source.Class);
+            IFeatureLayer layer = map.GetFeatureLayer((IFeatureClass) source.Class);
             if (layer == null) return false;
 
-            Document.ActiveMap.SelectFeature(layer, source);
+            map.SelectFeature(layer, source);
             return true;
         }
 
