@@ -102,34 +102,8 @@ namespace ESRI.ArcGIS.Carto
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
-
-            var list = new Dictionary<Type, string>
-            {
-                {typeof (IFeatureLayer), "{40A9E885-5533-11d0-98BE-00805F7CED21}"},
-                {typeof (IFeatureLayer2), "{40A9E885-5533-11d0-98BE-00805F7CED21}"},
-                {typeof (IGroupLayer), "{EDAD6644-1810-11D1-86AE-0000F8751720}"},
-                {typeof (IDataLayer), "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"},
-                {typeof (IDataLayer2), "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"},
-                {typeof (IGraphicsLayer), "{34B2EF81-F4AC-11D1-A245-080009B6F22B}"},
-                {typeof (IFDOGraphicsLayer), "{5CEAE408-4C0A-437F-9DB3-054D83919850}"},
-                {typeof (IFDOGraphicsLayer2), "{5CEAE408-4C0A-437F-9DB3-054D83919850}"},
-                {typeof (ICoverageAnnotationLayer), "{0C22A4C7-DAFD-11D2-9F46-00C04F6BC78E}"},
-                {typeof (ICoverageAnnotationLayer2), "{0C22A4C7-DAFD-11D2-9F46-00C04F6BC78E}"},
-                {typeof (ILayer), null},
-                {typeof (ILayer2), null}
-            };
-
-            Type type = typeof (TLayer);
-            if (!list.ContainsKey(type))
-                throw new NotSupportedException("The type of layer is not supported.");
-
-            UID uid = null;
-            if (!string.IsNullOrEmpty(list[type]))
-            {
-                uid = new UIDClass {Value = list[type]};
-            }
-
-            IEnumLayer layers = source.Layers[uid];
+          
+            IEnumLayer layers = source.Layers[null];
             return layers.AsEnumerable().OfType<TLayer>().Where(selector);
         }
 
