@@ -19,7 +19,7 @@ namespace Wave.Extensions.Miner.Tests
         public void IRow_GetValue_FieldModelName_IndexOutOfRangeException()
         {
             IFeatureClass testClass = base.GetTestClass();
-            IFeature feature = testClass.Fetch(1).FirstOrDefault();
+            IFeature feature = testClass.Fetch(1);
             Assert.IsNotNull(feature);
 
             object value = feature.GetValue("@%4123%1", string.Empty, false);
@@ -30,7 +30,7 @@ namespace Wave.Extensions.Miner.Tests
         public void IRow_GetValue_FieldModelName_IsNotNull()
         {
             IFeatureClass testClass = base.GetTestClass();
-            IFeature feature = testClass.Fetch(1).FirstOrDefault();
+            IFeature feature = testClass.Fetch(1);
             Assert.IsNotNull(feature);
 
             object value = feature.GetValue("FEEDERID", string.Empty, false);
@@ -42,7 +42,7 @@ namespace Wave.Extensions.Miner.Tests
         public void IRow_GetValue_FieldModelName_MissingFieldModelNameException()
         {
             IFeatureClass testClass = base.GetTestClass();
-            IFeature feature = testClass.Fetch(1).FirstOrDefault();
+            IFeature feature = testClass.Fetch(1);
             Assert.IsNotNull(feature);
 
             object value = feature.GetValue("@%4123%1", string.Empty, true);
@@ -53,7 +53,7 @@ namespace Wave.Extensions.Miner.Tests
         public void IRow_Update_FieldModelName_EqualityCompare_True()
         {
             var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1).FirstOrDefault();
+            var feature = testClass.Fetch(1);
             Assert.IsNotNull(feature);
 
             bool saveChanges = feature.Update("FEEDERID", 12345123123, true, true);
@@ -64,7 +64,7 @@ namespace Wave.Extensions.Miner.Tests
         public void IRow_Update_FieldModelName_EqualityCompare_False()
         {
             var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1).FirstOrDefault();
+            var feature = testClass.Fetch(1);
             Assert.IsNotNull(feature);
 
             string value = feature.GetValue("FEEDERID", string.Empty, true);

@@ -43,7 +43,6 @@ namespace ESRI.ArcGIS.Carto
         ///     The cancel tracker object to monitor the Esc key and to terminate processes at the request of
         ///     the user.
         /// </param>
-        /// <param name="scale">The current scale of the display.</param>
         /// <returns>
         ///     Returns a <see cref="IEnumerable{IFeatureIdentifyObj}" /> representing the features that have been identified.
         /// </returns>
@@ -54,15 +53,13 @@ namespace ESRI.ArcGIS.Carto
         ///     methods to flash the
         ///     feature in the display and to display a context menu at the Identify location.
         /// </remarks>
-        public static IEnumerable<IFeatureIdentifyObj> Identify(this IFeatureLayer source, IGeometry geometry, ITrackCancel trackCancel = null, double scale = -1.0)
+        public static IEnumerable<IFeatureIdentifyObj> Identify(this IFeatureLayer source, IGeometry geometry, ITrackCancel trackCancel = null)
         {
             if (geometry == null) throw new ArgumentNullException("geometry");
 
             if (source != null)
             {
                 IIdentify2 identify = (IIdentify2) source;
-                if (scale > -1.0) identify.Scale = scale;
-
                 IArray array = identify.Identify(geometry, trackCancel);
                 if (array != null)
                 {
@@ -78,115 +75,6 @@ namespace ESRI.ArcGIS.Carto
             }
         }
 
-        /// <summary>
-        ///     Traverses the <paramref name="source" /> enumeration recursively selecting only those <see cref="ILayer" /> that
-        ///     satisify the <paramref name="selector" />
-        ///     and flattens the resulting sequences into one sequence.
-        /// </summary>
-        /// <param name="source">The layers.</param>
-        /// <param name="selector">A function to test each element for a condition in each recursion.</param>
-        /// <param name="depth">The depth of the recursion.</param>
-        /// <returns>
-        ///     Returns an <see cref="IEnumerable{ILayer}" /> enumeration whose elements
-        ///     who are the result of invoking the recursive transform function on each element of the input sequence.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static IEnumerable<ILayer> Where(this IEnumLayer source, Func<ILayer, bool> selector, int depth = -1)
-        {
-            if (source == null) return null;
-            if (selector == null) throw new ArgumentNullException("selector");
-
-            return WhereImp(source, selector, 0, depth);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        /// Traverses the <paramref name="layers" /> enumeration recursively selecting only those <see cref="ILayer" /> that
-        /// satisify the <paramref name="selector" />
-        /// and flattens the resulting sequences into one sequence.
-        /// </summary>
-        /// <param name="layers">The layers.</param>
-        /// <param name="selector">A function to test each element for a condition in each recursion.</param>
-        /// <param name="depth">The depth of the recursion.</param>
-        /// <param name="maximum">The maximum depth of the recursion.</param>
-        /// <returns>
-        /// Returns an <see cref="IEnumerable{ILayer}" /> enumeration whose elements
-        /// who are the result of invoking the recursive transform function on each element of the input sequence.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">
-        /// layers
-        /// or
-        /// selector
-        /// </exception>
-        private static IEnumerable<ILayer> WhereImp(IEnumLayer layers, Func<ILayer, bool> selector, int depth, int maximum)
-        {
-            if (layers == null) throw new ArgumentNullException("layers");
-            if (selector == null) throw new ArgumentNullException("selector");
-
-            layers.Reset();
-
-            ILayer layer;
-            while ((layer = layers.Next()) != null)
-            {
-                if (selector(layer))
-                    yield return layer;
-
-                if ((depth <= maximum) || (maximum == Recursion<ILayer>.Infinite))
-                {
-                    ICompositeLayer children = layer as ICompositeLayer;
-                    if (children != null)
-                    {
-                        foreach (var child in WhereImp(children, selector, depth + 1, maximum))
-                            yield return child;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Traverses the <paramref name="layers" /> composite layer recursively selecting only those <see cref="ILayer" />
-        /// that satisify the <paramref name="selector" />
-        /// and flattens the resulting sequences into one sequence.
-        /// </summary>
-        /// <param name="layers">The layers.</param>
-        /// <param name="selector">A function to test each element for a condition in each recursion.</param>
-        /// <param name="depth">The depth of the recursion.</param>
-        /// <param name="maximum">The maximum depth of the recursion.</param>
-        /// <returns>
-        /// Returns an <see cref="IEnumerable{ILayer}" /> enumeration whose elements
-        /// who are the result of invoking the recursive transform function on each element of the input sequence.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">
-        /// layers
-        /// or
-        /// selector
-        /// </exception>
-        private static IEnumerable<ILayer> WhereImp(ICompositeLayer layers, Func<ILayer, bool> selector, int depth, int maximum)
-        {
-            if(layers == null) throw new ArgumentNullException("layers");
-            if (selector == null) throw new ArgumentNullException("selector");
-
-            for (int i = 0; i < layers.Count; i++)
-            {
-                ILayer layer = layers.Layer[i];
-                if (selector(layer))
-                    yield return layer;
-
-                if ((depth <= maximum) || (maximum == Recursion<ILayer>.Infinite))
-                {
-                    ICompositeLayer children = layer as ICompositeLayer;
-                    if (children != null)
-                    {
-                        foreach (var child in WhereImp(children, selector, depth + 1, maximum))
-                            yield return child;
-                    }
-                }
-            }
-        }
-
-        #endregion
+        #endregion        
     }
 }

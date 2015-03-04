@@ -31,11 +31,9 @@ namespace Wave.Extensions.Esri.Tests
             ObjectEqualityComparer comparer = new ObjectEqualityComparer();
 
             var testClass = base.GetTestClass();
-            var rows = testClass.Fetch(1);
+            var row = testClass.Fetch(1);
 
-            Assert.AreEqual(1, rows.Count);
-
-            var equals = comparer.Equals(rows.First(), rows.Last());
+            var equals = comparer.Equals(row, row);
             Assert.IsTrue(equals);
         }
 

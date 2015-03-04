@@ -199,7 +199,6 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\GeometryEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RowEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ComReleaserExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\CursorExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\DomainExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SystemExtensions.cs" />

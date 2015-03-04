@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
@@ -44,6 +45,33 @@ namespace ESRI.ArcGIS.Geodatabase
                 cr.ManageLifetime(cursor);
 
                 return cursor.AsEnumerable().Select(selector).ToList();
+            }
+        }
+
+        /// <summary>
+        ///     Returns the row from the <paramref name="source" /> with the specified <paramref name="oid" /> when feature row
+        ///     doesn't
+        ///     exist it will return <c>null</c>.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="oid">The key for the feature in the table.</param>
+        /// <returns>
+        ///     Returns an <see cref="IFeature" /> representing the feature for the oid; otherwise <c>null</c>
+        /// </returns>
+        public static IFeature Fetch(this IFeatureClass source, int oid)
+        {
+            try
+            {
+                if (source == null) return null;
+
+                return source.GetFeature(oid);
+            }
+            catch (COMException ex)
+            {
+                if (ex.ErrorCode == (int) fdoError.FDO_E_FEATURE_NOT_FOUND)
+                    return null;
+
+                throw;
             }
         }
 
@@ -322,7 +350,6 @@ namespace ESRI.ArcGIS.Geodatabase
             if (display == null) throw new ArgumentNullException("display");
             if (featureRenderer == null) throw new ArgumentNullException("featureRenderer");
             if (features == null) throw new ArgumentNullException("features");
-
 
             IInvalidArea3 invalidArea = new InvalidAreaClass();
             invalidArea.Display = display;

@@ -58,12 +58,12 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void IFeatureClass_Fetch_List_Equals_1()
+        public void IFeatureClass_Fetch_Equals_1()
         {
             var testClass = base.GetTestClass();
-            var list = testClass.Fetch(1);
+            var row = testClass.Fetch(1);
 
-            Assert.AreEqual(1, list.Count);
+            Assert.IsNotNull(row);
         }
 
         [TestMethod]

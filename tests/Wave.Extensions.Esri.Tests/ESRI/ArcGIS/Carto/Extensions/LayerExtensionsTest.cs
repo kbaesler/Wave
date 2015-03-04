@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Geodatabase;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,13 +23,17 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void IEnumLayer_Where_IsNotNull()
+        public void IFeatureLayer_Identify_Any()
         {
             IEnumLayer layers = this.CreateLayers();
             Assert.IsNotNull(layers);
 
-            var valid = layers.Where(o => o.Valid);
-            Assert.IsNotNull(valid);
+            var layer = layers.AsEnumerable().OfType<IFeatureLayer>().First(o => o.Valid);
+            IFeature feature = layer.FeatureClass.Fetch(1, 2, 3, 4, 5, 6).FirstOrDefault();
+            Assert.IsNotNull(feature);
+
+            var features = layer.Identify(feature.Shape);
+            Assert.IsTrue(features.Any());
         }
 
         #endregion
