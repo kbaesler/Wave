@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -22,11 +23,14 @@ namespace Miner.Interop.Process.Collections
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ReferenceDictionary" /> class.
+        /// Initializes a new instance of the <see cref="ReferenceDictionary" /> class.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
+        /// <exception cref="System.ArgumentNullException">dictionary</exception>
         public ReferenceDictionary(IDictionary dictionary)
         {
+            if(dictionary == null) throw new ArgumentNullException("dictionary");
+
             object[] keys = (object[]) dictionary.Keys();
             foreach (object k in keys)
             {
@@ -58,22 +62,30 @@ namespace Miner.Interop.Process.Collections
         }
 
         /// <summary>
-        ///     Adds the specified key.
+        /// Adds the specified key.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="item">The item.</param>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         void IDictionary.Add(ref object key, ref object item)
         {
+            if (key == null)
+                throw new ArgumentNullException("key");
+
             base.Add(key.ToString(), item);
         }
 
         /// <summary>
-        ///     Existses the specified key.
+        /// Existses the specified key.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         bool IDictionary.Exists(ref object key)
         {
+            if (key == null)
+                throw new ArgumentNullException("key");
+
             return base.ContainsKey(key.ToString());
         }
 
@@ -89,22 +101,30 @@ namespace Miner.Interop.Process.Collections
         }
 
         /// <summary>
-        ///     Gets the hash val.
+        /// Gets the hash val.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         object IDictionary.get_HashVal(ref object key)
         {
+            if (key == null)
+                throw new ArgumentNullException("key");
+
             return key.GetHashCode();
         }
 
         /// <summary>
-        ///     Gets the item.
+        /// Gets the item.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         object IDictionary.get_Item(ref object key)
         {
+            if (key == null)
+                throw new ArgumentNullException("key");
+
             return base[key.ToString()];
         }
 
@@ -127,21 +147,29 @@ namespace Miner.Interop.Process.Collections
         }
 
         /// <summary>
-        ///     Sets the item.
+        /// Sets the item.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="item">The item.</param>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         void IDictionary.let_Item(ref object key, ref object item)
         {
+            if(key == null)
+                throw new ArgumentNullException("key");
+
             base[key.ToString()] = item;
         }
 
         /// <summary>
-        ///     Removes the specified key.
+        /// Removes the specified key.
         /// </summary>
         /// <param name="key">The key.</param>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         void IDictionary.Remove(ref object key)
         {
+            if (key == null)
+                throw new ArgumentNullException("key");
+
             if (base.ContainsKey(key.ToString()))
                 base.Remove(key.ToString());
         }
@@ -155,22 +183,30 @@ namespace Miner.Interop.Process.Collections
         }
 
         /// <summary>
-        ///     Sets the item.
+        /// Sets the item.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="item">The item.</param>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         void IDictionary.set_Item(ref object key, ref object item)
         {
+            if (key == null)
+                throw new ArgumentNullException("key");
+
             base[key.ToString()] = item;
         }
 
         /// <summary>
-        ///     Sets the key.
+        /// Sets the key.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="item">The item.</param>
+        /// <exception cref="System.ArgumentNullException">key</exception>
         void IDictionary.set_Key(ref object key, ref object item)
         {
+            if (key == null)
+                throw new ArgumentNullException("key");
+
             base[key.ToString()] = item;
         }
 
@@ -190,16 +226,20 @@ namespace Miner.Interop.Process.Collections
         #region Public Methods
 
         /// <summary>
-        ///     Creates a new instance of the <see cref="ReferenceDictionary" /> using the specified <see cref="IDictionary" />
-        ///     object.
+        /// Creates a new instance of the <see cref="ReferenceDictionary" /> using the specified <see cref="IDictionary" />
+        /// object.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
         /// <returns>
-        ///     A new instance of the <see cref="ReferenceDictionary" /> containing the information from the specified
-        ///     dictionary.
+        /// A new instance of the <see cref="ReferenceDictionary" /> containing the information from the specified
+        /// dictionary.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">dictionary</exception>
         public static ReferenceDictionary Create(IDictionary dictionary)
         {
+            if (dictionary == null)
+                throw new ArgumentNullException("dictionary");
+
             ReferenceDictionary reference = new ReferenceDictionary();
             object[] keys = (object[]) dictionary.Keys();
             foreach (object k in keys)

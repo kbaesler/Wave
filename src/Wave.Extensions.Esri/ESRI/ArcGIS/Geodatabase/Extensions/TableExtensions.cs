@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
@@ -291,6 +292,32 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return null;
+        }
+
+        /// <summary>
+        ///     Returns the row from the <paramref name="source" /> with the specified <paramref name="oid" /> when the row doesn't
+        ///     exist it will return <c>null</c>.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="oid">The key for the row in the table.</param>
+        /// <returns>
+        ///     Returns an <see cref="IRow" /> representing the row for the oid; otherwise <c>null</c>
+        /// </returns>
+        public static IRow Fetch(this ITable source, int oid)
+        {
+            try
+            {
+                if (source == null) return null;
+
+                return source.GetRow(oid);
+            }
+            catch (COMException ex)
+            {
+                if (ex.ErrorCode == (int) fdoError.FDO_E_ROW_NOT_FOUND)
+                    return null;
+
+                throw;
+            }
         }
 
         /// <summary>

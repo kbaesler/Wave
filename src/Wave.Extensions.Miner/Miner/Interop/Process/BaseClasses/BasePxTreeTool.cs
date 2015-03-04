@@ -250,7 +250,7 @@ namespace Miner.Interop.Process
         protected virtual void InternalExecute(IMMTreeViewSelection selection)
         {
             // Only enable if 1 item is selected.
-            if (selection.Count != 1) return;
+            if (selection == null || selection.Count != 1) return;
 
             // Execute the Task for the specified node.
             selection.Reset();

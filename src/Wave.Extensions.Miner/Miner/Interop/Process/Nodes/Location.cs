@@ -23,7 +23,7 @@
             : base(location as IMMWMSNode)
         {
             _Location = location;
-            _Address = new Address(location.Address);
+            _Address = (location != null) ? new Address(location.Address) : null;
         }
 
         #endregion

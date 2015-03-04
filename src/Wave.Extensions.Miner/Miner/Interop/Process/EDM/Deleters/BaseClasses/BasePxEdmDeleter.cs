@@ -31,9 +31,12 @@ namespace Miner.Interop.Process
         /// <returns>
         /// Returns the <see cref="BasePxEdmRepository" /> representing the EDM management controller.
         /// </returns>
-        /// <exception cref="NullReferenceException">The WMSEDM process framework configuration value is null.</exception>
+        /// <exception cref="System.ArgumentNullException">pxApp</exception>
+        /// <exception cref="System.NullReferenceException">The WMSEDM process framework configuration value is null.</exception>
         protected virtual BasePxEdmRepository GetEdmRepository(IMMPxApplication pxApp)
         {
+            if(pxApp == null) throw new ArgumentNullException("pxApp");
+
             IMMPxHelper2 helper = (IMMPxHelper2)pxApp.Helper;
             string progId = helper.GetConfigValue("WMSEDM", string.Empty);
             if (string.IsNullOrEmpty(progId))
@@ -63,6 +66,8 @@ namespace Miner.Interop.Process
         /// <param name="status">The status.</param>
         protected override void InternalDelete(IMMPxNode node, ref string message, ref int status)
         {
+            if (node == null) return;
+
             IMMPxDeleter deleter = this.GetBaseDeleter(node);
             if (deleter != null)
             {

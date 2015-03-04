@@ -151,7 +151,7 @@ namespace Miner.Interop.Process
         /// <param name="edmNode">The "EDM" XML element from the design XML that corresponds to the WFM object.</param>
         public virtual void WriteEDMFromXML(IMMWMSNode wmsNode, IXMLDOMNode edmNode)
         {
-            if (_EdmRepository == null)
+            if (_EdmRepository == null || edmNode == null)
                 return;
 
             // If design not valid exit.

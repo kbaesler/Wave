@@ -12,11 +12,14 @@ namespace Miner.Interop.Process
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PxUser" /> class.
+        /// Initializes a new instance of the <see cref="PxUser" /> class.
         /// </summary>
         /// <param name="user">The user.</param>
+        /// <exception cref="System.ArgumentNullException">user</exception>
         public PxUser(IMMPxUser2 user)
         {
+            if(user == null) throw new ArgumentNullException("user");
+
             this.ID = user.Id;
             this.Name = user.Name;
             this.DisplayName = user.DisplayName;

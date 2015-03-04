@@ -109,7 +109,7 @@ namespace Miner.Interop.Process
             get { return _WorkRequest.get_Description(); }
             set
             {
-                if (value.Length > 32)
+                if (value != null && value.Length > 32)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The description cannot be larger then 128 characters.");
                 }
@@ -260,7 +260,7 @@ namespace Miner.Interop.Process
             get { return _WorkRequest.get_Name(); }
             set
             {
-                if (value.Length > 64)
+                if (value != null && value.Length > 64)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The name cannot be larger then 64 characters.");
                 }
@@ -314,9 +314,7 @@ namespace Miner.Interop.Process
             base.Delete();
 
             // Remove the references.
-            _WorkRequest = null;
-            _Location = null;
-            _Customer = null;
+            this.Dispose(true);
         }
 
         /// <summary>
@@ -392,20 +390,18 @@ namespace Miner.Interop.Process
                     {
                     }
 
-                _WorkRequest = null;
-
                 if (_Location != null)
                     _Location.Dispose();
-
-                _Location = null;
 
                 if (_Customer != null)
                     _Customer.Dispose();
 
+                _WorkRequest = null;
+                _Location = null;
                 _Customer = null;
-            }
+            }            
 
-            base.Dispose(disposing);
+            base.Dispose(true);
         }
 
         /// <summary>

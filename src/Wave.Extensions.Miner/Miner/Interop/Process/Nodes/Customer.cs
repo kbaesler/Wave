@@ -23,7 +23,7 @@
             : base(customer as IMMWMSNode)
         {
             _Customer = customer;
-            _Address = new Address(customer.Address);
+            _Address = (customer != null) ? new Address(customer.Address) : null;
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using ESRI.ArcGIS.Carto;
@@ -108,13 +109,21 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Returns the field value at the specified <paramref name="index" /> for the given <paramref name="row" />.
+        /// Returns the field value at the specified <paramref name="index" /> for the given <paramref name="row" />.
         /// </summary>
         /// <param name="row">The row.</param>
         /// <param name="index">The index.</param>
-        /// <returns>Returns the <see cref="System.Object" /> representing the value.</returns>
+        /// <returns>
+        /// Returns the <see cref="System.Object" /> representing the value.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">row</exception>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
         protected virtual object GetValue(IRow row, int index)
         {
+            if(row == null) throw new ArgumentNullException("row");
+            if (index < 0 || index > row.Fields.FieldCount - 1)
+                throw new IndexOutOfRangeException();
+
             IAnnotationFeature annoFeature = row as IAnnotationFeature;
             if (annoFeature != null)
             {
@@ -136,25 +145,31 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Determines whether the specified field <paramref name="index" /> on the <paramref name="oclass" /> is editable by
-        ///     both ESRI and ArcFM.
+        /// Determines whether the specified field <paramref name="index" /> on the <paramref name="table" /> is editable by
+        /// both ESRI and ArcFM.
         /// </summary>
-        /// <param name="oclass">The object class.</param>
+        /// <param name="table">The object class.</param>
         /// <param name="index">The index.</param>
         /// <returns>
-        ///     <c>true</c> if the specified field index on the class is editable by both ESRI and ArcFM; otherwise, <c>false</c>.
+        ///   <c>true</c> if the specified field index on the class is editable by both ESRI and ArcFM; otherwise, <c>false</c>.
         /// </returns>
-        protected virtual bool IsEditable(IObjectClass oclass, int index)
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        protected virtual bool IsEditable(IObjectClass table, int index)
         {
-            IField field = oclass.Fields.Field[index];
+            if (table == null) throw new ArgumentNullException("table");
+            if (index < 0 || index > table.Fields.FieldCount - 1)
+                throw new IndexOutOfRangeException();
+
+            IField field = table.Fields.Field[index];
             if (field.Editable)
             {
-                ISubtypes subtypes = (ISubtypes) oclass;
+                ISubtypes subtypes = (ISubtypes) table;
 
-                if (!_FieldManagersByClassID.ContainsKey(oclass.ObjectClassID))
-                    _FieldManagersByClassID.Add(oclass.ObjectClassID, oclass.GetFieldManager(subtypes.DefaultSubtypeCode));
+                if (!_FieldManagersByClassID.ContainsKey(table.ObjectClassID))
+                    _FieldManagersByClassID.Add(table.ObjectClassID, table.GetFieldManager(subtypes.DefaultSubtypeCode));
 
-                IMMFieldManager fieldManager = _FieldManagersByClassID[oclass.ObjectClassID];
+                IMMFieldManager fieldManager = _FieldManagersByClassID[table.ObjectClassID];
                 IMMFieldAdapter fieldAdapter = fieldManager.FieldByIndex(index);
                 return fieldAdapter.Editable;
             }
@@ -163,40 +178,61 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Determines whether the specified field is an ArcFM metadata field.
+        /// Determines whether the specified field is an ArcFM metadata field.
         /// </summary>
         /// <param name="field">The field.</param>
         /// <returns>
-        ///     <c>true</c> if the specified field is metadata; otherwise, <c>false</c>.
+        ///   <c>true</c> if the specified field is metadata; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">field</exception>
         protected virtual bool IsMetadata(IField field)
         {
+            if(field == null) throw new ArgumentNullException("field");
+
             string[] fieldNames = {"CREATEDATE", "CREATEUSER", "DATEMODIFIED", "LASTUSER"};
             return fieldNames.Contains(field.Name);
         }
 
         /// <summary>
-        ///     Sets the value from the <paramref name="sourceRow" /> on the <paramref name="targetRow" /> for the field with the
-        ///     specific <paramref name="index" />.
+        /// Sets the value from the <paramref name="source" /> on the <paramref name="target" /> for the field with the
+        /// specific <paramref name="index" />.
         /// </summary>
-        /// <param name="targetRow">The target row.</param>
-        /// <param name="sourceRow">The source row.</param>
+        /// <param name="target">The target row.</param>
+        /// <param name="source">The source row.</param>
         /// <param name="index">The index.</param>
-        protected virtual void SetValue(IRow targetRow, IRow sourceRow, int index)
+        /// <exception cref="System.ArgumentNullException">
+        /// target
+        /// or
+        /// source
+        /// </exception>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        protected virtual void SetValue(IRow target, IRow source, int index)
         {
-            object o = this.GetValue(sourceRow, index);
-            this.SetValue(targetRow, index, o);
+            if (target == null) throw new ArgumentNullException("target");
+            if (source == null) throw new ArgumentNullException("source");
+
+            if (index < 0 || index > source.Fields.FieldCount - 1)
+                throw new IndexOutOfRangeException();
+
+            object o = this.GetValue(source, index);
+            this.SetValue(target, index, o);
         }
 
         /// <summary>
-        ///     Updates the field with the specified field <paramref name="index" /> with the <paramref name="value" /> for the
-        ///     row.
+        /// Updates the field with the specified field <paramref name="index" /> with the <paramref name="value" /> for the
+        /// row.
         /// </summary>
         /// <param name="row">The row.</param>
         /// <param name="index">The index.</param>
         /// <param name="value">The value.</param>
+        /// <exception cref="System.ArgumentNullException">row</exception>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
         protected virtual void SetValue(IRow row, int index, object value)
         {
+            if (row == null) throw new ArgumentNullException("row");
+            if (index < 0 || index > row.Fields.FieldCount - 1)
+                throw new IndexOutOfRangeException();
+
             IAnnotationFeature annoFeature = row as IAnnotationFeature;
             IElement element = value as IElement;
             if (annoFeature != null && element != null)

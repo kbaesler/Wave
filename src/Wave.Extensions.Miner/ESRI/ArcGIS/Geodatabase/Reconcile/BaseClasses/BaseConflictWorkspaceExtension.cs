@@ -325,6 +325,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns the <see cref="ISelectionSet" /> representing the set of conflicts.</returns>
         protected ISelectionSet GetConflictSet(IConflictClass conflictClass, TableConflictType conflictType)
         {
+            if (conflictClass == null) throw new ArgumentNullException("conflictClass");
+
             ISelectionSet set = null;
             switch (conflictType)
             {
@@ -352,6 +354,7 @@ namespace ESRI.ArcGIS.Geodatabase
         protected IList<IConflictClass> GetRecommendedResolutionOrder(IEnumConflictClass enumConflictClasses)
         {
             List<ConflictClass> list = new List<ConflictClass>();
+            if (enumConflictClasses == null) return new IConflictClass[] {};
 
             enumConflictClasses.Reset();
             IConflictClass conflictClass;
@@ -399,34 +402,6 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Returns the row from the <paramref name="table" /> with the specified <paramref name="oid" /> when the row doesn't
-        ///     exist it will return <c>null</c>.
-        /// </summary>
-        /// <param name="table">The table.</param>
-        /// <param name="oid">The key for the row in the table.</param>
-        /// <returns>
-        ///     Returns an <see cref="IRow" /> representing the row for the oid; otherwise <c>null</c>
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">table</exception>
-        protected IRow GetRow(ITable table, int oid)
-        {
-            try
-            {
-                if (table == null)
-                    throw new ArgumentNullException("table");
-
-                return table.GetRow(oid);
-            }
-            catch (COMException ex)
-            {
-                if (ex.ErrorCode == (int) fdoError.FDO_E_ROW_NOT_FOUND)
-                    return null;
-
-                throw;
-            }
-        }
-
-        /// <summary>
         ///     Gets the type of the row conflict at a granular level.
         /// </summary>
         /// <param name="preReconcileRow">The row prior to reconciliation or edit (child) version (these are edits that you made).</param>
@@ -442,8 +417,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="RowConflictType" /> enumeration representing the type of conflict at the granular level.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">comparer</exception>
         protected virtual RowConflictType GetRowConflictType(IRow preReconcileRow, IRow reconcileRow, IRow commonAncestorRow, IEqualityComparer<IRow> comparer)
         {
+            if (comparer == null) throw new ArgumentNullException("comparer");
+
             // When the common ancestor row is null (meaning it never existed in the database prior to editing); It must be an "new" insert.
             if (commonAncestorRow == null)
             {
@@ -657,19 +635,19 @@ namespace ESRI.ArcGIS.Geodatabase
                 using (ComReleaser cr = new ComReleaser())
                 {
                     // The row from the edited (current) version.
-                    IRow currentRow = this.GetRow(currentTable, oid);
+                    IRow currentRow = currentTable.Fetch(oid);
                     cr.ManageLifetime(currentRow);
 
                     // The row from the edit (child) version.
-                    IRow preReconcileRow = this.GetRow(preReconcileTable, oid);
+                    IRow preReconcileRow = preReconcileTable.Fetch(oid);
                     cr.ManageLifetime(preReconcileRow);
 
                     // The row from the target (parent) version.
-                    IRow reconcileRow = this.GetRow(reconcileTable, oid);
+                    IRow reconcileRow = reconcileTable.Fetch(oid);
                     cr.ManageLifetime(reconcileRow);
 
                     // The row from the common ancestor (as is in the database) version.
-                    IRow commonAncestorRow = this.GetRow(commonAncestorTable, oid);
+                    IRow commonAncestorRow = commonAncestorTable.Fetch(oid);
                     cr.ManageLifetime(commonAncestorRow);
 
                     // Determine the row conflict type at a granular level.
@@ -739,7 +717,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                         foreach (var o in rows)
                         {
-                            IRow currentRow = this.GetRow(currentTable, o.OID);
+                            IRow currentRow = currentTable.Fetch(o.OID);
                             cr.ManageLifetime(currentRow);
 
                             // Call Store to Trigger the AUs.

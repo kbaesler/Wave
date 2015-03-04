@@ -199,7 +199,7 @@ namespace Miner.Framework.BaseClasses
         /// </returns>
         protected bool IsGenericJunction(IFeatureClass objectClass)
         {
-            if (objectClass.ShapeType != esriGeometryType.esriGeometryPoint)
+            if (objectClass == null || objectClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 return false;
 
             string name = ((IDataset) objectClass).Name;
@@ -220,11 +220,14 @@ namespace Miner.Framework.BaseClasses
         protected abstract void OnAfterTrace(TResults traceResults, IFeature feature);
 
         /// <summary>
-        ///     Called before the trace executes the <see cref="OnTrace(IFeature)" /> method.
+        /// Called before the trace executes the <see cref="OnTrace(IFeature)" /> method.
         /// </summary>
         /// <param name="feature">The feature.</param>
+        /// <exception cref="System.ArgumentNullException">feature</exception>
         protected virtual void OnBeforeTrace(IFeature feature)
         {
+            if(feature == null) throw new ArgumentNullException("feature");
+
             this.Workspace = ((IDataset) feature.Class).Workspace;
 
             esriElementType elementType;

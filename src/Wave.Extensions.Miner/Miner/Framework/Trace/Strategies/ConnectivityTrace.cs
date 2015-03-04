@@ -110,14 +110,17 @@ namespace Miner.Framework.Trace
         #region Protected Methods
 
         /// <summary>
-        ///     Creates the <see cref="IForwardStarGEN" /> that will be used to navigate the <paramref name="network" />.
+        /// Creates the <see cref="IForwardStarGEN" /> that will be used to navigate the <paramref name="network" />.
         /// </summary>
         /// <param name="network">The network.</param>
         /// <returns>
-        ///     The <see cref="IForwardStarGEN" /> that is used to navigate the network.
+        /// The <see cref="IForwardStarGEN" /> that is used to navigate the network.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">network</exception>
         protected virtual IForwardStarGEN CreateNavigator(INetwork network)
         {
+            if(network == null) throw new ArgumentNullException("network");
+
             return (IForwardStarGEN) network.CreateForwardStar(false, null, null, null, null);
         }
 

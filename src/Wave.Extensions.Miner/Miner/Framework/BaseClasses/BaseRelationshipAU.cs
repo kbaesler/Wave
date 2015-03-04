@@ -87,6 +87,8 @@ namespace Miner.Framework.BaseClasses
         {
             try
             {
+                if (pRelClass == null) return false;
+
                 return this.InternalEnabled(pRelClass, pRelClass.OriginClass, pRelClass.DestinationClass, eEvent);
             }
             catch (Exception e)

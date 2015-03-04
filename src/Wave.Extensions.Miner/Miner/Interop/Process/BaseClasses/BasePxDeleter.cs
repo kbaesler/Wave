@@ -78,7 +78,7 @@ namespace Miner.Interop.Process
         /// </returns>
         protected IMMPxDeleter GetBaseDeleter(IMMPxNode node)
         {
-            if (this.PxApplication == null) return null;
+            if (this.PxApplication == null || node == null) return null;
 
             if (node.NodeType == this.PxApplication.Helper.GetNodeTypeID(Design.NodeTypeName))
             {

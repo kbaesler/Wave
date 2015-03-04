@@ -293,7 +293,7 @@ namespace Miner.Interop.Process
                 delete.Delete(_PxApp, ref msg, ref status);
 
                 // Flush the cache.
-                this.Flush();
+                this.Dispose(false);
             }
 
             this.Dirty = false;
@@ -311,7 +311,7 @@ namespace Miner.Interop.Process
                 ((IMMPxApplicationEx) _PxApp).UpdateNodeToDB(this.Node);
 
                 // Flush the cache.
-                this.Flush();
+                this.Dispose(false);
             }
 
             this.Dirty = false;
@@ -328,7 +328,7 @@ namespace Miner.Interop.Process
         /// <param name="node">The node.</param>
         protected void CopyHistory(IPxNode node)
         {
-            if (this.History == null) return;
+            if (this.History == null || node == null) return;
 
             this.History.Reset();
 
@@ -354,13 +354,16 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Copies the packet from this <see cref="Miner.Interop.Process.IPxNode" /> to the specified <paramref name="node" />
-        ///     object.
+        /// Copies the packet from this <see cref="Miner.Interop.Process.IPxNode" /> to the specified <paramref name="node" />
+        /// object.
         /// </summary>
         /// <param name="packetPrefix">The packet ID prefix.</param>
         /// <param name="node">The node.</param>
+        /// <exception cref="System.ArgumentNullException">node</exception>
         protected void CopyPacket(string packetPrefix, IPxNode node)
         {
+            if(node == null) throw new ArgumentNullException("node");
+
             // When the entity is not a mobile node we can stop here.
             IMMPxMobileHelper helper = (IMMPxMobileHelper) _PxApp;
             if (!helper.IsMobileSide(false)) return;
@@ -395,7 +398,7 @@ namespace Miner.Interop.Process
         ///     unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
-        {
+        {           
             if (disposing)
             {
                 if (_Node != null)
@@ -403,15 +406,15 @@ namespace Miner.Interop.Process
                     {
                     }
 
-                _Node = null;
-
                 if (_History != null)
                     while (Marshal.ReleaseComObject(_History) > 0)
                     {
                     }
-
-                _History = null;
             }
+
+            _Node = null;
+            _History = null;
+
         }
 
         /// <summary>
@@ -422,20 +425,6 @@ namespace Miner.Interop.Process
         /// </returns>
         protected abstract IMMListBuilder GetListBuilder();
 
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Flushes the cached instance variables.
-        /// </summary>
-        private void Flush()
-        {
-            // Remove the reference to the node because it will be reinitialized once accessed.
-            _Node = null;
-            _History = null;
-        }
-
-        #endregion
+        #endregion        
     }
 }

@@ -83,7 +83,7 @@ namespace Miner.Interop.Process
             get { return _Design.get_Description(); }
             set
             {
-                if (value.Length > 32)
+                if (value != null && value.Length > 32)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The description cannot be larger then 128 characters.");
                 }
@@ -201,7 +201,7 @@ namespace Miner.Interop.Process
             get { return _Design.get_Name(); }
             set
             {
-                if (value.Length > 64)
+                if (value != null && value.Length > 64)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The name cannot be larger then 64 characters.");
                 }
@@ -288,7 +288,7 @@ namespace Miner.Interop.Process
             base.Delete();
 
             // Remove the design reference.
-            _Design = null;
+            this.Dispose(true);
         }
 
         /// <summary>
@@ -344,14 +344,16 @@ namespace Miner.Interop.Process
         ///     unmanaged resources.
         /// </param>
         protected override void Dispose(bool disposing)
-        {
+        {            
             if (disposing)
             {
                 if (_Design != null)
                     while (Marshal.ReleaseComObject(_Design) > 0)
                     {
                     }
-            }
+
+                _Design = null;
+            }            
 
             base.Dispose(disposing);
         }

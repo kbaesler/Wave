@@ -87,6 +87,8 @@ namespace Miner.Framework.BaseClasses
         /// </remarks>
         protected override void InternalExecute(IObject obj, mmAutoUpdaterMode eAUMode, mmEditEvent editEvent)
         {
+            if(obj == null) return;
+
             IDataset dataset = (IDataset) obj.Class;
             IWorkspace workspace = dataset.Workspace;
             if (workspace.IsDBMS(DBMS.Oracle))

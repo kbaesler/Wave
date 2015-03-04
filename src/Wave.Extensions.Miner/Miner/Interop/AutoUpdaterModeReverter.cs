@@ -6,6 +6,7 @@ namespace Miner.Interop
     ///     A supporting class that will revert the mode of the <see cref="IMMAutoUpdater" /> extension on the disposing of the
     ///     class.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Reverter")]
     public class AutoUpdaterModeReverter : IDisposable
     {
         #region Fields
@@ -54,7 +55,7 @@ namespace Miner.Interop
         {
             get
             {
-#if ARCGIS_10
+#if ARCFM_10
                 return AutoUpdater.Instance;
 #else
                 Type type = Type.GetTypeFromProgID("mmGeodatabase.MMAutoUpdater");

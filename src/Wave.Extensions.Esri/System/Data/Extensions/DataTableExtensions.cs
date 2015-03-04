@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Collections.Generic;
+using System.Data.Common;
 using System.Globalization;
 using System.IO;
 
@@ -11,6 +12,47 @@ namespace System.Data
     public static class DataTableExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Batches the specified table into groups of the specified amount.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="size">The size.</param>
+        /// <param name="reverse">The table is traversed in reverse order.</param>
+        /// <returns>Returns a <see cref="IEnumerable{T}" /> of the <see cref="DataRow" /> objects in the table in groups.</returns>
+        public static IEnumerable<List<DataRow>> Batch(this DataTable source, int size, bool reverse = false)
+        {
+            var partition = new List<DataRow>();
+
+            if (reverse)
+            {
+                for (int i = source.Rows.Count - 1; i >= 0; i--)
+                {
+                    partition.Add(source.Rows[i]);
+
+                    if (partition.Count == size)
+                    {
+                        yield return partition;
+                        partition = new List<DataRow>();
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataRow row in source.Rows)
+                {
+                    partition.Add(row);
+
+                    if (partition.Count == size)
+                    {
+                        yield return partition;
+                        partition = new List<DataRow>();
+                    }
+                }
+            }
+
+            if (partition.Count > 0) yield return partition;
+        }
 
         /// <summary>
         ///     Reads the contents of the specified file into a <see cref="DataTable" />.

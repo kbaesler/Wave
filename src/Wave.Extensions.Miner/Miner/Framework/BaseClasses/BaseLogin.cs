@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -225,16 +226,19 @@ namespace Miner.Framework.BaseClasses
         #region Protected Methods
 
         /// <summary>
-        ///     Updates the connection string and sets the value in the PXCONNECTIONSTRING property.
+        /// Updates the connection string and sets the value in the PXCONNECTIONSTRING property.
         /// </summary>
         /// <param name="propertySet">The property set.</param>
         /// <param name="userName">Name of the user.</param>
         /// <param name="password">The password.</param>
         /// <returns>
-        ///     The updated property set.
+        /// The updated property set.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">propertySet</exception>
         protected IPropertySet AddPxConnection(IPropertySet propertySet, string userName, string password)
         {
+            if(propertySet == null) throw new ArgumentNullException("propertySet");
+
             string connectionString = propertySet.GetProperty(PxConnectionString, string.Empty);
             if (!string.IsNullOrEmpty(connectionString))
             {

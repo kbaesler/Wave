@@ -81,7 +81,7 @@ namespace Miner.Interop.Process
             get { return _Session.get_CreateUser(); }
             set
             {
-                if (value.Length > 32)
+                if (value != null && value.Length > 32)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The create user cannot be larger then 32 characters.");
                 }
@@ -104,7 +104,7 @@ namespace Miner.Interop.Process
             get { return ((IMMSession3) _Session).get_DatabaseId(); }
             set
             {
-                if (value.Length > 64)
+                if (value != null && value.Length > 64)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The database cannot be larger then 64 characters.");
                 }
@@ -127,7 +127,7 @@ namespace Miner.Interop.Process
             get { return _Session.get_Description(); }
             set
             {
-                if (value.Length > 255)
+                if (value != null && value.Length > 255)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The description cannot be larger then 255 characters.");
                 }
@@ -178,7 +178,7 @@ namespace Miner.Interop.Process
             get { return _Session.get_Owner(); }
             set
             {
-                if (value.Length > 32)
+                if (value != null && value.Length > 32)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The owner cannot be larger then 32 characters.");
                 }
@@ -262,7 +262,7 @@ namespace Miner.Interop.Process
             get { return _Session.get_Name(); }
             set
             {
-                if (value.Length > 64)
+                if (value != null && value.Length > 64)
                 {
                     throw new ArgumentOutOfRangeException("value", @"The name cannot be larger then 64 characters.");
                 }
@@ -315,7 +315,7 @@ namespace Miner.Interop.Process
             base.Delete();
 
             // Remove the session reference.
-            _Session = null;
+            this.Dispose(true);
         }
 
         /// <summary>
@@ -378,9 +378,11 @@ namespace Miner.Interop.Process
                     while (Marshal.ReleaseComObject(_Session) > 0)
                     {
                     }
-            }
 
-            base.Dispose(disposing);
+                _Session = null;
+            }            
+
+            base.Dispose(true);
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Miner.Interop.Process
 {
@@ -17,15 +18,18 @@ namespace Miner.Interop.Process
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BasePxNodeBuilder" /> class.
+        /// Initializes a new instance of the <see cref="BasePxNodeBuilder" /> class.
         /// </summary>
         /// <param name="builderName">Name of the builder.</param>
         /// <param name="pxApp">The process application refernece.</param>
         /// <param name="nodeIDs">The node IDs.</param>
         /// <param name="nodeTypeName">The name of the node type.</param>
+        /// <exception cref="System.ArgumentNullException">pxApp</exception>
         protected BasePxNodeBuilder(string builderName, IMMPxApplication pxApp, IList<int> nodeIDs, string nodeTypeName)
             : base(builderName, pxApp)
         {
+            if(pxApp == null) throw new ArgumentNullException("pxApp");
+
             _NodeIDs = nodeIDs;
             _NodeTypeID = pxApp.Helper.GetNodeTypeID(nodeTypeName);
         }
@@ -55,6 +59,8 @@ namespace Miner.Interop.Process
         /// <param name="pList">The list.</param>
         public override void BuildList(ID8List pList)
         {
+            if (pList == null) return;
+
             if (!this.Validate((IMMPxNode) pList))
                 return;
 
@@ -90,7 +96,7 @@ namespace Miner.Interop.Process
         /// </returns>
         protected virtual bool Validate(IMMPxNode node)
         {
-            return node.NodeType != _NodeTypeID;
+            return node != null && node.NodeType != _NodeTypeID;
         }
 
         #endregion

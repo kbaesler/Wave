@@ -286,6 +286,7 @@ namespace Miner
                 ///     Container for the <see cref="SessionManager.Configurations" /> class used to identify
                 ///     the common properties for Session Manager which may be used for customization.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Configurations
                 {
                     #region Constants
@@ -311,6 +312,7 @@ namespace Miner
                 ///     Container for the <see cref="SessionManager.Filters" /> class used to identify
                 ///     the common filters for Session Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Filters
                 {
                     #region Constants
@@ -336,6 +338,7 @@ namespace Miner
                 ///     Container for the <see cref="SessionManager.Roles" /> class used to identify
                 ///     the common roles for Session Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Roles
                 {
                     #region Constants
@@ -371,6 +374,7 @@ namespace Miner
                 ///     Container for the <see cref="SessionManager.Tables" /> class used to identify
                 ///     the common tasks for Session Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Tables
                 {
                     #region Constants
@@ -391,6 +395,7 @@ namespace Miner
                 ///     Container for the <see cref="SessionManager.Tasks" /> class used to identify
                 ///     the common tasks for Session Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Tasks
                 {
                     #region Constants
@@ -451,6 +456,7 @@ namespace Miner
             ///     <see cref="WorkflowManager.Roles" /> classes used to identify the common properties for Workflow Manager which may
             ///     be used for customization.
             /// </summary>
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             public static class WorkflowManager
             {
                 #region Constants
@@ -468,6 +474,7 @@ namespace Miner
                 ///     Container for the <see cref="WorkflowManager.Configurations" /> class used to identify
                 ///     the common configurations for Workflow Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Configurations
                 {
                     #region Constants
@@ -493,6 +500,7 @@ namespace Miner
                 ///     Container for the <see cref="WorkflowManager.Filters" /> class used to identify
                 ///     the common filters for Workflow Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Filters
                 {
                     #region Constants
@@ -518,6 +526,7 @@ namespace Miner
                 ///     Container for the <see cref="WorkflowManager.Roles" /> class used to identify
                 ///     the common roles for Workflow Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Roles
                 {
                     #region Constants
@@ -543,6 +552,7 @@ namespace Miner
                 ///     Container for the <see cref="WorkflowManager.Tables" /> class used to identify
                 ///     the common tables for Workflow Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Tables
                 {
                     #region Constants
@@ -583,6 +593,7 @@ namespace Miner
                 ///     Container for the <see cref="WorkflowManager.Tasks" /> class used to identify
                 ///     the common tasks for Workflow Manager.
                 /// </summary>
+                [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
                 public static class Tasks
                 {
                     #region Constants

@@ -1,4 +1,6 @@
-﻿using ADODB;
+﻿using System;
+
+using ADODB;
 
 namespace Miner.Interop.Process
 {
@@ -24,16 +26,27 @@ namespace Miner.Interop.Process
         public abstract IMMPxApplication Open(string userName, string password, string dataSource, string database, bool isOSA, params string[] extensionNames);
 
         /// <summary>
-        ///     Opens a connection to the process framework database.
+        /// Opens a connection to the process framework database.
         /// </summary>
         /// <param name="connectionString">The connection string.</param>
         /// <param name="userName">Name of the user.</param>
         /// <param name="extensionNames">The names of process framework extensions.</param>
         /// <returns>
-        ///     Returns the <see cref="IMMPxApplication" /> application reference; otherwise <c>null</c>.
+        /// Returns the <see cref="IMMPxApplication" /> application reference; otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// connectionString
+        /// or
+        /// userName
+        /// or
+        /// extensionNames
+        /// </exception>
         public virtual IMMPxApplication Open(string connectionString, string userName, params string[] extensionNames)
         {
+            if(connectionString == null) throw new ArgumentNullException("connectionString");
+            if(userName == null) throw  new ArgumentNullException("userName");
+            if(extensionNames == null) throw new ArgumentNullException("extensionNames");
+            
             // Open the connection with the given properties.
             Connection connection = new ConnectionClass();
             connection.Open(connectionString);

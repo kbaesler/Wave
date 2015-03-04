@@ -124,7 +124,9 @@ namespace Miner.Interop.Process
                     while (Marshal.ReleaseComObject(this.Node) > 0)
                     {
                     }
-            }
+
+                this.Node = null;
+            }            
         }
 
         #endregion

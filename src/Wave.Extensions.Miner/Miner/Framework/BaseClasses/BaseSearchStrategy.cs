@@ -66,16 +66,19 @@ namespace Miner.Framework.BaseClasses
         #region IMMSearchStrategy Members
 
         /// <summary>
-        ///     Finds the results using the specified <paramref name="pSearchConfig" /> parameters and
-        ///     allows halting the searching using the <paramref name="pSearchControl" />.
+        /// Finds the results using the specified <paramref name="pSearchConfig" /> parameters and
+        /// allows halting the searching using the <paramref name="pSearchControl" />.
         /// </summary>
         /// <param name="pSearchConfig">The search config.</param>
         /// <param name="pSearchControl">The search control.</param>
         /// <returns>
-        ///     Returns the results from the search.
+        /// Returns the results from the search.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">pSearchConfig</exception>
         public virtual IMMSearchResults Find(IMMSearchConfiguration pSearchConfig, IMMSearchControl pSearchControl)
         {
+            if(pSearchConfig == null) throw new ArgumentNullException("pSearchConfig");
+
             this.VerifyType(pSearchConfig.SearchParameters);
 
             T parameters = (T) pSearchConfig.SearchParameters;
