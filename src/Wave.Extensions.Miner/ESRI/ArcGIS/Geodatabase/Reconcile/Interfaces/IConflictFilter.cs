@@ -63,21 +63,21 @@
         bool CanResolve(TableConflictType conflictType, IConflictClass conflictClass);
 
         /// <summary>
-        ///     An abstract method to filter or resolve the individual row conflict.
+        /// Resolves the reconcile conflicts that have been detected.
         /// </summary>
         /// <param name="conflictRow">The conflict row.</param>
         /// <param name="conflictClass">The conflict class.</param>
         /// <param name="currentRow">The row in the current version that is being edited.</param>
         /// <param name="preReconcileRow">The row prior to reconciliation or edit (child) version (these are edits that you made).</param>
         /// <param name="reconcileRow">The row that the current version is reconciling against or target (parent) version.</param>
-        /// <param name="commonAncestorRow">
-        ///     The common ancestor row of this version and the reconcile version (as they are in the
-        ///     database; this is what the feature and attributes were before any edits were made).
-        /// </param>
+        /// <param name="commonAncestorRow">The common ancestor row of this version and the reconcile version (as they are in the
+        /// database; this is what the feature and attributes were before any edits were made).</param>
         /// <param name="childWins">if set to <c>true</c> indicating whether the child conflicts should over rule the targets.</param>
         /// <param name="columnLevel">if set to <c>true</c> indicating whether conflicts will be defined at the column level.</param>
-        /// <param name="rowConflictType">Type of the row conflict at a granular level.</param>
-        void ResolveConflict(IConflictRow conflictRow, IConflictClass conflictClass, IRow currentRow, IRow preReconcileRow, IRow reconcileRow, IRow commonAncestorRow, bool childWins, bool columnLevel, RowConflictType rowConflictType);
+        /// <returns>
+        /// Returns a <see cref="ConflictResolution" /> enumeration representing the state of the resolution.
+        /// </returns>
+        ConflictResolution Resolve(IConflictRow conflictRow, IConflictClass conflictClass, IRow currentRow, IRow preReconcileRow, IRow reconcileRow, IRow commonAncestorRow, bool childWins, bool columnLevel);
 
         #endregion
     }

@@ -402,28 +402,9 @@ namespace ESRI.ArcGIS.Geodatabase
                     throw new NotSupportedException("The row state is not supported.");
             }
 
-            using (ComReleaser cr = new ComReleaser())
-            {
-                IFeatureWorkspace fws = (IFeatureWorkspace) workspace;
-                ITable table = fws.OpenTable(this.TableName);
-                cr.ManageLifetime(table);
-
-                try
-                {
-                    return table.GetRow(this.OID);
-                }
-                catch (COMException ex)
-                {
-                    switch (ex.ErrorCode)
-                    {
-                        case (int) fdoError.FDO_E_FEATURE_NOT_FOUND:
-                        case (int) fdoError.FDO_E_ROW_NOT_FOUND:
-                            return null;
-                        default:
-                            throw;
-                    }
-                }
-            }
+            IFeatureWorkspace fws = (IFeatureWorkspace)workspace;
+            ITable table = fws.OpenTable(this.TableName);
+            return table.Fetch(this.OID);
         }
 
         #endregion

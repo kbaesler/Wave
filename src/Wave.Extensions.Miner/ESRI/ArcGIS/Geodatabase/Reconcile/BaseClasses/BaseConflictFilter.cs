@@ -61,12 +61,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </param>
         /// <param name="childWins">if set to <c>true</c> indicating whether the child conflicts should over rule the targets.</param>
         /// <param name="columnLevel">if set to <c>true</c> indicating whether conflicts will be defined at the column level.</param>
-        /// <param name="rowConflictType">Type of the row conflict at a granular level.</param>
+        /// <returns>
+        ///     Returns a <see cref="ConflictResolution" /> enumeration representing the state of the resolution.
+        /// </returns>
         /// <remarks>
         ///     This method should be overridden by derived classes to provide
         ///     specific implementation for filtering row conflicts.
         /// </remarks>
-        public abstract void ResolveConflict(IConflictRow conflictRow, IConflictClass conflictClass, IRow currentRow, IRow preReconcileRow, IRow reconcileRow, IRow commonAncestorRow, bool childWins, bool columnLevel, RowConflictType rowConflictType);
+        public abstract ConflictResolution Resolve(IConflictRow conflictRow, IConflictClass conflictClass, IRow currentRow, IRow preReconcileRow, IRow reconcileRow, IRow commonAncestorRow, bool childWins, bool columnLevel);
 
         /// <summary>
         ///     Determines whether this instance can resolve the specified conflict type.
@@ -109,18 +111,18 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Returns the field value at the specified <paramref name="index" /> for the given <paramref name="row" />.
+        ///     Returns the field value at the specified <paramref name="index" /> for the given <paramref name="row" />.
         /// </summary>
         /// <param name="row">The row.</param>
         /// <param name="index">The index.</param>
         /// <returns>
-        /// Returns the <see cref="System.Object" /> representing the value.
+        ///     Returns the <see cref="System.Object" /> representing the value.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">row</exception>
         /// <exception cref="System.IndexOutOfRangeException"></exception>
         protected virtual object GetValue(IRow row, int index)
         {
-            if(row == null) throw new ArgumentNullException("row");
+            if (row == null) throw new ArgumentNullException("row");
             if (index < 0 || index > row.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
@@ -145,13 +147,13 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Determines whether the specified field <paramref name="index" /> on the <paramref name="table" /> is editable by
-        /// both ESRI and ArcFM.
+        ///     Determines whether the specified field <paramref name="index" /> on the <paramref name="table" /> is editable by
+        ///     both ESRI and ArcFM.
         /// </summary>
         /// <param name="table">The object class.</param>
         /// <param name="index">The index.</param>
         /// <returns>
-        ///   <c>true</c> if the specified field index on the class is editable by both ESRI and ArcFM; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified field index on the class is editable by both ESRI and ArcFM; otherwise, <c>false</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">table</exception>
         /// <exception cref="System.IndexOutOfRangeException"></exception>
@@ -178,32 +180,32 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Determines whether the specified field is an ArcFM metadata field.
+        ///     Determines whether the specified field is an ArcFM metadata field.
         /// </summary>
         /// <param name="field">The field.</param>
         /// <returns>
-        ///   <c>true</c> if the specified field is metadata; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified field is metadata; otherwise, <c>false</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">field</exception>
         protected virtual bool IsMetadata(IField field)
         {
-            if(field == null) throw new ArgumentNullException("field");
+            if (field == null) throw new ArgumentNullException("field");
 
             string[] fieldNames = {"CREATEDATE", "CREATEUSER", "DATEMODIFIED", "LASTUSER"};
             return fieldNames.Contains(field.Name);
         }
 
         /// <summary>
-        /// Sets the value from the <paramref name="source" /> on the <paramref name="target" /> for the field with the
-        /// specific <paramref name="index" />.
+        ///     Sets the value from the <paramref name="source" /> on the <paramref name="target" /> for the field with the
+        ///     specific <paramref name="index" />.
         /// </summary>
         /// <param name="target">The target row.</param>
         /// <param name="source">The source row.</param>
         /// <param name="index">The index.</param>
         /// <exception cref="System.ArgumentNullException">
-        /// target
-        /// or
-        /// source
+        ///     target
+        ///     or
+        ///     source
         /// </exception>
         /// <exception cref="System.IndexOutOfRangeException"></exception>
         protected virtual void SetValue(IRow target, IRow source, int index)
@@ -219,8 +221,8 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Updates the field with the specified field <paramref name="index" /> with the <paramref name="value" /> for the
-        /// row.
+        ///     Updates the field with the specified field <paramref name="index" /> with the <paramref name="value" /> for the
+        ///     row.
         /// </summary>
         /// <param name="row">The row.</param>
         /// <param name="index">The index.</param>

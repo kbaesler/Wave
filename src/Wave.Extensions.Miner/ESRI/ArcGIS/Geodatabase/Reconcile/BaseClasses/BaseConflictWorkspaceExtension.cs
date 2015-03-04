@@ -170,7 +170,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 using (new AutoUpdaterModeReverter(this.AutoUpdaterMode))
                 {
                     var conflictsResolved = true;
-                    var conflictClasses = this.GetRecommendedResolutionOrder(versionEdit.ConflictClasses);
+                    var conflictClasses = this.GetResolutionOrder(versionEdit.ConflictClasses);
                     var conflictCount = this.GetConflictCount(conflictClasses);
 
                     this.NotifyCallback(3, "Resolving {0} row conflict(s) spread across {1} classes.", conflictCount, conflictClasses.Count);
@@ -266,7 +266,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <remarks>The version will be reconciled after this method.</remarks>
         public void OnBeginReconcile(string targetVersionName)
         {
-            this.InitializeReconcile(targetVersionName);
+            this.BeforeReconcile(targetVersionName);
 
             this.NotifyCallback();
 
@@ -351,7 +351,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="enumConflictClasses">The enumeration of the classes in conflict.</param>
         /// <returns>Returns an enumerable list of the classes in recommended order.</returns>
-        protected IList<IConflictClass> GetRecommendedResolutionOrder(IEnumConflictClass enumConflictClasses)
+        protected IList<IConflictClass> GetResolutionOrder(IEnumConflictClass enumConflictClasses)
         {
             List<ConflictClass> list = new List<ConflictClass>();
             if (enumConflictClasses == null) return new IConflictClass[] {};
@@ -475,7 +475,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Initializes the workspace extension before the conflict reconcilition begins.
         /// </summary>
         /// <param name="targetVersionName">Name of the target version.</param>
-        protected virtual void InitializeReconcile(string targetVersionName)
+        protected virtual void BeforeReconcile(string targetVersionName)
         {
             Log.Debug(this, "The {0} will be reconciled with the {1} version will use the following parameters:", ((IVersion) this.Workspace).VersionName, targetVersionName);
             Log.Debug(this, "\t- AutoUpdaterMode = {0}.", this.AutoUpdaterMode);
@@ -513,7 +513,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 this.Callback.StatusMessage = string.Format(CultureInfo.CurrentCulture, message, args);
             }
 
-            Log.Info(this, message, args);
+            Log.Debug(this, message, args);
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             // Load the differences in the versions (but only those that are network feature classes).
             var dataChanges = sourceVersion.GetDataChanges(targetVersion, (s, t) => (t is INetworkClass), esriDataChangeType.esriDataChangeTypeInsert, esriDataChangeType.esriDataChangeTypeUpdate);
-            Log.Info(this, "Rebuilding the connectivity of {0} feature classes.", dataChanges.Values.Sum(o => o.Count));
+            Log.Info(this, "Rebuilding the connectivity of {0} feature classes.", dataChanges.Keys.Count);
 
             // Iterate through all of the collection of changes.
             foreach (var dc in dataChanges)
@@ -658,7 +658,7 @@ namespace ESRI.ArcGIS.Geodatabase
                     IConflictRow conflictRow = new ConflictRow(oid, tableName, rowConflictType);
                     foreach (var filter in list.OrderBy(o => o.Priority))
                     {
-                        filter.ResolveConflict(conflictRow, conflictClass, currentRow, preReconcileRow, reconcileRow, commonAncestorRow, this.ChildWins, this.ColumnLevel, rowConflictType);
+                        conflictRow.Resolution = filter.Resolve(conflictRow, conflictClass, currentRow, preReconcileRow, reconcileRow, commonAncestorRow, this.ChildWins, this.ColumnLevel);
                     }
 
                     Log.Info(this, "The resolution of the {0} row has been marked as '{1}'.", oid, conflictRow.Resolution);
@@ -682,8 +682,7 @@ namespace ESRI.ArcGIS.Geodatabase
             if (this.IsRemovedAfterResolved)
             {
                 // ESRI states that the RemoveList method on the ISelectionSet should not used from .NET. Instead, call IGeoDatabaseBridge2.RemoveList.
-                IGeoDatabaseBridge2 bridge = new GeoDatabaseHelperClass();
-                bridge.RemoveList(set, ref oids);
+                set.Remove(oids);
             }
 
             // Output the statistics for the conflicts.
