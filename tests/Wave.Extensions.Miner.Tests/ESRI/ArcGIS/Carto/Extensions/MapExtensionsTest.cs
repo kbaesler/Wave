@@ -42,6 +42,16 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        public void IMap_GetFeatureClasses_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.GetFeatureClasses("DISTRIBUTIONTRANSFORMER");
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
         public void IMap_GetFeatureLayer_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -70,6 +80,78 @@ namespace Wave.Extensions.Miner.Tests
 
             var layer = map.GetFeatureLayer("UNITTEST");
             Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        public void IMap_GetFeatureLayers_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.GetFeatureLayers("DISTRIBUTIONTRANSFORMER");
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        public void IMap_GetTable_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.GetTable("ASSEMBLY");
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (MissingClassModelNameException))]
+        public void IMap_GetTable_MissingClassModelNameException()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.GetTable("1238123mva0dg18231");
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        public void IMap_GetTables_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.GetTables("ASSEMBLY");
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        public void IMap_GetWorkpace_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var workspace = map.GetWorkspace("MM ENTERPRISE");
+            Assert.IsNotNull(workspace);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (MissingDatabaseModelNameException))]
+        public void IMap_GetWorkpace_MissingDatabaseModelNameException()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var workspace = map.GetWorkspace("0912312alla1nl01");
+            Assert.IsNotNull(workspace);
+        }
+
+        [TestMethod]
+        public void IMap_GetWorkpace_Predicate_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var workspace = map.GetWorkspace(o => o != null);
+            Assert.IsNotNull(workspace);
         }
 
         #endregion

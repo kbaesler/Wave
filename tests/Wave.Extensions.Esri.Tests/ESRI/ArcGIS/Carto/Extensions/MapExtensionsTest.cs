@@ -10,6 +10,28 @@ namespace Wave.Extensions.Esri.Tests
     public class MapExtensionsTest : EsriTests
     {
         #region Public Methods
+        
+        public void IMap_GetFeatureLayer_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var testClass = base.GetTestClass();
+            var layer = map.GetFeatureLayer(testClass);
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        public void IMap_GetFeatureLayers_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var testClass = base.GetTestClass();
+            var layer = map.GetFeatureLayers(testClass);
+            Assert.IsNotNull(layer);
+        }
+
         [TestMethod]
         public void IMap_Where_ICoverageAnnotationLayer2_IsNotNull()
         {
@@ -19,6 +41,7 @@ namespace Wave.Extensions.Esri.Tests
             var layer = map.Where<ICoverageAnnotationLayer2>(l => l != null);
             Assert.IsNotNull(layer);
         }
+
         [TestMethod]
         public void IMap_Where_ICoverageAnnotationLayer_IsNotNull()
         {
@@ -26,6 +49,16 @@ namespace Wave.Extensions.Esri.Tests
             Assert.IsNotNull(map);
 
             var layer = map.Where<ICoverageAnnotationLayer>(l => l != null);
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        public void IMap_Where_IDataLayer2_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.Where<IDataLayer2>(l => l != null);
             Assert.IsNotNull(layer);
         }
 
@@ -38,24 +71,7 @@ namespace Wave.Extensions.Esri.Tests
             var layer = map.Where<IDataLayer>(l => l != null);
             Assert.IsNotNull(layer);
         }
-        [TestMethod]
-        public void IMap_Where_IDataLayer2_IsNotNull()
-        {
-            IMap map = this.CreateMap();
-            Assert.IsNotNull(map);
 
-            var layer = map.Where<IDataLayer2>(l => l != null);
-            Assert.IsNotNull(layer);
-        }
-        [TestMethod]
-        public void IMap_Where_IFDOGraphicsLayer_IsNotNull()
-        {
-            IMap map = this.CreateMap();
-            Assert.IsNotNull(map);
-
-            var layer = map.Where<IFDOGraphicsLayer>(l => l != null);
-            Assert.IsNotNull(layer);
-        }
         [TestMethod]
         public void IMap_Where_IFDOGraphicsLayer2_IsNotNull()
         {
@@ -65,15 +81,17 @@ namespace Wave.Extensions.Esri.Tests
             var layer = map.Where<IFDOGraphicsLayer2>(l => l != null);
             Assert.IsNotNull(layer);
         }
+
         [TestMethod]
-        public void IMap_Where_IFeatureLayer_IsNotNull()
+        public void IMap_Where_IFDOGraphicsLayer_IsNotNull()
         {
             IMap map = this.CreateMap();
             Assert.IsNotNull(map);
 
-            var layer = map.Where<IFeatureLayer>(l => l.Valid);
+            var layer = map.Where<IFDOGraphicsLayer>(l => l != null);
             Assert.IsNotNull(layer);
         }
+
         [TestMethod]
         public void IMap_Where_IFeatureLayer2_IsNotNull()
         {
@@ -83,6 +101,17 @@ namespace Wave.Extensions.Esri.Tests
             var layer = map.Where<IFeatureLayer2>(l => l != null);
             Assert.IsNotNull(layer);
         }
+
+        [TestMethod]
+        public void IMap_Where_IFeatureLayer_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.Where<IFeatureLayer>(l => l.Valid);
+            Assert.IsNotNull(layer);
+        }
+
         [TestMethod]
         public void IMap_Where_IGraphicsLayer_IsNotNull()
         {
@@ -90,6 +119,16 @@ namespace Wave.Extensions.Esri.Tests
             Assert.IsNotNull(map);
 
             var layer = map.Where<IGraphicsLayer>(l => l != null);
+            Assert.IsNotNull(layer);
+        }
+
+        [TestMethod]
+        public void IMap_Where_ILayer2_IsNotNull()
+        {
+            IMap map = this.CreateMap();
+            Assert.IsNotNull(map);
+
+            var layer = map.Where<ILayer2>(l => l.Valid);
             Assert.IsNotNull(layer);
         }
 
@@ -104,16 +143,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void IMap_Where_ILayer2_IsNotNull()
-        {
-            IMap map = this.CreateMap();
-            Assert.IsNotNull(map);
-
-            var layer = map.Where<ILayer2>(l => l.Valid);
-            Assert.IsNotNull(layer);
-        }
-        [TestMethod]
-        [ExpectedException(typeof(NotSupportedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void IMap_Where_NotSupportedException()
         {
             IMap map = this.CreateMap();
@@ -122,6 +152,7 @@ namespace Wave.Extensions.Esri.Tests
             var layer = map.Where<IQuerySize>(l => l != null);
             Assert.IsNotNull(layer);
         }
+
         #endregion
     }
 }

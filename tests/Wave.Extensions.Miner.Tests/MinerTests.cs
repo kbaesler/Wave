@@ -61,6 +61,14 @@ namespace Wave.Extensions.Miner.Tests
                 _Map.AddLayer(layer);
             }
 
+            var table = base.GetTestTable();
+            IStandaloneTable standaloneTable = new StandaloneTableClass();
+            standaloneTable.Table = table;
+            standaloneTable.Name = ((IDataset) table).Name;
+
+            IStandaloneTableCollection collection = (IStandaloneTableCollection) _Map;
+            collection.AddStandaloneTable(standaloneTable);
+
             return _Map;
         }
 

@@ -89,23 +89,7 @@ namespace ESRI.ArcGIS.Carto
 
             return layer;
         }
-
-        /// <summary>
-        ///     Returns the layers that are associated with the matching object class identifier that resides the map.
-        /// </summary>
-        /// <param name="source">The map.</param>
-        /// <param name="objectClassID">The object class identifier.</param>
-        /// <returns>
-        ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers are associated with the feature
-        ///     class.
-        /// </returns>
-        public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source, int objectClassID)
-        {
-            if (source == null) return null;
-
-            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.ObjectClassID == objectClassID);
-        }
-
+      
         /// <summary>
         ///     Returns the layers that are assigned the <paramref name="modelName" /> that resides the map.
         /// </summary>
@@ -149,7 +133,7 @@ namespace ESRI.ArcGIS.Carto
             if (table == null && throwException)
                 throw new MissingClassModelNameException(modelName);
 
-            return null;
+            return table;
         }
 
         /// <summary>
