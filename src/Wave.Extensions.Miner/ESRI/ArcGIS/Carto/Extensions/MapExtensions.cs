@@ -35,12 +35,12 @@ namespace ESRI.ArcGIS.Carto
             if (modelName == null) throw new ArgumentNullException("modelName");
 
             var list = source.GetFeatureClasses(modelName);
-            var oclass = list.FirstOrDefault();
+            var table = list.FirstOrDefault();
 
-            if (oclass == null && throwException)
+            if (table == null && throwException)
                 throw new MissingClassModelNameException(modelName);
 
-            return oclass;
+            return table;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            return source.Where(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName)).Select(o => o.FeatureClass);
+            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName)).Select(o => o.FeatureClass);
         }
 
         /// <summary>
@@ -99,12 +99,11 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers are associated with the feature
         ///     class.
         /// </returns>
-        /// <exception cref="ArgumentNullException">featureClass</exception>
         public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source, int objectClassID)
         {
             if (source == null) return null;
 
-            return source.Where(o => o.Valid && o.FeatureClass.ObjectClassID == objectClassID);
+            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.ObjectClassID == objectClassID);
         }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            return source.Where(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName));
+            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName));
         }
 
         /// <summary>
@@ -200,13 +199,7 @@ namespace ESRI.ArcGIS.Carto
             IMMWorkspaceManagerMap manager = new MMWorkspaceManagerClass();
             IEnumWorkspaceEx workspaces = manager.GetMapWorkspaces(source);
 
-            foreach (var workspace in workspaces.AsEnumerable())
-            {
-                if (predicate(workspace))
-                    return workspace;
-            }
-
-            return null;
+            return workspaces.AsEnumerable().FirstOrDefault(workspace => predicate(workspace));
         }
 
         /// <summary>

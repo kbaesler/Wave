@@ -60,12 +60,12 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (table == null) throw new ArgumentNullException("table");
 
-            return source.Where(o => o.Valid && o.FeatureClass.ObjectClassID == table.ObjectClassID);
+            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.ObjectClassID == table.ObjectClassID);
         }
 
 
         /// <summary>
-        ///     Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisifies the
+        ///     Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisfy the
         ///     <paramref name="selector" />
         ///     and flattens the resulting sequences into one sequence.
         /// </summary>
@@ -85,27 +85,52 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
-        ///     Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisifies the
+        ///     Traverses the <paramref name="source" /> selecting only those layers that satisfy the
         ///     <paramref name="selector" />
         ///     and flattens the resulting sequences into one sequence.
         /// </summary>
+        /// <typeparam name="TLayer">The type of the layer.</typeparam>
         /// <param name="source">The map.</param>
         /// <param name="selector">A function to test each element for a condition in each recursion.</param>
         /// <returns>
-        ///     Returns an <see cref="IEnumerable{IFeatureLayer}" /> enumeration whose elements
+        ///     Returns an <see cref="IEnumerable{TLayer}" /> enumeration whose elements
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static IEnumerable<IFeatureLayer> Where(this IMap source, Func<IFeatureLayer, bool> selector)
+        /// <exception cref="System.NotSupportedException">The layer type is not supported.</exception>
+        public static IEnumerable<TLayer> Where<TLayer>(this IMap source, Func<TLayer, bool> selector)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
 
-            UID uid = new UIDClass();
-            uid.Value = LayerExtensions.Guid.FeatureLayers;
+            var list = new Dictionary<Type, string>
+            {
+                {typeof (IFeatureLayer), "{40A9E885-5533-11d0-98BE-00805F7CED21}"},
+                {typeof (IFeatureLayer2), "{40A9E885-5533-11d0-98BE-00805F7CED21}"},
+                {typeof (IGroupLayer), "{EDAD6644-1810-11D1-86AE-0000F8751720}"},
+                {typeof (IDataLayer), "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"},
+                {typeof (IDataLayer2), "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"},
+                {typeof (IGraphicsLayer), "{34B2EF81-F4AC-11D1-A245-080009B6F22B}"},
+                {typeof (IFDOGraphicsLayer), "{5CEAE408-4C0A-437F-9DB3-054D83919850}"},
+                {typeof (IFDOGraphicsLayer2), "{5CEAE408-4C0A-437F-9DB3-054D83919850}"},
+                {typeof (ICoverageAnnotationLayer), "{0C22A4C7-DAFD-11D2-9F46-00C04F6BC78E}"},
+                {typeof (ICoverageAnnotationLayer2), "{0C22A4C7-DAFD-11D2-9F46-00C04F6BC78E}"},
+                {typeof (ILayer), null},
+                {typeof (ILayer2), null}
+            };
+
+            Type type = typeof (TLayer);
+            if (!list.ContainsKey(type))
+                throw new NotSupportedException("The type of layer is not supported.");
+
+            UID uid = null;
+            if (!string.IsNullOrEmpty(list[type]))
+            {
+                uid = new UIDClass {Value = list[type]};
+            }
 
             IEnumLayer layers = source.Layers[uid];
-            return layers.AsEnumerable().OfType<IFeatureLayer>().Where(selector);
+            return layers.AsEnumerable().OfType<TLayer>().Where(selector);
         }
 
         #endregion
