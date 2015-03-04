@@ -29,20 +29,23 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                IPxSession session = new Session(base.PxApplication);
-                Assert.AreEqual(true, session.Initialize(nodeID));
+                using (Session session = new Session(base.PxApplication))
+                {
+                    Assert.AreEqual(true, session.Initialize(nodeID));
+                }
             }
         }
 
         [TestMethod]
         public void IPxSession_CreateNew_IsTrue()
         {
-            IPxSession session = new Session(base.PxApplication);
+            using (Session session = new Session(base.PxApplication))
+            {
+                Assert.AreEqual(true, session.CreateNew(base.PxApplication.User));
+                Assert.AreEqual(base.PxApplication.User.Name, session.CreateUser);
 
-            Assert.AreEqual(true, session.CreateNew(base.PxApplication.User));
-            Assert.AreEqual(base.PxApplication.User.Name, session.CreateUser);
-
-            session.Delete();
+                session.Delete();
+            }
         }
 
         #endregion

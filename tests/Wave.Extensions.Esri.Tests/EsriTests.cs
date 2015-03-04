@@ -73,8 +73,18 @@ namespace Wave.Extensions.Esri.Tests
         [TestCleanup]
         public virtual void Cleanup()
         {
-            _RuntimeAuthorization.Dispose();
-            _ComReleaser.Dispose();
+            if (_RuntimeAuthorization != null)
+            {
+                _RuntimeAuthorization.Dispose();
+                _RuntimeAuthorization = null;
+            }
+
+            if (_ComReleaser != null)
+            {
+                _ComReleaser.Dispose();
+                _ComReleaser = null;
+            }
+
             _Workspace = null;
         }
 
@@ -183,8 +193,15 @@ namespace Wave.Extensions.Esri.Tests
         {
             if (disposing)
             {
-                _ComReleaser.Dispose();
-                _RuntimeAuthorization.Dispose();
+                if(_ComReleaser != null)
+                    _ComReleaser.Dispose();
+
+                _ComReleaser = null;
+
+                if(_RuntimeAuthorization != null)
+                    _RuntimeAuthorization.Dispose();
+
+                _RuntimeAuthorization = null;
             }
         }
 

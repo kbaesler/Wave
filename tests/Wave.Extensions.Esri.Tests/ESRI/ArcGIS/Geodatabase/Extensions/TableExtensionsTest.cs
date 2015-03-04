@@ -49,12 +49,12 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void ITable_Fetch_List_Equals_1()
+        public void ITable_Fetch_Row_IsNotNull()
         {
             var testClass = base.GetTestTable();
-            var list = testClass.Fetch(1);
+            var row = testClass.Fetch(1);
 
-            Assert.AreEqual(1, list.Count);
+            Assert.IsNotNull(row);
         }
 
         [TestMethod]

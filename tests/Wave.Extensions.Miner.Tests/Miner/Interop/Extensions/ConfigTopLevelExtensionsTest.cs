@@ -27,10 +27,9 @@ namespace Wave.Extensions.Miner.Tests
             IMMFieldManager fieldManager = testClass.GetFieldManager(subtypes.DefaultSubtypeCode);
             IMMFieldAdapter fieldAdapter = fieldManager.FieldByName(testClass.OIDFieldName);
 
-            bool visible = fieldAdapter.Visible;
-            configTopLevel.ChangeVisibility(testClass, subtypes.DefaultSubtypeCode, !visible, testClass.OIDFieldName);
-
-            Assert.AreNotEqual(fieldAdapter.Visible, visible);
+            configTopLevel.ChangeVisibility(testClass, subtypes.DefaultSubtypeCode, false, testClass.OIDFieldName);
+           
+            Assert.IsFalse(fieldAdapter.Visible);
         }
 
         [TestMethod]

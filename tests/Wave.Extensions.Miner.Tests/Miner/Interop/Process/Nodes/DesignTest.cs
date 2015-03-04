@@ -1,12 +1,11 @@
 ﻿using System.Data;
 
-using ESRI.ArcGIS.Geodatabase;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Miner;
 using Miner.Interop;
 using Miner.Interop.Process;
+
 using Wave.Extensions.Miner.Tests;
 
 namespace SE.Tests.Process
@@ -72,12 +71,27 @@ namespace SE.Tests.Process
         [TestMethod]
         public void IPxDesign_CreateNew_IsTrue()
         {
-            IPxDesign design = new Design(base.PxApplication);
+            using (Design design = new Design(base.PxApplication))
+            {
+                Assert.IsTrue(design.CreateNew(base.PxApplication.User));
+                Assert.AreEqual(base.PxApplication.User.Name, design.Owner.Name);
 
-            Assert.IsTrue(design.CreateNew(base.PxApplication.User));
-            Assert.AreEqual(base.PxApplication.User.Name, design.Owner.Name);
+                design.Delete();
+            }
+        }
 
-            design.Delete();
+        [TestMethod]
+        public void IPxDesign_Dispose_IsNotNull()
+        {
+            IMMPxNode node;
+            using (Design design = new Design(base.PxApplication))
+            {
+                design.CreateNew(base.PxApplication.User);
+                node = design.Node;
+                design.Delete();
+            }
+
+            Assert.IsNotNull(node);
         }
 
         [TestMethod]
@@ -87,26 +101,29 @@ namespace SE.Tests.Process
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                IPxDesign design = new Design(base.PxApplication);
-                Assert.IsTrue(design.Initialize(nodeID));
+                using (Design design = new Design(base.PxApplication))
+                {
+                    Assert.IsTrue(design.Initialize(nodeID));
 
-                string xml = design.GetDesignXml();
-                Assert.IsNotNull(xml);                 
+                    string xml = design.GetDesignXml();
+                    Assert.IsNotNull(xml);
+                }
             }
         }
-        
+
 
         [TestMethod]
-        public void IPxDesign_Initialize_Inheritance_IsTrue()
+        public void IPxDesign_Initialize_IsNew_IsTrue()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                TestDesign design = new TestDesign(base.PxApplication);
-                
-                Assert.IsTrue(design.Initialize(nodeID));
-                Assert.IsTrue(design.IsNew);
+                using (TestDesign design = new TestDesign(base.PxApplication))
+                {
+                    Assert.IsTrue(design.Initialize(nodeID));
+                    Assert.IsTrue(design.IsNew);
+                }
             }
         }
 
@@ -118,8 +135,10 @@ namespace SE.Tests.Process
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                IPxDesign design = new Design(base.PxApplication);
-                Assert.IsTrue(design.Initialize(nodeID));
+                using (Design design = new Design(base.PxApplication))
+                {
+                    Assert.IsTrue(design.Initialize(nodeID));
+                }
             }
         }
 

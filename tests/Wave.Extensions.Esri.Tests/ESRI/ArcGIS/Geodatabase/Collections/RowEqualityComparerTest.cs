@@ -31,11 +31,11 @@ namespace Wave.Extensions.Esri.Tests
             RowEqualityComparer comparer = new RowEqualityComparer();
 
             var testTable = base.GetTestTable();
-            var rows = testTable.Fetch(1);
+            var row = testTable.Fetch(1);
 
-            Assert.AreEqual(1, rows.Count);
+            Assert.IsNotNull(row);
 
-            var equals = comparer.Equals(rows.First(), rows.Last());
+            var equals = comparer.Equals(row, row);
             Assert.IsTrue(equals);
         }
 

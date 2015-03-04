@@ -25,11 +25,13 @@ namespace Wave.Extensions.Miner.Tests
         [TestMethod]
         public void IPxWorkRequest_CreateNew_IsTrue()
         {
-            IPxWorkRequest request = new WorkRequest(base.PxApplication);
-            Assert.AreEqual(true, request.CreateNew(base.PxApplication.User));
-            Assert.AreEqual(base.PxApplication.User.Name, request.Owner.Name);
+            using (WorkRequest request = new WorkRequest(base.PxApplication))
+            {
+                Assert.AreEqual(true, request.CreateNew(base.PxApplication.User));
+                Assert.AreEqual(base.PxApplication.User.Name, request.Owner.Name);
 
-            request.Delete();
+                request.Delete();
+            }
         }
 
 
@@ -40,16 +42,18 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                IPxWorkRequest request = new WorkRequest(base.PxApplication);
-                Assert.AreEqual(true, request.Initialize(nodeID));
-
-                if (request.Customer != null && request.Customer.Valid)
+                using (WorkRequest request = new WorkRequest(base.PxApplication))
                 {
-                    request.Customer.FirstName = "John";
-                    request.Customer.LastName = "Doe";
-                    request.Customer.Update();
+                    Assert.AreEqual(true, request.Initialize(nodeID));
 
-                    Assert.AreEqual("John", request.Customer.FirstName);
+                    if (request.Customer != null && request.Customer.Valid)
+                    {
+                        request.Customer.FirstName = "John";
+                        request.Customer.LastName = "Doe";
+                        request.Customer.Update();
+
+                        Assert.AreEqual("John", request.Customer.FirstName);
+                    }
                 }
             }
         }
@@ -61,8 +65,10 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                IPxWorkRequest request = new WorkRequest(base.PxApplication);
-                Assert.AreEqual(true, request.Initialize(nodeID));
+                using (WorkRequest request = new WorkRequest(base.PxApplication))
+                {
+                    Assert.AreEqual(true, request.Initialize(nodeID));
+                }
             }
         }
 
@@ -74,18 +80,20 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                IPxWorkRequest request = new WorkRequest(base.PxApplication);
-                Assert.AreEqual(true, request.Initialize(nodeID));
-
-                if (request.Location != null && request.Location.Valid)
+                using (WorkRequest request = new WorkRequest(base.PxApplication))
                 {
-                    request.Location.FacilityDisplayField = "FacilityID";
-                    Assert.AreEqual("FacilityID", request.Location.FacilityDisplayField);
+                    Assert.AreEqual(true, request.Initialize(nodeID));
 
-                    if (request.Location.Address != null && request.Location.Address.Valid)
+                    if (request.Location != null && request.Location.Valid)
                     {
-                        request.Location.Address.Address1 = " 380 New York Street, Redlands, CA 92373-8100";
-                        Assert.AreEqual(" 380 New York Street, Redlands, CA 92373-8100", request.Location.Address.Address1);
+                        request.Location.FacilityDisplayField = "FacilityID";
+                        Assert.AreEqual("FacilityID", request.Location.FacilityDisplayField);
+
+                        if (request.Location.Address != null && request.Location.Address.Valid)
+                        {
+                            request.Location.Address.Address1 = " 380 New York Street, Redlands, CA 92373-8100";
+                            Assert.AreEqual(" 380 New York Street, Redlands, CA 92373-8100", request.Location.Address.Address1);
+                        }
                     }
                 }
             }
