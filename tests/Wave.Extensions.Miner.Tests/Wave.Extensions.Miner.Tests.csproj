@@ -158,6 +158,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensionsTest.cs" />
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensionsTest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -167,11 +168,11 @@
     <Compile Include="Miner\Interop\Process\Nodes\DesignTest.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\SessionTest.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\WorkRequestTest.cs" />
-    <Compile Include="Miner\Interop\Process\PxApplicationExtensionsTest.cs" />
-    <Compile Include="Miner\Interop\Process\PxApplicationFactoriesTest.cs" />
+    <Compile Include="Miner\Interop\Process\Data\PxApplicationExtensionsTest.cs" />
+    <Compile Include="Miner\Interop\Process\Data\PxApplicationFactoriesTest.cs" />
     <Compile Include="MinerTests.cs" />
     <Compile Include="Miner\Interop\Collections\TreeViewSelectionEnumeratorTest.cs" />
-    <Compile Include="Miner\Interop\Process\PxApplicationFactoryTest.cs" />
+    <Compile Include="Miner\Interop\Process\Data\PxApplicationFactoryTest.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

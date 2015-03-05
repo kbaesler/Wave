@@ -11,57 +11,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class RowExtensions
     {
-        #region Public Methods
-
-        /// <summary>
-        ///     Gets the indexes and values for all of the fields that have changed values based on the fields assigned the
-        ///     specified model names.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="checkFields">
-        ///     if set to <c>true</c> when the <paramref name="names" /> list should be checked as both field
-        ///     model names and field names; otherwise only the field model names are included.
-        /// </param>
-        /// <param name="names">The list of names (field or model names).</param>
-        /// <returns>
-        ///     Returns a <see cref="Dictionary{TKey, TValue}" /> representing the model name and values of the fields that have
-        ///     changed.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">names</exception>
-        public static Dictionary<string, Dictionary<string, object>> GetChanges(this IRow source, bool checkFields, params string[] names)
-        {
-            if (source == null) return null;
-            if (names == null) throw new ArgumentNullException("names");
-
-            Dictionary<string, Dictionary<string, object>> list = new Dictionary<string, Dictionary<string, object>>();
-
-            IObjectClass table = (IObjectClass) source.Table;
-            IRowChanges rowChanges = (IRowChanges) source;
-
-            foreach (var name in names)
-            {
-                Dictionary<string, object> changes = new Dictionary<string, object>();
-                for (int i = 0; i < source.Fields.FieldCount; i++)
-                {
-                    if (rowChanges.ValueChanged[i])
-                    {
-                        if (table.IsAssignedFieldModelName(source.Fields.Field[i], name))
-                            changes.Add(source.Fields.Field[i].Name, rowChanges.OriginalValue[i]);
-                    }
-                }
-
-                if (checkFields)
-                {
-                    var fields = source.GetChanges(name);
-                    foreach (var f in fields.Where(f => !changes.ContainsKey(f.Key)))
-                        changes.Add(f.Key, f.Value);
-                }
-
-                list.Add(name, changes);
-            }
-
-            return list;
-        }
+        #region Public Methods       
 
         /// <summary>
         ///     Returns the domain assigned to the <see cref="IField" /> that is assigned the field model name

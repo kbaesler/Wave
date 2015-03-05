@@ -13,6 +13,18 @@ namespace Wave.Extensions.Miner.Tests
 
         [TestMethod]
         [TestCategory("Miner")]
+        public void IRow_GetDomain_IsNull()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1);
+            Assert.IsNotNull(feature);
+
+            var domain = feature.GetDomain(0);
+            Assert.IsNull(domain);
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (IndexOutOfRangeException))]
         public void IRow_GetValue_FieldModelName_IndexOutOfRangeException()
         {
