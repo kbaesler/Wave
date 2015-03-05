@@ -22,11 +22,57 @@ namespace Wave.Extensions.Miner.Tests
 
         [TestMethod]
         [TestCategory("Miner")]
+        public void IFeatureClass_GetFieldIndex_IsNotNull()
+        {
+            var testClass = base.GetTestClass();
+            var index = testClass.GetFieldIndex("LOCATABLEFIELD");
+            Assert.IsTrue(index > -1);
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        [ExpectedException(typeof (MissingFieldModelNameException))]
+        public void IFeatureClass_GetFieldIndex_MissingFieldModelNameException()
+        {
+            var testClass = base.GetTestClass();
+            var index = testClass.GetFieldIndex("");
+            Assert.IsTrue(index > -1);
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IFeatureClass_GetFieldIndexes_Any_IsTrue()
+        {
+            var testClass = base.GetTestClass();
+            var list = testClass.GetFieldIndexes("LOCATABLEFIELD");
+            Assert.IsTrue(list.Any());
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IFeatureClass_GetFieldManager_IsNotNull()
+        {
+            var testClass = base.GetTestClass();
+            var fieldManager = testClass.GetFieldManager(0);
+            Assert.IsNotNull(fieldManager);
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
         public void IFeatureClass_GetFieldModelNames_Any_IsTrue()
         {
             var testClass = base.GetTestClass();
             var list = testClass.GetFieldModelNames();
             Assert.IsTrue(list.Any());
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IFeatureClass_GetFieldName_IsNotNull()
+        {
+            var testClass = base.GetTestClass();
+            var fieldName = testClass.GetFieldName("LOCATABLEFIELD");
+            Assert.IsNotNull(fieldName);
         }
 
         [TestMethod]
@@ -116,53 +162,7 @@ namespace Wave.Extensions.Miner.Tests
 
         [TestMethod]
         [TestCategory("Miner")]
-        public void IObjectClass_GetFieldIndex_IsNotNull()
-        {
-            var testClass = base.GetTestClass();
-            var index = testClass.GetFieldIndex("LOCATABLEFIELD");
-            Assert.IsTrue(index > -1);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        [ExpectedException(typeof (MissingFieldModelNameException))]
-        public void IObjectClass_GetFieldIndex_MissingFieldModelNameException()
-        {
-            var testClass = base.GetTestClass();
-            var index = testClass.GetFieldIndex("");
-            Assert.IsTrue(index > -1);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        public void IObjectClass_GetFieldIndexes_Any_IsTrue()
-        {
-            var testClass = base.GetTestClass();
-            var list = testClass.GetFieldIndexes("LOCATABLEFIELD");
-            Assert.IsTrue(list.Any());
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        public void IObjectClass_GetFieldManager_IsNotNull()
-        {
-            var testClass = base.GetTestClass();
-            var fieldManager = testClass.GetFieldManager(0);
-            Assert.IsNotNull(fieldManager);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        public void IObjectClass_GetFieldName_IsNotNull()
-        {
-            var testClass = base.GetTestClass();
-            var fieldName = testClass.GetFieldName("LOCATABLEFIELD");
-            Assert.IsNotNull(fieldName);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        public void IObjectClass_IsAssignedClassModelName_IsTrue()
+        public void IFeatureClass_IsAssignedClassModelName_IsTrue()
         {
             var testClass = base.GetTestClass();
             var list = testClass.GetClassModelNames();
@@ -171,7 +171,7 @@ namespace Wave.Extensions.Miner.Tests
 
         [TestMethod]
         [TestCategory("Miner")]
-        public void IObjectClass_IsAssignedFieldModelName_IsTrue()
+        public void IFeatureClass_IsAssignedFieldModelName_IsTrue()
         {
             var testClass = base.GetTestClass();
             var list = testClass.GetFieldModelNames();
