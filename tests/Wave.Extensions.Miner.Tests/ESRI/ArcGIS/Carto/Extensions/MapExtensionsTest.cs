@@ -11,6 +11,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetFeatureClass_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -21,6 +22,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetFeatureClass_IsNull()
         {
             IMap map = this.CreateMap();
@@ -31,6 +33,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (MissingClassModelNameException))]
         public void IMap_GetFeatureClass_MissingClassModelNameException()
         {
@@ -42,6 +45,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetFeatureClasses_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -52,6 +56,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetFeatureLayer_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -62,6 +67,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetFeatureLayer_IsNull()
         {
             IMap map = this.CreateMap();
@@ -72,6 +78,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (MissingClassModelNameException))]
         public void IMap_GetFeatureLayer_MissingClassModelNameException()
         {
@@ -83,6 +90,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetFeatureLayers_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -93,6 +101,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetTable_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -103,6 +112,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (MissingClassModelNameException))]
         public void IMap_GetTable_MissingClassModelNameException()
         {
@@ -114,6 +124,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetTables_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -124,6 +135,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetWorkpace_IsNotNull()
         {
             IMap map = this.CreateMap();
@@ -134,6 +146,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (MissingDatabaseModelNameException))]
         public void IMap_GetWorkpace_MissingDatabaseModelNameException()
         {
@@ -145,6 +158,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMap_GetWorkpace_Predicate_IsNotNull()
         {
             IMap map = this.CreateMap();

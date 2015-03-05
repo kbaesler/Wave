@@ -10,11 +10,28 @@ using Wave.Extensions.Esri.Tests.Properties;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class WorkspaceFactoriesTests
+    public class WorkspaceFactoriesTests : EsriTests
     {
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
+        [ExpectedException(typeof (DirectoryNotFoundException))]
+        public void WorkspaceFactories_GetFactory_DirectoryNotFoundException()
+        {
+            Assert.IsNull(WorkspaceFactories.GetFactory("@C:\\kadhfakjfh.gdb"));
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        [ExpectedException(typeof (FileNotFoundException))]
+        public void WorkspaceFactories_GetFactory_Empty_FileNotFoundException()
+        {
+            Assert.IsNull(WorkspaceFactories.GetFactory(""));
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         [ExpectedException(typeof (FileNotFoundException))]
         public void WorkspaceFactories_GetFactory_FileNotFoundException()
         {
@@ -22,19 +39,22 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void WorkspaceFactories_GetFactory_NotNull()
         {
-            Assert.IsNotNull(WorkspaceFactories.GetFactory(Settings.Default.Minerville));
+            Assert.IsNotNull(WorkspaceFactories.GetFactory(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))));
         }
 
         [TestMethod]
-        [ExpectedException(typeof (NotSupportedException))]
-        public void WorkspaceFactories_GetFactory_NotSupportedException()
+        [TestCategory("ESRI")]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void WorkspaceFactories_Open_ArgumentNullException()
         {
-            Assert.IsNull(WorkspaceFactories.GetFactory(""));
+            Assert.IsNull(WorkspaceFactories.Open(null));
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         [ExpectedException(typeof (FileNotFoundException))]
         public void WorkspaceFactories_Open_FileNotFoundException()
         {
@@ -42,16 +62,10 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void WorkspaceFactories_Open_NotNull()
         {
-            Assert.IsNotNull(WorkspaceFactories.Open(Settings.Default.Minerville));
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof (NotSupportedException))]
-        public void WorkspaceFactories_Open_NotSupportedException()
-        {
-            Assert.IsNull(WorkspaceFactories.Open(""));
+            Assert.IsNotNull(WorkspaceFactories.Open(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))));
         }
 
         #endregion

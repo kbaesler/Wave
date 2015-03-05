@@ -157,6 +157,7 @@
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensionsTest.cs" />
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensionsTest.cs">
       <SubType>Code</SubType>
     </Compile>

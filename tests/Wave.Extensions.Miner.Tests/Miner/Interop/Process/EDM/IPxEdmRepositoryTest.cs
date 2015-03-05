@@ -6,7 +6,7 @@ using Miner.Interop.Process;
 namespace Wave.Extensions.Miner.Tests
 {
     /// <summary>
-    /// The EDM repository for the MINERVILLE sample data.
+    ///     The EDM repository for the MINERVILLE sample data.
     /// </summary>
     internal class TestPxEdmRepository : BasePxEdmRepository
     {
@@ -69,6 +69,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxEdmRepository_GetEdms_Count_Equals_0()
         {
             IPxEdmRepository repository = new TestPxEdmRepository(base.PxApplication);

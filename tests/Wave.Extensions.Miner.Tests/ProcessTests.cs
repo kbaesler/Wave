@@ -62,7 +62,7 @@ namespace Wave.Extensions.Miner.Tests
 
             if (_ProductInstallation != mmProductInstallation.mmPIDesigner)
             {
-                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,Settings.Default.SessionManager)), "", false, ArcFM.Process.SessionManager.Name);
+                _PxApplication = factory.Open("adams", "", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.SessionManager)), "", false, ArcFM.Process.SessionManager.Name);
             }
             else
             {

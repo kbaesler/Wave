@@ -13,7 +13,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class TableExtensions
     {
-        #region Public Methods        
+        #region Public Methods
 
         /// <summary>
         ///     Queries for the rows that have the specified object ids.
@@ -196,6 +196,32 @@ namespace ESRI.ArcGIS.Geodatabase
 
 
         /// <summary>
+        ///     Returns the row from the <paramref name="source" /> with the specified <paramref name="oid" /> when the row doesn't
+        ///     exist it will return <c>null</c>.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="oid">The key for the row in the table.</param>
+        /// <returns>
+        ///     Returns an <see cref="IRow" /> representing the row for the oid; otherwise <c>null</c>
+        /// </returns>
+        public static IRow Fetch(this ITable source, int oid)
+        {
+            try
+            {
+                if (source == null) return null;
+
+                return source.GetRow(oid);
+            }
+            catch (COMException ex)
+            {
+                if (ex.ErrorCode == (int) fdoError.FDO_E_ROW_NOT_FOUND)
+                    return null;
+
+                throw;
+            }
+        }
+
+        /// <summary>
         ///     Gets the name of the delta (either the A or D) table for the versioned <paramref name="source" />.
         /// </summary>
         /// <param name="source">The versioned table or feature class.</param>
@@ -259,32 +285,6 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return null;
-        }
-
-        /// <summary>
-        ///     Returns the row from the <paramref name="source" /> with the specified <paramref name="oid" /> when the row doesn't
-        ///     exist it will return <c>null</c>.
-        /// </summary>
-        /// <param name="source">The table.</param>
-        /// <param name="oid">The key for the row in the table.</param>
-        /// <returns>
-        ///     Returns an <see cref="IRow" /> representing the row for the oid; otherwise <c>null</c>
-        /// </returns>
-        public static IRow Fetch(this ITable source, int oid)
-        {
-            try
-            {
-                if (source == null) return null;
-
-                return source.GetRow(oid);
-            }
-            catch (COMException ex)
-            {
-                if (ex.ErrorCode == (int) fdoError.FDO_E_ROW_NOT_FOUND)
-                    return null;
-
-                throw;
-            }
         }
 
         /// <summary>
@@ -355,6 +355,23 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return null;
+        }
+
+        /// <summary>
+        ///     Gets the subtype code and name that are assigned to the source.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing code and name of the subtypes; otherwise <c>null</c>.
+        /// </returns>
+        public static IEnumerable<KeyValuePair<int, string>> GetSubtypes(this ITable source)
+        {
+            if (source == null) return null;
+
+            ISubtypes subtypes = source as ISubtypes;
+            if (subtypes == null) return null;
+
+            return subtypes.Subtypes.AsEnumerable();
         }
 
         /// <summary>

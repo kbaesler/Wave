@@ -98,6 +98,9 @@
       <Private>False</Private>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -215,6 +218,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\Extensions\BaseFunctionExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Miner\ArcFM.cs" />
     <Compile Include="Miner\Framework\BaseClasses\BaseAbandonAU.cs" />

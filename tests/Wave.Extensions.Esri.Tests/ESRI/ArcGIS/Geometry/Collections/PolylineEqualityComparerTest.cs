@@ -1,6 +1,4 @@
-﻿using System;
-
-using ESRI.ArcGIS.Geometry;
+﻿using ESRI.ArcGIS.Geometry;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,7 +7,10 @@ namespace Wave.Extensions.Esri.Tests.ESRI.ArcGIS.Geometry.Collections
     [TestClass]
     public class PolylineEqualityComparerTest
     {
+        #region Public Methods
+
         [TestMethod]
+        [TestCategory("ESRI")]
         public void PolylineEqualityComparer_Equals_False()
         {
             IPoint fromPoint = new PointClass();
@@ -26,6 +27,7 @@ namespace Wave.Extensions.Esri.Tests.ESRI.ArcGIS.Geometry.Collections
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void PolylineEqualityComparer_Equals_True()
         {
             IPoint fromPoint = new PointClass();
@@ -40,5 +42,7 @@ namespace Wave.Extensions.Esri.Tests.ESRI.ArcGIS.Geometry.Collections
             PolylineEqualityComparer comparer = new PolylineEqualityComparer(.01);
             Assert.IsTrue(comparer.Equals(line, line));
         }
+
+        #endregion
     }
 }

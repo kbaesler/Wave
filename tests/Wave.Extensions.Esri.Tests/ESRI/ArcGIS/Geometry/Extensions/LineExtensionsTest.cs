@@ -13,6 +13,7 @@ namespace Wave.Extensions.Esri.Tests
         ///     Gets the arithmetic angle.
         /// </summary>
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ILine_GetArithmeticAngle_Equal_315()
         {
             ILine line = this.CreateLine();
@@ -26,6 +27,7 @@ namespace Wave.Extensions.Esri.Tests
         ///     Gets the geographic angle.
         /// </summary>
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ILine_GetGeographicAngle_Equal_90()
         {
             ILine line = this.CreateLine();

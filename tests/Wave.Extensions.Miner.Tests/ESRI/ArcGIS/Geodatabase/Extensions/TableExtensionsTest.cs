@@ -10,6 +10,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void ITable_GetPrimaryDisplayField_NotNull()
         {
             var table = base.GetTestTable();

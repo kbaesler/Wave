@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Reflection;
 
 using ESRI.ArcGIS.Geodatabase;
 
@@ -13,6 +12,7 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ITable_Fetch_Filter_Action_Equals_6()
         {
             var testClass = base.GetTestTable();
@@ -25,6 +25,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ITable_Fetch_Filter_Func_Equals_1()
         {
             var testClass = base.GetTestTable();
@@ -37,6 +38,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ITable_Fetch_Filter_Projection_Equals_6()
         {
             var testClass = base.GetTestTable();
@@ -50,6 +52,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ITable_Fetch_Row_IsNotNull()
         {
             var testClass = base.GetTestTable();
@@ -59,6 +62,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ITable_GetXDocument_NotNull()
         {
             var testClass = base.GetTestTable();
@@ -71,7 +75,7 @@ namespace Wave.Extensions.Esri.Tests
             Assert.IsNotNull(xdoc);
             Assert.AreEqual(xdoc.Elements().Count(), 1);
         }
-       
+
         #endregion
     }
 }

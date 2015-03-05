@@ -18,12 +18,14 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IPropertySet_AsEnumerable_Count_Equals_3()
         {
             Assert.AreEqual(3, _PropertySet.AsEnumerable().Count());
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IPropertySet_GetProperty_Equals_Type()
         {
             Assert.AreEqual(".NET", _PropertySet.GetProperty("String", string.Empty));

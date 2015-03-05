@@ -12,6 +12,17 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_Fetch_Equals_1()
+        {
+            var testClass = base.GetTestClass();
+            var row = testClass.Fetch(1);
+
+            Assert.IsNotNull(row);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureClass_Fetch_Filter_Action_Equals_6()
         {
             var testClass = base.GetTestClass();
@@ -25,6 +36,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureClass_Fetch_Filter_Func_Equals_1()
         {
             int testCount = 0;
@@ -45,6 +57,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureClass_Fetch_Filter_Projection_Equals_6()
         {
             var testClass = base.GetTestClass();
@@ -58,15 +71,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        public void IFeatureClass_Fetch_Equals_1()
-        {
-            var testClass = base.GetTestClass();
-            var row = testClass.Fetch(1);
-
-            Assert.IsNotNull(row);
-        }
-
-        [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureClass_Fetch_List_Query_Equals_1()
         {
             var testClass = base.GetTestClass();
@@ -81,6 +86,37 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_GetSchemaName_IsValid()
+        {
+            var testClass = base.GetTestClass();
+            var schemaName = testClass.GetSchemaName();
+
+            DBMS dbms = base.Workspace.GetDBMS();
+            switch (dbms)
+            {
+                case DBMS.Access:
+                case DBMS.File:
+                    Assert.IsNull(schemaName);
+                    break;
+
+                default:
+                    Assert.IsNotNull(schemaName);
+                    break;
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_GetSubtypes_Any_IsTrue()
+        {
+            var testClass = base.GetTestClass();
+            var list = testClass.GetSubtypes();
+            Assert.IsTrue(list.Any());
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureClass_GetXDocument_NotNull()
         {
             var testClass = base.GetTestClass();

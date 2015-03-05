@@ -22,6 +22,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void ID8List_AsEnumerable_Equals_9()
         {
             var iter = _List.AsEnumerable().OfType<ID8Feature>();
@@ -29,6 +30,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void ID8List_Count_Equals_12()
         {
             int count = _List.Count();
@@ -36,6 +38,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void ID8List_Where_Equals_9()
         {
             var iter = _List.Where(o => o.ItemType == mmd8ItemType.mmd8itFeature);

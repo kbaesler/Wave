@@ -193,12 +193,12 @@ namespace Wave.Extensions.Esri.Tests
         {
             if (disposing)
             {
-                if(_ComReleaser != null)
+                if (_ComReleaser != null)
                     _ComReleaser.Dispose();
 
                 _ComReleaser = null;
 
-                if(_RuntimeAuthorization != null)
+                if (_RuntimeAuthorization != null)
                     _RuntimeAuthorization.Dispose();
 
                 _RuntimeAuthorization = null;

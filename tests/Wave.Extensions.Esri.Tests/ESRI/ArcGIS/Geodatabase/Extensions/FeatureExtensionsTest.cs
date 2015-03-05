@@ -11,6 +11,7 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeature_GetDifferences_IsNotNull()
         {
             var testClass = base.GetTestClass();
@@ -32,6 +33,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeature_GetDifferences_IsNull()
         {
             var testClass = base.GetTestClass();

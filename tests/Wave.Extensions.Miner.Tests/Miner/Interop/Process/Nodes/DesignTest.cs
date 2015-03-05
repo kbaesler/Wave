@@ -54,6 +54,7 @@ namespace SE.Tests.Process
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxApplication_GetDesign_IsNull()
         {
             TestDesign design = base.PxApplication.GetDesign((nodeID, sender) =>
@@ -69,6 +70,7 @@ namespace SE.Tests.Process
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxDesign_CreateNew_IsTrue()
         {
             using (Design design = new Design(base.PxApplication))
@@ -81,6 +83,7 @@ namespace SE.Tests.Process
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxDesign_Dispose_IsNotNull()
         {
             IMMPxNode node;
@@ -95,6 +98,7 @@ namespace SE.Tests.Process
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxDesign_GetDesignXml_IsNotNull()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));
@@ -113,6 +117,7 @@ namespace SE.Tests.Process
 
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxDesign_Initialize_IsNew_IsTrue()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));
@@ -129,6 +134,7 @@ namespace SE.Tests.Process
 
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxDesign_Initialize_IsTrue()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));

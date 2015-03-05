@@ -12,6 +12,7 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ObjectEqualityComparer_Equals_False()
         {
             ObjectEqualityComparer comparer = new ObjectEqualityComparer();
@@ -26,6 +27,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void ObjectEqualityComparer_Equals_True()
         {
             ObjectEqualityComparer comparer = new ObjectEqualityComparer();

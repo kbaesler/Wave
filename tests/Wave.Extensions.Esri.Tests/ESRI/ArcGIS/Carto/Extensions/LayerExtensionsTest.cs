@@ -13,6 +13,7 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IEnumLayer_AsEnumerable_Count_Equals_2()
         {
             IEnumLayer layers = this.CreateLayers();
@@ -23,6 +24,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureLayer_Identify_Any()
         {
             IEnumLayer layers = this.CreateLayers();

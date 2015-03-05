@@ -14,6 +14,7 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         [ExpectedException(typeof (InvalidOperationException))]
         public void IRow_BlockReentrancy_InvalidOperationException()
         {
@@ -26,6 +27,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IRow_GetChanges_By_FieldName_Equals_1()
         {
             var testClass = base.GetTestClass();
@@ -40,6 +42,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IRow_GetChanges_Dictionary_Contains_2()
         {
             var testClass = base.GetTestClass();
@@ -55,6 +58,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IRow_TryGetValue_Equals_False()
         {
             var testClass = base.GetTestClass();
@@ -67,6 +71,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IRow_TryGetValue_Equals_True()
         {
             var testClass = base.GetTestClass();
@@ -79,42 +84,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_False_Lower()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
-
-            feature.Update(-1, null, false);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_False_Upper()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
-
-            feature.Update(feature.Fields.FieldCount, null, false);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof (InvalidCastException))]
-        public void IRow_Update_InvalidCastException_Double()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
-
-            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeDouble);
-            Assert.IsNotNull(testField);
-
-            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
-        }
-
-        [TestMethod]
+        [TestCategory("ESRI")]
         public void IRow_Update_DateTime()
         {
             var testClass = base.GetTestClass();
@@ -129,6 +99,46 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
+        [ExpectedException(typeof (IndexOutOfRangeException))]
+        public void IRow_Update_IndexOutOfRangeException_False_Lower()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1);
+            Assert.IsNotNull(feature);
+
+            feature.Update(-1, null, false);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        [ExpectedException(typeof (IndexOutOfRangeException))]
+        public void IRow_Update_IndexOutOfRangeException_False_Upper()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1);
+            Assert.IsNotNull(feature);
+
+            feature.Update(feature.Fields.FieldCount, null, false);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        [ExpectedException(typeof (InvalidCastException))]
+        public void IRow_Update_InvalidCastException_Double()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1);
+            Assert.IsNotNull(feature);
+
+            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeDouble);
+            Assert.IsNotNull(testField);
+
+            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         [ExpectedException(typeof (InvalidCastException))]
         public void IRow_Update_InvalidCastException_Int32()
         {
@@ -141,9 +151,10 @@ namespace Wave.Extensions.Esri.Tests
 
             feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
         }
-        
+
 
         [TestMethod]
+        [TestCategory("ESRI")]
         [ExpectedException(typeof (InvalidCastException))]
         public void IRow_Update_InvalidCastException_String()
         {
@@ -158,6 +169,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IRow_Update_IsFalse()
         {
             var testClass = base.GetTestClass();
@@ -172,6 +184,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IRow_Update_IsTrue()
         {
             var testClass = base.GetTestClass();

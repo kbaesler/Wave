@@ -21,6 +21,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_ExecuteScalar()
         {
             int count = base.PxApplication.ExecuteScalar(string.Format("SELECT COUNT(*) FROM {0}", base.PxApplication.GetQualifiedTableName(ArcFM.Process.SessionManager.Tables.Session)), -1);
@@ -28,6 +29,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_GetCurrentNode_IsNull()
         {
             IMMPxNode node = base.PxApplication.GetCurrentNode();
@@ -35,6 +37,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_GetFilterByName_IsNotNull()
         {
             IMMPxFilter filter = base.PxApplication.GetFilter(ArcFM.Process.SessionManager.Filters.AllSessions);
@@ -42,6 +45,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_GetQualifiedTableName()
         {
             string tableName = base.PxApplication.GetQualifiedTableName(ArcFM.Process.SessionManager.Tables.Session);
@@ -49,6 +53,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_GetStateByID_IsNotNull()
         {
             IMMPxState state = base.PxApplication.GetState(1);
@@ -56,6 +61,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_GetStateByName_IsNotNull()
         {
             IMMPxState state = base.PxApplication.GetState("In Progress");
@@ -63,6 +69,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_GetUserByID_IsNotNull()
         {
             IMMPxUser user = base.PxApplication.GetUser(base.PxApplication.User.Id);
@@ -70,6 +77,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_GetUserByName_IsNotNull()
         {
             IMMPxUser user = base.PxApplication.GetUser("adams");
@@ -77,6 +85,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_IsValidTransition_IsFalse()
         {
             IMMPxState state = base.PxApplication.GetState("In Progress");

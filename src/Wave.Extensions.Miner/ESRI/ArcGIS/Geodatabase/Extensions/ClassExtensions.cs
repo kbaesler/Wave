@@ -19,45 +19,6 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Assigns the class model names to the specified <paramref name="source" />
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="modelNames">The model names.</param>
-        /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static void AddClassModelName(this IObjectClass source, params string[] modelNames)
-        {
-            if (source == null) return;
-            if (modelNames == null) throw new ArgumentNullException("modelNames");
-
-            foreach (var modelName in modelNames)
-                ModelNameManager.Instance.AddClassModelName(source, modelName);
-        }
-
-        /// <summary>
-        ///     Assigns the field model names to the specified <paramref name="field" /> on the <paramref name="source" />.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="field">The field.</param>
-        /// <param name="modelNames">The model names.</param>
-        /// <exception cref="ArgumentNullException">
-        ///     field
-        ///     or
-        ///     modelNames
-        /// </exception>
-        public static void AddFieldModelName(this IObjectClass source, IField field, params string[] modelNames)
-        {
-            if (source == null) return;
-
-            if (field == null) throw new ArgumentNullException("field");
-            if (modelNames == null) throw new ArgumentNullException("modelNames");
-
-
-            foreach (var modelName in modelNames)
-                ModelNameManager.Instance.AddFieldModelName(source, field, modelName);
-        }
-
-
-        /// <summary>
         ///     Returns a list of the model names that are assigned to the <paramref name="source" />.
         /// </summary>
         /// <param name="source">The object class.</param>
@@ -161,22 +122,47 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Gets the field manager for the specified <paramref name="source" />
         /// </summary>
-        /// <param name="source">The class.</param>
-        /// <param name="subtype">The subtype.</param>
+        /// <param name="source">The source.</param>
+        /// <param name="subtypeCode">The subtype code.</param>
+        /// <param name="auxiliaryFieldBuilder">The auxiliary field builder.</param>
         /// <returns>
         ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the class.
         /// </returns>
-        public static IMMFieldManager GetFieldManager(this IObjectClass source, int subtype)
+        public static IMMFieldManager GetFieldManager(this IObjectClass source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder = null)
         {
             if (source == null) return null;
 
             IMMObjectClassBuilder builder = new MMObjectClassBuilderClass();
-            builder.Build(source, subtype);
+            builder.Build(source, subtypeCode);
 
             IMMFieldManager fieldManager = new MMFieldManagerClass();
-            fieldManager.Build((IMMFieldBuilder) builder, null);
+            fieldManager.Build((IMMFieldBuilder) builder, auxiliaryFieldBuilder);
 
             return fieldManager;
+        }
+
+        /// <summary>
+        ///     Returns a dictionary of the fields and model names that are assigned to the field for the specified
+        ///     <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the model names assigned to the field.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">field</exception>
+        public static Dictionary<IField, List<string>> GetFieldModelNames(this IObjectClass source)
+        {
+            if (source == null) return null;
+
+            Dictionary<IField, List<string>> list = new Dictionary<IField, List<string>>();
+
+            foreach (var field in source.Fields.AsEnumerable())
+            {
+                var modelNames = source.GetFieldModelNames(field).ToList();
+                if (modelNames.Any()) list.Add(field, modelNames);
+            }
+
+            return list;
         }
 
         /// <summary>
@@ -297,6 +283,8 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
 
             IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
+            if (configTopLevel == null) return null;
+
             return configTopLevel.GetPrimaryDisplayField(source);
         }
 
@@ -374,8 +362,8 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (modelNames == null) throw new ArgumentNullException("modelNames");
 
-            IEnumRelationshipClass enumClasses = source.RelationshipClasses[relationshipRole];
-            foreach (IRelationshipClass relClass in enumClasses.AsEnumerable())
+            IEnumRelationshipClass list = source.RelationshipClasses[relationshipRole];
+            foreach (IRelationshipClass relClass in list.AsEnumerable())
             {
                 switch (relationshipRole)
                 {
@@ -399,48 +387,6 @@ namespace ESRI.ArcGIS.Geodatabase
                         break;
                 }
             }
-        }
-
-
-        /// <summary>
-        ///     Gets the name of the owner or schema name of the table.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns>
-        ///     Returns a <see cref="string" /> representing the name of the owner.
-        /// </returns>
-        public static string GetSchemaName(this IObjectClass source)
-        {
-            if (source == null) return null;
-
-            return ((ITable) source).GetSchemaName();
-        }
-
-        /// <summary>
-        ///     Finds the code of the subtype that has the specified <paramref name="subtypeName" />.
-        /// </summary>
-        /// <param name="source">The object class.</param>
-        /// <param name="subtypeName">Name of the subtype.</param>
-        /// <returns>Returns a <see cref="int" /> representing the code of the subtype; otherwise <c>-1</c>.</returns>
-        public static int GetSubtypeCode(this IObjectClass source, string subtypeName)
-        {
-            if (source == null) return -1;
-
-            return ((ITable) source).GetSubtypeCode(subtypeName);
-        }
-
-        /// <summary>
-        ///     Gets the name of the table (without the owner or schema name).
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns>
-        ///     Returns a <see cref="string" /> representing the name of the table.
-        /// </returns>
-        public static string GetTableName(this IObjectClass source)
-        {
-            if (source == null) return null;
-
-            return ((ITable) source).GetTableName();
         }
 
         /// <summary>
@@ -532,37 +478,6 @@ namespace ESRI.ArcGIS.Geodatabase
             if (modelNames == null) throw new ArgumentNullException("modelNames");
 
             return modelNames.Any(name => ModelNameManager.Instance.FieldFromModelName(source, name) != null);
-        }
-
-        /// <summary>
-        ///     Removes the class model names from the specified <paramref name="source" />
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="modelNames">The model names.</param>
-        /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static void RemoveClassModelName(this IObjectClass source, params string[] modelNames)
-        {
-            if (source == null) return;
-            if (modelNames == null) throw new ArgumentNullException("modelNames");
-
-            foreach (var modelName in modelNames)
-                ModelNameManager.Instance.RemoveClassModelName(source, modelName);
-        }
-
-        /// <summary>
-        ///     Removes the field model names from the specified <paramref name="field" /> on the <paramref name="source" />.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="field">The field.</param>
-        /// <param name="modelNames">The model names.</param>
-        /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static void RemoveFieldModelName(this IObjectClass source, IField field, params string[] modelNames)
-        {
-            if (source == null) return;
-            if (modelNames == null) throw new ArgumentNullException("modelNames");
-
-            foreach (var modelName in modelNames)
-                ModelNameManager.Instance.RemoveFieldModelName(source, field, modelName);
         }
 
         #endregion

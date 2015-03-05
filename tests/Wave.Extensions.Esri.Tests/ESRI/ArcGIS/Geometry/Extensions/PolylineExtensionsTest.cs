@@ -13,6 +13,7 @@ namespace Wave.Extensions.Esri.Tests
         ///     Gets the angle.
         /// </summary>
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IPolyline_GetAngle_Negative_0()
         {
             IPolyline polyline = this.CreatePolyline();
@@ -26,6 +27,7 @@ namespace Wave.Extensions.Esri.Tests
         ///     Gets the arithmetic angle.
         /// </summary>
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IPolyline_GetArithmeticAngle_Equal_315()
         {
             IPolyline polyline = this.CreatePolyline();
@@ -39,6 +41,7 @@ namespace Wave.Extensions.Esri.Tests
         ///     Gets the geographic angle.
         /// </summary>
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IPolyline_GetGeographicAngle_Equal_90()
         {
             IPolyline polyline = this.CreatePolyline();

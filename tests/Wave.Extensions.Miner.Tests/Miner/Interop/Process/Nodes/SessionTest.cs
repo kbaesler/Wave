@@ -23,6 +23,20 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
+        public void IPxSession_CreateNew_IsTrue()
+        {
+            using (Session session = new Session(base.PxApplication))
+            {
+                Assert.AreEqual(true, session.CreateNew(base.PxApplication.User));
+                Assert.AreEqual(base.PxApplication.User.Name, session.CreateUser);
+
+                session.Delete();
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
         public void IPxSession_Initialize_IsTrue()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT SESSION_ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.SessionManager.Tables.Session));
@@ -33,18 +47,6 @@ namespace Wave.Extensions.Miner.Tests
                 {
                     Assert.AreEqual(true, session.Initialize(nodeID));
                 }
-            }
-        }
-
-        [TestMethod]
-        public void IPxSession_CreateNew_IsTrue()
-        {
-            using (Session session = new Session(base.PxApplication))
-            {
-                Assert.AreEqual(true, session.CreateNew(base.PxApplication.User));
-                Assert.AreEqual(base.PxApplication.User.Name, session.CreateUser);
-
-                session.Delete();
             }
         }
 

@@ -1,7 +1,4 @@
-﻿using System;
-
-using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
+﻿using ESRI.ArcGIS.Geometry;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -10,7 +7,10 @@ namespace Wave.Extensions.Esri.Tests
     [TestClass]
     public class GeometryEqualityComparerTest : EsriTests
     {
+        #region Public Methods
+
         [TestMethod]
+        [TestCategory("ESRI")]
         public void GeometryEqualityComparer_Equals_False()
         {
             IPoint fromPoint = new PointClass();
@@ -27,6 +27,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void GeometryEqualityComparer_Equals_True()
         {
             IPoint fromPoint = new PointClass();
@@ -39,7 +40,9 @@ namespace Wave.Extensions.Esri.Tests
             line.PutCoords(fromPoint, toPoint);
 
             GeometryEqualityComparer comparer = new GeometryEqualityComparer();
-            Assert.IsTrue(comparer.Equals(line, line)); 
+            Assert.IsTrue(comparer.Equals(line, line));
         }
+
+        #endregion
     }
 }

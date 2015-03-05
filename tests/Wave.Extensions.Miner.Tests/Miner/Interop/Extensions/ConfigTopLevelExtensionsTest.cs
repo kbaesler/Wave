@@ -15,6 +15,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMConfigTopLevel_ChangeVisibility()
         {
             IFeatureClass testClass = base.GetTestClass();
@@ -28,11 +29,12 @@ namespace Wave.Extensions.Miner.Tests
             IMMFieldAdapter fieldAdapter = fieldManager.FieldByName(testClass.OIDFieldName);
 
             configTopLevel.ChangeVisibility(testClass, subtypes.DefaultSubtypeCode, false, testClass.OIDFieldName);
-           
+
             Assert.IsFalse(fieldAdapter.Visible);
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (ArgumentNullException))]
         public void IMMConfigTopLevel_ChangeVisibility_ArgumentNullException_FieldName()
         {
@@ -46,6 +48,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (ArgumentNullException))]
         public void IMMConfigTopLevel_ChangeVisibility_ArgumentNullException_Table()
         {
@@ -56,6 +59,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IMMConfigTopLevel_GetAutoValues_NotNull()
         {
             IFeatureClass testClass = base.GetTestClass();

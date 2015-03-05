@@ -23,6 +23,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxWorkRequest_CreateNew_IsTrue()
         {
             using (WorkRequest request = new WorkRequest(base.PxApplication))
@@ -36,6 +37,7 @@ namespace Wave.Extensions.Miner.Tests
 
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxWorkRequest_CustomerUpdate_Valid()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.WorkRequest));
@@ -59,6 +61,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxWorkRequest_Initialize_IsTrue()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.WorkRequest));
@@ -74,6 +77,7 @@ namespace Wave.Extensions.Miner.Tests
 
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void IPxWorkRequest_Location_Updates_Valid()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.WorkRequest));

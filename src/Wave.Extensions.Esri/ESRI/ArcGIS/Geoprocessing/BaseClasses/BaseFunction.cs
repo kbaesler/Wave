@@ -37,7 +37,7 @@ namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
 
             this.Name = name;
             this.DisplayName = displayName;
-            this.MetadataFile = string.Format("{0}_metadata.xml", Name);
+            this.MetadataFile = string.Format("{0}_metadata.xml", name);
             this.FunctionFactory = functionFactory;
             this.Utilities = new GPUtilitiesClass();
         }
@@ -98,7 +98,7 @@ namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
         /// <param name="trackCancel">The track cancel.</param>
         /// <param name="environmentManager">Provides access to all the current environments and settings of the current client.</param>
         /// <param name="messages">The messages.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         ///     parameters;A function tool must always have an output. At the minimum,
         ///     your function should output a Boolean value containing success or failure.
         /// </exception>
@@ -107,7 +107,7 @@ namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
             try
             {
                 if (parameters.AsEnumerable<IGPParameter>().All(o => o.Direction != esriGPParameterDirection.esriGPParameterDirectionOutput))
-                    throw new ArgumentNullException("parameters", @"A function tool must always have an output. At the minimum, your function should output a Boolean value containing success or failure.");
+                    throw new ArgumentOutOfRangeException("parameters", @"A function tool must always have an output. At the minimum, your function should output a Boolean value containing success or failure.");
 
                 var list = parameters.AsEnumerable<IGPParameter>().ToDictionary(o => o.Name, o => this.Utilities.UnpackGPValue(o));
 

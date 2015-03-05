@@ -12,6 +12,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_EOF_IsTrue()
         {
             IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
@@ -31,6 +32,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_IsEmpty_IsTrue()
         {
             var enumerator = new TreeViewSelectionEnumerator();
@@ -38,6 +40,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_Next_IsTrue()
         {
             IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
@@ -54,6 +57,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_Reset_Equal()
         {
             IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");

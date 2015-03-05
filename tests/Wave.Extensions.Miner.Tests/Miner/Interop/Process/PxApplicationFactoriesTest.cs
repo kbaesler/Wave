@@ -14,6 +14,7 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void PxApplicationFactories_GetFactory_Access_IsNotNull()
         {
             PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Access);
@@ -21,6 +22,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         [ExpectedException(typeof (NotSupportedException))]
         public void PxApplicationFactories_GetFactory_NotSupportedException()
         {
@@ -29,6 +31,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void PxApplicationFactories_GetFactory_Oracle_IsNotNull()
         {
             PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Oracle);
@@ -36,6 +39,7 @@ namespace Wave.Extensions.Miner.Tests
         }
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void PxApplicationFactories_GetFactory_SqlServer_IsNotNull()
         {
             PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.SqlServer);

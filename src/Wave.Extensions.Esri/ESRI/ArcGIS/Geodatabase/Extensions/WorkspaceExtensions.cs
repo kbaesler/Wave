@@ -126,16 +126,29 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
             if (domainName == null) throw new ArgumentNullException("domainName");
 
-            IWorkspaceDomains wd = (IWorkspaceDomains) source;
-            IEnumDomain domains = wd.Domains;
-
-            foreach (var domain in domains.AsEnumerable())
+            foreach (var domain in source.GetDomains())
             {
                 if (domain.Name.Equals(domainName, StringComparison.OrdinalIgnoreCase))
                     return domain;
             }
 
             return null;
+        }
+
+        /// <summary>
+        ///     Gets all of the <see cref="IDomain" /> values that have been configured in the workspace.
+        /// </summary>
+        /// <param name="source">The workspace.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IDomain}" /> representing the domains available; otherwise <c>null</c>.
+        /// </returns>
+        public static IEnumerable<IDomain> GetDomains(this IWorkspace source)
+        {
+            if (source == null) return null;
+
+            IWorkspaceDomains wd = (IWorkspaceDomains) source;
+            IEnumDomain domains = wd.Domains;
+            return domains.AsEnumerable();
         }
 
         /// <summary>
@@ -373,7 +386,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <remarks>
         ///     Before issuing any queries against the view, you must ensure that they will take place against the correct version.
         /// </remarks>
-        public static void UpdateMultiversionedViews(this IWorkspace source)
+        public static void UpdateMultiVersionViews(this IWorkspace source)
         {
             IVersion version = source as IVersion;
             if (version != null)

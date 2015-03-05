@@ -18,12 +18,14 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IDomain_AsEnumerable_Count_Equals_4()
         {
             Assert.AreEqual(4, _CodedValueDomain.AsEnumerable().Count());
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IDomain_GetDescription_Equals_Residential()
         {
             string name = _CodedValueDomain.GetDescription("RES");
@@ -31,6 +33,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IDomain_GetValue_Equals_COM()
         {
             Assert.AreEqual("COM", _CodedValueDomain.GetValue("Commercial", ""));

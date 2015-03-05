@@ -11,12 +11,13 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("Miner")]
         public void AutoUpdaterModeReverter_Equals_NoEvents()
         {
             IMMAutoUpdater o = new MMAutoupdaterDispatch();
 
             using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
-            {               
+            {
                 Assert.AreEqual(mmAutoUpdaterMode.mmAUMNoEvents, o.AutoUpdaterMode);
             }
         }

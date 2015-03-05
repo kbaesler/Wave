@@ -12,6 +12,7 @@ namespace Wave.Extensions.Esri.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFields_AsEnumerable_Count_Equals()
         {
             var testClass = base.GetTestClass();
@@ -20,6 +21,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFields_ToDictionary_Count_Equals()
         {
             var testClass = base.GetTestClass();
@@ -29,6 +31,7 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         [TestMethod]
+        [TestCategory("ESRI")]
         public void IFields_ToDictionary_IgnoreCase_True()
         {
             var testClass = base.GetTestClass();
@@ -36,6 +39,7 @@ namespace Wave.Extensions.Esri.Tests
 
             Assert.IsTrue(dictionary.ContainsKey(testClass.Fields.Field[0].Name.ToLower()));
         }
+
         #endregion
     }
 }

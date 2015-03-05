@@ -255,6 +255,91 @@ namespace ESRI.ArcGIS.Geodatabase
             return recordsAffected;
         }
 
+        /// <summary>
+        ///     Gets the name of the delta (either the A or D) table for the versioned <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The versioned table or feature class.</param>
+        /// <param name="delta">The delta (indicate the A or D) table.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the name of the delta table.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">delta</exception>
+        /// <exception cref="System.ArgumentException">
+        ///     The delta string must be 1 char long.
+        ///     or
+        ///     The delta string must contain only 'A' or 'D' chars.
+        ///     or
+        ///     The table must be versioned for it have a delta table.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        ///     The delta string must be 1 char long.
+        ///     or
+        ///     The delta string must contain only 'A' or 'D' chars.
+        /// </exception>
+        public static string GetDeltaTableName(this IObjectClass source, string delta)
+        {
+            if (source == null) return null;
+
+            return ((ITable) source).GetDeltaTableName(delta);
+        }
+
+        /// <summary>
+        ///     Gets the name of the owner or schema name of the table.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the name of the owner.
+        /// </returns>
+        public static string GetSchemaName(this IObjectClass source)
+        {
+            if (source == null) return null;
+
+            return ((ITable) source).GetSchemaName();
+        }
+
+        /// <summary>
+        ///     Gets the subtype code and name that are assigned to the source.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing code and name of the subtypes; otherwise <c>null</c>.
+        /// </returns>
+        public static IEnumerable<KeyValuePair<int, string>> GetSubtypeCode(this IObjectClass source)
+        {
+            if (source == null) return null;
+
+            return ((ITable) source).GetSubtypes();
+        }
+
+        /// <summary>
+        ///     Gets the subtype name that has the specified <paramref name="subtypeCode" />.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="subtypeCode">The subtype code.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the name of the subtype; otherwise <c>null</c>.
+        /// </returns>
+        public static string GetSubtypeName(this IObjectClass source, int subtypeCode)
+        {
+            if (source == null) return null;
+
+            return ((ITable) source).GetSubtypeName(subtypeCode);
+        }
+
+        /// <summary>
+        ///     Gets the subtype code and name that are assigned to the source.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing code and name of the subtypes; otherwise <c>null</c>.
+        /// </returns>
+        public static IEnumerable<KeyValuePair<int, string>> GetSubtypes(this IObjectClass source)
+        {
+            if (source == null) return null;
+
+            return ((ITable) source).GetSubtypes();
+        }
+
 
         /// <summary>
         ///     Converts the contents returned from the attribute or spatial query into an XML document.

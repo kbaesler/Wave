@@ -14,54 +14,58 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Gets the workspace factory.
+        /// Gets the workspace factory.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>
-        ///     Returns a <see cref="IWorkspaceFactory" /> representing the supported factory for the file.
+        /// Returns a <see cref="IWorkspaceFactory" /> representing the supported factory for the file.
         /// </returns>
-        /// <exception cref="FileNotFoundException">The workspace factory cannot be determined because the file was not found.</exception>
-        /// <exception cref="NotSupportedException">The workspace factory for the file is not supported</exception>
+        /// <exception cref="System.ArgumentNullException">fileName</exception>
+        /// <exception cref="System.IO.DirectoryNotFoundException">The workspace factory cannot be determined because the file was not found.</exception>
+        /// <exception cref="System.IO.FileNotFoundException">The workspace factory cannot be determined because the file was not found.</exception>
+        /// <exception cref="System.NotSupportedException">The workspace factory for the file is not supported.</exception>
         public static IWorkspaceFactory GetFactory(string fileName)
         {
-            if (!string.IsNullOrEmpty(fileName))
+            if (fileName == null) throw new ArgumentNullException("fileName");
+
+            if ((fileName.EndsWith(".gdb", StringComparison.OrdinalIgnoreCase)))
             {
-                if ((fileName.EndsWith(".gdb", StringComparison.OrdinalIgnoreCase)))
-                {
-                    if (!Directory.Exists(fileName))
-                        throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found", fileName);
+                if (!Directory.Exists(fileName))
+                    throw new DirectoryNotFoundException("The workspace factory cannot be determined because the file was not found.");
 
-                    return new FileGDBWorkspaceFactoryClass();
-                }
-
-                if (!File.Exists(fileName))
-                    throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found", fileName);
-
-                IWorkspaceFactory[] list =
-                {
-                    new AccessWorkspaceFactoryClass(),
-                    new SdeWorkspaceFactoryClass(),
-                };
-
-                foreach (var l in list)
-                {
-                    if (l.IsWorkspace(fileName))
-                        return l;
-                }
+                return new FileGDBWorkspaceFactoryClass();
             }
 
-            throw new NotSupportedException("The workspace factory for the file is not supported");
+            if (!File.Exists(fileName))
+                throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found.", fileName);
+
+            IWorkspaceFactory[] list =
+            {
+                new AccessWorkspaceFactoryClass(),
+                new SdeWorkspaceFactoryClass(),
+            };
+
+            foreach (var l in list)
+            {
+                if (l.IsWorkspace(fileName))
+                    return l;
+            }
+
+            throw new NotSupportedException("The workspace factory for the file is not supported.");
         }
 
         /// <summary>
-        ///     Connects to the geodatabase given the specified parameters.
+        /// Connects to the geodatabase given the specified parameters.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>
-        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
+        /// Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">fileName</exception>
         public static IWorkspace Open(string fileName)
         {
+            if(fileName == null) throw new ArgumentNullException("fileName");
+
             IWorkspaceFactory factory = GetFactory(fileName);
             return factory.OpenFromFile(fileName, 0);
         }
@@ -82,7 +86,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IWorkspace Open(string server, string instance, string version, string database, string password, string username,
             DateTime? timestamp = null, string authentication = "DBMS")
-        {
+        {           
             IWorkspaceFactory factory;
             DBMS type = GetDBMS(server, instance, database, version);
             switch (type)
@@ -138,8 +142,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns the <see cref="DBMS" /> enumeration representing the type.
         /// </returns>
-        private static DBMS GetDBMS(string server, string instance,
-            string database, string version)
+        private static DBMS GetDBMS(string server, string instance, string database, string version)
         {
             if (string.IsNullOrEmpty(database))
             {
