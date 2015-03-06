@@ -1,7 +1,7 @@
 ﻿namespace Miner.Interop.Process
 {
     /// <summary>
-    ///     A contract used for constructing a process framework entity object.
+    /// A contract used for constructing a process framework entity object.
     /// </summary>
     public interface IPxNode
     {
@@ -63,12 +63,12 @@
         bool Valid { get; }
 
         /// <summary>
-        ///     Gets the name of the version.
+        /// Gets the version.
         /// </summary>
         /// <value>
-        ///     The name of the version.
+        /// The version.
         /// </value>
-        string VersionName { get; }
+        IMMPxSDEVersion Version { get; }
 
         #endregion
 

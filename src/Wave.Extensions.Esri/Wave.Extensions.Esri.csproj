@@ -265,8 +265,6 @@
     <Compile Include="System\Data\OleDb\AccessDatabaseConnection.cs" />
     <Compile Include="System\Data\OleDb\OleDbDatabaseConnection.cs" />
     <Compile Include="System\Data\OleDb\OracleDatabaseConnection.cs" />
-    <Compile Include="System\Diagnostics\Appenders\RichTextBoxAppender.cs" />
-    <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />

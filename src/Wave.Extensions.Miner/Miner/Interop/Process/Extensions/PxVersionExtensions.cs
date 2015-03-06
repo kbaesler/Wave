@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace Miner.Interop.Process
 {
@@ -26,18 +27,16 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Determines whether the version is in the state specified by the version status.
+        ///     Gets the version status as an enumeration.
         /// </summary>
-        /// <param name="source">The version.</param>
-        /// <param name="versionStatus">The version status.</param>
+        /// <param name="source">The source.</param>
         /// <returns>
-        ///     <c>true</c> if the version is in the state specified by the version status; otherwise, <c>false</c>.
+        ///     Returns a <see cref="PxVersionStatus" /> representing the enumeration value for the version status.
         /// </returns>
-        public static bool IsStatus(this IMMPxSDEVersion source, PxVersionStatus versionStatus)
+        public static PxVersionStatus GetVersionStatus(this IMMPxSDEVersion source)
         {
-            if (source == null) return false;
-
-            return source.get_Status() == (short) versionStatus;
+            var value = Enum.ToObject(typeof (PxVersionStatus), source.get_Status());
+            return (PxVersionStatus) value;
         }
 
         #endregion

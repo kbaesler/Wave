@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 
+using ESRI.ArcGIS.Geodatabase;
+
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -31,8 +33,7 @@ namespace Miner.Interop.Process
         /// <returns>
         /// Returns the <see cref="BasePxEdmRepository" /> representing the EDM management controller.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">pxApp</exception>
-        /// <exception cref="System.NullReferenceException">The WMSEDM process framework configuration value is null.</exception>
+        /// <exception cref="ArgumentNullException">pxApp</exception>
         protected virtual BasePxEdmRepository GetEdmRepository(IMMPxApplication pxApp)
         {
             if(pxApp == null) throw new ArgumentNullException("pxApp");
@@ -41,7 +42,7 @@ namespace Miner.Interop.Process
             string progId = helper.GetConfigValue("WMSEDM", string.Empty);
             if (string.IsNullOrEmpty(progId))
             {
-                throw new NullReferenceException("The WMSEDM process framework configuration value is null.");
+                return null;
             }
 
             try
@@ -68,7 +69,7 @@ namespace Miner.Interop.Process
         {
             if (node == null) return;
 
-            IMMPxDeleter deleter = this.GetBaseDeleter(node);
+            IMMPxDeleter deleter = this.GetNodeDeleter(node);
             if (deleter != null)
             {
                 deleter.PxApplication = base.PxApplication;

@@ -10,7 +10,7 @@ using ADODB;
 namespace Miner.Interop.Process
 {
     /// <summary>
-    ///     An abstract class used to handle wrapping process framework nodes into workable objects.
+    /// An abstract class used to handle wrapping process framework nodes into workable objects.
     /// </summary>
     public abstract class BasePxNode : IDisposable, IPxNode
     {
@@ -204,17 +204,17 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Gets the name of the version.
+        /// Gets the version.
         /// </summary>
         /// <value>
-        ///     The name of the version.
+        /// The version.
         /// </value>
-        public virtual string VersionName
+        public virtual IMMPxSDEVersion Version
         {
             get
             {
                 IMMPxSDEVersion version = ((IMMPxApplicationEx2) _PxApp).GetSDEVersion(this.Node.Id, this.Node.NodeType, true);
-                return version.GetVersionName();
+                return version;
             }
         }
 
@@ -399,22 +399,9 @@ namespace Miner.Interop.Process
         /// </param>
         protected virtual void Dispose(bool disposing)
         {           
-            if (disposing)
-            {
-                if (_Node != null)
-                    while (Marshal.ReleaseComObject(_Node) > 0)
-                    {
-                    }
-
-                if (_History != null)
-                    while (Marshal.ReleaseComObject(_History) > 0)
-                    {
-                    }
-            }
 
             _Node = null;
             _History = null;
-
         }
 
         /// <summary>
