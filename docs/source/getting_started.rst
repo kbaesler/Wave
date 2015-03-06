@@ -5,7 +5,7 @@ Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric Arc
 The concept is to eliminate the need for the developer to learn new namespaces, but allow them to take advantage of the Visual Studio IDE to identify the new features for objects.
 
 .. note::
-    It's always best to consult the :doc:`api` documentation to understand the purpose of the methods and classes provided by Wave.
+    It's always best to consult the :doc:`apidocs` documentation to understand the purpose of the methods and classes provided by Wave.
 
 There are two ways for getting started using Wave.
 
