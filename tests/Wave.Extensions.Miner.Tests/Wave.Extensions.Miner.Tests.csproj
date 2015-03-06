@@ -162,15 +162,13 @@
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensionsTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Miner\Interop\Process\Collections\ReferenceDictionaryTest.cs" />
-    <Compile Include="Miner\Interop\Process\EDM\EDMTest.cs" />
-    <Compile Include="Miner\Interop\Process\Extensions\PxNodeExtensionsTest.cs" />
+    <Compile Include="Miner\Interop\Process\EDM\IPxEdmRepositoryTest.cs" />
     <Compile Include="ProcessTests.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListClassExtensionsTest.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\DesignTest.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\SessionTest.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\WorkRequestTest.cs" />
-    <Compile Include="Miner\Interop\Process\Extensions\PxApplicationExtensionsTest.cs" />
+    <Compile Include="Miner\Interop\Process\Data\PxApplicationExtensionsTest.cs" />
     <Compile Include="Miner\Interop\Process\Data\PxApplicationFactoriesTest.cs" />
     <Compile Include="MinerTests.cs" />
     <Compile Include="Miner\Interop\Collections\TreeViewSelectionEnumeratorTest.cs" />

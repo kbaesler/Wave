@@ -14,4 +14,4 @@ Table of Contents
     examples
     contribute
     change_log
-    apidocs
+    api

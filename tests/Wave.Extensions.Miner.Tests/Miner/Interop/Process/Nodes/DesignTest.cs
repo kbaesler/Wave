@@ -99,39 +99,6 @@ namespace SE.Tests.Process
 
         [TestMethod]
         [TestCategory("Miner")]
-        public void IPxDesign_Version_IsNotNull()
-        {
-            DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));
-            if (table.Rows.Count > 0)
-            {
-                int nodeID = table.Rows[0].Field<int>(0);
-                using (Design session = new Design(base.PxApplication))
-                {                    
-                    Assert.IsTrue(session.Initialize(nodeID));
-                    Assert.IsNotNull(session.Version);
-                }
-            }
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        public void IPxDesign_GetVersionStatus_IsNotNull()
-        {
-            DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));
-            if (table.Rows.Count > 0)
-            {
-                int nodeID = table.Rows[0].Field<int>(0);
-                using (Design session = new Design(base.PxApplication))
-                {
-                    Assert.IsTrue(session.Initialize(nodeID));
-                    Assert.IsNotNull(session.Version);
-                    Assert.IsInstanceOfType(session.Version.GetVersionStatus(), typeof(PxVersionStatus));
-                }
-            }
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
         public void IPxDesign_GetDesignXml_IsNotNull()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));

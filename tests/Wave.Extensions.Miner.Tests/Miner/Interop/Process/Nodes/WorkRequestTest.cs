@@ -103,38 +103,6 @@ namespace Wave.Extensions.Miner.Tests
             }
         }
 
-        [TestMethod]
-        [TestCategory("Miner")]
-        public void IPxWorkRequest_Version_IsNotNull()
-        {
-            DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.WorkRequest));
-            if (table.Rows.Count > 0)
-            {
-                int nodeID = table.Rows[0].Field<int>(0);
-                using (WorkRequest session = new WorkRequest(base.PxApplication))
-                {
-                    Assert.IsTrue(session.Initialize(nodeID));
-                    Assert.IsNotNull(session.Version);
-                }
-            }
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        public void IPxWorkRequest_GetVersionStatus_IsNotNull()
-        {
-            DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.WorkRequest));
-            if (table.Rows.Count > 0)
-            {
-                int nodeID = table.Rows[0].Field<int>(0);
-                using (WorkRequest session = new WorkRequest(base.PxApplication))
-                {
-                    Assert.IsTrue(session.Initialize(nodeID));
-                    Assert.IsNotNull(session.Version);
-                    Assert.IsInstanceOfType(session.Version.GetVersionStatus(), typeof(PxVersionStatus));
-                }
-            }
-        }
         #endregion
     }
 }

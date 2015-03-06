@@ -80,7 +80,7 @@ namespace Miner.Framework.BaseClasses
         /// <param name="eAUMode">The auto updater mode.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <exception cref="NotSupportedException">The sequence generator is only supported on an ORACLE workspace (remote geodatabase).</exception>
-        /// <exception cref="ArgumentNullException">obj;The field model name is not assigned on the object.</exception>
+        /// <exception cref="ArgumentNullException">obj;@The field model name is not assigned on the object.</exception>
         /// <remarks>
         /// This method will be called from IMMSpecialAUStrategy::ExecuteEx
         /// and is wrapped within the exception handling for that method.

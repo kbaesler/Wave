@@ -48,7 +48,7 @@ namespace Wave.Extensions.Miner.Tests
                     Assert.AreEqual(true, session.Initialize(nodeID));
                 }
             }
-        }        
+        }
 
         #endregion
     }

@@ -24,27 +24,9 @@ namespace Wave.Extensions.Miner.Tests
         [TestMethod]
         [TestCategory("Miner")]
         [ExpectedException(typeof (NotSupportedException))]
-        public void PxApplicationFactories_GetFactory_Db2_NotSupportedException()
+        public void PxApplicationFactories_GetFactory_NotSupportedException()
         {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Db2);
-            Assert.IsNotNull(factory);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        [ExpectedException(typeof (NotSupportedException))]
-        public void PxApplicationFactories_GetFactory_File_NotSupportedException()
-        {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.File);
-            Assert.IsNotNull(factory);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        [ExpectedException(typeof (NotSupportedException))]
-        public void PxApplicationFactories_GetFactory_Informix_NotSupportedException()
-        {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Informix);
+            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Unknown);
             Assert.IsNotNull(factory);
         }
 
@@ -58,27 +40,9 @@ namespace Wave.Extensions.Miner.Tests
 
         [TestMethod]
         [TestCategory("Miner")]
-        [ExpectedException(typeof (NotSupportedException))]
-        public void PxApplicationFactories_GetFactory_PostgreSql_NotSupportedException()
-        {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.PostgreSql);
-            Assert.IsNotNull(factory);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
         public void PxApplicationFactories_GetFactory_SqlServer_IsNotNull()
         {
             PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.SqlServer);
-            Assert.IsNotNull(factory);
-        }
-
-        [TestMethod]
-        [TestCategory("Miner")]
-        [ExpectedException(typeof (NotSupportedException))]
-        public void PxApplicationFactories_GetFactory_Uknown_NotSupportedException()
-        {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Unknown);
             Assert.IsNotNull(factory);
         }
 

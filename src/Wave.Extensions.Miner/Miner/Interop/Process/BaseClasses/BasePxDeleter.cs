@@ -76,7 +76,7 @@ namespace Miner.Interop.Process
         /// <returns>
         ///     Returns the <see cref="Miner.Interop.Process.IMMPxDeleter" /> representing the deleter for the node.
         /// </returns>
-        protected IMMPxDeleter GetNodeDeleter(IMMPxNode node)
+        protected IMMPxDeleter GetBaseDeleter(IMMPxNode node)
         {
             if (this.PxApplication == null || node == null) return null;
 
