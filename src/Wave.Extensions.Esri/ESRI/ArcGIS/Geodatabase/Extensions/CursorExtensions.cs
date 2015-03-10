@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -9,6 +11,52 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class CursorExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Batches the source sequence into sized buckets with the contents of the specified field.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The cursor.</param>
+        /// <param name="fieldName">The field name that contains the unique key value.</param>
+        /// <param name="size">The size.</param>
+        /// <returns>
+        ///     A sequence of projections on equally sized buckets containing values of the fields for the rows in the cursor.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">fieldName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">size; The size must be greater than zero.</exception>
+        /// <remarks>
+        ///     This operator uses deferred execution and streams its results (buckets and bucket content).
+        /// </remarks>
+        public static IEnumerable<Dictionary<TValue, IRow>> Batch<TValue>(this ICursor source, string fieldName, int size)
+        {
+            if (fieldName == null) throw new ArgumentNullException("fieldName");
+            if (size < 0) throw new ArgumentOutOfRangeException("size", " The size must be greater than zero.");
+
+            Dictionary<TValue, IRow> bucket = null;
+
+            IRow row;
+            while ((row = source.NextRow()) != null)
+            {
+                int pos = row.Fields.FindField(fieldName);
+                TValue value = row.GetValue(pos, default(TValue));
+
+                if (bucket == null)
+                    bucket = new Dictionary<TValue, IRow>();
+
+                if (!bucket.ContainsKey(value))
+                    bucket.Add(value, row);
+
+                if (bucket.Count != size)
+                    continue;
+
+                yield return bucket;
+
+                bucket = null;
+            }
+
+            if (bucket != null && bucket.Count > 0)
+                yield return bucket;
+        }
 
         /// <summary>
         ///     Converts the contents of the cursor into an XML document.

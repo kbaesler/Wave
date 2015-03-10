@@ -14,6 +14,28 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void ICursor_Batch_IsTrue()
+        {
+            var table = base.GetTestTable();
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IQueryFilter filter = new QueryFilterClass();
+                filter.WhereClause = table.OIDFieldName + "< 10";
+
+                ICursor cursor = table.Search(filter, false);
+                cr.ManageLifetime(cursor);
+
+                var batches = cursor.Batch<int>(table.OIDFieldName, 2).ToArray();
+                Assert.AreEqual(batches.Count(), 5);
+
+                int count = batches.Sum(batch => batch.Count);
+                Assert.IsTrue(count < 10);
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void ICursor_GetXDocument_Any_Rows()
         {
             var table = base.GetTestTable();
