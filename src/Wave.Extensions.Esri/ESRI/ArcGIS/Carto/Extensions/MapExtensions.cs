@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
 namespace ESRI.ArcGIS.Carto
@@ -13,6 +12,22 @@ namespace ESRI.ArcGIS.Carto
     public static class MapExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from a <see cref="IMapLayerInfos" />
+        /// </summary>
+        /// <param name="source">Map layer informations</param>
+        /// <returns><see cref="IEnumerable{T}" /> of <see cref="IMapLayerInfo" /></returns>
+        public static IEnumerable<IMapLayerInfo> AsEnumerable(this IMapLayerInfos source)
+        {
+            if (source != null)
+            {
+                for (int i = 0; i < source.Count; i++)
+                {
+                    yield return source.Element[i];
+                }
+            }
+        }
 
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IMaps" />
@@ -102,7 +117,7 @@ namespace ESRI.ArcGIS.Carto
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
-          
+
             IEnumLayer layers = source.Layers[null];
             return layers.AsEnumerable().OfType<TLayer>().Where(selector);
         }

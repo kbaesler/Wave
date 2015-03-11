@@ -209,6 +209,7 @@
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\DatasetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingDatabaseModelNameException.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingClassModelNameException.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingFieldModelName.cs" />
@@ -251,6 +252,8 @@
     </Compile>
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\FeatureClassExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\FieldExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\Internal\EditNotificationQueue.cs" />

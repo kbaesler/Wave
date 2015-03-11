@@ -13,6 +13,44 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IEnumWorkspaceStatus" />
+        /// </summary>
+        /// <param name="source">An <see cref="IEnumWorkspaceStatus" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the datasets from the input source.</returns>
+        public static IEnumerable<IWorkspaceStatus> AsEnumerable(this IEnumWorkspaceStatus source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                IWorkspaceStatus status;
+
+                while ((status = source.Next()) != null)
+                {
+                    yield return status;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IEnumDatasetName" />
+        /// </summary>
+        /// <param name="source">An <see cref="IEnumDatasetName" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the datasets from the input source.</returns>
+        public static IEnumerable<IDatasetName> AsEnumerable(this IEnumDatasetName source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                IDatasetName datasetName;
+                while ((datasetName = source.Next()) != null)
+                {
+                    yield return datasetName;
+                }
+            }
+        }
+
+
+        /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="ILongArray" />
         /// </summary>
         /// <param name="source">An <see cref="IArray" /> to create an <see cref="IEnumerable{T}" /> from.</param>

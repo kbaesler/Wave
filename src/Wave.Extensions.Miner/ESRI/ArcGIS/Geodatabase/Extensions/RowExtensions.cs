@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using Miner.Interop;
 
@@ -11,7 +10,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class RowExtensions
     {
-        #region Public Methods       
+        #region Public Methods
 
         /// <summary>
         ///     Returns the domain assigned to the <see cref="IField" /> that is assigned the field model name
@@ -141,14 +140,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        private static bool Update(this IRow source, int index, object value, bool equalityCompare = true, IMMFieldAdapter fieldAdapter = null)
+        private static bool Update(this IRowBuffer source, int index, object value, bool equalityCompare = true, IMMFieldAdapter fieldAdapter = null)
         {
             if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();
 
             if (equalityCompare)
             {
-                switch (source.Table.Fields.Field[index].Type)
+                switch (source.Fields.Field[index].Type)
                 {
                     case esriFieldType.esriFieldTypeOID:
                     case esriFieldType.esriFieldTypeInteger:
@@ -192,7 +191,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
-        private static bool Update<TValue>(this IRow source, int index, TValue value, IEqualityComparer<TValue> equalityComparer, IMMFieldAdapter fieldAdapter)
+        private static bool Update<TValue>(this IRowBuffer source, int index, TValue value, IEqualityComparer<TValue> equalityComparer, IMMFieldAdapter fieldAdapter)
         {
             bool pendingChanges = true;
             if (equalityComparer != null)

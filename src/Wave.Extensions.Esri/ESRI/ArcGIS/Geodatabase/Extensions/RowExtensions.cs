@@ -163,7 +163,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns an <see cref="object" /> representing the converted value to the specified type.
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        public static TValue GetValue<TValue>(this IRow source, int index, TValue fallbackValue)
+        public static TValue GetValue<TValue>(this IRowBuffer source, int index, TValue fallbackValue)
         {
             if (source == null) return fallbackValue;
             if (index < 0 || index > source.Fields.FieldCount - 1)
@@ -291,7 +291,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="bool" /> representing <c>true</c> if the field index is valid; otherwise, false.
         /// </returns>
-        public static bool TryGetValue<TValue>(this IRow source, int index, TValue fallbackValue, out TValue value)
+        public static bool TryGetValue<TValue>(this IRowBuffer source, int index, TValue fallbackValue, out TValue value)
         {
             try
             {
@@ -339,7 +339,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        public static bool Update(this IRow source, int index, object value, bool equalityCompare = true)
+        public static bool Update(this IRowBuffer source, int index, object value, bool equalityCompare = true)
         {
             if (source == null) return false;
             if (index < 0 || index > source.Fields.FieldCount - 1)
@@ -347,7 +347,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             if (equalityCompare)
             {
-                switch (source.Table.Fields.Field[index].Type)
+                switch (source.Fields.Field[index].Type)
                 {
                     case esriFieldType.esriFieldTypeOID:
                     case esriFieldType.esriFieldTypeInteger:
@@ -434,7 +434,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        private static bool Update<TValue>(this IRow source, int index, TValue value, IEqualityComparer<TValue> equalityComparer)
+        private static bool Update<TValue>(this IRowBuffer source, int index, TValue value, IEqualityComparer<TValue> equalityComparer)
         {
             bool pendingChanges = true;
             if (equalityComparer != null)

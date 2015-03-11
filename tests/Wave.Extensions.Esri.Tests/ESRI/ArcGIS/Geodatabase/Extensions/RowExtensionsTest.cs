@@ -18,182 +18,181 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof (InvalidOperationException))]
         public void IRow_BlockReentrancy_InvalidOperationException()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            feature.BlockReentrancy();
-            feature.SaveChanges();
-        }
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void IRow_GetChanges_By_FieldName_Equals_1()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
-
-            feature.Update("DATEMODIFIED", DateTime.Now);
-            feature.Update("LASTUSER", Environment.UserName);
-
-            var list = feature.GetChanges("DATEMODIFIED", "OBJECTID");
-            Assert.IsTrue(list.Count() == 1);
+            row.BlockReentrancy();
+            row.SaveChanges();
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
         public void IRow_GetChanges_Dictionary_Contains_2()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            feature.Update("DATEMODIFIED", DateTime.Now);
-            feature.Update("LASTUSER", Environment.UserName);
+            row.Update("DATEMODIFIED", DateTime.Now);
+            row.Update("LASTUSER", Environment.UserName);
 
-            var list = feature.GetChanges();
+            var list = row.GetChanges();
             Assert.IsTrue(list.Values.Contains("DATEMODIFIED"));
             Assert.IsTrue(list.Values.Contains("LASTUSER"));
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IRow_TryGetValue_Equals_False()
+        public void IRow_GetChanges_FieldName_Equals_1()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
+
+            row.Update("DATEMODIFIED", DateTime.Now);
+            row.Update("LASTUSER", Environment.UserName);
+
+            var list = row.GetChanges("DATEMODIFIED", "OBJECTID");
+            Assert.IsTrue(list.Count() == 1);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IRow_TryGetValue_FieldName_Equals_False()
+        {
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
 
             bool value;
-            bool condition = feature.TryGetValue("FIELD_DOES_NOT_EXISTS", false, out value);
+            bool condition = row.TryGetValue("FIELD_DOES_NOT_EXISTS", false, out value);
             Assert.IsFalse(condition);
             Assert.IsFalse(value);
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IRow_TryGetValue_Equals_True()
+        public void IRow_TryGetValue_FieldName_Equals_True()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
+            var testClass = base.GetTestTable();
+            var row = testClass.Fetch(1);
 
             int value;
-            bool condition = feature.TryGetValue(testClass.OIDFieldName, -1, out value);
+            bool condition = row.TryGetValue(testClass.OIDFieldName, -1, out value);
             Assert.IsTrue(condition);
             Assert.AreNotEqual(-1, value);
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IRow_Update_DateTime()
+        [ExpectedException(typeof (IndexOutOfRangeException))]
+        public void IRow_Update_FieldIndex_IndexOutOfRangeException_False_Lower()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeDate);
-            Assert.IsNotNull(testField);
-
-            object date = feature.GetValue(testField.Name, default(DateTime?));
-            Assert.IsFalse(feature.Update(testField.Name, date));
+            row.Update(-1, null, false);
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
         [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_False_Lower()
+        public void IRow_Update_FieldIndex_IndexOutOfRangeException_False_Upper()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            feature.Update(-1, null, false);
+            row.Update(row.Fields.FieldCount, null, false);
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
-        [ExpectedException(typeof (IndexOutOfRangeException))]
-        public void IRow_Update_IndexOutOfRangeException_False_Upper()
+        public void IRow_Update_FieldIndex_IsTrue()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            feature.Update(feature.Fields.FieldCount, null, false);
+            var editable = testTable.Fields.AsEnumerable().First(field => field.Editable && field.Type == esriFieldType.esriFieldTypeString);
+            int i = testTable.FindField(editable.Name);
+
+            bool pendingUpdates = row.Update(i, "ABC");
+            Assert.IsTrue(pendingUpdates);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IRow_Update_FieldName_DateTime()
+        {
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
+
+            var testField = testTable.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeDate);
+            Assert.IsNotNull(testField);
+
+            object date = row.GetValue(testField.Name, default(DateTime?));
+            Assert.IsFalse(row.Update(testField.Name, date));
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
         [ExpectedException(typeof (InvalidCastException))]
-        public void IRow_Update_InvalidCastException_Double()
+        public void IRow_Update_FieldName_InvalidCastException()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeDouble);
-            Assert.IsNotNull(testField);
+            var field = testTable.Fields.AsEnumerable().FirstOrDefault(f => f.Editable);
+            Assert.IsNotNull(field);
 
-            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
+            row.Update(field.Name, new KeyValuePair<int, string>(1, "One"));
         }
-
+        
         [TestMethod]
         [TestCategory("ESRI")]
         [ExpectedException(typeof (InvalidCastException))]
-        public void IRow_Update_InvalidCastException_Int32()
+        public void IRow_Update_FieldName_InvalidCastException_String()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeSmallInteger);
+            var testField = testTable.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeString);
             Assert.IsNotNull(testField);
 
-            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
-        }
-
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        [ExpectedException(typeof (InvalidCastException))]
-        public void IRow_Update_InvalidCastException_String()
-        {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
-
-            var testField = testClass.Fields.AsEnumerable().FirstOrDefault(field => field.Editable && field.Type == esriFieldType.esriFieldTypeString);
-            Assert.IsNotNull(testField);
-
-            feature.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
+            row.Update(testField.Name, new KeyValuePair<int, string>(1, "One"));
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IRow_Update_IsFalse()
+        public void IRow_Update_FieldName_IsFalse()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            var editable = testClass.Fields.AsEnumerable().First(field => field.Editable);
-            object value = feature.GetValue(editable.Name, editable.DefaultValue);
+            var editable = testTable.Fields.AsEnumerable().First(field => field.Editable);
+            object value = row.GetValue(editable.Name, editable.DefaultValue);
 
-            bool pendingUpdates = feature.Update(feature.Fields.Field[1].Name, value);
+            bool pendingUpdates = row.Update(row.Fields.Field[1].Name, value);
             Assert.IsFalse(pendingUpdates);
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IRow_Update_IsTrue()
+        public void IRow_Update_FieldName_IsTrue()
         {
-            var testClass = base.GetTestClass();
-            var feature = testClass.Fetch(1);
-            Assert.IsNotNull(feature);
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
 
-            var editable = testClass.Fields.AsEnumerable().First(field => field.Editable && field.Type == esriFieldType.esriFieldTypeString);
+            var editable = testTable.Fields.AsEnumerable().First(field => field.Editable && field.Type == esriFieldType.esriFieldTypeString);
 
-            bool pendingUpdates = feature.Update(editable.Name, "ABC");
+            bool pendingUpdates = row.Update(editable.Name, "ABC");
             Assert.IsTrue(pendingUpdates);
         }
 
