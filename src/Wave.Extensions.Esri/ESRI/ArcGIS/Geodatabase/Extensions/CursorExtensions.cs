@@ -43,8 +43,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 if (bucket == null)
                     bucket = new Dictionary<TValue, IRow>();
 
-                if (!bucket.ContainsKey(value))
-                    bucket.Add(value, row);
+                bucket.Add(value, row);                    
 
                 if (bucket.Count != size)
                     continue;
