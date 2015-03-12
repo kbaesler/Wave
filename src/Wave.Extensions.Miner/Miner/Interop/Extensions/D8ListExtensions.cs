@@ -241,7 +241,7 @@ namespace Miner.Interop
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
 
-            return Where(source, selector, Recursion<ID8ListItem>.Infinite);
+            return source.Where(selector, Recursion<ID8ListItem>.Infinite);
         }
 
         /// <summary>
