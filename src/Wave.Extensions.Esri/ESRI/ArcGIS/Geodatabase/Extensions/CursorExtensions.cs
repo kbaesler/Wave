@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Linq;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -13,7 +12,46 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Batches the source sequence into sized buckets with the contents of the specified field.
+        ///     Batches the source cursor into sized buckets with the contents of the cursor.
+        /// </summary>
+        /// <param name="source">The cursor.</param>
+        /// <param name="size">The size.</param>
+        /// <returns>
+        ///     A sequence of projections on equally sized buckets containing the rows in the cursor.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">size; The size must be greater than zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">size; The size must be greater than zero.</exception>
+        /// <remarks>
+        ///     This operator uses deferred execution and streams its results (buckets and bucket content).
+        /// </remarks>
+        public static IEnumerable<IEnumerable<IRow>> Batch(this ICursor source, int size)
+        {
+            if (size < 0) throw new ArgumentOutOfRangeException("size", " The size must be greater than zero.");
+
+            List<IRow> bucket = null;
+
+            IRow row;
+            while ((row = source.NextRow()) != null)
+            {
+                if (bucket == null)
+                    bucket = new List<IRow>(size);
+
+                bucket.Add(row);
+
+                if (bucket.Count != size)
+                    continue;
+
+                yield return bucket;
+
+                bucket = null;
+            }
+
+            if (bucket != null && bucket.Count > 0)
+                yield return bucket;
+        }
+
+        /// <summary>
+        ///     Batches the source cursor into sized buckets with the contents of the specified field.
         /// </summary>
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="source">The cursor.</param>
@@ -41,9 +79,9 @@ namespace ESRI.ArcGIS.Geodatabase
                 TValue value = row.GetValue(pos, default(TValue));
 
                 if (bucket == null)
-                    bucket = new Dictionary<TValue, IRow>();
+                    bucket = new Dictionary<TValue, IRow>(size);
 
-                bucket.Add(value, row);                    
+                bucket.Add(value, row);
 
                 if (bucket.Count != size)
                     continue;

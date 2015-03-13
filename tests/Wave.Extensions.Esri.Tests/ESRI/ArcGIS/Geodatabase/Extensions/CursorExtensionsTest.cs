@@ -14,7 +14,7 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void ICursor_Batch_IsTrue()
+        public void ICursor_Batch_ToDictionary_IsTrue()
         {
             var table = base.GetTestTable();
 
@@ -30,6 +30,28 @@ namespace Wave.Extensions.Esri.Tests
                 Assert.AreEqual(batches.Count(), 5);
 
                 int count = batches.Sum(batch => batch.Count);
+                Assert.IsTrue(count < 10);
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void ICursor_Batch_ToList_IsTrue()
+        {
+            var table = base.GetTestTable();
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IQueryFilter filter = new QueryFilterClass();
+                filter.WhereClause = table.OIDFieldName + "< 10";
+
+                ICursor cursor = table.Search(filter, false);
+                cr.ManageLifetime(cursor);
+
+                var batches = cursor.Batch(2).ToList();
+                Assert.AreEqual(batches.Count(), 5);
+
+                int count = batches.Sum(batch => batch.Count());
                 Assert.IsTrue(count < 10);
             }
         }
