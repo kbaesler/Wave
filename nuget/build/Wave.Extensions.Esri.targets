@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">  
+  <Target Name="BeforeClean"> 	
+	<Message Text="Wave.Extensions.Esri.targets: Unregistered"/>    
+	<Exec WorkingDirectory="$(CommonProgramFiles)\ArcGIS\bin" Command="ESRIRegAsm.exe &quot;$(TargetPath)&quot; /p:Desktop /u /s" Condition="Exists('$(TargetPath)')" ContinueOnError="true"/>  	
+  </Target>
+  <Target Name="AfterBuild">  
+	<Message Text="Wave.Extensions.Esri: Registered"/>  
+	<Exec WorkingDirectory="$(CommonProgramFiles)\ArcGIS\bin" Command="ESRIRegAsm.exe &quot;$(TargetPath)&quot; /p:Desktop /s" ContinueOnError="true" />	
+  </Target>
+</Project>
