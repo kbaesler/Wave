@@ -67,6 +67,8 @@
         </frameworkAssemblies>
     </metadata>
     <files>
+		<file src="build\Wave.Extensions.Esri.targets" target="build\Wave.Extensions.Esri.targets" /> 
+		<file src="build\Wave.Extensions.Miner.targets" target="build\Wave.Extensions.Miner.targets" /> 
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />        
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />        
