@@ -20,13 +20,13 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     A sequence of projections on equally sized buckets containing the rows in the cursor.
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">size; The size must be greater than zero.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">size; The size must be greater than zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">size;The size must be greater than zero.</exception>
         /// <remarks>
         ///     This operator uses deferred execution and streams its results (buckets and bucket content).
         /// </remarks>
         public static IEnumerable<IEnumerable<IRow>> Batch(this ICursor source, int size)
         {
-            if (size < 0) throw new ArgumentOutOfRangeException("size", " The size must be greater than zero.");
+            if (size < 0) throw new ArgumentOutOfRangeException("size", "The size must be greater than zero.");
 
             List<IRow> bucket = null;
 
@@ -61,14 +61,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     A sequence of projections on equally sized buckets containing values of the fields for the rows in the cursor.
         /// </returns>
         /// <exception cref="ArgumentNullException">fieldName</exception>
-        /// <exception cref="ArgumentOutOfRangeException">size; The size must be greater than zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">size;The size must be greater than zero.</exception>
         /// <remarks>
         ///     This operator uses deferred execution and streams its results (buckets and bucket content).
         /// </remarks>
         public static IEnumerable<Dictionary<TValue, IRow>> Batch<TValue>(this ICursor source, string fieldName, int size)
         {
             if (fieldName == null) throw new ArgumentNullException("fieldName");
-            if (size < 0) throw new ArgumentOutOfRangeException("size", " The size must be greater than zero.");
+            if (size < 0) throw new ArgumentOutOfRangeException("size", "The size must be greater than zero.");
 
             Dictionary<TValue, IRow> bucket = null;
 
@@ -144,14 +144,14 @@ namespace ESRI.ArcGIS.Geodatabase
             if (elementName == null) throw new ArgumentNullException("elementName");
             if (predicate == null) throw new ArgumentNullException("predicate");
 
-            XElement xtable = new XElement(elementName, new XAttribute("Timestamp", DateTime.Now.ToString("f")));
-            XDocument xdoc = new XDocument(xtable);
+            XElement table = new XElement(elementName, new XAttribute("Timestamp", DateTime.Now.ToString("f")));
+            XDocument doc = new XDocument(table);
 
             // Iterate through all of the records.
             foreach (var row in source.AsEnumerable())
             {
                 // An element that represents a row.
-                XElement xrow = new XElement("Row");
+                XElement element = new XElement("Row");
 
                 // Iterate through all of the fields and output their values.
                 for (int i = 0; i < row.Fields.FieldCount; i++)
@@ -162,17 +162,17 @@ namespace ESRI.ArcGIS.Geodatabase
                         object o = row.Value[i];
                         object value = (DBNull.Value == o || o == null) ? "" : o.ToString();
 
-                        xrow.Add(new XElement("Field",
+                        element.Add(new XElement("Field",
                             new XAttribute("Name", field.Name),
                             new XAttribute("Value", value)));
                     }
                 }
 
                 // Add the rows to the table.
-                xtable.Add(xrow);
+                table.Add(element);
             }
 
-            return xdoc;
+            return doc;
         }
 
         #endregion
