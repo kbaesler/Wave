@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.OleDb;
 using System.IO;
 
 using ESRI.ArcGIS.DataSourcesGDB;
@@ -14,15 +15,37 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        /// Gets the workspace factory.
+        ///     Creates an OleDB database connection to the specified ESRI database format.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>
-        /// Returns a <see cref="IWorkspaceFactory" /> representing the supported factory for the file.
+        ///     Returns a <see cref="OleDbConnection" /> representing the database connection.
+        /// </returns>
+        public static OleDbConnection GetDbConnection(string fileName)
+        {
+            IWorkspaceFactory factory = GetFactory(fileName);
+            Type type = factory.GetType();
+            string workspaceType = string.Format("{0}.{1}.1", type.Module.ScopeName.Replace(".dll", ""), type.Name.Replace("Class", ""));
+
+            return new OleDbConnection(string.Format("Provider=ESRI.GeoDB.OleDB.1;Extended Properties=WorkspaceType={0};ConnectionFile={1}", workspaceType, fileName));
+        }
+
+        /// <summary>
+        ///     Gets the workspace factory.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspaceFactory" /> representing the supported factory for the file.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">fileName</exception>
-        /// <exception cref="System.IO.DirectoryNotFoundException">The workspace factory cannot be determined because the file was not found.</exception>
-        /// <exception cref="System.IO.FileNotFoundException">The workspace factory cannot be determined because the file was not found.</exception>
+        /// <exception cref="System.IO.DirectoryNotFoundException">
+        ///     The workspace factory cannot be determined because the file was
+        ///     not found.
+        /// </exception>
+        /// <exception cref="System.IO.FileNotFoundException">
+        ///     The workspace factory cannot be determined because the file was not
+        ///     found.
+        /// </exception>
         /// <exception cref="System.NotSupportedException">The workspace factory for the file is not supported.</exception>
         public static IWorkspaceFactory GetFactory(string fileName)
         {
@@ -55,16 +78,16 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Connects to the geodatabase given the specified parameters.
+        ///     Connects to the geodatabase given the specified parameters.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>
-        /// Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
+        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">fileName</exception>
         public static IWorkspace Open(string fileName)
         {
-            if(fileName == null) throw new ArgumentNullException("fileName");
+            if (fileName == null) throw new ArgumentNullException("fileName");
 
             IWorkspaceFactory factory = GetFactory(fileName);
             return factory.OpenFromFile(fileName, 0);
@@ -86,7 +109,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IWorkspace Open(string server, string instance, string version, string database, string password, string username,
             DateTime? timestamp = null, string authentication = "DBMS")
-        {           
+        {
             IWorkspaceFactory factory;
             DBMS type = GetDBMS(server, instance, database, version);
             switch (type)
