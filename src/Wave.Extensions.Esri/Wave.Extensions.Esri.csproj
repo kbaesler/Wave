@@ -259,12 +259,7 @@
     <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
-    <Compile Include="System\Data\BaseClasses\DatabaseConnection.cs" />
-    <Compile Include="System\Data\BaseClasses\Interfaces\IDatabaseConnection.cs" />
     <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
-    <Compile Include="System\Data\OleDb\AccessDatabaseConnection.cs" />
-    <Compile Include="System\Data\OleDb\OleDbDatabaseConnection.cs" />
-    <Compile Include="System\Data\OleDb\OracleDatabaseConnection.cs" />
     <Compile Include="System\Diagnostics\Appenders\RichTextBoxAppender.cs" />
     <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
