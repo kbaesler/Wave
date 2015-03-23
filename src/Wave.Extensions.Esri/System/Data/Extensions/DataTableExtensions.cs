@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.OleDb;
 using System.Globalization;
 using System.IO;
 
@@ -64,13 +65,23 @@ namespace System.Data
             string connectionString = string.Format(CultureInfo.InvariantCulture, @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties=""Text"";",
                 Path.GetDirectoryName(fileName));
 
-            using (OleDbDatabaseConnection cn = new OleDbDatabaseConnection(connectionString))
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
-                using (DbDataReader dr = cn.ExecuteReader(@"SELECT * FROM " + Path.GetFileName(fileName)))
+                using (var cmd = connection.CreateCommand())
                 {
-                    table.TableName = Path.GetFileNameWithoutExtension(fileName);
-                    table.Load(dr, LoadOption.PreserveChanges);
+                    cmd.CommandText = @"SELECT * FROM " + Path.GetFileName(fileName);
+                    cmd.CommandType = CommandType.Text;
+                 
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        if (dr != null)
+                        {
+                            table.TableName = Path.GetFileNameWithoutExtension(fileName);
+                            table.Load(dr, LoadOption.PreserveChanges);
+                        }
+                    }
                 }
+
             }
         }
 
