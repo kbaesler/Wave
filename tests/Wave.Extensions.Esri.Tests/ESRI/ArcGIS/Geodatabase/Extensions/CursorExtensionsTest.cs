@@ -11,6 +11,49 @@ namespace Wave.Extensions.Esri.Tests
     public class CursorExtensionsTest : EsriTests
     {
         #region Public Methods
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureCursor_Batch_ToDictionary_IsTrue()
+        {
+            var table = base.GetTestClass();
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IQueryFilter filter = new QueryFilterClass();
+                filter.WhereClause = table.OIDFieldName + "< 10";
+
+                var cursor = table.Search(filter, false);
+                cr.ManageLifetime(cursor);
+
+                var batches = cursor.Batch<int>(table.OIDFieldName, 2).ToArray();
+                Assert.AreEqual(batches.Count(), 5);
+
+                int count = batches.Sum(batch => batch.Count);
+                Assert.IsTrue(count < 10);
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureCursor_Batch_ToList_IsTrue()
+        {
+            var table = base.GetTestClass();
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IQueryFilter filter = new QueryFilterClass();
+                filter.WhereClause = table.OIDFieldName + "< 10";
+
+                var cursor = table.Search(filter, false);
+                cr.ManageLifetime(cursor);
+
+                var batches = cursor.Batch(2).ToList();
+                Assert.AreEqual(batches.Count(), 5);
+
+                int count = batches.Sum(batch => batch.Count());
+                Assert.IsTrue(count < 10);
+            }
+        }
 
         [TestMethod]
         [TestCategory("ESRI")]
