@@ -92,6 +92,19 @@ namespace ESRI.ArcGIS.Geodatabase
 
 
         /// <summary>
+        ///     Commits the changes to the row while using the specified Auto Updater mode.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="mode">The mode.</param>
+        public static void Store(this IRow source, mmAutoUpdaterMode mode)
+        {
+            using (new AutoUpdaterModeReverter(mode))
+            {
+                source.Store();
+            }
+        }
+
+        /// <summary>
         ///     Updates the field assigned the <paramref name="modelName" /> with the <paramref name="value" /> for the specified
         ///     <paramref name="source" /> when the value is different than the original value.
         /// </summary>

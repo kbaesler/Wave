@@ -4,6 +4,8 @@ using ESRI.ArcGIS.Geodatabase;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Miner.Interop;
+
 namespace Wave.Extensions.Miner.Tests
 {
     [TestClass]
@@ -59,6 +61,17 @@ namespace Wave.Extensions.Miner.Tests
 
             object value = feature.GetValue("@%4123%1", string.Empty, true);
             Assert.IsNotNull(value);
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IRow_Store_mmAutoUpdaterMode_mmAUMNoEvents()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.Fetch(1);
+            Assert.IsNotNull(feature);
+
+            feature.Store(mmAutoUpdaterMode.mmAUMNoEvents);
         }
 
         [TestMethod]

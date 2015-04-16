@@ -124,6 +124,7 @@
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\FeatureExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactoriesTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\GeometryEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RowEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparerTest.cs" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <Folder Include="ESRI\ArcGIS\Framework\Extensions\" />
     <Folder Include="ESRI\ArcGIS\System\" />
+    <Folder Include="System\Data\" />
     <Folder Include="System\Diagnostics\" />
   </ItemGroup>
   <Choose>

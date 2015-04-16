@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.Common;
 using System.IO;
 
 using ESRI.ArcGIS.Geodatabase;
@@ -13,25 +14,7 @@ namespace Wave.Extensions.Esri.Tests
     [TestClass]
     public class WorkspaceFactoriesTests : EsriTests
     {
-        #region Public Methods
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void WorkspaceFactories_GetDbConnection()
-        {
-            Assert.IsNotNull(WorkspaceFactories.GetDbConnection(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))));
-        }
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void WorkspaceFactories_GetDbConnection_Open_State()
-        {
-            using (var connection = WorkspaceFactories.GetDbConnection(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))))
-            {
-                connection.Open();
-                Assert.IsTrue(connection.State == ConnectionState.Open);
-            }
-        }
+        #region Public Methods        
 
         [TestMethod]
         [TestCategory("ESRI")]

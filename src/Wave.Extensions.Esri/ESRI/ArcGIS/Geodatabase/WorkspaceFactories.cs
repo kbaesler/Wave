@@ -13,23 +13,7 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class WorkspaceFactories
     {
         #region Public Methods
-
-        /// <summary>
-        ///     Creates an OleDB database connection to the specified ESRI database format.
-        /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns>
-        ///     Returns a <see cref="OleDbConnection" /> representing the database connection.
-        /// </returns>
-        public static OleDbConnection GetDbConnection(string fileName)
-        {
-            IWorkspaceFactory factory = GetFactory(fileName);
-            Type type = factory.GetType();
-            string workspaceType = string.Format("{0}.{1}.1", type.Module.ScopeName.Replace(".dll", ""), type.Name.Replace("Class", ""));
-
-            return new OleDbConnection(string.Format("Provider=ESRI.GeoDB.OleDB.1;Extended Properties=WorkspaceType={0};ConnectionFile={1}", workspaceType, fileName));
-        }
-
+        
         /// <summary>
         ///     Gets the workspace factory.
         /// </summary>

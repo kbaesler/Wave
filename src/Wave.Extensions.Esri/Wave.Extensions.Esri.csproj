@@ -193,6 +193,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparer.cs" />
@@ -260,6 +261,9 @@
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
     <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
+    <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="System\Diagnostics\Appenders\RichTextBoxAppender.cs" />
     <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
