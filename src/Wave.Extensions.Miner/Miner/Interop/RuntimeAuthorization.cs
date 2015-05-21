@@ -15,7 +15,7 @@ namespace Miner.Interop
         #region Fields
 
         private readonly EsriRuntimeAuthorization _EsriRuntime;
-        private readonly MinerRuntimeAuthorizatio _MinerRuntime;
+        private readonly MinerRuntimeAuthorization _MinerRuntime;
 
         #endregion
 
@@ -26,7 +26,7 @@ namespace Miner.Interop
         /// </summary>
         public RuntimeAuthorization()
         {
-            _MinerRuntime = new MinerRuntimeAuthorizatio();
+            _MinerRuntime = new MinerRuntimeAuthorization();
             _EsriRuntime = new EsriRuntimeAuthorization();
         }
 

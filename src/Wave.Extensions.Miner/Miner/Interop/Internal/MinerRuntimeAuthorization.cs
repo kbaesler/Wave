@@ -9,7 +9,7 @@ namespace Miner.Interop.Internal
     /// <summary>
     ///     A helper class used to handle initialize the ArcFM licenses.
     /// </summary>
-    internal class MinerRuntimeAuthorizatio : BaseRuntimeAuthorization<mmLicensedProductCode, mmLicensedExtensionCode, mmLicenseStatus>
+    internal class MinerRuntimeAuthorization : BaseRuntimeAuthorization<mmLicensedProductCode, mmLicensedExtensionCode, mmLicenseStatus>
     {
         #region Fields
 
@@ -20,9 +20,9 @@ namespace Miner.Interop.Internal
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="MinerRuntimeAuthorizatio" /> class.
+        ///     Initializes a new instance of the <see cref="MinerRuntimeAuthorization" /> class.
         /// </summary>
-        public MinerRuntimeAuthorizatio()
+        public MinerRuntimeAuthorization()
         {
             _AppInit = new MMAppInitializeClass();
 
