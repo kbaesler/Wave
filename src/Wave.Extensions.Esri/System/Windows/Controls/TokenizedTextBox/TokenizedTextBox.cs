@@ -5,7 +5,10 @@ using System.Windows.Input;
 namespace System.Windows.Controls
 {
     /// <summary>
-    ///     A textbox that allows for creating tokens based on the delimiters.
+    ///     A RichTextBox control that parses text on the fly. Once a delimiter (e.g., ";") is detected,
+    ///     this control converts the text preceding the delimeter into a "token", which is a distinct
+    ///     UI element.
+    ///     This code is adapted from http://blog.pixelingene.com/2010/10/tokenizing-control-convert-text-to-tokens/
     /// </summary>
     public class TokenizedTextBox : RichTextBox
     {
@@ -26,6 +29,14 @@ namespace System.Windows.Controls
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        ///     Initializes the <see cref="TokenizedTextBox" /> class.
+        /// </summary>
+        static TokenizedTextBox()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof (TokenizedTextBox), new FrameworkPropertyMetadata(typeof (TokenizedTextBox)));
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TokenizedTextBox" /> class.
@@ -63,6 +74,14 @@ namespace System.Windows.Controls
             get { return (DataTemplate) this.GetValue(TokenTemplateProperty); }
             set { this.SetValue(TokenTemplateProperty, value); }
         }
+
+        /// <summary>
+        ///     Gets or sets the tokenizer.
+        /// </summary>
+        /// <value>
+        ///     The tokenizer.
+        /// </value>
+        public Func<string, string> Tokenizer { get; set; }
 
         #endregion
 
@@ -123,7 +142,8 @@ namespace System.Windows.Controls
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             var text = this.CaretPosition.GetTextInRun(LogicalDirection.Backward);
-            var token = this.Tokenize(text);
+            string token = this.Tokenizer != null ? this.Tokenizer(text) : this.Tokenize(text);
+
             if (!string.IsNullOrEmpty(token))
             {
                 this.ReplaceTextWithToken(text, token);

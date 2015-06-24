@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0FED75AB-83C2-43B0-A540-96646CA9DF47}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ESRI.ArcGIS</RootNamespace>
@@ -32,6 +32,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ProjectGuid>{0FED75AB-83C2-43B0-A540-96646CA9DF47}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -281,83 +282,84 @@
     <Compile Include="System\Security\Cryptography\DataProtection.cs" />
     <Compile Include="System\Security\Cryptography\SymmetricKeyProtection.cs" />
     <Compile Include="System\TypeCast.cs" />
-    <Compile Include="System\UX\Forms\ApplicationMutex.cs" />
-    <Compile Include="System\UX\Forms\Collections\ListViewItemComparer.cs" />
-    <Compile Include="System\UX\Forms\Collections\TreeNodeComparer.cs" />
-    <Compile Include="System\UX\Forms\ComponentModel\WindowStateComponent.cs">
+    <Compile Include="System\Forms\ApplicationMutex.cs" />
+    <Compile Include="System\Forms\Collections\ListViewItemComparer.cs" />
+    <Compile Include="System\Forms\Collections\TreeNodeComparer.cs" />
+    <Compile Include="System\Forms\ComponentModel\WindowStateComponent.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="System\UX\Forms\ComponentModel\WindowStateComponent.Designer.cs">
+    <Compile Include="System\Forms\ComponentModel\WindowStateComponent.Designer.cs">
       <DependentUpon>WindowStateComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="System\UX\Forms\ComponentModel\XmlNodeWrapper.cs" />
-    <Compile Include="System\UX\Forms\Controls\BaseClasses\BaseDropDownControl.cs">
+    <Compile Include="System\Forms\ComponentModel\XmlNodeWrapper.cs" />
+    <Compile Include="System\Forms\Controls\BaseClasses\BaseDropDownControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="System\UX\Forms\Controls\ComboTreeBox\ComboTreeBox.cs">
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="System\UX\Forms\Controls\ComboTreeBox\ComboTreeDropDown.cs">
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeDropDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="System\UX\Forms\Controls\ComboTreeBox\ComboTreeNode.cs" />
-    <Compile Include="System\UX\Forms\Controls\ComboTreeBox\ComboTreeNodeCollection.cs" />
-    <Compile Include="System\UX\Forms\Controls\DelayedTextBox\DelayedTextBox.cs">
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNode.cs" />
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNodeCollection.cs" />
+    <Compile Include="System\Forms\Controls\DelayedTextBox\DelayedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="System\UX\Forms\Controls\DelayedTextBox\DelayedTextBox.Designer.cs">
+    <Compile Include="System\Forms\Controls\DelayedTextBox\DelayedTextBox.Designer.cs">
       <DependentUpon>DelayedTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="System\UX\Forms\Controls\Line\Line.cs">
+    <Compile Include="System\Forms\Controls\Line\Line.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="System\UX\Forms\Controls\Line\Line.designer.cs">
+    <Compile Include="System\Forms\Controls\Line\Line.designer.cs">
       <DependentUpon>Line.cs</DependentUpon>
     </Compile>
-    <Compile Include="System\UX\Forms\Extensions\ComboBoxExtensions.cs" />
-    <Compile Include="System\UX\Forms\Extensions\ListViewExtensions.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\BehaviorBinding.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\BehaviorEventHandler.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\CommandBehavior.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\CommandBehaviorBinding.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\CommandBehaviorCollection.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
-    <Compile Include="System\UX\Windows\Behaviors\Controls\Window\WindowBehavior.cs" />
-    <Compile Include="System\UX\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
-    <Compile Include="System\UX\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
-    <Compile Include="System\UX\Windows\Collections\StringListViewComparer.cs" />
-    <Compile Include="System\UX\Windows\Command.cs" />
-    <Compile Include="System\UX\Windows\Controls\AutoCompleteTextBox\AutoCompleteTextBox.cs" />
-    <Compile Include="System\UX\Windows\Controls\DelayTextBox\DelayedTextBox.cs" />
-    <Compile Include="System\UX\Windows\Controls\InteropTextBox\InteropTextBox.cs" />
-    <Compile Include="System\UX\Windows\Controls\Reveal\Reveal.cs" />
-    <Compile Include="System\UX\Windows\Controls\SortAdorner.cs" />
-    <Compile Include="System\UX\Windows\Controls\TokenizedTextBox\Token.cs" />
-    <Compile Include="System\UX\Windows\Controls\TokenizedTextBox\TokenizedTextBox.cs" />
-    <Compile Include="System\UX\Windows\Controls\TokenizedTextBox\TokenizedTextBoxCommands.cs" />
-    <Compile Include="System\UX\Windows\Controls\Watermark\Internal\WatermarkAdorner.cs" />
-    <Compile Include="System\UX\Windows\Controls\Watermark\Watermark.cs" />
-    <Compile Include="System\UX\Windows\Converters\BoolToBoolConverter.cs" />
-    <Compile Include="System\UX\Windows\Converters\BoolToParameterConverter.cs" />
-    <Compile Include="System\UX\Windows\Converters\BoolToStringConverter.cs" />
-    <Compile Include="System\UX\Windows\Converters\BoolToValueConverter.cs" />
-    <Compile Include="System\UX\Windows\Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="System\UX\Windows\Converters\ValueConverterGroup.cs" />
-    <Compile Include="System\UX\Windows\DataValidation.cs" />
-    <Compile Include="System\UX\Windows\DelegateCommand.cs" />
-    <Compile Include="System\UX\Windows\Extensions\AdornerExtensions.cs" />
-    <Compile Include="System\UX\Windows\Extensions\UIElementExtensions.cs" />
-    <Compile Include="System\UX\Windows\Extensions\WindowInteropHelperExtensions.cs" />
-    <Compile Include="System\UX\Windows\Observable.cs" />
-    <Compile Include="System\UX\Windows\ViewModel\BackgroundViewModel.cs" />
-    <Compile Include="System\UX\Windows\ViewModel\BaseClasses\BaseViewModel.cs" />
+    <Compile Include="System\Forms\Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="System\Forms\Extensions\ListViewExtensions.cs" />
+    <Compile Include="System\Windows\Behaviors\BehaviorBinding.cs" />
+    <Compile Include="System\Windows\Behaviors\BehaviorEventHandler.cs" />
+    <Compile Include="System\Windows\Behaviors\CommandBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\CommandBehaviorBinding.cs" />
+    <Compile Include="System\Windows\Behaviors\CommandBehaviorCollection.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\Window\WindowBehavior.cs" />
+    <Compile Include="System\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
+    <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
+    <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />
+    <Compile Include="System\Windows\Command.cs" />
+    <Compile Include="System\Windows\Controls\AutoCompleteTextBox\AutoCompleteTextBox.cs" />
+    <Compile Include="System\Windows\Controls\DelayTextBox\DelayedTextBox.cs" />
+    <Compile Include="System\Windows\Controls\InteropTextBox\InteropTextBox.cs" />
+    <Compile Include="System\Windows\Controls\Reveal\Reveal.cs" />
+    <Compile Include="System\Windows\Controls\SortAdorner.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\Token.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBox.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBoxCommands.cs" />
+    <Compile Include="System\Windows\Controls\Watermark\Internal\WatermarkAdorner.cs" />
+    <Compile Include="System\Windows\Controls\Watermark\Watermark.cs" />
+    <Compile Include="System\Windows\Converters\BoolToBoolConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToParameterConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToStringConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToValueConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="System\Windows\Converters\ValueConverterGroup.cs" />
+    <Compile Include="System\Windows\DataValidation.cs" />
+    <Compile Include="System\Windows\DelegateCommand.cs" />
+    <Compile Include="System\Windows\Extensions\AdornerExtensions.cs" />
+    <Compile Include="System\Windows\Extensions\UIElementExtensions.cs" />
+    <Compile Include="System\Windows\Extensions\WindowInteropHelperExtensions.cs" />
+    <Compile Include="System\Windows\Observable.cs" />
+    <Compile Include="System\Windows\ViewModel\BackgroundViewModel.cs" />
+    <Compile Include="System\Windows\ViewModel\BaseClasses\BaseViewModel.cs" />
     <Compile Include="System\Xml\Extensions\XDocumentExtensions.cs" />
     <Compile Include="System\Xml\Extensions\XmlDocumentExtensions.cs" />
     <Compile Include="System\Xml\XmlSerialization.cs" />
     <Compile Include="System\Xml\XmlTransformation.cs" />
     <Compile Include="System\Xml\XmlValidation.cs" />
+    <Compile Include="System\Windows\Themes\WaveTheme.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -382,18 +384,26 @@
     <None Include="Wave-sn.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="System\UX\Forms\Controls\Line\Line.resx">
+    <EmbeddedResource Include="System\Forms\Controls\Line\Line.resx">
       <DependentUpon>Line.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="System\UX\Windows\Controls\TokenizedTextBox\Themes\Generic.xaml">
+    <Page Include="System\Windows\Controls\TokenizedTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="System\Windows\Controls\Watermark\Themes\Watermark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="System\Windows\Themes\Wave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="System\UX\Windows\Controls\TokenizedTextBox\Images\" />
+    <Folder Include="System\Windows\Controls\TokenizedTextBox\Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\nuget\build\SE.Delivery.Desktop.targets" Condition="Exists('..\nuget\build\SE.Delivery.Desktop.targets')" />
