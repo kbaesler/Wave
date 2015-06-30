@@ -2,13 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:System.Windows.Controls;assembly=Wave.Extensions.Esri"
-        xmlns:windows="clr-namespace:System.Windows;assembly=Wave.Extensions.Esri"
+        xmlns:local="clr-namespace:Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox"
         Title="TokenizedTextBoxView" 
         SizeToContent="WidthAndHeight">
-    <Window.Resources>          
-    </Window.Resources>
+    <Window.DataContext>
+        <local:TokenizedTextBoxViewModel/>
+    </Window.DataContext>
     <Grid Margin="5" Width="250">
-        <controls:TokenizedTextBox                                
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <controls:TokenizedTextBox  Grid.Row="0" 
+                                    Text="{Binding Text}"
                                     TokenDelimiter=","/>
+        <Button Grid.Row="2" Content="Next" Command="{Binding CreateTagsCommand}"/>
     </Grid>
 </Window>

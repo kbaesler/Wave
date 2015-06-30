@@ -46,15 +46,7 @@
         /// <value>
         ///     The delimiter.
         /// </value>
-        public string Delimiter { get; private set; }
-
-        /// <summary>
-        ///     Gets or sets the item.
-        /// </summary>
-        /// <value>
-        ///     The item.
-        /// </value>
-        public object Item { get; set; }
+        public string Delimiter { get; private set; }        
 
         /// <summary>
         ///     Gets or sets the key.

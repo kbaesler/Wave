@@ -93,6 +93,7 @@
     <Compile Include="Control\TokenizedTextBox\TokenizedTextBoxView.xaml.cs">
       <DependentUpon>TokenizedTextBoxView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\TokenizedTextBox\TokenizedTextBoxViewModel.cs" />
     <Compile Include="Control\Watermark\WatermarkView.xaml.cs">
       <DependentUpon>WatermarkView.xaml</DependentUpon>
     </Compile>
