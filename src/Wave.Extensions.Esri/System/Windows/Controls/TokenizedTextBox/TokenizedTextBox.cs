@@ -29,20 +29,15 @@ namespace System.Windows.Controls
         #endregion
 
         #region Constructors
-
-        /// <summary>
-        ///     Initializes the <see cref="TokenizedTextBox" /> class.
-        /// </summary>
-        static TokenizedTextBox()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof (TokenizedTextBox), new FrameworkPropertyMetadata(typeof (TokenizedTextBox)));
-        }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TokenizedTextBox" /> class.
         /// </summary>
         public TokenizedTextBox()
         {
+            this.AcceptsReturn = false;
+            this.IsDocumentEnabled = true;
+            
             this.TextChanged += OnTextChanged;
             this.CommandBindings.Add(new CommandBinding(TokenizedTextBoxCommands.Delete, DeleteToken));
         }
@@ -97,7 +92,7 @@ namespace System.Windows.Controls
         /// </returns>
         private InlineUIContainer CreateTokenContainer(string inputText, object token)
         {
-            var presenter = new Token(this.TokenDelimiter)
+            var presenter = new Token(this.TokenDelimiter, inputText)
             {
                 Content = token,
                 ContentTemplate = TokenTemplate,
@@ -123,7 +118,7 @@ namespace System.Windows.Controls
                     if (inlineUiContainer != null)
                     {
                         var tokenContentControl = inlineUiContainer.Child as Token;
-                        return tokenContentControl != null && (tokenContentControl.Content.Equals(e.Parameter));
+                        return tokenContentControl != null && (tokenContentControl.Key.Equals(e.Parameter));
                     }
 
                     return false;

@@ -154,7 +154,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns a <see cref="IProgressBarAnimation" /> representing the object that controls the actions of the progress
         ///     bar.
         /// </returns>
-        public static IProgressBarAnimation InitializeAnimation(this IApplication source, int min, int max, int position = 0, int step = 1)
+        public static IProgressBarAnimation PlayAnimation(this IApplication source, int min, int max, int position = 0, int step = 1)
         {
             if(source == null) return null;
 

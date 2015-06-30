@@ -402,9 +402,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="System\Windows\Controls\TokenizedTextBox\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\nuget\build\SE.Delivery.Desktop.targets" Condition="Exists('..\nuget\build\SE.Delivery.Desktop.targets')" />
 </Project>
