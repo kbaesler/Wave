@@ -240,3 +240,4 @@ tests/Sample Data/Databases/WorkflowManager.ldb
 /tests/Wave.Tests.sln.GhostDoc.xml
 /docs/doxygen/Wave.Extensions.Esri/xml
 /docs/doxygen/Wave.Extensions.Miner/xml
+*.DotSettings

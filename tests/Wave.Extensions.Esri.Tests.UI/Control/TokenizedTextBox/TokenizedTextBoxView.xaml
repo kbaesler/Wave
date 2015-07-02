@@ -4,11 +4,11 @@
         xmlns:controls="clr-namespace:System.Windows.Controls;assembly=Wave.Extensions.Esri"
         xmlns:local="clr-namespace:Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox"
         Title="TokenizedTextBoxView" 
-        SizeToContent="WidthAndHeight">
+        SizeToContent="Height" Width="250">
     <Window.DataContext>
         <local:TokenizedTextBoxViewModel/>
     </Window.DataContext>
-    <Grid Margin="5" Width="250">
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="5"/>

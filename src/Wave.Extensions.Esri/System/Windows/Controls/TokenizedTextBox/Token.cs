@@ -26,14 +26,15 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Token" /> class.
+        ///     Initializes a new instance of the <see cref="Token" /> class.
         /// </summary>
         /// <param name="delimiter">The delimiter.</param>
-        /// <param name="key">The key.</param>
-        public Token(string delimiter, string key)
+        /// <param name="inputText">The input text.</param>
+        public Token(string delimiter, string inputText)
         {
+            this.Key = Guid.NewGuid().ToString();
             this.Delimiter = delimiter;
-            this.Key = key;
+            this.Text = inputText;
         }
 
         #endregion
@@ -46,7 +47,7 @@
         /// <value>
         ///     The delimiter.
         /// </value>
-        public string Delimiter { get; private set; }        
+        public string Delimiter { get; private set; }
 
         /// <summary>
         ///     Gets or sets the key.
@@ -59,6 +60,14 @@
             get { return (string) this.GetValue(KeyProperty); }
             set { this.SetValue(KeyProperty, value); }
         }
+
+        /// <summary>
+        ///     Gets or sets the text.
+        /// </summary>
+        /// <value>
+        ///     The text.
+        /// </value>
+        public string Text { get; set; }
 
         #endregion
     }

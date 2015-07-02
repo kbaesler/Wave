@@ -30,6 +30,12 @@ namespace Wave.Extensions.Esri.Tests.UI
         /// </value>
         public DelegateCommand TokenizedTextBoxCommand { get; private set; }
 
+        /// <summary>
+        /// Gets the watermarks command.
+        /// </summary>
+        /// <value>
+        /// The watermarks command.
+        /// </value>
         public DelegateCommand WatermarksCommand { get; private set; }
 
         #endregion

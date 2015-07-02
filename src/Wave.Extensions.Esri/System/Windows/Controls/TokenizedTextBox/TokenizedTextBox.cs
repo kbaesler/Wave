@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -98,6 +99,12 @@ namespace System.Windows.Controls
         #region Private Methods
 
         /// <summary>
+        /// Gets or sets the tokens.
+        /// </summary>
+        /// <value>
+        /// The tokens.
+        /// </value>
+        /// <summary>
         ///     Clears this instance.
         /// </summary>
         private void Clear()
@@ -173,42 +180,15 @@ namespace System.Windows.Controls
             if (_SuppressTextChanged)
                 return;
 
-            var text = this.CaretPosition.GetTextInRun(LogicalDirection.Backward);
-            var tokens = text.Split(new[] {this.TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
+            var text = this.CaretPosition.GetTextInRun(LogicalDirection.Backward);       
             var token = this.Tokenize(text);
-
+            
             if (!string.IsNullOrEmpty(token))
             {
                 this.ReplaceTextWithToken(text, token);
             }
-            else if (tokens.Length > 1)
-            {
-                // When copy-paste is used the caret position will be the end of the pasted text.
-                // and when multiple "tokens" have been pasted, they need to be broken into individual tokens
-                // thus the existing run needs to be deleted and each token needs to be created as a "Run".               
-                var para = this.CaretPosition.Paragraph;
-                if (para != null)
-                {
-                    var matchedRun = para.Inlines.FirstOrDefault(inline =>
-                    {
-                        var run = inline as Run;
-                        return (run != null && run.Text.Equals(text));
-                    }) as Run;
 
-                    if (matchedRun != null)
-                    {
-                        para.Inlines.Remove(matchedRun);
-
-                        foreach (var t in tokens)
-                        {
-                            var textData = t + this.TokenDelimiter;
-                            para.Inlines.Add(new Run(textData));
-
-                            this.ReplaceTextWithToken(textData, t);
-                        }
-                    }
-                }
-            }
+            this.SetText(text);
         }
 
         /// <summary>
@@ -218,6 +198,9 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
         private static void OnTextPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
+            if (_SuppressTextChanged)
+                return;
+
             TokenizedTextBox tokenizedTextBox = (TokenizedTextBox) dependencyObject;
 
             // To help with performance this is placed on the dispatcher for processing. For some reason when this is done the TextChanged event is fired multiple times
@@ -233,13 +216,12 @@ namespace System.Windows.Controls
                 {
                     tokenizedTextBox.Clear();
                 }
+                else
+                {
+                    tokenizedTextBox.ReplaceTextWithTokens();
+                }
             }), DispatcherPriority.Background);
-            dop.Completed += (sender, ea) =>
-            {
-                tokenizedTextBox.ReplaceTextWithTokens();
-
-                _SuppressTextChanged = false;
-            };
+            dop.Completed += (sender, ea) => { _SuppressTextChanged = false; };
         }
 
 
@@ -296,26 +278,37 @@ namespace System.Windows.Controls
         private void ReplaceTextWithTokens()
         {
             // The "Text" property is not linked to the RichTextBox contents, thus we need to clear the RichTextBox
-            // and add each token individually to the contents.
+            // and add each token individually to the contents.           
             this.Clear();
 
             if (!string.IsNullOrEmpty(this.Text))
             {
-                var tokens = this.Text.Split(new[] {this.TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var t in tokens)
+                var para = this.CaretPosition.Paragraph ?? new Paragraph();
+                if (para != null)
                 {
-                    string textData = t + this.TokenDelimiter;
-                    this.AppendText(textData);
-
-                    var text = this.CaretPosition.GetTextInRun(LogicalDirection.Forward);
-                    var token = this.Tokenize(textData);
-
-                    if (!string.IsNullOrEmpty(token))
+                    var tokens = this.Text.Split(new[] {this.TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var t in tokens)
                     {
-                        this.ReplaceTextWithToken(text, token);
+                        string textData = t + this.TokenDelimiter;
+                        var tokenContainer = this.CreateTokenContainer(textData, t);
+                        para.Inlines.Add(tokenContainer);
                     }
                 }
+
+                if (!this.Document.Blocks.Contains(para))
+                    this.Document.Blocks.Add(para);
             }
+        }
+
+        /// <summary>
+        ///     Sets the text.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        private void SetText(string data)
+        {
+            _SuppressTextChanged = true;
+            this.Text = data;
+            _SuppressTextChanged = false;
         }
 
         /// <summary>
@@ -327,7 +320,7 @@ namespace System.Windows.Controls
         {
             if (string.IsNullOrEmpty(text))
                 return null;
-
+            
             if (text.EndsWith(this.TokenDelimiter))
                 return text.Substring(0, text.Length - 1).Trim();
 
