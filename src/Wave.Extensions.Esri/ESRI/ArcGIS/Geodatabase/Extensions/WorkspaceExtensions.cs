@@ -156,7 +156,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source workspace.</param>
         /// <param name="editDataChangesType">Type of the edit data changes.</param>
-        /// <param name="predicate">The predicate used to determine if the differences are added to the returned dictionary.</param>
+        /// <param name="func">The function used to determine if the differences should be determined for the specified table.</param>
+        /// <param name="predicate">The predicate used to determine if the differences are returned.</param>
         /// <param name="differenceTypes">The type of differences.</param>
         /// <returns>
         ///     Returns a <see cref="Dictionary{TKey,TValue}" /> representing the differences for the table
@@ -167,10 +168,12 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace must be within an edit session in order to determine the
         ///     edit changes.
         /// </exception>
-        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
+        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func<string, bool> func, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
         {
             if (source == null) return null;
             if (differenceTypes == null) throw new ArgumentNullException("differenceTypes");
+            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (func == null) throw new ArgumentNullException("func");
 
             var list = new Dictionary<string, List<DifferenceRow>>();
 
@@ -184,37 +187,82 @@ namespace ESRI.ArcGIS.Geodatabase
             string tableName;
             while ((tableName = enumMci.Next()) != null)
             {
-                var rows = new List<DifferenceRow>();
-
-                foreach (var differenceType in differenceTypes)
+                if (func(tableName))
                 {
-                    using (ComReleaser cr = new ComReleaser())
+                    var rows = new List<DifferenceRow>();
+
+                    foreach (var differenceType in differenceTypes)
                     {
-                        IDifferenceCursorEx cursor = dataChanges.ExtractEx(tableName, differenceType);
-                        cr.ManageLifetime(cursor);
-
-                        IRow sourceRow;
-                        IRow differenceRow;
-                        int oid;
-                        ILongArray fieldIndices;
-
-                        cursor.Next(out oid, out sourceRow, out differenceRow, out fieldIndices);
-                        while (oid != -1)
+                        using (ComReleaser cr = new ComReleaser())
                         {
-                            var row = new DifferenceRow(differenceType, oid, differenceRow, sourceRow, fieldIndices);
+                            IDifferenceCursorEx cursor = dataChanges.ExtractEx(tableName, differenceType);
+                            cr.ManageLifetime(cursor);
 
-                            if (predicate(row))
-                                rows.Add(row);
+                            IRow sourceRow;
+                            IRow differenceRow;
+                            int oid;
+                            ILongArray fieldIndices;
 
                             cursor.Next(out oid, out sourceRow, out differenceRow, out fieldIndices);
+                            while (oid != -1)
+                            {
+                                var row = new DifferenceRow(differenceType, oid, differenceRow, sourceRow, fieldIndices);
+
+                                if (predicate(row))
+                                    rows.Add(row);
+
+                                cursor.Next(out oid, out sourceRow, out differenceRow, out fieldIndices);
+                            }
                         }
                     }
-                }
 
-                list.Add(tableName, rows);
+                    list.Add(tableName, rows);
+                }
             }
 
             return list;
+        }
+
+        /// <summary>
+        ///     Gets the changes (or edits) that have been made in the current edit session.
+        /// </summary>
+        /// <param name="source">The source workspace.</param>
+        /// <param name="editDataChangesType">Type of the edit data changes.</param>
+        /// <param name="predicate">The predicate used to determine if the differences are returned.</param>
+        /// <param name="differenceTypes">The type of differences.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{TKey,TValue}" /> representing the differences for the table
+        ///     (or key).
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">differenceTypes</exception>
+        /// <exception cref="System.InvalidOperationException">
+        ///     The workspace must be within an edit session in order to determine the
+        ///     edit changes.
+        /// </exception>
+        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
+        {
+            return source.GetEditChanges(editDataChangesType, func => true, predicate, differenceTypes);
+        }
+
+        /// <summary>
+        ///     Gets the changes (or edits) that have been made in the current edit session.
+        /// </summary>
+        /// <param name="source">The source workspace.</param>
+        /// <param name="editDataChangesType">Type of the edit data changes.</param>
+        /// <param name="func">The function used to determine if the differences should be determined for the specified table.</param>
+        /// <param name="differenceTypes">The type of differences.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{TKey,TValue}" /> representing the differences for the table
+        ///     (or key).
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">differenceTypes</exception>
+        /// <exception cref="System.InvalidOperationException">
+        ///     The workspace must be within an edit session in order to determine the
+        ///     edit changes.
+        /// </exception>
+        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func<string, bool> func, params esriDifferenceType[] differenceTypes)
+        {
+            return source.GetEditChanges(editDataChangesType, func, predicate => true, differenceTypes);
         }
 
         /// <summary>
@@ -234,7 +282,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </exception>
         public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, params esriDifferenceType[] differenceTypes)
         {
-            return source.GetEditChanges(editDataChangesType, row => true, differenceTypes);
+            return source.GetEditChanges(editDataChangesType, func => true, predicate => true, differenceTypes);
         }
 
 
