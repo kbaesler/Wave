@@ -156,6 +156,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source workspace.</param>
         /// <param name="editDataChangesType">Type of the edit data changes.</param>
+        /// <param name="predicate">The predicate used to determine if the differences are added to the returned dictionary.</param>
         /// <param name="differenceTypes">The type of differences.</param>
         /// <returns>
         ///     Returns a <see cref="Dictionary{TKey,TValue}" /> representing the differences for the table
@@ -166,7 +167,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace must be within an edit session in order to determine the
         ///     edit changes.
         /// </exception>
-        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, params esriDifferenceType[] differenceTypes)
+        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
         {
             if (source == null) return null;
             if (differenceTypes == null) throw new ArgumentNullException("differenceTypes");
@@ -201,7 +202,9 @@ namespace ESRI.ArcGIS.Geodatabase
                         while (oid != -1)
                         {
                             var row = new DifferenceRow(differenceType, oid, differenceRow, sourceRow, fieldIndices);
-                            rows.Add(row);
+
+                            if (predicate(row))
+                                rows.Add(row);
 
                             cursor.Next(out oid, out sourceRow, out differenceRow, out fieldIndices);
                         }
@@ -212,6 +215,26 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return list;
+        }
+
+        /// <summary>
+        ///     Gets the changes (or edits) that have been made in the current edit session.
+        /// </summary>
+        /// <param name="source">The source workspace.</param>
+        /// <param name="editDataChangesType">Type of the edit data changes.</param>
+        /// <param name="differenceTypes">The type of differences.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{TKey,TValue}" /> representing the differences for the table
+        ///     (or key).
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">differenceTypes</exception>
+        /// <exception cref="System.InvalidOperationException">
+        ///     The workspace must be within an edit session in order to determine the
+        ///     edit changes.
+        /// </exception>
+        public static Dictionary<string, List<DifferenceRow>> GetEditChanges(this IWorkspace source, esriEditDataChangesType editDataChangesType, params esriDifferenceType[] differenceTypes)
+        {
+            return source.GetEditChanges(editDataChangesType, row => true, differenceTypes);
         }
 
 
