@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
@@ -271,6 +270,114 @@ namespace ESRI.ArcGIS.Geodatabase
             return list;
         }
 
+        /// <summary>
+        ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> in the
+        ///     <paramref name="schemaName" /> that resides within the
+        ///     specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="schemaName">Name of the schema (optional).</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static IFeatureClass GetFeatureClass(this IVersion source, string schemaName, string tableName)
+        {
+            return ((IWorkspace) source).GetFeatureClass(schemaName, tableName);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="relationshipName" /> in the
+        ///     <paramref name="schemaName" /> that resides within the
+        ///     specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="schemaName">Name of the schema (optional).</param>
+        /// <param name="relationshipName">Name of the relationship table.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRelationshipClass" /> representing the relationship that has the name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static IRelationshipClass GetRelationshipClass(this IVersion source, string schemaName, string relationshipName)
+        {
+            return ((IWorkspace) source).GetRelationshipClass(schemaName, relationshipName);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
+        ///     <paramref name="schemaName" /> that resides within the
+        ///     specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="schemaName">Name of the schema (optional).</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the table that has the name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static ITable GetTable(this IVersion source, string schemaName, string tableName)
+        {
+            return ((IWorkspace) source).GetTable(schemaName, tableName);
+        }
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
+        ///     <paramref name="withUndoRedo" /> and
+        ///     <paramref name="multiuserEditSessionMode" /> parameters.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
+        /// </param>
+        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
+        /// <param name="multiuserEditSessionMode">
+        ///     The edit session mode that can be used to indicate non-versioned or versioned
+        ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing the state of the operation.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="System.ArgumentException">
+        ///     The workspace does not support the edit session
+        ///     mode.;multiuserEditSessionMode
+        /// </exception>
+        public static bool PerformOperation(this IVersion source, Func<bool> operation, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        {
+            return ((IWorkspace) source).PerformOperation(operation, withUndoRedo, multiuserEditSessionMode);
+        }
+
+        /// <summary>
+        ///     Starts editing the workspace using the specified <paramref name="withUndoRedo" /> and
+        ///     <paramref name="multiuserEditSessionMode" /> parameters.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
+        /// <param name="multiuserEditSessionMode">
+        ///     The edit session mode that can be used to indicate non-versioned or versioned
+        ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="IEditableWorkspace" /> respresenting an editable workspace (that is disposable).
+        /// </returns>
+        /// <exception cref="System.ArgumentException">
+        ///     The workspace does not support the edit session
+        ///     mode.;multiuserEditSessionMode
+        /// </exception>
+        /// <remarks>
+        ///     The <see cref="IEditableWorkspace" /> implements the <see cref="IDisposable" /> interface, meaning it should be
+        ///     used within a using statement.
+        /// </remarks>
+        public static IEditableWorkspace StartEditing(this IVersion source, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        {
+            return ((IWorkspace) source).StartEditing(withUndoRedo, multiuserEditSessionMode);
+        }
+
         #endregion
     }
 
@@ -402,7 +509,7 @@ namespace ESRI.ArcGIS.Geodatabase
                     throw new NotSupportedException("The row state is not supported.");
             }
 
-            IFeatureWorkspace fws = (IFeatureWorkspace)workspace;
+            IFeatureWorkspace fws = (IFeatureWorkspace) workspace;
             ITable table = fws.OpenTable(this.TableName);
             return table.Fetch(this.OID);
         }

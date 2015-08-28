@@ -71,6 +71,7 @@ namespace Wave.Extensions.Miner.Tests
             var feature = testClass.Fetch(1);
             Assert.IsNotNull(feature);
 
+
             feature.Store(mmAutoUpdaterMode.mmAUMNoEvents);
         }
 

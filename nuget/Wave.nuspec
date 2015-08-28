@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>9.3.1.Wave</id>
-        <version>1.0.0</version>
-        <title>Extensions Methods for ArcGIS and ArcFM [9.3.1]</title>
+        <version>0.0.2</version>
+        <title>Wave[9.3.1]</title>
         <authors>Kyle Baesler</authors>
         <owners>https://github.com/Jumpercables/Wave</owners>
         <projectUrl>https://github.com/Jumpercables/Wave</projectUrl>
@@ -66,9 +66,7 @@
             <frameworkAssembly assemblyName="WindowsFormsIntegration" targetFramework=".NETFramework3.5" />
         </frameworkAssemblies>
     </metadata>
-    <files>
-		<file src="build\Wave.Extensions.Esri.targets" target="build\Wave.Extensions.Esri.targets" /> 
-		<file src="build\Wave.Extensions.Miner.targets" target="build\Wave.Extensions.Miner.targets" /> 
+    <files>		
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />        
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />        

@@ -25,6 +25,14 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void IWorkspace_GetFeatureClass_IsNotNull()
+        {
+            var table = base.Workspace.GetFeatureClass("", "TRANSFORMER");
+            Assert.IsNotNull(table);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IWorkspace_GetFormattedDate_IsNotNull()
         {
             DateTime dateTime = new DateTime(2015, 03, 04);
@@ -61,6 +69,22 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void IWorkspace_GetRelationship_IsNotNull()
+        {
+            var table = base.Workspace.GetRelationshipClass("", "DynamicProtDev_RecloserUnit");
+            Assert.IsNotNull(table);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IWorkspace_GetTable_IsNotNull()
+        {
+            var table = base.Workspace.GetTable("", "ASSEMBLY");
+            Assert.IsNotNull(table);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IWorkspace_IsDBMS_IsTrue()
         {
             var dbms = base.Workspace.GetDBMS();
@@ -79,9 +103,9 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IWorkspace_StartEditing_Action_NotNull()
+        public void IWorkspace_PerformOperation_Action_NotNull()
         {
-            base.Workspace.StartEditing(() => true, true, esriMultiuserEditSessionMode.esriMESMNonVersioned);
+            base.Workspace.PerformOperation(() => true, true, esriMultiuserEditSessionMode.esriMESMNonVersioned);
         }
 
         [TestMethod]

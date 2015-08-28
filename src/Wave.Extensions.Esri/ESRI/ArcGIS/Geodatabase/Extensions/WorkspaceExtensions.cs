@@ -285,6 +285,28 @@ namespace ESRI.ArcGIS.Geodatabase
             return source.GetEditChanges(editDataChangesType, func => true, predicate => true, differenceTypes);
         }
 
+        /// <summary>
+        ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> in the
+        ///     <paramref name="schemaName" /> that resides within the
+        ///     specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="schemaName">Name of the schema (optional).</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static IFeatureClass GetFeatureClass(this IWorkspace source, string schemaName, string tableName)
+        {
+            if (source == null) return null;
+            if (tableName == null) throw new ArgumentNullException("tableName");
+
+            string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
+            return ((IFeatureWorkspace) source).OpenFeatureClass(name);
+        }
+
 
         /// <summary>
         ///     Gets the formatted date time for the workspace.
@@ -347,6 +369,49 @@ namespace ESRI.ArcGIS.Geodatabase
             throw new NotSupportedException("The function is not supported.");
         }
 
+        /// <summary>
+        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="relationshipName" /> in the
+        ///     <paramref name="schemaName" /> that resides within the
+        ///     specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="schemaName">Name of the schema (optional).</param>
+        /// <param name="relationshipName">Name of the relationship table.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRelationshipClass" /> representing the relationship that has the name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static IRelationshipClass GetRelationshipClass(this IWorkspace source, string schemaName, string relationshipName)
+        {
+            if (source == null) return null;
+            if (relationshipName == null) throw new ArgumentNullException("relationshipName");
+
+            string name = (string.IsNullOrEmpty(schemaName)) ? relationshipName : schemaName + "." + relationshipName;
+            return ((IFeatureWorkspace) source).OpenRelationshipClass(name);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
+        ///     <paramref name="schemaName" /> that resides within the
+        ///     specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="schemaName">Name of the schema (optional).</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the table that has the name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static ITable GetTable(this IWorkspace source, string schemaName, string tableName)
+        {
+            if (source == null) return null;
+            if (tableName == null) throw new ArgumentNullException("tableName");
+
+            string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
+            return ((IFeatureWorkspace) source).OpenTable(name);
+        }
 
         /// <summary>
         ///     Determines whether the specified workspace is the  <paramref name="database" /> system.
@@ -389,6 +454,72 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
+        ///     <paramref name="withUndoRedo" /> and
+        ///     <paramref name="multiuserEditSessionMode" /> parameters.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
+        /// </param>
+        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
+        /// <param name="multiuserEditSessionMode">
+        ///     The edit session mode that can be used to indicate non-versioned or versioned
+        ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing the state of the operation.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="System.ArgumentException">
+        ///     The workspace does not support the edit session
+        ///     mode.;multiuserEditSessionMode
+        /// </exception>
+        public static bool PerformOperation(this IWorkspace source, Func<bool> operation, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        {
+            if (source == null) return false;
+            if (operation == null) throw new ArgumentNullException("operation");
+
+            bool result;
+
+            using (var editableWorkspace = source.StartEditing(withUndoRedo, multiuserEditSessionMode))
+            {
+                result = operation();
+                editableWorkspace.StopEditing(result);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Updates the Multiversioned views to point to the current version.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <remarks>
+        ///     Before issuing any queries against the view, you must ensure that they will take place against the correct version.
+        /// </remarks>
+        public static void SetCurrentVersion(this IWorkspace source)
+        {
+            IVersion version = source as IVersion;
+            if (version != null)
+            {
+                string versionName = version.VersionName;
+
+                if (source.IsDBMS(DBMS.Oracle))
+                {
+                    string commandText = string.Format("begin sde.version_util.set_current_version('{0}'); end;", versionName);
+                    source.ExecuteSQL(commandText);
+                }
+                else if (source.IsDBMS(DBMS.SqlServer))
+                {
+                    string commandText = string.Format("begin sde.set_current_version '{0}'; end;", versionName);
+                    source.ExecuteSQL(commandText);
+                }
+            }
+        }
+
+        /// <summary>
         ///     Starts editing the workspace using the specified <paramref name="withUndoRedo" /> and
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
@@ -417,64 +548,6 @@ namespace ESRI.ArcGIS.Geodatabase
             editableWorkspace.StartEditing(withUndoRedo, multiuserEditSessionMode);
 
             return editableWorkspace;
-        }
-
-        /// <summary>
-        ///     Encapsulates the <paramref name="action" /> by the necessary start and stop edit constructs using the specified
-        ///     <paramref name="withUndoRedo" /> and
-        ///     <paramref name="multiuserEditSessionMode" /> parameters.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="action">
-        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
-        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
-        /// </param>
-        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
-        /// <param name="multiuserEditSessionMode">
-        ///     The edit session mode that can be used to indicate non-versioned or versioned
-        ///     editing for workspaces that support multiuser editing.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">action</exception>
-        /// <exception cref="System.ArgumentException">
-        ///     The workspace does not support the edit session
-        ///     mode.;multiuserEditSessionMode
-        /// </exception>
-        public static void StartEditing(this IWorkspace source, Func<bool> action, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
-        {
-            if (source == null) return;
-            if (action == null) throw new ArgumentNullException("action");
-
-            using (var editableWorkspace = source.StartEditing(withUndoRedo, multiuserEditSessionMode))
-            {
-                editableWorkspace.StopEditing(action());
-            }
-        }
-
-        /// <summary>
-        ///     Updates the Multiversioned views to point to the current version.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <remarks>
-        ///     Before issuing any queries against the view, you must ensure that they will take place against the correct version.
-        /// </remarks>
-        public static void UpdateMultiVersionViews(this IWorkspace source)
-        {
-            IVersion version = source as IVersion;
-            if (version != null)
-            {
-                string versionName = version.VersionName;
-
-                if (source.IsDBMS(DBMS.Oracle))
-                {
-                    string commandText = string.Format("begin sde.version_util.set_current_version('{0}'); end;", versionName);
-                    source.ExecuteSQL(commandText);
-                }
-                else if (source.IsDBMS(DBMS.SqlServer))
-                {
-                    string commandText = string.Format("begin sde.set_current_version '{0}'; end;", versionName);
-                    source.ExecuteSQL(commandText);
-                }
-            }
         }
 
         #endregion

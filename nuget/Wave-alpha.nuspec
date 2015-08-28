@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>9.3.1.Wave</id>
-        <version>1.0.0-alpha</version>
-        <title>Extensions Methods for ArcGIS and ArcFM [9.3.1]</title>
+        <version>0.0.2-alpha</version>
+        <title>Wave [9.3.1]</title>
         <authors>Kyle Baesler</authors>
         <owners>https://github.com/Jumpercables/Wave</owners>
         <projectUrl>https://github.com/Jumpercables/Wave</projectUrl>

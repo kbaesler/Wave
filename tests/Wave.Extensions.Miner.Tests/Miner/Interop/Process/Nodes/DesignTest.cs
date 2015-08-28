@@ -102,9 +102,9 @@ namespace SE.Tests.Process
         public void IPxDesign_GetDesignXml_IsNotNull()
         {
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));
-            if (table.Rows.Count > 0)
+            if (table.Rows.Count > 1)
             {
-                int nodeID = table.Rows[0].Field<int>(0);
+                int nodeID = table.Rows[1].Field<int>(0);
                 using (Design design = new Design(base.PxApplication))
                 {
                     Assert.IsTrue(design.Initialize(nodeID));
