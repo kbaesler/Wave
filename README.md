@@ -7,9 +7,15 @@ Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric Arc
 ## Documentation ##
 The documentation has been moved to [wave.readthedocs.org](http://wave.readthedocs.org).
 
-## Installation ##
+## NuGet ##
 
-In the future, installation will be provided by a a nuget package, however, until that time comes you'll need to compile the code.
+You can now download a pre-release of the library using the Microsoft Nuget Package Manager within Visual Studio IDE.
+
+To install Wave [9.3.1], run the following command in the Package Manager Console.
+
+```
+	PM> Install-Package Wave.9.3.1 -Pre
+```
 
 ### Requirements ###
 - ArcGIS 9.3.1 SP2
