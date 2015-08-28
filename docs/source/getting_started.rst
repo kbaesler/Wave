@@ -17,13 +17,14 @@ You can visit `GitHub <https://github.com/Jumpercables/Wave>`_ to download and c
 
 Microsoft Package Manager
 --------------------------------------
-In the future, Wave will be publicly distributed using the `Nuget <http://www.nuget.org>`_ service that is available to the .NET community within Visual Studios.
+Wave is publicly distributed using the `Nuget <http://www.nuget.org>`_ service that is available to the .NET community within Visual Studios.
 
-- This will allow users the option to simply install the assemblies without having to compile the source code.
+- To install Wave [9.3.1], run the following command in the Package Manager Console.
 
-.. warning::
+.. code-block::
 
-    This is on the roadmap but not implemented yet.
+	PM> Install-Package Wave.9.3.1 -Pre
+
 
 Requirements
 --------------------
