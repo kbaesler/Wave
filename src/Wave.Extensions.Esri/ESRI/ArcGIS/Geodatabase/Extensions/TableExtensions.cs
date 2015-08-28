@@ -123,15 +123,16 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="filter">The attribute and/or spatial requirement that the rows must satisify.</param>
         /// <param name="action">The action to take for each row in the cursor.</param>
+        /// <param name="recycling">
+        ///     if set to <c>true</c> when the cursor rehydrates a single row object on each fetch and can be
+        ///     used to optimize read-only access.
+        /// </param>
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        /// <remarks>
-        ///     Uses a recycling cursors rehydrate a single row object on each fetch and can be used to optimize read-only
-        ///     access
-        /// </remarks>
-        public static int Fetch(this ITable source, IQueryFilter filter, Func<IRow, bool> action)
+        public static int Fetch(this ITable source, IQueryFilter filter, Func<IRow, bool> action, bool recycling = true)
         {
             if (source == null) return 0;
             if (action == null) throw new ArgumentNullException("action");
@@ -140,7 +141,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             using (ComReleaser cr = new ComReleaser())
             {
-                ICursor cursor = source.Search(filter, true);
+                ICursor cursor = source.Search(filter, recycling);
                 cr.ManageLifetime(cursor);
 
                 foreach (var row in cursor.AsEnumerable())
@@ -162,6 +163,10 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="filter">The attribute requirement that features must satisify.</param>
         /// <param name="action">The action to take for each feature in the cursor.</param>
+        /// <param name="recycling">
+        ///     if set to <c>true</c> when the cursor rehydrates a single row object on each fetch and can be
+        ///     used to optimize read-only access.
+        /// </param>
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of rows affected by the action.
         /// </returns>
@@ -171,7 +176,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
         ///     access
         /// </remarks>
-        public static int Fetch(this ITable source, IQueryFilter filter, Action<IRow> action)
+        public static int Fetch(this ITable source, IQueryFilter filter, Action<IRow> action, bool recycling = true)
         {
             if (source == null) return 0;
             if (action == null) throw new ArgumentNullException("action");
@@ -180,7 +185,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             using (ComReleaser cr = new ComReleaser())
             {
-                ICursor cursor = source.Search(filter, true);
+                ICursor cursor = source.Search(filter, recycling);
                 cr.ManageLifetime(cursor);
 
                 foreach (var row in cursor.AsEnumerable())
