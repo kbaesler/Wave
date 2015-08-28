@@ -1,6 +1,6 @@
 
 # Wave #
-[![Documentation Status](https://readthedocs.org/projects/wave/badge/?version=latest)](http://wave.readthedocs.org/en/latest/) [![Stories in Ready](https://badge.waffle.io/Jumpercables/Wave.png?label=ready&title=Ready)](https://waffle.io/Jumpercables/Wave)
+[![Documentation Status](https://readthedocs.org/projects/wave/badge/?version=latest)](http://wave.readthedocs.org/en/latest/) [![Stories in Ready](https://badge.waffle.io/Jumpercables/Wave.png?label=ready&title=Ready)](https://waffle.io/Jumpercables/Wave)[![9.3.1](https://img.shields.io/nuget/dt/Wave.9.3.1.svg)]
 
 Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric ArcFM APIs that are used for developing Geographical Information System (GIS) extensions to the ArcMap and ArcFM software or stand-alone applications. The library uses extension methods to extend the functionality of existing objects and provide workable wrappers around commonly used COM objects.
 
