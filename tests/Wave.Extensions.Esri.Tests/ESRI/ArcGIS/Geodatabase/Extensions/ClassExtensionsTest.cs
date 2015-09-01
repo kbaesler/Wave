@@ -51,7 +51,7 @@ namespace Wave.Extensions.Esri.Tests
                 testCount++;
 
                 return true;
-            });
+            }, true);
 
             Assert.AreEqual(rowsAffected, testCount);
         }

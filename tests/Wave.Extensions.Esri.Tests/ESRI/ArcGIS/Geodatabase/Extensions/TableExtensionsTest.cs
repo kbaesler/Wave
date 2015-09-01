@@ -33,7 +33,7 @@ namespace Wave.Extensions.Esri.Tests
             IQueryFilter filter = new QueryFilterClass();
             filter.WhereClause = testClass.OIDFieldName + " IN (1,2,3,4,5,6)";
 
-            int rowsAffected = testClass.Fetch(filter, row => true);
+            int rowsAffected = testClass.Fetch(filter, row => true, true);
             Assert.AreEqual(6, rowsAffected);
         }
 
