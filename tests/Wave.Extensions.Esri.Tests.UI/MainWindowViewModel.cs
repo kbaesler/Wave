@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 
+using Wave.Extensions.Esri.Tests.UI.Control.AutoCompleteTextBox;
 using Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox;
 using Wave.Extensions.Esri.Tests.UI.Control.Watermark;
 
@@ -16,6 +17,7 @@ namespace Wave.Extensions.Esri.Tests.UI
         {
             this.TokenizedTextBoxCommand = new DelegateCommand((o) => this.ShowWindow(new TokenizedTextBoxView()));
             this.WatermarksCommand = new DelegateCommand((o) => this.ShowWindow(new WatermarkView()));
+            this.AutoCompleteCommand = new DelegateCommand(o=> this.ShowWindow(new AutoCompleteTextBoxView()));
         }
 
         #endregion
@@ -38,6 +40,13 @@ namespace Wave.Extensions.Esri.Tests.UI
         /// </value>
         public DelegateCommand WatermarksCommand { get; private set; }
 
+        /// <summary>
+        /// Gets the automatic complete command.
+        /// </summary>
+        /// <value>
+        /// The automatic complete command.
+        /// </value>
+        public DelegateCommand AutoCompleteCommand { get; private set; }
         #endregion
 
         #region Private Methods
