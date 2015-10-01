@@ -16,6 +16,24 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Creates a row in the table with the default values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRow" /> representing the new row.
+        /// </returns>
+        public static IRow CreateNew(this ITable source)
+        {
+            if (source == null) return null;
+
+            var row = source.CreateRow();
+            IRowSubtypes rowSubtypes = row as IRowSubtypes;
+            if (rowSubtypes != null) rowSubtypes.InitDefaultValues();
+
+            return row;
+        }
+
+        /// <summary>
         ///     Queries for the rows that have the specified object ids.
         /// </summary>
         /// <param name="source">The source.</param>

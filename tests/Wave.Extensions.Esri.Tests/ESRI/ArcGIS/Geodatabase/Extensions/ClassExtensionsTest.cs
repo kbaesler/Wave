@@ -13,6 +13,15 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void IFeatureClass_CreateNew_IsNotNull()
+        {
+            var testClass = base.GetTestClass();
+            var feature = testClass.CreateNew();
+            Assert.IsNotNull(feature);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureClass_Fetch_Equals_1()
         {
             var testClass = base.GetTestClass();

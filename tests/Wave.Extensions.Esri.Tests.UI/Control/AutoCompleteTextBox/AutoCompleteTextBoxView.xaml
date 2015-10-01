@@ -17,6 +17,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="State:"/>
         <controls:AutoCompleteTextBox  Grid.Row="2"
+                                       MaxDropDownHeight="50"
                                     AutoCompleteSource="{Binding AutoCompleteSource}" />
     </Grid>
 </Window>

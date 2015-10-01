@@ -10,6 +10,7 @@ namespace Wave.Extensions.Miner.Tests
     public class ClassExtensionsTest : MinerTests
     {
         #region Public Methods
+        
 
         [TestMethod]
         [TestCategory("Miner")]

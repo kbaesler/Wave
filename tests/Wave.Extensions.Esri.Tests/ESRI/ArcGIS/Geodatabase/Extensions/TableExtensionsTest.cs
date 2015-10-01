@@ -13,6 +13,15 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void ITable_CreateNew_IsNotNull()
+        {
+            var testClass = base.GetTestTable();
+            var feature = testClass.CreateNew();
+            Assert.IsNotNull(feature);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void ITable_Fetch_Filter_Action_Equals_6()
         {
             var testClass = base.GetTestTable();

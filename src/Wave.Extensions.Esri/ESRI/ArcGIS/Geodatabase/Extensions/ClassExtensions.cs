@@ -19,6 +19,24 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Creates a feature in the table with the default values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeature" /> representing the new feature.
+        /// </returns>
+        public static IFeature CreateNew(this IFeatureClass source)
+        {
+            if (source == null) return null;
+
+            var row = source.CreateFeature();
+            IRowSubtypes rowSubtypes = row as IRowSubtypes;
+            if (rowSubtypes != null) rowSubtypes.InitDefaultValues();
+
+            return row;
+        }
+
+        /// <summary>
         ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
         ///     <paramref name="filter" /> object and projects the results into a new form.
         /// </summary>
