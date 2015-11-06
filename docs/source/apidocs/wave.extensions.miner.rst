@@ -13,6 +13,7 @@ The API documentation for the contents of the Wave.Extensions.Miner assembly.
 	 wave.extensions.miner/miner.framework.baseclasses
 	 wave.extensions.miner/miner.framework.trace
 	 wave.extensions.miner/miner.interop
+	 wave.extensions.miner/miner.interop.extensions
 	 wave.extensions.miner/miner.interop.process
 	 wave.extensions.miner/miner.interop.process.baseclasses
 	 wave.extensions.miner/miner.interop.process.collections

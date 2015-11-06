@@ -13,6 +13,10 @@ ESRI.ArcGIS.Geodatabase
 	 :project: Wave.Extensions.Miner
 	 :members:
 
+.. doxygenclass:: ESRI::ArcGIS::Geodatabase::DatasetExtensions
+	 :project: Wave.Extensions.Miner
+	 :members:
+
 .. doxygenclass:: ESRI::ArcGIS::Geodatabase::FeatureExtensions
 	 :project: Wave.Extensions.Miner
 	 :members:

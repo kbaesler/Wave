@@ -29,6 +29,10 @@ System.Windows
 	 :project: Wave.Extensions.Esri
 	 :members:
 
+.. doxygenclass:: System::Windows::WaveTheme
+	 :project: Wave.Extensions.Esri
+	 :members:
+
 .. doxygenclass:: System::Windows::WindowInteropHelperExtensions
 	 :project: Wave.Extensions.Esri
 	 :members:

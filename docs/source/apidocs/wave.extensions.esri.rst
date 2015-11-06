@@ -10,6 +10,7 @@ The API documentation for the contents of the Wave.Extensions.Esri assembly.
 	 wave.extensions.esri/esri.arcgis.esrisystem
 	 wave.extensions.esri/esri.arcgis.framework
 	 wave.extensions.esri/esri.arcgis.geodatabase
+	 wave.extensions.esri/esri.arcgis.geodatabase.extensions
 	 wave.extensions.esri/esri.arcgis.geometry
 	 wave.extensions.esri/esri.arcgis.geoprocessing
 	 wave.extensions.esri/esri.arcgis.geoprocessing.baseclasses
@@ -18,6 +19,7 @@ The API documentation for the contents of the Wave.Extensions.Esri assembly.
 	 wave.extensions.esri/system.configuration
 	 wave.extensions.esri/system.data
 	 wave.extensions.esri/system.diagnostics
+	 wave.extensions.esri/system.diagnostics.appenders
 	 wave.extensions.esri/system.forms
 	 wave.extensions.esri/system.forms.collections
 	 wave.extensions.esri/system.forms.componentmodel
@@ -31,4 +33,3 @@ The API documentation for the contents of the Wave.Extensions.Esri assembly.
 	 wave.extensions.esri/system.windows.controls
 	 wave.extensions.esri/system.windows.converters
 	 wave.extensions.esri/system.xml
-	 wave.extensions.esri/xamlgeneratednamespace
