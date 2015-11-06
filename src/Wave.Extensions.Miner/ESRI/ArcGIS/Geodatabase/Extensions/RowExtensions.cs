@@ -13,6 +13,50 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        /// Creates a new row by duplicating the contents of the specified row.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="committed">if set to <c>true</c> if created row is committed to the database.</param>
+        /// <returns>
+        /// Returns a <see cref="IRow" /> representings a duplicate copy of the row.
+        /// </returns>
+        public static IRow Clone(this IRow source, bool committed = true)
+        {
+            ITable table = source.Table;
+
+            var row = table.CreateNew();
+            for (int i = 0; i < row.Fields.FieldCount; i++)
+            {
+                if (row.Fields.Field[i].Editable)
+                {
+                    object o = source.Value[i];
+                    row.set_Value(i, o);
+                }
+            }
+
+            if (committed)
+                row.Store();
+
+            return row;
+        }
+
+        /// <summary>
+        ///     Creates a copy of the row.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="mode">The auto updater mode.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRow" /> representings a duplicate copy of the row.
+        /// </returns>
+        public static IRow Clone(this IRow source, mmAutoUpdaterMode mode)
+        {
+            using (new AutoUpdaterModeReverter(mode))
+            {
+                return source.Clone();
+            }
+        }
+
+        /// <summary>
         ///     Returns the domain assigned to the <see cref="IField" /> that is assigned the field model name
         ///     on the specified object.
         /// </summary>

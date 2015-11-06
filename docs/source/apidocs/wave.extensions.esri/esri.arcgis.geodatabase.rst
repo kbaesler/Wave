@@ -37,6 +37,10 @@ ESRI.ArcGIS.Geodatabase
 	 :project: Wave.Extensions.Esri
 	 :members:
 
+.. doxygenclass:: ESRI::ArcGIS::Geodatabase::OleDbConnectionFactories
+	 :project: Wave.Extensions.Esri
+	 :members:
+
 .. doxygenclass:: ESRI::ArcGIS::Geodatabase::RelationshipClassExtensions
 	 :project: Wave.Extensions.Esri
 	 :members:
