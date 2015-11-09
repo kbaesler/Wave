@@ -216,6 +216,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingFieldModelName.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingModelNameException.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\FeatureExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />

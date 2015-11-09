@@ -17,14 +17,14 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void OleDbConnectionFactories_GetFileGdbConnection_IsNull()
         {
-            Assert.IsNull(OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))));
+            Assert.IsNull(OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville)));
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
         public void OleDbConnectionFactories_GetFileGdbConnection_Open()
         {
-            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))))
+            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville)))
             {
                 connection.Open();
                 Assert.IsTrue(connection.State == ConnectionState.Open);
@@ -35,7 +35,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void WorkspaceFactories_GetDbConnection_ExecuteNonQuery()
         {
-            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))))
+            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville)))            
             {
                 connection.Open();
                 Assert.IsTrue(connection.State == ConnectionState.Open);
