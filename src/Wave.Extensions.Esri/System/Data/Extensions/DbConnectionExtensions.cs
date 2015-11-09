@@ -1,9 +1,11 @@
 ﻿using System.Data.Common;
+using System.Data.OleDb;
+using System.IO;
 
 namespace System.Data
 {
     /// <summary>
-    /// Provides extension methods for the <see cref="DbConnection"/> class.
+    ///     Provides extension methods for the <see cref="DbConnection" /> class.
     /// </summary>
     public static class DbConnectionExtensions
     {
@@ -98,6 +100,61 @@ namespace System.Data
                 cmd.CommandType = CommandType.Text;
 
                 return TypeCast.Cast(cmd.ExecuteScalar(), default(TValue));
+            }
+        }
+
+        /// <summary>
+        ///     Exports the table into the access database provided by the connection.
+        /// </summary>
+        /// <param name="connection">The connection to the access database.</param>
+        /// <param name="mdbTableName">Name of the MDB table.</param>
+        /// <param name="tableName">Name of the source table.</param>
+        /// <param name="server">The name of the ODBC server.</param>
+        /// <param name="driverName">Name of the ODBC driver.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of records inserted into the table.
+        /// </returns>
+        public static int ExportToMdb(this OleDbConnection connection, string mdbTableName, string tableName, string server, string driverName = "Driver={Oracle in OraClient11g_home1}")
+        {
+            using (var command = connection.CreateCommand())
+            {
+                if (connection.GetSchema("Tables", new[] {null, null, mdbTableName, "TABLE"}).Rows.Count > 0)
+                {
+                    command.CommandText = "DROP TABLE " + mdbTableName;
+                    command.ExecuteNonQuery();
+                }
+
+                command.CommandText = "SELECT * INTO " + mdbTableName + " FROM [" + tableName + "] IN '' [ODBC;" + driverName + ";" + server + "]";
+
+                return command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// Exports the table from the database connection to the Excel (XLS) file.
+        /// </summary>
+        /// <param name="source">The connection to the access database.</param>
+        /// <param name="excelFileName">Name of the excel file.</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <param name="sheetName">Name of the sheet.</param>
+        /// <returns>
+        /// Returns a <see cref="int" /> representing the number of records inserted into the spreadsheet.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">excelFileName</exception>
+        /// <exception cref="ArgumentException">The excel file must be created with an '.xls' extension.;excelFileName</exception>
+        public static int ExportToXls(this OleDbConnection source, string excelFileName, string tableName, string sheetName)
+        {
+            if (excelFileName == null)
+                throw new ArgumentNullException("excelFileName");
+
+            if (!Path.GetExtension(excelFileName).Equals(".xls", StringComparison.InvariantCultureIgnoreCase))
+                throw new ArgumentException("The excel file must be created with an '.xls' extension.", "excelFileName");
+
+            using (var command = source.CreateCommand())
+            {
+                command.CommandText = string.Format("SELECT * INTO [Excel 8.0;HDR=Yes;DATABASE={0}].[{1}] FROM [{2}]", excelFileName, sheetName, tableName);
+
+                return command.ExecuteNonQuery();
             }
         }
 
