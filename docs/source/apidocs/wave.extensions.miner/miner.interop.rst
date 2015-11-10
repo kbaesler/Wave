@@ -17,6 +17,10 @@ Miner.Interop
 	 :project: Wave.Extensions.Miner
 	 :members:
 
+.. doxygenclass:: Miner::Interop::FeatureClassExtensions
+	 :project: Wave.Extensions.Miner
+	 :members:
+
 .. doxygenclass:: Miner::Interop::RelationshipClassExtensions
 	 :project: Wave.Extensions.Miner
 	 :members:
