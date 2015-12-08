@@ -248,6 +248,8 @@
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyQueue.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyTrace.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\ConnectivityTrace.cs" />
+    <Compile Include="Miner\Geodatabase\Internal\EventOverride.cs" />
+    <Compile Include="Miner\Geodatabase\EventOverrides.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverter.cs" />
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
       <SubType>Code</SubType>

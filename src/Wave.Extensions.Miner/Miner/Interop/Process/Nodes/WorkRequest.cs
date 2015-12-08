@@ -4,6 +4,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
+using Miner.Interop.msxml2;
+
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -419,5 +421,14 @@ namespace Miner.Interop.Process
         }
 
         #endregion
+
+        public IXMLDOMDocument ToXml()
+        {
+            IMMWorkflowManager wm = base.PxApplication.GetWorkflowManager();
+            if (wm == null) return null;
+            
+            IMMMobileWFM mobileWfm = (IMMMobileWFM) wm;
+            return mobileWfm.GetXML(this.Node);            
+        }
     }
 }

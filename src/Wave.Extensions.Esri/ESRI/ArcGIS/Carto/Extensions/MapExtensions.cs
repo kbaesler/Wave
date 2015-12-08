@@ -78,6 +78,75 @@ namespace ESRI.ArcGIS.Carto
             return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.ObjectClassID == table.ObjectClassID);
         }
 
+        /// <summary>
+        ///     Returns the stand-alone tables that are in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the tables in the map.</returns>
+        public static IEnumerable<ITable> GetTables(this IMap source)
+        {
+            var standaloneTableCollection = source as IStandaloneTableCollection;
+            if (standaloneTableCollection != null)
+            {
+                for (int i = 0; i < standaloneTableCollection.StandaloneTableCount; i++)
+                {
+                    IStandaloneTable standaloneTable = standaloneTableCollection.StandaloneTable[i];
+                    if (standaloneTable != null && standaloneTable.Valid)
+                    {
+                        yield return standaloneTable.Table;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Returns the workspace for the first occurance of a valid feature layer in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspace" /> representing the workspace.
+        /// </returns>
+        public static IWorkspace GetWorkspace(this IMap source, Predicate<ILayer> predicate)
+        {
+            if (source.LayerCount == 0)
+                return null;
+
+            return source.Where<IFeatureLayer>(layer => predicate(layer)).Select(o => ((IDataset) o.FeatureClass).Workspace).First();
+        }
+
+        /// <summary>
+        ///     Returns the workspace for the first occurance of a valid table in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspace" /> representing the workspace.
+        /// </returns>
+        public static IWorkspace GetWorkspace(this IMap source, Predicate<ITable> predicate)
+        {
+            return source.GetTables().Select(o => ((IDataset) o).Workspace).FirstOrDefault();
+        }
+
+        /// <summary>
+        ///     Returns the workspace for the first occurance of a valid feature layer in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspace" /> representing the workspace.
+        /// </returns>
+        public static IWorkspace GetWorkspace(this IMap source)
+        {
+            IWorkspace workspace = source.GetWorkspace(layer => layer.Valid);
+            if (workspace == null)
+            {
+                var tables = source.GetTables();
+                return tables.Select(table => ((IDataset) table).Workspace).FirstOrDefault();
+            }
+
+            return null;
+        }
+
 
         /// <summary>
         ///     Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisfy the
@@ -114,6 +183,7 @@ namespace ESRI.ArcGIS.Carto
         /// <exception cref="System.ArgumentNullException">selector</exception>
         /// <exception cref="System.NotSupportedException">The layer type is not supported.</exception>
         public static IEnumerable<TLayer> Where<TLayer>(this IMap source, Func<TLayer, bool> selector)
+            where TLayer : ILayer
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
