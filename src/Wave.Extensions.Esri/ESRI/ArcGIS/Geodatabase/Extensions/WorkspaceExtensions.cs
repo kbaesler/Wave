@@ -67,6 +67,20 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Escaping quote characters by use two quotes for every one displayed.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>Returns a <see cref="string" /> representing the escaped value.</returns>
+        public static string Escape(this ISQLSyntax source, string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return string.Empty;
+
+            return value.Replace("'", "''");
+        }
+
+        /// <summary>
         ///     Gets the database management system that is used with conjunction of the <paramref name="source" />.
         /// </summary>
         /// <param name="source">The workspace.</param>

@@ -164,7 +164,7 @@ namespace Wave.Extensions.Miner.Tests
             IMap map = this.CreateMap();
             Assert.IsNotNull(map);
 
-            var workspace = map.GetWorkspace(o => o != null);
+            var workspace = map.GetWorkspace();
             Assert.IsNotNull(workspace);
         }
 

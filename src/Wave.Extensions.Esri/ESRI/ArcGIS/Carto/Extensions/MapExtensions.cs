@@ -75,7 +75,17 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (table == null) throw new ArgumentNullException("table");
 
-            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.ObjectClassID == table.ObjectClassID);
+            return source.Where<IFeatureLayer>(o => o.FeatureClass.ObjectClassID == table.ObjectClassID);
+        }
+
+        /// <summary>
+        ///     Returns the valid layers that are in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the layers in the map.</returns>
+        public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source)
+        {
+            return source.Where<IFeatureLayer>(layer => layer.Valid);
         }
 
         /// <summary>

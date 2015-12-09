@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.Serialization;
 
 namespace System.Windows
 {
@@ -42,6 +43,7 @@ namespace System.Windows
         /// <returns>
         ///     An error message indicating what is wrong with this object. The default is an empty string ("").
         /// </returns>
+        [IgnoreDataMember]
         public string Error
         {
             get
