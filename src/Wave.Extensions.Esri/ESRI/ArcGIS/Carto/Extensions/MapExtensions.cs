@@ -154,7 +154,7 @@ namespace ESRI.ArcGIS.Carto
                 return tables.Select(table => ((IDataset) table).Workspace).FirstOrDefault();
             }
 
-            return null;
+            return workspace;
         }
 
 
