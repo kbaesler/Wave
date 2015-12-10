@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>9.3.1.Wave</id>
+        <id>Wave.9.3.1</id>
         <version>0.0.2-alpha</version>
         <title>Wave [9.3.1]</title>
         <authors>Kyle Baesler</authors>
@@ -67,6 +67,8 @@
         </frameworkAssemblies>
     </metadata>
     <files>
+		<file src="..\src\bin\x86\Debug\ReSharper.DotSettings" target="content\ReSharper.DotSettings" />
+        <file src="..\src\bin\x86\Debug\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.pdb" target="lib\net35\Wave.Extensions.Esri.pdb" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
