@@ -65,7 +65,7 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
     <RegisterForComInterop>false</RegisterForComInterop>
-    <DocumentationFile>..\bin\x86\Release\ESRI.ArcGIS.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\x86\Release\Wave.Extensions.Esri.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ESRI.ArcGIS.ADF, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
