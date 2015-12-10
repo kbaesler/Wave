@@ -420,15 +420,6 @@ namespace Miner.Interop.Process
             return (IMMListBuilder) builder;
         }
 
-        #endregion
-
-        public IXMLDOMDocument ToXml()
-        {
-            IMMWorkflowManager wm = base.PxApplication.GetWorkflowManager();
-            if (wm == null) return null;
-            
-            IMMMobileWFM mobileWfm = (IMMMobileWFM) wm;
-            return mobileWfm.GetXML(this.Node);            
-        }
+        #endregion       
     }
 }
