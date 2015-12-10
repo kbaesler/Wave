@@ -66,9 +66,8 @@
             <frameworkAssembly assemblyName="WindowsFormsIntegration" targetFramework=".NETFramework3.5" />
         </frameworkAssemblies>
     </metadata>
-    <files>
-		<file src="..\src\bin\x86\Debug\ReSharper.DotSettings" target="content\ReSharper.DotSettings" />
-        <file src="..\src\bin\x86\Debug\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
+    <files>		
+        <file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.pdb" target="lib\net35\Wave.Extensions.Esri.pdb" />
         <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
