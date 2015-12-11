@@ -1,0 +1,2 @@
+powershell.exe -nologo -noprofile -command "& { If (Test-Path '.\Geodatabases'){ Remove-Item '.\Geodatabases' -Force -Recurse}; Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('.\Geodatabase_931SP1.zip', '.'); }"
+powershell.exe -nologo -noprofile -command "& { If (Test-Path '.\Databases'){ Remove-Item '.\Databases' -Force -Recurse}; Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('.\Database_931SP1.zip', '.'); }"
