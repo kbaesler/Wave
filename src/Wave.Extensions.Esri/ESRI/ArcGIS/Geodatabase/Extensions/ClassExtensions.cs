@@ -114,7 +114,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     selector
         /// </exception>
-        public static List<TResult> Fetch<TResult>(this IFeatureClass source, IQueryFilter filter, Func<IFeature, TResult> selector)
+        public static IList<TResult> Fetch<TResult>(this IFeatureClass source, IQueryFilter filter, Func<IFeature, TResult> selector)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
@@ -165,7 +165,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{IFeature}" /> representing the results of the query projected to the type.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">filter</exception>
-        public static List<IFeature> Fetch(this IFeatureClass source, IQueryFilter filter)
+        public static IList<IFeature> Fetch(this IFeatureClass source, IQueryFilter filter)
         {
             if (source == null) return null;
 
@@ -193,7 +193,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     oids
         /// </exception>
-        public static List<TResult> Fetch<TResult>(this IFeatureClass source, Func<IFeature, TResult> selector, params int[] oids)
+        public static IList<TResult> Fetch<TResult>(this IFeatureClass source, Func<IFeature, TResult> selector, params int[] oids)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
@@ -217,7 +217,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{IFeature}" /> representing the features returned from the query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">oids</exception>
-        public static List<IFeature> Fetch(this IFeatureClass source, params int[] oids)
+        public static IList<IFeature> Fetch(this IFeatureClass source, params int[] oids)
         {
             if (source == null) return null;
             if (oids == null) throw new ArgumentNullException("oids");

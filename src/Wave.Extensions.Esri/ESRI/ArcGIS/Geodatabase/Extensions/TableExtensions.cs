@@ -42,7 +42,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">oids</exception>
-        public static List<IRow> Fetch(this ITable source, params int[] oids)
+        public static IList<IRow> Fetch(this ITable source, params int[] oids)
         {
             if (source == null) return null;
             if (oids == null) throw new ArgumentNullException("oids");
@@ -68,7 +68,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static List<TResult> Fetch<TResult>(this ITable source, IQueryFilter filter, Func<IRow, TResult> selector)
+        public static IList<TResult> Fetch<TResult>(this ITable source, IQueryFilter filter, Func<IRow, TResult> selector)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
@@ -97,7 +97,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     oids
         /// </exception>
-        public static List<TResult> Fetch<TResult>(this ITable source, Func<IRow, TResult> selector, params int[] oids)
+        public static IList<TResult> Fetch<TResult>(this ITable source, Func<IRow, TResult> selector, params int[] oids)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
@@ -120,7 +120,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
-        public static List<IRow> Fetch(this ITable source, IQueryFilter filter)
+        public static IList<IRow> Fetch(this ITable source, IQueryFilter filter)
         {
             if (source == null) return null;
 
