@@ -25,7 +25,7 @@ namespace Wave.Extensions.Esri.Tests.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\..\\\\..\\\\Sample Data\\\\Geodatabases\\\\Minerville.gdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\..\\\\Sample Data\\\\Geodatabases\\\\Minerville.gdb")]
         public string Minerville {
             get {
                 return ((string)(this["Minerville"]));

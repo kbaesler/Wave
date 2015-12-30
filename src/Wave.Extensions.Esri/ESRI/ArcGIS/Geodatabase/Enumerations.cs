@@ -27,6 +27,18 @@
         Like,
 
         /// <summary>
+        ///     This is the equals operator for partial equality comparisons. The parameter value
+        ///     should be a string to match with percent characters used as wildcards.
+        /// </summary>
+        StartsWith,
+
+        /// <summary>
+        ///     This is the equals operator for partial equality comparisons. The parameter value
+        ///     should be a string to match with percent characters used as wildcards.
+        /// </summary>
+        EndsWith,
+
+        /// <summary>
         ///     This is the negated equals operator for partial equality comparisons. The parameter value
         ///     should be a string to match with percent characters used as wildcards.
         /// </summary>
@@ -83,27 +95,6 @@
         ///     This is the NOT operator. Selects a record if it doesn't match the following expression.
         /// </summary>
         Not
-    }
-
-    /// <summary>
-    ///     Enumeration for the location of the wildcard operation in regards to the keywords.
-    /// </summary>
-    public enum SearchPattern
-    {
-        /// <summary>
-        ///     The wildcard operator will be placed at the start of the keyword.
-        /// </summary>
-        StartsWith,
-
-        /// <summary>
-        ///     The wildcard operator will be placed at the start and end of the keyword.
-        /// </summary>
-        Contains,
-
-        /// <summary>
-        ///     The wildcard operator will be placed only on the end of the keyword.
-        /// </summary>
-        EndsWith
     }
 
     #endregion

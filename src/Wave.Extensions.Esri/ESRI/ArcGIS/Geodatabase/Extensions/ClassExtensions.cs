@@ -20,54 +20,6 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Builds a query filter based on the specified keyword.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="keyword">The keyword.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="searchPattern">The search pattern.</param>
-        /// <param name="fieldNames">The field names.</param>
-        /// <returns>
-        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
-        /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
-        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, SearchPattern searchPattern, params string[] fieldNames)
-        {
-            List<IField> fields = new List<IField>();
-
-            foreach (var fieldName in fieldNames)
-            {
-                int index = source.FindField(fieldName);
-                if (index == -1)
-                    throw new IndexOutOfRangeException(string.Format("The '{0}' doesn't have a {1} field.", ((IDataset) source).Name, fieldName));
-
-                var field = source.Fields.Field[index];
-                fields.Add(field);
-            }
-
-            return source.CreateQuery(keyword, comparisonOperator, logicalOperator, searchPattern, fields.ToArray());
-        }
-
-        /// <summary>
-        ///     Builds a query filter based on the specified keyword.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="keyword">The keyword.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="searchPattern">The search pattern.</param>
-        /// <param name="fields">The fields.</param>
-        /// <returns>
-        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
-        /// </returns>
-        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, SearchPattern searchPattern, params IField[] fields)
-        {
-            QueryBuilder builder = new QueryBuilder(source, searchPattern);
-            return builder.Build(keyword, comparisonOperator, logicalOperator, fields);
-        }
-
-        /// <summary>
         ///     Creates a feature in the table with the default values.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -83,6 +35,67 @@ namespace ESRI.ArcGIS.Geodatabase
             if (rowSubtypes != null) rowSubtypes.InitDefaultValues();
 
             return row;
+        }
+
+        /// <summary>
+        ///     Builds a "fuzzy" query filter based on the specified keyword.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <param name="fieldNames">The field names.</param>
+        /// <returns>
+        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
+        {
+            List<IField> fields = new List<IField>();
+
+            foreach (var fieldName in fieldNames)
+            {
+                int index = source.FindField(fieldName);
+                if (index == -1)
+                    throw new IndexOutOfRangeException(string.Format("The '{0}' doesn't have a {1} field.", ((IDataset) source).Name, fieldName));
+
+                var field = source.Fields.Field[index];
+                fields.Add(field);
+            }
+
+            return source.CreateQuery(keyword, comparisonOperator, logicalOperator, fields.ToArray());
+        }
+
+        /// <summary>
+        ///     Builds a "fuzzy" query filter based on the specified keyword.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <returns>
+        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator)
+        {
+            return source.CreateQuery(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
+        }
+
+        /// <summary>
+        ///     Builds a "fuzzy" query filter based on the specified keyword.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <param name="fields">The fields.</param>
+        /// <returns>
+        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
+        {
+            QueryBuilder builder = new QueryBuilder(source);
+            return builder.Build(keyword, comparisonOperator, logicalOperator, fields);
         }
 
         /// <summary>
