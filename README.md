@@ -11,10 +11,10 @@ The documentation has been moved to [wave.readthedocs.org](http://wave.readthedo
 
 You can now download a pre-release of the library using the Microsoft Nuget Package Manager within Visual Studio IDE.
 
-To install Wave [9.3.1], run the following command in the Package Manager Console.
+To install Wave [9.3], run the following command in the Package Manager Console.
 
 ```
-	PM> Install-Package Wave.9.3.1 -Pre
+	PM> Install-Package Wave.9.3 -Version 1.0.1
 ```
 
 ### Requirements ###
