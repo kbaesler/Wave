@@ -19,11 +19,11 @@ Microsoft Package Manager
 --------------------------------------
 Wave is publicly distributed using the `Nuget <http://www.nuget.org>`_ service that is available to the .NET community within Visual Studios.
 
-- To install Wave [9.3.1], run the following command in the Package Manager Console.
+- To install Wave [9.3], run the following command in the Package Manager Console.
 
 .. code-block::
 
-	PM> Install-Package Wave.9.3.1 -Pre
+	PM> Install-Package Wave.9.3 -Version 1.0.1
 
 
 Requirements
