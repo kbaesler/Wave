@@ -268,9 +268,15 @@
     <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
+    <Compile Include="System\Windows\Events\EventAggregator.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
     <Compile Include="System\Extensions\RecursionExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
+    <Compile Include="System\Windows\Events\IEventAggregator.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />
     <Compile Include="System\Native\UnsafeWindowMethods.cs" />
@@ -400,5 +406,5 @@
     </Page>
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />  
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
