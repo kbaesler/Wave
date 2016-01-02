@@ -1,4 +1,4 @@
-ArcGIS Desktop Search Services for ArcMap and ArcCatalog
+Search Services for ArcMap and ArcCatalog
 ========================================================
 
 A set of WCF services that are hosted within ArcMap and ArcCatalog extensions that provide text-based and map-based search services. Theses services allow callers to search the data in the current context of either the ArcMap or ArcCatalog using predefined or dynamic searches. 
