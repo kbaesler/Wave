@@ -92,8 +92,8 @@
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Miner.Controls, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
@@ -135,8 +135,8 @@
     <Reference Include="Miner.Theme.Amalgamate, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Windows, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Windows.ArcGIS, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -146,12 +146,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="Wave.Extensions.Esri, Version=9.3.0.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Wave.9.3.1.0.0\lib\net35\Wave.Extensions.Esri.dll</HintPath>
+    <Reference Include="Wave.Extensions.Esri, Version=9.3.2.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.9.3.1.0.2\lib\net35\Wave.Extensions.Esri.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wave.Extensions.Miner, Version=9.3.0.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Wave.9.3.1.0.0\lib\net35\Wave.Extensions.Miner.dll</HintPath>
+    <Reference Include="Wave.Extensions.Miner, Version=9.3.2.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.9.3.1.0.2\lib\net35\Wave.Extensions.Miner.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -175,10 +175,12 @@
     <Compile Include="Data\Model\SearchableFieldTests.cs" />
     <Compile Include="Data\Model\SearchableTableTests.cs" />
     <Compile Include="Data\Model\SearchableResponseTests.cs" />
+    <Compile Include="Data\Model\SearchableRequestTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\LogInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -187,9 +189,7 @@
       <Name>Wave.Searchability</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Configurations\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

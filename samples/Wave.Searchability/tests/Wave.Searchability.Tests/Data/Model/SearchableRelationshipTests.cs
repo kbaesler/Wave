@@ -14,7 +14,7 @@ namespace Wave.Searchability.Tests.Data.Model
         #region Public Methods
 
         [TestMethod]
-        public void SeachableRelationship_Simple()
+        public void SeachableRelationship_ToJson()
         {
             var relationship = new SearchableRelationship(new SearchableField("OBJECTID"));
             Assert.AreEqual(Searchable.Any, relationship.Name);

@@ -14,7 +14,7 @@ namespace Wave.Searchability.Tests.Data.Model
         #region Public Methods
 
         [TestMethod]
-        public void SearchableTable_Simple()
+        public void SearchableTable_ToJson()
         {
             var table = new SearchableTable("NonControllableGasValve",
                 new SearchableField("Operator", "Consultant"),

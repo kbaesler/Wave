@@ -12,7 +12,7 @@ namespace Wave.Searchability.Tests.Data.Model
         #region Public Methods
 
         [TestMethod]
-        public void SearchableField_Simple()
+        public void SearchableField_ToJson()
         {
             var item = new SearchableField("Operator", "Consultant");
             Assert.AreEqual("Operator", item.Name);

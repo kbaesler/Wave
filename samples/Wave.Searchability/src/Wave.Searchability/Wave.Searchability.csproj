@@ -51,6 +51,7 @@
     <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.ArcMapUI, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -180,8 +181,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Configuration\ConfigurationFile.cs" />
-    <Compile Include="Data\Configuration\JsonConfigurationFile.cs" />
+    <Compile Include="Data\Extensions\SearchableResponseExtensions.cs" />
     <Compile Include="Data\Model\SearchableRequest.cs" />
     <Compile Include="Data\Model\SearchableResponse.cs" />
     <Compile Include="Data\Model\SearchableSet.cs" />
@@ -193,7 +193,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\LogInfo.cs" />
     <Compile Include="Services\MapSearchService.cs" />
-    <Compile Include="Data\Configuration\SearchServiceConfiguration.cs" />
     <Compile Include="Services\SearchableService.cs" />
   </ItemGroup>
   <ItemGroup>

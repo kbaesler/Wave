@@ -14,7 +14,7 @@ namespace Wave.Searchability.Tests.Data.Model
         #region Public Methods
 
         [TestMethod]
-        public void SearchableSet_Simple()
+        public void SearchableSet_ToJson()
         {
             List<SearchableSet> sets = new List<SearchableSet>();
 

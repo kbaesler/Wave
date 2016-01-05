@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
@@ -15,32 +14,18 @@ using Wave.Searchability.Data;
 
 namespace Wave.Searchability.Services
 {
-    [ServiceContract]
-    public interface ISearchableService<in TSearchableRequest>
-    {
-        #region Public Methods
-
-        [OperationContract]
-        SearchableResponse Find(TSearchableRequest request);
-
-        [OperationContract]
-        SearchableResponse Find(string keywords, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, IEnumerable<SearchableSet> sets, int threshold);
-
-        #endregion
-    }
-
     /// <summary>
     ///     A search service that allows for 'google-like' search capabilities
     ///     in the scense that given a keyword it will search all of the approriate fields in the table or feature classes
     ///     specified in the configurations.
     /// </summary>
-    public abstract class SearchableService<TSearchableRequest> : ISearchableService<TSearchableRequest>
+    public abstract class SearchableService<TSearchableRequest>
         where TSearchableRequest : SearchableRequest, new()
     {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchableService{TSearchableRequest}"/> class.
+        ///     Initializes a new instance of the <see cref="SearchableService{TSearchableRequest}" /> class.
         /// </summary>
         protected SearchableService()
         {
@@ -52,71 +37,49 @@ namespace Wave.Searchability.Services
         #region Protected Properties
 
         /// <summary>
-        /// Gets or sets the response.
+        ///     Gets a value indicating whether there is a pending cancellation.
         /// </summary>
         /// <value>
-        /// The response.
-        /// </value>
-        protected SearchableResponse Response { get; set; }
-        /// <summary>
-        /// Gets or sets the threshold.
-        /// </summary>
-        /// <value>
-        /// The threshold.
-        /// </value>
-        protected int Threshold { get; set; }
-
-        /// <summary>
-        /// Gets a value indicating whether there is a pending cancellation.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if there is a pending cancellation; otherwise, <c>false</c>.
+        ///     <c>true</c> if there is a pending cancellation; otherwise, <c>false</c>.
         /// </value>
         protected virtual bool CancellationPending
         {
             get { return this.Response != null && this.Threshold > 0 && this.Response.Count >= this.Threshold; }
         }
 
+        /// <summary>
+        ///     Gets or sets the response.
+        /// </summary>
+        /// <value>
+        ///     The response.
+        /// </value>
+        protected SearchableResponse Response { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the threshold.
+        /// </summary>
+        /// <value>
+        ///     The threshold.
+        /// </value>
+        protected int Threshold { get; set; }
+
         #endregion
 
-        #region ISearchableService<TSearchableRequest> Members
-
+        #region Public Methods
+        
         /// <summary>
-        /// Searches the active map using the specified <paramref name="sets" /> for the specified keywords.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="sets">The sets.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <returns>
-        /// Returns a <see cref="SearchableResponse" /> representing the contents of the results.
-        /// </returns>
-        public SearchableResponse Find(string keywords, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, IEnumerable<SearchableSet> sets, int threshold)
-        {
-            return this.Find(new TSearchableRequest
-            {
-                ComparisonOperator = comparisonOperator,
-                Keywords = keywords,
-                LogicalOperator = logicalOperator,
-                Items = sets,
-                Threshold = threshold
-            });
-        }
-
-        /// <summary>
-        /// Searches the active map using the specified <paramref name="request" /> for the specified keywords.
+        ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>
-        /// Returns a <see cref="SearchableResponse" /> representing the contents of the results.
+        ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
         public virtual SearchableResponse Find(TSearchableRequest request)
         {
             var layers = Document.ActiveMap.Where<IFeatureLayer>(layer => layer.Valid).DistinctBy(o => o.FeatureClass.ObjectClassID).ToList();
             this.SearchLayers(request, layers);
 
-            var tables = Document.ActiveMap.GetTables().DistinctBy(o => ((IDataset)o).Name).ToList();
+            var tables = Document.ActiveMap.GetTables().DistinctBy(o => ((IDataset) o).Name).ToList();
             this.SearchTables(request, tables, layers);
 
             return this.Response;
@@ -127,7 +90,7 @@ namespace Wave.Searchability.Services
         #region Protected Methods
 
         /// <summary>
-        /// Adds the specified row.
+        ///     Adds the specified row.
         /// </summary>
         /// <param name="row">The row.</param>
         /// <param name="layer">The layer.</param>
@@ -151,8 +114,8 @@ namespace Wave.Searchability.Services
         #region Private Methods
 
         /// <summary>
-        /// Associates the specified object with the layer (when specified) otherwise it associates it with the relationship
-        /// path.
+        ///     Associates the specified object with the layer (when specified) otherwise it associates it with the relationship
+        ///     path.
         /// </summary>
         /// <param name="search">The search.</param>
         /// <param name="layer">The layer.</param>
@@ -262,7 +225,7 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the layer.
+        ///     Searches the layer.
         /// </summary>
         /// <param name="layer">The layer.</param>
         /// <param name="item">The item.</param>
@@ -291,12 +254,12 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the layers.
+        ///     Searches the layers.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="layers">The layers.</param>
         private void SearchLayers(TSearchableRequest request, List<IFeatureLayer> layers)
-        {            
+        {
             var sets = request.Items.Select(set => set.Tables.Where(table => table.IsFeatureClass));
             foreach (var set in sets)
             {
@@ -344,7 +307,7 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the table.
+        ///     Searches the table.
         /// </summary>
         /// <param name="table">The table.</param>
         /// <param name="item">The item.</param>
@@ -371,13 +334,13 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the tables.
+        ///     Searches the tables.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="tables">The tables.</param>
         /// <param name="layers">The layers.</param>
         private void SearchTables(TSearchableRequest request, List<ITable> tables, List<IFeatureLayer> layers)
-        {            
+        {
             var sets = request.Items.Select(set => set.Tables.Where(table => !table.IsFeatureClass));
             foreach (var set in sets)
             {

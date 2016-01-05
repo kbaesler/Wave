@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Windows.Documents;
 
 using ESRI.ArcGIS.Geodatabase;
 
@@ -15,7 +16,10 @@ namespace Wave.Searchability.Data
         /// </summary>
         public SearchableRequest()
         {
+            this.Items = new List<SearchableSet>();
             this.Threshold = 200;
+            this.ComparisonOperator = ComparisonOperator.Like;
+            this.LogicalOperator = LogicalOperator.Or;
         }
 
         #endregion
@@ -56,7 +60,7 @@ namespace Wave.Searchability.Data
         ///     The sets.
         /// </value>
         [DataMember(Name = "items")]
-        public IEnumerable<SearchableSet> Items { get; set; }
+        public IList<SearchableSet> Items { get; set; }
 
         /// <summary>
         ///     Gets or sets the threshold.
