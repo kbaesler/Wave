@@ -1,0 +1,24 @@
+﻿[
+    {
+        "rows": [
+            {
+                "oid": 1
+            },
+            {
+                "oid": 2
+            }
+        ],
+        "name": "NonControllableGasValve"
+    },
+    {
+        "rows": [
+            {
+                "oid": 1567
+            },
+            {
+                "oid": 225
+            }
+        ],
+        "name": "HPPipe"
+    }
+]

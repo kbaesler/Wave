@@ -72,10 +72,10 @@ namespace Wave.Searchability.Data
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether [layer definition].
+        ///     Gets or sets a value indicating whether the layer definition is used.
         /// </summary>
         /// <value>
-        ///     <c>true</c> if [layer definition]; otherwise, <c>false</c>.
+        ///     <c>true</c> if layer definition is used; otherwise, <c>false</c>.
         /// </value>
         [DataMember(Name = "layerDefinition")]
         public bool LayerDefinition

@@ -15,8 +15,8 @@ namespace Wave.Searchability.Data
 
         private ObservableCollection<SearchableField> _Fields;
         private List<string> _Path;
-        private ObservableCollection<SearchableRelationship> _Relationships;
-
+        private ObservableCollection<SearchableRelationship> _Relationships;        
+ 
         #endregion
 
         #region Constructors
