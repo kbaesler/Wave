@@ -11,7 +11,7 @@ namespace System.Windows
     {
         #region Fields
 
-        private readonly Dictionary<Type, EventBase> _Events = new Dictionary<Type, EventBase>();        
+        private readonly Dictionary<Type, EventBase> _Events = new Dictionary<Type, EventBase>();
         private readonly SynchronizationContext _SyncContext = SynchronizationContext.Current;
 
         #endregion
