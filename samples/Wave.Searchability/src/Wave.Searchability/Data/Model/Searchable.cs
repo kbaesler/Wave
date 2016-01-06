@@ -1,8 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 using System.Windows;
 
 namespace Wave.Searchability.Data
 {
+    [DebuggerDisplay("Name = {Name}, Value = {Value}")]
     [DataContract(Name = "search", Namespace = "")]
     public abstract class Searchable : Observable
     {

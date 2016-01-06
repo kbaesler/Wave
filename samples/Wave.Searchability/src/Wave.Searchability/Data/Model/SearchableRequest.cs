@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Windows.Documents;
 
 using ESRI.ArcGIS.Geodatabase;
 
@@ -36,6 +35,15 @@ namespace Wave.Searchability.Data
         public ComparisonOperator ComparisonOperator { get; set; }
 
         /// <summary>
+        ///     Gets or sets the sets.
+        /// </summary>
+        /// <value>
+        ///     The sets.
+        /// </value>
+        [DataMember(Name = "items")]
+        public IEnumerable<SearchableSet> Items { get; set; }
+
+        /// <summary>
         ///     Gets or sets the keywords.
         /// </summary>
         /// <value>
@@ -52,15 +60,6 @@ namespace Wave.Searchability.Data
         /// </value>
         [DataMember(Name = "logicalOperator")]
         public LogicalOperator LogicalOperator { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the sets.
-        /// </summary>
-        /// <value>
-        ///     The sets.
-        /// </value>
-        [DataMember(Name = "items")]
-        public IList<SearchableSet> Items { get; set; }
 
         /// <summary>
         ///     Gets or sets the threshold.

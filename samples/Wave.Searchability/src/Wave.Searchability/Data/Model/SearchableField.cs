@@ -1,7 +1,12 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Wave.Searchability.Data
 {
+    /// <summary>
+    /// Represents a searchable field.
+    /// </summary>
+    [DebuggerDisplay("Name = {Name}")]
     [DataContract(Name = "field", Namespace = "")]
     public class SearchableField : Searchable
     {

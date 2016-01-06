@@ -19,6 +19,7 @@ namespace Wave.Searchability.Services
     ///     in the scense that given a keyword it will search all of the approriate fields in the table or feature classes
     ///     specified in the configurations.
     /// </summary>
+    /// <typeparam name="TSearchableRequest">The type of the searchable request.</typeparam>
     public abstract class SearchableService<TSearchableRequest>
         where TSearchableRequest : SearchableRequest, new()
     {
@@ -66,7 +67,7 @@ namespace Wave.Searchability.Services
         #endregion
 
         #region Public Methods
-        
+
         /// <summary>
         ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
         /// </summary>
@@ -107,6 +108,38 @@ namespace Wave.Searchability.Services
 
             if (!list.Contains(row.OID))
                 list.Add(row.OID);
+        }
+
+        /// <summary>
+        ///     Asynchronously searches the active map using the specified request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="callback">The callback.</param>
+        /// <returns>
+        ///     Returns a <see cref="IAsyncResult" /> representing the results.
+        /// </returns>
+        protected IAsyncResult BeginRequestAsync(TSearchableRequest request, AsyncCallback callback)
+        {
+            Func<TSearchableRequest, SearchableResponse> func = new Func<TSearchableRequest, SearchableResponse>(this.Find);
+            return func.BeginInvoke(request, callback, func);
+        }
+
+        /// <summary>
+        ///     Ends the asynchronous search.
+        /// </summary>
+        /// <param name="result">The result.</param>
+        /// <returns>
+        ///     Returns a <see cref="SearchableResponse" /> representing the results.
+        /// </returns>
+        protected SearchableResponse EndRequestAsync(IAsyncResult result)
+        {
+            Func<TSearchableRequest, SearchableResponse> func = result.AsyncState as Func<TSearchableRequest, SearchableResponse>;
+            if (func != null)
+            {
+                return func.EndInvoke(result);
+            }
+
+            return null;
         }
 
         #endregion
@@ -267,7 +300,7 @@ namespace Wave.Searchability.Services
                 {
                     var item = table;
 
-                    foreach (var layer in layers.Where(o => ((IDataset) o).Name.Equals(item.Name) || (item.NameAsClassModelName && o.FeatureClass.IsAssignedClassModelName(item.Name))))
+                    foreach (var layer in layers.Where(o => ((IDataset) o.FeatureClass).Name.Equals(item.Name) || (item.NameAsClassModelName && o.FeatureClass.IsAssignedClassModelName(item.Name))))
                     {
                         var filter = layer.FeatureClass.CreateQuery(request.Keywords, request.ComparisonOperator, request.LogicalOperator, item.Fields.Select(o => o.Name).ToArray());
                         this.SearchLayer(layer, table, filter, request);

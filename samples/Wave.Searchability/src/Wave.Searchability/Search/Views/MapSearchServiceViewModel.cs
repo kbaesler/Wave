@@ -7,7 +7,7 @@ using ESRI.ArcGIS.Geodatabase;
 
 using Wave.Searchability.Data;
 
-namespace Wave.Searchability.Services
+namespace Wave.Searchability.Views
 {
     internal class MapSearchServiceViewModel : BaseViewModel
     {
