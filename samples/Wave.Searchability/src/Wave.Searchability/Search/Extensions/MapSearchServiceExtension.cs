@@ -140,17 +140,15 @@ namespace Wave.Searchability.Extensions
                 Keywords = "kellyl",
                 ComparisonOperator = ComparisonOperator.Like
             };
-            
-            IMapSearchService service = new MapSearchService();
-            service.Find(request);
-            
+
             Stopwatch stopwatch = Stopwatch.StartNew();
-            service.FindAsync(request).ContinueWith(task =>
-            {
-                long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
-                Log.Debug(this, "{0:N0} ms", elapsedMilliseconds);
-                Log.Debug(this, "{0}", task.Result.Count);
-            });
+
+            IMapSearchService service = new MapSearchService();
+            var response = service.Find(request);
+            
+            long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+            Log.Debug(this, "Find -> {0:N0} ms", elapsedMilliseconds);
+            Log.Debug(this, "Find -> {0}", response.Count);
         }
 
         #endregion

@@ -54,17 +54,7 @@ namespace Wave.Searchability.Services
         ///     Returns a <see cref="SearchableResponse" /> representing the results.
         /// </returns>
         [OperationContract]
-        SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, int threshold);
-
-        /// <summary>
-        ///     Asynchronously searches the active map using the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>
-        ///     Returns a <see cref="Task{SearchableResponse}" /> representing the results.
-        /// </returns>
-        [OperationContract]
-        Task<SearchableResponse> FindAsync(MapSearchServiceRequest request);
+        SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, int threshold);        
 
         #endregion
     }
@@ -119,19 +109,7 @@ namespace Wave.Searchability.Services
         {
             return this.Find(keywords, sets, comparisonOperator, LogicalOperator.Or, threshold, MapSearchServiceExtent.Any);
         }
-
-        /// <summary>
-        ///     Asynchronously searches the active map using the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>
-        ///     Returns a <see cref="Task{SearchableResponse}" /> representing the results.
-        /// </returns>
-        public Task<SearchableResponse> FindAsync(MapSearchServiceRequest request)
-        {
-            return Task.Factory.StartNew(() => this.Find(request));
-        }
-
+       
         #endregion
 
         #region Protected Methods
