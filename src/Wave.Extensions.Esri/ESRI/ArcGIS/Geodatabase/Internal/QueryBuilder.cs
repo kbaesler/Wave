@@ -179,7 +179,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                     return "<=";
                 case ComparisonOperator.StartsWith:
                 case ComparisonOperator.EndsWith:
-                case ComparisonOperator.Like:
+                case ComparisonOperator.Contains:
                     return "Like";
                 case ComparisonOperator.NotLike:
                     return "Not Like";
@@ -224,7 +224,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                 case ComparisonOperator.StartsWith:
                     return value.StartsWith(keyword, StringComparison.CurrentCultureIgnoreCase);
 
-                case ComparisonOperator.Like:
+                case ComparisonOperator.Contains:
                     return value.Contains(keyword);
 
                 case ComparisonOperator.EndsWith:
@@ -258,7 +258,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
             if (string.IsNullOrEmpty(formattedValue))
                 return null;
 
-            if (comparisonOperator == ComparisonOperator.Like ||
+            if (comparisonOperator == ComparisonOperator.Contains ||
                 comparisonOperator == ComparisonOperator.EndsWith ||
                 comparisonOperator == ComparisonOperator.StartsWith)
             {
@@ -320,20 +320,20 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
             if (this.IsCharacter(field))
             {
                 if (isValueNull)
-                    return string.Format("{0} {1} '{2}'", field.Name, ComparisonOperator.Like, wildcard);
+                    return string.Format("{0} {1} '{2}'", field.Name, ComparisonOperator.Contains, wildcard);
 
                 string upper = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
 
                 switch (comparisonOperator)
                 {
                     case ComparisonOperator.StartsWith:
-                        return string.Format("{0}({1}) {2} '{3}{4}'", upper, field.Name, ComparisonOperator.Like, formattedValue.ToUpperInvariant(), wildcard);
+                        return string.Format("{0}({1}) {2} '{3}{4}'", upper, field.Name, ComparisonOperator.Contains, formattedValue.ToUpperInvariant(), wildcard);
 
-                    case ComparisonOperator.Like:
-                        return string.Format("{0}({1}) {2} '{4}{3}{4}'", upper, field.Name, ComparisonOperator.Like, formattedValue.ToUpperInvariant(), wildcard);
+                    case ComparisonOperator.Contains:
+                        return string.Format("{0}({1}) {2} '{4}{3}{4}'", upper, field.Name, ComparisonOperator.Contains, formattedValue.ToUpperInvariant(), wildcard);
 
                     case ComparisonOperator.EndsWith:
-                        return string.Format("{0}({1}) {2} '{4}{3}'", upper, field.Name, ComparisonOperator.Like, formattedValue.ToUpperInvariant(), wildcard);
+                        return string.Format("{0}({1}) {2} '{4}{3}'", upper, field.Name, ComparisonOperator.Contains, formattedValue.ToUpperInvariant(), wildcard);
                 }
             }
             else
@@ -345,18 +345,18 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                     // We use the the CSTR statement for Access appended with "" because if the value is null it will return an empty string instead avoiding
                     // an Invalid use of 'Null' error that will occur when the field value is null.
                     if (isValueNull)
-                        return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, ComparisonOperator.Like, wildcard);
+                        return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, ComparisonOperator.Contains, wildcard);
 
                     switch (comparisonOperator)
                     {
                         case ComparisonOperator.StartsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, ComparisonOperator.Like, formattedValue, wildcard);
+                            return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, ComparisonOperator.Contains, formattedValue, wildcard);
 
-                        case ComparisonOperator.Like:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, ComparisonOperator.Like, formattedValue, wildcard);
+                        case ComparisonOperator.Contains:
+                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, ComparisonOperator.Contains, formattedValue, wildcard);
 
                         case ComparisonOperator.EndsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, ComparisonOperator.Like, formattedValue, wildcard);
+                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, ComparisonOperator.Contains, formattedValue, wildcard);
                     }
                 }
 
@@ -364,18 +364,18 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                 string cast = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_CAST);
 
                 if (isValueNull)
-                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", cast, field.Name, field.Name.Length, ComparisonOperator.Like, wildcard);
+                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, wildcard);
 
                 switch (comparisonOperator)
                 {
                     case ComparisonOperator.StartsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", cast, field.Name, field.Name.Length, ComparisonOperator.Like, formattedValue, wildcard);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, formattedValue, wildcard);
 
-                    case ComparisonOperator.Like:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", cast, field.Name, field.Name.Length, ComparisonOperator.Like, formattedValue, wildcard);
+                    case ComparisonOperator.Contains:
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, formattedValue, wildcard);
 
                     case ComparisonOperator.EndsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", cast, field.Name, field.Name.Length, ComparisonOperator.Like, formattedValue, wildcard);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, formattedValue, wildcard);
                 }
             }
 
