@@ -167,6 +167,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtensionBootstrap.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseTool.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseWorkspaceExtension.cs" />
