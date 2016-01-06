@@ -345,6 +345,16 @@
     <Compile Include="System\Windows\Converters\ValueConverterGroup.cs" />
     <Compile Include="System\Windows\DataValidation.cs" />
     <Compile Include="System\Windows\DelegateCommand.cs" />
+    <Compile Include="System\Windows\Events\BackgroundEventSubscription.cs" />
+    <Compile Include="System\Windows\Events\DataEventArgs.cs" />
+    <Compile Include="System\Windows\Events\DispatcherEventSubscription.cs" />
+    <Compile Include="System\Windows\Events\EventAggregator.cs" />
+    <Compile Include="System\Windows\Events\EventBase.cs" />
+    <Compile Include="System\Windows\Events\EventSubscription.cs" />
+    <Compile Include="System\Windows\Events\IDelegateReference.cs" />
+    <Compile Include="System\Windows\Events\IEventAggregator.cs" />
+    <Compile Include="System\Windows\Events\IEventSubscription.cs" />
+    <Compile Include="System\Windows\Events\SubscriptionToken.cs" />
     <Compile Include="System\Windows\Extensions\AdornerExtensions.cs" />
     <Compile Include="System\Windows\Extensions\UIElementExtensions.cs" />
     <Compile Include="System\Windows\Extensions\WindowInteropHelperExtensions.cs" />
