@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -19,20 +19,6 @@ namespace Wave.Searchability.Services
     public interface IMapSearchService
     {
         #region Public Methods
-
-        /// <summary>
-        ///     Asynchronously searches the active map using the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>Returns a <see cref="IAsyncResult" /> representing the results.</returns>
-        IAsyncResult BeginFindAsync(MapSearchServiceRequest request);
-
-        /// <summary>
-        ///     Ends the asynchronous search.
-        /// </summary>
-        /// <param name="result">The result.</param>
-        /// <returns>Returns a <see cref="SearchableResponse" /> representing the results.</returns>
-        SearchableResponse EndFindAsync(IAsyncResult result);
 
         /// <summary>
         ///     Searches the active map using the specified request.
@@ -69,6 +55,16 @@ namespace Wave.Searchability.Services
         /// </returns>
         [OperationContract]
         SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, int threshold);
+
+        /// <summary>
+        ///     Asynchronously searches the active map using the specified request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>
+        ///     Returns a <see cref="Task{SearchableResponse}" /> representing the results.
+        /// </returns>
+        [OperationContract]
+        Task<SearchableResponse> FindAsync(MapSearchServiceRequest request);
 
         #endregion
     }
@@ -129,24 +125,11 @@ namespace Wave.Searchability.Services
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>
-        ///     Returns a <see cref="IAsyncResult" /> representing the results.
+        ///     Returns a <see cref="Task{SearchableResponse}" /> representing the results.
         /// </returns>
-        public IAsyncResult BeginFindAsync(MapSearchServiceRequest request)
+        public Task<SearchableResponse> FindAsync(MapSearchServiceRequest request)
         {
-            return base.BeginRequestAsync(request, ar => this.EndFindAsync(ar));
-        }
-
-
-        /// <summary>
-        ///     Ends the asynchronous search.
-        /// </summary>
-        /// <param name="result">The result.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        public SearchableResponse EndFindAsync(IAsyncResult result)
-        {
-            return base.EndRequestAsync(result);
+            return Task.Factory.StartNew(() => this.Find(request));
         }
 
         #endregion
