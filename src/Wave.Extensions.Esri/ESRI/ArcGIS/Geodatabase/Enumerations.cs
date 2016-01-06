@@ -24,7 +24,7 @@
         ///     This is the equals operator for partial equality comparisons. The parameter value
         ///     should be a string to match with percent characters used as wildcards.
         /// </summary>
-        Like,
+        Contains,
 
         /// <summary>
         ///     This is the equals operator for partial equality comparisons. The parameter value

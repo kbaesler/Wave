@@ -1,19 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 using ESRI.ArcGIS.Geodatabase;
 
-namespace Wave.Searchability.Data.Configuration
+namespace Wave.Searchability.Data
 {
-    public class SearchServiceConfiguration
+    [DataContract(Name = "request")]
+    public class SearchableRequest
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SearchServiceConfiguration" /> class.
+        ///     Initializes a new instance of the <see cref="SearchableRequest" /> class.
         /// </summary>
-        public SearchServiceConfiguration()
+        public SearchableRequest()
         {
+            this.Items = new List<SearchableSet>();
             this.Threshold = 200;
+            this.ComparisonOperator = ComparisonOperator.Like;
+            this.LogicalOperator = LogicalOperator.Or;
         }
 
         #endregion
@@ -26,7 +31,17 @@ namespace Wave.Searchability.Data.Configuration
         /// <value>
         ///     The comparison operator.
         /// </value>
+        [DataMember(Name = "comparisonOperator")]
         public ComparisonOperator ComparisonOperator { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sets.
+        /// </summary>
+        /// <value>
+        ///     The sets.
+        /// </value>
+        [DataMember(Name = "items")]
+        public IEnumerable<SearchableSet> Items { get; set; }
 
         /// <summary>
         ///     Gets or sets the keywords.
@@ -34,6 +49,7 @@ namespace Wave.Searchability.Data.Configuration
         /// <value>
         ///     The keywords.
         /// </value>
+        [DataMember(Name = "keywords")]
         public string Keywords { get; set; }
 
         /// <summary>
@@ -42,15 +58,8 @@ namespace Wave.Searchability.Data.Configuration
         /// <value>
         ///     The logical operator.
         /// </value>
+        [DataMember(Name = "logicalOperator")]
         public LogicalOperator LogicalOperator { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the sets.
-        /// </summary>
-        /// <value>
-        ///     The sets.
-        /// </value>
-        public List<SearchableSet> Sets { get; set; }
 
         /// <summary>
         ///     Gets or sets the threshold.
@@ -58,6 +67,7 @@ namespace Wave.Searchability.Data.Configuration
         /// <value>
         ///     The threshold.
         /// </value>
+        [DataMember(Name = "threshold")]
         public int Threshold { get; set; }
 
         #endregion

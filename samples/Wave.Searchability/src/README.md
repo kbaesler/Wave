@@ -1,7 +1,7 @@
 Search Services for ArcMap
 ========================================================
 
-A set of WCF services that are hosted within an ArcMap extensions that provide text-based and map-based search services. Theses services allow callers to search the data in the current context of either the ArcMap or ArcCatalog using predefined or dynamic searches. 
+A set of WCF services that are hosted within an ArcMap extensions that provide text-based and map-based search services. Theses services allow callers to search the data in the current context of ArcMap using predefined or dynamic searches. 
 
 Text-based Search Service
 ---------------------------

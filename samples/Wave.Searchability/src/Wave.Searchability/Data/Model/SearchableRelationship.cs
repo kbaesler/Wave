@@ -1,10 +1,12 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Wave.Searchability.Data
 {
     /// <summary>
     ///     Provides a data contract that represents a searchable relationship.
     /// </summary>
+    [DebuggerDisplay("Name = {Name}")]
     [DataContract(Name = "relationship", Namespace = "")]
     public class SearchableRelationship : SearchableItem
     {

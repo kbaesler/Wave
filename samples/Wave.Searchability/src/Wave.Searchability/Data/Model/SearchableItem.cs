@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 
 namespace Wave.Searchability.Data
@@ -8,6 +9,7 @@ namespace Wave.Searchability.Data
     /// <summary>
     ///     Provides a data contract for representing a searchable item and it's corresponding fields and relationships.
     /// </summary>
+    [DebuggerDisplay("Name = {Name}")]
     [DataContract(Name = "item", Namespace = "")]
     public abstract class SearchableItem : Searchable
     {
