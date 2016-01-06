@@ -241,18 +241,18 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         ///     Creates the correct SQL formatted expression for the given parameters.
         /// </summary>
         /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="criteria">The criteria.</param>
+        /// <param name="keywords">The criteria.</param>
         /// <param name="field">The field.</param>
         /// <returns>
         ///     The formatted SQL expression; otherwise <see cref="String.Empty" />.
         /// </returns>
-        private string FormatExpression(ComparisonOperator comparisonOperator, string criteria, IField field)
+        private string FormatExpression(ComparisonOperator comparisonOperator, string keywords, IField field)
         {
             StringBuilder expression = new StringBuilder();
             expression.Append("(");
 
-            bool isValueNull = string.IsNullOrEmpty(criteria);
-            string value = (isValueNull) ? "Null" : criteria;
+            bool isValueNull = string.IsNullOrEmpty(keywords);
+            string value = (isValueNull) ? "Null" : keywords;
 
             string formattedValue = this.GetFormattedValue(field, value, isValueNull);
             if (string.IsNullOrEmpty(formattedValue))
