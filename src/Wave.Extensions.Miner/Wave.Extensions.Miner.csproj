@@ -70,7 +70,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
-    <DocumentationFile>..\bin\x86\Debug\Wave.Extensions.Miner.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Wave.Extensions.Miner.XML</DocumentationFile>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
