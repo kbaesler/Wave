@@ -90,13 +90,16 @@ namespace Miner.Interop
         {
             return this.Initialize(esriLicensedProduct) && this.Initialize(mmLicensedProduct);
         }
-
+        
         /// <summary>
         ///     Checks in all ArcGIS and ArcFM licenses that have been checked out.
         /// </summary>
         public void Shutdown()
         {
             this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+
         }
 
         #endregion

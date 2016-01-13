@@ -2,7 +2,7 @@
 
 #if ARCFM_10 
 using Miner.Interop;
-#endif 
+#endif
 
 namespace Miner.Interop.Internal
 {
@@ -46,7 +46,7 @@ namespace Miner.Interop.Internal
 
         #endregion
 
-        #region Protected Methods
+        #region Public Methods
 
         /// <summary>
         ///     Check in extension when it is no longer needed.
@@ -55,10 +55,34 @@ namespace Miner.Interop.Internal
         /// <returns>
         ///     Returns the <see cref="mmLicenseStatus" /> representing the status of the extension.
         /// </returns>
-        protected override mmLicenseStatus CheckInExtension(mmLicensedExtensionCode licensedExtension)
+        public override mmLicenseStatus CheckInExtension(mmLicensedExtensionCode licensedExtension)
         {
-            return _AppInit.CheckInExtension(licensedExtension);
+            if (_AppInit.IsExtensionCheckedOut(licensedExtension))
+                return _AppInit.CheckInExtension(licensedExtension);
+
+            return mmLicenseStatus.mmLicenseCheckedIn;
         }
+
+        /// <summary>
+        ///     Initializes or (checks out) the extension that correspond to the specified extension code.
+        /// </summary>
+        /// <param name="licensedProduct">The product code.</param>
+        /// <param name="licensedExtension">The extension code.</param>
+        /// <returns>
+        ///     Returns the <see cref="mmLicenseStatus" /> representing the status of the extension.
+        /// </returns>
+        public override mmLicenseStatus CheckOutExtension(mmLicensedProductCode licensedProduct, mmLicensedExtensionCode licensedExtension)
+        {
+            mmLicenseStatus extensionStatus = _AppInit.IsExtensionCodeAvailable(licensedProduct, licensedExtension);
+            if (extensionStatus == mmLicenseStatus.mmLicenseAvailable)
+                extensionStatus = _AppInit.CheckOutExtension(licensedExtension);
+
+            return extensionStatus;
+        }
+
+        #endregion
+
+        #region Protected Methods
 
         /// <summary>
         ///     Releases unmanaged and - optionally - managed resources.
@@ -79,23 +103,6 @@ namespace Miner.Interop.Internal
         }
 
         /// <summary>
-        ///     Initializes or (checks out) the extension that correspond to the specified extension code.
-        /// </summary>
-        /// <param name="licensedProduct">The product code.</param>
-        /// <param name="licensedExtension">The extension code.</param>
-        /// <returns>
-        ///     Returns the <see cref="mmLicenseStatus" /> representing the status of the extension.
-        /// </returns>
-        protected override mmLicenseStatus InitializeExtension(mmLicensedProductCode licensedProduct, mmLicensedExtensionCode licensedExtension)
-        {
-            mmLicenseStatus extensionStatus = _AppInit.IsExtensionCodeAvailable(licensedProduct, licensedExtension);
-            if (extensionStatus == mmLicenseStatus.mmLicenseAvailable)
-                extensionStatus = _AppInit.CheckOutExtension(licensedExtension);
-
-            return extensionStatus;
-        }
-
-        /// <summary>
         ///     Initializes or (checks out) the product licenses that correspond to the specified product code.
         /// </summary>
         /// <param name="licensedProduct">The product code.</param>
@@ -108,7 +115,7 @@ namespace Miner.Interop.Internal
             if (statusCode == mmLicenseStatus.mmLicenseAvailable)
             {
                 statusCode = _AppInit.Initialize(licensedProduct);
-                if (this.IsLicenseInitialized(statusCode))
+                if (this.IsProductInitialized(statusCode))
                 {
                     this.InitializedProduct = _AppInit.InitializedProduct();
                 }
@@ -118,13 +125,26 @@ namespace Miner.Interop.Internal
         }
 
         /// <summary>
+        ///     Determines whether the license has been initialized based on the status.
+        /// </summary>
+        /// <param name="licenseStatus">The license status.</param>
+        /// <returns>
+        ///     <c>true</c> if the license has been initialized based on the status; otherwise, <c>false</c>.
+        /// </returns>
+        protected override bool IsExtensionInitialized(mmLicenseStatus licenseStatus)
+        {
+            return (licenseStatus == mmLicenseStatus.mmLicenseAlreadyInitialized ||
+                    licenseStatus == mmLicenseStatus.mmLicenseCheckedOut);
+        }
+
+        /// <summary>
         ///     Determines whether the product has been initialized based on the status.
         /// </summary>
         /// <param name="licenseStatus">The license status.</param>
         /// <returns>
         ///     <c>true</c> if the license has been initialized based on the status; otherwise, <c>false</c>.
         /// </returns>
-        protected override bool IsLicenseInitialized(mmLicenseStatus licenseStatus)
+        protected override bool IsProductInitialized(mmLicenseStatus licenseStatus)
         {
             return (licenseStatus == mmLicenseStatus.mmLicenseAlreadyInitialized ||
                     licenseStatus == mmLicenseStatus.mmLicenseCheckedOut);
