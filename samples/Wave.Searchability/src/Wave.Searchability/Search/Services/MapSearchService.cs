@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Runtime.Serialization;
+using System.ServiceModel;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -16,7 +17,6 @@ namespace Wave.Searchability.Services
     [ServiceContract]
     public interface IMapSearchService : ISearchableService<MapSearchServiceRequest>
     {
-
     }
 
     /// <summary>
@@ -31,33 +31,37 @@ namespace Wave.Searchability.Services
         #region Protected Methods
 
         /// <summary>
-        ///     Adds the specified row.
+        ///     Adds the specified row (or feature) to the response.
         /// </summary>
-        /// <param name="row">The row.</param>
-        /// <param name="layer">The layer.</param>
+        /// <param name="row">The row or feature.</param>
+        /// <param name="layer">The feature layer for the row (when the row is a feature class).</param>
+        /// <param name="isFeatureClass">if set to <c>true</c> when the row is a feature class.</param>
         /// <param name="request">The request.</param>
-        protected override void Add(IRow row, IFeatureLayer layer, MapSearchServiceRequest request)
+        protected override void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, MapSearchServiceRequest request)
         {
-            var feature = (IFeature) row;
-            var relOp = (IRelationalOperator) Document.ActiveView.Extent.Envelope;
-
-            switch (request.Extent)
+            if (isFeatureClass)
             {
-                case MapSearchServiceExtent.WithinCurrent:
-                    if (relOp.Within(feature.Shape))
-                        base.Add(row, layer, request);
+                var feature = (IFeature) row;
+                var relOp = (IRelationalOperator) Document.ActiveView.Extent.Envelope;
 
-                    break;
+                switch (request.Extent)
+                {
+                    case MapSearchServiceExtent.WithinCurrentExtent:
+                        if (relOp.Within(feature.Shape))
+                            base.Add(row, layer, true, request);
 
-                case MapSearchServiceExtent.WithinCurrentOrOverlapping:
-                    if (relOp.Within(feature.Shape) || relOp.Overlaps(feature.Shape))
-                        base.Add(row, layer, request);
+                        break;
 
-                    break;
+                    case MapSearchServiceExtent.WithinCurrentOrOverlappingExtent:
+                        if (relOp.Within(feature.Shape) || relOp.Overlaps(feature.Shape))
+                            base.Add(row, layer, true, request);
 
-                default:
-                    base.Add(row, layer, request);
-                    break;
+                        break;
+
+                    default:
+                        base.Add(row, layer, true, request);
+                        break;
+                }
             }
         }
 
@@ -67,7 +71,8 @@ namespace Wave.Searchability.Services
     /// <summary>
     ///     The requests that are issued to the searchable service.
     /// </summary>
-    public class MapSearchServiceRequest : SearchableRequest
+    [DataContract(Name = "request")]
+    public class MapSearchServiceRequest : TextSearchServiceRequest
     {
         #region Constructors
 
@@ -76,7 +81,7 @@ namespace Wave.Searchability.Services
         /// </summary>
         public MapSearchServiceRequest()
         {
-            this.Extent = MapSearchServiceExtent.Any;
+            this.Extent = MapSearchServiceExtent.WithinAnyExtent;
         }
 
         #endregion
@@ -89,6 +94,7 @@ namespace Wave.Searchability.Services
         /// <value>
         ///     The extent.
         /// </value>
+        [DataMember(Name = "extent")]
         public MapSearchServiceExtent Extent { get; set; }
 
         #endregion
@@ -100,18 +106,18 @@ namespace Wave.Searchability.Services
     public enum MapSearchServiceExtent
     {
         /// <summary>
-        ///     Any extent.
+        ///     Within any extent.
         /// </summary>
-        Any = 0,
+        WithinAnyExtent = 0,
 
         /// <summary>
-        ///     The within the current extent.
+        ///     Within the current extent.
         /// </summary>
-        WithinCurrent = 1,
+        WithinCurrentExtent = 1,
 
         /// <summary>
-        ///     The within current or overlapping extents.
+        ///     Within current or overlapping extent.
         /// </summary>
-        WithinCurrentOrOverlapping = 2
+        WithinCurrentOrOverlappingExtent = 2
     }
 }

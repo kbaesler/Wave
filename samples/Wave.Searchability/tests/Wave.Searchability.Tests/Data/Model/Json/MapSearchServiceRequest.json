@@ -1,4 +1,5 @@
 ﻿{
+    "extent": 1,
     "comparisonOperator": 0,
     "items": [
         {
@@ -8,15 +9,28 @@
                 {
                     "value": null,
                     "visible": false,
-                    "name": "Operator"
+                    "name": "CreationUser"
                 }
             ],
             "relationships": [
             ],
             "name": "NonControllableGasValve"
+        },
+        {
+            "nameAsClassModelName": false,
+            "fields": [
+                {
+                    "value": null,
+                    "visible": false,
+                    "name": "CreationUser"
+                }
+            ],
+            "relationships": [
+            ],
+            "name": "TransformerUnit"
         }
     ],
-    "keywords": "kellyl",
+    "keyword": "kellyl",
     "logicalOperator": 1,
     "threshold": 200
 }

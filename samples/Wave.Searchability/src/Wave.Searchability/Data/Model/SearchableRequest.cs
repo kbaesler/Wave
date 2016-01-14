@@ -5,15 +5,15 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Wave.Searchability.Data
 {
-    [DataContract]
-    public class SearchableRequest
+    [DataContract(Name = "request")]
+    public abstract class SearchableRequest
     {
         #region Constructors
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SearchableRequest" /> class.
         /// </summary>
-        public SearchableRequest()
+        protected SearchableRequest()
         {
             this.Items = new List<SearchableItem>();
             this.Threshold = 200;
@@ -44,13 +44,13 @@ namespace Wave.Searchability.Data
         public List<SearchableItem> Items { get; set; }
 
         /// <summary>
-        ///     Gets or sets the keywords.
+        ///     Gets or sets the keyword.
         /// </summary>
         /// <value>
-        ///     The keywords.
+        ///     The keyword.
         /// </value>
-        [DataMember(Name = "keywords")]
-        public string Keywords { get; set; }
+        [DataMember(Name = "keyword")]
+        public string Keyword { get; set; }
 
         /// <summary>
         ///     Gets or sets the logical operator.

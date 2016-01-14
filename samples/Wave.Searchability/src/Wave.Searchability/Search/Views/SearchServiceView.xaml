@@ -68,10 +68,11 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="75" />
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0"
-                     Text="{Binding Keywords}" />
+            <controls:InteropTextBox Grid.Column="0"
+                     Text="{Binding Keyword}" />
             <Button Grid.Column="2"
-                    Content="Search" />
+                    Content="Search" 
+                    Command="{Binding SearchCommand}"/>
         </Grid>
     </StackPanel>
 </UserControl>

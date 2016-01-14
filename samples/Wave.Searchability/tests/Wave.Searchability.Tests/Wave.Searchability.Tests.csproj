@@ -186,8 +186,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Data\Model\Json\searchable.request.json" />
-    <None Include="Data\Model\Json\searchable.response.json" />
+    <None Include="Data\Model\Json\MapSearchServiceRequest.json" />
+    <None Include="Data\Model\Json\TextSearchServiceRequest.json" />
+    <None Include="Data\Model\Json\MapSearchServiceResponse.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
@@ -18,6 +17,7 @@ using Miner.Framework;
 using Miner.Interop;
 
 using Wave.Searchability.Data;
+using System.Threading;
 
 namespace Wave.Searchability.Services
 {
@@ -70,7 +70,7 @@ namespace Wave.Searchability.Services
     ///     specified in the configurations.
     /// </summary>
     /// <typeparam name="TSearchableRequest">The type of the searchable request.</typeparam>
-    public abstract class SearchableService<TSearchableRequest> : ISearchableService<TSearchableRequest>
+    public class SearchableService<TSearchableRequest> : ISearchableService<TSearchableRequest>
         where TSearchableRequest : SearchableRequest, new()
     {
         #region Protected Properties
@@ -87,10 +87,10 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        ///     Gets or sets the response.
+        /// Gets or sets the concurrent dictionary.
         /// </summary>
         /// <value>
-        ///     The response.
+        /// The concurrent dictionary.
         /// </value>
         protected ConcurrentDictionary<string, ConcurrentBag<int>> ConcurrentDictionary { get; set; }
 
@@ -153,9 +153,26 @@ namespace Wave.Searchability.Services
 
             this.ConcurrentDictionary = new ConcurrentDictionary<string, ConcurrentBag<int>>();
 
-            Parallel.Invoke(() => this.SearchLayers(request, layers), () => this.SearchTables(request, tables, layers));
 
-            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+            try
+            {
+                var source = new CancellationTokenSource();
+
+                Parallel.Invoke(new ParallelOptions()
+                {
+                    CancellationToken = source.Token
+                }, () =>
+                    this.SearchLayers(request, layers), () =>
+                        this.SearchTables(request, tables, layers));
+                
+                return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+            }
+            catch (AggregateException e)
+            {
+                Log.Error(this, e.Flatten());
+            }
+
+            return null;
         }
 
         #endregion
@@ -163,14 +180,15 @@ namespace Wave.Searchability.Services
         #region Protected Methods
 
         /// <summary>
-        ///     Adds the specified row.
+        ///     Adds the specified row (or feature) to the response.
         /// </summary>
-        /// <param name="row">The row.</param>
-        /// <param name="layer">The layer.</param>
+        /// <param name="row">The row or feature.</param>
+        /// <param name="layer">The feature layer for the row (when the row is a feature class).</param>
+        /// <param name="isFeatureClass">if set to <c>true</c> when the row is a feature class.</param>
         /// <param name="request">The request.</param>
-        protected virtual void Add(IRow row, IFeatureLayer layer, TSearchableRequest request)
+        protected virtual void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, TSearchableRequest request)
         {
-            var name = ((IDataset) layer.FeatureClass).Name;
+            var name = (layer == null) ? ((IDataset) row.Table).Name : ((IDataset) layer.FeatureClass).Name;
 
             this.ConcurrentDictionary.AddOrUpdate(name, s =>
             {
@@ -192,29 +210,24 @@ namespace Wave.Searchability.Services
         /// </summary>
         /// <param name="searchClass">The build class.</param>
         /// <param name="request">The request.</param>
-        /// <param name="fields">The fields.</param>
+        /// <param name="item">The item.</param>
         /// <returns>
         ///     A <see cref="IQueryFilter" /> for the corresponding fields and values; otherwise null when no fields are present.
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
-        /// <exception cref="IndexOutOfRangeException">The table doesn't have a field name.</exception>
-        protected virtual IQueryFilter Compile(IObjectClass searchClass, TSearchableRequest request, ObservableCollection<SearchableField> fields)
+        protected virtual IQueryFilter Compile(IObjectClass searchClass, TSearchableRequest request, SearchableItem item)
         {
-            if (fields == null) return null;
-            if (searchClass == null) return null;
-
             // When the wild card is specified obtain all of the fields.
-            if (fields.Count(w => w.Name.Equals(Searchable.Any)) > 0)
+            if (item.Fields.Any(f => f.Name.Equals(Searchable.Any)))
             {
                 // Build the query filter based on all of the fields.
-                return searchClass.CreateQuery(request.Keywords, request.ComparisonOperator, request.LogicalOperator);
+                return searchClass.CreateQuery(request.Keyword, request.ComparisonOperator, request.LogicalOperator);
             }
 
             StringBuilder whereClause = new StringBuilder();
             bool tagOpen = false;
 
             // We need to keep the OR values grouped so the results are correct.
-            foreach (SearchableField sf in fields.OrderBy(f => !f.Visible && !string.IsNullOrEmpty(f.Value)))
+            foreach (SearchableField sf in item.Fields.OrderBy(f => !f.Visible && !string.IsNullOrEmpty(f.Value)))
             {
                 // Ensure that the field exists.
                 int index = searchClass.FindField(sf.Name);
@@ -240,7 +253,7 @@ namespace Wave.Searchability.Services
                 else
                 {
                     // Use the keyword.
-                    value = request.Keywords;
+                    value = request.Keyword;
                     logicalOperator = LogicalOperator.Or;
                 }
 
@@ -263,16 +276,16 @@ namespace Wave.Searchability.Services
                     else if (!tagOpen && whereClause.Length == 0 && logicalOperator == LogicalOperator.Or)
                     {
                         // Avoid unecessary parentheses.
-                        if (fields.Count > 1)
+                        if (item.Fields.Count > 1)
                         {
                             tagOpen = true;
                             whereClause.Append("("); // Add the opening parentheses.
                         }
                     }
-                }
 
-                // Append to the end of the WHERE clause.
-                whereClause.Append(filter);
+                    // Append to the end of the WHERE clause.
+                    whereClause.Append(filter.WhereClause);
+                }               
             }
 
             // End the parentheses.
@@ -355,7 +368,7 @@ namespace Wave.Searchability.Services
                     if (obj.Class == layerClass)
                     {
                         // Add the related object layer.
-                        this.Add(obj, layer, request);
+                        this.Add(obj, layer, true, request);
                     }
                     else
                     {
@@ -416,7 +429,7 @@ namespace Wave.Searchability.Services
         private void SearchLayer(IFeatureLayer layer, SearchableLayer item, TSearchableRequest request)
         {
             IFeatureClass searchClass = layer.FeatureClass;
-            var filter = this.Compile(searchClass, request, item.Fields);
+            var filter = this.Compile(searchClass, request, item);
 
             if (filter == null || string.IsNullOrEmpty(filter.WhereClause))
                 return;
@@ -433,7 +446,7 @@ namespace Wave.Searchability.Services
                 if (this.CancellationPending)
                     return;
 
-                this.Add(feature, layer, request);
+                this.Add(feature, layer, true, request);
             }
         }
 
@@ -447,8 +460,6 @@ namespace Wave.Searchability.Services
             var items = request.Items.OfType<SearchableLayer>().ToList();
             items.AsParallel().ForAll((item) =>
             {
-                Debug.WriteLine(item.Name, "Layer");
-
                 foreach (var l in layers.Where(o => ((IDataset) o.FeatureClass).Name.Equals(item.Name) || (item.NameAsClassModelName && o.FeatureClass.IsAssignedClassModelName(item.Name))))
                 {
                     var layer = l;
@@ -473,7 +484,7 @@ namespace Wave.Searchability.Services
         /// <param name="layers">The layers.</param>
         private void SearchRelationship(IObjectClass searchClass, IFeatureLayer layer, SearchableItem item, SearchableRelationship relationship, TSearchableRequest request, List<IFeatureLayer> layers)
         {
-            IQueryFilter filter = this.Compile(searchClass, request, relationship.Fields);
+            IQueryFilter filter = this.Compile(searchClass, request, relationship);
             if (filter == null || string.IsNullOrEmpty(filter.WhereClause))
                 return;
 
@@ -499,22 +510,24 @@ namespace Wave.Searchability.Services
         {
             var searchClass = (IObjectClass) table;
 
-            var filter = this.Compile(searchClass, request, item.Fields);
+            var filter = this.Compile(searchClass, request, item);
             if (filter == null || string.IsNullOrEmpty(filter.WhereClause))
                 return;
-
-            if (!item.Relationships.Any())
-            {
-                item.Relationships.Add(new SearchableRelationship());
-            }
 
             foreach (var row in table.Fetch(filter))
             {
                 if (this.CancellationPending) return;
 
-                IObject o = (IObject) row;
-                item.Relationships.AsParallel().ForAll((relationship) =>
-                    this.Attach(o, null, relationship.Path, relationship.Path.Count - 1, layers, request));
+                if (!item.Relationships.Any())
+                {
+                    this.Add(row, null, false, request);
+                }
+                else
+                {
+                    IObject o = (IObject) row;
+                    item.Relationships.AsParallel().ForAll((relationship) =>
+                        this.Attach(o, null, relationship.Path, relationship.Path.Count - 1, layers, request));
+                }
             }
         }
 
@@ -529,8 +542,6 @@ namespace Wave.Searchability.Services
             var items = request.Items.OfType<SearchableTable>().ToList();
             items.AsParallel().ForAll((item) =>
             {
-                Debug.WriteLine(item.Name, "Table");
-
                 foreach (var t in tables.Where(o => ((IDataset) o).Name.Equals(item.Name) || (item.NameAsClassModelName && o.IsAssignedClassModelName(item.Name))))
                 {
                     var table = t;

@@ -5,7 +5,7 @@ using System.Windows;
 namespace Wave.Searchability.Data
 {
     [DebuggerDisplay("Name = {Name}, Value = {Value}")]
-    [DataContract(Name = "search", Namespace = "")]
+    [DataContract]
     public abstract class Searchable : Observable
     {
         #region Constants

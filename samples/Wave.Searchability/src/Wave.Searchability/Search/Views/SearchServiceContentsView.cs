@@ -68,8 +68,7 @@ namespace Wave.Searchability.Views
                 var eventAggregator = bootstrapContainer.GetService<IEventAggregator>();
                 if (eventAggregator != null)
                 {
-                    var searchService = bootstrapContainer.GetService<IMapSearchService>();
-                    var dataContext = new SearchServiceViewModel(eventAggregator, searchService);
+                    var dataContext = new SearchServiceViewModel(eventAggregator);
 
                     _ElementHost = new ElementHost();
                     _ElementHost.Child = new SearchServiceView() {DataContext = dataContext};

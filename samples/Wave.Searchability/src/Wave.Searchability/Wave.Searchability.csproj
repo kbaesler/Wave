@@ -207,6 +207,7 @@
     <Compile Include="Search\Extensions\SearchServiceExtension.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Search\Services\TextSearchService.cs" />
     <Compile Include="Search\Views\SearchServiceContentsView.cs" />
     <Compile Include="Search\Views\SearchServiceView.xaml.cs">
       <DependentUpon>SearchServiceView.xaml</DependentUpon>

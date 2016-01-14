@@ -19,6 +19,7 @@ using Miner.Framework;
 
 using Wave.Searchability.Data;
 using Wave.Searchability.Services;
+using Wave.Searchability.Views;
 
 namespace Wave.Searchability.Extensions
 {
@@ -71,12 +72,20 @@ namespace Wave.Searchability.Extensions
         {
             base.Startup(ref initializationData);
 
+            var eventAggregator = this.GetService<IEventAggregator>();
+            var searchService = this.GetService<IMapSearchService>();
+
             Document.OpenStoredDisplay += (sender, e) =>
             {
-                var sets = GetAllSets(Document.ActiveMap);
-                var eventAggregator = GetService<IEventAggregator>();
+                var sets = this.GetAllSets(Document.ActiveMap);
                 eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableSet>>>().Publish(sets);
             };
+
+            eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Subscribe((request) =>
+            {
+                var response = searchService.Find(request, Document.ActiveMap);
+                eventAggregator.GetEvent<CompositePresentationEvent<SearchableResponse>>().Publish(response);
+            });
         }
 
         #endregion
@@ -190,15 +199,10 @@ namespace Wave.Searchability.Extensions
             {
                 var item = new SearchableLayer(((IDataset) layer.FeatureClass).Name)
                 {
-                    LayerDefinition = true
+                    LayerDefinition = true,
+                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()})
                 };
-
-                IEnumerable<string> names = layer.FeatureClass.Fields.AsEnumerable().Select(o => o.Name);
-                foreach (string name in names)
-                {
-                    item.Fields.Add(new SearchableField(name));
-                }
-
+                
                 if (!items.ContainsKey(item.Name))
                     items.Add(item.Name, item);
             }
@@ -218,18 +222,13 @@ namespace Wave.Searchability.Extensions
             var tables = new SearchableSet("Tables");
             var items = new SortedList(StringComparer.Create(CultureInfo.CurrentCulture, true));
 
-            foreach (ITable table in map.GetTables())
+            foreach (ITable table in map.GetTables().DistinctBy(o => ((IDataset)o).Name))
             {
                 var item = new SearchableTable(((IDataset) table).Name)
                 {
-                    Relationships = new ObservableCollection<SearchableRelationship>(new[] {new SearchableRelationship()})
+                    Relationships = new ObservableCollection<SearchableRelationship>(new[] {new SearchableRelationship()}),
+                    Fields = new ObservableCollection<SearchableField>(new[] { new SearchableField() })
                 };
-
-                IEnumerable<string> names = table.Fields.AsEnumerable().Select(o => o.Name);
-                foreach (string name in names)
-                {
-                    item.Fields.Add(new SearchableField(name));
-                }
 
                 if (!items.ContainsKey(item.Name))
                     items.Add(item.Name, item);
