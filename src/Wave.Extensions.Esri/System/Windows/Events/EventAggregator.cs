@@ -12,8 +12,6 @@ namespace System.Windows
         #region Fields
 
         private readonly Dictionary<Type, EventBase> _Events = new Dictionary<Type, EventBase>();
-        // Captures the sync context for the UI thread when constructed on the UI thread 
-        // in a platform agnositc way so it can be used for UI thread dispatching
         private readonly SynchronizationContext _SyncContext = SynchronizationContext.Current;
 
         #endregion

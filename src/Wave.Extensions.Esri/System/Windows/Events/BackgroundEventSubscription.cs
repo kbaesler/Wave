@@ -44,7 +44,7 @@ namespace System.Windows
         /// <param name="argument">The payload to pass <paramref name="action" /> while invoking it.</param>
         public override void InvokeAction(Action<TPayload> action, TPayload argument)
         {
-            ThreadPool.QueueUserWorkItem( (o) => action(argument) );
+            ThreadPool.QueueUserWorkItem((o) => action(argument));
         }
 
         #endregion

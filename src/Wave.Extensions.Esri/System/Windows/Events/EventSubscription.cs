@@ -39,12 +39,12 @@ namespace System.Windows
             if (actionReference == null)
                 throw new ArgumentNullException("actionReference");
             if (!(actionReference.Target is Action<TPayload>))
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, "Invalid Delegate Reference Type Exception: {0}", typeof(Action<TPayload>).FullName), "actionReference");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, "Invalid Delegate Reference Type Exception: {0}", typeof (Action<TPayload>).FullName), "actionReference");
 
             if (filterReference == null)
                 throw new ArgumentNullException("filterReference");
             if (!(filterReference.Target is Predicate<TPayload>))
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, "Invalid Delegate Reference Type Exception: {0}", typeof(Predicate<TPayload>).FullName), "filterReference");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, "Invalid Delegate Reference Type Exception: {0}", typeof (Predicate<TPayload>).FullName), "filterReference");
 
             _ActionReference = actionReference;
             _FilterReference = filterReference;
