@@ -11,7 +11,7 @@
     <AssemblyName>Wave.Searchability</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -108,8 +109,8 @@
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.5\lib\net35-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Miner.Controls, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
@@ -151,10 +152,6 @@
     <Reference Include="Miner.Theme.Amalgamate, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Windows, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Windows.ArcGIS, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -165,24 +162,34 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Threading, Version=1.0.2856.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\TaskParallelLibrary.1.0.2856.0\lib\Net35\System.Threading.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wave.Extensions.Esri, Version=9.3.37.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Wave.9.3.0.1.37-alpha\lib\net35\Wave.Extensions.Esri.dll</HintPath>
+    <Reference Include="Wave.Extensions.Esri, Version=9.3.0.47, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.9.3.0.1.47-alpha\lib\net35\Wave.Extensions.Esri.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wave.Extensions.Miner, Version=9.3.37.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Wave.9.3.0.1.37-alpha\lib\net35\Wave.Extensions.Miner.dll</HintPath>
+    <Reference Include="Wave.Extensions.Miner, Version=9.3.0.47, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.9.3.0.1.47-alpha\lib\net35\Wave.Extensions.Miner.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net35\WPFToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net35\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Extensions\SearchableResponseExtensions.cs" />
@@ -190,21 +197,36 @@
     <Compile Include="Data\Model\SearchableResponse.cs" />
     <Compile Include="Data\Model\SearchableSet.cs" />
     <Compile Include="Data\Model\SearchableItem.cs" />
+    <Compile Include="Data\Model\SearchableLayer.cs" />
     <Compile Include="Data\Model\SearchableTable.cs" />
     <Compile Include="Data\Model\SearchableRelationship.cs" />
     <Compile Include="Data\Model\SearchableField.cs" />
     <Compile Include="Data\Model\Searchable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\LogInfo.cs" />
-    <Compile Include="Search\Extensions\MapSearchServiceExtension.cs" />
-    <Compile Include="Search\Views\MapSearchServiceViewModel.cs" />
+    <Compile Include="Search\Extensions\SearchServiceExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Search\Views\SearchServiceContentsView.cs" />
+    <Compile Include="Search\Views\SearchServiceView.xaml.cs">
+      <DependentUpon>SearchServiceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Search\Services\MapSearchService.cs" />
-    <Compile Include="Search\Services\SearchableService.cs" />
+    <Compile Include="Search\Services\Abstract\SearchableService.cs" />
+    <Compile Include="Search\Views\SearchServiceViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Model\model.searchable.request.json" />
-    <None Include="Data\Model\model.searchable.response.json" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Search\Views\SearchServiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

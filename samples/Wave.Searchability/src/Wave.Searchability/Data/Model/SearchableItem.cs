@@ -123,6 +123,13 @@ namespace Wave.Searchability.Data
 
         #endregion
 
+        #region Internal Properties
+
+        [IgnoreDataMember]
+        internal bool IsChecked { get; set; }
+
+        #endregion
+
         #region Private Methods
 
         /// <summary>

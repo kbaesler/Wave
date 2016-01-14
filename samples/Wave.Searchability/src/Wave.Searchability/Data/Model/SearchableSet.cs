@@ -14,7 +14,7 @@ namespace Wave.Searchability.Data
     {
         #region Fields
 
-        private ObservableCollection<SearchableTable> _Tables;
+        private ObservableCollection<SearchableItem> _Items;
 
         #endregion
 
@@ -27,18 +27,18 @@ namespace Wave.Searchability.Data
         public SearchableSet(string name)
             : base(name)
         {
-            _Tables = new ObservableCollection<SearchableTable>();
+            _Items = new ObservableCollection<SearchableItem>();
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SearchableSet" /> class.
+        /// Initializes a new instance of the <see cref="SearchableSet" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="tables">The tables.</param>
-        public SearchableSet(string name, params SearchableTable[] tables)
+        /// <param name="items">The items.</param>
+        public SearchableSet(string name, params SearchableItem[] items)
             : this(name)
         {
-            _Tables.AddRange(tables);
+            _Items.AddRange(items);
         }
 
         #endregion
@@ -46,20 +46,20 @@ namespace Wave.Searchability.Data
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the tables.
+        /// Gets or sets the items.
         /// </summary>
         /// <value>
-        ///     The tables.
+        /// The items.
         /// </value>
-        [DataMember(Name = "tables")]
-        public ObservableCollection<SearchableTable> Tables
+        [DataMember(Name = "items")]
+        public ObservableCollection<SearchableItem> Items
         {
-            get { return _Tables; }
+            get { return _Items; }
             set
             {
-                _Tables = value;
+                _Items = value;
 
-                base.OnPropertyChanged("tables");
+                base.OnPropertyChanged("Items");
             }
         }
 

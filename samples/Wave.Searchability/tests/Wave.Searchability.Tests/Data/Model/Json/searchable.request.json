@@ -1,0 +1,22 @@
+﻿{
+    "comparisonOperator": 0,
+    "items": [
+        {
+            "layerDefinition": false,
+            "nameAsClassModelName": false,
+            "fields": [
+                {
+                    "value": null,
+                    "visible": false,
+                    "name": "Operator"
+                }
+            ],
+            "relationships": [
+            ],
+            "name": "NonControllableGasValve"
+        }
+    ],
+    "keywords": "kellyl",
+    "logicalOperator": 1,
+    "threshold": 200
+}

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ServiceModel;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -16,47 +14,9 @@ namespace Wave.Searchability.Services
     ///     A service contract for searching the active map session for table(s), class(es) and relationship(s).
     /// </summary>
     [ServiceContract]
-    public interface IMapSearchService
+    public interface IMapSearchService : ISearchableService<MapSearchServiceRequest>
     {
-        #region Public Methods
 
-        /// <summary>
-        ///     Searches the active map using the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>Returns a <see cref="SearchableResponse" /> representing the results.</returns>
-        [OperationContract]
-        SearchableResponse Find(MapSearchServiceRequest request);
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <param name="extent">The extent.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        [OperationContract]
-        SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, int threshold, MapSearchServiceExtent extent);
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        [OperationContract]
-        SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, int threshold);        
-
-        #endregion
     }
 
     /// <summary>
@@ -65,53 +25,9 @@ namespace Wave.Searchability.Services
     ///     When tables are searched, matches will be linked to the feature that participates in a relationship with the
     ///     matched non-spatial row.
     /// </summary>
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
     public sealed class MapSearchService : SearchableService<MapSearchServiceRequest>, IMapSearchService
     {
-        #region IMapSearchService Members
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <param name="extent">The extent.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        public SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, int threshold, MapSearchServiceExtent extent)
-        {
-            return base.Find(new MapSearchServiceRequest
-            {
-                ComparisonOperator = comparisonOperator,
-                Keywords = keywords,
-                LogicalOperator = logicalOperator,
-                Items = sets,
-                Threshold = threshold,
-                Extent = extent
-            });
-        }
-
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        public SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, int threshold)
-        {
-            return this.Find(keywords, sets, comparisonOperator, LogicalOperator.Or, threshold, MapSearchServiceExtent.Any);
-        }
-       
-        #endregion
-
         #region Protected Methods
 
         /// <summary>

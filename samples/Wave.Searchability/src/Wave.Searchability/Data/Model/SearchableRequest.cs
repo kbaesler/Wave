@@ -5,7 +5,7 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Wave.Searchability.Data
 {
-    [DataContract(Name = "request")]
+    [DataContract]
     public class SearchableRequest
     {
         #region Constructors
@@ -15,9 +15,9 @@ namespace Wave.Searchability.Data
         /// </summary>
         public SearchableRequest()
         {
-            this.Items = new List<SearchableSet>();
+            this.Items = new List<SearchableItem>();
             this.Threshold = 200;
-            this.ComparisonOperator = ComparisonOperator.Like;
+            this.ComparisonOperator = ComparisonOperator.Contains;
             this.LogicalOperator = LogicalOperator.Or;
         }
 
@@ -41,7 +41,7 @@ namespace Wave.Searchability.Data
         ///     The sets.
         /// </value>
         [DataMember(Name = "items")]
-        public IEnumerable<SearchableSet> Items { get; set; }
+        public List<SearchableItem> Items { get; set; }
 
         /// <summary>
         ///     Gets or sets the keywords.
