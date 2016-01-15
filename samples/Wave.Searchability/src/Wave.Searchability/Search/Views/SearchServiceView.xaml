@@ -31,7 +31,8 @@
         </Grid.ColumnDefinitions>
         <ComboBox Grid.Row="0"        
                   Grid.ColumnSpan="3"
-                  ItemsSource="{Binding Items}">
+                  ItemsSource="{Binding Items}"
+                  SelectedItem="{Binding CurrentItem}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TreeViewItem Header="{Binding .}"
@@ -39,7 +40,8 @@
                                   ItemsSource="{Binding Items}">
                         <TreeViewItem.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}"/>
+                                <CheckBox Content="{Binding Name}"
+                                          IsChecked="{Binding IsChecked}"/>
                             </DataTemplate>
                         </TreeViewItem.ItemTemplate>
                     </TreeViewItem>

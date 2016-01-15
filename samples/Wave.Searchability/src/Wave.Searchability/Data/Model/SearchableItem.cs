@@ -126,7 +126,7 @@ namespace Wave.Searchability.Data
         #region Internal Properties
 
         [IgnoreDataMember]
-        internal bool IsChecked { get; set; }
+        public bool IsChecked { get; set; }
 
         #endregion
 

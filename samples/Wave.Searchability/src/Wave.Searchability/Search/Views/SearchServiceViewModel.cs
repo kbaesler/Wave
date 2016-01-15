@@ -52,7 +52,7 @@ namespace Wave.Searchability.Views
 
             this.SearchCommand = new DelegateCommand((o) => eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Publish(new MapSearchServiceRequest()
             {
-                Items = new List<SearchableItem>(new[] {this.CurrentItem}),
+                Items = new List<SearchableItem>(this.Items.SelectMany(s => s.Items.Where(i => i.IsChecked)).ToArray()),
                 ComparisonOperator = this.ComparisonOperator,
                 Extent = this.Extent,
                 Keyword = this.Keyword,

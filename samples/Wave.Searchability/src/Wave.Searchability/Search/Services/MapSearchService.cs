@@ -7,15 +7,13 @@ using ESRI.ArcGIS.Geometry;
 
 using Miner.Framework;
 
-using Wave.Searchability.Data;
-
 namespace Wave.Searchability.Services
 {
     /// <summary>
     ///     A service contract for searching the active map session for table(s), class(es) and relationship(s).
     /// </summary>
     [ServiceContract]
-    public interface IMapSearchService : ISearchableService<MapSearchServiceRequest>
+    public interface IMapSearchService : ITextSearchService<MapSearchServiceRequest>
     {
     }
 
@@ -26,7 +24,7 @@ namespace Wave.Searchability.Services
     ///     matched non-spatial row.
     /// </summary>
     [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
-    public sealed class MapSearchService : SearchableService<MapSearchServiceRequest>, IMapSearchService
+    public sealed class MapSearchService : TextSearchService<MapSearchServiceRequest>, IMapSearchService
     {
         #region Protected Methods
 

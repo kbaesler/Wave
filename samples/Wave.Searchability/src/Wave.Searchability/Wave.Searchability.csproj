@@ -172,12 +172,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wave.Extensions.Esri, Version=9.3.0.50, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\..\tests\packages\Wave.9.3.0.1.50-alpha\lib\net35\Wave.Extensions.Esri.dll</HintPath>
+    <Reference Include="Wave.Extensions.Esri, Version=9.3.0.51, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\..\tests\packages\Wave.9.3.0.1.51-alpha\lib\net35\Wave.Extensions.Esri.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wave.Extensions.Miner, Version=9.3.0.50, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\..\tests\packages\Wave.9.3.0.1.50-alpha\lib\net35\Wave.Extensions.Miner.dll</HintPath>
+    <Reference Include="Wave.Extensions.Miner, Version=9.3.0.51, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\..\tests\packages\Wave.9.3.0.1.51-alpha\lib\net35\Wave.Extensions.Miner.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
