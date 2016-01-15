@@ -7,6 +7,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using ESRI.ArcGIS.Carto;
@@ -17,7 +18,6 @@ using Miner.Framework;
 using Miner.Interop;
 
 using Wave.Searchability.Data;
-using System.Threading;
 
 namespace Wave.Searchability.Services
 {
@@ -73,6 +73,18 @@ namespace Wave.Searchability.Services
     public class SearchableService<TSearchableRequest> : ISearchableService<TSearchableRequest>
         where TSearchableRequest : SearchableRequest, new()
     {
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SearchableService{TSearchableRequest}" /> class.
+        /// </summary>
+        public SearchableService()
+        {
+            this.ConcurrentDictionary = new ConcurrentDictionary<string, ConcurrentBag<int>>();
+        }
+
+        #endregion
+
         #region Protected Properties
 
         /// <summary>
@@ -87,10 +99,10 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Gets or sets the concurrent dictionary.
+        ///     Gets or sets the concurrent dictionary.
         /// </summary>
         /// <value>
-        /// The concurrent dictionary.
+        ///     The concurrent dictionary.
         /// </value>
         protected ConcurrentDictionary<string, ConcurrentBag<int>> ConcurrentDictionary { get; set; }
 
@@ -151,28 +163,53 @@ namespace Wave.Searchability.Services
             if (request == null)
                 throw new ArgumentNullException("request");
 
-            this.ConcurrentDictionary = new ConcurrentDictionary<string, ConcurrentBag<int>>();
+            this.ConcurrentDictionary.Clear();
+            this.SearchLayers(request, layers);
+            this.SearchTables(request, tables, layers);
 
+            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+        }
 
-            try
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="layers">The layers.</param>
+        /// <param name="tables">The tables.</param>
+        /// <returns>
+        ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
+        /// </returns>
+        public SearchableResponse FindAsync(TSearchableRequest request, List<IFeatureLayer> layers, List<ITable> tables)
+        {
+            if (request == null)
+                throw new ArgumentNullException("request");
+
+            this.ConcurrentDictionary.Clear();
+
+            using (var source = new CancellationTokenSource())
             {
-                var source = new CancellationTokenSource();
-
-                Parallel.Invoke(new ParallelOptions()
+                try
                 {
-                    CancellationToken = source.Token
-                }, () =>
-                    this.SearchLayers(request, layers), () =>
-                        this.SearchTables(request, tables, layers));
-                
-                return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
-            }
-            catch (AggregateException e)
-            {
-                Log.Error(this, e.Flatten());
+                    Parallel.Invoke(new ParallelOptions()
+                    {
+                        CancellationToken = source.Token
+                    }, () =>
+                        this.SearchLayers(request, layers), () =>
+                            this.SearchTables(request, tables, layers));
+                }
+                catch (AggregateException e)
+                {
+                    source.Cancel();
+
+                    Log.Error(this, e.Flatten());
+                }
             }
 
-            return null;
+            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
         }
 
         #endregion
@@ -206,21 +243,19 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        ///     Compile the query filter for the given object class and fields.
+        ///     Compiles the query expression for the class using the request.
         /// </summary>
         /// <param name="searchClass">The build class.</param>
         /// <param name="request">The request.</param>
         /// <param name="item">The item.</param>
         /// <returns>
-        ///     A <see cref="IQueryFilter" /> for the corresponding fields and values; otherwise null when no fields are present.
+        ///     A <see cref="string" /> for the corresponding fields and values; otherwise null when no fields are present.
         /// </returns>
-        protected virtual IQueryFilter Compile(IObjectClass searchClass, TSearchableRequest request, SearchableItem item)
+        protected virtual string CompileExpression(ITable searchClass, TSearchableRequest request, SearchableItem item)
         {
-            // When the wild card is specified obtain all of the fields.
             if (item.Fields.Any(f => f.Name.Equals(Searchable.Any)))
             {
-                // Build the query filter based on all of the fields.
-                return searchClass.CreateQuery(request.Keyword, request.ComparisonOperator, request.LogicalOperator);
+                return searchClass.CreateExpression(request.Keyword, request.ComparisonOperator, request.LogicalOperator);
             }
 
             StringBuilder whereClause = new StringBuilder();
@@ -265,8 +300,8 @@ namespace Wave.Searchability.Services
                 }
 
                 // Create the WHERE clause.
-                IQueryFilter filter = searchClass.CreateQuery(value, request.ComparisonOperator, logicalOperator, field);
-                if (filter != null && !string.IsNullOrEmpty(filter.WhereClause))
+                string expression = searchClass.CreateExpression(value, request.ComparisonOperator, logicalOperator, field);
+                if (!string.IsNullOrEmpty(expression))
                 {
                     if (whereClause.Length > 0)
                     {
@@ -284,8 +319,8 @@ namespace Wave.Searchability.Services
                     }
 
                     // Append to the end of the WHERE clause.
-                    whereClause.Append(filter.WhereClause);
-                }               
+                    whereClause.Append(expression);
+                }
             }
 
             // End the parentheses.
@@ -294,15 +329,7 @@ namespace Wave.Searchability.Services
                 whereClause.Append(")"); // Add the closing parentheses
             }
 
-            // Return null when nothing was built.
-            if (string.IsNullOrEmpty(whereClause.ToString()))
-                return null;
-
-            // Return to the query filter.
-            return new QueryFilterClass()
-            {
-                WhereClause = whereClause.ToString()
-            };
+            return whereClause.ToString();
         }
 
         #endregion
@@ -429,16 +456,21 @@ namespace Wave.Searchability.Services
         private void SearchLayer(IFeatureLayer layer, SearchableLayer item, TSearchableRequest request)
         {
             IFeatureClass searchClass = layer.FeatureClass;
-            var filter = this.Compile(searchClass, request, item);
+            var expression = this.CompileExpression((ITable) searchClass, request, item);
 
-            if (filter == null || string.IsNullOrEmpty(filter.WhereClause))
+            if (string.IsNullOrEmpty(expression))
                 return;
+
+            IQueryFilter filter = new QueryFilterClass()
+            {
+                WhereClause = expression
+            };
 
             if (item.LayerDefinition)
             {
                 IFeatureLayerDefinition featureLayerDefinition = (IFeatureLayerDefinition) layer;
                 if (!string.IsNullOrEmpty(featureLayerDefinition.DefinitionExpression))
-                    filter.WhereClause = string.Format("({0}) {1} ({2})", filter.WhereClause, LogicalOperator.And, featureLayerDefinition.DefinitionExpression);
+                    filter.WhereClause = string.Format("({0}) {1} ({2})", expression, LogicalOperator.And, featureLayerDefinition.DefinitionExpression);
             }
 
             foreach (var feature in searchClass.Fetch(filter))
@@ -484,9 +516,14 @@ namespace Wave.Searchability.Services
         /// <param name="layers">The layers.</param>
         private void SearchRelationship(IObjectClass searchClass, IFeatureLayer layer, SearchableItem item, SearchableRelationship relationship, TSearchableRequest request, List<IFeatureLayer> layers)
         {
-            IQueryFilter filter = this.Compile(searchClass, request, relationship);
-            if (filter == null || string.IsNullOrEmpty(filter.WhereClause))
+            var expression = this.CompileExpression((ITable) searchClass, request, relationship);
+            if (string.IsNullOrEmpty(expression))
                 return;
+
+            IQueryFilter filter = new QueryFilterClass()
+            {
+                WhereClause = expression
+            };
 
             List<string> path = item != null ? item.Path : new List<string>(new[] {relationship.Name});
 
@@ -508,11 +545,14 @@ namespace Wave.Searchability.Services
         /// <param name="request">The request.</param>
         private void SearchTable(ITable table, SearchableItem item, List<IFeatureLayer> layers, TSearchableRequest request)
         {
-            var searchClass = (IObjectClass) table;
-
-            var filter = this.Compile(searchClass, request, item);
-            if (filter == null || string.IsNullOrEmpty(filter.WhereClause))
+            var expression = this.CompileExpression(table, request, item);
+            if (string.IsNullOrEmpty(expression))
                 return;
+
+            IQueryFilter filter = new QueryFilterClass()
+            {
+                WhereClause = expression
+            };
 
             foreach (var row in table.Fetch(filter))
             {

@@ -51,14 +51,14 @@
                   Width="75"
                   ItemsSource="{Binding ComparisonOperators}"
                   SelectedIndex="0"
-                  SelectedItem="{Binding ComparisonOperator}"
+                  SelectedValue="{Binding ComparisonOperator}"
                   DisplayMemberPath="Value"
                   SelectedValuePath="Key" />
         <ComboBox Grid.Row="2"
                   Grid.Column="2"
                   ItemsSource="{Binding Extents}"
                   SelectedIndex="0"
-                  SelectedItem="{Binding Extent}"
+                  SelectedValue="{Binding Extent}"
                   DisplayMemberPath="Value"
                   SelectedValuePath="Key" />        
     </Grid>
