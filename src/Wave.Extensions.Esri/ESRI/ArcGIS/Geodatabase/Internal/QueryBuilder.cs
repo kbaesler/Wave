@@ -13,7 +13,11 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
     {
         #region Fields
 
+        private readonly string _Cast;
+        private readonly DBMS _DBMS;
         private readonly ISubtypes _Subtypes;
+        private readonly string _UpperCase;
+        private readonly string _WildcardManyMatch;
         private readonly IWorkspace _Workspace;
 
         #endregion
@@ -23,11 +27,24 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// <summary>
         ///     Initializes a new instance of the <see cref="QueryBuilder" /> class.
         /// </summary>
+        /// <param name="workspace">The workspace.</param>
+        private QueryBuilder(IWorkspace workspace)
+        {
+            _Workspace = workspace;
+            _WildcardManyMatch = ((ISQLSyntax)workspace).GetSpecialCharacter(esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
+            _Cast = ((ISQLSyntax)workspace).GetFunctionName(esriSQLFunctionName.esriSQL_CAST);
+            _UpperCase = ((ISQLSyntax)workspace).GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
+            _DBMS = workspace.GetDBMS();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="QueryBuilder" /> class.
+        /// </summary>
         /// <param name="buildClass">The build class.</param>
         public QueryBuilder(ITable buildClass)
+            : this(((IDataset)buildClass).Workspace)
         {
-            _Workspace = ((IDataset) buildClass).Workspace;
-            _Subtypes = (ISubtypes) buildClass;
+            _Subtypes = (ISubtypes)buildClass;
         }
 
         /// <summary>
@@ -35,9 +52,9 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// </summary>
         /// <param name="buildClass">The build class.</param>
         public QueryBuilder(IObjectClass buildClass)
+            : this(((IDataset)buildClass).Workspace)
         {
-            _Workspace = ((IDataset) buildClass).Workspace;
-            _Subtypes = (ISubtypes) buildClass;
+            _Subtypes = (ISubtypes)buildClass;
         }
 
         #endregion
@@ -227,7 +244,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                     return value.StartsWith(keyword, StringComparison.CurrentCultureIgnoreCase);
 
                 case ComparisonOperator.Contains:
-                    return value.Contains(keyword);
+                    return value.ToUpperInvariant().Contains(keyword.ToUpperInvariant());
 
                 case ComparisonOperator.EndsWith:
                     return value.EndsWith(keyword, StringComparison.CurrentCultureIgnoreCase);
@@ -253,10 +270,11 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
             StringBuilder expression = new StringBuilder();
             expression.Append("(");
 
+            bool isChar = this.IsCharacter(field);
             bool isValueNull = string.IsNullOrEmpty(keywords);
             string value = (isValueNull) ? "Null" : keywords;
 
-            string formattedValue = this.GetFormattedValue(field, value, isValueNull);
+            string formattedValue = this.GetFormattedValue(field, value, isValueNull, isChar);
             if (string.IsNullOrEmpty(formattedValue))
                 return null;
 
@@ -276,7 +294,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                 expression.Append(this.AsOperatorBegin(comparisonOperator, isValueNull));
                 expression.Append(" ");
 
-                if (this.IsCharacter(field))
+                if (isChar)
                 {
                     if (isValueNull)
                         expression.Append(formattedValue);
@@ -317,68 +335,63 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// </remarks>
         private string FormatLikeExpression(string formattedValue, ComparisonOperator comparisonOperator, IField field, bool isValueNull)
         {
-            string specialCharacter = ((ISQLSyntax) _Workspace).GetSpecialCharacter(esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
             string comparisonEquality = this.AsOperatorBegin(comparisonOperator, isValueNull);
-            
+
             if (this.IsCharacter(field))
             {
                 if (isValueNull)
-                    return string.Format("{0} {1} '{2}'", field.Name, comparisonEquality, specialCharacter);
-
-                string upper = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
+                    return string.Format("{0} {1} '{2}'", field.Name, comparisonEquality, _WildcardManyMatch);
 
                 switch (comparisonOperator)
                 {
                     case ComparisonOperator.StartsWith:
-                        return string.Format("{0}({1}) {2} '{3}{4}'", upper, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), specialCharacter);
+                        return string.Format("{0}({1}) {2} '{3}{4}'", _UpperCase, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), _WildcardManyMatch);
 
                     case ComparisonOperator.Contains:
-                        return string.Format("{0}({1}) {2} '{4}{3}{4}'", upper, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), specialCharacter);
+                        return string.Format("{0}({1}) {2} '{4}{3}{4}'", _UpperCase, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), _WildcardManyMatch);
 
                     case ComparisonOperator.EndsWith:
-                        return string.Format("{0}({1}) {2} '{4}{3}'", upper, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), specialCharacter);
+                        return string.Format("{0}({1}) {2} '{4}{3}'", _UpperCase, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), _WildcardManyMatch);
                 }
             }
             else
             {
                 // Microsoft Jet Driver doesn't support the same function casting as the other datatabase,
                 // thus we need to reformat the non character statement.
-                if (_Workspace.IsDBMS(DBMS.Access))
+                if (_DBMS == DBMS.Access)
                 {
                     // We use the the CSTR statement for Access appended with "" because if the value is null it will return an empty string instead avoiding
                     // an Invalid use of 'Null' error that will occur when the field value is null.
                     if (isValueNull)
-                        return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, comparisonEquality, specialCharacter);
+                        return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, comparisonEquality, _WildcardManyMatch);
 
                     switch (comparisonOperator)
                     {
                         case ComparisonOperator.StartsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, comparisonEquality, formattedValue, specialCharacter);
+                            return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
 
                         case ComparisonOperator.Contains:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, comparisonEquality, formattedValue, specialCharacter);
+                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
 
                         case ComparisonOperator.EndsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, comparisonEquality, formattedValue, specialCharacter);
+                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
                     }
                 }
 
                 // Use the CHAR cast statement which supported in all databases except Access.
-                string cast = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_CAST);
-
                 if (isValueNull)
-                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", cast, field.Name, field.Name.Length, comparisonEquality, specialCharacter);
+                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", _Cast, field.Name, field.Name.Length, comparisonEquality, _WildcardManyMatch);
 
                 switch (comparisonOperator)
                 {
                     case ComparisonOperator.StartsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, specialCharacter);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
 
                     case ComparisonOperator.Contains:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, specialCharacter);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
 
                     case ComparisonOperator.EndsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, specialCharacter);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
                 }
             }
 
@@ -444,21 +457,20 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// <param name="field">The field.</param>
         /// <param name="value">The value.</param>
         /// <param name="isValueNull">if set to <c>true</c> is value null.</param>
+        /// <param name="isChar">if set to <c>true</c> [is character].</param>
         /// <returns>
         ///     The formatted value; otherwise <see cref="String.Empty" />
         /// </returns>
-        private string GetFormattedValue(IField field, string value, bool isValueNull)
+        private string GetFormattedValue(IField field, string value, bool isValueNull, bool isChar)
         {
             string formattedValue = string.Empty;
 
-            // When the field is a character we can return the given value.
-            if (this.IsCharacter(field))
+            if (isChar)
             {
-                formattedValue = isValueNull ? value : string.Format("{0}", ((ISQLSyntax) _Workspace).Escape(value));
+                formattedValue = isValueNull ? value : string.Format("{0}", ((ISQLSyntax)_Workspace).Escape(value));
             }
             else
             {
-                // Depending on the field type perform different formatting.
                 switch (field.Type)
                 {
                     case esriFieldType.esriFieldTypeDate:
@@ -472,10 +484,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                         {
                             formattedValue = value;
                         }
-                        else
-                        {
-                            formattedValue = string.Format("{0}", ((ISQLSyntax) _Workspace).Escape(value));
-                        }
+
                         break;
 
                     case esriFieldType.esriFieldTypeDouble:
