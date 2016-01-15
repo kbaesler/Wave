@@ -15,7 +15,7 @@ namespace Wave.Searchability.Data
         /// </summary>
         protected SearchableRequest()
         {
-            this.Items = new List<SearchableItem>();
+            this.Inventory = new List<SearchableInventory>();
             this.Threshold = 200;
             this.ComparisonOperator = ComparisonOperator.Contains;
             this.LogicalOperator = LogicalOperator.Or;
@@ -35,13 +35,13 @@ namespace Wave.Searchability.Data
         public ComparisonOperator ComparisonOperator { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sets.
+        /// Gets or sets the inventory.
         /// </summary>
         /// <value>
-        ///     The sets.
+        /// The inventory.
         /// </value>
-        [DataMember(Name = "items")]
-        public List<SearchableItem> Items { get; set; }
+        [DataMember(Name = "inventory")]
+        public List<SearchableInventory> Inventory { get; set; }
 
         /// <summary>
         ///     Gets or sets the keyword.

@@ -293,7 +293,7 @@ namespace Wave.Searchability.Services
         /// <param name="layers">The layers.</param>
         private void SearchLayers(TSearchableRequest request, List<IFeatureLayer> layers)
         {
-            var items = request.Items.OfType<SearchableLayer>().ToList();
+            var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableLayer>()).ToList();
             items.AsParallel().ForAll((item) =>
             {
                 foreach (var l in layers.Where(o => ((IDataset) o.FeatureClass).Name.Equals(item.Name) || (item.NameAsClassModelName && o.FeatureClass.IsAssignedClassModelName(item.Name))))
@@ -383,7 +383,7 @@ namespace Wave.Searchability.Services
         /// <param name="layers">The layers.</param>
         private void SearchTables(TSearchableRequest request, IEnumerable<ITable> tables, List<IFeatureLayer> layers)
         {
-            var items = request.Items.OfType<SearchableTable>().ToList();
+            var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableTable>()).ToList();
             items.AsParallel().ForAll((item) =>
             {
                 foreach (var t in tables.Where(o => ((IDataset) o).Name.Equals(item.Name) || (item.NameAsClassModelName && o.IsAssignedClassModelName(item.Name))))

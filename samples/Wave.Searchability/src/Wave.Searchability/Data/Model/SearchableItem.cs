@@ -129,7 +129,7 @@ namespace Wave.Searchability.Data
         public bool IsChecked { get; set; }
 
         #endregion
-
+       
         #region Private Methods
 
         /// <summary>

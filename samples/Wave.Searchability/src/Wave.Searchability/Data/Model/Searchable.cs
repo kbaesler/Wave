@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Windows;
 
@@ -58,6 +59,28 @@ namespace Wave.Searchability.Data
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        ///     Determines whether the specified <see cref="T:System.Object" /> is equal to the current
+        ///     <see cref="T:System.Object" />.
+        /// </summary>
+        /// <returns>
+        ///     true if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:System.Object" />;
+        ///     otherwise, false.
+        /// </returns>
+        /// <param name="obj">
+        ///     The <see cref="T:System.Object" /> to compare with the current <see cref="T:System.Object" />.
+        /// </param>
+        /// <exception cref="T:System.NullReferenceException">
+        ///     The <paramref name="obj" /> parameter is null.
+        /// </exception>
+        public override bool Equals(object obj)
+        {
+            var item = obj as Searchable;
+            if (item == null) return false;
+
+            return item.Name.Equals(this.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
 
         /// <summary>
         ///     Returns a <see cref="T:System.String" /> that represents the current <see cref="T:System.Object" />.

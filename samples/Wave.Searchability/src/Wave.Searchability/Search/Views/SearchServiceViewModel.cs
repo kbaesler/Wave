@@ -16,7 +16,7 @@ namespace Wave.Searchability.Views
 
         private readonly IEventAggregator _EventAggregator;
         private readonly SubscriptionToken _SubscriptionToken;
-        private ObservableCollection<SearchableSet> _Items;
+        private ObservableCollection<SearchableInventory> _Items;
 
         #endregion
 
@@ -29,10 +29,10 @@ namespace Wave.Searchability.Views
         public SearchServiceViewModel(IEventAggregator eventAggregator)
         {
             _EventAggregator = eventAggregator;
-            _SubscriptionToken = eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableSet>>>().Subscribe(sets =>
+            _SubscriptionToken = eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Subscribe(items =>
             {
-                this.Items = new ObservableCollection<SearchableSet>(sets);
-                this.CurrentItem = this.Items.Select(o => o.Items.FirstOrDefault()).FirstOrDefault();
+                this.Items = new ObservableCollection<SearchableInventory>(items);
+                this.CurrentItem = this.Items.FirstOrDefault();
             });
 
             this.ComparisonOperators = new Dictionary<ComparisonOperator, string>
@@ -52,7 +52,7 @@ namespace Wave.Searchability.Views
 
             this.SearchCommand = new DelegateCommand((o) => eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Publish(new MapSearchServiceRequest()
             {
-                Items = new List<SearchableItem>(this.Items.SelectMany(s => s.Items.Where(i => i.IsChecked)).ToArray()),
+                Inventory = new List<SearchableInventory>(new[] {this.CurrentItem}),
                 ComparisonOperator = this.ComparisonOperator,
                 Extent = this.Extent,
                 Keyword = this.Keyword,
@@ -87,7 +87,7 @@ namespace Wave.Searchability.Views
         /// <value>
         ///     The current item.
         /// </value>
-        public SearchableItem CurrentItem { get; set; }
+        public SearchableInventory CurrentItem { get; set; }
 
         /// <summary>
         ///     Gets or sets the extent.
@@ -111,7 +111,7 @@ namespace Wave.Searchability.Views
         /// <value>
         ///     The items.
         /// </value>
-        public ObservableCollection<SearchableSet> Items
+        public ObservableCollection<SearchableInventory> Items
         {
             get { return _Items; }
             set
@@ -155,7 +155,7 @@ namespace Wave.Searchability.Views
         {
             base.Dispose(disposing);
 
-            _EventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableSet>>>().Unsubscribe(_SubscriptionToken);
+            _EventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Unsubscribe(_SubscriptionToken);
         }
 
         #endregion

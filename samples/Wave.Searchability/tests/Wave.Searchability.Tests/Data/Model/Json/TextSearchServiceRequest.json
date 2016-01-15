@@ -1,32 +1,42 @@
 ﻿{
     "comparisonOperator": 0,
-    "items": [
+    "inventory": [
         {
-            "layerDefinition": false,
-            "nameAsClassModelName": false,
-            "fields": [
+            "items": [
                 {
-                    "value": null,
-                    "visible": false,
-                    "name": "CreationUser"
+                    "layerDefinition": false,
+                    "nameAsClassModelName": false,
+                    "fields": [
+                        {
+                            "value": null,
+                            "visible": false,
+                            "name": "CreationUser"
+                        }
+                    ],
+                    "relationships": [
+                    ],
+                    "name": "NonControllableGasValve"
                 }
             ],
-            "relationships": [
-            ],
-            "name": "NonControllableGasValve"
+            "name": "Layers"
         },
         {
-            "nameAsClassModelName": false,
-            "fields": [
+            "items": [
                 {
-                    "value": null,
-                    "visible": false,
-                    "name": "CreationUser"
+                    "nameAsClassModelName": false,
+                    "fields": [
+                        {
+                            "value": null,
+                            "visible": false,
+                            "name": "CreationUser"
+                        }
+                    ],
+                    "relationships": [
+                    ],
+                    "name": "TransformerUnit"
                 }
             ],
-            "relationships": [
-            ],
-            "name": "TransformerUnit"
+            "name": "Tables"
         }
     ],
     "keyword": "kellyl",

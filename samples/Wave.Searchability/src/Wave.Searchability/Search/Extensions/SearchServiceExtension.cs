@@ -77,8 +77,8 @@ namespace Wave.Searchability.Extensions
 
             Document.OpenStoredDisplay += (sender, e) =>
             {
-                var sets = this.GetAllSets(Document.ActiveMap);
-                eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableSet>>>().Publish(sets);
+                var sets = this.GetInventory(Document.ActiveMap);
+                eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Publish(sets);
             };
 
             eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Subscribe((request) =>
@@ -167,19 +167,19 @@ namespace Wave.Searchability.Extensions
         ///     Creates a collection of the <see cref="SearchableSet" /> objects based on the map and custom searches.
         /// </summary>
         /// <param name="map">The map.</param>
-        /// <returns>Returns a <see cref="IEnumerable{SearchableSet}" /> representing an enumeration of sets.</returns>
-        private IEnumerable<SearchableSet> GetAllSets(IMap map)
+        /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing an enumeration of sets.</returns>
+        private List<SearchableInventory> GetInventory(IMap map)
         {
-            var sets = new List<SearchableSet>();
+            var sets = new List<SearchableInventory>();
 
             Parallel.Invoke(() =>
             {
-                var layers = this.GetLayerSet(map);
-                sets.Add(layers);
+                var layers = this.GetLayerInventory(map);
+                sets.AddRange(layers);
             }, () =>
             {
-                var tables = this.GetTableSet(map);
-                sets.Add(tables);
+                var tables = this.GetTableInventory(map);
+                sets.AddRange(tables);
             });
 
             return sets;
@@ -189,38 +189,34 @@ namespace Wave.Searchability.Extensions
         ///     Gets the layer set.
         /// </summary>
         /// <param name="map">The map.</param>
-        /// <returns>Returns a <see cref="SearchableSet" /> representing the layers in the map.</returns>
-        private SearchableSet GetLayerSet(IMap map)
+        /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing the layers in the map.</returns>
+        private IEnumerable<SearchableInventory> GetLayerInventory(IMap map)
         {
-            var layers = new SearchableSet("Layers");
-            var items = new SortedList(StringComparer.Create(CultureInfo.CurrentCulture, true));
+            var items = new List<SearchableInventory>(); 
 
             foreach (IFeatureLayer layer in map.Where<IFeatureLayer>(layer => layer.Valid).DistinctBy(layer => layer.FeatureClass.ObjectClassID))
-            {
+            {                
                 var item = new SearchableLayer(((IDataset) layer.FeatureClass).Name)
                 {
                     LayerDefinition = true,
                     Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()})
                 };
-                
-                if (!items.ContainsKey(item.Name))
-                    items.Add(item.Name, item);
+
+                var inventory = new SearchableInventory(item.Name, item);
+                items.Add(inventory);
             }
 
-            layers.Items = new ObservableCollection<SearchableItem>(items.Values.OfType<SearchableItem>());
-
-            return layers;
+            return items;
         }
 
         /// <summary>
         ///     Gets the table set.
         /// </summary>
         /// <param name="map">The map.</param>
-        /// <returns>Returns a <see cref="SearchableSet" /> representing the tables in the map.</returns>
-        private SearchableSet GetTableSet(IMap map)
+        /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing the layers in the map.</returns>
+        private IEnumerable<SearchableInventory> GetTableInventory(IMap map)
         {
-            var tables = new SearchableSet("Tables");
-            var items = new SortedList(StringComparer.Create(CultureInfo.CurrentCulture, true));
+            var items = new List<SearchableInventory>();
 
             foreach (ITable table in map.GetTables().DistinctBy(o => ((IDataset)o).Name))
             {
@@ -230,13 +226,11 @@ namespace Wave.Searchability.Extensions
                     Fields = new ObservableCollection<SearchableField>(new[] { new SearchableField() })
                 };
 
-                if (!items.ContainsKey(item.Name))
-                    items.Add(item.Name, item);
+                var inventory = new SearchableInventory(item.Name, item);
+                items.Add(inventory);
             }
 
-            tables.Items = new ObservableCollection<SearchableItem>(items.Values.OfType<SearchableItem>());
-
-            return tables;
+            return items;
         }
 
         #endregion

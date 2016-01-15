@@ -16,54 +16,40 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>       
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ComboBox Grid.Row="0"        
-                  Grid.ColumnSpan="3"
-                  ItemsSource="{Binding Items}"
-                  SelectedItem="{Binding CurrentItem}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TreeViewItem Header="{Binding .}"
-                                  IsExpanded="True"
-                                  ItemsSource="{Binding Items}">
-                        <TreeViewItem.ItemTemplate>
-                            <DataTemplate>
-                                <CheckBox Content="{Binding Name}"
-                                          IsChecked="{Binding IsChecked}"/>
-                            </DataTemplate>
-                        </TreeViewItem.ItemTemplate>
-                    </TreeViewItem>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <ComboBox Grid.Row="2"
-                  Grid.Column="0"
-                  Width="75"
-                  ItemsSource="{Binding ComparisonOperators}"
-                  SelectedIndex="0"
-                  SelectedValue="{Binding ComparisonOperator}"
-                  DisplayMemberPath="Value"
-                  SelectedValuePath="Key" />
-        <ComboBox Grid.Row="2"
-                  Grid.Column="2"
-                  ItemsSource="{Binding Extents}"
-                  SelectedIndex="0"
-                  SelectedValue="{Binding Extent}"
-                  DisplayMemberPath="Value"
-                  SelectedValuePath="Key" />        
-    </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ComboBox Grid.Row="0"
+                      Grid.ColumnSpan="3"
+                      ItemsSource="{Binding Items}"
+                      SelectedItem="{Binding CurrentItem}">                
+            </ComboBox>
+            <ComboBox Grid.Row="2"
+                      Grid.Column="0"
+                      Width="75"
+                      ItemsSource="{Binding ComparisonOperators}"
+                      SelectedIndex="0"
+                      SelectedValue="{Binding ComparisonOperator}"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key" />
+            <ComboBox Grid.Row="2"
+                      Grid.Column="2"
+                      ItemsSource="{Binding Extents}"
+                      SelectedIndex="0"
+                      SelectedValue="{Binding Extent}"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key" />
+        </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

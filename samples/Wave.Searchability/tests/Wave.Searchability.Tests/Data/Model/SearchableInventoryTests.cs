@@ -9,16 +9,16 @@ using Wave.Searchability.Data;
 namespace Wave.Searchability.Tests.Data.Model
 {
     [TestClass]
-    public class SearchableSetTests
+    public class SearchableInventoryTests
     {
         #region Public Methods
 
         [TestMethod]
         public void SearchableSet_ToJson()
         {
-            List<SearchableSet> sets = new List<SearchableSet>();
+            List<SearchableInventory> sets = new List<SearchableInventory>();
 
-            SearchableSet set1 = new SearchableSet("Distribution Equipment",
+            SearchableInventory set1 = new SearchableInventory("Distribution Equipment",
                 new SearchableTable("NonControllableGasValve",
                     new SearchableField("Operator", "Consultant"),
                     new SearchableField("PDLSNumber")),
@@ -30,7 +30,7 @@ namespace Wave.Searchability.Tests.Data.Model
                     new SearchableField("Operator", "Consultant"),
                     new SearchableField("LineNumber")));
 
-            SearchableSet set2 = new SearchableSet("Work History",
+            SearchableInventory set2 = new SearchableInventory("Work History",
                 new SearchableTable("GasWorkHistory",
                     new[] {new SearchableField("WorkOrderNum")}, new SearchableRelationship()));
 

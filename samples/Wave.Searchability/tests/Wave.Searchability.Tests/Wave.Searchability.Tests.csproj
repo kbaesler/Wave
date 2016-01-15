@@ -176,7 +176,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Data\Model\SearchableRelationshipTests.cs" />
-    <Compile Include="Data\Model\SearchableSetTests.cs" />
+    <Compile Include="Data\Model\SearchableInventoryTests.cs" />
     <Compile Include="Data\Model\SearchableFieldTests.cs" />
     <Compile Include="Data\Model\SearchableTableTests.cs" />
     <Compile Include="Data\Model\SearchableResponseTests.cs" />

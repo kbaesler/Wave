@@ -195,7 +195,7 @@
     <Compile Include="Data\Extensions\SearchableResponseExtensions.cs" />
     <Compile Include="Data\Model\SearchableRequest.cs" />
     <Compile Include="Data\Model\SearchableResponse.cs" />
-    <Compile Include="Data\Model\SearchableSet.cs" />
+    <Compile Include="Data\Model\SearchableInventory.cs" />
     <Compile Include="Data\Model\SearchableItem.cs" />
     <Compile Include="Data\Model\SearchableLayer.cs" />
     <Compile Include="Data\Model\SearchableTable.cs" />

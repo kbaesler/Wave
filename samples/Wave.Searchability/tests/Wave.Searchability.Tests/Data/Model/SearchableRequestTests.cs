@@ -21,11 +21,11 @@ namespace Wave.Searchability.Tests.Data.Model
             request.Keyword = "kellyl";
             request.LogicalOperator = LogicalOperator.Or;
             request.Threshold = 200;
-            request.Items.Add(new SearchableLayer("NonControllableGasValve", new SearchableField("CreationUser")));
-            request.Items.Add(new SearchableTable("TransformerUnit", new SearchableField("CreationUser")));
+            request.Inventory.Add(new SearchableInventory("Layers", new SearchableLayer("NonControllableGasValve", new SearchableField("CreationUser"))));
+            request.Inventory.Add(new SearchableInventory("Tables", new SearchableTable("TransformerUnit", new SearchableField("CreationUser"))));
 
             var json = JsonConvert.SerializeObject(request);
-            Assert.AreEqual("{\"comparisonOperator\":0,\"items\":[{\"layerDefinition\":false,\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"NonControllableGasValve\"},{\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"TransformerUnit\"}],\"keyword\":\"kellyl\",\"logicalOperator\":1,\"threshold\":200}", json);
+            Assert.AreEqual("{\"comparisonOperator\":0,\"inventory\":[{\"items\":[{\"layerDefinition\":false,\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"NonControllableGasValve\"}],\"name\":\"Layers\"},{\"items\":[{\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"TransformerUnit\"}],\"name\":\"Tables\"}],\"keyword\":\"kellyl\",\"logicalOperator\":1,\"threshold\":200}", json);
         }
 
         [TestMethod]
@@ -37,11 +37,11 @@ namespace Wave.Searchability.Tests.Data.Model
             request.Keyword = "kellyl";
             request.LogicalOperator = LogicalOperator.Or;
             request.Threshold = 200;
-            request.Items.Add(new SearchableLayer("NonControllableGasValve", new SearchableField("CreationUser")));
-            request.Items.Add(new SearchableTable("TransformerUnit", new SearchableField("CreationUser")));
+            request.Inventory.Add(new SearchableInventory("Layers", new SearchableLayer("NonControllableGasValve", new SearchableField("CreationUser"))));
+            request.Inventory.Add(new SearchableInventory("Tables", new SearchableTable("TransformerUnit", new SearchableField("CreationUser"))));
 
             var json = JsonConvert.SerializeObject(request);
-            Assert.AreEqual("{\"extent\":1,\"comparisonOperator\":0,\"items\":[{\"layerDefinition\":false,\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"NonControllableGasValve\"},{\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"TransformerUnit\"}],\"keyword\":\"kellyl\",\"logicalOperator\":1,\"threshold\":200}", json);
+            Assert.AreEqual("{\"extent\":1,\"comparisonOperator\":0,\"inventory\":[{\"items\":[{\"layerDefinition\":false,\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"NonControllableGasValve\"}],\"name\":\"Layers\"},{\"items\":[{\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"TransformerUnit\"}],\"name\":\"Tables\"}],\"keyword\":\"kellyl\",\"logicalOperator\":1,\"threshold\":200}", json);
         }
     }
 }

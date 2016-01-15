@@ -134,6 +134,8 @@ namespace Wave.Searchability.Services
         /// <param name="request">The request.</param>
         protected virtual void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, TSearchableRequest request)
         {
+            if(this.CancellationPending) return;
+
             var name = (layer == null) ? ((IDataset) row.Table).Name : ((IDataset) layer.FeatureClass).Name;
 
             this.ConcurrentDictionary.AddOrUpdate(name, s =>

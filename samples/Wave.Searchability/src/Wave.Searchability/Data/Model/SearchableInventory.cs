@@ -9,8 +9,8 @@ namespace Wave.Searchability.Data
     ///     Provides a data contract that represents a "set" or "grouping" of searchable items.
     /// </summary>
     [DebuggerDisplay("Name = {Name}")]
-    [DataContract(Name = "set", Namespace = "")]
-    public class SearchableSet : Searchable
+    [DataContract(Name = "inventory", Namespace = "")]
+    public class SearchableInventory : Searchable
     {
         #region Fields
 
@@ -21,21 +21,21 @@ namespace Wave.Searchability.Data
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SearchableSet" /> class.
+        ///     Initializes a new instance of the <see cref="SearchableInventory" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public SearchableSet(string name)
+        public SearchableInventory(string name)
             : base(name)
         {
             _Items = new ObservableCollection<SearchableItem>();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchableSet" /> class.
+        /// Initializes a new instance of the <see cref="SearchableInventory" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="items">The items.</param>
-        public SearchableSet(string name, params SearchableItem[] items)
+        public SearchableInventory(string name, params SearchableItem[] items)
             : this(name)
         {
             _Items.AddRange(items);
