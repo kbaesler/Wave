@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
+using Miner.ComCategories;
 using Miner.Interop;
 
 using stdole;
@@ -143,6 +144,30 @@ namespace Miner.Framework.BaseClasses
 
             // Return the error list.
             return _ErrorList;
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            MMValidationRules.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            MMValidationRules.Unregister(registryKey);
         }
 
         #endregion

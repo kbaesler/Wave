@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ESRI.ArcGIS.BaseClasses
 {
     /// <summary>
-    /// Provides a strongly-typed service container.
+    ///     Provides a strongly-typed service container.
     /// </summary>
     public interface IBootstrapContainer
     {

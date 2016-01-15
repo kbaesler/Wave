@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.Controls;
 
 namespace ESRI.ArcGIS.BaseClasses
@@ -87,6 +89,30 @@ namespace ESRI.ArcGIS.BaseClasses
                 this.HookHelper = hook as IHookHelper;
             else
                 this.HookHelper = new HookHelperClass {Hook = hook};
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            MxCommands.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            MxCommands.Unregister(registryKey);
         }
 
         #endregion

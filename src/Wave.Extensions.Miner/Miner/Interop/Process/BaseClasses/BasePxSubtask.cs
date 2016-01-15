@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+using Miner.ComCategories;
 using Miner.Framework;
 
 namespace Miner.Interop.Process
@@ -176,6 +177,30 @@ namespace Miner.Interop.Process
         ///     The task.
         /// </value>
         public IMMPxTask Task { protected get; set; }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            MMPxSubtasks.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            MMPxSubtasks.Unregister(registryKey);
+        }
 
         #endregion
 
