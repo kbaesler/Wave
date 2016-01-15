@@ -24,6 +24,16 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         ///     Initializes a new instance of the <see cref="QueryBuilder" /> class.
         /// </summary>
         /// <param name="buildClass">The build class.</param>
+        public QueryBuilder(ITable buildClass)
+        {
+            _Workspace = ((IDataset) buildClass).Workspace;
+            _Subtypes = (ISubtypes) buildClass;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="QueryBuilder" /> class.
+        /// </summary>
+        /// <param name="buildClass">The build class.</param>
         public QueryBuilder(IObjectClass buildClass)
         {
             _Workspace = ((IDataset) buildClass).Workspace;
@@ -49,7 +59,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// <remarks>
         ///     The subtype values will be extracted for the field automatically.
         /// </remarks>
-        public IQueryFilter Build(string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, IFields fields)
+        public string Build(string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, IFields fields)
         {
             return this.Build(keyword, comparisonOperator, logicalOperator, fields.AsEnumerable().ToArray());
         }
@@ -69,40 +79,31 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// <remarks>
         ///     The subtype values will be extracted for the field automatically.
         /// </remarks>
-        public IQueryFilter Build(string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
+        public string Build(string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
         {
             StringBuilder builder = new StringBuilder();
 
             // Iterate through each field creating an sql statement for each field.
             foreach (var field in fields)
             {
-                // Build the statement using the given field.
-                StringBuilder statement = this.Build(keyword, comparisonOperator, logicalOperator, field);
+                string statement = this.Build(keyword, comparisonOperator, logicalOperator, field);
+                if (string.IsNullOrEmpty(statement)) continue;
 
                 // Append the logical operator when the statement and expression length is longer then 0.
                 if (builder.Length > 0 && statement.Length > 0)
                     builder.Append(string.Format(" {0} ", logicalOperator));
 
-                // Add the statement.
                 builder.Append(statement);
             }
 
-            // Return null when nothing was built.
-            if (string.IsNullOrEmpty(builder.ToString()))
-                return null;
-
-            // Return to the query filter.
-            return new QueryFilterClass
-            {
-                WhereClause = builder.ToString()
-            };
+            return builder.ToString();
         }
 
         /// <summary>
         ///     Builds the SQL statement based on the specified field using the logical operator to concatenate the statements.
         ///     The subtype values will be extracted for the field automatically.
         /// </summary>
-        /// <param name="criteria">The criteria.</param>
+        /// <param name="keyword">The criteria.</param>
         /// <param name="comparisonOperator">The comparison operator.</param>
         /// <param name="logicalOperator">The logical operator.</param>
         /// <param name="field">The field.</param>
@@ -112,18 +113,18 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// <remarks>
         ///     The subtype values will be extracted for the field automatically.
         /// </remarks>
-        public StringBuilder Build(string criteria, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, IField field)
+        public string Build(string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, IField field)
         {
             StringBuilder builder = new StringBuilder();
 
             // When the field is not supported exit out.
             if (!this.IsSupported(field.Type))
-                return builder;
+                return null;
 
             string lo = string.Empty;
 
             // When there are subtypes on the field we need to translate them into the coded values.
-            IEnumerable<string> values = this.GetDomainValues(field, criteria, comparisonOperator);
+            IEnumerable<string> values = this.GetDomainValues(field, keyword, comparisonOperator);
 
             // Iterate through each domain value.
             foreach (string value in values)
@@ -141,7 +142,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                 lo = string.Format(" {0} ", logicalOperator);
             }
 
-            return builder;
+            return builder.ToString();
         }
 
         #endregion
@@ -177,6 +178,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                     return "<";
                 case ComparisonOperator.LessThanOrEquals:
                     return "<=";
+                case ComparisonOperator.Like:
                 case ComparisonOperator.StartsWith:
                 case ComparisonOperator.EndsWith:
                 case ComparisonOperator.Contains:
@@ -263,7 +265,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                 comparisonOperator == ComparisonOperator.StartsWith)
             {
                 string likeExpression = this.FormatLikeExpression(formattedValue, comparisonOperator, field, isValueNull);
-                if(likeExpression == null) return null;
+                if (likeExpression == null) return null;
 
                 expression.Append(likeExpression);
             }
@@ -315,25 +317,26 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// </remarks>
         private string FormatLikeExpression(string formattedValue, ComparisonOperator comparisonOperator, IField field, bool isValueNull)
         {
-            string wildcard = ((ISQLSyntax) _Workspace).GetSpecialCharacter(esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
-
+            string specialCharacter = ((ISQLSyntax) _Workspace).GetSpecialCharacter(esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
+            string comparisonEquality = this.AsOperatorBegin(comparisonOperator, isValueNull);
+            
             if (this.IsCharacter(field))
             {
                 if (isValueNull)
-                    return string.Format("{0} {1} '{2}'", field.Name, ComparisonOperator.Contains, wildcard);
+                    return string.Format("{0} {1} '{2}'", field.Name, comparisonEquality, specialCharacter);
 
                 string upper = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
 
                 switch (comparisonOperator)
                 {
                     case ComparisonOperator.StartsWith:
-                        return string.Format("{0}({1}) {2} '{3}{4}'", upper, field.Name, ComparisonOperator.Contains, formattedValue.ToUpperInvariant(), wildcard);
+                        return string.Format("{0}({1}) {2} '{3}{4}'", upper, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), specialCharacter);
 
                     case ComparisonOperator.Contains:
-                        return string.Format("{0}({1}) {2} '{4}{3}{4}'", upper, field.Name, ComparisonOperator.Contains, formattedValue.ToUpperInvariant(), wildcard);
+                        return string.Format("{0}({1}) {2} '{4}{3}{4}'", upper, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), specialCharacter);
 
                     case ComparisonOperator.EndsWith:
-                        return string.Format("{0}({1}) {2} '{4}{3}'", upper, field.Name, ComparisonOperator.Contains, formattedValue.ToUpperInvariant(), wildcard);
+                        return string.Format("{0}({1}) {2} '{4}{3}'", upper, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), specialCharacter);
                 }
             }
             else
@@ -345,18 +348,18 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                     // We use the the CSTR statement for Access appended with "" because if the value is null it will return an empty string instead avoiding
                     // an Invalid use of 'Null' error that will occur when the field value is null.
                     if (isValueNull)
-                        return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, ComparisonOperator.Contains, wildcard);
+                        return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, comparisonEquality, specialCharacter);
 
                     switch (comparisonOperator)
                     {
                         case ComparisonOperator.StartsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, ComparisonOperator.Contains, formattedValue, wildcard);
+                            return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, comparisonEquality, formattedValue, specialCharacter);
 
                         case ComparisonOperator.Contains:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, ComparisonOperator.Contains, formattedValue, wildcard);
+                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, comparisonEquality, formattedValue, specialCharacter);
 
                         case ComparisonOperator.EndsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, ComparisonOperator.Contains, formattedValue, wildcard);
+                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, comparisonEquality, formattedValue, specialCharacter);
                     }
                 }
 
@@ -364,18 +367,18 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                 string cast = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_CAST);
 
                 if (isValueNull)
-                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, wildcard);
+                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", cast, field.Name, field.Name.Length, comparisonEquality, specialCharacter);
 
                 switch (comparisonOperator)
                 {
                     case ComparisonOperator.StartsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, formattedValue, wildcard);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, specialCharacter);
 
                     case ComparisonOperator.Contains:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, formattedValue, wildcard);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, specialCharacter);
 
                     case ComparisonOperator.EndsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", cast, field.Name, field.Name.Length, ComparisonOperator.Contains, formattedValue, wildcard);
+                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, specialCharacter);
                 }
             }
 

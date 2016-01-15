@@ -7,7 +7,6 @@ using System.Xml.Linq;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
-using ESRI.ArcGIS.Geodatabase.Internal;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -18,6 +17,54 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class ClassExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <param name="fieldNames">The field names.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        public static string CreateExpression(this IFeatureClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
+        {
+            return ((ITable) source).CreateExpression(keyword, comparisonOperator, logicalOperator, fieldNames);
+        }
+
+        /// <summary>
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        public static string CreateExpression(this IFeatureClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator)
+        {
+            return ((ITable) source).CreateExpression(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
+        }
+
+        /// <summary>
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword and fields.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <param name="fields">The fields.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        public static string CreateExpression(this IFeatureClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
+        {
+            return ((ITable) source).CreateExpression(keyword, comparisonOperator, logicalOperator, fields);
+        }
 
         /// <summary>
         ///     Creates a feature in the table with the default values.
@@ -35,67 +82,6 @@ namespace ESRI.ArcGIS.Geodatabase
             if (rowSubtypes != null) rowSubtypes.InitDefaultValues();
 
             return row;
-        }
-
-        /// <summary>
-        ///    Creates a "google-like" attribute expression query filter based on the specified keyword.        
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="keyword">The keyword.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="fieldNames">The field names.</param>
-        /// <returns>
-        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
-        /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
-        public static IQueryFilter CreateExpression(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
-        {
-            List<IField> fields = new List<IField>();
-
-            foreach (var fieldName in fieldNames)
-            {
-                int index = source.FindField(fieldName);
-                if (index == -1)
-                    throw new IndexOutOfRangeException(string.Format("The '{0}' doesn't have a {1} field.", ((IDataset) source).Name, fieldName));
-
-                var field = source.Fields.Field[index];
-                fields.Add(field);
-            }
-
-            return source.CreateExpression(keyword, comparisonOperator, logicalOperator, fields.ToArray());
-        }
-
-        /// <summary>
-        ///     Creates a "google-like" attribute expression query filter based on the specified keyword.        
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="keyword">The keyword.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <returns>
-        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
-        /// </returns>
-        public static IQueryFilter CreateExpression(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator)
-        {
-            return source.CreateExpression(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
-        }
-
-        /// <summary>
-        ///     Creates a "google-like" attribute expression query filter based on the specified keyword and fields.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="keyword">The keyword.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="fields">The fields.</param>
-        /// <returns>
-        ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
-        /// </returns>
-        public static IQueryFilter CreateExpression(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
-        {
-            QueryBuilder builder = new QueryBuilder(source);            
-            return builder.Build(keyword, comparisonOperator, logicalOperator, fields);
         }
 
         /// <summary>
