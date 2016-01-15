@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Runtime.InteropServices;
 
+using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.Catalog;
 using ESRI.ArcGIS.CatalogUI;
 using ESRI.ArcGIS.esriSystem;
@@ -138,6 +139,30 @@ namespace ESRI.ArcGIS.BaseClasses
         /// <param name="section">The section.</param>
         public virtual void SystemSettingChanged(int flag, string section)
         {
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            GxTabViews.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            GxTabViews.Unregister(registryKey);
         }
 
         #endregion

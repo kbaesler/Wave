@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+using Miner.ComCategories;
 using Miner.Interop;
 
 namespace Miner.Framework.BaseClasses
@@ -98,6 +99,30 @@ namespace Miner.Framework.BaseClasses
         public virtual bool NeedRefresh(mmAutoTextEvents eTextEvent)
         {
             return true;
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            MMCustomTextSources.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            MMCustomTextSources.Unregister(registryKey);
         }
 
         #endregion

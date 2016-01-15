@@ -7,6 +7,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
+using Miner.ComCategories;
 using Miner.Interop;
 
 namespace Miner.Framework.BaseClasses
@@ -123,6 +124,30 @@ namespace Miner.Framework.BaseClasses
         public virtual bool SupportsFeatureClass(IFeatureClass pFeatureClass)
         {
             return (pFeatureClass != null);
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the class using the specified <paramref name="regKey" />.
+        /// </summary>
+        /// <param name="regKey">The reg key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string regKey)
+        {
+            MMMapProductionNamers.Register(regKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the class using the specified <paramref name="regKey" />.
+        /// </summary>
+        /// <param name="regKey">The reg key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string regKey)
+        {
+            MMMapProductionNamers.Unregister(regKey);
         }
 
         #endregion

@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF.BaseClasses;
+using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.Framework;
 
 namespace ESRI.ArcGIS.BaseClasses
@@ -54,6 +55,30 @@ namespace ESRI.ArcGIS.BaseClasses
         public override void OnCreate(object hook)
         {
             this.Application = (IApplication) hook;
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            MxCommands.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            MxCommands.Unregister(registryKey);
         }
 
         #endregion

@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices;
 
+using ESRI.ArcGIS.ADF.CATIDs;
+
 namespace ESRI.ArcGIS.BaseClasses
 {
     /// <summary>
@@ -18,6 +20,30 @@ namespace ESRI.ArcGIS.BaseClasses
         protected BaseMxDockableWindow(string name, string caption)
             : base(name, caption)
         {
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            MxDockableWindows.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            MxDockableWindows.Unregister(registryKey);
         }
 
         #endregion

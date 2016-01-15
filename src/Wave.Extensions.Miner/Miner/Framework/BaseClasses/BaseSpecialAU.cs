@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
+using Miner.ComCategories;
 using Miner.Interop;
 
 namespace Miner.Framework.BaseClasses
@@ -111,6 +112,30 @@ namespace Miner.Framework.BaseClasses
             }
 
             return false;
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            SpecialAutoUpdateStrategy.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            SpecialAutoUpdateStrategy.Unregister(registryKey);
         }
 
         #endregion

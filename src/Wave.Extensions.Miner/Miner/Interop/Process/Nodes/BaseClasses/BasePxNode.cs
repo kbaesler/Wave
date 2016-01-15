@@ -110,11 +110,8 @@ namespace Miner.Interop.Process
             {
                 if (_History == null)
                 {
-                    // The Init method is ridiculiously stupid. It actually tries to create the MM_PX_HISTORY table which will typicially fail due to
-                    // restricted permissions. The MM_PX_HISTORY table is actually queried on the .Next() method, however it will always
-                    // return null, unless you call the Init method.
                     _History = new PxNodeHistoryClass();
-                    _History.Init(_PxApp.Connection, _PxApp.Login.SchemaName, this.Node.Id, this.Node.NodeType, null);
+                    _History.Init(_PxApp.Connection, _PxApp.Login.SchemaName, this.Node.Id, this.Node.NodeType, string.Format("NODE_ID = {0} AND NODE_TYPE_ID = {1}", this.Node.Id, this.Node.NodeType));
                 }
 
                 return _History;

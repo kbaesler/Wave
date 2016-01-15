@@ -588,6 +588,30 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Gets the row from the specified workspace.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <param name="workspace">The workspace representing the child or parent, depending on the row state needed.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRow" /> representing the row.
+        /// </returns>
+        public IRow GetRow(string tableName, IWorkspace workspace)
+        {
+            using (ComReleaser cr = new ComReleaser())
+            {
+                IFeatureWorkspace fws = (IFeatureWorkspace) workspace;
+                ITable table = fws.OpenTable(tableName);
+                cr.ManageLifetime(table);
+
+                return table.GetRow(this.OID);
+            }
+        }
+
+        #endregion
     }
 
     #endregion

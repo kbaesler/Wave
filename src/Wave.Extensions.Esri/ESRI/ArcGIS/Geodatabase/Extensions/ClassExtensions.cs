@@ -38,7 +38,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Builds a "fuzzy" query filter based on the specified keyword.
+        ///    Creates a "google-like" attribute expression query filter based on the specified keyword.        
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="keyword">The keyword.</param>
@@ -49,7 +49,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
         /// </returns>
         /// <exception cref="System.IndexOutOfRangeException"></exception>
-        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
+        public static IQueryFilter CreateExpression(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
         {
             List<IField> fields = new List<IField>();
 
@@ -63,11 +63,11 @@ namespace ESRI.ArcGIS.Geodatabase
                 fields.Add(field);
             }
 
-            return source.CreateQuery(keyword, comparisonOperator, logicalOperator, fields.ToArray());
+            return source.CreateExpression(keyword, comparisonOperator, logicalOperator, fields.ToArray());
         }
 
         /// <summary>
-        ///     Builds a "fuzzy" query filter based on the specified keyword.
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword.        
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="keyword">The keyword.</param>
@@ -76,13 +76,13 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
         /// </returns>
-        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator)
+        public static IQueryFilter CreateExpression(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator)
         {
-            return source.CreateQuery(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
+            return source.CreateExpression(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
         }
 
         /// <summary>
-        ///     Builds a "fuzzy" query filter based on the specified keyword.
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword and fields.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="keyword">The keyword.</param>
@@ -92,9 +92,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IQueryFilter" /> representing the query necessary to locate the keyword.
         /// </returns>
-        public static IQueryFilter CreateQuery(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
+        public static IQueryFilter CreateExpression(this IObjectClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
         {
-            QueryBuilder builder = new QueryBuilder(source);
+            QueryBuilder builder = new QueryBuilder(source);            
             return builder.Build(keyword, comparisonOperator, logicalOperator, fields);
         }
 
