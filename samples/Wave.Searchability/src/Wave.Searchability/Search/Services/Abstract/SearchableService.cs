@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -72,15 +74,17 @@ namespace Wave.Searchability.Services
         #region Protected Properties
 
         /// <summary>
-        ///     Gets a value indicating whether there is a pending cancellation.
+        ///     Gets the action that will cancel the operation when the threshold has been reached.
+        /// </summary>
+        protected Action CancelIfAtThreshold { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the concurrent count.
         /// </summary>
         /// <value>
-        ///     <c>true</c> if there is a pending cancellation; otherwise, <c>false</c>.
+        ///     The concurrent count.
         /// </value>
-        protected virtual bool CancellationPending
-        {
-            get { return this.ConcurrentDictionary != null && this.Threshold > 0 && this.ConcurrentDictionary.Count >= this.Threshold; }
-        }
+        protected int ConcurrentCount { get; set; }
 
         /// <summary>
         ///     Gets or sets the concurrent dictionary.
@@ -89,14 +93,6 @@ namespace Wave.Searchability.Services
         ///     The concurrent dictionary.
         /// </value>
         protected ConcurrentDictionary<string, ConcurrentBag<int>> ConcurrentDictionary { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the threshold.
-        /// </summary>
-        /// <value>
-        ///     The threshold.
-        /// </value>
-        protected int Threshold { get; set; }
 
         #endregion
 
@@ -109,7 +105,31 @@ namespace Wave.Searchability.Services
         /// <returns>
         ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
-        public abstract SearchableResponse Find(TSearchableRequest request);
+        public SearchableResponse Find(TSearchableRequest request)
+        {
+            using (var cts = new CancellationTokenSource())
+            {
+                this.SetCancelIfAtThreshold(cts, request);
+
+                try
+                {
+                    this.ConcurrentCount = 0;
+                    this.ConcurrentDictionary.Clear();
+                    this.Find(request, cts.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                }
+                catch (AggregateException e)
+                {
+                    cts.Cancel();
+
+                    Log.Error(this, e.Flatten());
+                }
+            }
+
+            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+        }
 
         /// <summary>
         ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
@@ -119,7 +139,31 @@ namespace Wave.Searchability.Services
         /// <returns>
         ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
-        public abstract SearchableResponse Find(TSearchableRequest request, TDataSource source);
+        public virtual SearchableResponse Find(TSearchableRequest request, TDataSource source)
+        {
+            using (var cts = new CancellationTokenSource())
+            {
+                this.SetCancelIfAtThreshold(cts, request);
+
+                try
+                {
+                    this.ConcurrentCount = 0;
+                    this.ConcurrentDictionary.Clear();
+                    this.Find(request, source, cts.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                }
+                catch (AggregateException e)
+                {
+                    cts.Cancel();
+
+                    Log.Error(this, e.Flatten());
+                }
+            }
+
+            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+        }
 
         #endregion
 
@@ -132,14 +176,16 @@ namespace Wave.Searchability.Services
         /// <param name="layer">The feature layer for the row (when the row is a feature class).</param>
         /// <param name="isFeatureClass">if set to <c>true</c> when the row is a feature class.</param>
         /// <param name="request">The request.</param>
-        protected virtual void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, TSearchableRequest request)
+        /// <param name="token">The token.</param>
+        protected virtual void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, TSearchableRequest request, CancellationToken token)
         {
-            if(this.CancellationPending) return;
+            this.ThrowIfCancellationRequested(token);
 
             var name = (layer == null) ? ((IDataset) row.Table).Name : ((IDataset) layer.FeatureClass).Name;
-
             this.ConcurrentDictionary.AddOrUpdate(name, s =>
             {
+                this.ConcurrentCount++;
+
                 var bag = new ConcurrentBag<int>();
                 bag.Add(row.OID);
 
@@ -147,10 +193,16 @@ namespace Wave.Searchability.Services
             }, (s, bag) =>
             {
                 if (!bag.Contains(row.OID))
+                {
                     bag.Add(row.OID);
+
+                    this.ConcurrentCount++;
+                }
 
                 return bag;
             });
+
+            this.CancelIfAtThreshold();
         }
 
         /// <summary>
@@ -241,6 +293,37 @@ namespace Wave.Searchability.Services
             }
 
             return whereClause.ToString();
+        }
+
+        protected abstract void Find(TSearchableRequest request, TDataSource source, CancellationToken token);
+        protected abstract void Find(TSearchableRequest request, CancellationToken token);
+
+        /// <summary>
+        ///     Throws if cancellation requested.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        protected void ThrowIfCancellationRequested(CancellationToken token)
+        {
+            if (token.IsCancellationRequested)
+                token.ThrowIfCancellationRequested();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Sets the cancellation token source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="request">The request.</param>
+        private void SetCancelIfAtThreshold(CancellationTokenSource source, TSearchableRequest request)
+        {
+            this.CancelIfAtThreshold = () =>
+            {
+                if (request.Threshold > 0 && this.ConcurrentCount >= request.Threshold)
+                    source.Cancel();
+            };
         }
 
         #endregion

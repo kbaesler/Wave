@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Threading;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -29,13 +30,14 @@ namespace Wave.Searchability.Services
         #region Protected Methods
 
         /// <summary>
-        ///     Adds the specified row (or feature) to the response.
+        /// Adds the specified row (or feature) to the response.
         /// </summary>
         /// <param name="row">The row or feature.</param>
         /// <param name="layer">The feature layer for the row (when the row is a feature class).</param>
         /// <param name="isFeatureClass">if set to <c>true</c> when the row is a feature class.</param>
         /// <param name="request">The request.</param>
-        protected override void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, MapSearchServiceRequest request)
+        /// <param name="token">The token.</param>
+        protected override void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, MapSearchServiceRequest request, CancellationToken token)
         {
             if (isFeatureClass)
             {
@@ -46,18 +48,18 @@ namespace Wave.Searchability.Services
                 {
                     case MapSearchServiceExtent.WithinCurrentExtent:
                         if (relOp.Within(feature.Shape))
-                            base.Add(row, layer, true, request);
+                            base.Add(row, layer, true, request, token);
 
                         break;
 
                     case MapSearchServiceExtent.WithinCurrentOrOverlappingExtent:
                         if (relOp.Within(feature.Shape) || relOp.Overlaps(feature.Shape))
-                            base.Add(row, layer, true, request);
+                            base.Add(row, layer, true, request, token);
 
                         break;
 
                     default:
-                        base.Add(row, layer, true, request);
+                        base.Add(row, layer, true, request, token);
                         break;
                 }
             }

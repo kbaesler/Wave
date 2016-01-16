@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -33,20 +32,6 @@ namespace Wave.Searchability.Services
     public interface ITextSearchService<in TSearchableRequest> : ISearchableService<TSearchableRequest, IMap>
         where TSearchableRequest : TextSearchServiceRequest
     {
-        #region Public Methods
-
-        /// <summary>
-        ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <param name="layers">The layers.</param>
-        /// <param name="tables">The tables.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
-        /// </returns>
-        SearchableResponse Find(TSearchableRequest request, List<IFeatureLayer> layers, List<ITable> tables);
-
-        #endregion
     }
 
     /// <summary>
@@ -65,17 +50,9 @@ namespace Wave.Searchability.Services
     public abstract class TextSearchService<TSearchableRequest> : SearchableService<TSearchableRequest, IMap>, ITextSearchService<TSearchableRequest>
         where TSearchableRequest : TextSearchServiceRequest, new()
     {
-        #region ITextSearchService<TSearchableRequest> Members
+        #region Protected Methods
 
-        /// <summary>
-        ///     Searches the data source using the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <param name="source">The source.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        public override SearchableResponse Find(TSearchableRequest request, IMap source)
+        protected override void Find(TSearchableRequest request, IMap source, CancellationToken token)
         {
             if (source == null)
                 throw new ArgumentNullException("source");
@@ -83,19 +60,12 @@ namespace Wave.Searchability.Services
             var layers = source.Where<IFeatureLayer>(layer => layer.Valid).DistinctBy(o => o.FeatureClass.ObjectClassID).ToList();
             var tables = source.GetTables().DistinctBy(o => ((IDataset) o).Name).ToList();
 
-            return this.Find(request, layers, tables);
+            this.Find(request, layers, tables, token);
         }
 
-        /// <summary>
-        ///     Searches the active data source using the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        public override SearchableResponse Find(TSearchableRequest request)
+        protected override void Find(TSearchableRequest request, CancellationToken token)
         {
-            return this.Find(request, Document.ActiveMap);
+            this.Find(request, Document.ActiveMap, token);
         }
 
         /// <summary>
@@ -104,36 +74,19 @@ namespace Wave.Searchability.Services
         /// <param name="request">The request.</param>
         /// <param name="layers">The layers.</param>
         /// <param name="tables">The tables.</param>
+        /// <param name="token">The token.</param>
         /// <returns>
         ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
-        public SearchableResponse Find(TSearchableRequest request, List<IFeatureLayer> layers, List<ITable> tables)
+        /// <exception cref="System.ArgumentNullException">request</exception>
+        protected void Find(TSearchableRequest request, List<IFeatureLayer> layers, List<ITable> tables, CancellationToken token)
         {
             if (request == null)
                 throw new ArgumentNullException("request");
 
-            this.ConcurrentDictionary.Clear();
-
-            using (var source = new CancellationTokenSource())
-            {
-                try
-                {
-                    Parallel.Invoke(new ParallelOptions()
-                    {
-                        CancellationToken = source.Token                         
-                    }, () =>
-                        this.SearchLayers(request, layers), () =>
-                            this.SearchTables(request, tables, layers));
-                }
-                catch (AggregateException e)
-                {
-                    source.Cancel();
-
-                    Log.Error(this, e.Flatten());
-                }
-            }
-
-            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+            Parallel.Invoke(new ParallelOptions() {CancellationToken = token}, () =>
+                this.SearchLayers(request, layers, token), () =>
+                    this.SearchTables(request, tables, layers, token));
         }
 
         #endregion
@@ -141,8 +94,8 @@ namespace Wave.Searchability.Services
         #region Private Methods
 
         /// <summary>
-        ///     Associates the specified object with the layer (when specified) otherwise it associates it with the relationship
-        ///     path.
+        /// Associates the specified object with the layer (when specified) otherwise it associates it with the relationship
+        /// path.
         /// </summary>
         /// <param name="search">The search.</param>
         /// <param name="layer">The layer.</param>
@@ -150,21 +103,22 @@ namespace Wave.Searchability.Services
         /// <param name="index">The index.</param>
         /// <param name="layers">The layers.</param>
         /// <param name="request">The request.</param>
-        private void Attach(IObject search, IFeatureLayer layer, List<string> path, int index, List<IFeatureLayer> layers, TSearchableRequest request)
+        /// <param name="token">The token.</param>
+        private void Attach(IObject search, IFeatureLayer layer, List<string> path, int index, List<IFeatureLayer> layers, TSearchableRequest request, CancellationToken token)
         {
+            this.ThrowIfCancellationRequested(token);
+
             if (path == null) return;
             if (path.Count == 0) return;
             if (index < 0 || index > path.Count) return;
 
             bool reset = (layer == null);
 
+
             IObjectClass searchClass = search.Class;
             IEnumRelationshipClass relationshipClasses = searchClass.RelationshipClasses[esriRelRole.esriRelRoleAny];
             foreach (var relClass in relationshipClasses.AsEnumerable())
             {
-                // A stop has been requested or the threshold has been reached.
-                if (this.CancellationPending) return;
-
                 // Invalid relationship class.
                 if (relClass.RelationshipClassID == -1)
                     continue;
@@ -199,16 +153,13 @@ namespace Wave.Searchability.Services
                     if (obj.Class == layerClass)
                     {
                         // Add the related object layer.
-                        this.Add(obj, layer, true, request);
+                        this.Add(obj, layer, true, request, token);
                     }
                     else
                     {
                         // Move up the path to the next relationship.
-                        this.Attach(obj, layer, path, index - 1, layers, request);
+                        this.Attach(obj, layer, path, index - 1, layers, request, token);
                     }
-
-                    // A stop has been requested or the threshold has been reached.
-                    if (this.CancellationPending) return;
                 }
 
                 // Reset the layer when it was provided to the method empty.
@@ -252,13 +203,16 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        ///     Searches the layer.
+        /// Searches the layer.
         /// </summary>
         /// <param name="layer">The layer.</param>
         /// <param name="item">The item.</param>
         /// <param name="request">The request.</param>
-        private void SearchLayer(IFeatureLayer layer, SearchableLayer item, TSearchableRequest request)
+        /// <param name="token">The token.</param>
+        private void SearchLayer(IFeatureLayer layer, SearchableLayer item, TSearchableRequest request, CancellationToken token)
         {
+            this.ThrowIfCancellationRequested(token);
+
             IFeatureClass searchClass = layer.FeatureClass;
             var expression = this.CompileExpression((ITable) searchClass, request, item);
 
@@ -278,39 +232,35 @@ namespace Wave.Searchability.Services
             }
 
             foreach (var feature in searchClass.Fetch(filter))
-            {
-                if (this.CancellationPending)
-                    return;
-
-                this.Add(feature, layer, true, request);
-            }
+                this.Add(feature, layer, true, request, token);
         }
 
         /// <summary>
-        ///     Searches the layers.
+        /// Searches the layers.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="layers">The layers.</param>
-        private void SearchLayers(TSearchableRequest request, List<IFeatureLayer> layers)
+        /// <param name="token">The token.</param>
+        private void SearchLayers(TSearchableRequest request, List<IFeatureLayer> layers, CancellationToken token)
         {
+            this.ThrowIfCancellationRequested(token);
+
             var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableLayer>()).ToList();
-            items.AsParallel().ForAll((item) =>
+            foreach(var item in items)
             {
                 foreach (var l in layers.Where(o => ((IDataset) o.FeatureClass).Name.Equals(item.Name) || (item.NameAsClassModelName && o.FeatureClass.IsAssignedClassModelName(item.Name))))
                 {
                     var layer = l;
 
-                    Parallel.Invoke(() =>
-                        this.SearchLayer(layer, item, request), () =>
-                            this.TraverseRelationships(layer.FeatureClass, null, null, item.Relationships, request, layers));
+                    this.SearchLayer(layer, item, request, token);
 
-                    if (this.CancellationPending) return;
+                    this.TraverseRelationships(layer.FeatureClass, null, null, item.Relationships, request, layers, token);
                 }
-            });
+            }
         }
 
         /// <summary>
-        ///     Searches the relationship.
+        /// Searches the relationship.
         /// </summary>
         /// <param name="searchClass">The search class.</param>
         /// <param name="layer">The layer.</param>
@@ -318,8 +268,11 @@ namespace Wave.Searchability.Services
         /// <param name="relationship">The relationship.</param>
         /// <param name="request">The request.</param>
         /// <param name="layers">The layers.</param>
-        private void SearchRelationship(IObjectClass searchClass, IFeatureLayer layer, SearchableItem item, SearchableRelationship relationship, TSearchableRequest request, List<IFeatureLayer> layers)
+        /// <param name="token">The token.</param>
+        private void SearchRelationship(IObjectClass searchClass, IFeatureLayer layer, SearchableItem item, SearchableRelationship relationship, TSearchableRequest request, List<IFeatureLayer> layers, CancellationToken token)
         {
+            this.ThrowIfCancellationRequested(token);
+
             var expression = this.CompileExpression((ITable) searchClass, request, relationship);
             if (string.IsNullOrEmpty(expression))
                 return;
@@ -332,23 +285,21 @@ namespace Wave.Searchability.Services
             List<string> path = item != null ? item.Path : new List<string>(new[] {relationship.Name});
 
             foreach (var row in ((ITable) searchClass).Fetch(filter))
-            {
-                if (this.CancellationPending)
-                    return;
-
-                this.Attach((IObject) row, layer, path, path.Count - 1, layers, request);
-            }
+                this.Attach((IObject) row, layer, path, path.Count - 1, layers, request, token);
         }
 
         /// <summary>
-        ///     Searches the table.
+        /// Searches the table.
         /// </summary>
         /// <param name="table">The table.</param>
         /// <param name="item">The item.</param>
         /// <param name="layers">The layers.</param>
         /// <param name="request">The request.</param>
-        private void SearchTable(ITable table, SearchableItem item, List<IFeatureLayer> layers, TSearchableRequest request)
+        /// <param name="token">The token.</param>
+        private void SearchTable(ITable table, SearchableItem item, List<IFeatureLayer> layers, TSearchableRequest request, CancellationToken token)
         {
+            this.ThrowIfCancellationRequested(token);
+
             var expression = this.CompileExpression(table, request, item);
             if (string.IsNullOrEmpty(expression))
                 return;
@@ -360,47 +311,46 @@ namespace Wave.Searchability.Services
 
             foreach (var row in table.Fetch(filter))
             {
-                if (this.CancellationPending) return;
-
                 if (!item.Relationships.Any())
                 {
-                    this.Add(row, null, false, request);
+                    this.Add(row, null, false, request, token);
                 }
                 else
                 {
                     IObject o = (IObject) row;
-                    item.Relationships.AsParallel().ForAll((relationship) =>
-                        this.Attach(o, null, relationship.Path, relationship.Path.Count - 1, layers, request));
+                    foreach (var relationship in item.Relationships)
+                        this.Attach(o, null, relationship.Path, relationship.Path.Count - 1, layers, request, token);
                 }
             }
         }
 
         /// <summary>
-        ///     Searches the tables.
+        /// Searches the tables.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="tables">The tables.</param>
         /// <param name="layers">The layers.</param>
-        private void SearchTables(TSearchableRequest request, IEnumerable<ITable> tables, List<IFeatureLayer> layers)
+        /// <param name="token">The token.</param>
+        private void SearchTables(TSearchableRequest request, IEnumerable<ITable> tables, List<IFeatureLayer> layers, CancellationToken token)
         {
+            this.ThrowIfCancellationRequested(token);
+
             var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableTable>()).ToList();
-            items.AsParallel().ForAll((item) =>
+            foreach(var item in items)
             {
                 foreach (var t in tables.Where(o => ((IDataset) o).Name.Equals(item.Name) || (item.NameAsClassModelName && o.IsAssignedClassModelName(item.Name))))
                 {
                     var table = t;
 
-                    Parallel.Invoke(() =>
-                        this.SearchTable(table, item, layers, request), () =>
-                            this.TraverseRelationships((IObjectClass) table, null, null, item.Relationships, request, layers));
+                    this.SearchTable(table, item, layers, request, token);
 
-                    if (this.CancellationPending) return;
+                    this.TraverseRelationships((IObjectClass) table, null, null, item.Relationships, request, layers, token);
                 }
-            });
+            }            
         }
 
         /// <summary>
-        ///     Traverses the relationships.
+        /// Traverses the relationships.
         /// </summary>
         /// <param name="objectClass">The search class.</param>
         /// <param name="layer">The layer.</param>
@@ -408,10 +358,10 @@ namespace Wave.Searchability.Services
         /// <param name="relationships">The relationships.</param>
         /// <param name="request">The request.</param>
         /// <param name="layers">The layers.</param>
-        private void TraverseRelationships(IObjectClass objectClass, IFeatureLayer layer, SearchableItem item, IEnumerable<SearchableRelationship> relationships, TSearchableRequest request, List<IFeatureLayer> layers)
+        /// <param name="token">The token.</param>
+        private void TraverseRelationships(IObjectClass objectClass, IFeatureLayer layer, SearchableItem item, IEnumerable<SearchableRelationship> relationships, TSearchableRequest request, List<IFeatureLayer> layers, CancellationToken token)
         {
-            if (objectClass == null || relationships == null)
-                return;
+            this.ThrowIfCancellationRequested(token);
 
             foreach (var r in relationships)
             {
@@ -420,20 +370,14 @@ namespace Wave.Searchability.Services
                 IEnumRelationshipClass relationshipClasses = objectClass.RelationshipClasses[esriRelRole.esriRelRoleAny];
                 foreach (var relationshipClass in relationshipClasses.AsEnumerable())
                 {
-                    if (this.CancellationPending)
-                        return;
-
                     string name = ((IDataset) relationshipClass).Name;
                     if (relationship.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase) || r.Name.Equals(Searchable.Any))
                     {
                         IObjectClass searchClass = objectClass == relationshipClass.OriginClass ? relationshipClass.DestinationClass : relationshipClass.OriginClass;
 
-                        Parallel.Invoke(() =>
-                            this.SearchRelationship(searchClass, layer, item, relationship, request, layers), () =>
-                                this.TraverseRelationships(searchClass, layer, relationship, relationship.Relationships, request, layers));
+                        this.SearchRelationship(searchClass, layer, item, relationship, request, layers, token);
 
-                        if (this.CancellationPending)
-                            return;
+                        this.TraverseRelationships(searchClass, layer, relationship, relationship.Relationships, request, layers, token);
                     }
                 }
             }
