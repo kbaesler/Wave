@@ -38,7 +38,7 @@ namespace Wave.Extensions.Esri.Tests
             IMap map = this.CreateMap();
             Assert.IsNotNull(map);
 
-            var layer = map.Where<IFeatureLayer>(l => l.Valid);
+            var layer = map.GetLayers<IFeatureLayer>(l => l.Valid);
             Assert.IsNotNull(layer);
         }
             
@@ -49,7 +49,7 @@ namespace Wave.Extensions.Esri.Tests
             IMap map = this.CreateMap();
             Assert.IsNotNull(map);
 
-            var layer = map.Where<ILayer>(l => l.Valid);
+            var layer = map.GetLayers<ILayer>(l => l.Valid);
             Assert.IsNotNull(layer);
         }
 

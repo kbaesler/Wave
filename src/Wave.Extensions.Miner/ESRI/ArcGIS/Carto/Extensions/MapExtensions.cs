@@ -58,7 +58,7 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName)).Select(o => o.FeatureClass);
+            return source.GetLayers<IFeatureLayer>(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName)).Select(o => o.FeatureClass);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            return source.Where<IFeatureLayer>(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName));
+            return source.GetLayers<IFeatureLayer>(o => o.Valid && o.FeatureClass.IsAssignedClassModelName(modelName));
         }
 
         /// <summary>

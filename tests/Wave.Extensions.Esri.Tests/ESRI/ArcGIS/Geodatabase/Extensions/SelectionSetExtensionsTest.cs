@@ -17,7 +17,7 @@ namespace Wave.Extensions.Esri.Tests
         public void ISelectionSet_Remove_AreEqual()
         {
             var map = this.CreateMap();
-            var layer = map.Where<IFeatureLayer>(l => l.Valid).FirstOrDefault();
+            var layer = map.GetLayers<IFeatureLayer>(l => l.Valid).FirstOrDefault();
             Assert.IsNotNull(layer);
 
             IQueryFilter filter = new QueryFilterClass {WhereClause = string.Format("{0} < 1000", layer.FeatureClass.OIDFieldName)};
