@@ -192,7 +192,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Extensions\SearchableResponseExtensions.cs" />
+    <Compile Include="Data\Model\Extensions\SearchableResponseExtensions.cs" />
     <Compile Include="Data\Model\SearchableRequest.cs" />
     <Compile Include="Data\Model\SearchableResponse.cs" />
     <Compile Include="Data\Model\SearchableInventory.cs" />
@@ -228,6 +228,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Search\Resources\Images\Annotation.png" />
+    <Resource Include="Search\Resources\Images\Dimension.png" />
+    <Resource Include="Search\Resources\Images\Line.png" />
+    <Resource Include="Search\Resources\Images\Multipatch.png" />
+    <Resource Include="Search\Resources\Images\Point.png" />
+    <Resource Include="Search\Resources\Images\Polygon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

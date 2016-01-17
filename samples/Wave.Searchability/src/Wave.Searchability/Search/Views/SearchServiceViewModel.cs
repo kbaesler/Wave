@@ -22,6 +22,11 @@ namespace Wave.Searchability.Views
 
         #region Constructors
 
+        public SearchServiceViewModel()
+        {
+            this.Items = new ObservableCollection<SearchableInventory>();
+            this.Items.Add(new SearchableInventory("Point", new SearchableLayer("Point")) {Type = SearchableInventoryType.Point});
+        }
         /// <summary>
         ///     Initializes a new instance of the <see cref="SearchServiceViewModel" /> class.
         /// </summary>

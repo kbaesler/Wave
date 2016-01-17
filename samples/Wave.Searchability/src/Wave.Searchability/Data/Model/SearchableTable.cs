@@ -20,6 +20,16 @@ namespace Wave.Searchability.Data
         #region Constructors
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="SearchableTable"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="aliasName">Name of the alias.</param>
+        public SearchableTable(string name, string aliasName)
+            : base(name, aliasName)
+        {
+            
+        }
+        /// <summary>
         ///     Initializes a new instance of the <see cref="SearchableTable" /> class.
         /// </summary>
         /// <param name="name">The name.</param>

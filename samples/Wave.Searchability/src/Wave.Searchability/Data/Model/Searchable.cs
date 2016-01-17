@@ -20,6 +20,7 @@ namespace Wave.Searchability.Data
 
         #region Fields
 
+        private string _AliasName;
         private string _Name;
 
         #endregion
@@ -35,9 +36,38 @@ namespace Wave.Searchability.Data
             this.Name = name;
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Searchable" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="aliasName">Name of the alias.</param>
+        protected Searchable(string name, string aliasName)
+            : this(name)
+        {
+            this.AliasName = aliasName;
+        }
+
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the name of the alias.
+        /// </summary>
+        /// <value>
+        ///     The name of the alias.
+        /// </value>
+        [DataMember(Name = "aliasName")]
+        public string AliasName
+        {
+            get { return _AliasName; }
+            set
+            {
+                _AliasName = value;
+
+                base.OnPropertyChanged("AliasName");
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the name.
@@ -82,6 +112,7 @@ namespace Wave.Searchability.Data
             return item.Name.Equals(this.Name, StringComparison.CurrentCultureIgnoreCase);
         }
 
+
         /// <summary>
         ///     Returns a <see cref="T:System.String" /> that represents the current <see cref="T:System.Object" />.
         /// </summary>
@@ -90,7 +121,7 @@ namespace Wave.Searchability.Data
         /// </returns>
         public override string ToString()
         {
-            return this.Name;
+            return this.AliasName ?? this.Name;
         }
 
         #endregion

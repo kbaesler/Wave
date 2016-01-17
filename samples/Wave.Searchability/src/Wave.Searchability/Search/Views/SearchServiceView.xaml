@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:amalgamate="clr-namespace:Miner.Theme.Amalgamate;assembly=Miner.Theme.Amalgamate"
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=Wave.Extensions.Esri"
+             xmlns:data="clr-namespace:Wave.Searchability.Data"
+             xmlns:views="clr-namespace:Wave.Searchability.Views"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">    
@@ -12,9 +14,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <amalgamate:ThemeDictionary />
-            </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>                       
         </ResourceDictionary>
-    </UserControl.Resources>
+    </UserControl.Resources>    
     <StackPanel>
         <Grid>
             <Grid.RowDefinitions>
@@ -33,6 +35,41 @@
                       Grid.ColumnSpan="3"
                       ItemsSource="{Binding Items}"
                       SelectedItem="{Binding CurrentItem}">                
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type data:SearchableInventory}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="16"
+                                   Height="16"
+                                   Margin="0,0,5,0">
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Source"
+                                                Value="../Resources/Images/Multipatch.png" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Type}"
+                                                         Value="{x:Static data:SearchableInventoryType.Point}">
+                                                <Setter Property="Source"
+                                                        Value="../Resources/Images/Point.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=Type}"
+                                                         Value="{x:Static data:SearchableInventoryType.Line}">
+                                                <Setter Property="Source"
+                                                        Value="../Resources/Images/Line.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=Type}"
+                                                         Value="{x:Static data:SearchableInventoryType.Polygon}">
+                                                <Setter Property="Source"
+                                                        Value="../Resources/Images/Polygon.png" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                            <Label Content="{Binding .}"
+                                   VerticalContentAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
             <ComboBox Grid.Row="2"
                       Grid.Column="0"

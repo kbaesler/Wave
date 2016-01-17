@@ -23,8 +23,18 @@ namespace Wave.Searchability.Data
         ///     Initializes a new instance of the <see cref="SearchableLayer" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
+        /// <param name="aliasName">Name of the alias.</param>
+        public SearchableLayer(string name, string aliasName)
+            : base(name, aliasName)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SearchableLayer" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
         public SearchableLayer(string name)
-            : base(name)
+            : this(name, name)
         {
         }
 
@@ -53,7 +63,6 @@ namespace Wave.Searchability.Data
 
         #region Public Properties
 
-        
         /// <summary>
         ///     Gets or sets a value indicating whether the layer definition is used.
         /// </summary>
@@ -71,7 +80,6 @@ namespace Wave.Searchability.Data
                 this.OnPropertyChanged("LayerDefinition");
             }
         }
-
 
         #endregion
     }

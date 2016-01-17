@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.ServiceModel;
@@ -14,12 +13,12 @@ using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.BaseClasses;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 
 using Miner.Framework;
 
 using Wave.Searchability.Data;
 using Wave.Searchability.Services;
-using Wave.Searchability.Views;
 
 namespace Wave.Searchability.Extensions
 {
@@ -168,7 +167,7 @@ namespace Wave.Searchability.Extensions
         /// </summary>
         /// <param name="map">The map.</param>
         /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing an enumeration of sets.</returns>
-        private List<SearchableInventory> GetInventory(IMap map)
+        private IEnumerable<SearchableInventory> GetInventory(IMap map)
         {
             var sets = new List<SearchableInventory>();
 
@@ -182,7 +181,7 @@ namespace Wave.Searchability.Extensions
                 sets.AddRange(tables);
             });
 
-            return sets;
+            return sets.OrderBy(o => o.Name);
         }
 
         /// <summary>
@@ -192,17 +191,20 @@ namespace Wave.Searchability.Extensions
         /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing the layers in the map.</returns>
         private IEnumerable<SearchableInventory> GetLayerInventory(IMap map)
         {
-            var items = new List<SearchableInventory>(); 
+            var items = new List<SearchableInventory>();
 
             foreach (IFeatureLayer layer in map.Where<IFeatureLayer>(layer => layer.Valid).DistinctBy(layer => layer.FeatureClass.ObjectClassID))
-            {                
-                var item = new SearchableLayer(((IDataset) layer.FeatureClass).Name)
+            {
+                var item = new SearchableLayer(((IDataset) layer.FeatureClass).Name, layer.FeatureClass.AliasName)
                 {
                     LayerDefinition = true,
-                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()})
+                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()}),
                 };
 
-                var inventory = new SearchableInventory(item.Name, item);
+                var inventory = new SearchableInventory(item.Name, layer.Name, item)
+                {
+                    Type = this.GetInventoryType(layer.FeatureClass.ShapeType)
+                };
                 items.Add(inventory);
             }
 
@@ -218,19 +220,46 @@ namespace Wave.Searchability.Extensions
         {
             var items = new List<SearchableInventory>();
 
-            foreach (ITable table in map.GetTables().DistinctBy(o => ((IDataset)o).Name))
+            foreach (ITable table in map.GetTables().DistinctBy(o => ((IDataset) o).Name))
             {
-                var item = new SearchableTable(((IDataset) table).Name)
+                var aliasName = ((IObjectClass) table).AliasName;
+                var item = new SearchableTable(((IDataset) table).Name, aliasName)
                 {
                     Relationships = new ObservableCollection<SearchableRelationship>(new[] {new SearchableRelationship()}),
-                    Fields = new ObservableCollection<SearchableField>(new[] { new SearchableField() })
+                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()})
                 };
 
-                var inventory = new SearchableInventory(item.Name, item);
+                var inventory = new SearchableInventory(item.Name, aliasName, item)
+                {
+                    Type = SearchableInventoryType.Table
+                };
                 items.Add(inventory);
             }
 
             return items;
+        }
+
+        /// <summary>
+        /// Gets the type of the inventory.
+        /// </summary>
+        /// <param name="geometryType">Type of the geometry.</param>
+        /// <returns>Returns a <see cref="SearchableInventoryType"/> representing the type for the geometry.</returns>
+        private SearchableInventoryType GetInventoryType(esriGeometryType geometryType)
+        {
+            switch (geometryType)
+            {
+                case esriGeometryType.esriGeometryLine:
+                case esriGeometryType.esriGeometryPolyline:
+                case esriGeometryType.esriGeometryPath:
+                    return SearchableInventoryType.Line;
+
+                case esriGeometryType.esriGeometryMultipoint:
+                case esriGeometryType.esriGeometryPoint:
+                    return SearchableInventoryType.Point;
+
+                default:
+                    return SearchableInventoryType.Polygon;
+            }
         }
 
         #endregion
