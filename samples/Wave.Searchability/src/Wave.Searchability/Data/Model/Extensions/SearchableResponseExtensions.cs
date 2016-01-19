@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using ESRI.ArcGIS.ADF;
@@ -27,7 +28,7 @@ namespace Wave.Searchability.Data
         /// </returns>
         public static IMMRowLayerSearchResults2 ToSearchResults(this SearchableResponse source, IMap map)
         {
-            return source.ToSearchResults(map.Where<IFeatureLayer>(layer => layer.Valid).ToList());
+            return source.ToSearchResults(map.GetLayers<IFeatureLayer>(layer => layer.Valid).ToList());
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Wave.Searchability.Data
 
             foreach (var s in source)
             {
-                var layer = layers.FirstOrDefault(l => ((IDataset) l.FeatureClass).Name.Equals(s.Key));
+                var layer = layers.FirstOrDefault(l => (l.Name.Equals(s.Key, StringComparison.CurrentCultureIgnoreCase)));
                 if (layer != null)
                 {
                     using (ComReleaser cr = new ComReleaser())

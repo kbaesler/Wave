@@ -7,18 +7,27 @@
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=Wave.Extensions.Esri"
              xmlns:data="clr-namespace:Wave.Searchability.Data"
              xmlns:views="clr-namespace:Wave.Searchability.Views"
+             xmlns:miner="clr-namespace:Miner.Controls;assembly=Miner.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300"
-             d:DesignWidth="300">    
+             d:DesignWidth="300"
+             DataContextChanged="SearchServiceView_OnDataContextChanged">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <amalgamate:ThemeDictionary />
             </ResourceDictionary.MergedDictionaries>                       
         </ResourceDictionary>
-    </UserControl.Resources>    
-    <StackPanel>
-        <Grid>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5" />
@@ -33,6 +42,7 @@
             </Grid.ColumnDefinitions>
             <ComboBox Grid.Row="0"
                       Grid.ColumnSpan="3"
+                      IsSynchronizedWithCurrentItem="True"
                       ItemsSource="{Binding Items}"
                       SelectedItem="{Binding CurrentItem}">                
                 <ComboBox.ItemTemplate>
@@ -87,7 +97,7 @@
                       DisplayMemberPath="Value"
                       SelectedValuePath="Key" />
         </Grid>
-        <Grid>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="5" />
@@ -99,5 +109,10 @@
                     Content="Search" 
                     Command="{Binding SearchCommand}"/>
         </Grid>
-    </StackPanel>
+        <Grid Grid.Row="4">
+            <WindowsFormsHost>
+                <miner:MinerTreeView x:Name="MinerTreeView" />
+            </WindowsFormsHost>
+        </Grid>
+    </Grid>
 </UserControl>

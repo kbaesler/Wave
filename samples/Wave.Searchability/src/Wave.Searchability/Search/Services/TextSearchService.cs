@@ -52,17 +52,29 @@ namespace Wave.Searchability.Services
     {
         #region Protected Methods
 
+        /// <summary>
+        ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="source"></param>
+        /// <param name="token"></param>
+        /// <exception cref="System.ArgumentNullException">source</exception>
         protected override void Find(TSearchableRequest request, IMap source, CancellationToken token)
         {
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            var layers = source.Where<IFeatureLayer>(layer => layer.Valid).ToList();
+            var layers = source.GetLayers<IFeatureLayer>(layer => layer.Valid).ToList();
             var tables = source.GetTables().DistinctBy(o => ((IDataset) o).Name).ToList();
 
             this.Find(request, layers, tables, token);
         }
 
+        /// <summary>
+        ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="token"></param>
         protected override void Find(TSearchableRequest request, CancellationToken token)
         {
             this.Find(request, Document.ActiveMap, token);
@@ -94,8 +106,8 @@ namespace Wave.Searchability.Services
         #region Private Methods
 
         /// <summary>
-        /// Associates the specified object with the layer (when specified) otherwise it associates it with the relationship
-        /// path.
+        ///     Associates the specified object with the layer (when specified) otherwise it associates it with the relationship
+        ///     path.
         /// </summary>
         /// <param name="search">The search.</param>
         /// <param name="layer">The layer.</param>
@@ -203,7 +215,7 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the layer.
+        ///     Searches the layer.
         /// </summary>
         /// <param name="layer">The layer.</param>
         /// <param name="item">The item.</param>
@@ -237,15 +249,16 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the layers.
+        ///     Searches the layers.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="layers">The layers.</param>
         /// <param name="token">The token.</param>
         private void SearchLayers(TSearchableRequest request, List<IFeatureLayer> layers, CancellationToken token)
         {
+            var parallel = new ParallelOptions() {CancellationToken = token};
             var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableLayer>()).ToList();
-            foreach(var i in items)
+            foreach (var i in items)
             {
                 var item = i;
 
@@ -253,9 +266,9 @@ namespace Wave.Searchability.Services
                 {
                     var layer = l;
 
-                    this.SearchLayer(layer, item, request, token);
-
-                    this.TraverseRelationships(layer.FeatureClass, null, null, item.Relationships, request, layers, token);
+                    Parallel.Invoke(parallel, () =>
+                        this.SearchLayer(layer, item, request, token), () =>
+                            this.TraverseRelationships(layer.FeatureClass, null, null, item.Relationships, request, layers, token));
 
                     if (token.IsCancellationRequested)
                         return;
@@ -264,7 +277,7 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the relationship.
+        ///     Searches the relationship.
         /// </summary>
         /// <param name="searchClass">The search class.</param>
         /// <param name="layer">The layer.</param>
@@ -294,7 +307,7 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the table.
+        ///     Searches the table.
         /// </summary>
         /// <param name="table">The table.</param>
         /// <param name="item">The item.</param>
@@ -331,7 +344,7 @@ namespace Wave.Searchability.Services
         }
 
         /// <summary>
-        /// Searches the tables.
+        ///     Searches the tables.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="tables">The tables.</param>
@@ -339,8 +352,9 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         private void SearchTables(TSearchableRequest request, List<ITable> tables, List<IFeatureLayer> layers, CancellationToken token)
         {
+            var parallel = new ParallelOptions() {CancellationToken = token};
             var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableTable>()).ToList();
-            foreach(var i in items)
+            foreach (var i in items)
             {
                 var item = i;
 
@@ -348,18 +362,18 @@ namespace Wave.Searchability.Services
                 {
                     var table = t;
 
-                    this.SearchTable(table, i, layers, request, token);
-
-                    this.TraverseRelationships((IObjectClass) table, null, null, i.Relationships, request, layers, token);
+                    Parallel.Invoke(parallel, () =>
+                        this.SearchTable(table, item, layers, request, token), () =>
+                            this.TraverseRelationships((IObjectClass) table, null, null, item.Relationships, request, layers, token));
 
                     if (token.IsCancellationRequested)
                         return;
                 }
-            }            
+            }
         }
 
         /// <summary>
-        /// Traverses the relationships.
+        ///     Traverses the relationships.
         /// </summary>
         /// <param name="objectClass">The search class.</param>
         /// <param name="layer">The layer.</param>

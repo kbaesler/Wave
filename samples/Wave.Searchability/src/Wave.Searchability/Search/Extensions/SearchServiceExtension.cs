@@ -151,7 +151,7 @@ namespace Wave.Searchability.Extensions
         {
             var items = new List<SearchableInventory>();
 
-            foreach (IFeatureLayer layer in map.Where<IFeatureLayer>(layer => layer.Valid).DistinctBy(layer => layer.FeatureClass.ObjectClassID))
+            foreach (IFeatureLayer layer in map.GetLayers<IFeatureLayer>(layer => layer.Valid).DistinctBy(layer => layer.FeatureClass.ObjectClassID))
             {
                 var item = new SearchableLayer(layer.Name, layer.FeatureClass.AliasName)
                 {

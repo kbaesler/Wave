@@ -159,18 +159,20 @@ namespace ESRI.ArcGIS.Carto
 
 
         /// <summary>
-        ///     Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisfy the
-        ///     <paramref name="selector" />
-        ///     and flattens the resulting sequences into one sequence.
+        /// Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisfy the
+        /// <paramref name="selector" />
+        /// and flattens the resulting sequences into one sequence.
         /// </summary>
+        /// <typeparam name="TLayer">The type of the layer.</typeparam>
         /// <param name="source">The map.</param>
         /// <param name="selector">A function to test each element for a condition in each recursion.</param>
         /// <returns>
-        ///     Returns an <see cref="IEnumerable{IFeatureLayer}" /> enumeration whose elements
-        ///     who are the result of invoking the recursive transform function on each element of the input sequence.
+        /// Returns an <see cref="IEnumerable{TLayer}" /> enumeration whose elements
+        /// who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static IEnumerable<IFeatureLayer> GetLayers(this IMaps source, Func<IFeatureLayer, bool> selector)
+        public static IEnumerable<TLayer> GetLayers<TLayer>(this IMaps source, Func<TLayer, bool> selector)
+            where TLayer : ILayer
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
