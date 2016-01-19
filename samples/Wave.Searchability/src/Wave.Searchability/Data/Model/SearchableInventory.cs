@@ -14,6 +14,7 @@ namespace Wave.Searchability.Data
     {
         #region Fields
 
+        private string _Header;
         private ObservableCollection<SearchableItem> _Items;
         private SearchableInventoryType _Type;
 
@@ -30,7 +31,7 @@ namespace Wave.Searchability.Data
             : base(name, aliasName)
         {
             _Items = new ObservableCollection<SearchableItem>();
-            _Type = SearchableInventoryType.Unknown;
+            _Type = SearchableInventoryType.Custom;
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace Wave.Searchability.Data
         public SearchableInventory(string name)
             : base(name, name)
         {
-            _Type = SearchableInventoryType.Unknown;            
+            _Type = SearchableInventoryType.Custom;
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace Wave.Searchability.Data
         public SearchableInventory(string name, params SearchableItem[] items)
             : this(name, name, items)
         {
-            _Type = SearchableInventoryType.Unknown;
+            _Type = SearchableInventoryType.Custom;
         }
 
         /// <summary>
@@ -69,6 +70,24 @@ namespace Wave.Searchability.Data
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the header.
+        /// </summary>
+        /// <value>
+        ///     The header.
+        /// </value>
+        [DataMember(Name = "header")]
+        public string Header
+        {
+            get { return _Header; }
+            set
+            {
+                _Header = value;
+
+                base.OnPropertyChanged("Header");
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the items.
@@ -101,7 +120,7 @@ namespace Wave.Searchability.Data
             set
             {
                 _Type = value;
-                
+
                 base.OnPropertyChanged("Type");
             }
         }
@@ -109,12 +128,15 @@ namespace Wave.Searchability.Data
         #endregion
     }
 
+    /// <summary>
+    ///     An enumeration that indicates the type of the inventory.
+    /// </summary>
     public enum SearchableInventoryType
     {
         Point = 0,
         Line = 1,
         Polygon = 2,
         Table = 3,
-        Unknown = 4,
+        Custom = 4,
     }
 }

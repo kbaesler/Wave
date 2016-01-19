@@ -33,12 +33,6 @@ namespace Wave.Searchability.Extensions
 
         #endregion
 
-        #region Fields
-
-        private ServiceHost _ServiceHost;
-
-        #endregion
-
         #region Constructors
 
         /// <summary>
@@ -59,8 +53,6 @@ namespace Wave.Searchability.Extensions
         public override void Shutdown()
         {
             base.Shutdown();
-
-            this.CloseServiceHost();
         }
 
         /// <summary>
@@ -122,48 +114,14 @@ namespace Wave.Searchability.Extensions
         {
             this.AddService(typeof (IEventAggregator), new EventAggregator());
             this.AddService(typeof (IMapSearchService), new MapSearchService());
-
-            this.CreateServiceHost();
         }
 
         #endregion
 
-        #region Private Methods
+        #region Private Methods        
 
         /// <summary>
-        ///     Closes the service host.
-        /// </summary>
-        private void CloseServiceHost()
-        {
-            if (_ServiceHost != null)
-            {
-                _ServiceHost.Close();
-                _ServiceHost = null;
-            }
-        }
-
-        /// <summary>
-        ///     Creates the service host.
-        /// </summary>
-        private void CreateServiceHost()
-        {
-            _ServiceHost = new ServiceHost(typeof (MapSearchService), new Uri("http://localhost:8000/MapSearchService/"));
-
-            try
-            {
-                var endPoint = _ServiceHost.AddServiceEndpoint(typeof (IMapSearchService), new WebHttpBinding(), "rest");
-                endPoint.Behaviors.Add(new WebHttpBehavior());
-
-                _ServiceHost.Open();
-            }
-            catch (CommunicationException ce)
-            {
-                _ServiceHost.Abort();
-            }
-        }
-
-        /// <summary>
-        ///     Creates a collection of the <see cref="SearchableSet" /> objects based on the map and custom searches.
+        ///     Creates a collection of the <see cref="SearchableInventory" /> objects based on the map and custom searches.
         /// </summary>
         /// <param name="map">The map.</param>
         /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing an enumeration of sets.</returns>
@@ -183,9 +141,9 @@ namespace Wave.Searchability.Extensions
 
             return sets.OrderBy(o => o.Name);
         }
-
+         
         /// <summary>
-        ///     Gets the layer set.
+        ///     Gets the layer inventory.
         /// </summary>
         /// <param name="map">The map.</param>
         /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing the layers in the map.</returns>
@@ -195,15 +153,16 @@ namespace Wave.Searchability.Extensions
 
             foreach (IFeatureLayer layer in map.Where<IFeatureLayer>(layer => layer.Valid).DistinctBy(layer => layer.FeatureClass.ObjectClassID))
             {
-                var item = new SearchableLayer(((IDataset) layer.FeatureClass).Name, layer.FeatureClass.AliasName)
+                var item = new SearchableLayer(layer.Name, layer.FeatureClass.AliasName)
                 {
-                    LayerDefinition = true,
+                    LayerDefinition = !string.IsNullOrEmpty(((IFeatureLayerDefinition)layer).DefinitionExpression),
                     Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()}),
                 };
 
                 var inventory = new SearchableInventory(item.Name, layer.Name, item)
                 {
-                    Type = this.GetInventoryType(layer.FeatureClass.ShapeType)
+                    Type = this.GetInventoryType(layer.FeatureClass.ShapeType),
+                    Header = "Layers"
                 };
                 items.Add(inventory);
             }
@@ -212,7 +171,7 @@ namespace Wave.Searchability.Extensions
         }
 
         /// <summary>
-        ///     Gets the table set.
+        ///     Gets the table inventory.
         /// </summary>
         /// <param name="map">The map.</param>
         /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing the layers in the map.</returns>
@@ -231,7 +190,8 @@ namespace Wave.Searchability.Extensions
 
                 var inventory = new SearchableInventory(item.Name, aliasName, item)
                 {
-                    Type = SearchableInventoryType.Table
+                    Type = SearchableInventoryType.Table,
+                    Header = "Tables"
                 };
                 items.Add(inventory);
             }

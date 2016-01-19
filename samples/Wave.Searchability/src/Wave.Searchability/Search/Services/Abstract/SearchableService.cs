@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms.VisualStyles;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -79,14 +80,6 @@ namespace Wave.Searchability.Services
         protected Action CancelIfAtThreshold { get; set; }
 
         /// <summary>
-        ///     Gets or sets the concurrent count.
-        /// </summary>
-        /// <value>
-        ///     The concurrent count.
-        /// </value>
-        protected int ConcurrentCount { get; set; }
-
-        /// <summary>
         ///     Gets or sets the concurrent dictionary.
         /// </summary>
         /// <value>
@@ -113,13 +106,9 @@ namespace Wave.Searchability.Services
 
                 try
                 {
-                    this.ConcurrentCount = 0;
                     this.ConcurrentDictionary.Clear();
                     this.Find(request, cts.Token);
-                }
-                catch (OperationCanceledException)
-                {
-                }
+                }                
                 catch (AggregateException e)
                 {
                     cts.Cancel();
@@ -147,13 +136,9 @@ namespace Wave.Searchability.Services
 
                 try
                 {
-                    this.ConcurrentCount = 0;
                     this.ConcurrentDictionary.Clear();
                     this.Find(request, source, cts.Token);
-                }
-                catch (OperationCanceledException)
-                {
-                }
+                }              
                 catch (AggregateException e)
                 {
                     cts.Cancel();
@@ -179,13 +164,12 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         protected virtual void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, TSearchableRequest request, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
+            if (token.IsCancellationRequested)
+                return;
 
-            var name = (layer == null) ? ((IDataset) row.Table).Name : ((IDataset) layer.FeatureClass).Name;
+            var name = (layer == null) ? ((IDataset) row.Table).Name : layer.Name;
             this.ConcurrentDictionary.AddOrUpdate(name, s =>
             {
-                this.ConcurrentCount++;
-
                 var bag = new ConcurrentBag<int>();
                 bag.Add(row.OID);
 
@@ -193,11 +177,7 @@ namespace Wave.Searchability.Services
             }, (s, bag) =>
             {
                 if (!bag.Contains(row.OID))
-                {
                     bag.Add(row.OID);
-
-                    this.ConcurrentCount++;
-                }
 
                 return bag;
             });
@@ -296,17 +276,7 @@ namespace Wave.Searchability.Services
         }
 
         protected abstract void Find(TSearchableRequest request, TDataSource source, CancellationToken token);
-        protected abstract void Find(TSearchableRequest request, CancellationToken token);
-
-        /// <summary>
-        ///     Throws if cancellation requested.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        protected void ThrowIfCancellationRequested(CancellationToken token)
-        {
-            if (token.IsCancellationRequested)
-                token.ThrowIfCancellationRequested();
-        }
+        protected abstract void Find(TSearchableRequest request, CancellationToken token);        
 
         #endregion
 
@@ -321,8 +291,57 @@ namespace Wave.Searchability.Services
         {
             this.CancelIfAtThreshold = () =>
             {
-                if (request.Threshold > 0 && this.ConcurrentCount >= request.Threshold)
-                    source.Cancel();
+                if (request.Threshold > 0)
+                {
+                    int constraints = 0;
+
+                    switch (request.ThresholdConstraint)
+                    {
+                        case ThresholdConstraints.Request:
+
+                            if (this.ConcurrentDictionary.Values.Sum(o => o.Count) >= request.Threshold)
+                                source.Cancel();
+
+                            break;
+
+                        case ThresholdConstraints.Inventory:
+
+                            foreach (var i in request.Inventory)
+                            {
+                                var inventory = i;
+                                var items = this.ConcurrentDictionary.Where(o => inventory.Items.Any(item => item.Name.Equals(o.Key))).ToList();
+                                if (items.Count == inventory.Items.Count)
+                                {
+                                    if (items.Sum(item => item.Value.Count) >= request.Threshold)
+                                    {
+                                        constraints++;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (constraints == request.Inventory.Count)
+                                source.Cancel();
+
+                            break;
+
+                        case ThresholdConstraints.Item:
+
+                            foreach (var i in request.Inventory)
+                            {
+                                var inventory = i;
+                                var items = this.ConcurrentDictionary.Where(o => inventory.Items.Any(item => item.Name.Equals(o.Key)));
+                                if (items.All(item => item.Value.Count >= request.Threshold))
+                                    constraints++;
+
+                            }
+
+                            if (constraints == request.Inventory.Sum(i => i.Items.Count))
+                                source.Cancel();
+
+                            break;
+                    }
+                }
             };
         }
 

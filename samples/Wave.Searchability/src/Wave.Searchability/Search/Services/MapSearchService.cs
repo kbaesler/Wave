@@ -39,6 +39,9 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         protected override void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, MapSearchServiceRequest request, CancellationToken token)
         {
+            if (token.IsCancellationRequested)
+                return;
+
             if (isFeatureClass)
             {
                 var feature = (IFeature) row;

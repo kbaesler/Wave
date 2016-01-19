@@ -57,7 +57,7 @@ namespace Wave.Searchability.Services
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            var layers = source.Where<IFeatureLayer>(layer => layer.Valid).DistinctBy(o => o.FeatureClass.ObjectClassID).ToList();
+            var layers = source.Where<IFeatureLayer>(layer => layer.Valid).ToList();
             var tables = source.GetTables().DistinctBy(o => ((IDataset) o).Name).ToList();
 
             this.Find(request, layers, tables, token);
@@ -106,14 +106,14 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         private void Attach(IObject search, IFeatureLayer layer, List<string> path, int index, List<IFeatureLayer> layers, TSearchableRequest request, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
+            if (token.IsCancellationRequested)
+                return;
 
             if (path == null) return;
             if (path.Count == 0) return;
             if (index < 0 || index > path.Count) return;
 
             bool reset = (layer == null);
-
 
             IObjectClass searchClass = search.Class;
             IEnumRelationshipClass relationshipClasses = searchClass.RelationshipClasses[esriRelRole.esriRelRoleAny];
@@ -211,7 +211,8 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         private void SearchLayer(IFeatureLayer layer, SearchableLayer item, TSearchableRequest request, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
+            if (token.IsCancellationRequested)
+                return;
 
             IFeatureClass searchClass = layer.FeatureClass;
             var expression = this.CompileExpression((ITable) searchClass, request, item);
@@ -243,18 +244,21 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         private void SearchLayers(TSearchableRequest request, List<IFeatureLayer> layers, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
-
             var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableLayer>()).ToList();
-            foreach(var item in items)
+            foreach(var i in items)
             {
-                foreach (var l in layers.Where(o => ((IDataset) o.FeatureClass).Name.Equals(item.Name) || (item.NameAsClassModelName && o.FeatureClass.IsAssignedClassModelName(item.Name))))
+                var item = i;
+
+                foreach (var l in layers.Where(o => o.Name.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase) || (item.NameAsClassModelName && o.FeatureClass.IsAssignedClassModelName(item.Name))))
                 {
                     var layer = l;
 
                     this.SearchLayer(layer, item, request, token);
 
                     this.TraverseRelationships(layer.FeatureClass, null, null, item.Relationships, request, layers, token);
+
+                    if (token.IsCancellationRequested)
+                        return;
                 }
             }
         }
@@ -271,7 +275,8 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         private void SearchRelationship(IObjectClass searchClass, IFeatureLayer layer, SearchableItem item, SearchableRelationship relationship, TSearchableRequest request, List<IFeatureLayer> layers, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
+            if (token.IsCancellationRequested)
+                return;
 
             var expression = this.CompileExpression((ITable) searchClass, request, relationship);
             if (string.IsNullOrEmpty(expression))
@@ -298,7 +303,8 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         private void SearchTable(ITable table, SearchableItem item, List<IFeatureLayer> layers, TSearchableRequest request, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
+            if (token.IsCancellationRequested)
+                return;
 
             var expression = this.CompileExpression(table, request, item);
             if (string.IsNullOrEmpty(expression))
@@ -331,20 +337,23 @@ namespace Wave.Searchability.Services
         /// <param name="tables">The tables.</param>
         /// <param name="layers">The layers.</param>
         /// <param name="token">The token.</param>
-        private void SearchTables(TSearchableRequest request, IEnumerable<ITable> tables, List<IFeatureLayer> layers, CancellationToken token)
+        private void SearchTables(TSearchableRequest request, List<ITable> tables, List<IFeatureLayer> layers, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
-
             var items = request.Inventory.SelectMany(inventory => inventory.Items.OfType<SearchableTable>()).ToList();
-            foreach(var item in items)
+            foreach(var i in items)
             {
-                foreach (var t in tables.Where(o => ((IDataset) o).Name.Equals(item.Name) || (item.NameAsClassModelName && o.IsAssignedClassModelName(item.Name))))
+                var item = i;
+
+                foreach (var t in tables.Where(o => ((IDataset) o).Name.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase) || (item.NameAsClassModelName && o.IsAssignedClassModelName(item.Name))))
                 {
                     var table = t;
 
-                    this.SearchTable(table, item, layers, request, token);
+                    this.SearchTable(table, i, layers, request, token);
 
-                    this.TraverseRelationships((IObjectClass) table, null, null, item.Relationships, request, layers, token);
+                    this.TraverseRelationships((IObjectClass) table, null, null, i.Relationships, request, layers, token);
+
+                    if (token.IsCancellationRequested)
+                        return;
                 }
             }            
         }
@@ -361,7 +370,8 @@ namespace Wave.Searchability.Services
         /// <param name="token">The token.</param>
         private void TraverseRelationships(IObjectClass objectClass, IFeatureLayer layer, SearchableItem item, IEnumerable<SearchableRelationship> relationships, TSearchableRequest request, List<IFeatureLayer> layers, CancellationToken token)
         {
-            this.ThrowIfCancellationRequested(token);
+            if (token.IsCancellationRequested)
+                return;
 
             foreach (var r in relationships)
             {
@@ -371,7 +381,7 @@ namespace Wave.Searchability.Services
                 foreach (var relationshipClass in relationshipClasses.AsEnumerable())
                 {
                     string name = ((IDataset) relationshipClass).Name;
-                    if (relationship.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase) || r.Name.Equals(Searchable.Any))
+                    if (relationship.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase) || relationship.Name.Equals(Searchable.Any))
                     {
                         IObjectClass searchClass = objectClass == relationshipClass.OriginClass ? relationshipClass.DestinationClass : relationshipClass.OriginClass;
 

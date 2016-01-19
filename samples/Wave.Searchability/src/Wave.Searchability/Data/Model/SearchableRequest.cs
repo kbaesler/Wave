@@ -19,6 +19,7 @@ namespace Wave.Searchability.Data
             this.Threshold = 200;
             this.ComparisonOperator = ComparisonOperator.Contains;
             this.LogicalOperator = LogicalOperator.Or;
+            this.ThresholdConstraint = ThresholdConstraints.Request;
         }
 
         #endregion
@@ -70,6 +71,34 @@ namespace Wave.Searchability.Data
         [DataMember(Name = "threshold")]
         public int Threshold { get; set; }
 
+        /// <summary>
+        /// Gets or sets the threshold constraint.
+        /// </summary>
+        /// <value>
+        /// The threshold constraint.
+        /// </value>
+        [DataMember(Name = "thresholdConstraint")]
+        public ThresholdConstraints ThresholdConstraint { get; set; }
+
         #endregion
+    }
+
+    /// <summary>
+    /// An enumeration that controls the threshold behavior.
+    /// </summary>
+    public enum ThresholdConstraints
+    {
+        /// <summary>
+        /// Each inventory is allowed to reach the threshold.
+        /// </summary>
+        Inventory,
+        /// <summary>
+        /// The request entire request is allowed to reach the threshold.
+        /// </summary>
+        Request,
+        /// <summary>
+        /// The individual items within the inventory are allowed to reach the threshold.
+        /// </summary>
+        Item
     }
 }
