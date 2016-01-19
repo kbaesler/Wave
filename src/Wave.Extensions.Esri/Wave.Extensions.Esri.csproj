@@ -423,6 +423,9 @@
     <Page Include="System\Windows\Controls\InteropTextBox\Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    <Page Include="System\Windows\Controls\DelayTextBox\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="System\Windows\Controls\TokenizedTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -439,6 +442,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\Windows\Controls\DelayTextBox\Themes\" />
+    <Folder Include="System\Windows\Controls\InteropTextBox\Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
