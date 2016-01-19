@@ -6,7 +6,7 @@ namespace ESRI.ArcGIS.BaseClasses
     /// <summary>
     ///     Provides a strongly-typed service container.
     /// </summary>
-    public interface IBootstrapContainer
+    public interface IExtensionContainer
     {
         #region Public Methods
 
@@ -37,28 +37,28 @@ namespace ESRI.ArcGIS.BaseClasses
     /// <summary>
     ///     An extension that implements the inversion of control design pattern.
     /// </summary>
-    public abstract class BaseExtensionBootstrap : BaseExtension, IBootstrapContainer
+    public abstract class BaseExtensionContainer : BaseExtension, IExtensionContainer
     {
         #region Fields
 
-        private readonly Dictionary<Type, object> _ServiceContainer = new Dictionary<Type, object>();
+        private readonly Dictionary<Type, object> _ExtensionContainer = new Dictionary<Type, object>();
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseExtensionBootstrap" /> class.
+        ///     Initializes a new instance of the <see cref="BaseExtensionContainer" /> class.
         /// </summary>
         /// <param name="extensionName">Name of the extension.</param>
-        protected BaseExtensionBootstrap(string extensionName)
+        protected BaseExtensionContainer(string extensionName)
             : base(extensionName)
         {
         }
 
         #endregion
 
-        #region IBootstrapContainer Members
+        #region IExtensionContainer Members
 
         /// <summary>
         ///     Gets the service object of the specified type.
@@ -73,8 +73,8 @@ namespace ESRI.ArcGIS.BaseClasses
         {
             Type type = typeof (TServiceType);
 
-            if (_ServiceContainer.ContainsKey(type))
-                return (TServiceType) _ServiceContainer[type];
+            if (_ExtensionContainer.ContainsKey(type))
+                return (TServiceType) _ExtensionContainer[type];
 
             return default(TServiceType);
         }
@@ -89,33 +89,9 @@ namespace ESRI.ArcGIS.BaseClasses
         /// </param>
         public void AddService(Type serviceType, object serviceInstance)
         {
-            if (!_ServiceContainer.ContainsKey(serviceType))
-                _ServiceContainer.Add(serviceType, serviceInstance);
+            if (!_ExtensionContainer.ContainsKey(serviceType))
+                _ExtensionContainer.Add(serviceType, serviceInstance);
         }
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        ///     Initialization function for extension
-        /// </summary>
-        /// <param name="initializationData">ESRI Application Reference</param>
-        public override void Startup(ref object initializationData)
-        {
-            base.Startup(ref initializationData);
-
-            this.Configure();
-        }
-
-        #endregion
-
-        #region Protected Methods
-
-        /// <summary>
-        ///     Configures the bootstrap extension.
-        /// </summary>
-        protected abstract void Configure();
 
         #endregion
     }
