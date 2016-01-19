@@ -41,8 +41,7 @@ namespace Wave.Searchability.Views
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
         private void SearchServiceView_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var bootstrapContainer = (IBootstrapContainer)Document.FindExtensionByName(SearchServiceExtension.ExtensionName);
-            var eventAggregator = bootstrapContainer.GetService<IEventAggregator>();
+            var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
             if (eventAggregator != null)
             {
                 eventAggregator.GetEvent<CompositePresentationEvent<SearchableResponse>>().Subscribe((response) =>

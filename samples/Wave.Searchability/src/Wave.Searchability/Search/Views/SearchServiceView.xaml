@@ -6,7 +6,6 @@
              xmlns:amalgamate="clr-namespace:Miner.Theme.Amalgamate;assembly=Miner.Theme.Amalgamate"
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=Wave.Extensions.Esri"
              xmlns:data="clr-namespace:Wave.Searchability.Data"
-             xmlns:views="clr-namespace:Wave.Searchability.Views"
              xmlns:miner="clr-namespace:Miner.Controls;assembly=Miner.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300"
@@ -15,8 +14,8 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <amalgamate:ThemeDictionary />
-            </ResourceDictionary.MergedDictionaries>                       
+                <amalgamate:ThemeDictionary/>
+            </ResourceDictionary.MergedDictionaries>            
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>

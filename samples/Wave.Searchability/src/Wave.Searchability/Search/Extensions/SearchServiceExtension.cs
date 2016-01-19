@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.ServiceModel;
-using System.ServiceModel.Description;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -22,10 +19,37 @@ using Wave.Searchability.Services;
 
 namespace Wave.Searchability.Extensions
 {
+    /// <summary>
+    ///     Provides access to the extension container.
+    /// </summary>
+    public static class ExtensionContainer
+    {
+        #region Fields
+
+        private static IExtensionContainer _Instance;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets the instance.
+        /// </summary>
+        /// <value>
+        ///     The instance.
+        /// </value>
+        public static IExtensionContainer Instance
+        {
+            get { return _Instance ?? (_Instance = Document.FindExtensionByName(SearchServiceExtension.ExtensionName) as IExtensionContainer); }
+        }
+
+        #endregion
+    }
+
     [Guid("DB44276A-8C24-4C4E-A6FF-113198EE9DC9")]
     [ProgId("Wave.Searchability.Extensions.SearchServiceExtension")]
     [ComVisible(true)]
-    public class SearchServiceExtension : BaseExtensionBootstrap
+    public class SearchServiceExtension : BaseExtensionContainer
     {
         #region Constants
 
@@ -48,19 +72,14 @@ namespace Wave.Searchability.Extensions
         #region Public Methods
 
         /// <summary>
-        ///     Cleanup function for extension.
-        /// </summary>
-        public override void Shutdown()
-        {
-            base.Shutdown();
-        }
-
-        /// <summary>
         ///     Initialization function for extension
         /// </summary>
         /// <param name="initializationData">ESRI Application Reference</param>
         public override void Startup(ref object initializationData)
         {
+            this.AddService(typeof (IEventAggregator), new EventAggregator());
+            this.AddService(typeof (IMapSearchService), new MapSearchService());
+
             base.Startup(ref initializationData);
 
             var eventAggregator = this.GetService<IEventAggregator>();
@@ -105,20 +124,7 @@ namespace Wave.Searchability.Extensions
 
         #endregion
 
-        #region Protected Methods
-
-        /// <summary>
-        ///     Configures the bootstrap extension.
-        /// </summary>
-        protected override void Configure()
-        {
-            this.AddService(typeof (IEventAggregator), new EventAggregator());
-            this.AddService(typeof (IMapSearchService), new MapSearchService());
-        }
-
-        #endregion
-
-        #region Private Methods        
+        #region Private Methods
 
         /// <summary>
         ///     Creates a collection of the <see cref="SearchableInventory" /> objects based on the map and custom searches.
@@ -141,7 +147,30 @@ namespace Wave.Searchability.Extensions
 
             return sets.OrderBy(o => o.Name);
         }
-         
+
+        /// <summary>
+        ///     Gets the type of the inventory.
+        /// </summary>
+        /// <param name="geometryType">Type of the geometry.</param>
+        /// <returns>Returns a <see cref="SearchableInventoryType" /> representing the type for the geometry.</returns>
+        private SearchableInventoryType GetInventoryType(esriGeometryType geometryType)
+        {
+            switch (geometryType)
+            {
+                case esriGeometryType.esriGeometryLine:
+                case esriGeometryType.esriGeometryPolyline:
+                case esriGeometryType.esriGeometryPath:
+                    return SearchableInventoryType.Line;
+
+                case esriGeometryType.esriGeometryMultipoint:
+                case esriGeometryType.esriGeometryPoint:
+                    return SearchableInventoryType.Point;
+
+                default:
+                    return SearchableInventoryType.Polygon;
+            }
+        }
+
         /// <summary>
         ///     Gets the layer inventory.
         /// </summary>
@@ -155,7 +184,7 @@ namespace Wave.Searchability.Extensions
             {
                 var item = new SearchableLayer(layer.Name, layer.FeatureClass.AliasName)
                 {
-                    LayerDefinition = !string.IsNullOrEmpty(((IFeatureLayerDefinition)layer).DefinitionExpression),
+                    LayerDefinition = !string.IsNullOrEmpty(((IFeatureLayerDefinition) layer).DefinitionExpression),
                     Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()}),
                 };
 
@@ -197,29 +226,6 @@ namespace Wave.Searchability.Extensions
             }
 
             return items;
-        }
-
-        /// <summary>
-        /// Gets the type of the inventory.
-        /// </summary>
-        /// <param name="geometryType">Type of the geometry.</param>
-        /// <returns>Returns a <see cref="SearchableInventoryType"/> representing the type for the geometry.</returns>
-        private SearchableInventoryType GetInventoryType(esriGeometryType geometryType)
-        {
-            switch (geometryType)
-            {
-                case esriGeometryType.esriGeometryLine:
-                case esriGeometryType.esriGeometryPolyline:
-                case esriGeometryType.esriGeometryPath:
-                    return SearchableInventoryType.Line;
-
-                case esriGeometryType.esriGeometryMultipoint:
-                case esriGeometryType.esriGeometryPoint:
-                    return SearchableInventoryType.Point;
-
-                default:
-                    return SearchableInventoryType.Polygon;
-            }
         }
 
         #endregion

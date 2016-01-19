@@ -64,8 +64,7 @@ namespace Wave.Searchability.Views
         {
             if (_ElementHost == null)
             {
-                var bootstrapContainer = (IBootstrapContainer) Document.FindExtensionByName(SearchServiceExtension.ExtensionName);                
-                var eventAggregator = bootstrapContainer.GetService<IEventAggregator>();
+                var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
                 if (eventAggregator != null)
                 {
                     var dataContext = new SearchServiceViewModel(eventAggregator);
