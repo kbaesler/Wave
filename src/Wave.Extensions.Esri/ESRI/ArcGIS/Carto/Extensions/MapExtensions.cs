@@ -75,7 +75,7 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (table == null) throw new ArgumentNullException("table");
 
-            return source.Where<IFeatureLayer>(o => o.FeatureClass.ObjectClassID == table.ObjectClassID);
+            return source.GetLayers<IFeatureLayer>(o => o.FeatureClass.ObjectClassID == table.ObjectClassID);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the layers in the map.</returns>
         public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source)
         {
-            return source.Where<IFeatureLayer>(layer => layer.Valid);
+            return source.GetLayers<IFeatureLayer>(layer => layer.Valid);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace ESRI.ArcGIS.Carto
             if (source.LayerCount == 0)
                 return null;
 
-            return source.Where<IFeatureLayer>(layer => predicate(layer)).Select(o => ((IDataset) o.FeatureClass).Workspace).First();
+            return source.GetLayers<IFeatureLayer>(layer => predicate(layer)).Select(o => ((IDataset)o.FeatureClass).Workspace).First();
         }
 
         /// <summary>
@@ -159,23 +159,25 @@ namespace ESRI.ArcGIS.Carto
 
 
         /// <summary>
-        ///     Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisfy the
-        ///     <paramref name="selector" />
-        ///     and flattens the resulting sequences into one sequence.
+        /// Traverses the <paramref name="source" /> selecting only those <see cref="IFeatureLayer" /> that satisfy the
+        /// <paramref name="selector" />
+        /// and flattens the resulting sequences into one sequence.
         /// </summary>
+        /// <typeparam name="TLayer">The type of the layer.</typeparam>
         /// <param name="source">The map.</param>
         /// <param name="selector">A function to test each element for a condition in each recursion.</param>
         /// <returns>
-        ///     Returns an <see cref="IEnumerable{IFeatureLayer}" /> enumeration whose elements
-        ///     who are the result of invoking the recursive transform function on each element of the input sequence.
+        /// Returns an <see cref="IEnumerable{TLayer}" /> enumeration whose elements
+        /// who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static IEnumerable<IFeatureLayer> Where(this IMaps source, Func<IFeatureLayer, bool> selector)
+        public static IEnumerable<TLayer> GetLayers<TLayer>(this IMaps source, Func<TLayer, bool> selector)
+            where TLayer : ILayer
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
 
-            return source.AsEnumerable().SelectMany(map => map.Where(selector));
+            return source.AsEnumerable().SelectMany(map => map.GetLayers(selector));
         }
 
         /// <summary>
@@ -192,7 +194,7 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
         /// <exception cref="System.NotSupportedException">The layer type is not supported.</exception>
-        public static IEnumerable<TLayer> Where<TLayer>(this IMap source, Func<TLayer, bool> selector)
+        public static IEnumerable<TLayer> GetLayers<TLayer>(this IMap source, Func<TLayer, bool> selector)
             where TLayer : ILayer
         {
             if (source == null) return null;

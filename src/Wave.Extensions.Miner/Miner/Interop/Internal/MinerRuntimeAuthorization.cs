@@ -1,9 +1,5 @@
 ﻿using ESRI.ArcGIS.esriSystem.BaseClasses;
 
-#if ARCFM_10 
-using Miner.Interop;
-#endif
-
 namespace Miner.Interop.Internal
 {
     /// <summary>
@@ -13,24 +9,7 @@ namespace Miner.Interop.Internal
     {
         #region Fields
 
-        private readonly IMMAppInitialize _AppInit;
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="MinerRuntimeAuthorization" /> class.
-        /// </summary>
-        public MinerRuntimeAuthorization()
-        {
-            _AppInit = new MMAppInitializeClass();
-
-#if ARCFM_10
-            IMMEsriBind bind = new MMEsriBindClass();
-            bind.AutoBind();
-#endif
-        }
+        private IMMAppInitialize _AppInit;
 
         #endregion
 
@@ -41,7 +20,22 @@ namespace Miner.Interop.Internal
         /// </summary>
         public override mmLicensedProductCode InitializedProduct
         {
-            get { return _AppInit.InitializedProduct(); }
+            get { return this.License.InitializedProduct(); }
+        }
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets the license.
+        /// </summary>
+        /// <value>
+        ///     The license.
+        /// </value>
+        protected IMMAppInitialize License
+        {
+            get { return _AppInit ?? (_AppInit = new MMAppInitializeClass()); }
         }
 
         #endregion
@@ -57,8 +51,8 @@ namespace Miner.Interop.Internal
         /// </returns>
         public override mmLicenseStatus CheckInExtension(mmLicensedExtensionCode licensedExtension)
         {
-            if (_AppInit.IsExtensionCheckedOut(licensedExtension))
-                return _AppInit.CheckInExtension(licensedExtension);
+            if (this.License.IsExtensionCheckedOut(licensedExtension))
+                return this.License.CheckInExtension(licensedExtension);
 
             return mmLicenseStatus.mmLicenseCheckedIn;
         }
@@ -73,9 +67,9 @@ namespace Miner.Interop.Internal
         /// </returns>
         public override mmLicenseStatus CheckOutExtension(mmLicensedProductCode licensedProduct, mmLicensedExtensionCode licensedExtension)
         {
-            mmLicenseStatus extensionStatus = _AppInit.IsExtensionCodeAvailable(licensedProduct, licensedExtension);
+            mmLicenseStatus extensionStatus = this.License.IsExtensionCodeAvailable(licensedProduct, licensedExtension);
             if (extensionStatus == mmLicenseStatus.mmLicenseAvailable)
-                extensionStatus = _AppInit.CheckOutExtension(licensedExtension);
+                extensionStatus = this.License.CheckOutExtension(licensedExtension);
 
             return extensionStatus;
         }
@@ -111,10 +105,10 @@ namespace Miner.Interop.Internal
         /// </returns>
         protected override mmLicenseStatus InitializeProduct(mmLicensedProductCode licensedProduct)
         {
-            mmLicenseStatus statusCode = _AppInit.IsProductCodeAvailable(licensedProduct);
+            mmLicenseStatus statusCode = this.License.IsProductCodeAvailable(licensedProduct);
             if (statusCode == mmLicenseStatus.mmLicenseAvailable)
             {
-                statusCode = _AppInit.Initialize(licensedProduct);
+                statusCode = this.License.Initialize(licensedProduct);
                 if (this.IsProductInitialized(statusCode))
                 {
                     this.InitializedProduct = _AppInit.InitializedProduct();
