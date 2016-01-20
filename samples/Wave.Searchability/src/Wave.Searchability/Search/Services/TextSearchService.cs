@@ -53,6 +53,31 @@ namespace Wave.Searchability.Services
         #region Protected Methods
 
         /// <summary>
+        ///     Compiles the filter that is used to query the feature layer.
+        /// </summary>
+        /// <param name="layer">The layer.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="item">The item.</param>
+        /// <param name="request">The request.</param>
+        /// <returns>Return <see cref="IQueryFilter" /> representing the filter.</returns>
+        protected virtual IQueryFilter CreateFilter(IFeatureLayer layer, string expression, SearchableLayer item, TSearchableRequest request)
+        {
+            IQueryFilter filter = new QueryFilterClass()
+            {
+                WhereClause = expression
+            };
+
+            if (item.LayerDefinition)
+            {
+                IFeatureLayerDefinition featureLayerDefinition = (IFeatureLayerDefinition) layer;
+                if (!string.IsNullOrEmpty(featureLayerDefinition.DefinitionExpression))
+                    filter.WhereClause = string.Format("({0}) {1} ({2})", expression, LogicalOperator.And, featureLayerDefinition.DefinitionExpression);
+            }
+
+            return filter;
+        }
+
+        /// <summary>
         ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
         /// </summary>
         /// <param name="request">The request.</param>
@@ -232,18 +257,7 @@ namespace Wave.Searchability.Services
             if (string.IsNullOrEmpty(expression))
                 return;
 
-            IQueryFilter filter = new QueryFilterClass()
-            {
-                WhereClause = expression
-            };
-
-            if (item.LayerDefinition)
-            {
-                IFeatureLayerDefinition featureLayerDefinition = (IFeatureLayerDefinition) layer;
-                if (!string.IsNullOrEmpty(featureLayerDefinition.DefinitionExpression))
-                    filter.WhereClause = string.Format("({0}) {1} ({2})", expression, LogicalOperator.And, featureLayerDefinition.DefinitionExpression);
-            }
-
+            var filter = this.CreateFilter(layer, expression, item, request);
             foreach (var feature in searchClass.Fetch(filter))
                 this.Add(feature, layer, true, request, token);
         }

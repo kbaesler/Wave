@@ -14,7 +14,9 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <amalgamate:ThemeDictionary/>
+                <amalgamate:ThemeDictionary>
+                    <Style TargetType="{x:Type controls:InteropTextBox}" BasedOn="{StaticResource {x:Type TextBox}}"/>
+                </amalgamate:ThemeDictionary>
             </ResourceDictionary.MergedDictionaries>            
         </ResourceDictionary>
     </UserControl.Resources>
@@ -31,8 +33,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="5" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -42,8 +42,8 @@
             <ComboBox Grid.Row="0"
                       Grid.ColumnSpan="3"
                       IsSynchronizedWithCurrentItem="True"
-                      ItemsSource="{Binding Items}"
-                      SelectedItem="{Binding CurrentItem}">                
+                      SelectedItem="{Binding CurrentItem}"
+                      ItemsSource="{Binding Items}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type data:SearchableInventory}">
                         <StackPanel Orientation="Horizontal">
@@ -75,7 +75,7 @@
                                 </Image.Style>
                             </Image>
                             <Label Content="{Binding .}"
-                                   VerticalContentAlignment="Center" />
+                                      />
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>

@@ -14,8 +14,6 @@ namespace Wave.Searchability.Views
     {
         #region Fields
 
-        private readonly IEventAggregator _EventAggregator;
-        private readonly SubscriptionToken _SubscriptionToken;
         private ObservableCollection<SearchableInventory> _Items;
 
         #endregion
@@ -28,8 +26,7 @@ namespace Wave.Searchability.Views
         /// <param name="eventAggregator">The event aggregator.</param>
         public SearchServiceViewModel(IEventAggregator eventAggregator)
         {
-            _EventAggregator = eventAggregator;
-            _SubscriptionToken = eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Subscribe(items =>
+            eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Subscribe(items =>
             {
                 this.Items = new ObservableCollection<SearchableInventory>(items);
                 this.CurrentItem = this.Items.FirstOrDefault();
@@ -45,9 +42,8 @@ namespace Wave.Searchability.Views
 
             this.Extents = new Dictionary<MapSearchServiceExtent, string>
             {
-                {MapSearchServiceExtent.WithinAnyExtent, "Any"},
                 {MapSearchServiceExtent.WithinCurrentExtent, "Current"},
-                {MapSearchServiceExtent.WithinCurrentOrOverlappingExtent, "Current or Overlaping"},
+                {MapSearchServiceExtent.WithinAnyExtent, "Any"},                
             };
 
             this.SearchCommand = new DelegateCommand((o) => eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Publish(new MapSearchServiceRequest()
@@ -55,9 +51,7 @@ namespace Wave.Searchability.Views
                 Inventory = new List<SearchableInventory>(new[] {this.CurrentItem}),
                 ComparisonOperator = this.ComparisonOperator,
                 Extent = this.Extent,
-                Keyword = this.Keyword,
-                LogicalOperator = LogicalOperator.Or,
-                Threshold = 200
+                Keyword = this.Keyword
             }));
         }
 
@@ -139,25 +133,7 @@ namespace Wave.Searchability.Views
         ///     The search command.
         /// </value>
         public DelegateCommand SearchCommand { get; set; }
-
-        #endregion
-
-        #region Protected Methods
-
-        /// <summary>
-        ///     Releases unmanaged and - optionally - managed resources
-        /// </summary>
-        /// <param name="disposing">
-        ///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
-        ///     unmanaged resources.
-        /// </param>
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-
-            _EventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Unsubscribe(_SubscriptionToken);
-        }
-
+               
         #endregion
     }
 }

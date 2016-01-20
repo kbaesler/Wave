@@ -100,10 +100,7 @@ namespace Wave.Searchability.Data
 
                 this.OnPropertyChanged("Fields");
             }
-        }
-
-        [IgnoreDataMember]
-        public bool IsChecked { get; set; }
+        }       
 
         /// <summary>
         ///     Gets the path.

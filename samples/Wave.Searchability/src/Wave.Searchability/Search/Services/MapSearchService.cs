@@ -1,12 +1,12 @@
 ﻿using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Threading;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
 
 using Miner.Framework;
+
+using Wave.Searchability.Data;
 
 namespace Wave.Searchability.Services
 {
@@ -30,42 +30,34 @@ namespace Wave.Searchability.Services
         #region Protected Methods
 
         /// <summary>
-        /// Adds the specified row (or feature) to the response.
+        ///     Compiles the filter that is used to query the feature layer.
         /// </summary>
-        /// <param name="row">The row or feature.</param>
-        /// <param name="layer">The feature layer for the row (when the row is a feature class).</param>
-        /// <param name="isFeatureClass">if set to <c>true</c> when the row is a feature class.</param>
+        /// <param name="layer">The layer.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="item">The item.</param>
         /// <param name="request">The request.</param>
-        /// <param name="token">The token.</param>
-        protected override void Add(IRow row, IFeatureLayer layer, bool isFeatureClass, MapSearchServiceRequest request, CancellationToken token)
+        /// <returns>
+        ///     Return <see cref="IQueryFilter" /> representing the filter.
+        /// </returns>
+        protected override IQueryFilter CreateFilter(IFeatureLayer layer, string expression, SearchableLayer item, MapSearchServiceRequest request)
         {
-            if (token.IsCancellationRequested)
-                return;
+            if (request.Extent == MapSearchServiceExtent.WithinAnyExtent)
+                return base.CreateFilter(layer, expression, item, request);
 
-            if (isFeatureClass)
+            ISpatialFilter filter = new SpatialFilterClass();
+            filter.WhereClause = expression;
+            filter.Geometry = Document.ActiveView.Extent;
+            filter.GeometryField = layer.FeatureClass.ShapeFieldName;
+            filter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
+
+            if (item.LayerDefinition)
             {
-                var feature = (IFeature) row;
-                var relOp = (IRelationalOperator) Document.ActiveView.Extent.Envelope;
-
-                switch (request.Extent)
-                {
-                    case MapSearchServiceExtent.WithinCurrentExtent:
-                        if (relOp.Within(feature.Shape))
-                            base.Add(row, layer, true, request, token);
-
-                        break;
-
-                    case MapSearchServiceExtent.WithinCurrentOrOverlappingExtent:
-                        if (relOp.Within(feature.Shape) || relOp.Overlaps(feature.Shape))
-                            base.Add(row, layer, true, request, token);
-
-                        break;
-
-                    default:
-                        base.Add(row, layer, true, request, token);
-                        break;
-                }
+                IFeatureLayerDefinition featureLayerDefinition = (IFeatureLayerDefinition) layer;
+                if (!string.IsNullOrEmpty(featureLayerDefinition.DefinitionExpression))
+                    filter.WhereClause = string.Format("({0}) {1} ({2})", expression, LogicalOperator.And, featureLayerDefinition.DefinitionExpression);
             }
+
+            return filter;
         }
 
         #endregion
@@ -84,7 +76,7 @@ namespace Wave.Searchability.Services
         /// </summary>
         public MapSearchServiceRequest()
         {
-            this.Extent = MapSearchServiceExtent.WithinAnyExtent;
+            this.Extent = MapSearchServiceExtent.WithinCurrentExtent;
         }
 
         #endregion
@@ -116,11 +108,6 @@ namespace Wave.Searchability.Services
         /// <summary>
         ///     Within the current extent.
         /// </summary>
-        WithinCurrentExtent = 1,
-
-        /// <summary>
-        ///     Within current or overlapping extent.
-        /// </summary>
-        WithinCurrentOrOverlappingExtent = 2
+        WithinCurrentExtent = 1
     }
 }
