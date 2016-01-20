@@ -149,13 +149,21 @@ namespace Wave.Searchability.Extensions
         }
 
         /// <summary>
-        ///     Gets the type of the inventory.
+        /// Gets the type of the inventory.
         /// </summary>
-        /// <param name="geometryType">Type of the geometry.</param>
-        /// <returns>Returns a <see cref="SearchableInventoryType" /> representing the type for the geometry.</returns>
-        private SearchableInventoryType GetInventoryType(esriGeometryType geometryType)
+        /// <param name="featureClass">The feature class.</param>
+        /// <returns>
+        /// Returns a <see cref="SearchableInventoryType" /> representing the type for the geometry.
+        /// </returns>
+        private SearchableInventoryType GetInventoryType(IFeatureClass featureClass)
         {
-            switch (geometryType)
+            var annoClass = featureClass.Extension is IAnnotationClassExtension;
+            if(annoClass) return SearchableInventoryType.Annotation;
+
+            var dimClass = featureClass.Extension is IDimensionClassExtension;
+            if(dimClass) return SearchableInventoryType.Dimension;
+
+            switch (featureClass.ShapeType)
             {
                 case esriGeometryType.esriGeometryLine:
                 case esriGeometryType.esriGeometryPolyline:
@@ -166,9 +174,11 @@ namespace Wave.Searchability.Extensions
                 case esriGeometryType.esriGeometryPoint:
                     return SearchableInventoryType.Point;
 
-                default:
+                case esriGeometryType.esriGeometryPolygon:
                     return SearchableInventoryType.Polygon;
             }
+
+            return SearchableInventoryType.Unknown;
         }
 
         /// <summary>
@@ -190,7 +200,7 @@ namespace Wave.Searchability.Extensions
 
                 var inventory = new SearchableInventory(item.Name, layer.Name, item)
                 {
-                    Type = this.GetInventoryType(layer.FeatureClass.ShapeType),
+                    Type = this.GetInventoryType(layer.FeatureClass),
                     Header = "Layers"
                 };
                 items.Add(inventory);
@@ -213,7 +223,6 @@ namespace Wave.Searchability.Extensions
                 var aliasName = ((IObjectClass) table).AliasName;
                 var item = new SearchableTable(((IDataset) table).Name, aliasName)
                 {
-                    Relationships = new ObservableCollection<SearchableRelationship>(new[] {new SearchableRelationship()}),
                     Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()})
                 };
 

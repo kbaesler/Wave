@@ -40,11 +40,16 @@ namespace Wave.Searchability.Views
                 {ComparisonOperator.Equals, "Equals"}
             };
 
+            this.ComparisonOperator = this.ComparisonOperators.First().Key;
+
             this.Extents = new Dictionary<MapSearchServiceExtent, string>
             {
-                {MapSearchServiceExtent.WithinCurrentExtent, "Current"},
-                {MapSearchServiceExtent.WithinAnyExtent, "Any"},                
+                {MapSearchServiceExtent.WithinAnyExtent, "Within Any Extent"},            
+                {MapSearchServiceExtent.WithinCurrentExtent, "Within Current Extent"},                    
+                {MapSearchServiceExtent.WithinOrOverlappingCurrentExtent, "Within Or Overlapping Current Extent"}
             };
+
+            this.Extent = this.Extents.Skip(1).First().Key;
 
             this.SearchCommand = new DelegateCommand((o) => eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Publish(new MapSearchServiceRequest()
             {

@@ -113,6 +113,7 @@
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Miner.AxInterop.MMObjEdr, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Controls, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Desktop, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Framework, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
@@ -229,14 +230,20 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Search\Resources\Images\Annotation.png" />
-    <Resource Include="Search\Resources\Images\Dimension.png" />
-    <Resource Include="Search\Resources\Images\Line.png" />
-    <Resource Include="Search\Resources\Images\Multipatch.png" />
-    <Resource Include="Search\Resources\Images\Point.png" />
-    <Resource Include="Search\Resources\Images\Polygon.png" />
+    <Resource Include="Search\Resources\Images\Annotation32.png" />
+    <Resource Include="Search\Resources\Images\Dimension32.png" />
+    <Resource Include="Search\Resources\Images\Extent32.png" />
+    <Resource Include="Search\Resources\Images\FeatureDataset32.png" />
+    <Resource Include="Search\Resources\Images\Geodatabase32.png" />
+    <Resource Include="Search\Resources\Images\Line32.png" />
+    <Resource Include="Search\Resources\Images\Multipatch32.png" />
+    <Resource Include="Search\Resources\Images\Point32.png" />
+    <Resource Include="Search\Resources\Images\Polygon32.png" />
+    <Resource Include="Search\Resources\Images\Relationship32.png" />
+    <Resource Include="Search\Resources\Images\Table32.png" />
+    <Resource Include="Search\Resources\Images\TableFeatureClassEmpty32.png" />
+    <Resource Include="Search\Resources\Images\Unknown32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,6 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms.VisualStyles;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -34,7 +33,6 @@ namespace Wave.Searchability.Services
         ///     Returns a <see cref="SearchableResponse" /> representing the results.
         /// </returns>
         SearchableResponse Find(TSearchableRequest request, TDataSource source);
-
 
         /// <summary>
         ///     Searches the active data source using the specified request.
@@ -108,7 +106,7 @@ namespace Wave.Searchability.Services
                 {
                     this.ConcurrentDictionary.Clear();
                     this.Find(request, cts.Token);
-                }                
+                }
                 catch (AggregateException e)
                 {
                     cts.Cancel();
@@ -138,7 +136,7 @@ namespace Wave.Searchability.Services
                 {
                     this.ConcurrentDictionary.Clear();
                     this.Find(request, source, cts.Token);
-                }              
+                }
                 catch (AggregateException e)
                 {
                     cts.Cancel();
@@ -205,7 +203,7 @@ namespace Wave.Searchability.Services
             bool tagOpen = false;
 
             // We need to keep the OR values grouped so the results are correct.
-            foreach (SearchableField sf in item.Fields.OrderBy(f => !f.Visible && !string.IsNullOrEmpty(f.Value)))
+            foreach (var sf in item.Fields.OrderBy(f => !f.Visible && !string.IsNullOrEmpty(f.Value)))
             {
                 // Ensure that the field exists.
                 int index = searchClass.FindField(sf.Name);
@@ -275,8 +273,20 @@ namespace Wave.Searchability.Services
             return whereClause.ToString();
         }
 
+        /// <summary>
+        ///     Finds the requested objects using the specified data source.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="source">The source.</param>
+        /// <param name="token">The cancellation token.</param>
         protected abstract void Find(TSearchableRequest request, TDataSource source, CancellationToken token);
-        protected abstract void Find(TSearchableRequest request, CancellationToken token);        
+
+        /// <summary>
+        ///     Finds the requested objects using the specified data source.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="token">The cancellation token.</param>
+        protected abstract void Find(TSearchableRequest request, CancellationToken token);
 
         #endregion
 
@@ -333,7 +343,6 @@ namespace Wave.Searchability.Services
                                 var items = this.ConcurrentDictionary.Where(o => inventory.Items.Any(item => item.Name.Equals(o.Key)));
                                 if (items.All(item => item.Value.Count >= request.Threshold))
                                     constraints++;
-
                             }
 
                             if (constraints == request.Inventory.Sum(i => i.Items.Count))

@@ -48,7 +48,9 @@ namespace Wave.Searchability.Services
             filter.WhereClause = expression;
             filter.Geometry = Document.ActiveView.Extent;
             filter.GeometryField = layer.FeatureClass.ShapeFieldName;
-            filter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
+            filter.SpatialRel = (request.Extent == MapSearchServiceExtent.WithinOrOverlappingCurrentExtent)
+                ? esriSpatialRelEnum.esriSpatialRelIntersects
+                : esriSpatialRelEnum.esriSpatialRelContains;
 
             if (item.LayerDefinition)
             {
@@ -108,6 +110,11 @@ namespace Wave.Searchability.Services
         /// <summary>
         ///     Within the current extent.
         /// </summary>
-        WithinCurrentExtent = 1
+        WithinCurrentExtent = 1,
+
+        /// <summary>
+        ///     Within or overlapping current extent
+        /// </summary>
+        WithinOrOverlappingCurrentExtent = 2
     }
 }

@@ -7,17 +7,19 @@
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=Wave.Extensions.Esri"
              xmlns:data="clr-namespace:Wave.Searchability.Data"
              xmlns:miner="clr-namespace:Miner.Controls;assembly=Miner.Controls"
+             xmlns:interop="clr-namespace:Miner.Interop;assembly=Miner.AxInterop.MMObjEdr"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300"
-             DataContextChanged="SearchServiceView_OnDataContextChanged">
+             Loaded="SearchServiceView_OnLoaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <amalgamate:ThemeDictionary>
-                    <Style TargetType="{x:Type controls:InteropTextBox}" BasedOn="{StaticResource {x:Type TextBox}}"/>
+                    <Style TargetType="{x:Type controls:InteropTextBox}"
+                           BasedOn="{StaticResource {x:Type TextBox}}" />
                 </amalgamate:ThemeDictionary>
-            </ResourceDictionary.MergedDictionaries>            
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -39,7 +41,8 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ComboBox Grid.Row="0"
+            <ComboBox x:Name="InventoryComboBox"
+                      Grid.Row="0"
                       Grid.ColumnSpan="3"
                       IsSynchronizedWithCurrentItem="True"
                       SelectedItem="{Binding CurrentItem}"
@@ -53,29 +56,44 @@
                                 <Image.Style>
                                     <Style TargetType="Image">
                                         <Setter Property="Source"
-                                                Value="../Resources/Images/Multipatch.png" />
+                                                Value="../Resources/Images/Unknown32.png" />
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Path=Type}"
                                                          Value="{x:Static data:SearchableInventoryType.Point}">
                                                 <Setter Property="Source"
-                                                        Value="../Resources/Images/Point.png" />
+                                                        Value="../Resources/Images/Point32.png" />
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding Path=Type}"
                                                          Value="{x:Static data:SearchableInventoryType.Line}">
                                                 <Setter Property="Source"
-                                                        Value="../Resources/Images/Line.png" />
+                                                        Value="../Resources/Images/Line32.png" />
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding Path=Type}"
                                                          Value="{x:Static data:SearchableInventoryType.Polygon}">
                                                 <Setter Property="Source"
-                                                        Value="../Resources/Images/Polygon.png" />
+                                                        Value="../Resources/Images/Polygon32.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=Type}"
+                                                         Value="{x:Static data:SearchableInventoryType.Annotation}">
+                                                <Setter Property="Source"
+                                                        Value="../Resources/Images/Annotation32.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=Type}"
+                                                         Value="{x:Static data:SearchableInventoryType.Dimension}">
+                                                <Setter Property="Source"
+                                                        Value="../Resources/Images/Dimension32.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=Type}"
+                                                         Value="{x:Static data:SearchableInventoryType.Table}">
+                                                <Setter Property="Source"
+                                                        Value="../Resources/Images/Table32.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Image.Style>
                             </Image>
                             <Label Content="{Binding .}"
-                                      />
+                                   VerticalContentAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
@@ -84,17 +102,30 @@
                       Grid.Column="0"
                       Width="75"
                       ItemsSource="{Binding ComparisonOperators}"
-                      SelectedIndex="0"
                       SelectedValue="{Binding ComparisonOperator}"
                       DisplayMemberPath="Value"
                       SelectedValuePath="Key" />
             <ComboBox Grid.Row="2"
                       Grid.Column="2"
                       ItemsSource="{Binding Extents}"
-                      SelectedIndex="0"
                       SelectedValue="{Binding Extent}"
                       DisplayMemberPath="Value"
-                      SelectedValuePath="Key" />
+                      SelectedValuePath="Key">
+                <ComboBox.Style>
+                    <Style TargetType="ComboBox"
+                           BasedOn="{StaticResource {x:Type ComboBox}}">
+                        <Setter Property="IsEnabled"
+                                Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=InventoryComboBox, Path=SelectedItem.Type}"
+                                         Value="{x:Static data:SearchableInventoryType.Table}">
+                                <Setter Property="IsEnabled"
+                                        Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Style>
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -103,14 +134,26 @@
                 <ColumnDefinition Width="75" />
             </Grid.ColumnDefinitions>
             <controls:InteropTextBox Grid.Column="0"
-                     Text="{Binding Keyword}" />
+                                     Text="{Binding Keyword}" />
             <Button Grid.Column="2"
-                    Content="Search" 
-                    Command="{Binding SearchCommand}"/>
+                    Content="Search"
+                    Command="{Binding SearchCommand}" />
         </Grid>
         <Grid Grid.Row="4">
-            <WindowsFormsHost>
-                <miner:MinerTreeView x:Name="MinerTreeView" />
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <WindowsFormsHost Grid.Row="0">
+                <miner:MinerTreeView x:Name="MinerTreeView" SelectionChanged="MinerTreeView_OnSelectionChanged" />
+            </WindowsFormsHost>
+            <GridSplitter Grid.Row="1" 
+                          Height="6"
+                          HorizontalAlignment="Stretch"
+                          ResizeDirection="Rows" />
+            <WindowsFormsHost Grid.Row="2">
+                <interop:AxMMObjectEditor x:Name="Editor" />
             </WindowsFormsHost>
         </Grid>
     </Grid>

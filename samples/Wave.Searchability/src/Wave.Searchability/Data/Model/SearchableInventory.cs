@@ -31,7 +31,7 @@ namespace Wave.Searchability.Data
             : base(name, aliasName)
         {
             _Items = new ObservableCollection<SearchableItem>();
-            _Type = SearchableInventoryType.Custom;
+            _Type = SearchableInventoryType.Unknown;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Wave.Searchability.Data
         public SearchableInventory(string name)
             : base(name, name)
         {
-            _Type = SearchableInventoryType.Custom;
+            _Type = SearchableInventoryType.Unknown;
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Wave.Searchability.Data
         public SearchableInventory(string name, params SearchableItem[] items)
             : this(name, name, items)
         {
-            _Type = SearchableInventoryType.Custom;
+            _Type = SearchableInventoryType.Unknown;
         }
 
         /// <summary>
@@ -137,6 +137,8 @@ namespace Wave.Searchability.Data
         Line = 1,
         Polygon = 2,
         Table = 3,
-        Custom = 4,
+        Annotation = 4,
+        Dimension = 5,
+        Unknown = -1,
     }
 }
