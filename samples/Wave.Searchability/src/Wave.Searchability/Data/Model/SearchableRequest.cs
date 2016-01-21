@@ -20,6 +20,7 @@ namespace Wave.Searchability.Data
             this.ComparisonOperator = ComparisonOperator.Contains;
             this.LogicalOperator = LogicalOperator.Or;
             this.ThresholdConstraint = ThresholdConstraints.Request;
+            this.MillisecondsTimeout = 60000;
         }
 
         #endregion
@@ -36,10 +37,10 @@ namespace Wave.Searchability.Data
         public ComparisonOperator ComparisonOperator { get; set; }
 
         /// <summary>
-        /// Gets or sets the inventory.
+        ///     Gets or sets the inventory.
         /// </summary>
         /// <value>
-        /// The inventory.
+        ///     The inventory.
         /// </value>
         [DataMember(Name = "inventory")]
         public List<SearchableInventory> Inventory { get; set; }
@@ -72,32 +73,43 @@ namespace Wave.Searchability.Data
         public int Threshold { get; set; }
 
         /// <summary>
-        /// Gets or sets the threshold constraint.
+        ///     Gets or sets the threshold constraint.
         /// </summary>
         /// <value>
-        /// The threshold constraint.
+        ///     The threshold constraint.
         /// </value>
         [DataMember(Name = "thresholdConstraint")]
         public ThresholdConstraints ThresholdConstraint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the milliseconds timeout.
+        /// </summary>
+        /// <value>
+        /// The milliseconds timeout.
+        /// </value>
+        [DataMember(Name = "millisecondsTimeout")]
+        public int MillisecondsTimeout { get; set; }
 
         #endregion
     }
 
     /// <summary>
-    /// An enumeration that controls the threshold behavior.
+    ///     An enumeration that controls the threshold behavior.
     /// </summary>
     public enum ThresholdConstraints
     {
         /// <summary>
-        /// Each inventory is allowed to reach the threshold.
+        ///     Each inventory is allowed to reach the threshold.
         /// </summary>
         Inventory,
+
         /// <summary>
-        /// The request entire request is allowed to reach the threshold.
+        ///     The request entire request is allowed to reach the threshold.
         /// </summary>
         Request,
+
         /// <summary>
-        /// The individual items within the inventory are allowed to reach the threshold.
+        ///     The individual items within the inventory are allowed to reach the threshold.
         /// </summary>
         Item
     }

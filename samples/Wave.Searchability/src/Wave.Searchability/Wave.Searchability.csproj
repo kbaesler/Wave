@@ -245,6 +245,9 @@
     <Resource Include="Search\Resources\Images\TableFeatureClassEmpty32.png" />
     <Resource Include="Search\Resources\Images\Unknown32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Configuration\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

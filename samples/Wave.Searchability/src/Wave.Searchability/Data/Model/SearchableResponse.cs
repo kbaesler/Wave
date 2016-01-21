@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace Wave.Searchability.Data
@@ -21,6 +23,15 @@ namespace Wave.Searchability.Data
         /// <param name="dictionary">The dictionary.</param>
         internal SearchableResponse(Dictionary<string, List<int>> dictionary)
             : base(dictionary)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SearchableResponse" /> class.
+        /// </summary>
+        /// <param name="dictionary">The dictionary.</param>
+        internal SearchableResponse(ConcurrentDictionary<string, ConcurrentBag<int>> dictionary)
+            : base(dictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()))
         {
         }
 

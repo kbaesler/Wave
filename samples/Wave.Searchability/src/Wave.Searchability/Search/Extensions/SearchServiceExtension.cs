@@ -93,8 +93,10 @@ namespace Wave.Searchability.Extensions
 
             eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Subscribe((request) =>
             {
-                var response = searchService.Find(request, Document.ActiveMap);
-                eventAggregator.GetEvent<CompositePresentationEvent<SearchableResponse>>().Publish(response);
+                searchService.FindAsync(request, Document.ActiveMap).ContinueWith((task) =>
+                {
+                    eventAggregator.GetEvent<CompositePresentationEvent<SearchableResponse>>().Publish(task.Result);
+                });
             });
         }
 
@@ -223,7 +225,8 @@ namespace Wave.Searchability.Extensions
                 var aliasName = ((IObjectClass) table).AliasName;
                 var item = new SearchableTable(((IDataset) table).Name, aliasName)
                 {
-                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()})
+                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()}),
+                    Relationships = new ObservableCollection<SearchableRelationship>(new[] {new SearchableRelationship()})
                 };
 
                 var inventory = new SearchableInventory(item.Name, aliasName, item)

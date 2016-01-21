@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -25,25 +26,25 @@ namespace Wave.Searchability.Services
         #region Public Methods
 
         /// <summary>
-        ///     Searches the data source using the specified request.
+        ///     Searches the data source for results using the specified <paramref name="request" />.
         /// </summary>
         /// <param name="request">The request.</param>
-        /// <param name="source">The source.</param>
+        /// <param name="data">The data.</param>
         /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
+        ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
-        SearchableResponse Find(TSearchableRequest request, TDataSource source);
+        Task<SearchableResponse> FindAsync(TSearchableRequest request, TDataSource data);
 
         /// <summary>
-        ///     Searches the active data source using the specified request.
+        ///     Searches for the results using the specified <paramref name="request" />.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
+        ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
         [OperationContract]
         [WebInvoke(UriTemplate = "Find", Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
-        SearchableResponse Find(TSearchableRequest request);
+        Task<SearchableResponse> FindAsync(TSearchableRequest request);
 
         #endregion
     }
@@ -90,62 +91,28 @@ namespace Wave.Searchability.Services
         #region ISearchableService<TSearchableRequest,TDataSource> Members
 
         /// <summary>
-        ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
+        ///     Searches for the results using the specified <paramref name="request" />.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>
         ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
-        public SearchableResponse Find(TSearchableRequest request)
+        public Task<SearchableResponse> FindAsync(TSearchableRequest request)
         {
-            using (var cts = new CancellationTokenSource())
-            {
-                this.SetCancelIfAtThreshold(cts, request);
-
-                try
-                {
-                    this.ConcurrentDictionary.Clear();
-                    this.Find(request, cts.Token);
-                }
-                catch (AggregateException e)
-                {
-                    cts.Cancel();
-
-                    Log.Error(this, e.Flatten());
-                }
-            }
-
-            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+            return Task.Factory.StartNew(() => this.Find(request));
         }
 
         /// <summary>
-        ///     Searches the active map using the specified <paramref name="request" /> for the specified keywords.
+        ///     Searches the data source for results using the specified <paramref name="request" />.
         /// </summary>
         /// <param name="request">The request.</param>
-        /// <param name="source">The map.</param>
+        /// <param name="data">The data.</param>
         /// <returns>
         ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
         /// </returns>
-        public virtual SearchableResponse Find(TSearchableRequest request, TDataSource source)
+        public Task<SearchableResponse> FindAsync(TSearchableRequest request, TDataSource data)
         {
-            using (var cts = new CancellationTokenSource())
-            {
-                this.SetCancelIfAtThreshold(cts, request);
-
-                try
-                {
-                    this.ConcurrentDictionary.Clear();
-                    this.Find(request, source, cts.Token);
-                }
-                catch (AggregateException e)
-                {
-                    cts.Cancel();
-
-                    Log.Error(this, e.Flatten());
-                }
-            }
-
-            return new SearchableResponse(this.ConcurrentDictionary.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList()));
+            return Task.Factory.StartNew(() => this.Find(request, data));
         }
 
         #endregion
@@ -277,9 +244,9 @@ namespace Wave.Searchability.Services
         ///     Finds the requested objects using the specified data source.
         /// </summary>
         /// <param name="request">The request.</param>
-        /// <param name="source">The source.</param>
+        /// <param name="data">The source.</param>
         /// <param name="token">The cancellation token.</param>
-        protected abstract void Find(TSearchableRequest request, TDataSource source, CancellationToken token);
+        protected abstract void Find(TSearchableRequest request, TDataSource data, CancellationToken token);
 
         /// <summary>
         ///     Finds the requested objects using the specified data source.
@@ -293,11 +260,75 @@ namespace Wave.Searchability.Services
         #region Private Methods
 
         /// <summary>
-        ///     Sets the cancellation token source.
+        ///     Searches for the results using the specified <paramref name="request" />.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="data">The data.</param>
+        /// <returns>
+        ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
+        /// </returns>
+        private SearchableResponse Find(TSearchableRequest request)
+        {
+            using (var source = new CancellationTokenSource())
+            {
+                var token = source.Token;
+
+                try
+                {
+                    this.ConcurrentDictionary.Clear();
+                    this.SetCancellationAction(source, request);
+                    this.Find(request, token);
+                }
+                catch (Exception e)
+                {
+                    if (!source.IsCancellationRequested)
+                        source.Cancel();
+
+                    Log.Error(this, e);
+                }
+            }
+
+            return new SearchableResponse(this.ConcurrentDictionary);
+        }
+
+        /// <summary>
+        ///     Searches for the results using the specified <paramref name="request" />.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="data">The data.</param>
+        /// <returns>
+        ///     Returns a <see cref="SearchableResponse" /> representing the contents of the results.
+        /// </returns>
+        private SearchableResponse Find(TSearchableRequest request, TDataSource data)
+        {
+            using (var source = new CancellationTokenSource())
+            {
+                var token = source.Token;
+
+                try
+                {
+                    this.ConcurrentDictionary.Clear();
+                    this.SetCancellationAction(source, request);
+                    this.Find(request, data, token);
+                }
+                catch (Exception e)
+                {
+                    if (!source.IsCancellationRequested)
+                        source.Cancel();
+
+                    Log.Error(this, e);
+                }
+            }
+
+            return new SearchableResponse(this.ConcurrentDictionary);
+        }
+
+        /// <summary>
+        ///     Sets the cancellation action.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="request">The request.</param>
-        private void SetCancelIfAtThreshold(CancellationTokenSource source, TSearchableRequest request)
+        private void SetCancellationAction(CancellationTokenSource source, TSearchableRequest request)
         {
             this.CancelIfAtThreshold = () =>
             {

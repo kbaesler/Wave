@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 
 using ESRI.ArcGIS.Geodatabase;
@@ -58,6 +59,8 @@ namespace Wave.Searchability.Views
                 Extent = this.Extent,
                 Keyword = this.Keyword
             }));
+
+            this.CancelCommand = new DelegateCommand((o => eventAggregator.GetEvent<CompositePresentationEvent<CancellationTokenSource>>().Publish(new CancellationTokenSource())));
         }
 
         #endregion
@@ -138,7 +141,14 @@ namespace Wave.Searchability.Views
         ///     The search command.
         /// </value>
         public DelegateCommand SearchCommand { get; set; }
-               
+
+        /// <summary>
+        /// Gets or sets the cancel command.
+        /// </summary>
+        /// <value>
+        /// The cancel command.
+        /// </value>
+        public DelegateCommand CancelCommand { get; set; }
         #endregion
     }
 }
