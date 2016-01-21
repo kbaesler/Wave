@@ -132,6 +132,8 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// </remarks>
         public string Build(string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, IField field)
         {
+            keyword = keyword ?? string.Empty;
+
             StringBuilder builder = new StringBuilder();
 
             // When the field is not supported exit out.
