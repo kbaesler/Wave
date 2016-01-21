@@ -106,7 +106,7 @@ namespace Wave.Searchability.Views
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void SearchServiceView_OnLoaded(object sender, RoutedEventArgs e)
         {
-            this.MinerTreeView.ContextCategory = MMEngineSelectionTreeTools.CatID;
+            this.MinerTreeView.ContextCategory = D8SelectionTreeTool.CatID;
 
             var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
             eventAggregator.GetEvent<CompositePresentationEvent<SearchableResponse>>().Subscribe((response) =>
@@ -138,7 +138,7 @@ namespace Wave.Searchability.Views
                 }
 
                 this.AutoSelectFirst();
-            });
+            }, ThreadOption.UIThread);
         }
 
         #endregion
