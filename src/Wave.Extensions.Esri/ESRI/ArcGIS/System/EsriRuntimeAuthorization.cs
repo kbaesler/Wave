@@ -1,4 +1,11 @@
-﻿using ESRI.ArcGIS.ADF.COMSupport;
+﻿#if ARC10
+using System;
+using System.Collections.Generic;
+
+using ESRI.ArcGIS;
+#endif
+
+using ESRI.ArcGIS.ADF.COMSupport;
 using ESRI.ArcGIS.esriSystem.BaseClasses;
 
 namespace ESRI.ArcGIS.esriSystem
@@ -58,7 +65,6 @@ namespace ESRI.ArcGIS.esriSystem
         #endregion
 
         #region Events
-
 #if ARC10
         /// <summary>
         ///     Raised when ArcGIS runtime binding hasn't been established.
@@ -66,6 +72,33 @@ namespace ESRI.ArcGIS.esriSystem
         public event EventHandler<RuntimeManagerEventArgs> ResolveRuntimeBinding;
 #endif
 
+        #endregion
+
+        #region Constructors
+
+#if ARC10
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="EsriRuntimeAuthorization" /> class.
+        /// </summary>
+        public EsriRuntimeAuthorization()
+            : this(ProductCode.EngineOrDesktop)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="EsriRuntimeAuthorization" /> class.
+        /// </summary>
+        /// <param name="productCode">The product code.</param>
+        public EsriRuntimeAuthorization(ProductCode productCode)
+        {
+            this.ResolveRuntimeBinding += (sender, args) => args.ProductCode = productCode;
+        }
+#else
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EsriRuntimeAuthorization"/> class.
+        /// </summary>
+        public EsriRuntimeAuthorization() { }
+#endif
         #endregion
 
         #region Protected Properties

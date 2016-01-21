@@ -141,7 +141,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
             string lo = string.Empty;
 
             // When there are subtypes on the field we need to translate them into the coded values.
-            IEnumerable<string> values = this.GetDomainValues(field, keyword, comparisonOperator);
+            IEnumerable<string> values = this.GetDomainValues(field, keyword ?? string.Empty, comparisonOperator);
 
             // Iterate through each domain value.
             foreach (string value in values)
