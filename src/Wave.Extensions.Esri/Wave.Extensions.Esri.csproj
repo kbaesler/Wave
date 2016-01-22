@@ -350,6 +350,7 @@
     <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />
     <Compile Include="System\Windows\Command.cs" />
+    <Compile Include="System\Windows\CommandReference.cs" />
     <Compile Include="System\Windows\Controls\AutoCompleteTextBox\AutoCompleteTextBox.cs" />
     <Compile Include="System\Windows\Controls\DelayTextBox\DelayedTextBox.cs" />
     <Compile Include="System\Windows\Controls\InteropTextBox\InteropTextBox.cs" />
