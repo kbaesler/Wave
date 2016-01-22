@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 
 using ESRI.ArcGIS.Geodatabase;
 
 using Wave.Searchability.Data;
+using Wave.Searchability.Events;
 using Wave.Searchability.Services;
 
 namespace Wave.Searchability.Views
@@ -27,7 +27,7 @@ namespace Wave.Searchability.Views
         /// <param name="eventAggregator">The event aggregator.</param>
         public SearchServiceViewModel(IEventAggregator eventAggregator)
         {
-            eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Subscribe(items =>
+            eventAggregator.GetEvent<SearchableInventoryEvent>().Subscribe(items =>
             {
                 this.Items = new ObservableCollection<SearchableInventory>(items);
                 this.CurrentItem = this.Items.FirstOrDefault();
@@ -45,27 +45,33 @@ namespace Wave.Searchability.Views
 
             this.Extents = new Dictionary<MapSearchServiceExtent, string>
             {
-                {MapSearchServiceExtent.WithinAnyExtent, "Within Any Extent"},            
-                {MapSearchServiceExtent.WithinCurrentExtent, "Within Current Extent"},                    
+                {MapSearchServiceExtent.WithinAnyExtent, "Within Any Extent"},
+                {MapSearchServiceExtent.WithinCurrentExtent, "Within Current Extent"},
                 {MapSearchServiceExtent.WithinOrOverlappingCurrentExtent, "Within Or Overlapping Current Extent"}
             };
 
             this.Extent = this.Extents.Skip(1).First().Key;
 
-            this.SearchCommand = new DelegateCommand((o) => eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Publish(new MapSearchServiceRequest()
+            this.SearchCommand = new DelegateCommand((o) => eventAggregator.GetEvent<MapSearchServiceRequestEvent>().Publish(new MapSearchServiceRequest()
             {
                 Inventory = new List<SearchableInventory>(new[] {this.CurrentItem}),
                 ComparisonOperator = this.ComparisonOperator,
                 Extent = this.Extent,
                 Keyword = this.Keyword
             }));
-
-            this.CancelCommand = new DelegateCommand((o => eventAggregator.GetEvent<CompositePresentationEvent<CancellationTokenSource>>().Publish(new CancellationTokenSource())));
         }
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the cancel command.
+        /// </summary>
+        /// <value>
+        ///     The cancel command.
+        /// </value>
+        public DelegateCommand CancelCommand { get; set; }
 
         /// <summary>
         ///     Gets or sets the comparison operator.
@@ -142,13 +148,6 @@ namespace Wave.Searchability.Views
         /// </value>
         public DelegateCommand SearchCommand { get; set; }
 
-        /// <summary>
-        /// Gets or sets the cancel command.
-        /// </summary>
-        /// <value>
-        /// The cancel command.
-        /// </value>
-        public DelegateCommand CancelCommand { get; set; }
         #endregion
     }
 }

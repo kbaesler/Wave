@@ -8,15 +8,21 @@
              xmlns:data="clr-namespace:Wave.Searchability.Data"
              xmlns:miner="clr-namespace:Miner.Controls;assembly=Miner.Controls"
              xmlns:interop="clr-namespace:Miner.Interop;assembly=Miner.AxInterop.MMObjEdr"
+             xmlns:behaviors="clr-namespace:System.Windows.Behaviors;assembly=Wave.Extensions.Esri"
+             xmlns:windows="clr-namespace:System.Windows"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300"
              Loaded="SearchServiceView_OnLoaded">
-    <UserControl.Resources>
+    <UserControl.Resources>        
         <ResourceDictionary>
+            <windows:CommandReference x:Key="SearchCommand"
+                              Command="{Binding SearchCommand}" />
             <ResourceDictionary.MergedDictionaries>
                 <amalgamate:ThemeDictionary>
                     <Style TargetType="{x:Type controls:InteropTextBox}"
+                           BasedOn="{StaticResource {x:Type TextBox}}" />
+                    <Style TargetType="{x:Type controls:DelayedTextBox}"
                            BasedOn="{StaticResource {x:Type TextBox}}" />
                 </amalgamate:ThemeDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -128,16 +134,19 @@
             </ComboBox>
         </Grid>
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="75" />
-            </Grid.ColumnDefinitions>
-            <controls:InteropTextBox Grid.Column="0"
-                                     Text="{Binding Keyword}" />
-            <Button Grid.Column="2"
-                    Content="Search"
-                    Command="{Binding SearchCommand}" />
+            <controls:InteropTextBox Text="{Binding Keyword}">                
+                <controls:InteropTextBox.InputBindings>
+                    <KeyBinding Key="Enter"
+                                Command="{StaticResource SearchCommand}" />
+                </controls:InteropTextBox.InputBindings>
+            </controls:InteropTextBox>
+            <Image Source="../Resources/Images/Search32.png"
+                   Width="16"
+                   Height="16"
+                   Opacity=".5"      
+                   Cursor="Hand"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,2,0" />
         </Grid>
         <Grid Grid.Row="4">
             <Grid.RowDefinitions>
@@ -146,7 +155,8 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <WindowsFormsHost Grid.Row="0">
-                <miner:MinerTreeView x:Name="MinerTreeView" SelectionChanged="MinerTreeView_OnSelectionChanged" />
+                <miner:MinerTreeView x:Name="MinerTreeView" 
+                                     SelectionChanged="MinerTreeView_OnSelectionChanged" />
             </WindowsFormsHost>
             <GridSplitter Grid.Row="1" 
                           Height="6"

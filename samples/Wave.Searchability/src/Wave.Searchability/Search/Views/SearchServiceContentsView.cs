@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
@@ -6,11 +8,13 @@ using System.Windows.Forms.Integration;
 using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.BaseClasses;
+using ESRI.ArcGIS.Carto;
 
 using Miner.Framework;
 
+using Wave.Searchability.Data;
+using Wave.Searchability.Events;
 using Wave.Searchability.Extensions;
-using Wave.Searchability.Services;
 
 namespace Wave.Searchability.Views
 {
@@ -62,10 +66,10 @@ namespace Wave.Searchability.Views
         /// <param name="document">The document.</param>
         public override void Activate(int parentHWnd, IMxDocument document)
         {
-            if (_ElementHost == null)
+            var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
+            if (eventAggregator != null)
             {
-                var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
-                if (eventAggregator != null)
+                if (_ElementHost == null)
                 {
                     var dataContext = new SearchServiceViewModel(eventAggregator);
 
@@ -73,11 +77,13 @@ namespace Wave.Searchability.Views
                     _ElementHost.Child = new SearchServiceView() {DataContext = dataContext};
                     _ElementHost.Dock = DockStyle.Fill;
                 }
+
+                Document.ActiveMapUpdated += (sender, args) => this.LoadInventory(eventAggregator, args.Map);
             }
         }
 
         /// <summary>
-        /// Called when the contents view has been deactivated or when the tab in the table of contents has changed.
+        ///     Called when the contents view has been deactivated or when the tab in the table of contents has changed.
         /// </summary>
         public override void Deactivate()
         {
@@ -118,6 +124,35 @@ namespace Wave.Searchability.Views
         internal static void Unregister(string CLSID)
         {
             ContentsViews.Unregister(CLSID);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Gets the inventory asynchronous.
+        /// </summary>
+        /// <param name="eventAggregator">The event aggregator.</param>
+        /// <param name="map">The map.</param>
+        /// <returns></returns>
+        private Task<IEnumerable<SearchableInventory>> GetInventoryAsync(IEventAggregator eventAggregator, IMap map)
+        {
+            var items = new List<SearchableInventory>(new[] {new SearchableInventory("Loading...")});
+            eventAggregator.GetEvent<SearchableInventoryEvent>().Publish(items);
+
+            return Task.Factory.StartNew(() => SearchabilityInventory.GetInventory(map));
+        }
+
+        /// <summary>
+        ///     Loads the inventory.
+        /// </summary>
+        /// <param name="eventAggregator">The event aggregator.</param>
+        /// <param name="map">The map.</param>
+        private void LoadInventory(IEventAggregator eventAggregator, IMap map)
+        {
+            var task = this.GetInventoryAsync(eventAggregator, map);
+            task.ContinueWith(t => eventAggregator.GetEvent<SearchableInventoryEvent>().Publish(t.Result));
         }
 
         #endregion

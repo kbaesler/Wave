@@ -12,6 +12,7 @@ using Miner.FrameworkUI.Search;
 using Miner.Interop;
 
 using Wave.Searchability.Data;
+using Wave.Searchability.Events;
 using Wave.Searchability.Extensions;
 
 using UserControl = System.Windows.Controls.UserControl;
@@ -33,6 +34,40 @@ namespace Wave.Searchability.Views
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        ///     Adds the layers.
+        /// </summary>
+        /// <param name="response">The response.</param>
+        private void AddLayers(SearchableResponse response)
+        {
+            var layers = response.ToSearchResults(Document.ActiveMap.GetLayers<IFeatureLayer>(l => l.Valid).ToList());
+
+            var processor = new StandardResultsProcessor();
+            ID8List list = processor.AddResults(layers, mmSearchOptionFlags.mmSOFNone, null);
+
+            IItemNode itemNode = new ListItemNode();
+            itemNode.Init(list);
+
+            this.MinerTreeView.InitializeTree(itemNode);
+        }
+
+        /// <summary>
+        ///     Adds the tables.
+        /// </summary>
+        /// <param name="response">The response.</param>
+        private void AddTables(SearchableResponse response)
+        {
+            var tables = response.ToSearchResults(Document.ActiveMap.GetTables().ToList());
+
+            var processor = new StandardResultsProcessor();
+            ID8List list = processor.AddResults(tables, mmSearchOptionFlags.mmSOFNone, null);
+
+            IItemNode itemNode = new ListItemNode();
+            itemNode.Init(list);
+
+            this.MinerTreeView.InitializeTree(itemNode);
+        }
 
         /// <summary>
         ///     Automatics the select first feature.
@@ -109,36 +144,25 @@ namespace Wave.Searchability.Views
             this.MinerTreeView.ContextCategory = D8SelectionTreeTool.CatID;
 
             var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
-            eventAggregator.GetEvent<CompositePresentationEvent<SearchableResponse>>().Subscribe((response) =>
+            if (eventAggregator != null)
             {
-                this.MinerTreeView.ClearNodes();
-
-                var processor = new StandardResultsProcessor();
-
-                var layers = response.ToSearchResults(Document.ActiveMap.GetLayers<IFeatureLayer>(l => l.Valid).ToList());
-                if (layers.Count > 0)
+                eventAggregator.GetEvent<SearchableResponseEvent>().Subscribe(response =>
                 {
-                    ID8List list = processor.AddResults(layers, mmSearchOptionFlags.mmSOFNone, null);
+                    this.MinerTreeView.ClearNodes();
 
-                    IItemNode itemNode = new ListItemNode();
-                    itemNode.Init(list);
+                    this.AddLayers(response);
 
-                    this.MinerTreeView.InitializeTree(itemNode);
-                }
+                    this.AddTables(response);
 
-                var tables = response.ToSearchResults(Document.ActiveMap.GetTables().ToList());
-                if (tables.Count > 0)
+                    this.AutoSelectFirst();
+                }, ThreadOption.UIThread);
+
+                eventAggregator.GetEvent<MapSearchServiceRequestEvent>().Subscribe(request =>
                 {
-                    ID8List list = processor.AddResults(tables, mmSearchOptionFlags.mmSOFNone, null);
-
-                    IItemNode itemNode = new ListItemNode();
-                    itemNode.Init(list);
-
-                    this.MinerTreeView.InitializeTree(itemNode);
-                }
-
-                this.AutoSelectFirst();
-            }, ThreadOption.UIThread);
+                    this.MinerTreeView.ClearNodes();
+                    this.Editor.ViewByFieldManager(null, mmDisplayMode.mmdmObject, false);
+                }, ThreadOption.UIThread);
+            }
         }
 
         #endregion

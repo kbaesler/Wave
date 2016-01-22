@@ -1,20 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 using System.Windows;
 
 using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.BaseClasses;
-using ESRI.ArcGIS.Carto;
-using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
 
 using Miner.Framework;
 
-using Wave.Searchability.Data;
+using Wave.Searchability.Events;
 using Wave.Searchability.Services;
 
 namespace Wave.Searchability.Extensions
@@ -85,18 +77,10 @@ namespace Wave.Searchability.Extensions
             var eventAggregator = this.GetService<IEventAggregator>();
             var searchService = this.GetService<IMapSearchService>();
 
-            Document.OpenStoredDisplay += (sender, e) =>
+            eventAggregator.GetEvent<MapSearchServiceRequestEvent>().Subscribe((request) =>
             {
-                var sets = this.GetInventory(Document.ActiveMap);
-                eventAggregator.GetEvent<CompositePresentationEvent<IEnumerable<SearchableInventory>>>().Publish(sets);
-            };
-
-            eventAggregator.GetEvent<CompositePresentationEvent<MapSearchServiceRequest>>().Subscribe((request) =>
-            {
-                searchService.FindAsync(request, Document.ActiveMap).ContinueWith((task) =>
-                {
-                    eventAggregator.GetEvent<CompositePresentationEvent<SearchableResponse>>().Publish(task.Result);
-                });
+                var task = searchService.FindAsync(request, Document.ActiveMap);
+                task.ContinueWith(t => eventAggregator.GetEvent<SearchableResponseEvent>().Publish(t.Result));
             });
         }
 
@@ -122,122 +106,6 @@ namespace Wave.Searchability.Extensions
         internal static void Unregister(string CLSID)
         {
             MxExtension.Unregister(CLSID);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Creates a collection of the <see cref="SearchableInventory" /> objects based on the map and custom searches.
-        /// </summary>
-        /// <param name="map">The map.</param>
-        /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing an enumeration of sets.</returns>
-        private IEnumerable<SearchableInventory> GetInventory(IMap map)
-        {
-            var sets = new List<SearchableInventory>();
-
-            Parallel.Invoke(() =>
-            {
-                var layers = this.GetLayerInventory(map);
-                sets.AddRange(layers);
-            }, () =>
-            {
-                var tables = this.GetTableInventory(map);
-                sets.AddRange(tables);
-            });
-
-            return sets.OrderBy(o => o.Name);
-        }
-
-        /// <summary>
-        /// Gets the type of the inventory.
-        /// </summary>
-        /// <param name="featureClass">The feature class.</param>
-        /// <returns>
-        /// Returns a <see cref="SearchableInventoryType" /> representing the type for the geometry.
-        /// </returns>
-        private SearchableInventoryType GetInventoryType(IFeatureClass featureClass)
-        {
-            var annoClass = featureClass.Extension is IAnnotationClassExtension;
-            if(annoClass) return SearchableInventoryType.Annotation;
-
-            var dimClass = featureClass.Extension is IDimensionClassExtension;
-            if(dimClass) return SearchableInventoryType.Dimension;
-
-            switch (featureClass.ShapeType)
-            {
-                case esriGeometryType.esriGeometryLine:
-                case esriGeometryType.esriGeometryPolyline:
-                case esriGeometryType.esriGeometryPath:
-                    return SearchableInventoryType.Line;
-
-                case esriGeometryType.esriGeometryMultipoint:
-                case esriGeometryType.esriGeometryPoint:
-                    return SearchableInventoryType.Point;
-
-                case esriGeometryType.esriGeometryPolygon:
-                    return SearchableInventoryType.Polygon;
-            }
-
-            return SearchableInventoryType.Unknown;
-        }
-
-        /// <summary>
-        ///     Gets the layer inventory.
-        /// </summary>
-        /// <param name="map">The map.</param>
-        /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing the layers in the map.</returns>
-        private IEnumerable<SearchableInventory> GetLayerInventory(IMap map)
-        {
-            var items = new List<SearchableInventory>();
-
-            foreach (IFeatureLayer layer in map.GetLayers<IFeatureLayer>(layer => layer.Valid).DistinctBy(layer => layer.FeatureClass.ObjectClassID))
-            {
-                var item = new SearchableLayer(layer.Name, layer.FeatureClass.AliasName)
-                {
-                    LayerDefinition = !string.IsNullOrEmpty(((IFeatureLayerDefinition) layer).DefinitionExpression),
-                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()}),
-                };
-
-                var inventory = new SearchableInventory(item.Name, layer.Name, item)
-                {
-                    Type = this.GetInventoryType(layer.FeatureClass),
-                    Header = "Layers"
-                };
-                items.Add(inventory);
-            }
-
-            return items;
-        }
-
-        /// <summary>
-        ///     Gets the table inventory.
-        /// </summary>
-        /// <param name="map">The map.</param>
-        /// <returns>Returns a <see cref="IEnumerable{SearchableItem}" /> representing the layers in the map.</returns>
-        private IEnumerable<SearchableInventory> GetTableInventory(IMap map)
-        {
-            var items = new List<SearchableInventory>();
-
-            foreach (ITable table in map.GetTables().DistinctBy(o => ((IDataset) o).Name))
-            {
-                var aliasName = ((IObjectClass) table).AliasName;
-                var item = new SearchableTable(((IDataset) table).Name, aliasName)
-                {
-                    Fields = new ObservableCollection<SearchableField>(new[] {new SearchableField()}),
-                    Relationships = new ObservableCollection<SearchableRelationship>(new[] {new SearchableRelationship()})
-                };
-
-                var inventory = new SearchableInventory(item.Name, aliasName, item)
-                {
-                    Type = SearchableInventoryType.Table,
-                    Header = "Tables"
-                };
-                items.Add(inventory);
-            }
-
-            return items;
         }
 
         #endregion
