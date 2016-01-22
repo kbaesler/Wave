@@ -75,7 +75,7 @@ namespace ESRI.ArcGIS.esriSystem
         #endregion
 
         #region Constructors
-        
+
 #if ARC10
         /// <summary>
         ///     Initializes a new instance of the <see cref="EsriRuntimeAuthorization" /> class.

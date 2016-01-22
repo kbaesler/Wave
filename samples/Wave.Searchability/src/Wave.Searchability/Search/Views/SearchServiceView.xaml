@@ -8,8 +8,7 @@
              xmlns:data="clr-namespace:Wave.Searchability.Data"
              xmlns:miner="clr-namespace:Miner.Controls;assembly=Miner.Controls"
              xmlns:interop="clr-namespace:Miner.Interop;assembly=Miner.AxInterop.MMObjEdr"
-             xmlns:behaviors="clr-namespace:System.Windows.Behaviors;assembly=Wave.Extensions.Esri"
-             xmlns:windows="clr-namespace:System.Windows"
+             xmlns:windows="clr-namespace:System.Windows;assembly=Wave.Extensions.Esri"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300"
@@ -17,7 +16,7 @@
     <UserControl.Resources>        
         <ResourceDictionary>
             <windows:CommandReference x:Key="SearchCommand"
-                              Command="{Binding SearchCommand}" />
+                                       Command="{Binding SearchCommand}" />
             <ResourceDictionary.MergedDictionaries>
                 <amalgamate:ThemeDictionary>
                     <Style TargetType="{x:Type controls:InteropTextBox}"

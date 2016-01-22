@@ -14,7 +14,7 @@ namespace System.Windows
         /// <summary>
         ///     The command property
         /// </summary>
-        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof (ICommand), typeof (CommandReference), new PropertyMetadata(new PropertyChangedCallback(OnCommandChanged)));
+        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof(ICommand), typeof(CommandReference), new PropertyMetadata(new PropertyChangedCallback(OnCommandChanged)));
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace System.Windows
         /// </value>
         public ICommand Command
         {
-            get { return (ICommand) GetValue(CommandProperty); }
+            get { return (ICommand)GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
         }
 
