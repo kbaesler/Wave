@@ -16,7 +16,7 @@
     <UserControl.Resources>        
         <ResourceDictionary>
             <windows:CommandReference x:Key="SearchCommand"
-                                       Command="{Binding SearchCommand}" />
+                                      Command="{Binding SearchCommand}" />
             <ResourceDictionary.MergedDictionaries>
                 <amalgamate:ThemeDictionary>
                     <Style TargetType="{x:Type controls:InteropTextBox}"
@@ -133,7 +133,8 @@
             </ComboBox>
         </Grid>
         <Grid Grid.Row="2">
-            <controls:InteropTextBox Text="{Binding Keyword}">                
+            <controls:InteropTextBox x:Name="SearchTextBox" 
+                                     Text="{Binding Keyword}">                
                 <controls:InteropTextBox.InputBindings>
                     <KeyBinding Key="Enter"
                                 Command="{StaticResource SearchCommand}" />

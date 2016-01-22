@@ -244,7 +244,16 @@
     <Resource Include="Search\Resources\Images\TableFeatureClassEmpty32.png" />
     <Resource Include="Search\Resources\Images\Unknown32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.csproj">
+      <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
+      <Name>Wave.Extensions.Esri</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\src\Wave.Extensions.Miner\Wave.Extensions.Miner.csproj">
+      <Project>{5224c687-f534-4120-8998-fa242556a7cd}</Project>
+      <Name>Wave.Extensions.Miner</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Search\Resources\Images\Search32.png" />
   </ItemGroup>

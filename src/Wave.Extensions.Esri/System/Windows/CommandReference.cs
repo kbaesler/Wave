@@ -12,9 +12,14 @@ namespace System.Windows
         #region Fields
 
         /// <summary>
+        ///     The command parameters property
+        /// </summary>
+        public static readonly DependencyProperty CommandParameterProperty = DependencyProperty.Register("CommandParameter", typeof (object), typeof (CommandReference), new UIPropertyMetadata(null));
+
+        /// <summary>
         ///     The command property
         /// </summary>
-        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof(ICommand), typeof(CommandReference), new PropertyMetadata(new PropertyChangedCallback(OnCommandChanged)));
+        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof (ICommand), typeof (CommandReference), new PropertyMetadata(OnCommandChanged));
 
         #endregion
 
@@ -39,8 +44,20 @@ namespace System.Windows
         /// </value>
         public ICommand Command
         {
-            get { return (ICommand)GetValue(CommandProperty); }
+            get { return (ICommand) GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
+        }
+
+        /// <summary>
+        ///     Gets or sets the command parameters.
+        /// </summary>
+        /// <value>
+        ///     The command parameters.
+        /// </value>
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
         }
 
         #endregion
