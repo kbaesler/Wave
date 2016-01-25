@@ -16,55 +16,7 @@
         <tags>ESRI, ArcFM, ArcGIS, GIS, ArcObjects, Schneider_Electric</tags>
         <dependencies>
             <dependency id="log4net" version="1.2.10" />
-        </dependencies>
-        <frameworkAssemblies>
-            <frameworkAssembly assemblyName="adodb" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.ArcMapUI" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Carto" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Catalog" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.CatalogUI" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Editor" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.EditorExt" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Framework" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.DataSourcesGDB" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Display" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Geodatabase" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.GeoDatabaseDistributed" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Geometry" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Geoprocessing" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Location" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.NetworkAnalysis" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.Output" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.System" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="ESRI.ArcGIS.SystemUI" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Controls" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Desktop" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Framework" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.FrameworkUI" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Geodatabase" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.Desktop" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.Framework" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.FrameworkUI" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.GeoDatabase" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.msxml2" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.Process" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.Process.Session" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.Process.Workflow" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Interop.System" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.System" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.SystemUI" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.PresentationCore" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.PresentationFramework" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Theme.Amalgamate" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Windows" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="Miner.Windows.ArcGIS" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="stdole" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="System.Configuration" targetFramework=".NETFramework2.0" />
-            <frameworkAssembly assemblyName="PresentationCore" targetFramework=".NETFramework3.5" />
-            <frameworkAssembly assemblyName="PresentationFramework" targetFramework=".NETFramework3.5" />
-            <frameworkAssembly assemblyName="WindowsBase" targetFramework=".NETFramework3.5" />
-            <frameworkAssembly assemblyName="WindowsFormsIntegration" targetFramework=".NETFramework3.5" />
-        </frameworkAssemblies>
+        </dependencies>        
     </metadata>
     <files>		
         <file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
