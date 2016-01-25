@@ -91,10 +91,14 @@ namespace Miner.Framework.BaseClasses
         /// </returns>
         protected virtual bool Circumvent()
         {
-            IMMRegistry reg = new MMRegistry();
-            reg.OpenKey(mmHKEY.mmHKEY_LOCAL_MACHINE, mmBaseKey.mmEngineViewer, "Login");
+#if V10
+            IMMRegistry registry = new MMRegistry();
+#else
+            IMMRegistry registry = new MMRegistryClass();
+#endif
+            registry.OpenKey(mmHKEY.mmHKEY_LOCAL_MACHINE, mmBaseKey.mmEngineViewer, "Login");
 
-            string fileName = (string) reg.Read("DatabaseConnectionsXMLPath", string.Empty);
+            string fileName = (string)registry.Read("DatabaseConnectionsXMLPath", string.Empty);
             if (_XmlLogin.Initialize(fileName))
             {
                 Connections connections = XmlSerialization.Deserialize<Connections>(fileName);

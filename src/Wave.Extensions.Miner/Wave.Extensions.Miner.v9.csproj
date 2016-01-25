@@ -381,7 +381,7 @@
     <Folder Include="Miner\Geodatabase\Extensions\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wave.Extensions.Esri\Wave.Extensions.Esri.csproj">
+    <ProjectReference Include="..\Wave.Extensions.Esri\Wave.Extensions.Esri.v9.csproj">
       <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
       <Name>Wave.Extensions.Esri</Name>
     </ProjectReference>
