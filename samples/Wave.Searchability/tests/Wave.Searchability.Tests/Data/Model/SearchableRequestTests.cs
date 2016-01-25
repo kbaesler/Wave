@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
 using Wave.Searchability.Data;
+using Wave.Searchability.Services;
 
 namespace Wave.Searchability.Tests.Data.Model
 {
@@ -13,17 +14,34 @@ namespace Wave.Searchability.Tests.Data.Model
     public class SearchableRequestTests
     {
         [TestMethod]
-        public void SearchableRequest_ToJson()
+        public void TextSearchServiceRequest_ToJson()
         {
-            SearchableRequest request = new SearchableRequest();
+            TextSearchServiceRequest request = new TextSearchServiceRequest();
             request.ComparisonOperator = ComparisonOperator.Equals;
-            request.Keywords = "kellyl";
+            request.Keyword = "kellyl";
             request.LogicalOperator = LogicalOperator.Or;
-            request.Threshold = 200;    
-            request.Items.Add(new SearchableSet("Distribution Equipment", new SearchableTable("NonControllableGasValve", new SearchableField("Operator"))));
+            request.Threshold = 200;
+            request.Inventory.Add(new SearchableInventory("Layers", new SearchableLayer("NonControllableGasValve", new SearchableField("CreationUser"))));
+            request.Inventory.Add(new SearchableInventory("Tables", new SearchableTable("TransformerUnit", new SearchableField("CreationUser"))));
 
             var json = JsonConvert.SerializeObject(request);
-            Assert.AreEqual("{\"comparisonOperator\":0,\"keywords\":\"kellyl\",\"logicalOperator\":1,\"items\":[{\"tables\":[{\"isFeatureClass\":false,\"layerDefinition\":false,\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"Operator\"}],\"relationships\":[],\"name\":\"NonControllableGasValve\"}],\"name\":\"Distribution Equipment\"}],\"threshold\":200}", json);
+            Assert.AreEqual("{\"comparisonOperator\":0,\"inventory\":[{\"items\":[{\"layerDefinition\":false,\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"NonControllableGasValve\"}],\"name\":\"Layers\"},{\"items\":[{\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"TransformerUnit\"}],\"name\":\"Tables\"}],\"keyword\":\"kellyl\",\"logicalOperator\":1,\"threshold\":200}", json);
+        }
+
+        [TestMethod]
+        public void MapSearchServiceRequest_ToJson()
+        {
+            MapSearchServiceRequest request = new MapSearchServiceRequest();
+            request.Extent = MapSearchServiceExtent.WithinCurrentExtent;
+            request.ComparisonOperator = ComparisonOperator.Equals;
+            request.Keyword = "kellyl";
+            request.LogicalOperator = LogicalOperator.Or;
+            request.Threshold = 200;
+            request.Inventory.Add(new SearchableInventory("Layers", new SearchableLayer("NonControllableGasValve", new SearchableField("CreationUser"))));
+            request.Inventory.Add(new SearchableInventory("Tables", new SearchableTable("TransformerUnit", new SearchableField("CreationUser"))));
+
+            var json = JsonConvert.SerializeObject(request);
+            Assert.AreEqual("{\"extent\":1,\"comparisonOperator\":0,\"inventory\":[{\"items\":[{\"layerDefinition\":false,\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"NonControllableGasValve\"}],\"name\":\"Layers\"},{\"items\":[{\"nameAsClassModelName\":false,\"fields\":[{\"value\":null,\"visible\":false,\"name\":\"CreationUser\"}],\"relationships\":[],\"name\":\"TransformerUnit\"}],\"name\":\"Tables\"}],\"keyword\":\"kellyl\",\"logicalOperator\":1,\"threshold\":200}", json);
         }
     }
 }

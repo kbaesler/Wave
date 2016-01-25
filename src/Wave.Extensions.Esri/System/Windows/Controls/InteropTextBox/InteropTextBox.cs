@@ -13,7 +13,7 @@ namespace System.Windows.Controls
         private const uint DLGC_WANTARROWS = 0x0001;
         private const uint DLGC_WANTCHARS = 0x0080;
         private const uint WM_GETDLGCODE = 0x0087;
-
+        private const uint DLGC_WANTALLKEYS = 0x0004;
         #endregion
 
         #region Constructors
@@ -49,7 +49,7 @@ namespace System.Windows.Controls
             if (msg == WM_GETDLGCODE)
             {
                 handled = true;
-                return new IntPtr(DLGC_WANTCHARS | DLGC_WANTARROWS | DLGC_HASSETSEL);
+                return new IntPtr(DLGC_WANTALLKEYS | DLGC_WANTCHARS | DLGC_WANTARROWS | DLGC_HASSETSEL);
             }
             return IntPtr.Zero;
         }

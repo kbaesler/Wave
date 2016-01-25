@@ -6,19 +6,21 @@ using ESRI.ArcGIS.Geodatabase;
 namespace Wave.Searchability.Data
 {
     [DataContract(Name = "request")]
-    public class SearchableRequest
+    public abstract class SearchableRequest
     {
         #region Constructors
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SearchableRequest" /> class.
         /// </summary>
-        public SearchableRequest()
+        protected SearchableRequest()
         {
-            this.Items = new List<SearchableSet>();
+            this.Inventory = new List<SearchableInventory>();
             this.Threshold = 200;
-            this.ComparisonOperator = ComparisonOperator.Like;
+            this.ComparisonOperator = ComparisonOperator.Contains;
             this.LogicalOperator = LogicalOperator.Or;
+            this.ThresholdConstraint = ThresholdConstraints.Request;
+            this.MillisecondsTimeout = 60000;
         }
 
         #endregion
@@ -35,22 +37,22 @@ namespace Wave.Searchability.Data
         public ComparisonOperator ComparisonOperator { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sets.
+        ///     Gets or sets the inventory.
         /// </summary>
         /// <value>
-        ///     The sets.
+        ///     The inventory.
         /// </value>
-        [DataMember(Name = "items")]
-        public IEnumerable<SearchableSet> Items { get; set; }
+        [DataMember(Name = "inventory")]
+        public List<SearchableInventory> Inventory { get; set; }
 
         /// <summary>
-        ///     Gets or sets the keywords.
+        ///     Gets or sets the keyword.
         /// </summary>
         /// <value>
-        ///     The keywords.
+        ///     The keyword.
         /// </value>
-        [DataMember(Name = "keywords")]
-        public string Keywords { get; set; }
+        [DataMember(Name = "keyword")]
+        public string Keyword { get; set; }
 
         /// <summary>
         ///     Gets or sets the logical operator.
@@ -70,6 +72,45 @@ namespace Wave.Searchability.Data
         [DataMember(Name = "threshold")]
         public int Threshold { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the threshold constraint.
+        /// </summary>
+        /// <value>
+        ///     The threshold constraint.
+        /// </value>
+        [DataMember(Name = "thresholdConstraint")]
+        public ThresholdConstraints ThresholdConstraint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the milliseconds timeout.
+        /// </summary>
+        /// <value>
+        /// The milliseconds timeout.
+        /// </value>
+        [DataMember(Name = "millisecondsTimeout")]
+        public int MillisecondsTimeout { get; set; }
+
         #endregion
+    }
+
+    /// <summary>
+    ///     An enumeration that controls the threshold behavior.
+    /// </summary>
+    public enum ThresholdConstraints
+    {
+        /// <summary>
+        ///     Each inventory is allowed to reach the threshold.
+        /// </summary>
+        Inventory,
+
+        /// <summary>
+        ///     The request entire request is allowed to reach the threshold.
+        /// </summary>
+        Request,
+
+        /// <summary>
+        ///     The individual items within the inventory are allowed to reach the threshold.
+        /// </summary>
+        Item
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
@@ -321,6 +322,29 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IFeatureWorkspace) source).OpenFeatureClass(name);
         }
 
+        /// <summary>
+        ///     Gets all of the feature classes in the workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature classes.</returns>
+        public static IEnumerable<IFeatureClass> GetFeatureClasses(this IWorkspace source)
+        {
+            var datasets = source.Datasets[esriDatasetType.esriDTFeatureDataset];
+            foreach (var featureDataset in datasets.AsEnumerable().Cast<IFeatureDataset>())
+            {
+                foreach (var featureClass in featureDataset.Subsets.AsEnumerable().OfType<IFeatureClass>())
+                {
+                    yield return featureClass;
+                }
+            }
+
+            datasets = source.Datasets[esriDatasetType.esriDTFeatureClass];
+            foreach (var dataset in datasets.AsEnumerable().OfType<IFeatureClass>())
+            {
+                yield return dataset;
+            }
+        }
+
 
         /// <summary>
         ///     Gets the formatted date time for the workspace.
@@ -406,6 +430,29 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets all of the feature classes in the workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature classes.</returns>
+        public static IEnumerable<IRelationshipClass> GetRelationshipClasses(this IWorkspace source)
+        {
+            var datasets = source.Datasets[esriDatasetType.esriDTFeatureDataset];
+            foreach (var featureDataset in datasets.AsEnumerable().Cast<IFeatureDataset>())
+            {
+                foreach (var featureClass in featureDataset.Subsets.AsEnumerable().OfType<IRelationshipClass>())
+                {
+                    yield return featureClass;
+                }
+            }
+
+            datasets = source.Datasets[esriDatasetType.esriDTRelationshipClass];
+            foreach (var dataset in datasets.AsEnumerable())
+            {
+                yield return (IRelationshipClass) dataset;
+            }
+        }
+
+        /// <summary>
         ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
         ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
@@ -425,6 +472,17 @@ namespace ESRI.ArcGIS.Geodatabase
 
             string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
             return ((IFeatureWorkspace) source).OpenTable(name);
+        }
+
+        /// <summary>
+        ///     Gets all of the tables in the workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
+        public static IEnumerable<ITable> GetTables(this IWorkspace source)
+        {
+            var datasets = source.Datasets[esriDatasetType.esriDTTable];
+            return datasets.AsEnumerable().Cast<ITable>();
         }
 
         /// <summary>

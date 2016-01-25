@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Threading.Tasks;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
 
 using Miner.Framework;
 
@@ -16,47 +14,8 @@ namespace Wave.Searchability.Services
     ///     A service contract for searching the active map session for table(s), class(es) and relationship(s).
     /// </summary>
     [ServiceContract]
-    public interface IMapSearchService
+    public interface IMapSearchService : ITextSearchService<MapSearchServiceRequest>
     {
-        #region Public Methods
-
-        /// <summary>
-        ///     Searches the active map using the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>Returns a <see cref="SearchableResponse" /> representing the results.</returns>
-        [OperationContract]
-        SearchableResponse Find(MapSearchServiceRequest request);
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <param name="extent">The extent.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        [OperationContract]
-        SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, int threshold, MapSearchServiceExtent extent);
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        [OperationContract]
-        SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, int threshold);        
-
-        #endregion
     }
 
     /// <summary>
@@ -65,84 +24,42 @@ namespace Wave.Searchability.Services
     ///     When tables are searched, matches will be linked to the feature that participates in a relationship with the
     ///     matched non-spatial row.
     /// </summary>
-    public sealed class MapSearchService : SearchableService<MapSearchServiceRequest>, IMapSearchService
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
+    public sealed class MapSearchService : TextSearchService<MapSearchServiceRequest>, IMapSearchService
     {
-        #region IMapSearchService Members
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="logicalOperator">The logical operator.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <param name="extent">The extent.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        public SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, int threshold, MapSearchServiceExtent extent)
-        {
-            return base.Find(new MapSearchServiceRequest
-            {
-                ComparisonOperator = comparisonOperator,
-                Keywords = keywords,
-                LogicalOperator = logicalOperator,
-                Items = sets,
-                Threshold = threshold,
-                Extent = extent
-            });
-        }
-
-
-        /// <summary>
-        ///     Searches the active map using the specified request contents.
-        /// </summary>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="sets">The set of searchable contents.</param>
-        /// <param name="comparisonOperator">The comparison operator.</param>
-        /// <param name="threshold">The threshold.</param>
-        /// <returns>
-        ///     Returns a <see cref="SearchableResponse" /> representing the results.
-        /// </returns>
-        public SearchableResponse Find(string keywords, IEnumerable<SearchableSet> sets, ComparisonOperator comparisonOperator, int threshold)
-        {
-            return this.Find(keywords, sets, comparisonOperator, LogicalOperator.Or, threshold, MapSearchServiceExtent.Any);
-        }
-       
-        #endregion
-
         #region Protected Methods
 
         /// <summary>
-        ///     Adds the specified row.
+        ///     Compiles the filter that is used to query the feature layer.
         /// </summary>
-        /// <param name="row">The row.</param>
         /// <param name="layer">The layer.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="item">The item.</param>
         /// <param name="request">The request.</param>
-        protected override void Add(IRow row, IFeatureLayer layer, MapSearchServiceRequest request)
+        /// <returns>
+        ///     Return <see cref="IQueryFilter" /> representing the filter.
+        /// </returns>
+        protected override IQueryFilter CreateFilter(IFeatureLayer layer, string expression, SearchableLayer item, MapSearchServiceRequest request)
         {
-            var feature = (IFeature) row;
-            var relOp = (IRelationalOperator) Document.ActiveView.Extent.Envelope;
+            if (request.Extent == MapSearchServiceExtent.WithinAnyExtent)
+                return base.CreateFilter(layer, expression, item, request);
 
-            switch (request.Extent)
+            ISpatialFilter filter = new SpatialFilterClass();
+            filter.WhereClause = expression;
+            filter.Geometry = Document.ActiveView.Extent;
+            filter.GeometryField = layer.FeatureClass.ShapeFieldName;
+            filter.SpatialRel = (request.Extent == MapSearchServiceExtent.WithinOrOverlappingCurrentExtent)
+                ? esriSpatialRelEnum.esriSpatialRelIntersects
+                : esriSpatialRelEnum.esriSpatialRelContains;
+
+            if (item.LayerDefinition)
             {
-                case MapSearchServiceExtent.WithinCurrent:
-                    if (relOp.Within(feature.Shape))
-                        base.Add(row, layer, request);
-
-                    break;
-
-                case MapSearchServiceExtent.WithinCurrentOrOverlapping:
-                    if (relOp.Within(feature.Shape) || relOp.Overlaps(feature.Shape))
-                        base.Add(row, layer, request);
-
-                    break;
-
-                default:
-                    base.Add(row, layer, request);
-                    break;
+                IFeatureLayerDefinition featureLayerDefinition = (IFeatureLayerDefinition) layer;
+                if (!string.IsNullOrEmpty(featureLayerDefinition.DefinitionExpression))
+                    filter.WhereClause = string.Format("({0}) {1} ({2})", expression, LogicalOperator.And, featureLayerDefinition.DefinitionExpression);
             }
+
+            return filter;
         }
 
         #endregion
@@ -151,7 +68,8 @@ namespace Wave.Searchability.Services
     /// <summary>
     ///     The requests that are issued to the searchable service.
     /// </summary>
-    public class MapSearchServiceRequest : SearchableRequest
+    [DataContract(Name = "request")]
+    public class MapSearchServiceRequest : TextSearchServiceRequest
     {
         #region Constructors
 
@@ -160,7 +78,7 @@ namespace Wave.Searchability.Services
         /// </summary>
         public MapSearchServiceRequest()
         {
-            this.Extent = MapSearchServiceExtent.Any;
+            this.Extent = MapSearchServiceExtent.WithinCurrentExtent;
         }
 
         #endregion
@@ -173,6 +91,7 @@ namespace Wave.Searchability.Services
         /// <value>
         ///     The extent.
         /// </value>
+        [DataMember(Name = "extent")]
         public MapSearchServiceExtent Extent { get; set; }
 
         #endregion
@@ -184,18 +103,18 @@ namespace Wave.Searchability.Services
     public enum MapSearchServiceExtent
     {
         /// <summary>
-        ///     Any extent.
+        ///     Within any extent.
         /// </summary>
-        Any = 0,
+        WithinAnyExtent = 0,
 
         /// <summary>
-        ///     The within the current extent.
+        ///     Within the current extent.
         /// </summary>
-        WithinCurrent = 1,
+        WithinCurrentExtent = 1,
 
         /// <summary>
-        ///     The within current or overlapping extents.
+        ///     Within or overlapping current extent
         /// </summary>
-        WithinCurrentOrOverlapping = 2
+        WithinOrOverlappingCurrentExtent = 2
     }
 }

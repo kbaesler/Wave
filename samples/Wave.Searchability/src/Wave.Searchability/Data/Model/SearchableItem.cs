@@ -27,12 +27,22 @@ namespace Wave.Searchability.Data
         ///     Initializes a new instance of the <see cref="SearchableItem" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        protected SearchableItem(string name)
-            : base(name)
+        /// <param name="aliasName">Name of the alias.</param>
+        protected SearchableItem(string name, string aliasName)
+            : base(name, aliasName)
         {
             _Relationships = new ObservableCollection<SearchableRelationship>();
             _Relationships.CollectionChanged += (sender, args) => _Path = null;
             _Fields = new ObservableCollection<SearchableField>();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SearchableItem" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        protected SearchableItem(string name)
+            : this(name, name)
+        {
         }
 
         /// <summary>
@@ -90,7 +100,7 @@ namespace Wave.Searchability.Data
 
                 this.OnPropertyChanged("Fields");
             }
-        }
+        }       
 
         /// <summary>
         ///     Gets the path.

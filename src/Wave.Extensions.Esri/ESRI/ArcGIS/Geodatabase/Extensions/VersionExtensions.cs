@@ -117,10 +117,10 @@ namespace ESRI.ArcGIS.Geodatabase
                                 set.Next(out oid);
                             }
                         }
-                    }
-                }
 
-                list.Add(tableName, rows);
+                        list.Add(tableName, rows);
+                    }
+                }                
             }
 
             return list;

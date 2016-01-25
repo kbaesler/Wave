@@ -33,6 +33,17 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void IWorkspace_GetFeatureClasses_Equals_193()
+        {
+            var list = base.Workspace.GetFeatureClasses();
+            Assert.IsNotNull(list);
+
+            var o = list.ToList();
+            Assert.AreEqual(193, o.Count);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IWorkspace_GetFormattedDate_IsNotNull()
         {
             DateTime dateTime = new DateTime(2015, 03, 04);
@@ -69,6 +80,17 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void IWorkspace_GetRelationshipClasses_Equals_153()
+        {
+            var list = base.Workspace.GetRelationshipClasses();
+            Assert.IsNotNull(list);
+
+            var o = list.ToList();
+            Assert.AreEqual(153, o.Count);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IWorkspace_GetRelationship_IsNotNull()
         {
             var table = base.Workspace.GetRelationshipClass("", "DynamicProtDev_RecloserUnit");
@@ -81,6 +103,17 @@ namespace Wave.Extensions.Esri.Tests
         {
             var table = base.Workspace.GetTable("", "ASSEMBLY");
             Assert.IsNotNull(table);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IWorkspace_GetTables_Equals_149()
+        {
+            var list = base.Workspace.GetTables();
+            Assert.IsNotNull(list);
+
+            var o = list.ToList();
+            Assert.AreEqual(149, o.Count);
         }
 
         [TestMethod]

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Wave.Searchability.Data
 {
     /// <summary>
-    ///     Provides a data contract for representing a searchable table (or feature class).
+    ///     Provides a data contract for representing a searchable table.
     /// </summary>
     [DebuggerDisplay("Name = {Name}")]
     [DataContract(Name = "table", Namespace = "")]
@@ -13,14 +13,22 @@ namespace Wave.Searchability.Data
     {
         #region Fields
 
-        private bool _IsFeatureClass;
-        private bool _LayerDefinition;
         private bool _NameAsClassModelName;
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchableTable"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="aliasName">Name of the alias.</param>
+        public SearchableTable(string name, string aliasName)
+            : base(name, aliasName)
+        {
+            
+        }
         /// <summary>
         ///     Initializes a new instance of the <see cref="SearchableTable" /> class.
         /// </summary>
@@ -54,42 +62,6 @@ namespace Wave.Searchability.Data
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether this instance is feature class.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is feature class; otherwise, <c>false</c>.
-        /// </value>
-        [DataMember(Name = "isFeatureClass")]
-        public bool IsFeatureClass
-        {
-            get { return _IsFeatureClass; }
-            set
-            {
-                _IsFeatureClass = value;
-
-                this.OnPropertyChanged("IsFeatureClass");
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether the layer definition is used.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if layer definition is used; otherwise, <c>false</c>.
-        /// </value>
-        [DataMember(Name = "layerDefinition")]
-        public bool LayerDefinition
-        {
-            get { return _LayerDefinition; }
-            set
-            {
-                _LayerDefinition = value;
-
-                this.OnPropertyChanged("LayerDefinition");
-            }
-        }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the name property represents a class model name.

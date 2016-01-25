@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using ESRI.ArcGIS.ADF;
@@ -16,35 +17,51 @@ namespace Wave.Searchability.Data
     public static class SearchableResponseExtensions
     {
         #region Public Methods
-
+        
         /// <summary>
-        ///     Converts to response to the <see cref="IMMRowLayerSearchResults2" /> object.
+        /// Converts to response to the <see cref="IMMRowSearchResults2" /> object.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="map">The map.</param>
+        /// <param name="tables">The tables.</param>
         /// <returns>
-        ///     Returns a <see cref="IMMRowLayerSearchResults2" /> representing the response objects.
+        /// Returns a <see cref="IMMRowSearchResults2" /> representing the response objects.
         /// </returns>
-        public static IMMRowLayerSearchResults2 ToSearchResults(this SearchableResponse source, IMap map)
+        public static IMMRowSearchResults2 ToSearchResults(this SearchableResponse source, List<ITable> tables)
         {
-            return source.ToSearchResults(map.Where<IFeatureLayer>(layer => layer.Valid).ToList());
+            IMMRowSearchResults2 results = new RowSearchResults();
+            foreach (var s in source)
+            {
+                var table = tables.FirstOrDefault(l => (((IDataset)l).Name.Equals(s.Key, StringComparison.CurrentCultureIgnoreCase)));
+                if (table != null)
+                {
+                    using (ComReleaser cr = new ComReleaser())
+                    {
+                        var oids = s.Value.ToArray();
+                        var cursor = table.GetRows(oids, false);
+                        cr.ManageLifetime(cursor);
+
+                        results.AddCursor(cursor, false);
+                    }
+                }
+            }
+
+            return results;
         }
 
         /// <summary>
-        ///     Converts to response to the <see cref="IMMRowLayerSearchResults2" /> object.
+        /// Converts to response to the <see cref="IMMRowLayerSearchResults2" /> object.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="layers">The layers.</param>
         /// <returns>
-        ///     Returns a <see cref="IMMRowLayerSearchResults2" /> representing the response objects.
+        /// Returns a <see cref="IMMRowLayerSearchResults2" /> representing the response objects.
         /// </returns>
         public static IMMRowLayerSearchResults2 ToSearchResults(this SearchableResponse source, List<IFeatureLayer> layers)
         {
             IMMRowLayerSearchResults2 results = new RowLayerSearchResults();
-
             foreach (var s in source)
             {
-                var layer = layers.FirstOrDefault(l => ((IDataset) l.FeatureClass).Name.Equals(s.Key));
+                var layer = layers.FirstOrDefault(l => (l.Name.Equals(s.Key, StringComparison.CurrentCultureIgnoreCase)));
                 if (layer != null)
                 {
                     using (ComReleaser cr = new ComReleaser())
