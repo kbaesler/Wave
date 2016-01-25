@@ -2,7 +2,7 @@ using System;
 
 using ESRI.ArcGIS.esriSystem;
 
-#if ARC10
+#if V10
 using ESRI.ArcGIS;
 #endif
 
@@ -25,7 +25,7 @@ namespace Miner.Interop
 
         #region Constructors
 
-#if !ARC10
+#if !V10
         /// <summary>
         ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
         /// </summary>

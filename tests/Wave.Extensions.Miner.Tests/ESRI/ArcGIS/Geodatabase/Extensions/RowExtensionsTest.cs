@@ -82,10 +82,13 @@ namespace Wave.Extensions.Miner.Tests
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1);
+
             Assert.IsNotNull(feature);
-
-
-            feature.Store(mmAutoUpdaterMode.mmAUMNoEvents);
+            Assert.IsFalse(base.Workspace.PerformOperation(() =>
+            {
+                feature.Store(mmAutoUpdaterMode.mmAUMNoEvents);
+                return false;
+            }));
         }
 
         [TestMethod]

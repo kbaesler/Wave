@@ -97,8 +97,9 @@ namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
         public virtual IGPName GetFunctionName(string name)
         {
             IGPFunctionName gpFunctionName = new GPFunctionNameClass();
+#if !V10
             gpFunctionName.MinimumProduct = esriProductCode.esriProductCodeEditor;
-
+#endif
             IGPFunction2 gpFunction = this.GetFunction(name) as IGPFunction2;
             if (gpFunction == null) return null;
 

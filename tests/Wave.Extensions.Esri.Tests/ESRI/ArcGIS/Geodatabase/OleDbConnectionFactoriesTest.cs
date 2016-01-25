@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.IO;
 
 using ESRI.ArcGIS.Geodatabase;
@@ -12,12 +11,15 @@ namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
     public class OleDbConnectionFactoriesTest
+#if V10
+        : EsriTests
+#endif
     {
         [TestMethod]
         [TestCategory("ESRI")]
-        public void OleDbConnectionFactories_GetFileGdbConnection_IsNull()
+        public void OleDbConnectionFactories_GetFileGdbConnection_IsNotNull()
         {
-            Assert.IsNull(OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville)));
+            Assert.IsNotNull(OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville)));
         }
 
         [TestMethod]
@@ -35,11 +37,10 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void WorkspaceFactories_GetDbConnection_ExecuteNonQuery()
         {
-            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville)))            
+            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville)))
             {
                 connection.Open();
                 Assert.IsTrue(connection.State == ConnectionState.Open);
-                var value = connection.ExecuteReader("SELECT COUNT(*) FROM ASSEMBLY");
             }
         }
     }

@@ -1,8 +1,6 @@
-﻿#if ARC10
+﻿#if V10
 using System;
 using System.Collections.Generic;
-
-using ESRI.ArcGIS;
 #endif
 
 using ESRI.ArcGIS.ADF.COMSupport;
@@ -11,7 +9,7 @@ using ESRI.ArcGIS.esriSystem.BaseClasses;
 namespace ESRI.ArcGIS.esriSystem
 {
 
-#if ARC10
+#if V10
     /// <summary>
     ///     The runtime manager event arguments.
     /// </summary>
@@ -65,7 +63,7 @@ namespace ESRI.ArcGIS.esriSystem
         #endregion
 
         #region Events
-#if ARC10
+#if V10
         /// <summary>
         ///     Raised when ArcGIS runtime binding hasn't been established.
         /// </summary>
@@ -76,7 +74,7 @@ namespace ESRI.ArcGIS.esriSystem
 
         #region Constructors
 
-#if ARC10
+#if V10
         /// <summary>
         ///     Initializes a new instance of the <see cref="EsriRuntimeAuthorization" /> class.
         /// </summary>
@@ -113,7 +111,7 @@ namespace ESRI.ArcGIS.esriSystem
         {
             get
             {
-#if ARC10
+#if V10
                 if (RuntimeManager.ActiveRuntime == null)
                 {
                     var eventArgs = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
@@ -235,7 +233,7 @@ namespace ESRI.ArcGIS.esriSystem
                     licenseStatus == esriLicenseStatus.esriLicenseCheckedOut);
         }
 
-#if ARC10
+#if V10
         /// <summary>
         ///     Raises the <see cref="E:ResolveRuntimeBinding" /> event.
         /// </summary>

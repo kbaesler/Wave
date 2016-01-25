@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri", "Wave.Extensions.Esri\Wave.Extensions.Esri.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri", "Wave.Extensions.Esri\Wave.Extensions.Esri.v9.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner", "Wave.Extensions.Miner\Wave.Extensions.Miner.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner", "Wave.Extensions.Miner\Wave.Extensions.Miner.v9.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{056D1A53-FEF4-49C5-B811-6D251CA9E149}"
 	ProjectSection(SolutionItems) = preProject

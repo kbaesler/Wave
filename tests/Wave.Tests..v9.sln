@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.Tests", "Wave.Extensions.Esri.Tests\Wave.Extensions.Esri.Tests.csproj", "{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.Tests", "Wave.Extensions.Esri.Tests\Wave.Extensions.Esri.Tests.v9.csproj", "{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.Tests", "Wave.Extensions.Miner.Tests\Wave.Extensions.Miner.Tests.csproj", "{380FE243-F916-4D4A-A4CF-7E326756DEFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.Tests", "Wave.Extensions.Miner.Tests\Wave.Extensions.Miner.Tests.v9.csproj", "{380FE243-F916-4D4A-A4CF-7E326756DEFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F606D2EA-2B6E-4D7E-B6CA-278E0EF82796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri", "..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri", "..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.v9.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner", "..\src\Wave.Extensions.Miner\Wave.Extensions.Miner.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner", "..\src\Wave.Extensions.Miner\Wave.Extensions.Miner.v9.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{056D1A53-FEF4-49C5-B811-6D251CA9E149}"
 	ProjectSection(SolutionItems) = preProject
