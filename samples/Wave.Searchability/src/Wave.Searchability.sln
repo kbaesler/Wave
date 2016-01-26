@@ -5,11 +5,11 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Searchability", "Wave.Searchability\Wave.Searchability.csproj", "{7154A184-E701-4B05-9DA6-6C0A8EC31604}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wave", "Wave", "{43ADB035-2FE9-45A5-9882-065B852D8951}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wave", "Wave", "{9D3008CF-7E1A-4619-95FC-9CFF1ECEF690}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri", "..\..\..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.v10", "..\..\..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.v10.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner", "..\..\..\src\Wave.Extensions.Miner\Wave.Extensions.Miner.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.v10", "..\..\..\src\Wave.Extensions.Miner\Wave.Extensions.Miner.v10.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{056D1A53-FEF4-49C5-B811-6D251CA9E149}"
 	ProjectSection(SolutionItems) = preProject
@@ -53,8 +53,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47} = {43ADB035-2FE9-45A5-9882-065B852D8951}
-		{5224C687-F534-4120-8998-FA242556A7CD} = {43ADB035-2FE9-45A5-9882-065B852D8951}
-		{056D1A53-FEF4-49C5-B811-6D251CA9E149} = {43ADB035-2FE9-45A5-9882-065B852D8951}
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47} = {9D3008CF-7E1A-4619-95FC-9CFF1ECEF690}
+		{5224C687-F534-4120-8998-FA242556A7CD} = {9D3008CF-7E1A-4619-95FC-9CFF1ECEF690}
+		{056D1A53-FEF4-49C5-B811-6D251CA9E149} = {9D3008CF-7E1A-4619-95FC-9CFF1ECEF690}
 	EndGlobalSection
 EndGlobal

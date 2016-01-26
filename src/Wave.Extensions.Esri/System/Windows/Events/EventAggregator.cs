@@ -5,18 +5,18 @@ using System.Threading;
 namespace System.Windows
 {
     /// <summary>
-    /// Provides access to the static event aggreator.
+    ///     Provides access to the static event aggreator.
     /// </summary>
     public static class EventAggregator
     {
         #region Fields
 
-        private static readonly Dictionary<Type, EventBase> Events = new Dictionary<Type, EventBase>();
         private static readonly SynchronizationContext Context = SynchronizationContext.Current;
+        private static readonly Dictionary<Type, EventBase> Events = new Dictionary<Type, EventBase>();
 
         #endregion
 
-        #region IEventAggregator Members
+        #region Public Methods
 
         /// <summary>
         ///     Gets the single instance of the event managed by this EventAggregator. Multiple calls to this method with the same

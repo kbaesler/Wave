@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 
+using Miner;
 using Miner.ComCategories;
 using Miner.Controls;
 using Miner.Framework;
@@ -15,14 +16,12 @@ using Wave.Searchability.Data;
 using Wave.Searchability.Events;
 using Wave.Searchability.Extensions;
 
-using UserControl = System.Windows.Controls.UserControl;
-
 namespace Wave.Searchability.Views
 {
     /// <summary>
     ///     Interaction logic for SearchServiceView.xaml
     /// </summary>
-    public partial class SearchServiceView : UserControl
+    public partial class SearchServiceView
     {
         #region Constructors
 
@@ -74,7 +73,7 @@ namespace Wave.Searchability.Views
         /// </summary>
         private void AutoSelectFirst()
         {
-            IMMRegistry registry = new MMRegistryClass();
+            IMMRegistry registry = new MMRegistry();
             registry.OpenKey(mmHKEY.mmHKEY_CURRENT_USER, mmBaseKey.mmArcFM, @"Attribute Editor\Selection Tab");
             int autoSelect = (int) registry.Read("AutoSelectFirstFeature", 0);
 
@@ -143,26 +142,22 @@ namespace Wave.Searchability.Views
         {
             this.MinerTreeView.ContextCategory = D8SelectionTreeTool.CatID;
 
-            var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
-            if (eventAggregator != null)
+            EventAggregator.GetEvent<SearchableResponseEvent>().Subscribe(response =>
             {
-                eventAggregator.GetEvent<SearchableResponseEvent>().Subscribe(response =>
-                {
-                    this.MinerTreeView.ClearNodes();
+                this.MinerTreeView.ClearNodes();
 
-                    this.AddLayers(response);
+                this.AddLayers(response);
 
-                    this.AddTables(response);
+                this.AddTables(response);
 
-                    this.AutoSelectFirst();
-                }, ThreadOption.UIThread);
+                this.AutoSelectFirst();
+            }, ThreadOption.UIThread);
 
-                eventAggregator.GetEvent<MapSearchServiceRequestEvent>().Subscribe(request =>
-                {
-                    this.MinerTreeView.ClearNodes();
-                    this.Editor.ViewByFieldManager(null, mmDisplayMode.mmdmObject, false);
-                }, ThreadOption.UIThread);
-            }
+            EventAggregator.GetEvent<MapSearchServiceRequestEvent>().Subscribe(request =>
+            {
+                this.MinerTreeView.ClearNodes();
+                this.Editor.ViewByFieldManager(null, mmDisplayMode.mmdmObject, false);
+            }, ThreadOption.UIThread);
         }
 
         #endregion

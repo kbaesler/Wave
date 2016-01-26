@@ -66,20 +66,16 @@ namespace Wave.Searchability.Views
         /// <param name="document">The document.</param>
         public override void Activate(int parentHWnd, IMxDocument document)
         {
-            var eventAggregator = ExtensionContainer.Instance.GetService<IEventAggregator>();
-            if (eventAggregator != null)
+            if (_ElementHost == null)
             {
-                if (_ElementHost == null)
-                {
-                    var dataContext = new SearchServiceViewModel(eventAggregator);
+                var dataContext = new SearchServiceViewModel();
 
-                    _ElementHost = new ElementHost();
-                    _ElementHost.Child = new SearchServiceView() {DataContext = dataContext};
-                    _ElementHost.Dock = DockStyle.Fill;
-                }
-
-                Document.ActiveMapUpdated += (sender, args) => this.LoadInventory(eventAggregator, args.Map);
+                _ElementHost = new ElementHost();
+                _ElementHost.Child = new SearchServiceView() { DataContext = dataContext };
+                _ElementHost.Dock = DockStyle.Fill;
             }
+
+            Document.ActiveMapUpdated += (sender, args) => this.LoadInventory(args.Map);
         }
 
         /// <summary>
@@ -91,7 +87,7 @@ namespace Wave.Searchability.Views
             {
                 if (_ElementHost != null && _ElementHost.Child != null)
                 {
-                    var dataContext = ((SearchServiceView) _ElementHost.Child).DataContext as SearchServiceViewModel;
+                    var dataContext = ((SearchServiceView)_ElementHost.Child).DataContext as SearchServiceViewModel;
                     if (dataContext != null)
                     {
                         dataContext.Dispose();
@@ -131,28 +127,26 @@ namespace Wave.Searchability.Views
         #region Private Methods
 
         /// <summary>
-        ///     Gets the inventory asynchronous.
+        /// Gets the inventory asynchronous.
         /// </summary>
-        /// <param name="eventAggregator">The event aggregator.</param>
         /// <param name="map">The map.</param>
         /// <returns></returns>
-        private Task<IEnumerable<SearchableInventory>> GetInventoryAsync(IEventAggregator eventAggregator, IMap map)
+        private Task<IEnumerable<SearchableInventory>> GetInventoryAsync(IMap map)
         {
             var items = new List<SearchableInventory>(new[] {new SearchableInventory("Loading...")});
-            eventAggregator.GetEvent<SearchableInventoryEvent>().Publish(items);
+            EventAggregator.GetEvent<SearchableInventoryEvent>().Publish(items);
 
             return Task.Factory.StartNew(() => SearchabilityInventory.GetInventory(map));
         }
 
         /// <summary>
-        ///     Loads the inventory.
+        /// Loads the inventory.
         /// </summary>
-        /// <param name="eventAggregator">The event aggregator.</param>
         /// <param name="map">The map.</param>
-        private void LoadInventory(IEventAggregator eventAggregator, IMap map)
+        private void LoadInventory(IMap map)
         {
-            var task = this.GetInventoryAsync(eventAggregator, map);
-            task.ContinueWith(t => eventAggregator.GetEvent<SearchableInventoryEvent>().Publish(t.Result));
+            var task = this.GetInventoryAsync(map);
+            task.ContinueWith(t => EventAggregator.GetEvent<SearchableInventoryEvent>().Publish(t.Result));
         }
 
         #endregion

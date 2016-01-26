@@ -22,12 +22,11 @@ namespace Wave.Searchability.Views
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SearchServiceViewModel" /> class.
+        /// Initializes a new instance of the <see cref="SearchServiceViewModel" /> class.
         /// </summary>
-        /// <param name="eventAggregator">The event aggregator.</param>
-        public SearchServiceViewModel(IEventAggregator eventAggregator)
+        public SearchServiceViewModel()
         {
-            eventAggregator.GetEvent<SearchableInventoryEvent>().Subscribe(items =>
+            EventAggregator.GetEvent<SearchableInventoryEvent>().Subscribe(items =>
             {
                 this.Items = new ObservableCollection<SearchableInventory>(items);
                 this.CurrentItem = this.Items.FirstOrDefault();
@@ -52,7 +51,7 @@ namespace Wave.Searchability.Views
 
             this.Extent = this.Extents.Skip(1).First().Key;
 
-            this.SearchCommand = new DelegateCommand(o => eventAggregator.GetEvent<MapSearchServiceRequestEvent>().Publish(new MapSearchServiceRequest()
+            this.SearchCommand = new DelegateCommand(o => EventAggregator.GetEvent<MapSearchServiceRequestEvent>().Publish(new MapSearchServiceRequest()
             {
                 Inventory = new List<SearchableInventory>(new[] {this.CurrentItem}),
                 ComparisonOperator = this.ComparisonOperator,

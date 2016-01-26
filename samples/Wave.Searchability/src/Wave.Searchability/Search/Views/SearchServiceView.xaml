@@ -10,7 +10,7 @@
              xmlns:interop="clr-namespace:Miner.Interop;assembly=Miner.AxInterop.MMObjEdr"
              xmlns:windows="clr-namespace:System.Windows;assembly=Wave.Extensions.Esri"
              mc:Ignorable="d"
-             d:DesignHeight="300"
+             d:DesignHeight="300" 
              d:DesignWidth="300"
              Loaded="SearchServiceView_OnLoaded">
     <UserControl.Resources>        

@@ -11,37 +11,10 @@ using Wave.Searchability.Services;
 
 namespace Wave.Searchability.Extensions
 {
-    /// <summary>
-    ///     Provides access to the extension container.
-    /// </summary>
-    public static class ExtensionContainer
-    {
-        #region Fields
-
-        private static IExtensionContainer _Instance;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        ///     Gets the instance.
-        /// </summary>
-        /// <value>
-        ///     The instance.
-        /// </value>
-        public static IExtensionContainer Instance
-        {
-            get { return _Instance ?? (_Instance = Document.FindExtensionByName(SearchServiceExtension.ExtensionName) as IExtensionContainer); }
-        }
-
-        #endregion
-    }
-
     [Guid("DB44276A-8C24-4C4E-A6FF-113198EE9DC9")]
     [ProgId("Wave.Searchability.Extensions.SearchServiceExtension")]
     [ComVisible(true)]
-    public class SearchServiceExtension : BaseExtensionContainer
+    public class SearchServiceExtension : BaseExtension
     {
         #region Constants
 
@@ -69,18 +42,13 @@ namespace Wave.Searchability.Extensions
         /// <param name="initializationData">ESRI Application Reference</param>
         public override void Startup(ref object initializationData)
         {
-            this.AddService(typeof (IEventAggregator), new EventAggregator());
-            this.AddService(typeof (IMapSearchService), new MapSearchService());
-
             base.Startup(ref initializationData);
 
-            var eventAggregator = this.GetService<IEventAggregator>();
-            var searchService = this.GetService<IMapSearchService>();
-
-            eventAggregator.GetEvent<MapSearchServiceRequestEvent>().Subscribe((request) =>
+            EventAggregator.GetEvent<MapSearchServiceRequestEvent>().Subscribe((request) =>
             {
+                var searchService = new MapSearchService();
                 var task = searchService.FindAsync(request, Document.ActiveMap);
-                task.ContinueWith(t => eventAggregator.GetEvent<SearchableResponseEvent>().Publish(t.Result));
+                task.ContinueWith(t => EventAggregator.GetEvent<SearchableResponseEvent>().Publish(t.Result));
             });
         }
 
