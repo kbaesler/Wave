@@ -126,6 +126,14 @@
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Wave.Extensions.Esri, Version=9.0.0.5, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.10.0.1.5-alpha\lib\net35\Wave.Extensions.Esri.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Wave.Extensions.Miner, Version=9.0.0.5, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.10.0.1.5-alpha\lib\net35\Wave.Extensions.Miner.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
@@ -142,6 +150,7 @@
     <Compile Include="Data\Model\SearchableField.cs" />
     <Compile Include="Data\Model\Searchable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\LogInfo.cs" />
     <Compile Include="Search\Events\SearchableResponseEvent.cs" />
     <Compile Include="Search\Extensions\SearchServiceExtension.cs">
       <SubType>Code</SubType>
@@ -185,16 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Search\Resources\Images\DeleteRed32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.v10.csproj">
-      <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
-      <Name>Wave.Extensions.Esri.v10</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\src\Wave.Extensions.Miner\Wave.Extensions.Miner.v10.csproj">
-      <Project>{5224c687-f534-4120-8998-fa242556a7cd}</Project>
-      <Name>Wave.Extensions.Miner.v10</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Search\Views\SearchServiceView.xaml">
