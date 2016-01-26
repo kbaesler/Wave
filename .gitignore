@@ -242,3 +242,8 @@ tests/Sample Data/Databases/WorkflowManager.ldb
 /docs/doxygen/Wave.Extensions.Miner/xml
 *.DotSettings
 tests/Wave.Tests.UI.sln.GhostDoc.xml
+/samples/Wave.Searchability/src/Wave.Searchability.sln.GhostDoc.xml
+/samples/Wave.Searchability/tests/Wave.Searchability.Tests.sln.GhostDoc.xml
+/src/Wave.v9.sln.GhostDoc.xml
+/src/Wave.v10.sln.GhostDoc.xml
+/tests/Wave.Tests.v10.sln.GhostDoc.xml
