@@ -5,14 +5,14 @@ using System.Threading;
 namespace System.Windows
 {
     /// <summary>
-    ///     Implements <see cref="IEventAggregator" />.
+    /// Provides access to the static event aggreator.
     /// </summary>
-    public class EventAggregator : IEventAggregator
+    public static class EventAggregator
     {
         #region Fields
 
-        private readonly Dictionary<Type, EventBase> _Events = new Dictionary<Type, EventBase>();
-        private readonly SynchronizationContext _SyncContext = SynchronizationContext.Current;
+        private static readonly Dictionary<Type, EventBase> Events = new Dictionary<Type, EventBase>();
+        private static readonly SynchronizationContext Context = SynchronizationContext.Current;
 
         #endregion
 
@@ -25,17 +25,17 @@ namespace System.Windows
         /// <typeparam name="TEventType">The type of event to get. This must inherit from <see cref="EventBase" />.</typeparam>
         /// <returns>A singleton instance of an event object of type <typeparamref name="TEventType" />.</returns>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
-        public TEventType GetEvent<TEventType>() where TEventType : EventBase, new()
+        public static TEventType GetEvent<TEventType>() where TEventType : EventBase, new()
         {
-            lock (_Events)
+            lock (Events)
             {
                 EventBase existingEvent = null;
 
-                if (!_Events.TryGetValue(typeof (TEventType), out existingEvent))
+                if (!Events.TryGetValue(typeof (TEventType), out existingEvent))
                 {
                     var newEvent = new TEventType();
-                    newEvent.SynchronizationContext = _SyncContext;
-                    _Events[typeof (TEventType)] = newEvent;
+                    newEvent.SynchronizationContext = Context;
+                    Events[typeof (TEventType)] = newEvent;
 
                     return newEvent;
                 }

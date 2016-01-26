@@ -199,7 +199,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtensionContainer.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseTool.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseWorkspaceExtension.cs" />
@@ -388,7 +387,6 @@
     <Compile Include="System\Windows\Events\EventBase.cs" />
     <Compile Include="System\Windows\Events\EventSubscription.cs" />
     <Compile Include="System\Windows\Events\IDelegateReference.cs" />
-    <Compile Include="System\Windows\Events\IEventAggregator.cs" />
     <Compile Include="System\Windows\Events\IEventSubscription.cs" />
     <Compile Include="System\Windows\Events\SubscriptionToken.cs" />
     <Compile Include="System\Windows\Extensions\AdornerExtensions.cs" />
