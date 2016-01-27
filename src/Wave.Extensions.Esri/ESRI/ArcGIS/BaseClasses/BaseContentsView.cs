@@ -14,8 +14,7 @@ namespace ESRI.ArcGIS.BaseClasses
     public abstract class BaseContentsView : IComPropertySheetEvents
 #if V10
         , IContentsView3
-#else
-        , IContentsView
+#else        
         , IContentsView2
 #endif
     {
