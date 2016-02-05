@@ -11,17 +11,17 @@ The documentation has been moved to [wave.readthedocs.org](http://wave.readthedo
 
 You can now download a pre-release of the library using the Microsoft Nuget Package Manager within Visual Studio IDE.
 
-To install Wave [9.3], run the following command in the Package Manager Console.
+To install Wave, run the following command in the Package Manager Console.
 
 ```
-	PM> Install-Package Wave.9.3 -Version 1.0.1
+	PM> Install-Package Wave -Version 1.0.0
 ```
 
 ### Requirements ###
-- ArcGIS 9.3.1 SP2
-- ArcFM 9.3.1 SP2
+- ArcGIS for Desktop 10 (or higher)
+- ArcFM Solution 10 (or higher)
 - 3.5 SP 1 .NET Framework
-- Visual Studio 2010+
+- Visual Studio 2010 (or higher)
 
 ### Third Party Libraries ###
 

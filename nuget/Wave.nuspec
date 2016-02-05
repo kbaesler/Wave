@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>Wave.9</id>
-        <version>0.0.2-alpha</version>
-        <title>Wave [v9]</title>
+        <id>Wave</id>
+        <version>0.0.2</version>
+        <title>Wave</title>
         <authors>Kyle Baesler</authors>
         <owners>https://github.com/Jumpercables/Wave</owners>
         <projectUrl>https://github.com/Jumpercables/Wave</projectUrl>
@@ -15,16 +15,15 @@
         <language>en-US</language>
         <tags>ESRI, ArcFM, ArcGIS, GIS, ArcObjects, Schneider_Electric</tags>
         <dependencies>
-            <dependency id="log4net" version="[1.2.10]" />
-        </dependencies>        
+            <dependency id="log4net" version="[2.0.3]" />
+        </dependencies>                   
     </metadata>
-    <files>		
-        <file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.pdb" target="lib\net35\Wave.Extensions.Esri.pdb" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.pdb" target="lib\net35\Wave.Extensions.Miner.pdb" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.XML" target="lib\net35\Wave.Extensions.Miner.xml" />
+    <files>				
+		<file src="build\Wave.targets" target="build\Wave.targets" />        
+		<file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
+        <file src="..\src\bin\x86\Release\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />        
+        <file src="..\src\bin\x86\Release\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
+        <file src="..\src\bin\x86\Release\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />        
+        <file src="..\src\bin\x86\Release\Wave.Extensions.Miner.XML" target="lib\net35\Wave.Extensions.Miner.xml" />
     </files>
 </package>
