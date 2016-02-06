@@ -13,11 +13,100 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        public void IFeatureClass_CreateExpression_EndsWith_Character()
+        {
+            var testClass = base.GetTestClass();
+            var expression = testClass.CreateExpression("kellyl", ComparisonOperator.EndsWith, LogicalOperator.Or);
+
+            Assert.IsNotNull(expression);
+            Assert.AreEqual("(UPPER(CREATIONUSER) Like '%KELLYL') Or (UPPER(LASTUSER) Like '%KELLYL') Or (UPPER(FACILITYID) Like '%KELLYL') Or (UPPER(FEEDERID) Like '%KELLYL') Or (UPPER(FEEDERID2) Like '%KELLYL') Or (UPPER(COMMENTS) Like '%KELLYL') Or (UPPER(WORKORDERID) Like '%KELLYL') Or (UPPER(HIGHSIDEPROTECTION) Like '%KELLYL') Or (UPPER(LOCATIONTYPE) Like '%KELLYL') Or (UPPER(LABELTEXT) Like '%KELLYL') Or (UPPER(HIGHSIDECONFIGURATION) Like '%KELLYL') Or (UPPER(LOWSIDECONFIGURATION) Like '%KELLYL') Or (UPPER(LOADTAPCHANGERINDICATOR) Like '%KELLYL') Or (UPPER(LOWSIDEPROTECTION) Like '%KELLYL') Or (UPPER(SWITCHTYPE) Like '%KELLYL') Or (UPPER(TERTIARYCONFIGURATION) Like '%KELLYL') Or (UPPER(WORKREQUESTID) Like '%KELLYL') Or (UPPER(DESIGNID) Like '%KELLYL') Or (UPPER(WORKLOCATIONID) Like '%KELLYL') Or (UPPER(GlobalID) Like '%KELLYL') Or (UPPER(FilledWeight) Like '%KELLYL') Or (UPPER(EmptyWeight) Like '%KELLYL') Or (UPPER(HeightBushings) Like '%KELLYL') Or (UPPER(HeightNoBushings) Like '%KELLYL') Or (UPPER(AlternateX) Like '%KELLYL') Or (UPPER(AlternateY) Like '%KELLYL') Or (UPPER(AlternateZ) Like '%KELLYL') Or (UPPER(AlternateSource) Like '%KELLYL')", expression);
+
+            int rowCount = testClass.FeatureCount(new QueryFilterClass() {WhereClause = expression});
+            Assert.IsTrue(rowCount > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_CreateExpression_EndsWith_Numeric()
+        {
+            var testClass = base.GetTestClass();
+            var expression = testClass.CreateExpression("6", ComparisonOperator.EndsWith, LogicalOperator.Or);
+
+            Assert.IsNotNull(expression);
+            Assert.AreEqual("(CAST(OBJECTID As CHAR(8)) Like '%6') Or (CAST(ANCILLARYROLE As CHAR(13)) Like '%6') Or (CAST(ENABLED As CHAR(7)) Like '%6') Or (UPPER(CREATIONUSER) Like '%6') Or (UPPER(LASTUSER) Like '%6') Or (CAST(SUBTYPECD As CHAR(9)) Like '%6') Or (UPPER(FACILITYID) Like '%6') Or (UPPER(FEEDERID) Like '%6') Or (UPPER(FEEDERID2) Like '%6') Or (CAST(OPERATINGVOLTAGE As CHAR(16)) Like '%6') Or (UPPER(COMMENTS) Like '%6') Or (UPPER(WORKORDERID) Like '%6') Or (CAST(ELECTRICTRACEWEIGHT As CHAR(19)) Like '%6') Or (CAST(FEEDERINFO As CHAR(10)) Like '%6') Or (CAST(SYMBOLROTATION As CHAR(14)) Like '%6') Or (CAST(GROUNDREACTANCE As CHAR(15)) Like '%6') Or (CAST(GROUNDRESISTANCE As CHAR(16)) Like '%6') Or (CAST(HIGHSIDEGROUNDREACTANCE As CHAR(23)) Like '%6') Or (CAST(HIGHSIDEGROUNDRESISTANCE As CHAR(24)) Like '%6') Or (UPPER(HIGHSIDEPROTECTION) Like '%6') Or (UPPER(LOCATIONTYPE) Like '%6') Or (CAST(MAGNETIZINGREACTANCE As CHAR(20)) Like '%6') Or (CAST(MAGNETIZINGRESISTANCE As CHAR(21)) Like '%6') Or (UPPER(LABELTEXT) Like '%6') Or (CAST(PHASEDESIGNATION As CHAR(16)) Like '%6') Or (CAST(NOMINALVOLTAGE As CHAR(14)) Like '%6') Or (CAST(RATEDKVA As CHAR(8)) Like '%6') Or (UPPER(HIGHSIDECONFIGURATION) Like '%6') Or (UPPER(LOWSIDECONFIGURATION) Like '%6') Or (UPPER(LOADTAPCHANGERINDICATOR) Like '%6') Or (CAST(LOWSIDEGROUNDREACTANCE As CHAR(22)) Like '%6') Or (CAST(LOWSIDEGROUNDRESISTANCE As CHAR(23)) Like '%6') Or (UPPER(LOWSIDEPROTECTION) Like '%6') Or (CAST(LOWSIDEVOLTAGE As CHAR(14)) Like '%6') Or (CAST(RATEDKVA65RISE As CHAR(14)) Like '%6') Or (CAST(RATEDTERTIARYKVA As CHAR(16)) Like '%6') Or (UPPER(SWITCHTYPE) Like '%6') Or (UPPER(TERTIARYCONFIGURATION) Like '%6') Or (CAST(TERTIARYVOLTAGE As CHAR(15)) Like '%6') Or (UPPER(WORKREQUESTID) Like '%6') Or (UPPER(DESIGNID) Like '%6') Or (UPPER(WORKLOCATIONID) Like '%6') Or (CAST(WORKFLOWSTATUS As CHAR(14)) Like '%6') Or (CAST(WORKFUNCTION As CHAR(12)) Like '%6') Or (UPPER(GlobalID) Like '%6') Or (CAST(ParentCircuitSourceID As CHAR(21)) Like '%6') Or (CAST(CircuitSourceID As CHAR(15)) Like '%6') Or (CAST(SubSource As CHAR(9)) Like '%6') Or (UPPER(FilledWeight) Like '%6') Or (UPPER(EmptyWeight) Like '%6') Or (UPPER(HeightBushings) Like '%6') Or (UPPER(HeightNoBushings) Like '%6') Or (UPPER(AlternateX) Like '%6') Or (UPPER(AlternateY) Like '%6') Or (UPPER(AlternateZ) Like '%6') Or (UPPER(AlternateSource) Like '%6')", expression);  
+
+            int rowCount = testClass.FeatureCount(new QueryFilterClass() {WhereClause = expression});
+            Assert.IsTrue(rowCount > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_CreateExpression_Like_Character()
+        {
+            var testClass = base.GetTestClass();
+            var expression = testClass.CreateExpression("kellyl", ComparisonOperator.Contains, LogicalOperator.Or);
+
+            Assert.IsNotNull(expression);
+            Assert.AreEqual("(UPPER(CREATIONUSER) Like '%KELLYL%') Or (UPPER(LASTUSER) Like '%KELLYL%') Or (UPPER(FACILITYID) Like '%KELLYL%') Or (UPPER(FEEDERID) Like '%KELLYL%') Or (UPPER(FEEDERID2) Like '%KELLYL%') Or (UPPER(COMMENTS) Like '%KELLYL%') Or (UPPER(WORKORDERID) Like '%KELLYL%') Or (UPPER(HIGHSIDEPROTECTION) Like '%KELLYL%') Or (UPPER(LOCATIONTYPE) Like '%KELLYL%') Or (UPPER(LABELTEXT) Like '%KELLYL%') Or (UPPER(HIGHSIDECONFIGURATION) Like '%KELLYL%') Or (UPPER(LOWSIDECONFIGURATION) Like '%KELLYL%') Or (UPPER(LOADTAPCHANGERINDICATOR) Like '%KELLYL%') Or (UPPER(LOWSIDEPROTECTION) Like '%KELLYL%') Or (UPPER(SWITCHTYPE) Like '%KELLYL%') Or (UPPER(TERTIARYCONFIGURATION) Like '%KELLYL%') Or (UPPER(WORKREQUESTID) Like '%KELLYL%') Or (UPPER(DESIGNID) Like '%KELLYL%') Or (UPPER(WORKLOCATIONID) Like '%KELLYL%') Or (UPPER(GlobalID) Like '%KELLYL%') Or (UPPER(FilledWeight) Like '%KELLYL%') Or (UPPER(EmptyWeight) Like '%KELLYL%') Or (UPPER(HeightBushings) Like '%KELLYL%') Or (UPPER(HeightNoBushings) Like '%KELLYL%') Or (UPPER(AlternateX) Like '%KELLYL%') Or (UPPER(AlternateY) Like '%KELLYL%') Or (UPPER(AlternateZ) Like '%KELLYL%') Or (UPPER(AlternateSource) Like '%KELLYL%')", expression);
+
+            int rowCount = testClass.FeatureCount(new QueryFilterClass() {WhereClause = expression});
+            Assert.IsTrue(rowCount > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_CreateExpression_Like_Numeric()
+        {
+            var testClass = base.GetTestClass();
+            var expression = testClass.CreateExpression("6", ComparisonOperator.Contains, LogicalOperator.Or);
+
+            Assert.IsNotNull(expression);
+            Assert.AreEqual("(CAST(OBJECTID As CHAR(8)) Like '%6%') Or (CAST(ANCILLARYROLE As CHAR(13)) Like '%6%') Or (CAST(ENABLED As CHAR(7)) Like '%6%') Or (UPPER(CREATIONUSER) Like '%6%') Or (UPPER(LASTUSER) Like '%6%') Or (CAST(SUBTYPECD As CHAR(9)) Like '%6%') Or (UPPER(FACILITYID) Like '%6%') Or (UPPER(FEEDERID) Like '%6%') Or (UPPER(FEEDERID2) Like '%6%') Or (CAST(OPERATINGVOLTAGE As CHAR(16)) Like '%120%') Or (CAST(OPERATINGVOLTAGE As CHAR(16)) Like '%110%') Or (UPPER(COMMENTS) Like '%6%') Or (UPPER(WORKORDERID) Like '%6%') Or (CAST(ELECTRICTRACEWEIGHT As CHAR(19)) Like '%6%') Or (CAST(FEEDERINFO As CHAR(10)) Like '%6%') Or (CAST(SYMBOLROTATION As CHAR(14)) Like '%6%') Or (CAST(GROUNDREACTANCE As CHAR(15)) Like '%6%') Or (CAST(GROUNDRESISTANCE As CHAR(16)) Like '%6%') Or (CAST(HIGHSIDEGROUNDREACTANCE As CHAR(23)) Like '%6%') Or (CAST(HIGHSIDEGROUNDRESISTANCE As CHAR(24)) Like '%6%') Or (UPPER(HIGHSIDEPROTECTION) Like '%6%') Or (UPPER(LOCATIONTYPE) Like '%6%') Or (CAST(MAGNETIZINGREACTANCE As CHAR(20)) Like '%6%') Or (CAST(MAGNETIZINGRESISTANCE As CHAR(21)) Like '%6%') Or (UPPER(LABELTEXT) Like '%6%') Or (CAST(PHASEDESIGNATION As CHAR(16)) Like '%6%') Or (CAST(NOMINALVOLTAGE As CHAR(14)) Like '%120%') Or (CAST(NOMINALVOLTAGE As CHAR(14)) Like '%110%') Or (CAST(NOMINALVOLTAGE As CHAR(14)) Like '%420%') Or (CAST(NOMINALVOLTAGE As CHAR(14)) Like '%440%') Or (CAST(RATEDKVA As CHAR(8)) Like '%6%') Or (UPPER(HIGHSIDECONFIGURATION) Like '%6%') Or (UPPER(LOWSIDECONFIGURATION) Like '%6%') Or (UPPER(LOADTAPCHANGERINDICATOR) Like '%6%') Or (CAST(LOWSIDEGROUNDREACTANCE As CHAR(22)) Like '%6%') Or (CAST(LOWSIDEGROUNDRESISTANCE As CHAR(23)) Like '%6%') Or (UPPER(LOWSIDEPROTECTION) Like '%6%') Or (CAST(LOWSIDEVOLTAGE As CHAR(14)) Like '%160%') Or (CAST(LOWSIDEVOLTAGE As CHAR(14)) Like '%230%') Or (CAST(LOWSIDEVOLTAGE As CHAR(14)) Like '%270%') Or (CAST(RATEDKVA65RISE As CHAR(14)) Like '%6%') Or (CAST(RATEDTERTIARYKVA As CHAR(16)) Like '%6%') Or (UPPER(SWITCHTYPE) Like '%6%') Or (UPPER(TERTIARYCONFIGURATION) Like '%6%') Or (CAST(TERTIARYVOLTAGE As CHAR(15)) Like '%6%') Or (UPPER(WORKREQUESTID) Like '%6%') Or (UPPER(DESIGNID) Like '%6%') Or (UPPER(WORKLOCATIONID) Like '%6%') Or (CAST(WORKFLOWSTATUS As CHAR(14)) Like '%6%') Or (CAST(WORKFUNCTION As CHAR(12)) Like '%6%') Or (UPPER(GlobalID) Like '%6%') Or (CAST(ParentCircuitSourceID As CHAR(21)) Like '%6%') Or (CAST(CircuitSourceID As CHAR(15)) Like '%6%') Or (CAST(SubSource As CHAR(9)) Like '%6%') Or (UPPER(FilledWeight) Like '%6%') Or (UPPER(EmptyWeight) Like '%6%') Or (UPPER(HeightBushings) Like '%6%') Or (UPPER(HeightNoBushings) Like '%6%') Or (UPPER(AlternateX) Like '%6%') Or (UPPER(AlternateY) Like '%6%') Or (UPPER(AlternateZ) Like '%6%') Or (UPPER(AlternateSource) Like '%6%')", expression);
+
+            int rowCount = testClass.FeatureCount(new QueryFilterClass() {WhereClause = expression});
+            Assert.IsTrue(rowCount > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_CreateExpression_StartsWith_Character()
+        {
+            var testClass = base.GetTestClass();
+            var expression = testClass.CreateExpression("kellyl", ComparisonOperator.StartsWith, LogicalOperator.Or);
+
+            Assert.IsNotNull(expression);
+            Assert.AreEqual("(UPPER(CREATIONUSER) Like 'KELLYL%') Or (UPPER(LASTUSER) Like 'KELLYL%') Or (UPPER(FACILITYID) Like 'KELLYL%') Or (UPPER(FEEDERID) Like 'KELLYL%') Or (UPPER(FEEDERID2) Like 'KELLYL%') Or (UPPER(COMMENTS) Like 'KELLYL%') Or (UPPER(WORKORDERID) Like 'KELLYL%') Or (UPPER(HIGHSIDEPROTECTION) Like 'KELLYL%') Or (UPPER(LOCATIONTYPE) Like 'KELLYL%') Or (UPPER(LABELTEXT) Like 'KELLYL%') Or (UPPER(HIGHSIDECONFIGURATION) Like 'KELLYL%') Or (UPPER(LOWSIDECONFIGURATION) Like 'KELLYL%') Or (UPPER(LOADTAPCHANGERINDICATOR) Like 'KELLYL%') Or (UPPER(LOWSIDEPROTECTION) Like 'KELLYL%') Or (UPPER(SWITCHTYPE) Like 'KELLYL%') Or (UPPER(TERTIARYCONFIGURATION) Like 'KELLYL%') Or (UPPER(WORKREQUESTID) Like 'KELLYL%') Or (UPPER(DESIGNID) Like 'KELLYL%') Or (UPPER(WORKLOCATIONID) Like 'KELLYL%') Or (UPPER(GlobalID) Like 'KELLYL%') Or (UPPER(FilledWeight) Like 'KELLYL%') Or (UPPER(EmptyWeight) Like 'KELLYL%') Or (UPPER(HeightBushings) Like 'KELLYL%') Or (UPPER(HeightNoBushings) Like 'KELLYL%') Or (UPPER(AlternateX) Like 'KELLYL%') Or (UPPER(AlternateY) Like 'KELLYL%') Or (UPPER(AlternateZ) Like 'KELLYL%') Or (UPPER(AlternateSource) Like 'KELLYL%')", expression);
+
+            int rowCount = testClass.FeatureCount(new QueryFilterClass() {WhereClause = expression});
+            Assert.IsTrue(rowCount > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IFeatureClass_CreateExpression_StartsWith_Numeric()
+        {
+            var testClass = base.GetTestClass();
+            var expression = testClass.CreateExpression("6", ComparisonOperator.StartsWith, LogicalOperator.Or);
+
+            Assert.IsNotNull(expression);
+            Assert.AreEqual("(CAST(OBJECTID As CHAR(8)) Like '6%') Or (CAST(ANCILLARYROLE As CHAR(13)) Like '6%') Or (CAST(ENABLED As CHAR(7)) Like '6%') Or (UPPER(CREATIONUSER) Like '6%') Or (UPPER(LASTUSER) Like '6%') Or (CAST(SUBTYPECD As CHAR(9)) Like '6%') Or (UPPER(FACILITYID) Like '6%') Or (UPPER(FEEDERID) Like '6%') Or (UPPER(FEEDERID2) Like '6%') Or (CAST(OPERATINGVOLTAGE As CHAR(16)) Like '6%') Or (UPPER(COMMENTS) Like '6%') Or (UPPER(WORKORDERID) Like '6%') Or (CAST(ELECTRICTRACEWEIGHT As CHAR(19)) Like '6%') Or (CAST(FEEDERINFO As CHAR(10)) Like '6%') Or (CAST(SYMBOLROTATION As CHAR(14)) Like '6%') Or (CAST(GROUNDREACTANCE As CHAR(15)) Like '6%') Or (CAST(GROUNDRESISTANCE As CHAR(16)) Like '6%') Or (CAST(HIGHSIDEGROUNDREACTANCE As CHAR(23)) Like '6%') Or (CAST(HIGHSIDEGROUNDRESISTANCE As CHAR(24)) Like '6%') Or (UPPER(HIGHSIDEPROTECTION) Like '6%') Or (UPPER(LOCATIONTYPE) Like '6%') Or (CAST(MAGNETIZINGREACTANCE As CHAR(20)) Like '6%') Or (CAST(MAGNETIZINGRESISTANCE As CHAR(21)) Like '6%') Or (UPPER(LABELTEXT) Like '6%') Or (CAST(PHASEDESIGNATION As CHAR(16)) Like '6%') Or (CAST(NOMINALVOLTAGE As CHAR(14)) Like '440%') Or (CAST(RATEDKVA As CHAR(8)) Like '6%') Or (UPPER(HIGHSIDECONFIGURATION) Like '6%') Or (UPPER(LOWSIDECONFIGURATION) Like '6%') Or (UPPER(LOADTAPCHANGERINDICATOR) Like '6%') Or (CAST(LOWSIDEGROUNDREACTANCE As CHAR(22)) Like '6%') Or (CAST(LOWSIDEGROUNDRESISTANCE As CHAR(23)) Like '6%') Or (UPPER(LOWSIDEPROTECTION) Like '6%') Or (CAST(LOWSIDEVOLTAGE As CHAR(14)) Like '6%') Or (CAST(RATEDKVA65RISE As CHAR(14)) Like '6%') Or (CAST(RATEDTERTIARYKVA As CHAR(16)) Like '6%') Or (UPPER(SWITCHTYPE) Like '6%') Or (UPPER(TERTIARYCONFIGURATION) Like '6%') Or (CAST(TERTIARYVOLTAGE As CHAR(15)) Like '6%') Or (UPPER(WORKREQUESTID) Like '6%') Or (UPPER(DESIGNID) Like '6%') Or (UPPER(WORKLOCATIONID) Like '6%') Or (CAST(WORKFLOWSTATUS As CHAR(14)) Like '6%') Or (CAST(WORKFUNCTION As CHAR(12)) Like '6%') Or (UPPER(GlobalID) Like '6%') Or (CAST(ParentCircuitSourceID As CHAR(21)) Like '6%') Or (CAST(CircuitSourceID As CHAR(15)) Like '6%') Or (CAST(SubSource As CHAR(9)) Like '6%') Or (UPPER(FilledWeight) Like '6%') Or (UPPER(EmptyWeight) Like '6%') Or (UPPER(HeightBushings) Like '6%') Or (UPPER(HeightNoBushings) Like '6%') Or (UPPER(AlternateX) Like '6%') Or (UPPER(AlternateY) Like '6%') Or (UPPER(AlternateZ) Like '6%') Or (UPPER(AlternateSource) Like '6%')", expression);
+
+            int rowCount = testClass.FeatureCount(new QueryFilterClass() {WhereClause = expression});
+            Assert.IsTrue(rowCount > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IFeatureClass_CreateNew_IsNotNull()
         {
             var testClass = base.GetTestClass();
-            var feature = testClass.CreateNew();
-            Assert.IsNotNull(feature);
+
+            Assert.IsFalse(base.Workspace.PerformOperation(() =>
+            {
+                var feature = testClass.CreateNew();
+                Assert.IsNotNull(feature);
+                return false;
+            }));
         }
 
         [TestMethod]

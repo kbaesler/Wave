@@ -11,7 +11,6 @@ Table of Contents
     getting_started
     features
     faq
-    examples
     contribute
     change_log
     apidocs

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Wave.Extensions.Esri</id>
+        <version>0.0.2</version>
+       <title>Wave Extensions for ArcGIS</title>
+        <authors>Kyle Baesler</authors>
+        <owners>https://github.com/Jumpercables/Wave</owners>
+        <projectUrl>https://github.com/Jumpercables/Wave</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A C# library that extends the ESRI ArcObjects by developing classes as extension methods whenever possible. This design concept eliminates the need for the developer to learn new namespaces and allow them to take advantage of intelisense to identify the new methods for objects.</description>
+        <summary>Wave is a C# library that extends the ESRI ArcObjects APIs that are used for developing Geographical Information System (GIS) extensions to the ArcMap.</summary>
+        <releaseNotes>http://wave.readthedocs.org/en/latest</releaseNotes>
+        <copyright>Copyright 2014</copyright>
+        <language>en-US</language>
+        <tags>ESRI, ArcGIS, GIS, ArcObjects</tags>
+        <dependencies>
+            <dependency id="log4net" version="[2.0.3]" />
+        </dependencies>                   
+    </metadata>
+    <files>				
+		<file src="build\Wave.Extensions.Esri.targets" target="build\Wave.Extensions.Esri.targets" />        
+		<file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
+        <file src="..\src\bin\x86\Release\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />        
+        <file src="..\src\bin\x86\Release\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />       
+    </files>
+</package>

@@ -74,20 +74,23 @@ namespace Miner.Framework.BaseClasses
         }
 
         /// <summary>
-        /// Implementation of Auto Updater Execute Ex method for derived classes.
+        ///     Implementation of Auto Updater Execute Ex method for derived classes.
         /// </summary>
         /// <param name="obj">The object that triggered the Auto Udpater.</param>
         /// <param name="eAUMode">The auto updater mode.</param>
         /// <param name="editEvent">The edit event.</param>
-        /// <exception cref="NotSupportedException">The sequence generator is only supported on an ORACLE workspace (remote geodatabase).</exception>
+        /// <exception cref="NotSupportedException">
+        ///     The sequence generator is only supported on an ORACLE workspace (remote
+        ///     geodatabase).
+        /// </exception>
         /// <exception cref="ArgumentNullException">obj;@The field model name is not assigned on the object.</exception>
         /// <remarks>
-        /// This method will be called from IMMSpecialAUStrategy::ExecuteEx
-        /// and is wrapped within the exception handling for that method.
+        ///     This method will be called from IMMSpecialAUStrategy::ExecuteEx
+        ///     and is wrapped within the exception handling for that method.
         /// </remarks>
         protected override void InternalExecute(IObject obj, mmAutoUpdaterMode eAUMode, mmEditEvent editEvent)
         {
-            if(obj == null) return;
+            if (obj == null) return;
 
             IDataset dataset = (IDataset) obj.Class;
             IWorkspace workspace = dataset.Workspace;

@@ -14,6 +14,19 @@ namespace Wave.Extensions.Miner.Tests
         #region Public Methods
 
         [TestMethod]
+        [TestCategory("ESRI")]
+        public void IRow_Clone_Committed()
+        {
+            var testTable = base.GetTestTable();
+            var row = testTable.Fetch(1);
+            Assert.IsNotNull(row);
+
+            var clone = row.Clone();
+            var count = testTable.Fetch(new[] { clone.OID }).Count;
+            Assert.AreEqual(1, count);
+        }        
+
+        [TestMethod]
         [TestCategory("Miner")]
         public void IRow_GetDomain_IsNull()
         {
@@ -69,10 +82,13 @@ namespace Wave.Extensions.Miner.Tests
         {
             var testClass = base.GetTestClass();
             var feature = testClass.Fetch(1);
+
             Assert.IsNotNull(feature);
-
-
-            feature.Store(mmAutoUpdaterMode.mmAUMNoEvents);
+            Assert.IsFalse(base.Workspace.PerformOperation(() =>
+            {
+                feature.Store(mmAutoUpdaterMode.mmAUMNoEvents);
+                return false;
+            }));
         }
 
         [TestMethod]

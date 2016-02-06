@@ -22,7 +22,7 @@ namespace Miner.Interop.Process
         #region Fields
 
         /// <summary>
-        ///     TMM Session object.
+        ///     The Session object.
         /// </summary>
         private IMMSession _Session;
 

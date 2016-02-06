@@ -97,9 +97,12 @@ namespace Wave.Extensions.Esri.Tests
             _ComReleaser = new ComReleaser();
             _RuntimeAuthorization = new EsriRuntimeAuthorization();
 
+#if !V10
             Assert.IsTrue(_RuntimeAuthorization.Initialize(esriLicenseProductCode.esriLicenseProductCodeArcEditor));
-
-            _Workspace = WorkspaceFactories.Open(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville)));
+#else
+            Assert.IsTrue(_RuntimeAuthorization.Initialize(esriLicenseProductCode.esriLicenseProductCodeStandard));
+#endif            
+            _Workspace = WorkspaceFactories.Open(Path.GetFullPath(Settings.Default.Minerville));
             _ComReleaser.ManageLifetime(_Workspace);
         }
 

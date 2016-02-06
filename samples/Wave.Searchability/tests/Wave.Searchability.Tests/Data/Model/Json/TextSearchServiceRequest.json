@@ -1,0 +1,45 @@
+﻿{
+    "comparisonOperator": 0,
+    "inventory": [
+        {
+            "items": [
+                {
+                    "layerDefinition": false,
+                    "nameAsClassModelName": false,
+                    "fields": [
+                        {
+                            "value": null,
+                            "visible": false,
+                            "name": "CreationUser"
+                        }
+                    ],
+                    "relationships": [
+                    ],
+                    "name": "NonControllableGasValve"
+                }
+            ],
+            "name": "Layers"
+        },
+        {
+            "items": [
+                {
+                    "nameAsClassModelName": false,
+                    "fields": [
+                        {
+                            "value": null,
+                            "visible": false,
+                            "name": "CreationUser"
+                        }
+                    ],
+                    "relationships": [
+                    ],
+                    "name": "TransformerUnit"
+                }
+            ],
+            "name": "Tables"
+        }
+    ],
+    "keyword": "kellyl",
+    "logicalOperator": 1,
+    "threshold": 200
+}

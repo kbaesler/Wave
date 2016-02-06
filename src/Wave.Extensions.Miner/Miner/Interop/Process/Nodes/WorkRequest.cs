@@ -4,6 +4,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
+using Miner.Interop.msxml2;
+
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -418,6 +420,6 @@ namespace Miner.Interop.Process
             return (IMMListBuilder) builder;
         }
 
-        #endregion
+        #endregion       
     }
 }

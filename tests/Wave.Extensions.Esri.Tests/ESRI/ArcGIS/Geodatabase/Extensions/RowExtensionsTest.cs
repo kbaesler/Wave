@@ -24,7 +24,7 @@ namespace Wave.Extensions.Esri.Tests
 
             row.BlockReentrancy();
             row.SaveChanges();
-        }
+        }        
 
         [TestMethod]
         [TestCategory("ESRI")]
@@ -151,7 +151,7 @@ namespace Wave.Extensions.Esri.Tests
 
             row.Update(field.Name, new KeyValuePair<int, string>(1, "One"));
         }
-        
+
         [TestMethod]
         [TestCategory("ESRI")]
         [ExpectedException(typeof (InvalidCastException))]

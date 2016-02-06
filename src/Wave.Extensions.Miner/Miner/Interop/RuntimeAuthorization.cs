@@ -2,13 +2,17 @@ using System;
 
 using ESRI.ArcGIS.esriSystem;
 
+#if V10
+using ESRI.ArcGIS;
+#endif
+
 using Miner.Interop.Internal;
 
 namespace Miner.Interop
 {
     /// <summary>
-    ///     A supporting class used to check out the licenses necessary to run applications outside of Miner and Miner and ESRI
-    ///     products.
+    /// A supporting class used to check out the licenses necessary to run applications outside of Miner and Miner and ESRI
+    /// products.
     /// </summary>
     public class RuntimeAuthorization : IDisposable
     {
@@ -21,15 +25,36 @@ namespace Miner.Interop
 
         #region Constructors
 
+#if !V10
         /// <summary>
         ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
         /// </summary>
         public RuntimeAuthorization()
         {
-            _MinerRuntime = new MinerRuntimeAuthorization();
             _EsriRuntime = new EsriRuntimeAuthorization();
+            _MinerRuntime = new MinerRuntimeAuthorization();            
+        }
+#else
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
+        /// </summary>
+        public RuntimeAuthorization()
+            : this(ProductCode.EngineOrDesktop)
+        {
+            
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
+        /// </summary>
+        /// <param name="productCode">The product code.</param>
+        public RuntimeAuthorization(ProductCode productCode)
+        {
+            _EsriRuntime = new EsriRuntimeAuthorization();
+            _EsriRuntime.ResolveRuntimeBinding += (sender, args) => args.ProductCode = productCode;
+            _MinerRuntime = new MinerRuntimeAuthorization();
+        }
+#endif
         #endregion
 
         #region IDisposable Members
@@ -90,13 +115,16 @@ namespace Miner.Interop
         {
             return this.Initialize(esriLicensedProduct) && this.Initialize(mmLicensedProduct);
         }
-
+        
         /// <summary>
         ///     Checks in all ArcGIS and ArcFM licenses that have been checked out.
         /// </summary>
         public void Shutdown()
         {
             this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+
         }
 
         #endregion

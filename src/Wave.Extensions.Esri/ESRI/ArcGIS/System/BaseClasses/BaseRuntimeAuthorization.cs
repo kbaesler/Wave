@@ -75,6 +75,25 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
         #region Public Methods
 
         /// <summary>
+        ///     Check in extension when it is no longer needed.
+        /// </summary>
+        /// <param name="licenseExtension">The license extension.</param>
+        /// <returns>
+        ///     Returns the status code representing the status of the extension.
+        /// </returns>
+        public abstract TLicenseStatus CheckInExtension(TLicenseExtension licenseExtension);
+
+        /// <summary>
+        ///     Initializes or (checks out) the extension that correspond to the specified extension code.
+        /// </summary>
+        /// <param name="licenseProduct">The product code.</param>
+        /// <param name="licenseExtension">The extension code.</param>
+        /// <returns>
+        ///     Returns the status code representing the status of the extension.
+        /// </returns>
+        public abstract TLicenseStatus CheckOutExtension(TLicenseProduct licenseProduct, TLicenseExtension licenseExtension);
+
+        /// <summary>
         ///     Initialize the application with the specified product code.
         /// </summary>
         /// <param name="licenseProduct">The product codes.</param>
@@ -149,7 +168,7 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
                 this.ProductStatus.Add(licenseProduct, licenseStatus);
 
                 // Verify the product has been initialized.
-                if (this.IsLicenseInitialized(licenseStatus))
+                if (this.IsProductInitialized(licenseStatus))
                 {
                     initializedProduct = true;
 
@@ -157,11 +176,11 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
                     foreach (TLicenseExtension licenseExtension in licenseExtensions)
                     {
                         // Initialize (or check out) the extension.
-                        licenseStatus = this.InitializeExtension(licenseProduct, licenseExtension);
+                        licenseStatus = this.CheckOutExtension(licenseProduct, licenseExtension);
                         this.ExtensionStatus.Add(licenseExtension, licenseStatus);
 
                         // Verify the extension has been initialized.
-                        initializedProduct = (initializedProduct && this.IsLicenseInitialized(licenseStatus));
+                        initializedProduct = (initializedProduct && this.IsExtensionInitialized(licenseStatus));
                     }
                 }
             }
@@ -196,15 +215,6 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
         #region Protected Methods
 
         /// <summary>
-        ///     Check in extension when it is no longer needed.
-        /// </summary>
-        /// <param name="licenseExtension">The license extension.</param>
-        /// <returns>
-        ///     Returns the status code representing the status of the extension.
-        /// </returns>
-        protected abstract TLicenseStatus CheckInExtension(TLicenseExtension licenseExtension);
-
-        /// <summary>
         ///     Releases unmanaged and - optionally - managed resources.
         /// </summary>
         /// <param name="disposing">
@@ -212,16 +222,6 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
         ///     unmanaged resources.
         /// </param>
         protected abstract void Dispose(bool disposing);
-
-        /// <summary>
-        ///     Initializes or (checks out) the extension that correspond to the specified extension code.
-        /// </summary>
-        /// <param name="licenseProduct">The product code.</param>
-        /// <param name="licenseExtension">The extension code.</param>
-        /// <returns>
-        ///     Returns the status code representing the status of the extension.
-        /// </returns>
-        protected abstract TLicenseStatus InitializeExtension(TLicenseProduct licenseProduct, TLicenseExtension licenseExtension);
 
         /// <summary>
         ///     Initializes or (checks out) the product licenses that correspond to the specified product code.
@@ -239,7 +239,16 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
         /// <returns>
         ///     <c>true</c> if the license has been initialized based on the status; otherwise, <c>false</c>.
         /// </returns>
-        protected abstract bool IsLicenseInitialized(TLicenseStatus licenseStatus);
+        protected abstract bool IsExtensionInitialized(TLicenseStatus licenseStatus);
+
+        /// <summary>
+        ///     Determines whether the license has been initialized based on the status.
+        /// </summary>
+        /// <param name="licenseStatus">The license status.</param>
+        /// <returns>
+        ///     <c>true</c> if the license has been initialized based on the status; otherwise, <c>false</c>.
+        /// </returns>
+        protected abstract bool IsProductInitialized(TLicenseStatus licenseStatus);
 
         #endregion
     }

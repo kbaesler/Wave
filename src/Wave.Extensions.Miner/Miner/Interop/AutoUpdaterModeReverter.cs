@@ -1,5 +1,9 @@
 ﻿using System;
 
+#if V10
+using Miner.Geodatabase;
+#endif
+
 namespace Miner.Interop
 {
     /// <summary>
@@ -24,11 +28,7 @@ namespace Miner.Interop
         /// <param name="mode">The mode.</param>
         public AutoUpdaterModeReverter(mmAutoUpdaterMode mode)
         {
-#if ARCFM_10
-            _Instance = AutoUpdater.Instance;
-#else
             _Instance = Instance;
-#endif
             _PreviousMode = _Instance.AutoUpdaterMode;
             _Instance.AutoUpdaterMode = mode;
         }
@@ -55,7 +55,7 @@ namespace Miner.Interop
         {
             get
             {
-#if ARCFM_10
+#if V10
                 return AutoUpdater.Instance;
 #else
                 Type type = Type.GetTypeFromProgID("mmGeodatabase.MMAutoUpdater");

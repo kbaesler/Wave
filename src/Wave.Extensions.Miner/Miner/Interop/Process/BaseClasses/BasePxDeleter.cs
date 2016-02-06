@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
+using Miner.ComCategories;
+
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -37,8 +39,7 @@ namespace Miner.Interop.Process
         public IMMPxApplication PxApplication { set; protected get; }
 
         /// <summary>
-        ///     Deletes the specified px node from the process framework database table. Any errors the occur will be logged to the
-        ///     event log using <see cref="Log" />.
+        ///     Deletes the specified px node from the process framework database table.
         /// </summary>
         /// <param name="pPxNode">The node.</param>
         /// <param name="sMsg">The message.</param>
@@ -64,6 +65,30 @@ namespace Miner.Interop.Process
         /// </summary>
         /// <value>The display name.</value>
         public string DisplayName { get; private set; }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        ///     Registers the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComRegisterFunction]
+        internal static void Register(string registryKey)
+        {
+            MMProcessMgrDeleter.Register(registryKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified registry key.
+        /// </summary>
+        /// <param name="registryKey">The registry key.</param>
+        [ComUnregisterFunction]
+        internal static void Unregister(string registryKey)
+        {
+            MMProcessMgrDeleter.Unregister(registryKey);
+        }
 
         #endregion
 

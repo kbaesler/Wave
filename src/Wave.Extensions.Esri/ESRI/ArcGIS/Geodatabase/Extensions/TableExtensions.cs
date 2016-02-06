@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
+using ESRI.ArcGIS.Geodatabase.Internal;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -14,6 +15,66 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class TableExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <param name="fieldNames">The field names.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        public static string CreateExpression(this ITable source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
+        {
+            List<IField> fields = new List<IField>();
+
+            foreach (var fieldName in fieldNames)
+            {
+                int index = source.FindField(fieldName);
+                if (index == -1)
+                    throw new IndexOutOfRangeException(string.Format("The '{0}' doesn't have a {1} field.", ((IDataset) source).Name, fieldName));
+
+                var field = source.Fields.Field[index];
+                fields.Add(field);
+            }
+
+            return source.CreateExpression(keyword, comparisonOperator, logicalOperator, fields.ToArray());
+        }
+
+        /// <summary>
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        public static string CreateExpression(this ITable source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator)
+        {
+            return source.CreateExpression(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
+        }
+
+        /// <summary>
+        ///     Creates a "google-like" attribute expression query filter based on the specified keyword and fields.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="keyword">The keyword.</param>
+        /// <param name="comparisonOperator">The comparison operator.</param>
+        /// <param name="logicalOperator">The logical operator.</param>
+        /// <param name="fields">The fields.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the query necessary to locate the keyword.
+        /// </returns>
+        public static string CreateExpression(this ITable source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
+        {
+            return new QueryBuilder(source).Build(keyword, comparisonOperator, logicalOperator, fields);
+        }
 
         /// <summary>
         ///     Creates a row in the table with the default values.
@@ -42,7 +103,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">oids</exception>
-        public static List<IRow> Fetch(this ITable source, params int[] oids)
+        public static IList<IRow> Fetch(this ITable source, params int[] oids)
         {
             if (source == null) return null;
             if (oids == null) throw new ArgumentNullException("oids");
@@ -68,7 +129,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static List<TResult> Fetch<TResult>(this ITable source, IQueryFilter filter, Func<IRow, TResult> selector)
+        public static IList<TResult> Fetch<TResult>(this ITable source, IQueryFilter filter, Func<IRow, TResult> selector)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
@@ -97,7 +158,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     oids
         /// </exception>
-        public static List<TResult> Fetch<TResult>(this ITable source, Func<IRow, TResult> selector, params int[] oids)
+        public static IList<TResult> Fetch<TResult>(this ITable source, Func<IRow, TResult> selector, params int[] oids)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
@@ -120,7 +181,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
-        public static List<IRow> Fetch(this ITable source, IQueryFilter filter)
+        public static IList<IRow> Fetch(this ITable source, IQueryFilter filter)
         {
             if (source == null) return null;
 
