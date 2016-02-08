@@ -7,31 +7,52 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner.Framework.Search;
+using Miner.FrameworkUI.Search;
 using Miner.Interop;
 
 namespace Wave.Searchability.Data
 {
     /// <summary>
-    /// Provides extension methods for the <see cref="SearchableResponse"/> object.
+    ///     Provides extension methods for the <see cref="SearchableResponse" /> object.
     /// </summary>
     public static class SearchableResponseExtensions
     {
         #region Public Methods
-        
+
         /// <summary>
-        /// Converts to response to the <see cref="IMMRowSearchResults2" /> object.
+        ///     Converts to response to the <see cref="ID8List" /> object.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="layers">The layers.</param>
+        /// <param name="tables">The tables.</param>
+        /// <returns>Returns a <see cref="ID8List" /> representing the source.</returns>
+        public static ID8List ToD8List(this SearchableResponse source, List<IFeatureLayer> layers, List<ITable> tables)
+        {
+            IMMResultsProcessor processor = new StandardResultsProcessor();
+            var list = processor.AddResults(source.ToSearchResults(layers), mmSearchOptionFlags.mmSOFNone, null);
+            var item = processor.AddResults(source.ToSearchResults(tables), mmSearchOptionFlags.mmSOFNone, null) as ID8ListItem;
+            if (item != null)
+            {
+                list.Add(item);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        ///     Converts to response to the <see cref="IMMRowSearchResults2" /> object.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="tables">The tables.</param>
         /// <returns>
-        /// Returns a <see cref="IMMRowSearchResults2" /> representing the response objects.
+        ///     Returns a <see cref="IMMRowSearchResults2" /> representing the response objects.
         /// </returns>
         public static IMMRowSearchResults2 ToSearchResults(this SearchableResponse source, List<ITable> tables)
         {
             IMMRowSearchResults2 results = new RowSearchResults();
             foreach (var s in source)
             {
-                var table = tables.FirstOrDefault(l => (((IDataset)l).Name.Equals(s.Key, StringComparison.CurrentCultureIgnoreCase)));
+                var table = tables.FirstOrDefault(l => (((IDataset) l).Name.Equals(s.Key, StringComparison.CurrentCultureIgnoreCase)));
                 if (table != null)
                 {
                     using (ComReleaser cr = new ComReleaser())
@@ -49,12 +70,12 @@ namespace Wave.Searchability.Data
         }
 
         /// <summary>
-        /// Converts to response to the <see cref="IMMRowLayerSearchResults2" /> object.
+        ///     Converts to response to the <see cref="IMMRowLayerSearchResults2" /> object.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="layers">The layers.</param>
         /// <returns>
-        /// Returns a <see cref="IMMRowLayerSearchResults2" /> representing the response objects.
+        ///     Returns a <see cref="IMMRowLayerSearchResults2" /> representing the response objects.
         /// </returns>
         public static IMMRowLayerSearchResults2 ToSearchResults(this SearchableResponse source, List<IFeatureLayer> layers)
         {
