@@ -13,7 +13,7 @@
         <releaseNotes>http://wave.readthedocs.org/en/latest</releaseNotes>
         <copyright>Copyright 2014</copyright>
         <language>en-US</language>
-        <tags>ESRI, ArcGIS, GIS, ArcObjects</tags>
+        <tags>ESRI, ArcGIS, GIS, ArcObjects, ArcMap</tags>
         <dependencies>
             <dependency id="log4net" version="[2.0.3]" />
         </dependencies>
