@@ -27,27 +27,13 @@ Do I need both software packages installed?
 -------------------------------------------
 Wave has been developed with it's dependencies in mind to allow the library to be used in two different ways:
 
-1. When only the ArcGIS Desktop is installed:
+1. When only the **ArcGIS for Desktop** is installed:
 
-    - You can use the Wave.Extensions.ESRI assembly.
+    - You can use the **Wave.Extensions.Esri** assembly.
 
-2. When both the ArcGIS Desktop and ArcFM Solution is installed:
+2. When both the **ArcGIS for Desktop** and **ArcFM Solution** is installed:
 
-    - You can use the Wave.Extensions.ESRI and Wave.Extensions.Miner assemblies.
-
-Is it compatible with 10?
-------------------------------------------
-Most of the content is non-specific to the version of ArcGIS/ArcFM but there are some dependencies and assumptions about the version(s) of the core software used.
-
-Making the library compatible with 10.x would take a few minor changes:
-
-#.	The assembly references will need to be updated in the project files.
-#.	The sample data used for the unit tests will need to be upgraded.
-#.	The licensing classes for both ArcGIS and ArcFM will need to be modified to support the new checkout for ArcGIS 10.
-
-.. todo::
-
-  In the future, the code will support multiple versions of the software either using solution / project files or compiler directives.
+    - You can use the **Wave.Extensions.Esri** and **Wave.Extensions.Miner** assemblies.
 
 Do I need a license for Wave?
 --------------------------------
