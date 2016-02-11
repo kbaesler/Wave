@@ -1,4 +1,4 @@
-Frequently Asked Questions
+FREQUENTLY ASKED QUESTIONS
 ================================
 
 This will serve as a list of all of the frequently ask questions.
