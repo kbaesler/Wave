@@ -16,10 +16,7 @@ The package for the ArcFM Solution extensions.
  - [![Wave Extensions for ArcFM](http://img.shields.io/nuget/dt/Wave.Extensions.Miner.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
  - [![Wave Extensions for ArcFM](http://img.shields.io/nuget/v/Wave.Extensions.Miner.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
 
-## Documentation ##
-The latest documentation is at [wave.readthedocs.org](http://wave.readthedocs.org).
-
-## NuGet ##
+## Installation ##
 You can download a release of the library using the Microsoft NuGet Package Manager within Visual Studio.
 
 To install **Wave Extensions for ArcGIS**, run the following command in the Package Manager Console.
