@@ -1,0 +1,7 @@
+site_name: Wave
+theme: cinder
+pages:
+- GETTING STARTED: index.md
+- CONTRIBUTING: contribute.md
+- FEATURES: features.md
+- FAQ: faq.md
