@@ -1,13 +1,12 @@
+# Features
 This will serve as a list of all of the features that are currently available. Some features are important enough to have their own page in the docs, others will simply be listed.
 
-Namespaceless
---------------------------
+## Seamless
 Wave is built using [.NET Extension Methods](http://msdn.microsoft.com/en-us/library/bb383977.aspx) which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave's features to be available without adding new namespace delcarations.
 
 - For instance, the ``RowExtensions.cs`` that contains extension methods for the ``IRow`` interface uses the ``ESRI.ArcGIS.Geodatabase`` namespace because that is the namespace that contains the ``IRow`` interface.
 
-Enumerables
-----------------------------
+## LINQ
 The ``while`` statement is used in conjunction with the ArcFM and ArcGIS APIs to iterate through collections using the ``Reset()`` and ``Next()`` method combinations. However, in most cases the ``foreach`` statement is the preferred method, thus the most frequently used iterators can be converted to an enumerable type using the ``AsEnumerable()`` extension method, which allows these collections to now take advantage of ``LINQ``.
 
 The following is a short list of the interfaces that support enumerable types:
@@ -25,10 +24,7 @@ The following is a short list of the interfaces that support enumerable types:
  ``ICursor``                   | ``IMMEnumPxTasks``            
  ``IFeatureCursor``            | ``IMMEnumPxUser``             
  ``ISet``                      | ``IMMEnumPxFilter``           
-
-```html
-There are many more that haven't been listed for the sake of brevity.
-```
+ `...`                         | *There are many more that haven't been listed for the sake of brevity.*
 
 These new extension methods allow you to write code like this:
 
@@ -46,8 +42,6 @@ var results =
     select new { Left = x, Right = y };
 ```
 
-Recursion
-----------------------------
 There are several objects (i.e. ``IEnumLayer``, ``IMap``, ``ID8List``) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you'd have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using ``LINQ``.
 
 - Traversing the contents of the ``IMap``.
@@ -78,8 +72,7 @@ public void UpdateTags(ID8List list, string tag)
 }
 ```
 
-Querying Data
----------------
+## Data Access
 One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.
 
 The ``ITable`` and ``IFeatureClass`` interfaces have been extended to include ``Fetch`` methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.
@@ -128,8 +121,7 @@ filter.GeometryField = "SHAPE";
 List<int> oids = featureClass.Fetch(filter, feature => feature.OID);
 ```
 
-Basic Implementations
--------------------------------------
+## Basic Implementations
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages.
 
 Class                  | Description
@@ -143,12 +135,10 @@ Class                  | Description
  ``BaseSpecialAU``     | Creating a custom trigger for the object when it is created, updated or deleted.    
  ``BaseRelationshipAU``| Creating a custom trigger for when a relationship is created, updated or deleted.   
  ``BasePxSubtask``     | Creating a sub-routine that can be assigned to tasks within the Process Framework.  
+ `...`                 | *There are many more that haven't been listed for the sake of brevity.*
 
-    There are many more that haven't been listed for the sake of brevity.
-
-ArcFM Model Names
-------------------------------
-The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call Class, Field and Database Model Names. These model names can be for cross-database or generic implementations for customziations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.
+## Model Names
+The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call Class, Field and Database Model Names. These model names can be for cross-database or generic implementations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.
 
 In order to simplify the accessing of model name information, several extension methods were added to the ESRI objects that support ArcFM Model Names.
 
@@ -167,9 +157,9 @@ Method                        | Description
 ``GetFieldIndexes``           | Used to gather a list of all of the field indexes that has been assigned the field model name(s).
 ``GetFieldName``              | Used to locate the field name that has been assigned the field model name(s).                     
 ``GetFieldNames``             | Used to gather a list of all of the field names that has been assigned the field model name(s).   
+ `...`                         | *There are many more that haven't been listed for the sake of brevity.*
 
-
-The extension methods for the ``IWorkspace`` interface that have been added.
+A list of extension methods for the ``IWorkspace`` interface that have been added.
 
  Method                           | Description                                                                                        
 :---------------------------------|:---------------------------------------------------------------------------------------------------
@@ -177,7 +167,8 @@ The extension methods for the ``IWorkspace`` interface that have been added.
 ``GetFeatureClass``               | Used to obtain the ``IFeatureClass`` that has been assigned the class model name(s).               
 ``GetFeatureClasses``             | Used to obtain all of the ``IFeatureClass`` tables that have been assigned the class model name(s).
 ``GetTable``                      | Used to obtain the ``ITable`` that has been assigned the class model name(s).                      
-``GetTables``                     | Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).       
+``GetTables``                     | Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).   
+ `...`                         | *There are many more that haven't been listed for the sake of brevity.*    
 
 ```java
 public IEnumerable<string> CreateHtml(IWorkspace workspace, int uniqueId, string directory, Stream styleSheet)

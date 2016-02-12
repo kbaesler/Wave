@@ -1,4 +1,5 @@
-Wave is C# library extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library.
+# Getting Started
+[Wave](https://github.com/Jumpercables/Wave) is C# library extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library.
 
 **Wave Extensions for ArcGIS**
 The package for the ArcGIS for Desktop extensions.
@@ -11,7 +12,7 @@ The package for the ArcGIS for Desktop extensions.
 The package for the ArcFM Solution extensions.
 
  - [![Wave Extensions for ArcFM](http://img.shields.io/nuget/dt/Wave.Extensions.Miner.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
- 
+
  - [![Wave Extensions for ArcFM](http://img.shields.io/nuget/v/Wave.Extensions.Miner.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
 
 ## Installation ##
