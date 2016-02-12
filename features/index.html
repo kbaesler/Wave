@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>FEATURES - Wave</title>
+    <title>Features - Wave</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -65,25 +65,25 @@
                 
                 
                     <li >
-                        <a href="..">GETTING STARTED</a>
+                        <a href="..">Getting Started</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../contribute/">CONTRIBUTING</a>
+                        <a href="../contribute/">Contributing</a>
                     </li>
                 
                 
                 
                     <li class="active">
-                        <a href="./">FEATURES</a>
+                        <a href="./">Features</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../faq/">FAQ</a>
+                        <a href="../faq/">Frequently Asked Questions</a>
                     </li>
                 
                 
@@ -119,30 +119,28 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#namespaceless">Namespaceless</a></li>
+        <li class="main active"><a href="#features">Features</a></li>
         
-    
-        <li class="main "><a href="#enumerables">Enumerables</a></li>
+            <li><a href="#seamless">Seamless</a></li>
         
-    
-        <li class="main "><a href="#recursion">Recursion</a></li>
+            <li><a href="#enumerables">Enumerables</a></li>
         
-    
-        <li class="main "><a href="#querying-data">Querying Data</a></li>
+            <li><a href="#recursion">Recursion</a></li>
         
-    
-        <li class="main "><a href="#basic-implementations">Basic Implementations</a></li>
+            <li><a href="#data-access">Data Access</a></li>
         
-    
-        <li class="main "><a href="#arcfm-model-names">ArcFM Model Names</a></li>
+            <li><a href="#basic-implementations">Basic Implementations</a></li>
+        
+            <li><a href="#arcfm-model-names">ArcFM Model Names</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
+<h1 id="features">Features</h1>
 <p>This will serve as a list of all of the features that are currently available. Some features are important enough to have their own page in the docs, others will simply be listed.</p>
-<h2 id="namespaceless">Namespaceless</h2>
+<h2 id="seamless">Seamless</h2>
 <p>Wave is built using <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">.NET Extension Methods</a> which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave's features to be available without adding new namespace delcarations.</p>
 <ul>
 <li>For instance, the <code>RowExtensions.cs</code> that contains extension methods for the <code>IRow</code> interface uses the <code>ESRI.ArcGIS.Geodatabase</code> namespace because that is the namespace that contains the <code>IRow</code> interface.</li>
@@ -250,7 +248,7 @@
 }
 </code></pre>
 
-<h2 id="querying-data">Querying Data</h2>
+<h2 id="data-access">Data Access</h2>
 <p>One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.</p>
 <p>The <code>ITable</code> and <code>IFeatureClass</code> interfaces have been extended to include <code>Fetch</code> methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.</p>
 <ul>
@@ -349,7 +347,7 @@ List&lt;int&gt; oids = featureClass.Fetch(filter, feature =&gt; feature.OID);
 <pre><code>There are many more that haven't been listed for the sake of brevity.
 </code></pre>
 <h2 id="arcfm-model-names">ArcFM Model Names</h2>
-<p>The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call Class, Field and Database Model Names. These model names can be for cross-database or generic implementations for customziations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.</p>
+<p>The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call Class, Field and Database Model Names. These model names can be for cross-database or generic implementations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.</p>
 <p>In order to simplify the accessing of model name information, several extension methods were added to the ESRI objects that support ArcFM Model Names.</p>
 <p>The extension methods for the <code>IFeatureClass</code> and <code>ITable</code> interfaces that have been added.</p>
 <table>
