@@ -215,7 +215,6 @@
     select new { Left = x, Right = y };
 </code></pre>
 
-<h3 id="recursion">Recursion</h3>
 <p>There are several objects (i.e. <code>IEnumLayer</code>, <code>IMap</code>, <code>ID8List</code>) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you'd have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using <code>LINQ</code>.</p>
 <ul>
 <li>Traversing the contents of the <code>IMap</code>.</li>
