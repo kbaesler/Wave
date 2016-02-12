@@ -129,7 +129,7 @@
         
             <li><a href="#basic-implementations">Basic Implementations</a></li>
         
-            <li><a href="#arcfm-model-names">ArcFM Model Names</a></li>
+            <li><a href="#model-names">Model Names</a></li>
         
     
     </ul>
@@ -346,7 +346,7 @@ List&lt;int&gt; oids = featureClass.Fetch(filter, feature =&gt; feature.OID);
 </tr>
 </tbody>
 </table>
-<h2 id="arcfm-model-names">ArcFM Model Names</h2>
+<h2 id="model-names">Model Names</h2>
 <p>The ArcFM Solution provides a way to identify ESRI tables and fields based on a user defined key that are call Class, Field and Database Model Names. These model names can be for cross-database or generic implementations. However, they must be accessed using a singleton object, which tends to lead to the creation of class helper.</p>
 <p>In order to simplify the accessing of model name information, several extension methods were added to the ESRI objects that support ArcFM Model Names.</p>
 <p>The extension methods for the <code>IFeatureClass</code> and <code>ITable</code> interfaces that have been added.</p>
