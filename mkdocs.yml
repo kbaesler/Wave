@@ -1,7 +1,7 @@
-site_name: Wave
+site_name: Wave Extensions for ArcGIS & ArcFM
 theme: cinder
 pages:
 - Getting Started: index.md
-- Contributing: contribute.md
 - Features: features.md
+- Contributing: contribute.md
 - Frequently Asked Questions: faq.md

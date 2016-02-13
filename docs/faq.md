@@ -4,7 +4,7 @@ This will serve as a list of all of the frequently ask questions.
 If you don't see your question answered here, please submit an issue on the [GitHub](https://github.com/Jumpercables/Wave/issues) page with your question.
 
 ## 1. What is Wave?
-Wave is meant to provide a simplistic approach to extending the ArcGIS and ArcFM platforms by providing simplified implementations for complex operations, frequently use call stacks, enforcing the recommended best practices and create a seamless integration with the ArcFM Solution.
+Wave is meant to provide a simplistic approach to extending the ArcGIS and ArcFM platforms by providing simplified implementations for complex operations, frequently use call stacks, enforcing the recommended best practices and create a seamless integration.
 
 ## 2. What was the motivation?
 Over the years as a developer in the Geographic Information System (GIS) for Utilities industry there's been an increasing need for a way to make development easier as the industries needs increase in complexity.
