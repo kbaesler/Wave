@@ -8,7 +8,7 @@
     <meta name="author" content="Kyle Baesler">  
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>Developer Samples - Wave Extensions for ArcGIS / ArcFM</title>
+    <title>Developer Guide - Wave Extensions for ArcGIS / ArcFM</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -77,7 +77,7 @@
                         
                             
 <li class="active">
-    <a href="./">Developer Samples</a>
+    <a href="./">Developer Guide</a>
 </li>
 
                         
@@ -159,7 +159,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#developer-samples">Developer Samples</a></li>
+        <li class="main active"><a href="#developer-guide">Developer Guide</a></li>
         
             <li><a href="#licenses">Licenses</a></li>
         
@@ -169,20 +169,16 @@
         
             <li><a href="#session-workflow-manager">Session / Workflow Manager</a></li>
         
-            <li><a href="#extend">Extend</a></li>
-        
-            <li><a href="#accessors">Accessors</a></li>
-        
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="developer-samples">Developer Samples</h1>
+<h1 id="developer-guide">Developer Guide</h1>
 <p>This will serve as a reference guide for developer samples, the purpose of the samples is to provide example usages of the extensions that are provided in the <strong>Wave Extensions for ArcGIS</strong> and <strong>Wave Extensions for ArcFM</strong> packages.</p>
-<blockquote>
-<p><strong>Note</strong> Not all of the features in the <strong>Wave</strong> project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>.</p>
-</blockquote>
+<ul>
+<li>Not all of the features in the <strong>Wave</strong> project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>.</li>
+</ul>
 <h2 id="licenses">Licenses</h2>
 <p>When a stand-alone executable needs to access and use geodatabase objects, a license must be checked out, depending on the product that has been installed.</p>
 <h3 id="arcgis-for-desktop">ArcGIS for Desktop</h3>
@@ -215,10 +211,9 @@
 } // Check-in licenses.
 </code></pre>
 
-<blockquote>
-<p><strong>Note</strong>
-When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.</p>
-</blockquote>
+<ul>
+<li>When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.</li>
+</ul>
 <h2 id="geodatabase-connections">Geodatabase Connections</h2>
 <p>The <code>WorkspaceFactories</code> static class will return the proper workspace (<code>sde</code>, <code>gdb</code>, or <code>mdb</code>) based on the connection file parameter.</p>
 <pre><code class="java">var connectionFile = Path.Combine(Environment.GetFolderPath(SpecialFolders.ApplicationData), &quot;\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb&quot;)
@@ -239,11 +234,9 @@ var dbms = workspace.GetDBMS();
 </blockquote>
 <h2 id="session-workflow-manager">Session / Workflow Manager</h2>
 <p>The Session Manager and Workflow Manager extensions to the ArcFM Solution are tightly coupled with the version management solution provided by the product.</p>
-<h2 id="extend">Extend</h2>
+<h3 id="session-design-additions">Session / Design Additions</h3>
 <p>When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design to store client specific data, which can now be done by extending the <code>Session</code> or <code>Design</code> classes.</p>
-<pre><code class="java">
-// A client session that extends the standard session.
-public class ClientSession : Session {
+<pre><code class="java">public class ClientSession : Session {
 
   public ClientSession(IMMPxApplication pxApp)
     : base(pxApp) {
@@ -259,31 +252,29 @@ public class ClientSession : Session {
 
   protected override void Initialize(int nodeID){
 
-    // Allow the base implementation to initialize the session object.
     base.Initialize(nodeID);
 
-    // Initialize custom data.
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
-    var commandText = string.Format(&quot;SELECT name FROM {0} WHERE session_id = {1}&quot;, tableName, nodeID);
+    var commandText = string.Format(&quot;SELECT name FROM {0} WHERE session_id = {1}&quot;,
+                                      tableName, nodeID);
     this.ClientName = base.Application.ExecuteScalar(commandText, &quot;&lt;null&gt;&quot;);
   }
 
   protected override bool CreateNew(IMMPxUser user) {
 
-    // Allow the base implementation to create the session object.
     if(!base.CreateNew(user))
       return;
 
-    // Create custom data.
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
-    var commandText = string.Format(&quot;INSERT INTO {0} VALUES({1},'{2}')&quot;, tableName, this.ID this.ClientName);
+    var commandText = string.Format(&quot;INSERT INTO {0} VALUES({1},'{2}')&quot;,
+                                      tableName, this.ID this.ClientName);
     base.Application.ExecuteNonQuery(commandText);
   }
 }
 </code></pre>
 
-<h2 id="accessors">Accessors</h2>
-<p>When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design.</p>
+<h3 id="session-design-accessors">Session / Design Accessors</h3>
+<p>When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design. The easiest way to access the data is through the <code>GetSession</code> and <code>GetDesign</code> methods on the <code>IMMPxApplication</code> interface.</p>
 <pre><code class="java">var pxApplication = ArcMap.Application.GetPxApplication();
 var session = pxApplication.GetSession();
 var design = pxApplication.GetDesign();
