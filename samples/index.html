@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>Contributing - Wave Extensions for ArcGIS / ArcFM</title>
+    <title>Developer Samples - Wave Extensions for ArcGIS / ArcFM</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -64,7 +64,7 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Getting Started <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -75,8 +75,8 @@
 
                         
                             
-<li >
-    <a href="../samples/">Developer Samples</a>
+<li class="active">
+    <a href="./">Developer Samples</a>
 </li>
 
                         
@@ -97,13 +97,13 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">Contributing</a>
+<li >
+    <a href="../contribute/">Contributing</a>
 </li>
 
                         
@@ -128,12 +128,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../faq/">
+                        <a rel="next" href="..">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../release-notes/">
+                        <a rel="prev" href="../features/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -149,58 +149,74 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#contributing">Contributing</a></li>
+        <li class="main active"><a href="#developer-samples">Developer Samples</a></li>
         
-            <li><a href="#fork-it">Fork It!</a></li>
+            <li><a href="#licenses">Licenses</a></li>
         
-            <li><a href="#issues">Issues</a></li>
+            <li><a href="#connecting-to-geodatabase">Connecting to Geodatabase</a></li>
         
-            <li><a href="#submit-issues">Submit Issues</a></li>
-        
-            <li><a href="#suggestions">Suggestions</a></li>
-        
-            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#disabling-auto-updaters">Disabling Auto Updaters</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="contributing">Contributing</h1>
-<p>Wave is open-source and, as such, grows (or shrinks) &amp; improves in part due to the community. The goal here is to make contributions clear, make sure there is a history, and most importantly, to give credit where credit is due.</p>
-<h2 id="fork-it">Fork It!</h2>
-<p>This is the preferred method for contributions. Simply create a GitHub fork, commit changes to the fork, and then open up a pull request.</p>
-<ol>
-<li>Download the <a href="https://windows.github.com/">GitHub for Windows Client</a></li>
-<li>Login or sign-up on GitHub.</li>
-<li>Fork the <a href="https://github.com/Jumpercables/Wave">Wave</a> project.</li>
-</ol>
-<h2 id="issues">Issues</h2>
-<p>The list of outstanding feature requests and issues can be found on our on our GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>. Pick an unassigned issue that you think you can accomplish, add a comment that you are attempting to do it, and shortly your own personal label matching your GitHub ID will be assigned to that issue.</p>
-<h2 id="submit-issues">Submit Issues</h2>
-<p>We know we aren't perfect, so please submit issues it's easy.
-- Check the <code>master</code> to make sure you're not wasting your (and our) time, you should be using the latest version before you submit your issue. First of all, you should download the latest nightly build to be sure you have the latest version. If you've done this and you still experience the issue, go ahead to the next step.</p>
-<ul>
-<li>
-<p>Now that you have the latest version and still think you've found a issue, please search through the <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a> to see if anyone else has already submitted it. If you find that someone has submitted your issue already, please go to the next step anyway, but instead of submitting a new issue, comment on the one you've found. If you can't find your issue, go to the next step.</p>
-</li>
-<li>
-<p>When submitting the issue, use the following guidelines to help provide the most useful information in issue reports. The better your issue report, the higher the chance that your issue will be addressed quickly.</p>
-</li>
-<li>
-<p><code>Title</code>: A good title explains the problem in clear and specific terms, but is often concise enough to fit within the default summary space. One should be able to tell exactly what a issue is about just by reading the title.    </p>
-</li>
-<li>
-<p><code>Comments</code>: Write a more detailed explanation of the problem, do not include more than one issue in one issue report and include a relevant screenshots.</p>
-</li>
-<li>
-<p>Once your issue is submitted, a comment will be added at each stage in the issue life cycle. After the issue is considered fixed, you may be asked to download the latest and confirm that the fix works for you.</p>
-</li>
-</ul>
-<h2 id="suggestions">Suggestions</h2>
-<p>Your feedback is important, make suggestions for improvements, issues or new features. If you have a suggestion please submit an issue on our GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>.</p>
-<h2 id="documentation">Documentation</h2>
-<p>The documentation is just as important as the features of Wave, and let's face the facts, developers aren't the best at documentation.</p></div>
+<h1 id="developer-samples">Developer Samples</h1>
+<p>This will serve as a simple reference guide for developer samples, the purpose of the samples is to provide simple cases of usages of the extensions that are provided in the <code>Wave Extensions for ArcGIS</code> and <code>Wave Extensions for ArcFM</code> packages.</p>
+<h2 id="licenses">Licenses</h2>
+<p>When a stand-alone executable needs to access and use geodatabase objects, a license must be checked out, depending on the product that has been installed.</p>
+<h3 id="arcgis-for-desktop">ArcGIS for Desktop</h3>
+<p>The following snippets shows the proper way to check out licenses when working with the ArcGIS for Desktop product.</p>
+<pre><code class="java">using(EsriRuntimeAuthorization lic = new EsriRuntimeAuthorization(ProductCode.Desktop))
+{
+    if(lic.Initialize(esriProductCode.esriProductCodeStandard))
+    {
+      Console.WriteLine(&quot;Success.&quot;)
+    }
+    else
+    {
+      Console.Writeline(&quot;Failed.&quot;)
+    }
+}
+</code></pre>
+
+<h3 id="arcfm-solution">ArcFM Solution</h3>
+<p>The following snippet shows the proper way to check out licenses when working with the ArcFM Solution and ArcGIS for Desktop products.</p>
+<pre><code class="java">using(RuntimeAuthorization lic = new RuntimeAuthorization(ProductCode.Desktop))
+{
+  if(lic.Initialize(esriProductCode.esriProductCodeStandard, mmLicensedProductCode.mmLPArcFM))
+  {
+    Console.WriteLine(&quot;Success.&quot;)
+  }
+  else
+  {
+    Console.Writeline(&quot;Failed.&quot;)
+  }
+}
+</code></pre>
+
+<blockquote>
+<p><strong>Note</strong>
+When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.</p>
+</blockquote>
+<h2 id="connecting-to-geodatabase">Connecting to Geodatabase</h2>
+<p>The <code>WorkspaceFactories</code> static class will return the proper workspace (<code>sde</code>, <code>gdb</code>, or <code>mdb</code>) based on the connection file parameter.</p>
+<pre><code class="java">var connectionFile = Path.Combine(Environment.GetFolderPath(SpecialFolders.ApplicationData), &quot;\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb&quot;)
+var workspace = WorkspaceFactories.Open(connectionFile)
+</code></pre>
+
+<h2 id="disabling-auto-updaters">Disabling Auto Updaters</h2>
+<p>There are cases when a <strong>custom</strong> ArcFM Auto Updater (AU) has been developed needs to temporarily <code>disable</code> subsequent calls to the AU, because internally it needs to update features for subsequent objects for the same table or feature class that has been assigned the AU.</p>
+<pre><code class="java">using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
+{
+    // All of the ArcFM Auto Updaters are now disabled.
+}
+</code></pre>
+
+<blockquote>
+<p>When this situation is encountered, if the AU does not <code>disable</code> the ArcFM Auto Updater Framework, an <strong>infinite</strong> loop will occur when AU is executed.</p>
+</blockquote></div>
         
     </div>
 
