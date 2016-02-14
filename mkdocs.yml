@@ -1,7 +1,11 @@
-site_name: Wave Extensions for ArcGIS & ArcFM
+site_name: Wave Extensions for ArcGIS / ArcFM
 theme: cinder
 pages:
-- Getting Started: index.md
+- Getting Started:
+  - Introduction: index.md
+  - Developer Samples: samples.md
 - Features: features.md
-- Contributing: contribute.md
 - Frequently Asked Questions: faq.md
+- About:
+  - Contributing: contribute.md
+  - Release Notes: release-notes.md

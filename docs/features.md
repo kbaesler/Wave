@@ -1,5 +1,5 @@
 # Features
-This will serve as a list of all of the features that are currently available. Some features are important enough to have their own page in the docs, others will simply be listed.
+This will serve as a list of the features that are currently available. Some features are important enough to have their own page in the docs, others will simply be listed.
 
 ## Seamless
 Wave is built using [.NET Extension Methods](http://msdn.microsoft.com/en-us/library/bb383977.aspx) which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave's features to be available without adding new namespace delcarations.
@@ -169,41 +169,3 @@ A list of extension methods for the ``IWorkspace`` interface that have been adde
 ``GetTable``                      | Used to obtain the ``ITable`` that has been assigned the class model name(s).                      
 ``GetTables``                     | Used to obtain all of the ``ITable`` tables that have been assigned the class model name(s).   
  `...`                         | *There are many more that haven't been listed for the sake of brevity.*    
-
-```java
-public IEnumerable<string> CreateHtml(IWorkspace workspace, int uniqueId, string directory, Stream styleSheet)
-{
-    var featureClasses = workspace.GetFeatureClasses("EXTRACT");
-    foreach(var featureClass in featureClasses)
-    {
-        string whereClause;
-
-        // Make the filter, which is based on the uniqueId.
-        if(featureClass.IsAssignedFieldModelName("FEEDERID"))
-        {
-            whereClause = string.Format("{0} = {1}", featureClass.GetFieldName("FEEDERID"), uniqueId);
-        }
-        else if(featureClass.IsAssignedFieldModelName("SERVICEID"))
-        {
-            whereClause = string.Format("{0} = {1}", featureClass.GetFieldName("SERVICEID"), uniqueId);
-        }
-        else
-        {
-            whereClause = string.Format("{0} = {1}", featureClass.OIDFieldName, uniqueId);
-        }
-
-        IQueryFilter filter = new QueryFilterClass();
-        filter.WhereClause = whereClause;
-
-        // Extract the data into an XML document format, excluding none readable fields.
-        var xdoc = featureClass.GetXDocument(filter, field => (field.Type != esriFieldType.esriFieldTypeString));
-
-        // Convert the XDocument to an HTML table using the stylesheet.
-        string fileName = Path.Combine(directory, featureClass.GetTableName() + ".html");
-        xdoc.Transform(styleSheet, fileName);
-
-        // Return the file name of the HTML created.
-        yield return fileName;
-    }
-}
-```

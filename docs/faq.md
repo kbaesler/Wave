@@ -18,9 +18,9 @@ Over the years as a developer in the Geographic Information System (GIS) for Uti
 ## 5. Do I need both ArcFM and ArcGIS to use Wave?
 Wave has been developed with it's dependencies in mind to allow the library to be used in two different ways:
 
-1. When only the **ArcGIS for Desktop** is installed, you'll want to install the **Wave Extensions for ArcGIS** package.
+1. When only the **ArcGIS for Desktop** is installed, you'll want to install the [Wave Extensions for ArcGIS](https://www.nuget.org/packages/Wave.Extensions.Esri/) package.
 
-2. When both the **ArcGIS for Desktop** and **ArcFM Solution**, you'll want to install the **Wave.Extensions.Miner**  package.
+2. When both the **ArcGIS for Desktop** and **ArcFM Solution**, you'll want to install the [Wave Extensions for ArcFM](https://www.nuget.org/packages/Wave.Extensions.Esri/)  package.
 
 ## 6. Do I need a license to use Wave?
-Wave is open-source and doesn't directly require any licenses, however since both **ArcFM** and **ArcGIS** are commercial software packages that require licenses. You will need a license for **ArcGIS** and **ArcFM** to use Wave.
+Wave is open-source and doesn't directly require any licenses, however since both **ArcFM** and **ArcGIS** are commercial software packages that require licenses. 
