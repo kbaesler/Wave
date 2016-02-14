@@ -1,7 +1,7 @@
-# Developer Samples
+# Developer Guide
 This will serve as a reference guide for developer samples, the purpose of the samples is to provide example usages of the extensions that are provided in the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
 
-> **Note** Not all of the features in the **Wave** project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub [issue tracker](https://github.com/Jumpercables/Wave/issues).
+- Not all of the features in the **Wave** project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub [issue tracker](https://github.com/Jumpercables/Wave/issues).
 
 ## Licenses
 When a stand-alone executable needs to access and use geodatabase objects, a license must be checked out, depending on the product that has been installed.
@@ -39,8 +39,7 @@ using(RuntimeAuthorization lic = new RuntimeAuthorization(ProductCode.Desktop))
   }
 } // Check-in licenses.
 ```
-> **Note**
-When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.
+- When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.
 
 ## Geodatabase Connections
 The `WorkspaceFactories` static class will return the proper workspace (`sde`, `gdb`, or `mdb`) based on the connection file parameter.
@@ -65,12 +64,10 @@ using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
 ## Session / Workflow Manager
 The Session Manager and Workflow Manager extensions to the ArcFM Solution are tightly coupled with the version management solution provided by the product.
 
-## Extend
+### Session / Design Additions
 When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design to store client specific data, which can now be done by extending the `Session` or `Design` classes.
 
 ```java
-
-// A client session that extends the standard session.
 public class ClientSession : Session {
 
   public ClientSession(IMMPxApplication pxApp)
@@ -87,31 +84,29 @@ public class ClientSession : Session {
 
   protected override void Initialize(int nodeID){
 
-    // Allow the base implementation to initialize the session object.
     base.Initialize(nodeID);
 
-    // Initialize custom data.
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
-    var commandText = string.Format("SELECT name FROM {0} WHERE session_id = {1}", tableName, nodeID);
+    var commandText = string.Format("SELECT name FROM {0} WHERE session_id = {1}",
+                                      tableName, nodeID);
     this.ClientName = base.Application.ExecuteScalar(commandText, "<null>");
   }
 
   protected override bool CreateNew(IMMPxUser user) {
 
-    // Allow the base implementation to create the session object.
     if(!base.CreateNew(user))
       return;
 
-    // Create custom data.
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
-    var commandText = string.Format("INSERT INTO {0} VALUES({1},'{2}')", tableName, this.ID this.ClientName);
+    var commandText = string.Format("INSERT INTO {0} VALUES({1},'{2}')",
+                                      tableName, this.ID this.ClientName);
     base.Application.ExecuteNonQuery(commandText);
   }
 }
 ```
 
-## Accessors
-When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design.
+### Session / Design Accessors
+When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design. The easiest way to access the data is through the `GetSession` and `GetDesign` methods on the `IMMPxApplication` interface.
 
 ```java
 var pxApplication = ArcMap.Application.GetPxApplication();

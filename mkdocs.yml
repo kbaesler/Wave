@@ -1,11 +1,14 @@
 site_name: Wave Extensions for ArcGIS / ArcFM
 repo_url: https://github.com/Jumpercables/Wave/
 site_author: Kyle Baesler
+markdown_extensions:
+    - smarty
+    - admonition
 theme: cinder
 pages:
 - Getting Started:
   - Introduction: index.md
-  - Developer Samples: samples.md
+  - Developer Guide: samples.md
 - Features: features.md
 - Frequently Asked Questions: faq.md
 - About:
