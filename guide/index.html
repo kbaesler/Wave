@@ -238,8 +238,10 @@ var dbms = workspace.GetDBMS();
 <p>When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design to store client specific data, which can now be done by extending the <code>Session</code> or <code>Design</code> classes.</p>
 <pre><code class="java">public class ClientSession : Session {
 
+  private string _ClientName;
+
   public ClientSession(IMMPxApplication pxApp)
-    : base(pxApp) {
+    : base(pxApp, sessionId) {
 
   }
 
@@ -248,27 +250,37 @@ var dbms = workspace.GetDBMS();
 
   }
 
-  public string ClientName {get; set;}
+  public string ClientName { get { return _ClientName; } }
 
-  protected override void Initialize(int nodeID){
+  // Initialize the existing node.
+  protected override bool Initialize(IMMSessionManager extension, int nodeID){
 
-    base.Initialize(nodeID);
+    // Allow the base implementation to load the product information.
+    if(!base.Initialize(nodeID))
+      return false;
 
+    // Load the custom data.  
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
     var commandText = string.Format(&quot;SELECT name FROM {0} WHERE session_id = {1}&quot;,
                                       tableName, nodeID);
-    this.ClientName = base.Application.ExecuteScalar(commandText, &quot;&lt;null&gt;&quot;);
+    _ClientName = base.Application.ExecuteScalar(commandText, &quot;&lt;null&gt;&quot;);
+
+    return true;
   }
 
-  protected override bool CreateNew(IMMPxUser user) {
+  // Create a new node.
+  protected override bool Initialize(IMMSessionManager extension, IMMPxUser user) {
 
-    if(!base.CreateNew(user))
+    // Allow the base implementation to create the product information.
+    if(!base.Initialize(user))
       return;
 
+    // Create the custom data and store in table that is related to node.
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
     var commandText = string.Format(&quot;INSERT INTO {0} VALUES({1},'{2}')&quot;,
-                                      tableName, this.ID this.ClientName);
-    base.Application.ExecuteNonQuery(commandText);
+                                      tableName, base.ID _ClientName);
+    int recordsAffected = base.Application.ExecuteNonQuery(commandText);
+    return recordsAffected == 1;
   }
 }
 </code></pre>

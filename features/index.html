@@ -77,7 +77,7 @@
                         
                             
 <li >
-    <a href="../samples/">Developer Guide</a>
+    <a href="../guide/">Developer Guide</a>
 </li>
 
                         
@@ -129,7 +129,7 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../samples/">
+                        <a rel="next" href="../guide/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -170,6 +170,8 @@
             <li><a href="#basic-implementations">Basic Implementations</a></li>
         
             <li><a href="#model-names">Model Names</a></li>
+        
+            <li><a href="#component-registration">Component Registration</a></li>
         
     
     </ul>
@@ -366,7 +368,7 @@ List&lt;int&gt; oids = featureClass.Fetch(filter, feature =&gt; feature.OID);
 </tr>
 <tr>
 <td align="left"><code>BaseAttributeAU</code></td>
-<td align="left">Creating a custom trigger for a fieldwhen the object is created, updated or deleted.</td>
+<td align="left">Creating a custom trigger for a field when the object is created, updated or deleted.</td>
 </tr>
 <tr>
 <td align="left"><code>BaseSpecialAU</code></td>
@@ -478,7 +480,48 @@ List&lt;int&gt; oids = featureClass.Fetch(filter, feature =&gt; feature.OID);
 <td align="left"><em>There are many more that haven&rsquo;t been listed for the sake of brevity.</em></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<h2 id="component-registration">Component Registration</h2>
+<p>The <strong>Wave Extensions for ArcGIS</strong> and <strong>Wave Extensions for ArcFM</strong> packages will automatically import the <code>Wave.Extensions.Esri.targets</code> and <code>Wave.Extensions.Miner.targets</code> into the Visual Studio Project File when the packages are installed. These <code>MS Build</code> target files are used to register the <code>ESRI</code> and <code>ArcFM</code> components when the project is compiled.</p>
+<ul>
+<li><code>Wave.Extensions.Esri.targets</code></li>
+</ul>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;  
+  &lt;PropertyGroup&gt;
+    &lt;RegisterForComInterop Condition=&quot;'$(RegisterForComInterop)' == ''&quot;&gt;False&lt;/RegisterForComInterop&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;Target Name=&quot;BeforeClean&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;    
+    &lt;Message Text=&quot;Wave.Extensions.Esri.targets: Unregistered&quot;/&gt;    
+    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /u /s&quot; Condition=&quot;Exists('$(TargetPath)')&quot; ContinueOnError=&quot;true&quot;/&gt;          
+  &lt;/Target&gt;
+  &lt;Target Name=&quot;AfterBuild&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;  
+    &lt;Message Text=&quot;Wave.Extensions.Esri.targets Registered&quot;/&gt;  
+    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /s&quot; ContinueOnError=&quot;true&quot; /&gt;        
+  &lt;/Target&gt;
+&lt;/Project&gt;
+</code></pre>
+
+<ul>
+<li><code>Wave.Extensions.Miner.targets</code></li>
+</ul>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;  
+  &lt;PropertyGroup&gt;
+    &lt;RegisterForComInterop Condition=&quot;'$(RegisterForComInterop)' == ''&quot;&gt;False&lt;/RegisterForComInterop&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;Target Name=&quot;BeforeClean&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;    
+    &lt;Message Text=&quot;Wave.Extensions.Miner.targets: Unregistered&quot;/&gt;    
+    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /u /s&quot; Condition=&quot;Exists('$(TargetPath)')&quot; ContinueOnError=&quot;true&quot;/&gt;      
+    &lt;Exec WorkingDirectory=&quot;$(ProgramFiles)\Miner and Miner\ArcFM Solution\Bin&quot; Command=&quot;RegX.exe &amp;quot;$(TargetPath)&amp;quot; /d /u&quot; Condition=&quot;Exists('$(TargetPath)')&quot; ContinueOnError=&quot;true&quot; /&gt;        
+  &lt;/Target&gt;
+  &lt;Target Name=&quot;AfterBuild&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;  
+    &lt;Message Text=&quot;Wave.Extensions.Miner.targets Registered&quot;/&gt;  
+    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /s&quot; ContinueOnError=&quot;true&quot; /&gt;
+    &lt;Exec WorkingDirectory=&quot;$(ProgramFiles)\Miner and Miner\ArcFM Solution\Bin&quot; Command=&quot;RegX.exe &amp;quot;$(TargetPath)&amp;quot; /d&quot; ContinueOnError=&quot;true&quot; /&gt;       
+  &lt;/Target&gt;
+&lt;/Project&gt;
+</code></pre></div>
         
     </div>
 
