@@ -39,6 +39,9 @@ namespace Miner.Interop.Process
         protected BasePxNode(IMMPxApplication pxApp, string nodeTypeName, int nodeId)
             : this(pxApp, nodeTypeName)
         {
+            _PxApp = pxApp;
+            _NodeTypeName = nodeTypeName;
+
             this.Initialize(nodeId);
         }
 
@@ -48,24 +51,17 @@ namespace Miner.Interop.Process
         /// <param name="pxApp">The process framework application reference.</param>
         /// <param name="nodeTypeName">Name of the node type.</param>
         protected BasePxNode(IMMPxApplication pxApp, string nodeTypeName)
-            : this()
         {
             _PxApp = pxApp;
             _NodeTypeName = nodeTypeName;
-        }
 
-        /// <summary>
-        ///     Prevents a default instance of the <see cref="BasePxNode{TFrameworkExtension}" /> class from being created.
-        /// </summary>
-        private BasePxNode()
-        {
             this.Initialize();
         }
 
         #endregion
 
         #region Public Properties
-
+        
         /// <summary>
         ///     Gets the process framework application reference.
         /// </summary>
@@ -79,10 +75,10 @@ namespace Miner.Interop.Process
         #region Protected Properties
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the <see cref="BasePxNode" /> has pending updates.
+        ///     Gets or sets a value indicating whether the <see cref="BasePxNode{TFrameworkExtension}" /> has pending updates.
         /// </summary>
         /// <value>
-        ///     <c>true</c> if the <see cref="BasePxNode" /> has pending updates; otherwise, <c>false</c>.
+        ///     <c>true</c> if the <see cref="BasePxNode{TFrameworkExtension}" /> has pending updates; otherwise, <c>false</c>.
         /// </value>
         protected bool Dirty { get; set; }
 
@@ -265,8 +261,7 @@ namespace Miner.Interop.Process
                 // Flush the cache.
                 this.Dispose(false);
             }
-
-            this.Hydrate();
+           
             this.Dirty = false;
         }
 
@@ -419,7 +414,7 @@ namespace Miner.Interop.Process
         #region Private Methods
 
         /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeId" /> for the node.
+        ///     Initializes the process framework node wrapper.
         /// </summary>
         /// <param name="nodeId">The node identifier.</param>
         private void Initialize(int nodeId)
@@ -433,7 +428,7 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="user" /> for the node.
+        ///     Creates the process framework node wrapper.
         /// </summary>
         private void Initialize()
         {
