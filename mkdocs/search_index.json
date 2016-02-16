@@ -192,7 +192,7 @@
         }, 
         {
             "location": "/release-notes/", 
-            "text": "Release Notes\n\n\nThis will serve as a reference to the release notes with regards to the \nrelease\n version of the nuget packages that are published.\n\n\nVersion 1.0.0 - 2016-02-06\n\n\n\n\nInitial release\n\n\nInitial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products\n\n\n\n\nVersion 1.0.1 - 2016-02-24\n\n\n\n\n[ADD]: New extensions for the \nISqlWorkspace\n interface.\n\n\n[REMOVED]: The \nCreateNew\n and \nInitialize\n methods on the \nIPxNode\n interface have been removed.\n\n\n[CHANGED]: The \nSession\n, \nDesign\n and \nWorkRequest\n classes updated to reflect changes to the \nIPxNode\n interface and now create and initialize based on the constructor parameters.", 
+            "text": "Release Notes\n\n\nThis will serve as a reference to the release notes with regards to the \nrelease\n version of the nuget packages that are published.\n\n\nVersion 1.0.0 - 2016-02-06\n\n\n\n\nInitial release\n\n\nInitial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products\n\n\n\n\nVersion 1.0.1 - \nComming Soon\n\n\n\n\n[ADD]: New extensions for the \nISqlWorkspace\n interface.\n\n\n[REMOVED]: The \nCreateNew\n and \nInitialize\n methods on the \nIPxNode\n interface have been removed.\n\n\n[CHANGED]: The \nSession\n, \nDesign\n and \nWorkRequest\n classes updated to reflect changes to the \nIPxNode\n interface and now create and initialize based on the constructor parameters.", 
             "title": "Release Notes"
         }, 
         {
@@ -206,9 +206,9 @@
             "title": "Version 1.0.0 - 2016-02-06"
         }, 
         {
-            "location": "/release-notes/#version-101-2016-02-24", 
+            "location": "/release-notes/#version-101-comming-soon", 
             "text": "[ADD]: New extensions for the  ISqlWorkspace  interface.  [REMOVED]: The  CreateNew  and  Initialize  methods on the  IPxNode  interface have been removed.  [CHANGED]: The  Session ,  Design  and  WorkRequest  classes updated to reflect changes to the  IPxNode  interface and now create and initialize based on the constructor parameters.", 
-            "title": "Version 1.0.1 - 2016-02-24"
+            "title": "Version 1.0.1 - Comming Soon"
         }
     ]
 }
