@@ -70,8 +70,10 @@ When using Session Manager or Workflow Manager you often need to extend the ArcF
 ```java
 public class ClientSession : Session {
 
+  private string _ClientName;
+
   public ClientSession(IMMPxApplication pxApp)
-    : base(pxApp) {
+    : base(pxApp, sessionId) {
 
   }
 
@@ -80,27 +82,37 @@ public class ClientSession : Session {
 
   }
 
-  public string ClientName {get; set;}
+  public string ClientName { get { return _ClientName; } }
 
-  protected override void Initialize(int nodeID){
+  // Initialize the existing node.
+  protected override bool Initialize(IMMSessionManager extension, int nodeID){
 
-    base.Initialize(nodeID);
+    // Allow the base implementation to load the product information.
+    if(!base.Initialize(nodeID))
+      return false;
 
+    // Load the custom data.  
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
     var commandText = string.Format("SELECT name FROM {0} WHERE session_id = {1}",
                                       tableName, nodeID);
-    this.ClientName = base.Application.ExecuteScalar(commandText, "<null>");
+    _ClientName = base.Application.ExecuteScalar(commandText, "<null>");
+
+    return true;
   }
 
-  protected override bool CreateNew(IMMPxUser user) {
+  // Create a new node.
+  protected override bool Initialize(IMMSessionManager extension, IMMPxUser user) {
 
-    if(!base.CreateNew(user))
+    // Allow the base implementation to create the product information.
+    if(!base.Initialize(user))
       return;
 
+    // Create the custom data and store in table that is related to node.
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
     var commandText = string.Format("INSERT INTO {0} VALUES({1},'{2}')",
-                                      tableName, this.ID this.ClientName);
-    base.Application.ExecuteNonQuery(commandText);
+                                      tableName, base.ID _ClientName);
+    int recordsAffected = base.Application.ExecuteNonQuery(commandText);
+    return recordsAffected == 1;
   }
 }
 ```

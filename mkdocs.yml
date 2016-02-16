@@ -8,7 +8,7 @@ theme: cinder
 pages:
 - Getting Started:
   - Introduction: index.md
-  - Developer Guide: samples.md
+  - Developer Guide: guide.md
 - Features: features.md
 - Frequently Asked Questions: faq.md
 - About:
