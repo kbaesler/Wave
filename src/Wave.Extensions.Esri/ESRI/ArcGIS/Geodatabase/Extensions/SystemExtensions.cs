@@ -13,6 +13,22 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IStringArray" />
+        /// </summary>
+        /// <param name="source">An <see cref="IStringArray" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the datasets from the input source.</returns>
+        public static IEnumerable<string> AsEnumerable(this IStringArray source)
+        {
+            if (source != null)
+            {
+                for (int i = 0; i < source.Count; i++)
+                {
+                    yield return source.Element[i];
+                }
+            }
+        }
+
+        /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IEnumWorkspaceStatus" />
         /// </summary>
         /// <param name="source">An <see cref="IEnumWorkspaceStatus" /> to create an <see cref="IEnumerable{T}" /> from.</param>

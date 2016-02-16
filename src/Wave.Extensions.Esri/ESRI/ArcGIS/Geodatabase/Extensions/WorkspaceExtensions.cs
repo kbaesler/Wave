@@ -81,6 +81,23 @@ namespace ESRI.ArcGIS.Geodatabase
             return value.Replace("'", "''");
         }
 
+#if V10
+        /// <summary>
+        ///     Executes the specified query (SQL) and returns the results as a <see cref="ICursor" />
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="commandText">The command text.</param>
+        /// <returns>Returns a <see cref="ICursor" /> representing the results of the query.</returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public static ICursor Execute(this IWorkspace source, string commandText)
+        {
+            ISqlWorkspace sw = source as ISqlWorkspace;
+            if (sw == null) throw new NotSupportedException();
+
+            return sw.OpenQueryCursor(commandText);
+        }
+#endif
+
         /// <summary>
         ///     Gets the database management system that is used with conjunction of the <paramref name="source" />.
         /// </summary>
@@ -473,6 +490,19 @@ namespace ESRI.ArcGIS.Geodatabase
             string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
             return ((IFeatureWorkspace) source).OpenTable(name);
         }
+
+#if V10 
+        /// <summary>
+        ///     Gets all of the tables in the workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
+        public static IEnumerable<string> GetTableNames(this IWorkspace source)
+        {
+            var sw = (ISqlWorkspace) source;
+            return sw.GetTables().AsEnumerable();
+        }
+#endif
 
         /// <summary>
         ///     Gets all of the tables in the workspace.

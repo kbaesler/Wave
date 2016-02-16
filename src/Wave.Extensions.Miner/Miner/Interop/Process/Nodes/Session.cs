@@ -8,7 +8,7 @@ namespace Miner.Interop.Process
     ///     Wraps the product <see cref="Miner.Interop.Process.IMMSession" /> interface into an workable object.
     /// </summary>
     [DebuggerDisplay("Name = {Name}, ID = {ID}, Owner = {Owner}")]
-    public class Session : BasePxNode, IPxSession
+    public class Session : BasePxNode<IMMSessionManager>, IPxSession
     {
         #region Constants
 
@@ -45,9 +45,19 @@ namespace Miner.Interop.Process
         /// <param name="pxApp">The process framework application reference.</param>
         /// <param name="session">The session.</param>
         public Session(IMMPxApplication pxApp, IMMSession session)
-            : base(pxApp, NodeTypeName)
+            : base(pxApp, NodeTypeName, session.get_ID())
         {
             _Session = session;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Session" /> class.
+        /// </summary>
+        /// <param name="pxApp">The process framework application reference.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        public Session(IMMPxApplication pxApp, int nodeId)
+            : base(pxApp, NodeTypeName, nodeId)
+        {
         }
 
         #endregion
@@ -285,28 +295,6 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
-        /// </summary>
-        /// <param name="user">The current user.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully created; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public override bool CreateNew(IMMPxUser user)
-        {
-            // Create the product Session object.
-            IMMSessionManager sm = base.PxApplication.GetSessionManager();
-            if (sm == null) return false;
-
-            string createUser = user.Name;
-
-            _Session = sm.CreateSession();
-            _Session.set_CreateUser(ref createUser);
-
-            return (_Session != null);
-        }
-
-        /// <summary>
         ///     Deletes the <see cref="IMMPxNode" /> from the process framework database.
         /// </summary>
         public override void Delete()
@@ -316,31 +304,6 @@ namespace Miner.Interop.Process
 
             // Remove the session reference.
             this.Dispose(true);
-        }
-
-        /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
-        /// </summary>
-        /// <param name="nodeID">The node ID.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public override bool Initialize(int nodeID)
-        {
-            // Verify that the existing session isn't the same node.
-            if (_Session != null && _Session.get_ID() == nodeID)
-                return true;
-
-            // Reference the TM&M Session object.
-            IMMSessionManager sm = base.PxApplication.GetSessionManager();
-            if (sm == null) return false;
-
-            bool ro = false;
-
-            _Session = sm.GetSession(ref nodeID, ref ro);
-
-            return (_Session != null);
         }
 
         /// <summary>
@@ -380,9 +343,20 @@ namespace Miner.Interop.Process
                     }
 
                 _Session = null;
-            }            
+            }
 
             base.Dispose(true);
+        }
+
+        /// <summary>
+        ///     Gets the process framework extension.
+        /// </summary>
+        /// <returns>
+        ///     Returns the <see cref="IMMSessionManager" /> representing the framework extension used for the node.
+        /// </returns>
+        protected override IMMSessionManager GetFrameworkExtension()
+        {
+            return this.PxApplication.GetSessionManager();
         }
 
         /// <summary>
@@ -394,6 +368,55 @@ namespace Miner.Interop.Process
         protected override IMMListBuilder GetListBuilder()
         {
             return null;
+        }
+
+        /// <summary>
+        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="user">The current user.</param>
+        /// <returns>
+        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully created; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected override bool Initialize(IMMSessionManager extension, IMMPxUser user)
+        {
+            // Create the product Session object.
+            IMMSessionManager sm = base.PxApplication.GetSessionManager();
+            if (sm == null) return false;
+
+            string createUser = user.Name;
+
+            _Session = sm.CreateSession();
+            _Session.set_CreateUser(ref createUser);
+
+            return (_Session != null);
+        }
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <returns>
+        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected override bool Initialize(IMMSessionManager extension, int nodeId)
+        {
+            // Verify that the existing session isn't the same node.
+            if (_Session != null && _Session.get_ID() == nodeId)
+                return true;
+
+            // Reference the TM&M Session object.
+            IMMSessionManager sm = base.PxApplication.GetSessionManager();
+            if (sm == null) return false;
+
+            bool ro = false;
+
+            _Session = extension.GetSession(ref nodeId, ref ro);
+
+            return (_Session != null);
         }
 
         #endregion

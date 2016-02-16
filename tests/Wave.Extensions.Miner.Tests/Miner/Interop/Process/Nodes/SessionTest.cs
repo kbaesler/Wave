@@ -27,8 +27,8 @@ namespace Wave.Extensions.Miner.Tests
         public void IPxSession_CreateNew_IsTrue()
         {
             using (Session session = new Session(base.PxApplication))
-            {
-                Assert.AreEqual(true, session.CreateNew(base.PxApplication.User));
+            {                
+                Assert.AreEqual(true, session.Valid);
                 Assert.AreEqual(base.PxApplication.User.Name, session.CreateUser);
 
                 session.Delete();
@@ -43,9 +43,9 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                using (Session session = new Session(base.PxApplication))
+                using (Session session = new Session(base.PxApplication, nodeID))
                 {
-                    Assert.AreEqual(true, session.Initialize(nodeID));
+                    Assert.AreEqual(true, session.Valid);
                 }
             }
         }

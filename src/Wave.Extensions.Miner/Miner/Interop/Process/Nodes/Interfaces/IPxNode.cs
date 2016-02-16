@@ -80,31 +80,12 @@
         /// </summary>
         /// <param name="description">The description.</param>
         /// <param name="extraData">The extra data.</param>
-        void AddHistory(string description, string extraData);
-
-        /// <summary>
-        ///     Creates the process framework node for the specified the <paramref name="user" />.
-        /// </summary>
-        /// <param name="user">The current user.</param>
-        /// <returns>
-        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully created; otherwise <c>false</c>.
-        /// </returns>
-        bool CreateNew(IMMPxUser user);
+        void AddHistory(string description, string extraData);       
 
         /// <summary>
         ///     Deletes the <see cref="IMMPxNode" /> from the process framework database.
         /// </summary>
-        void Delete();
-
-        /// <summary>
-        ///     Initializes the process framework node using the specified <paramref name="nodeID" /> for the node.
-        /// </summary>
-        /// <param name="nodeID">The node ID.</param>
-        /// <returns>
-        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully initialized; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        bool Initialize(int nodeID);
+        void Delete();      
 
         /// <summary>
         ///     Sets node as the current node.

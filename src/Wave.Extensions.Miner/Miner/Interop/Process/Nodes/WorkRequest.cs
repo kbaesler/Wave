@@ -4,15 +4,13 @@ using System.Data;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-using Miner.Interop.msxml2;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
     ///     Wraps the product <see cref="Miner.Interop.Process.IMMWMSWorkRequest" /> interface into an workable object.
     /// </summary>
     [DebuggerDisplay("Name = {Name}, ID = {ID}")]
-    public class WorkRequest : BasePxNode, IPxWorkRequest
+    public class WorkRequest : BasePxNode<IMMWorkflowManager>, IPxWorkRequest
     {
         #region Constants
 
@@ -48,9 +46,19 @@ namespace Miner.Interop.Process
         /// <param name="pxApp">The process framework application reference.</param>
         /// <param name="workRequest">The work request.</param>
         public WorkRequest(IMMPxApplication pxApp, IMMWMSWorkRequest workRequest)
-            : base(pxApp, NodeTypeName)
+            : base(pxApp, NodeTypeName, workRequest.ID)
         {
             _WorkRequest = workRequest;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WorkRequest" /> class.
+        /// </summary>
+        /// <param name="pxApp">The process framework application reference.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        public WorkRequest(IMMPxApplication pxApp, int nodeId)
+            : base(pxApp, NodeTypeName, nodeId)
+        {
         }
 
         #endregion
@@ -140,9 +148,8 @@ namespace Miner.Interop.Process
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        Design design = new Design(base.PxApplication);
-                        if (design.Initialize(row.Field<int>(0)))
-                            yield return design;
+                        Design design = new Design(base.PxApplication, row.Field<int>(0));
+                        yield return design;
                     }
                 }
             }
@@ -285,29 +292,6 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
-        /// </summary>
-        /// <param name="user">The current user.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully created; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public override bool CreateNew(IMMPxUser user)
-        {
-            // Create the WorkRequest object.
-            IMMWorkflowManager wm = base.PxApplication.GetWorkflowManager();
-            if (wm == null) return false;
-
-            int ownerID = user.Id;
-            string nodeTypeName = NodeTypeName;
-
-            _WorkRequest = (IMMWMSWorkRequest) wm.CreateWMSNode(ref nodeTypeName);
-            _WorkRequest.set_OwnerID(ref ownerID);
-
-            return (_WorkRequest != null);
-        }
-
-        /// <summary>
         ///     Deletes the node from the process framework database.
         /// </summary>
         public override void Delete()
@@ -317,33 +301,6 @@ namespace Miner.Interop.Process
 
             // Remove the references.
             this.Dispose(true);
-        }
-
-        /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
-        /// </summary>
-        /// <param name="nodeID">The node ID.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public override bool Initialize(int nodeID)
-        {
-            // Verify that the existing session isn't the same node.
-            if (_WorkRequest != null && _WorkRequest.ID == nodeID)
-                return true;
-
-            // Reference the WorkRequest object.
-            IMMWorkflowManager wm = base.PxApplication.GetWorkflowManager();
-            if (wm == null) return false;
-
-            bool ro = false;
-            bool sm = true;
-            string nodeTypeName = NodeTypeName;
-
-            _WorkRequest = (IMMWMSWorkRequest) wm.GetWMSNode(ref nodeTypeName, ref nodeID, ref ro, ref sm);
-
-            return (_WorkRequest != null);
         }
 
         /// <summary>
@@ -401,9 +358,20 @@ namespace Miner.Interop.Process
                 _WorkRequest = null;
                 _Location = null;
                 _Customer = null;
-            }            
+            }
 
             base.Dispose(true);
+        }
+
+        /// <summary>
+        ///     Gets the process framework extension.
+        /// </summary>
+        /// <returns>
+        ///     Returns the <see cref="IMMWorkflowManager" /> representing the framework extension used for the node.
+        /// </returns>
+        protected override IMMWorkflowManager GetFrameworkExtension()
+        {
+            return base.PxApplication.GetWorkflowManager();
         }
 
         /// <summary>
@@ -420,6 +388,46 @@ namespace Miner.Interop.Process
             return (IMMListBuilder) builder;
         }
 
-        #endregion       
+        /// <summary>
+        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="user">The current user.</param>
+        protected override bool Initialize(IMMWorkflowManager extension, IMMPxUser user)
+        {
+            int ownerID = user.Id;
+            string nodeTypeName = NodeTypeName;
+
+            _WorkRequest = (IMMWMSWorkRequest) extension.CreateWMSNode(ref nodeTypeName);
+            _WorkRequest.set_OwnerID(ref ownerID);
+
+            return (_WorkRequest != null);
+        }
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="nodeID">The node ID.</param>
+        /// <returns>
+        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected override bool Initialize(IMMWorkflowManager extension, int nodeID)
+        {
+            // Verify that the existing session isn't the same node.
+            if (_WorkRequest != null && _WorkRequest.ID == nodeID)
+                return true;
+
+            bool ro = false;
+            bool sm = true;
+            string nodeTypeName = NodeTypeName;
+
+            _WorkRequest = (IMMWMSWorkRequest) extension.GetWMSNode(ref nodeTypeName, ref nodeID, ref ro, ref sm);
+
+            return (_WorkRequest != null);
+        }
+
+        #endregion
     }
 }

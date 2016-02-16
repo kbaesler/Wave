@@ -32,8 +32,8 @@ namespace Miner.Interop.Process
         /// </returns>
         protected override IMMPxNode GetNode(int nodeID)
         {
-            var o = new WorkRequest(base.PxApplication);
-            return (o.Initialize(nodeID)) ? o.Node : null;
+            var o = new WorkRequest(base.PxApplication, nodeID);
+            return o.Valid ? o.Node : null;
         }
 
         #endregion

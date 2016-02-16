@@ -410,8 +410,8 @@ namespace Miner.Interop.Process
 
             return source.GetWorkRequest((nodeID, sender) =>
             {
-                var o = new WorkRequest(sender);
-                return o.Initialize(nodeID) ? o : null;
+                var o = new WorkRequest(sender, nodeID);
+                return o.Valid ? o : null;
             });
         }
 

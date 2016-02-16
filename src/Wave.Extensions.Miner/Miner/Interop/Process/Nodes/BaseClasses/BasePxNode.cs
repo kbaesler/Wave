@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -12,7 +11,8 @@ namespace Miner.Interop.Process
     /// <summary>
     ///     An abstract class used to handle wrapping process framework nodes into workable objects.
     /// </summary>
-    public abstract class BasePxNode : IDisposable, IPxNode
+    /// <typeparam name="TFrameworkExtension">The type of the framework extension.</typeparam>
+    public abstract class BasePxNode<TFrameworkExtension> : IDisposable, IPxNode
     {
         #region Fields
 
@@ -26,29 +26,40 @@ namespace Miner.Interop.Process
         /// </summary>
         private readonly IMMPxApplication _PxApp;
 
-        /// <summary>
-        ///     The history associated with this node.
-        /// </summary>
-        private IMMPxNodeHistory _History;
-
-        /// <summary>
-        ///     The corresponding process framework node.
-        /// </summary>
-        private IMMPxNode _Node;
-
         #endregion
 
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BasePxNode" /> class.
+        ///     Initializes a new instance of the <see cref="BasePxNode{TFrameworkExtension}" /> class.
+        /// </summary>
+        /// <param name="pxApp">The process framework application reference.</param>
+        /// <param name="nodeTypeName">Name of the node type.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        protected BasePxNode(IMMPxApplication pxApp, string nodeTypeName, int nodeId)
+            : this(pxApp, nodeTypeName)
+        {
+            this.Initialize(nodeId);
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BasePxNode{TFrameworkExtension}" /> class.
         /// </summary>
         /// <param name="pxApp">The process framework application reference.</param>
         /// <param name="nodeTypeName">Name of the node type.</param>
         protected BasePxNode(IMMPxApplication pxApp, string nodeTypeName)
+            : this()
         {
             _PxApp = pxApp;
             _NodeTypeName = nodeTypeName;
+        }
+
+        /// <summary>
+        ///     Prevents a default instance of the <see cref="BasePxNode{TFrameworkExtension}" /> class from being created.
+        /// </summary>
+        private BasePxNode()
+        {
+            this.Initialize();
         }
 
         #endregion
@@ -104,19 +115,7 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the history for the node.
         /// </summary>
-        public IMMPxNodeHistory History
-        {
-            get
-            {
-                if (_History == null)
-                {
-                    _History = new PxNodeHistoryClass();
-                    _History.Init(_PxApp.Connection, _PxApp.Login.SchemaName, this.Node.Id, this.Node.NodeType, string.Format("NODE_ID = {0} AND NODE_TYPE_ID = {1}", this.Node.Id, this.Node.NodeType));
-                }
-
-                return _History;
-            }
-        }
+        public IMMPxNodeHistory History { get; protected set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this <see cref="IPxNode" /> is locked.
@@ -174,31 +173,7 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the node.
         /// </summary>
-        public virtual IMMPxNode Node
-        {
-            get
-            {
-                if (_Node == null)
-                {
-                    int nodeType = _PxApp.Helper.GetNodeTypeID(_NodeTypeName);
-                    IMMPxNodeEdit nodeEdit = new MMPxNodeListClass();
-                    nodeEdit.Initialize(nodeType, _NodeTypeName, this.ID);
-                    nodeEdit.DisplayName = this.Name;
-
-                    _Node = (IMMPxNode) nodeEdit;
-                    ((IMMPxApplicationEx) _PxApp).HydrateNodeFromDB(_Node);
-
-                    IMMDynamicList list = (IMMDynamicList) nodeEdit;
-                    IMMListBuilder builder = this.GetListBuilder();
-                    if (builder != null)
-                    {
-                        list.BuildObject = builder;
-                    }
-                }
-
-                return _Node;
-            }
-        }
+        public IMMPxNode Node { get; set; }
 
         /// <summary>
         ///     Gets the name of the version.
@@ -256,26 +231,6 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
-        /// </summary>
-        /// <param name="user">The current user.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully created; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public abstract bool CreateNew(IMMPxUser user);
-
-        /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
-        /// </summary>
-        /// <param name="nodeID">The node ID.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public abstract bool Initialize(int nodeID);
-
-        /// <summary>
         ///     Deletes the node from the process framework database.
         /// </summary>
         public virtual void Delete()
@@ -311,6 +266,7 @@ namespace Miner.Interop.Process
                 this.Dispose(false);
             }
 
+            this.Hydrate();
             this.Dirty = false;
         }
 
@@ -351,15 +307,15 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        /// Copies the packet from this <see cref="Miner.Interop.Process.IPxNode" /> to the specified <paramref name="node" />
-        /// object.
+        ///     Copies the packet from this <see cref="Miner.Interop.Process.IPxNode" /> to the specified <paramref name="node" />
+        ///     object.
         /// </summary>
         /// <param name="packetPrefix">The packet ID prefix.</param>
         /// <param name="node">The node.</param>
         /// <exception cref="System.ArgumentNullException">node</exception>
         protected void CopyPacket(string packetPrefix, IPxNode node)
         {
-            if(node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new ArgumentNullException("node");
 
             // When the entity is not a mobile node we can stop here.
             IMMPxMobileHelper helper = (IMMPxMobileHelper) _PxApp;
@@ -395,24 +351,14 @@ namespace Miner.Interop.Process
         ///     unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
-        {           
-            if (disposing)
-            {
-                if (_Node != null)
-                    while (Marshal.ReleaseComObject(_Node) > 0)
-                    {
-                    }
-
-                if (_History != null)
-                    while (Marshal.ReleaseComObject(_History) > 0)
-                    {
-                    }
-            }
-
-            _Node = null;
-            _History = null;
-
+        {
         }
+
+        /// <summary>
+        ///     Gets the process framework extension.
+        /// </summary>
+        /// <returns>Returns the <see cref="TFrameworkExtension" /> representing the framework extension used for the node.</returns>
+        protected abstract TFrameworkExtension GetFrameworkExtension();
 
         /// <summary>
         ///     Gets the list builder for the node.
@@ -422,6 +368,83 @@ namespace Miner.Interop.Process
         /// </returns>
         protected abstract IMMListBuilder GetListBuilder();
 
-        #endregion        
+        /// <summary>
+        ///     Hydrates the node from the database.
+        /// </summary>
+        protected void Hydrate()
+        {
+            int nodeType = _PxApp.Helper.GetNodeTypeID(_NodeTypeName);
+            IMMPxNodeEdit nodeEdit = new MMPxNodeListClass();
+            nodeEdit.Initialize(nodeType, _NodeTypeName, this.ID);
+            nodeEdit.DisplayName = this.Name;
+
+            this.Node = (IMMPxNode) nodeEdit;
+            ((IMMPxApplicationEx) _PxApp).HydrateNodeFromDB(this.Node);
+
+            IMMDynamicList list = (IMMDynamicList) nodeEdit;
+            IMMListBuilder builder = this.GetListBuilder();
+            if (builder != null)
+            {
+                list.BuildObject = builder;
+            }
+
+            this.History = new PxNodeHistoryClass();
+            this.History.Init(_PxApp.Connection, _PxApp.Login.SchemaName, this.Node.Id, this.Node.NodeType, string.Format("NODE_ID = {0} AND NODE_TYPE_ID = {1}", this.Node.Id, this.Node.NodeType));
+        }
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeId" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <returns>
+        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected abstract bool Initialize(TFrameworkExtension extension, int nodeId);
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="user" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="user">The user.</param>
+        /// <returns>
+        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully created; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected abstract bool Initialize(TFrameworkExtension extension, IMMPxUser user);
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeId" /> for the node.
+        /// </summary>
+        /// <param name="nodeId">The node identifier.</param>
+        private void Initialize(int nodeId)
+        {
+            var frameworkExtension = this.GetFrameworkExtension();
+
+            if (this.Initialize(frameworkExtension, nodeId))
+            {
+                this.Hydrate();
+            }
+        }
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="user" /> for the node.
+        /// </summary>
+        private void Initialize()
+        {
+            var frameworkExtension = this.GetFrameworkExtension();
+
+            if (this.Initialize(frameworkExtension, _PxApp.User))
+            {
+                this.Hydrate();
+            }
+        }
+
+        #endregion
     }
 }

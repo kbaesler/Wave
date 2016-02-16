@@ -14,6 +14,20 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void IWorkspace_Execute_IsNotNull()
+        {
+            var table = base.Workspace.Execute("SELECT COUNT(*) FROM TRANSFORMER");
+            Assert.IsNotNull(table);
+
+            var row = table.AsEnumerable().FirstOrDefault();
+            Assert.IsNotNull(row);
+
+            Assert.AreEqual(0, row.Value[0]);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
         public void IWorkspace_GetDomain_IsNotNull()
         {
             var domains = base.Workspace.GetDomains();
