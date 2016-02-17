@@ -250,8 +250,6 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
 <p>When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design or Work Request to store client specific data, which can now be done by extending the <code>Session</code>, <code>Design</code> or <code>WorkRequest</code> classes.</p>
 <pre><code class="java">public class ClientSession : Session {
 
-  private string _ClientName;
-
   public ClientSession(IMMPxApplication pxApp)
     : base(pxApp, sessionId) {
 
@@ -262,7 +260,7 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
 
   }
 
-  public string ClientName { get { return _ClientName; } }
+  public string ClientName {get; set;}
 
   protected override bool Initialize(IMMSessionManager extension, int nodeID){
 
@@ -272,7 +270,7 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
     var commandText = string.Format(&quot;SELECT name FROM {0} WHERE session_id = {1}&quot;,
                                       tableName, nodeID);
-    _ClientName = base.Application.ExecuteScalar(commandText, &quot;&lt;null&gt;&quot;);
+    this.ClientName = base.Application.ExecuteScalar(commandText, &quot;&lt;null&gt;&quot;);
 
     return true;
   }
@@ -284,7 +282,7 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
 
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
     var commandText = string.Format(&quot;INSERT INTO {0} VALUES({1},'{2}')&quot;,
-                                      tableName, base.ID _ClientName);
+                                      tableName, base.ID, this.ClientName);
     int recordsAffected = base.Application.ExecuteNonQuery(commandText);
     return recordsAffected == 1;
   }
@@ -292,14 +290,15 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
 </code></pre>
 
 <h3 id="session-design-accessors">Session / Design Accessors</h3>
-<p>When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design. The easiest way to access the data is through the <code>GetSession</code> and <code>GetDesign</code> methods on the <code>IMMPxApplication</code> interface.</p>
+<p>When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design. The easiest way to access the data is through the <code>GetSession</code>, <code>GetWorkRequest</code> or <code>GetDesign</code> methods on the <code>IMMPxApplication</code> interface.</p>
 <pre><code class="java">var pxApplication = ArcMap.Application.GetPxApplication();
 var session = pxApplication.GetSession();
 var design = pxApplication.GetDesign();
+var request = pxApplication.GetWorkRequest();
 </code></pre>
 
 <ul>
-<li>If you have extended the Session or Design, you can access it via the <code>action</code> parameter.</li>
+<li>If you have extended the <code>Session</code>, <code>WorkRequest</code> or <code>Design</code>, you can access it via the <code>action</code> parameter.</li>
 </ul>
 <pre><code class="java">var pxApplication = ArcMap.Application.GetPxApplication();
 var session = pxApplication.GetSession((id, source) =&gt; new ClientSession(source, id))
