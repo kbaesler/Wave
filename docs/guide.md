@@ -59,13 +59,29 @@ using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
 }
 ```
 
-> When this situation is encountered, if the AU is not `disable` the ArcFM Auto Updater Framework, an **infinite** loop will occur when AU is executed.
+## Map Data
+
+### Layers
+The feature layers in the map can be traverse using the `Where` method extension.
+
+```java
+var layers = ArcMap.Application.GetActiveMap().Where(layer => layer.Valid);
+var structures = layers.Where(layer => layer.FeatureClass.IsAssignedClassModelName("STRUCTURE"));
+```
+
+### Tables
+The tables in the map can be traverse using the `Where` method extension.
+
+```java
+var tables = ArcMap.Application.GetActiveMap().GetTables(table => table.Valid);
+var arcfm = tables.Where(table=> table.IsAssignedClassModelName("ARCFMSYSTEMTABLE"));
+```
 
 ## Session / Workflow Manager
 The Session Manager and Workflow Manager extensions to the ArcFM Solution are tightly coupled with the version management solution provided by the product.
 
 ### Session / Design Additions
-When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design to store client specific data, which can now be done by extending the `Session` or `Design` classes.
+When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design or Work Request to store client specific data, which can now be done by extending the `Session`, `Design` or `WorkRequest` classes.
 
 ```java
 public class ClientSession : Session {
@@ -84,14 +100,11 @@ public class ClientSession : Session {
 
   public string ClientName { get { return _ClientName; } }
 
-  // Initialize the existing node.
   protected override bool Initialize(IMMSessionManager extension, int nodeID){
 
-    // Allow the base implementation to load the product information.
-    if(!base.Initialize(nodeID))
+    if(!base.Initialize(extension, nodeID))
       return false;
 
-    // Load the custom data.  
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
     var commandText = string.Format("SELECT name FROM {0} WHERE session_id = {1}",
                                       tableName, nodeID);
@@ -100,14 +113,11 @@ public class ClientSession : Session {
     return true;
   }
 
-  // Create a new node.
   protected override bool Initialize(IMMSessionManager extension, IMMPxUser user) {
 
-    // Allow the base implementation to create the product information.
-    if(!base.Initialize(user))
+    if(!base.Initialize(extension, user))
       return;
 
-    // Create the custom data and store in table that is related to node.
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
     var commandText = string.Format("INSERT INTO {0} VALUES({1},'{2}')",
                                       tableName, base.ID _ClientName);
