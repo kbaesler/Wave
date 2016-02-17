@@ -29,11 +29,6 @@ namespace System.Windows.Behaviors
         #region Fields
 
         /// <summary>
-        ///     The behaviors dependency property
-        /// </summary>
-        public static readonly DependencyProperty BehaviorsProperty = BehaviorsPropertyKey.DependencyProperty;
-
-        /// <summary>
         ///     Behaviors Read-Only Dependency Property
         ///     As you can see the Attached readonly property has a name registered different (BehaviorsInternal) than the property
         ///     name, this is a tricks os that we can construct the collection as we want
@@ -41,6 +36,23 @@ namespace System.Windows.Behaviors
         /// </summary>
         private static readonly DependencyPropertyKey BehaviorsPropertyKey = DependencyProperty.RegisterAttachedReadOnly("BehaviorsInternal", typeof (BehaviorBindingCollection), typeof (CommandBehaviorCollection),
             new FrameworkPropertyMetadata((BehaviorBindingCollection) null));
+
+        /// <summary>
+        ///     The behaviors dependency property
+        /// </summary>
+        public static DependencyProperty BehaviorsProperty;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes the <see cref="CommandBehaviorCollection" /> class.
+        /// </summary>
+        static CommandBehaviorCollection()
+        {
+            BehaviorsProperty = BehaviorsPropertyKey.DependencyProperty;
+        }
 
         #endregion
 
