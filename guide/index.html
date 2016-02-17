@@ -167,6 +167,8 @@
         
             <li><a href="#disabling-auto-updaters">Disabling Auto Updaters</a></li>
         
+            <li><a href="#map-data">Map Data</a></li>
+        
             <li><a href="#session-workflow-manager">Session / Workflow Manager</a></li>
         
     
@@ -227,6 +229,19 @@ var dbms = workspace.GetDBMS();
 {
     // All of the ArcFM Auto Updaters are now disabled.
 }
+</code></pre>
+
+<h2 id="map-data">Map Data</h2>
+<h3 id="layers">Layers</h3>
+<p>The feature layers in the map can be traverse using the <code>Where</code> method extension.</p>
+<pre><code class="java">var layers = ArcMap.Application.GetActiveMap().Where(layer =&gt; layer.Valid);
+var structures = layers.Where(layer =&gt; layer.FeatureClass.IsAssignedClassModelName(&quot;STRUCTURE&quot;));
+</code></pre>
+
+<h3 id="tables">Tables</h3>
+<p>The tables in the map can be traverse using the <code>Where</code> method extension.</p>
+<pre><code class="java">var tables = ArcMap.Application.GetActiveMap().GetTables(table =&gt; table.Valid);
+var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSYSTEMTABLE&quot;));
 </code></pre>
 
 <h2 id="session-workflow-manager">Session / Workflow Manager</h2>
