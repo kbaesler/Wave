@@ -247,7 +247,7 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
 <h2 id="session-workflow-manager">Session / Workflow Manager</h2>
 <p>The Session Manager and Workflow Manager extensions to the ArcFM Solution are tightly coupled with the version management solution provided by the product.</p>
 <h3 id="session-design-additions">Session / Design Additions</h3>
-<p>When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design to store client specific data, which can now be done by extending the <code>Session</code> or <code>Design</code> classes.</p>
+<p>When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design or Work Request to store client specific data, which can now be done by extending the <code>Session</code>, <code>Design</code> or <code>WorkRequest</code> classes.</p>
 <pre><code class="java">public class ClientSession : Session {
 
   private string _ClientName;
@@ -266,7 +266,7 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
 
   protected override bool Initialize(IMMSessionManager extension, int nodeID){
 
-    if(!base.Initialize(nodeID))
+    if(!base.Initialize(extension, nodeID))
       return false;
 
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
@@ -279,7 +279,7 @@ var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSY
 
   protected override bool Initialize(IMMSessionManager extension, IMMPxUser user) {
 
-    if(!base.Initialize(user))
+    if(!base.Initialize(extension, user))
       return;
 
     var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
