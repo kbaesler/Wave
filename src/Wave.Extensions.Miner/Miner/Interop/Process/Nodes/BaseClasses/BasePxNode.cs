@@ -143,7 +143,7 @@ namespace Miner.Interop.Process
         public abstract int ID { get; }
 
         /// <summary>
-        ///     Gets a value indicating whether this <see cref="BasePxNode" /> is open.
+        ///     Gets a value indicating whether this <see cref="BasePxNode{TFrameworkExtension}" /> is open.
         /// </summary>
         /// <value>
         ///     <c>true</c> if open; otherwise, <c>false</c>.
@@ -159,7 +159,7 @@ namespace Miner.Interop.Process
         public abstract string Name { get; set; }
 
         /// <summary>
-        ///     Gets a value indicating whether this <see cref="BasePxNode" /> is valid.
+        ///     Gets a value indicating whether this <see cref="BasePxNode{TFrameworkExtension}" /> is valid.
         /// </summary>
         /// <value>
         ///     <c>true</c> if valid; otherwise, <c>false</c>.
@@ -352,7 +352,7 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the process framework extension.
         /// </summary>
-        /// <returns>Returns the <see cref="TFrameworkExtension" /> representing the framework extension used for the node.</returns>
+        /// <returns>Returns the <see cref="T:TFrameworkExtension" /> representing the framework extension used for the node.</returns>
         protected abstract TFrameworkExtension GetFrameworkExtension();
 
         /// <summary>

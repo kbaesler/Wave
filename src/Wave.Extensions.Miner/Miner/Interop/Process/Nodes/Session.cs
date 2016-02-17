@@ -394,7 +394,7 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeId" /> for the node.
         /// </summary>
         /// <param name="extension">The extension.</param>
         /// <param name="nodeId">The node identifier.</param>
