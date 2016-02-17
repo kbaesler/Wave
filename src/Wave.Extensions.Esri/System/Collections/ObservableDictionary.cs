@@ -334,7 +334,7 @@ namespace System.Collections
         /// <summary>
         ///     Occurs when the dictionary has changed.
         /// </summary>
-        public virtual event EventHandler<NotifyDictionaryChangedEventArgs<TKey, TValue>> DictionaryChanged;
+        public event EventHandler<NotifyDictionaryChangedEventArgs<TKey, TValue>> DictionaryChanged;
 
         #endregion
 
@@ -343,7 +343,7 @@ namespace System.Collections
         /// <summary>
         ///     Occurs when the dictionary is changing.
         /// </summary>
-        public virtual event EventHandler<NotifyDictionaryChangingEventArgs<TKey, TValue>> DictionaryChanging;
+        public event EventHandler<NotifyDictionaryChangingEventArgs<TKey, TValue>> DictionaryChanging;
 
         #endregion
 
