@@ -374,7 +374,6 @@ namespace Miner.Interop.Process
         /// </returns>
         protected override bool Initialize(IMMWorkflowManager extension, int nodeId)
         {
-            // Verify that the existing session isn't the same node.
             if (_Design != null && _Design.ID == nodeId)
                 return true;
 

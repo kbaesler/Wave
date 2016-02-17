@@ -381,13 +381,9 @@ namespace Miner.Interop.Process
         /// </returns>
         protected override bool Initialize(IMMSessionManager extension, IMMPxUser user)
         {
-            // Create the product Session object.
-            IMMSessionManager sm = base.PxApplication.GetSessionManager();
-            if (sm == null) return false;
-
             string createUser = user.Name;
 
-            _Session = sm.CreateSession();
+            _Session = extension.CreateSession();
             _Session.set_CreateUser(ref createUser);
 
             return (_Session != null);
@@ -404,13 +400,8 @@ namespace Miner.Interop.Process
         /// </returns>
         protected override bool Initialize(IMMSessionManager extension, int nodeId)
         {
-            // Verify that the existing session isn't the same node.
             if (_Session != null && _Session.get_ID() == nodeId)
                 return true;
-
-            // Reference the TM&M Session object.
-            IMMSessionManager sm = base.PxApplication.GetSessionManager();
-            if (sm == null) return false;
 
             bool ro = false;
 
