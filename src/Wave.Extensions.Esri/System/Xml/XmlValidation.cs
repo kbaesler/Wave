@@ -168,10 +168,10 @@ namespace System.Xml
                 // Load the XML reader and perform the validation.
                 XmlTextReader xtr = new XmlTextReader(sr);
                 XmlReader xr = XmlReader.Create(xtr, settings);
-
-                // Read each line which will compare it against the XSD schema.
+                
                 while (xr.Read())
                 {
+                   // Read each line which will compare it against the XSD schema.
                 }
             }
         }

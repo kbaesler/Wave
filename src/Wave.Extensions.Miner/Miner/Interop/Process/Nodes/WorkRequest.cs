@@ -347,6 +347,7 @@ namespace Miner.Interop.Process
                 if (_WorkRequest != null)
                     while (Marshal.ReleaseComObject(_WorkRequest) > 0)
                     {
+                        // Loop until reference counter zero.
                     }
 
                 if (_Location != null)

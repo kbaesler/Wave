@@ -309,6 +309,7 @@ namespace Miner.Interop.Process
                 if (_Design != null)
                     while (Marshal.ReleaseComObject(_Design) > 0)
                     {
+                        // Loop until reference counter zero.
                     }
 
                 _Design = null;

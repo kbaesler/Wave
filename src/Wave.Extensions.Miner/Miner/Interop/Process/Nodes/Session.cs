@@ -340,6 +340,7 @@ namespace Miner.Interop.Process
                 if (_Session != null)
                     while (Marshal.ReleaseComObject(_Session) > 0)
                     {
+                        // Loop until reference counter zero.
                     }
 
                 _Session = null;
