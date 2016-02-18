@@ -21,7 +21,7 @@
         /// <value>
         ///     <c>true</c> if locked; otherwise, <c>false</c>.
         /// </value>
-        bool Locked { set; }
+        bool Locked { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether there are pending updates.
