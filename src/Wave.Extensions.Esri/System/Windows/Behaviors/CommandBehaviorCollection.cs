@@ -104,6 +104,7 @@ namespace System.Windows.Behaviors
                     break;
 
                     // When an item(s) is removed we should Dispose the BehaviorBinding
+                case NotifyCollectionChangedAction.Reset:
                 case NotifyCollectionChangedAction.Remove:
                     if (e.OldItems != null)
                         foreach (BehaviorBinding item in e.OldItems)
@@ -116,13 +117,6 @@ namespace System.Windows.Behaviors
                         foreach (BehaviorBinding item in e.NewItems)
                             item.Owner = sourceCollection.Owner;
 
-                    if (e.OldItems != null)
-                        foreach (BehaviorBinding item in e.OldItems)
-                            item.Behavior.Dispose();
-                    break;
-
-                    // When an item(s) is removed we should Dispose the BehaviorBinding
-                case NotifyCollectionChangedAction.Reset:
                     if (e.OldItems != null)
                         foreach (BehaviorBinding item in e.OldItems)
                             item.Behavior.Dispose();

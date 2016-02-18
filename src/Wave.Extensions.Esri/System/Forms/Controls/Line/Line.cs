@@ -171,10 +171,6 @@ namespace System.Forms
             int ym;
             switch (LineAlignment)
             {
-                case VerticalAlignment.Top:
-                    ym = 0;
-                    break;
-
                 case VerticalAlignment.Middle:
                     ym = Convert.ToInt32(Math.Ceiling((double) (Size.Height/2))) - 1;
                     break;
