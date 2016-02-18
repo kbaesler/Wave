@@ -133,16 +133,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="bool" /> representing <c>true</c> if the specified objects are equal; otherwise, <c>false</c>.
         /// </returns>
         protected virtual bool AreEqual(object x, object y)
-        {
-            //if (x is IRelationalOperator && y is IRelationalOperator)
-            //{
-            //    // If you add this next part, it will account for the case where two versions
-            //    // tapped into the same complex edge.  The reconcile will stitch up the
-            //    // connectivity and geometry in these cases.  However, if the 2 lines just
-            //    // had vertices added to them, only one version of the vertices will be in the final feature.
-            //    return ((IRelationalOperator)x).Equals(y);
-            //}
-
+        {            
             IClone xClone = x as IClone;
             IClone yClone = y as IClone;
             if (xClone != null && yClone != null)
