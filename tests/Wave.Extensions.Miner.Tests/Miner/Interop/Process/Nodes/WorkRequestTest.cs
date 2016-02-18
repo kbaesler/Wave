@@ -28,7 +28,7 @@ namespace Wave.Extensions.Miner.Tests
         {
             using (WorkRequest request = new WorkRequest(base.PxApplication))
             {
-                Assert.AreEqual(true, request.CreateNew(base.PxApplication.User));
+                Assert.AreEqual(true, request.Valid);
                 Assert.AreEqual(base.PxApplication.User.Name, request.Owner.Name);
 
                 request.Delete();
@@ -44,9 +44,9 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                using (WorkRequest request = new WorkRequest(base.PxApplication))
+                using (WorkRequest request = new WorkRequest(base.PxApplication, nodeID))
                 {
-                    Assert.AreEqual(true, request.Initialize(nodeID));
+                    Assert.AreEqual(true, request.Valid);
 
                     if (request.Customer != null && request.Customer.Valid)
                     {
@@ -68,9 +68,9 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                using (WorkRequest request = new WorkRequest(base.PxApplication))
+                using (WorkRequest request = new WorkRequest(base.PxApplication, nodeID))
                 {
-                    Assert.AreEqual(true, request.Initialize(nodeID));
+                    Assert.AreEqual(true, request.Valid);
                 }
             }
         }
@@ -84,9 +84,9 @@ namespace Wave.Extensions.Miner.Tests
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                using (WorkRequest request = new WorkRequest(base.PxApplication))
+                using (WorkRequest request = new WorkRequest(base.PxApplication, nodeID))
                 {
-                    Assert.AreEqual(true, request.Initialize(nodeID));
+                    Assert.AreEqual(true, request.Valid);
 
                     if (request.Location != null && request.Location.Valid)
                     {

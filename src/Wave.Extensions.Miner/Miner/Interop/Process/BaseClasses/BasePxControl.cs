@@ -89,8 +89,7 @@ namespace Miner.Interop.Process
             set
             {
                 InitControlUI(value);
-                SetLockIcon();
-                //this.Control.LoadControl(this.PxApplication, value);
+                SetLockIcon();                
             }
         }
 

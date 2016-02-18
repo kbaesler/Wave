@@ -123,6 +123,7 @@ namespace Miner.Interop.Process
                 if (this.Node != null)
                     while (Marshal.ReleaseComObject(this.Node) > 0)
                     {
+                        // Loop until reference counter zero.
                     }
 
                 this.Node = null;

@@ -775,12 +775,10 @@ namespace ESRI.ArcGIS.Geodatabase
 
                             break;
 
-                            // The feature has been deleted.
+                        // SDE Error. (Shape or row not found)
+                        // The feature has been deleted.
+                        case (int)fdoError.FDO_E_SE_ROW_NOEXIST:                            
                         case (int) fdoError.FDO_E_FEATURE_DELETED:
-                            break;
-
-                            // SDE Error. (Shape or row not found)
-                        case (int) fdoError.FDO_E_SE_ROW_NOEXIST:
                             break;
 
                         default:

@@ -204,6 +204,7 @@ namespace Miner.Framework.BaseClasses
                 if (_ErrorList != null)
                     while (Marshal.ReleaseComObject(_ErrorList) > 0)
                     {
+                        // Loop until reference counter zero.
                     }
             }
         }

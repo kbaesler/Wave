@@ -7,16 +7,14 @@ using System.Runtime.InteropServices;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.Interop.msxml2;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
-    /// Wraps the product <see cref="Miner.Interop.Process.IMMWMSDesign" /> interface into an workable object.
+    ///     Wraps the product <see cref="Miner.Interop.Process.IMMWMSDesign" /> interface into an workable object.
     /// </summary>
     [DebuggerDisplay("Name = {Name}, ID = {ID}")]
     [SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
-    public class Design : BasePxNode, IPxDesign
+    public class Design : BasePxNode<IMMWorkflowManager>, IPxDesign
     {
         #region Constants
 
@@ -51,9 +49,19 @@ namespace Miner.Interop.Process
         ///     Initializes a new instance of the <see cref="Design" /> class.
         /// </summary>
         /// <param name="pxApp">The process framework application reference.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        public Design(IMMPxApplication pxApp, int nodeId)
+            : base(pxApp, NodeTypeName, nodeId)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Design" /> class.
+        /// </summary>
+        /// <param name="pxApp">The process framework application reference.</param>
         /// <param name="design">The design.</param>
         public Design(IMMPxApplication pxApp, IMMWMSDesign design)
-            : base(pxApp, NodeTypeName)
+            : base(pxApp, NodeTypeName, design.ID)
         {
             _Design = design;
         }
@@ -226,16 +234,16 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        /// Loads the package XML from the underlying workspace.
+        ///     Loads the package XML from the underlying workspace.
         /// </summary>
         /// <returns>
-        /// Returns a <see cref="string" /> representing the design XML; otherwise <c>null</c>
+        ///     Returns a <see cref="string" /> representing the design XML; otherwise <c>null</c>
         /// </returns>
         /// <exception cref="NullReferenceException">The process framework workspace is null.</exception>
         public string GetDesignXml()
         {
             IWorkspace workspace = ((IMMPxApplicationEx2) base.PxApplication).Workspace;
-            if(workspace == null)
+            if (workspace == null)
                 throw new NullReferenceException("The process framework workspace is null.");
 
             string name = this.ID.ToString(CultureInfo.InvariantCulture);
@@ -258,30 +266,6 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
-        /// </summary>
-        /// <param name="user">The current user.</param>
-        /// <returns>
-        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully created; otherwise <c>false</c>.
-        /// </returns>
-        public override bool CreateNew(IMMPxUser user)
-        {
-            // Create the Design object.
-            IMMWorkflowManager wm = base.PxApplication.GetWorkflowManager();
-            if (wm == null) return false;
-
-            int ownerID = user.Id;
-            string nodeTypeName = NodeTypeName;
-
-            _Design = (IMMWMSDesign) wm.CreateWMSNode(ref nodeTypeName);
-            _Design.set_OwnerID(ref ownerID);
-
-            this.Update();
-
-            return (_Design != null);
-        }
-
-        /// <summary>
         ///     Deletes the <see cref="IMMPxNode" /> from the process framework database.
         /// </summary>
         public override void Delete()
@@ -291,33 +275,6 @@ namespace Miner.Interop.Process
 
             // Remove the design reference.
             this.Dispose(true);
-        }
-
-        /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
-        /// </summary>
-        /// <param name="nodeID">The node ID.</param>
-        /// <returns>
-        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully initialized; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public override bool Initialize(int nodeID)
-        {
-            // Verify that the existing session isn't the same node.
-            if (_Design != null && _Design.ID == nodeID)
-                return true;
-
-            // Reference the Design object.
-            IMMWorkflowManager wm = base.PxApplication.GetWorkflowManager();
-            if (wm == null) return false;
-
-            bool ro = false;
-            bool sm = true;
-            string nodeTypeName = NodeTypeName;
-
-            _Design = (IMMWMSDesign) wm.GetWMSNode(ref nodeTypeName, ref nodeID, ref ro, ref sm);
-
-            return (_Design != null);
         }
 
         /// <summary>
@@ -346,18 +303,30 @@ namespace Miner.Interop.Process
         ///     unmanaged resources.
         /// </param>
         protected override void Dispose(bool disposing)
-        {            
+        {
             if (disposing)
             {
                 if (_Design != null)
                     while (Marshal.ReleaseComObject(_Design) > 0)
                     {
+                        // Loop until reference counter zero.
                     }
 
                 _Design = null;
-            }            
+            }
 
             base.Dispose(disposing);
+        }
+
+        /// <summary>
+        ///     Gets the process framework extension.
+        /// </summary>
+        /// <returns>
+        ///     Returns the <see cref="IMMWorkflowManager" /> representing the framework extension used for the node.
+        /// </returns>
+        protected override IMMWorkflowManager GetFrameworkExtension()
+        {
+            return base.PxApplication.GetWorkflowManager();
         }
 
         /// <summary>
@@ -374,6 +343,50 @@ namespace Miner.Interop.Process
             return (IMMListBuilder) builder;
         }
 
-        #endregion    
+        /// <summary>
+        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="user">The current user.</param>
+        /// <returns>
+        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully created; otherwise <c>false</c>.
+        /// </returns>
+        protected override bool Initialize(IMMWorkflowManager extension, IMMPxUser user)
+        {
+            int ownerID = user.Id;
+            string nodeTypeName = NodeTypeName;
+
+            _Design = (IMMWMSDesign) extension.CreateWMSNode(ref nodeTypeName);
+            _Design.set_OwnerID(ref ownerID);
+
+            this.Update();
+
+            return (_Design != null);
+        }
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeId" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <returns>
+        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully initialized; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected override bool Initialize(IMMWorkflowManager extension, int nodeId)
+        {
+            if (_Design != null && _Design.ID == nodeId)
+                return true;
+
+            bool ro = false;
+            bool sm = true;
+            string nodeTypeName = NodeTypeName;
+
+            _Design = (IMMWMSDesign) extension.GetWMSNode(ref nodeTypeName, ref nodeId, ref ro, ref sm);
+
+            return (_Design != null);
+        }
+
+        #endregion
     }
 }

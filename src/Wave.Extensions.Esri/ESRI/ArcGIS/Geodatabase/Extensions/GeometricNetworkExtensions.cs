@@ -131,7 +131,7 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
             if (weightName == null) throw new ArgumentNullException("weightName");
 
-            string[] names = {weightName, weightName.ToLower(), weightName.ToUpper()};
+            string[] names = { weightName, weightName.ToLowerInvariant(), weightName.ToLowerInvariant() };
             INetSchema netSchema = (INetSchema) source.Network;
             return names.Select(name => netSchema.WeightByName[name]).Any(netWeight => netWeight != null);
         }
