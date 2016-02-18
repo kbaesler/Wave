@@ -86,7 +86,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
             IntermediateRow other = obj as IntermediateRow;
             if (other == null) return false;
 
-            return other.DestinationForeignKey.Equals(this.DestinationForeignKey) && other.OriginForeignKey.Equals(this.OriginForeignKey);
+            return other.DestinationForeignKey.Equals(this.DestinationForeignKey, StringComparison.InvariantCultureIgnoreCase) && other.OriginForeignKey.Equals(this.OriginForeignKey, StringComparison.InvariantCultureIgnoreCase);
         }
 
         /// <summary>
