@@ -120,7 +120,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                         list.Add(tableName, rows);
                     }
-                }                
+                }
             }
 
             return list;
@@ -347,35 +347,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace does not support the edit session
         ///     mode.;multiuserEditSessionMode
         /// </exception>
-        public static bool PerformOperation(this IVersion source, Func<bool> operation, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        public static bool PerformOperation(this IVersion source, Func<bool> operation, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode)
         {
             return ((IWorkspace) source).PerformOperation(operation, withUndoRedo, multiuserEditSessionMode);
-        }
-
-        /// <summary>
-        ///     Starts editing the workspace using the specified <paramref name="withUndoRedo" /> and
-        ///     <paramref name="multiuserEditSessionMode" /> parameters.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
-        /// <param name="multiuserEditSessionMode">
-        ///     The edit session mode that can be used to indicate non-versioned or versioned
-        ///     editing for workspaces that support multiuser editing.
-        /// </param>
-        /// <returns>
-        ///     Returns a <see cref="IEditableWorkspace" /> respresenting an editable workspace (that is disposable).
-        /// </returns>
-        /// <exception cref="System.ArgumentException">
-        ///     The workspace does not support the edit session
-        ///     mode.;multiuserEditSessionMode
-        /// </exception>
-        /// <remarks>
-        ///     The <see cref="IEditableWorkspace" /> implements the <see cref="IDisposable" /> interface, meaning it should be
-        ///     used within a using statement.
-        /// </remarks>
-        public static IEditableWorkspace StartEditing(this IVersion source, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
-        {
-            return ((IWorkspace) source).StartEditing(withUndoRedo, multiuserEditSessionMode);
         }
 
         #endregion

@@ -491,7 +491,7 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IFeatureWorkspace) source).OpenTable(name);
         }
 
-#if V10 
+#if V10
         /// <summary>
         ///     Gets all of the tables in the workspace.
         /// </summary>
@@ -578,17 +578,20 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace does not support the edit session
         ///     mode.;multiuserEditSessionMode
         /// </exception>
-        public static bool PerformOperation(this IWorkspace source, Func<bool> operation, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        public static bool PerformOperation(this IWorkspace source, Func<bool> operation, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode)
         {
             if (source == null) return false;
             if (operation == null) throw new ArgumentNullException("operation");
 
             bool result;
 
-            using (var editableWorkspace = source.StartEditing(withUndoRedo, multiuserEditSessionMode))
+            using (var ew = new EditableWorkspace(source))
             {
+                ew.StartEditing(withUndoRedo, multiuserEditSessionMode);
+
                 result = operation();
-                editableWorkspace.StopEditing(result);
+
+                ew.StopEditing(result);
             }
 
             return result;
@@ -619,37 +622,6 @@ namespace ESRI.ArcGIS.Geodatabase
                     source.ExecuteSQL(commandText);
                 }
             }
-        }
-
-        /// <summary>
-        ///     Starts editing the workspace using the specified <paramref name="withUndoRedo" /> and
-        ///     <paramref name="multiuserEditSessionMode" /> parameters.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
-        /// <param name="multiuserEditSessionMode">
-        ///     The edit session mode that can be used to indicate non-versioned or versioned
-        ///     editing for workspaces that support multiuser editing.
-        /// </param>
-        /// <returns>
-        ///     Returns a <see cref="IEditableWorkspace" /> respresenting an editable workspace (that is disposable).
-        /// </returns>
-        /// <exception cref="System.ArgumentException">
-        ///     The workspace does not support the edit session
-        ///     mode.;multiuserEditSessionMode
-        /// </exception>
-        /// <remarks>
-        ///     The <see cref="IEditableWorkspace" /> implements the <see cref="IDisposable" /> interface, meaning it should be
-        ///     used within a using statement.
-        /// </remarks>
-        public static IEditableWorkspace StartEditing(this IWorkspace source, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
-        {
-            if (source == null) return null;
-
-            IEditableWorkspace editableWorkspace = new EditableWorkspace(source);
-            editableWorkspace.StartEditing(withUndoRedo, multiuserEditSessionMode);
-
-            return editableWorkspace;
         }
 
         #endregion

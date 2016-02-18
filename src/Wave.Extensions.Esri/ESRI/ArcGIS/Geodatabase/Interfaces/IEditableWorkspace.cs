@@ -46,7 +46,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace does not support the edit session
         ///     mode.;multiuserEditSessionMode
         /// </exception>
-        void StartEditing(bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned);
+        void StartEditing(bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode);
 
         /// <summary>
         ///     Stops editing the workspace.

@@ -97,6 +97,21 @@ namespace ESRI.ArcGIS.Geodatabase
             return versionUtils.FindVersion(source, name);
         }
 
+        /// <summary>
+        ///     Finds the <see cref="IFeatureClass" /> that has been assigned the <paramref name="modelName" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has been assigned the class model name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IFeatureClass GetFeatureClass(this IWorkspace source, string modelName)
+        {
+            return source.GetFeatureClass(modelName, true);
+        }
 
         /// <summary>
         ///     Finds the <see cref="IFeatureClass" /> that has been assigned the <paramref name="modelName" /> that is within the
@@ -113,7 +128,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IFeatureClass GetFeatureClass(this IWorkspace source, string modelName, bool throwException = true)
+        public static IFeatureClass GetFeatureClass(this IWorkspace source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -168,6 +183,22 @@ namespace ESRI.ArcGIS.Geodatabase
             }
         }
 
+        /// <summary>
+        ///     Finds the <see cref="IObjectClass" /> that has been assigned the <paramref name="modelName" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <returns>
+        ///     Returns a <see cref="IObjectClass" /> representing the object class that has been assigned the class model name,
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IObjectClass GetObjectClass(this IWorkspace source, string modelName)
+        {
+            return source.GetObjectClass(modelName, true);
+        }
 
         /// <summary>
         ///     Finds the <see cref="IObjectClass" /> that has been assigned the <paramref name="modelName" /> that is within the
@@ -185,7 +216,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IObjectClass GetObjectClass(this IWorkspace source, string modelName, bool throwException = true)
+        public static IObjectClass GetObjectClass(this IWorkspace source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -246,6 +277,23 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The workspace.</param>
         /// <param name="modelName">Name of the model.</param>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the table that has been assigned the class model name, otherwise
+        ///     <c>null</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static ITable GetTable(this IWorkspace source, string modelName)
+        {
+            return source.GetTable(modelName, true);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="ITable" /> that has been assigned the <paramref name="modelName" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The workspace.</param>
+        /// <param name="modelName">Name of the model.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -256,7 +304,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static ITable GetTable(this IWorkspace source, string modelName, bool throwException = true)
+        public static ITable GetTable(this IWorkspace source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");

@@ -33,6 +33,21 @@ namespace ESRI.ArcGIS.Geodatabase
             return names.AsEnumerable();
         }
 
+        /// <summary>
+        ///     Finds the <see cref="IField" /> that has been assigned the <paramref name="modelName" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class to check for model names</param>
+        /// <param name="modelName">The field model name.</param>
+        /// <returns>
+        ///     Returns the  <see cref="ESRI.ArcGIS.Geodatabase.IField" /> that has been assigned the model name.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static IField GetField(this IObjectClass source, string modelName)
+        {
+            return source.GetField(modelName, true);
+        }
 
         /// <summary>
         ///     Finds the <see cref="IField" /> that has been assigned the <paramref name="modelName" /> that is within the
@@ -49,7 +64,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static IField GetField(this IObjectClass source, string modelName, bool throwException = true)
+        public static IField GetField(this IObjectClass source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -69,6 +84,22 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The object class</param>
         /// <param name="modelName">The field model name.</param>
+        /// <returns>
+        ///     Returns the  <see cref="int" /> representing the index of the field assigned the model name.
+        /// </returns>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static int GetFieldIndex(this IObjectClass source, string modelName)
+        {
+            return source.GetFieldIndex(modelName, true);
+        }
+
+        /// <summary>
+        ///     Finds index of the <see cref="IField" /> that has been assigned the <paramref name="modelName" /> that is within
+        ///     the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class</param>
+        /// <param name="modelName">The field model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -77,7 +108,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns the  <see cref="int" /> representing the index of the field assigned the model name.
         /// </returns>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static int GetFieldIndex(this IObjectClass source, string modelName, bool throwException = true)
+        public static int GetFieldIndex(this IObjectClass source, string modelName, bool throwException)
         {
             if (source == null) return -1;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -124,11 +155,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="subtypeCode">The subtype code.</param>
+        /// <returns>
+        ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the class.
+        /// </returns>
+        public static IMMFieldManager GetFieldManager(this IObjectClass source, int subtypeCode)
+        {
+            return source.GetFieldManager(subtypeCode, null);
+        }
+
+        /// <summary>
+        ///     Gets the field manager for the specified <paramref name="source" />
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="subtypeCode">The subtype code.</param>
         /// <param name="auxiliaryFieldBuilder">The auxiliary field builder.</param>
         /// <returns>
         ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the class.
         /// </returns>
-        public static IMMFieldManager GetFieldManager(this IObjectClass source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder = null)
+        public static IMMFieldManager GetFieldManager(this IObjectClass source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder)
         {
             if (source == null) return null;
 
@@ -189,6 +233,21 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The object class.</param>
         /// <param name="modelName">The field model name.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the name of the field, otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static string GetFieldName(this IObjectClass source, string modelName)
+        {
+            return source.GetFieldName(modelName, true);
+        }
+
+        /// <summary>
+        ///     Returns the name of the field that is assigned the <paramref name="modelName" /> on the <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <param name="modelName">The field model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -198,7 +257,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static string GetFieldName(this IObjectClass source, string modelName, bool throwException = true)
+        public static string GetFieldName(this IObjectClass source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -295,6 +354,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The object class.</param>
         /// <param name="relationshipRole">The relationship role.</param>
         /// <param name="modelName">The class model name.</param>
+        /// <returns>
+        ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.IRelationshipClass" /> representing the relationship assigned any of
+        ///     the class model names, otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IRelationshipClass GetRelationshipClass(this IObjectClass source, esriRelRole relationshipRole, string modelName)
+        {
+            return source.GetRelationshipClass(relationshipRole, modelName, true);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="IRelationshipClass" /> using the specified <paramref name="source" /> and
+        ///     <paramref name="relationshipRole" /> that has been assigned the <paramref name="modelName" />.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <param name="relationshipRole">The relationship role.</param>
+        /// <param name="modelName">The class model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -305,12 +382,30 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IRelationshipClass GetRelationshipClass(this IObjectClass source, esriRelRole relationshipRole, string modelName, bool throwException = true)
+        public static IRelationshipClass GetRelationshipClass(this IObjectClass source, esriRelRole relationshipRole, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
             return source.GetRelationshipClass(relationshipRole, new[] {modelName}, throwException);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="IRelationshipClass" /> using the specified <paramref name="source" /> and
+        ///     <paramref name="relationshipRole" /> that has been assigned any of the <paramref name="modelNames" />.
+        /// </summary>
+        /// <param name="source">The object class.</param>
+        /// <param name="relationshipRole">The relationship role.</param>
+        /// <param name="modelNames">The class model names.</param>
+        /// <returns>
+        ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.IRelationshipClass" /> representing the relationship assigned any of
+        ///     the class model names, otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelNames</exception>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IRelationshipClass GetRelationshipClass(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames)
+        {
+            return source.GetRelationshipClass(relationshipRole, modelNames, true);
         }
 
         /// <summary>
@@ -330,7 +425,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IRelationshipClass GetRelationshipClass(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames, bool throwException = true)
+        public static IRelationshipClass GetRelationshipClass(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames, bool throwException)
         {
             if (source == null) return null;
             if (modelNames == null) throw new ArgumentNullException("modelNames");

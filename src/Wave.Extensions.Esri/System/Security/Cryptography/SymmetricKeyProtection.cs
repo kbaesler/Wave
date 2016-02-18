@@ -54,6 +54,28 @@ namespace System.Security.Cryptography
             return Protect(unencryptedData, passphrase, SALT, IV);
         }
 
+        /// <summary>
+        ///     Encrypts specified plaintext using Rijndael symmetric key algorithm
+        ///     and returns a base64-encoded result.
+        /// </summary>
+        /// <param name="unencryptedData">Plaintext value to be encrypted.</param>
+        /// <param name="passphrase">
+        ///     Passphrase from which a pseudo-random password will be derived. The derived password will be used
+        ///     to generate the encryption key. Passphrase can be any string. In this example we assume that this
+        ///     passphrase is an ASCII string.
+        /// </param>
+        /// <param name="salt">Salt value used along with passphrase to generate password. Salt can be any string.</param>
+        /// <param name="initializationVector">
+        ///     Initialization vector (or IV). This value is required to encrypt the
+        ///     first block of plaintext data. For RijndaelManaged class IV must be exactly 16 ASCII characters long.
+        /// </param>
+        /// <returns>
+        ///     Encrypted value formatted as a base64-encoded string.
+        /// </returns>
+        public static string Protect(string unencryptedData, string passphrase, string salt, string initializationVector)
+        {
+            return Protect(unencryptedData, passphrase, salt, initializationVector, 100, 256);
+        }
 
         /// <summary>
         ///     Encrypts specified plaintext using Rijndael symmetric key algorithm
@@ -78,7 +100,7 @@ namespace System.Security.Cryptography
         /// <returns>
         ///     Encrypted value formatted as a base64-encoded string.
         /// </returns>
-        public static string Protect(string unencryptedData, string passphrase, string salt, string initializationVector, int iterations = 100, int keySize = 256)
+        public static string Protect(string unencryptedData, string passphrase, string salt, string initializationVector, int iterations, int keySize)
         {
             // Convert strings into byte arrays.
             // Let us assume that strings only contain ASCII codes.
@@ -166,6 +188,37 @@ namespace System.Security.Cryptography
         ///     Initialization vector (or IV). This value is required to encrypt the
         ///     first block of plaintext data. For RijndaelManaged class IV must be exactly 16 ASCII characters long.
         /// </param>
+        /// <returns>
+        ///     Decrypted string value.
+        /// </returns>
+        /// <remarks>
+        ///     Most of the logic in this function is similar to the Encrypt
+        ///     logic. In order for decryption to work, all parameters of this function
+        ///     - except cipherText value - must match the corresponding parameters of
+        ///     the Encrypt function which was called to generate the
+        ///     ciphertext.
+        /// </remarks>
+        public static string Unprotect(string encryptedData, string passphrase, string salt, string initializationVector)
+        {
+            return Unprotect(encryptedData, passphrase, salt, initializationVector, 100, 256);
+        }
+
+        /// <summary>
+        ///     Decrypts specified ciphertext using Rijndael symmetric key algorithm.
+        /// </summary>
+        /// <param name="encryptedData">Base64-formatted ciphertext value.</param>
+        /// <param name="passphrase">
+        ///     Passphrase from which a pseudo-random password will be derived. The derived password will be used
+        ///     to generate the encryption key. Passphrase can be any string.
+        /// </param>
+        /// <param name="salt">
+        ///     Salt value used along with passphrase to generate password. Salt can
+        ///     be any string.
+        /// </param>
+        /// <param name="initializationVector">
+        ///     Initialization vector (or IV). This value is required to encrypt the
+        ///     first block of plaintext data. For RijndaelManaged class IV must be exactly 16 ASCII characters long.
+        /// </param>
         /// <param name="iterations">Number of iterations used to generate password. One or two iterations should be enough.</param>
         /// <param name="keySize">
         ///     Size of encryption key in bits. Allowed values are: 128, 192, and 256. Longer keys are more
@@ -181,7 +234,7 @@ namespace System.Security.Cryptography
         ///     the Encrypt function which was called to generate the
         ///     ciphertext.
         /// </remarks>
-        public static string Unprotect(string encryptedData, string passphrase, string salt, string initializationVector, int iterations = 100, int keySize = 256)
+        public static string Unprotect(string encryptedData, string passphrase, string salt, string initializationVector, int iterations, int keySize)
         {
             // Convert strings defining encryption key characteristics into byte
             // arrays. Let us assume that strings only contain ASCII codes.
