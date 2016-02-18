@@ -157,6 +157,7 @@
       <HintPath>C:\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Controls.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Miner.Desktop.CuFilter, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Framework, Version=9.2.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Framework.dll</HintPath>

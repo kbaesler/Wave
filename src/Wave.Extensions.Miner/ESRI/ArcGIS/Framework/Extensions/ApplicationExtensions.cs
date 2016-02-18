@@ -5,6 +5,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner;
+using Miner.Desktop.CuFilter;
 using Miner.Geodatabase;
 using Miner.Interop;
 using Miner.Interop.Process;
@@ -55,6 +56,17 @@ namespace ESRI.ArcGIS.Framework
             if (editor == null) return null;
 
             return editor.FindExtension(uid) as IMMAttributeEditor;
+        }
+
+        /// <summary>
+        ///     Gets the compatibile unit library.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="ICuLibrary" /> representing the extension for the library.</returns>
+        public static ICuLibrary GetCULibrary(this IApplication source)
+        {
+            CuLibraryExtension extension = source.FindExtensionByName(ArcFM.Extensions.Name.CULibrary) as CuLibraryExtension;
+            return (extension == null) ? null : extension.CuLibrary;
         }
 
         /// <summary>
