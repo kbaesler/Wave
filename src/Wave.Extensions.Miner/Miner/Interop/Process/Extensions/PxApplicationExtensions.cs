@@ -219,7 +219,7 @@ namespace Miner.Interop.Process
             if (string.IsNullOrEmpty(source.Login.SchemaName))
                 return tableName;
 
-            if (tableName.IndexOf('.') > 0)
+            if (tableName.Contains("."))
                 return tableName;
 
             return string.Format(CultureInfo.InvariantCulture, "{0}.{1}", source.Login.SchemaName, tableName);

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -88,8 +87,8 @@ namespace Miner.Interop.Process
         {
             set
             {
-                InitControlUI(value);
-                SetLockIcon();                
+                InitializeComponents(value);
+                SetLockIcon();
             }
         }
 
@@ -203,57 +202,18 @@ namespace Miner.Interop.Process
         #region Protected Methods
 
         /// <summary>
-        ///     Gets the controls information.
+        ///     Initializes the components.
         /// </summary>
-        /// <param name="pxNode">The node.</param>
-        /// <returns></returns>
-        protected abstract Hashtable GetControlsInfo(IMMPxNode pxNode);
+        /// <param name="node">The node.</param>
+        protected void InitializeComponents(IMMPxNode node)
+        {
+            Control.LoadControl(PxApplication, node);
+        }
 
         /// <summary>
         ///     Sets the lock icon.
         /// </summary>
         protected abstract void SetLockIcon();
-
-        #endregion
-
-        #region Private Methods
-
-        private void InitControlUI(IMMPxNode node)
-        {
-            Hashtable controlsInfo = GetControlsInfo(node);
-            PopulateControlUI(Control as Control, controlsInfo);
-
-
-            IPxControlUI pxCtrlUI = (IPxControlUI) Control;
-            pxCtrlUI.LoadControl(PxApplication, node);
-        }
-
-
-        private void PopulateControlUI(Control parentCtrl, Hashtable controlsInfo)
-        {
-            if (parentCtrl == null || controlsInfo.Count == 0)
-            {
-                return;
-            }
-
-            foreach (Control aCtrl in parentCtrl.Controls)
-            {
-                if (aCtrl is TextBox && aCtrl.Tag != null)
-                {
-                    object aCtrlTag = aCtrl.Tag;
-
-                    if (controlsInfo.ContainsKey(aCtrlTag) && controlsInfo[aCtrlTag] != null)
-                    {
-                        aCtrl.Text = controlsInfo[aCtrlTag].ToString();
-                        controlsInfo.Remove(aCtrlTag);
-                    }
-                }
-                else
-                {
-                    PopulateControlUI(aCtrl, controlsInfo);
-                }
-            }
-        }
 
         #endregion
     }
