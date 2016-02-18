@@ -188,16 +188,16 @@ namespace ESRI.ArcGIS.esriSystem
         /// <summary>
         ///     Initializes or (checks out) the product licenses that correspond to the specified product code.
         /// </summary>
-        /// <param name="productCode">The product code.</param>
+        /// <param name="licensedProduct">The product code.</param>
         /// <returns>
         ///     Returns the <see cref="esriLicenseStatus" /> representing the status of the product.
         /// </returns>
-        protected override esriLicenseStatus InitializeProduct(esriLicenseProductCode productCode)
+        protected override esriLicenseStatus InitializeProduct(esriLicenseProductCode licensedProduct)
         {
-            esriLicenseStatus status = this.License.IsProductCodeAvailable(productCode);
+            esriLicenseStatus status = this.License.IsProductCodeAvailable(licensedProduct);
             if (status == esriLicenseStatus.esriLicenseAvailable)
             {
-                status = this.License.Initialize(productCode);
+                status = this.License.Initialize(licensedProduct);
                 if (this.IsProductInitialized(status))
                 {
                     this.InitializedProduct = this.License.InitializedProduct();

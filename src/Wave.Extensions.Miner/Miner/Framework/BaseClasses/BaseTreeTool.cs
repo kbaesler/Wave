@@ -187,7 +187,7 @@ namespace Miner.Framework.BaseClasses
         protected abstract int InternalEnabled(ID8EnumListItem enumItems, int itemCount);
 
         /// <summary>
-        ///     Executes the tree tool within error handling that reports all exceptions to the user via a <see cref="Log" />
+        ///     Executes the tree tool within error handling.
         /// </summary>
         /// <param name="enumItems">The enumeration of items.</param>
         /// <param name="itemCount">The item count.</param>

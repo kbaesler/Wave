@@ -105,17 +105,17 @@ namespace Miner.Interop.Internal
         /// </returns>
         protected override mmLicenseStatus InitializeProduct(mmLicensedProductCode licensedProduct)
         {
-            mmLicenseStatus statusCode = this.License.IsProductCodeAvailable(licensedProduct);
-            if (statusCode == mmLicenseStatus.mmLicenseAvailable)
+            mmLicenseStatus status = this.License.IsProductCodeAvailable(licensedProduct);
+            if (status == mmLicenseStatus.mmLicenseAvailable)
             {
-                statusCode = this.License.Initialize(licensedProduct);
-                if (this.IsProductInitialized(statusCode))
+                status = this.License.Initialize(licensedProduct);
+                if (this.IsProductInitialized(status))
                 {
                     this.InitializedProduct = _AppInit.InitializedProduct();
                 }
             }
 
-            return statusCode;
+            return status;
         }
 
         /// <summary>

@@ -39,8 +39,7 @@ namespace Miner.Interop.Process
         public IMMPxApplication PxApplication { set; protected get; }
 
         /// <summary>
-        ///     Deletes the specified px node from the process framework database table. Any errors the occur will be logged to the
-        ///     event log using <see cref="Log" />.
+        ///     Deletes the specified px node from the process framework database table.
         /// </summary>
         /// <param name="pPxNode">The node.</param>
         /// <param name="sMsg">The message.</param>
