@@ -1,4 +1,6 @@
-﻿using ESRI.ArcGIS.Editor;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
@@ -115,7 +117,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns the <see cref="Miner.Interop.IMMLogin2" /> representing the object that was used to log into ArcFM.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
         public static IMMLogin2 GetLogin(this IApplication source)
         {
             if (source == null) return null;
@@ -129,7 +131,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns the <see cref="IWorkspace" /> representing database that was logged into from the ArcFM Login screen.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
         public static IWorkspace GetLoginWorkspace(this IApplication source)
         {
             if (source == null) return null;
@@ -161,7 +163,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns the <see cref="Miner.Interop.Process.IMMPxApplication" /> representing the process framework
         ///     reference.
         /// </returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Px"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Px")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Px"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Px")]
         public static IMMPxApplication GetPxApplication(this IApplication source)
         {
             if (source == null) return null;
@@ -175,7 +177,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns a <see cref="Miner.Interop.ID8List" /> representing the contents on the tab.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")]
         public static ID8List GetQAQCTab(this IApplication source)
         {
             if (source == null) return null;
@@ -219,6 +221,17 @@ namespace ESRI.ArcGIS.Framework
             if (source == null) return null;
 
             return source.FindExtensionByName(ArcFM.Extensions.Name.TraceBridge) as IMMTraceBridge;
+        }
+
+        /// <summary>
+        ///     Gets the standard workspaces (such as LoginWorkspace, EditWorkspace, and LibraryWorkspace).
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IMMStandardWorkspaces" /> representing the standard workpaces.</returns>
+        public static IMMStandardWorkspaces GetWorkspaces(this IApplication source)
+        {
+            var props = source.GetProperties();
+            return props as IMMStandardWorkspaces;
         }
 
         #endregion
