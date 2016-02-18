@@ -441,6 +441,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             while (Marshal.ReleaseComObject(source) > 0)
             {
+                // Empty on purpose.
             }
         }
 
@@ -452,6 +453,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             while (Marshal.ReleaseComObject(source) > 0)
             {
+                // Empty on purpose.
             }
         }
 
