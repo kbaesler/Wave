@@ -263,7 +263,7 @@ namespace System.Security.Cryptography
                 using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
                 {
                     // Since at this point we don't know what the size of decrypted data
-                    // will be, allocate the buffer long enough to hold ciphertext;
+                    // will be, allocate the buffer long enough to hold ciphertext,
                     // plaintext is never longer than ciphertext.
                     byte[] plainTextBytes = new byte[cipherTextBytes.Length];
 
