@@ -39,6 +39,7 @@ using(RuntimeAuthorization lic = new RuntimeAuthorization(ProductCode.Desktop))
   }
 } // Check-in licenses.
 ```
+
 - When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.
 
 ## Geodatabase Connections
@@ -49,6 +50,7 @@ var connectionFile = Path.Combine(Environment.GetFolderPath(SpecialFolders.Appli
 var workspace = WorkspaceFactories.Open(connectionFile
 var dbms = workspace.GetDBMS();
 ```
+
 ## Disabling Auto Updaters
 There are cases when a **custom** ArcFM Auto Updater (AU) has been developed needs to temporarily `disable` subsequent calls.
 
@@ -59,7 +61,7 @@ using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
 }
 ```
 
-## Map Data
+## Map
 
 ### Layers
 The feature layers in the map can be traverse using the `Where` method extension.
@@ -86,10 +88,8 @@ When using Session Manager or Workflow Manager you often need to extend the ArcF
 ```java
 public class ClientSession : Session {
 
-  private string _ClientName;
-
   public ClientSession(IMMPxApplication pxApp)
-    : base(pxApp, sessionId) {
+    : base(pxApp) {
 
   }
 
@@ -98,7 +98,7 @@ public class ClientSession : Session {
 
   }
 
-  public string ClientName { get { return _ClientName; } }
+  public string ClientName {get; set;}
 
   protected override bool Initialize(IMMSessionManager extension, int nodeID){
 
@@ -108,7 +108,7 @@ public class ClientSession : Session {
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
     var commandText = string.Format("SELECT name FROM {0} WHERE session_id = {1}",
                                       tableName, nodeID);
-    _ClientName = base.Application.ExecuteScalar(commandText, "<null>");
+    this.ClientName = base.Application.ExecuteScalar(commandText, "<null>");
 
     return true;
   }
@@ -120,7 +120,7 @@ public class ClientSession : Session {
 
     var tableName = base.Application.GetQualifiedTableName("CLIENT_SESSION");
     var commandText = string.Format("INSERT INTO {0} VALUES({1},'{2}')",
-                                      tableName, base.ID _ClientName);
+                                      tableName, base.ID, this.ClientName);
     int recordsAffected = base.Application.ExecuteNonQuery(commandText);
     return recordsAffected == 1;
   }
@@ -128,15 +128,16 @@ public class ClientSession : Session {
 ```
 
 ### Session / Design Accessors
-When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design. The easiest way to access the data is through the `GetSession` and `GetDesign` methods on the `IMMPxApplication` interface.
+When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design. The easiest way to access the data is through the `GetSession`, `GetWorkRequest` or `GetDesign` methods on the `IMMPxApplication` interface.
 
 ```java
 var pxApplication = ArcMap.Application.GetPxApplication();
 var session = pxApplication.GetSession();
 var design = pxApplication.GetDesign();
+var request = pxApplication.GetWorkRequest();
 ```
 
-- If you have extended the Session or Design, you can access it via the `action` parameter.
+- If you have extended the `Session`, `WorkRequest` or `Design`, you can access it via the `action` parameter.
 
 ```java
 var pxApplication = ArcMap.Application.GetPxApplication();
