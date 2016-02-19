@@ -1,23 +1,27 @@
 # Release Notes
 This will serve as a reference to the release notes with regards to the `release` version of the nuget packages that are published.
 
-## Version 1.0.1 - *Coming Soon*
+## Roadmap
+These are the changes, additions, removals that are actively being worked on and will be included in future releases.
+
 ### Added
-- New extensions for the `ISqlWorkspace` interface. [^1]
-- Added `GetWorkspaces` to the `IApplication` interface which will return the `IMMStandardWorkspace` interface that will give the `LoginWorkspace`, `LibraryWorkspace`, and `EditWorkspace`. [^2]
+- Added `Execute` extension method to the `ISqlWorkspace` interface to support query cursors. [^1]
+- Added `GetWorkspaces` extension method to the `IApplication` interface which will return the `IMMStandardWorkspace` interface that will give the `LoginWorkspace`, `LibraryWorkspace`, and `EditWorkspace`. [^2]
 - Added getter property for the `Locked` property on the `IPxControlUI` interface. [^2]
-- Added `GetCULibrary` to the `IApplication` interface which will return the `ICuLibrary` interface used for interacting with the storage of the library.
+- Added `GetCULibrary` to the `IApplication` interface which will return the `ICuLibrary` interface used for interacting with the storage of the library. [^2]
 
 ### Removed
-- The `CreateNew` and `Initialize` methods on the `IPxNode` interface have been removed. [^2]
+- The `CreateNew` and `Initialize` methods on the `IPxNode` interface have been removed. [^2] [^4]
+- The  `ReferenceDictionary` has been replaced with the `ToDictionary` extension method on the `Miner.Interop.Process.IDictionary` which converts it to `Dictionary{String, Object}`. [^2] [^4]
 
 ### Changed
 - Using overloading mechanism instead of the optional parameters. [^3]
 - The `Session`, `Design` and `WorkRequest` classes updated to reflect changes to the `IPxNode` interface and now create and initialize based on the constructor parameters. [^2]
-- Instance members should not write to `static` fields in `ComboTreeDropDown.cs`. [^1]
-- Removed `virtual` from the `DictionaryChanged` and `DictionaryChanging` events in the `ObservableDictionary.cs` [^1]
-- Initialize the `BehaviorsProperty` property in static constructor in the `CommandBehaviorCollection.cs` [^1]
+- Instance members should not write to `static` fields in `ComboTreeDropDown`. [^1]
+- Removed `virtual` from the `DictionaryChanged` and `DictionaryChanging` events in the `ObservableDictionary` [^1]
+- Initialize the `BehaviorsProperty` property in static constructor in the `CommandBehaviorCollection` [^1]
 - Defined the locale to be used in `String` operations. [^3]
+- The `StartEditing` extension methods on the `IVersion` and `IWorkspace` interfaces were removed, as they were duplicates of the `PerformOperation` methods.[^1] [^4]
 
 ---
 
@@ -26,8 +30,11 @@ This will serve as a reference to the release notes with regards to the `release
 ### New
  - Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products
 
- [^1]: **Wave Extensions for ArcGIS** package.
 
- [^2]: **Wave Extensions for ArcFM** package.
+ [^1]: A change that is inclusive of the **Wave Extensions for ArcGIS** package.
 
- [^3]: **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
+ [^2]: A change that is inclusive of the **Wave Extensions for ArcFM** package.
+
+ [^3]: A change that is both **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
+
+ [^4]: A change that *potentially* causes other components to **fail**.
