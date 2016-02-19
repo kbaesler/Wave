@@ -130,12 +130,9 @@ namespace ESRI.ArcGIS.Geodatabase
                 {
                     if (source.Fields.Field[i].Name.Equals(fieldName, StringComparison.OrdinalIgnoreCase))
                     {
-                        if (rowChanges.ValueChanged[i])
+                        if (rowChanges.ValueChanged[i] && !list.ContainsKey(fieldName))
                         {
-                            if (!list.ContainsKey(fieldName))
-                            {
-                                list.Add(fieldName, rowChanges.OriginalValue[i]);
-                            }
+                            list.Add(fieldName, rowChanges.OriginalValue[i]);
                         }
                     }
                 }

@@ -453,6 +453,18 @@ namespace ESRI.ArcGIS.Geodatabase
 
         #region Public Methods
 
+
+        /// <summary>
+        /// Gets the row from the child or source workspace.
+        /// </summary>
+        /// <returns>
+        /// Returns a <see cref="IRow" /> representing the row.
+        /// </returns>
+        /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
+        public IRow GetRow()
+        {
+            return this.GetRow(RowState.ChildVersion);
+        }
         /// <summary>
         ///     Gets the row from the specified workspace.
         /// </summary>
@@ -461,7 +473,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IRow" /> representing the row.
         /// </returns>
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
-        public IRow GetRow(RowState rowState = RowState.ChildVersion)
+        public IRow GetRow(RowState rowState)
         {
             IWorkspace workspace;
 
