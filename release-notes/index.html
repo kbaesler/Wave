@@ -161,7 +161,7 @@
     
         <li class="main active"><a href="#release-notes">Release Notes</a></li>
         
-            <li><a href="#version-101-coming-soon">Version 1.0.1 - Coming Soon</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
         
             <li><a href="#version-100-2016-02-06">Version 1.0.0 - 2016-02-06</a></li>
         
@@ -172,25 +172,53 @@
 
 <h1 id="release-notes">Release Notes</h1>
 <p>This will serve as a reference to the release notes with regards to the <code>release</code> version of the nuget packages that are published.</p>
-<h2 id="version-101-coming-soon">Version 1.0.1 - <em>Coming Soon</em></h2>
+<h2 id="roadmap">Roadmap</h2>
+<p>These are the changes, additions, removals that are actively being worked on and will be included in future releases.</p>
 <h3 id="added">Added</h3>
 <ul>
-<li>New extensions for the <code>ISqlWorkspace</code> interface.</li>
+<li>Added <code>Execute</code> extension method to the <code>ISqlWorkspace</code> interface to support query cursors. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code>GetWorkspaces</code> extension method to the <code>IApplication</code> interface which will return the <code>IMMStandardWorkspace</code> interface that will give the <code>LoginWorkspace</code>, <code>LibraryWorkspace</code>, and <code>EditWorkspace</code>. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+<li>Added getter property for the <code>Locked</code> property on the <code>IPxControlUI</code> interface. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+<li>Added <code>GetCULibrary</code> to the <code>IApplication</code> interface which will return the <code>ICuLibrary</code> interface used for interacting with the storage of the library. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 </ul>
 <h3 id="removed">Removed</h3>
 <ul>
-<li>The <code>CreateNew</code> and <code>Initialize</code> methods on the <code>IPxNode</code> interface have been removed.</li>
+<li>The <code>CreateNew</code> and <code>Initialize</code> methods on the <code>IPxNode</code> interface have been removed. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
+<li>The  <code>ReferenceDictionary</code> has been replaced with the <code>ToDictionary</code> extension method on the <code>Miner.Interop.Process.IDictionary</code> which converts it to <code>Dictionary{String, Object}</code>. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>The <code>Session</code>, <code>Design</code> and <code>WorkRequest</code> classes updated to reflect changes to the <code>IPxNode</code> interface and now create and initialize based on the constructor parameters.</li>
+<li>Using overloading mechanism instead of the optional parameters. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
+<li>The <code>Session</code>, <code>Design</code> and <code>WorkRequest</code> classes updated to reflect changes to the <code>IPxNode</code> interface and now create and initialize based on the constructor parameters. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+<li>Instance members should not write to <code>static</code> fields in <code>ComboTreeDropDown</code>. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Removed <code>virtual</code> from the <code>DictionaryChanged</code> and <code>DictionaryChanging</code> events in the <code>ObservableDictionary</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Initialize the <code>BehaviorsProperty</code> property in static constructor in the <code>CommandBehaviorCollection</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Defined the locale to be used in <code>String</code> operations. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
+<li>The <code>StartEditing</code> extension methods on the <code>IVersion</code> and <code>IWorkspace</code> interfaces were removed, as they were duplicates of the <code>PerformOperation</code> methods.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 <hr />
 <h2 id="version-100-2016-02-06">Version 1.0.0 - 2016-02-06</h2>
 <h3 id="new">New</h3>
 <ul>
 <li>Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products</li>
-</ul></div>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>A change that is inclusive of the <strong>Wave Extensions for ArcGIS</strong> package.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>A change that is inclusive of the <strong>Wave Extensions for ArcFM</strong> package.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>A change that is both <strong>Wave Extensions for ArcGIS</strong> and <strong>Wave Extensions for ArcFM</strong> packages.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>A change that <em>potentially</em> causes other components to <strong>fail</strong>.&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         
     </div>
 
