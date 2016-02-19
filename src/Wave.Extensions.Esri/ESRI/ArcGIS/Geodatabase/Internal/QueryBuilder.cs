@@ -27,24 +27,10 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// <summary>
         ///     Initializes a new instance of the <see cref="QueryBuilder" /> class.
         /// </summary>
-        /// <param name="workspace">The workspace.</param>
-        private QueryBuilder(IWorkspace workspace)
-        {
-            _Workspace = workspace;
-            _WildcardManyMatch = ((ISQLSyntax)workspace).GetSpecialCharacter(esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
-            _Cast = ((ISQLSyntax)workspace).GetFunctionName(esriSQLFunctionName.esriSQL_CAST);
-            _UpperCase = ((ISQLSyntax)workspace).GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
-            _DBMS = workspace.GetDBMS();
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="QueryBuilder" /> class.
-        /// </summary>
         /// <param name="buildClass">The build class.</param>
         public QueryBuilder(ITable buildClass)
-            : this(((IDataset)buildClass).Workspace)
+            : this((IObjectClass) buildClass)
         {
-            _Subtypes = (ISubtypes)buildClass;
         }
 
         /// <summary>
@@ -52,9 +38,13 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         /// </summary>
         /// <param name="buildClass">The build class.</param>
         public QueryBuilder(IObjectClass buildClass)
-            : this(((IDataset)buildClass).Workspace)
         {
-            _Subtypes = (ISubtypes)buildClass;
+            _Subtypes = (ISubtypes) buildClass;
+            _Workspace = ((IDataset) buildClass).Workspace;
+            _WildcardManyMatch = ((ISQLSyntax) _Workspace).GetSpecialCharacter(esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
+            _Cast = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_CAST);
+            _UpperCase = ((ISQLSyntax) _Workspace).GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
+            _DBMS = _Workspace.GetDBMS();
         }
 
         #endregion
@@ -469,7 +459,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
 
             if (isChar)
             {
-                formattedValue = isValueNull ? value : string.Format("{0}", ((ISQLSyntax)_Workspace).Escape(value));
+                formattedValue = isValueNull ? value : string.Format("{0}", ((ISQLSyntax) _Workspace).Escape(value));
             }
             else
             {
