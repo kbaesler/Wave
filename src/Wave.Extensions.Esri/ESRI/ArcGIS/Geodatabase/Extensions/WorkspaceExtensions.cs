@@ -561,14 +561,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="operation">
-        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
-        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
-        /// </param>
         /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
         /// <param name="multiuserEditSessionMode">
         ///     The edit session mode that can be used to indicate non-versioned or versioned
         ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
         /// </param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing the state of the operation.
@@ -576,9 +576,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="System.ArgumentException">
         ///     The workspace does not support the edit session
-        ///     mode.;multiuserEditSessionMode
+        ///     {D255958A-8513-4226-94B9-080D98F904A1}mode.;multiuserEditSessionMode
         /// </exception>
-        public static bool PerformOperation(this IWorkspace source, Func<bool> operation, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode)
+        public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
             if (source == null) return false;
             if (operation == null) throw new ArgumentNullException("operation");

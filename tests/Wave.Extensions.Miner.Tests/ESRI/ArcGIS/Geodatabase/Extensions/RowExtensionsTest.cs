@@ -84,7 +84,7 @@ namespace Wave.Extensions.Miner.Tests
             var feature = testClass.Fetch(1);
 
             Assert.IsNotNull(feature);
-            Assert.IsFalse(base.Workspace.PerformOperation(() =>
+            Assert.IsFalse(base.Workspace.PerformOperation(true, esriMultiuserEditSessionMode.esriMESMVersioned, () =>
             {
                 feature.Store(mmAutoUpdaterMode.mmAUMNoEvents);
                 return false;

@@ -316,7 +316,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\Internal\ConflictClass.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxTreeTool.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\Interfaces\IPxControlUI.cs" />
-    <Compile Include="Miner\Interop\Process\Collections\ReferenceDictionary.cs" />
+    <Compile Include="Miner\Interop\Process\Collections\Extensions\DictionaryExtensions.cs" />
     <Compile Include="Miner\Interop\Process\Data\Internal\LocalPxApplicationFactory.cs" />
     <Compile Include="Miner\Interop\Process\Data\Internal\RemotePxApplicationFactory.cs" />
     <Compile Include="Miner\Interop\Process\Data\PxApplicationFactories.cs" />

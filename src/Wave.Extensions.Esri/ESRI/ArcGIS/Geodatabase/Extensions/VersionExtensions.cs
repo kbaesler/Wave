@@ -330,14 +330,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="operation">
-        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
-        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
-        /// </param>
         /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
         /// <param name="multiuserEditSessionMode">
         ///     The edit session mode that can be used to indicate non-versioned or versioned
         ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
         /// </param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing the state of the operation.
@@ -347,9 +347,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace does not support the edit session
         ///     mode.;multiuserEditSessionMode
         /// </exception>
-        public static bool PerformOperation(this IVersion source, Func<bool> operation, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode)
+        public static bool PerformOperation(this IVersion source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
-            return ((IWorkspace) source).PerformOperation(operation, withUndoRedo, multiuserEditSessionMode);
+            return ((IWorkspace) source).PerformOperation(withUndoRedo, multiuserEditSessionMode, operation);
         }
 
         #endregion
@@ -453,18 +453,18 @@ namespace ESRI.ArcGIS.Geodatabase
 
         #region Public Methods
 
-
         /// <summary>
-        /// Gets the row from the child or source workspace.
+        ///     Gets the row from the child or source workspace.
         /// </summary>
         /// <returns>
-        /// Returns a <see cref="IRow" /> representing the row.
+        ///     Returns a <see cref="IRow" /> representing the row.
         /// </returns>
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
         public IRow GetRow()
         {
             return this.GetRow(RowState.ChildVersion);
         }
+
         /// <summary>
         ///     Gets the row from the specified workspace.
         /// </summary>
