@@ -4,6 +4,7 @@ site_author: Kyle Baesler
 markdown_extensions:
     - smarty
     - admonition
+    - footnotes
 theme: cinder
 pages:
 - Getting Started:
