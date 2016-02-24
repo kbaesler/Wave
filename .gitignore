@@ -247,3 +247,4 @@ tests/Wave.Tests.UI.sln.GhostDoc.xml
 /src/Wave.v9.sln.GhostDoc.xml
 /src/Wave.v10.sln.GhostDoc.xml
 /tests/Wave.Tests.v10.sln.GhostDoc.xml
+*.fm
