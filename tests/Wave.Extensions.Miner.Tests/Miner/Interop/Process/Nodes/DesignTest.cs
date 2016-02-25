@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Security.Cryptography;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -94,7 +95,7 @@ namespace Wave.Extensions.Miner.Tests.Process
         [TestCategory("Miner")]
         public void IPxDesign_CreateNew_IsTrue()
         {
-            using (Design design = new Design(base.PxApplication))
+            using (Design design = new Design(new WorkRequest(base.PxApplication)))
             {
                 Assert.IsTrue(design.Valid);
                 Assert.AreEqual(base.PxApplication.User.Name, design.Owner.Name);
@@ -108,7 +109,7 @@ namespace Wave.Extensions.Miner.Tests.Process
         public void IPxDesign_Dispose_IsNotNull()
         {
             IMMPxNode node;
-            using (Design design = new Design(base.PxApplication))
+            using (Design design = new Design(new WorkRequest(base.PxApplication)))
             {
                 node = design.Node;
                 design.Delete();
@@ -164,6 +165,19 @@ namespace Wave.Extensions.Miner.Tests.Process
                 {
                     Assert.IsTrue(design.Valid);
                 }
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IPxDesign_VersionName_IsNull()
+        {
+            using (Design design = new Design(new WorkRequest(base.PxApplication)))
+            {
+                Assert.IsTrue(design.Valid);
+                Assert.IsNotNull(design.VersionName);
+             
+                design.Delete();
             }
         }
 

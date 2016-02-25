@@ -39,10 +39,22 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Initializes a new instance of the <see cref="Design" /> class.
         /// </summary>
-        /// <param name="pxApp">The process framework application reference.</param>
-        public Design(IMMPxApplication pxApp)
+        /// <param name="pxApp">The process application.</param>
+        /// <param name="workRequest">The work request.</param>
+        public Design(IMMPxApplication pxApp, IMMWMSWorkRequest workRequest)
             : base(pxApp, NodeTypeName)
         {
+            this.Assign(workRequest.ID);
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Design" /> class.
+        /// </summary>
+        /// <param name="workRequest">The work request.</param>
+        public Design(WorkRequest workRequest)
+            : base(workRequest.PxApplication, NodeTypeName)
+        {
+            this.Assign(workRequest.ID);
         }
 
         /// <summary>
@@ -359,8 +371,6 @@ namespace Miner.Interop.Process
             _Design = (IMMWMSDesign) extension.CreateWMSNode(ref nodeTypeName);
             _Design.set_OwnerID(ref ownerID);
 
-            this.Update();
-
             return (_Design != null);
         }
 
@@ -385,6 +395,20 @@ namespace Miner.Interop.Process
             _Design = (IMMWMSDesign) extension.GetWMSNode(ref nodeTypeName, ref nodeId, ref ro, ref sm);
 
             return (_Design != null);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Assigns the specified work request to the design.
+        /// </summary>
+        /// <param name="workRequestId">The work request identifier.</param>
+        private void Assign(int workRequestId)
+        {
+            this.WorkRequestID = workRequestId;
+            this.Update();
         }
 
         #endregion

@@ -150,6 +150,7 @@ namespace Miner.Interop.Process
         public IDictionary Parameters
         {
             set { _Parameters = value; }
+            protected get { return _Parameters; }
         }
 
         /// <summary>

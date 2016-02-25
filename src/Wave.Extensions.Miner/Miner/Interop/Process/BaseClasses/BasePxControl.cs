@@ -13,6 +13,12 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxControl : IMMPxControl, IMMPxControl2, IMMPxDisplayName
     {
+        #region Fields
+
+        private IMMPxNode _Node;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -87,9 +93,12 @@ namespace Miner.Interop.Process
         {
             set
             {
-                InitializeComponents(value);
-                SetLockIcon();
+                if (this.Control != null)
+                    this.Control.LoadControl(this.PxApplication, value);
+
+                _Node = value;
             }
+            protected get { return _Node; }
         }
 
         /// <summary>
@@ -154,7 +163,7 @@ namespace Miner.Interop.Process
         /// <param name="bTerminate">if set to <c>true</c> the control can be closed; otherwise <c>false</c> to stop the closing.</param>
         public virtual void Terminate(ref bool bTerminate)
         {
-            if (this.Control.PendingUpdates)
+            if (this.Control != null && this.Control.PendingUpdates)
             {
                 DialogResult result = MessageBox.Show(@"Do you want to apply the changes?",
                     this.DisplayName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -196,24 +205,6 @@ namespace Miner.Interop.Process
         {
             MMProcessMgrControl.Unregister(registryKey);
         }
-
-        #endregion
-
-        #region Protected Methods
-
-        /// <summary>
-        ///     Initializes the components.
-        /// </summary>
-        /// <param name="node">The node.</param>
-        protected void InitializeComponents(IMMPxNode node)
-        {
-            Control.LoadControl(PxApplication, node);
-        }
-
-        /// <summary>
-        ///     Sets the lock icon.
-        /// </summary>
-        protected abstract void SetLockIcon();
 
         #endregion
     }

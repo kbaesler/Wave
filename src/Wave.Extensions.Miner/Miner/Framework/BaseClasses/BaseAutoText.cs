@@ -25,6 +25,7 @@ namespace Miner.Framework.BaseClasses
         protected BaseAutoText(string caption)
         {
             this.Caption = caption;
+            this.ProgID = this.GetType().GetCustomAttributes(typeof (ProgIdAttribute), true).Cast<ProgIdAttribute>().Select(o => o.Value).FirstOrDefault();
         }
 
         #endregion
@@ -50,18 +51,7 @@ namespace Miner.Framework.BaseClasses
         ///     The program ID links the autotext element with its text source class.
         ///     The program ID is from the class module that implements this interface.
         /// </remarks>
-        public virtual string ProgID
-        {
-            get
-            {
-                var progIds = this.GetType().GetCustomAttributes(typeof (ProgIdAttribute), true).Cast<ProgIdAttribute>();
-                var progId = progIds.FirstOrDefault();
-                if (progId != null)
-                    return progId.Value;
-                
-                throw new NullReferenceException(string.Format("The ProgID for the {0} Auto Text could not be determined.", this.Caption));
-            }
-        }
+        public virtual string ProgID { get; private set; }
 
         /// <summary>
         ///     Returns the text string that will appear on the map layout based on the <paramref name="eTextEvent" /> value
@@ -83,31 +73,39 @@ namespace Miner.Framework.BaseClasses
         /// </remarks>
         public string TextString(mmAutoTextEvents eTextEvent, IMMMapProductionInfo pMapProdInfo)
         {
+            var value = " ";
+
             try
-            {
-                // During the mmCreate, mmRefresh, mmDraw, and mmFinishPlot events, the IMMMapProductionInfo parameter is set to nothing.                 
+            {                              
                 switch (eTextEvent)
                 {
                     case mmAutoTextEvents.mmCreate:
-                        return this.OnCreate();
+                        value = this.OnCreate();
+                        break;
 
                     case mmAutoTextEvents.mmDraw:
-                        return this.OnDraw();
+                        value = this.OnDraw();
+                        break;
 
                     case mmAutoTextEvents.mmFinishPlot:
-                        return this.OnFinish();
+                        value = this.OnFinish();
+                        break;
 
                     case mmAutoTextEvents.mmPlotNewPage:
-                        return this.GetText(pMapProdInfo);
+                        value = this.GetText(pMapProdInfo);
+                        break;
 
                     case mmAutoTextEvents.mmPrint:
-                        return this.OnPrint(pMapProdInfo);
+                        value = this.OnPrint(pMapProdInfo);
+                        break;
 
                     case mmAutoTextEvents.mmRefresh:
-                        return this.OnRefresh();
+                        value = this.OnRefresh();
+                        break;
 
                     case mmAutoTextEvents.mmStartPlot:
-                        return this.OnStart(pMapProdInfo);
+                        value = this.OnStart(pMapProdInfo);
+                        break;
                 }
             }
             catch (Exception e)
@@ -119,7 +117,7 @@ namespace Miner.Framework.BaseClasses
             }
 
             // An empty string will remove the auto text element.
-            return " ";
+            return string.IsNullOrEmpty(value) ? " " : value;
         }
 
         /// <summary>

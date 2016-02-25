@@ -4,8 +4,6 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-using ADODB;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -61,7 +59,7 @@ namespace Miner.Interop.Process
         #endregion
 
         #region Public Properties
-        
+
         /// <summary>
         ///     Gets the process framework application reference.
         /// </summary>
@@ -169,7 +167,7 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the node.
         /// </summary>
-        public IMMPxNode Node { get; set; }
+        public IMMPxNode Node { get; protected set; }
 
         /// <summary>
         ///     Gets the name of the version.
@@ -179,11 +177,7 @@ namespace Miner.Interop.Process
         /// </value>
         public virtual string VersionName
         {
-            get
-            {
-                IMMPxSDEVersion version = ((IMMPxApplicationEx2) _PxApp).GetSDEVersion(this.Node.Id, this.Node.NodeType, true);
-                return version.GetVersionName();
-            }
+            get { return _PxApp.GetVersionName(this.Node); }
         }
 
         /// <summary>
@@ -194,36 +188,7 @@ namespace Miner.Interop.Process
         /// <param name="extraData">The extra data.</param>
         public void AddHistory(string description, string extraData)
         {
-            if (this.History == null) return;
-
-            IMMPxHistory history = new PxHistoryClass();
-            history.CurrentUser = _PxApp.User.Id;
-            history.CurrentUserName = _PxApp.User.Name;
-            history.Date = DateTime.Now;
-            history.Description = description;
-            history.NodeId = this.Node.Id;
-            history.nodeTypeId = this.Node.NodeType;
-            history.ExtraData = extraData;
-
-            Property property = _PxApp.Connection.Properties["Data Source Name"];
-            string dataSource = (!Convert.IsDBNull(property.Value)) ? Convert.ToString(property.Value, CultureInfo.InvariantCulture) : string.Empty;
-
-            if (File.Exists(dataSource))
-            {
-                FileSystemInfo fsi = new FileInfo(dataSource);
-                history.Server = fsi.Name;
-            }
-            else if (Directory.Exists(dataSource))
-            {
-                FileSystemInfo fsi = new DirectoryInfo(dataSource);
-                history.Server = fsi.Name;
-            }
-            else
-            {
-                history.Server = dataSource;
-            }
-
-            this.History.Add(history);
+            this.History = this.PxApplication.AddHistory(this.Node, description, extraData);
         }
 
         /// <summary>
@@ -236,12 +201,8 @@ namespace Miner.Interop.Process
                 string msg = string.Empty;
                 int status = 0;
 
-                // Delete the node using the deleter.
                 IMMPxNodeDelete delete = (IMMPxNodeDelete) this.Node;
-                delete.Delete(_PxApp, ref msg, ref status);
-
-                // Flush the cache.
-                this.Dispose(false);
+                delete.Delete(_PxApp, ref msg, ref status);                
             }
 
             this.Dirty = false;
@@ -255,13 +216,9 @@ namespace Miner.Interop.Process
         {
             if (this.Node != null)
             {
-                // Flush the updates to the database.
                 ((IMMPxApplicationEx) _PxApp).UpdateNodeToDB(this.Node);
-
-                // Flush the cache.
-                this.Dispose(false);
             }
-           
+
             this.Dirty = false;
         }
 
@@ -274,7 +231,7 @@ namespace Miner.Interop.Process
         ///     object.
         /// </summary>
         /// <param name="node">The node.</param>
-        protected void CopyHistory(IPxNode node)
+        protected virtual void CopyHistory(IPxNode node)
         {
             if (this.History == null || node == null) return;
 
@@ -308,7 +265,7 @@ namespace Miner.Interop.Process
         /// <param name="packetPrefix">The packet ID prefix.</param>
         /// <param name="node">The node.</param>
         /// <exception cref="System.ArgumentNullException">node</exception>
-        protected void CopyPacket(string packetPrefix, IPxNode node)
+        protected virtual void CopyPacket(string packetPrefix, IPxNode node)
         {
             if (node == null) throw new ArgumentNullException("node");
 
@@ -383,8 +340,7 @@ namespace Miner.Interop.Process
                 list.BuildObject = builder;
             }
 
-            this.History = new PxNodeHistoryClass();
-            this.History.Init(_PxApp.Connection, _PxApp.Login.SchemaName, this.Node.Id, this.Node.NodeType, string.Format("NODE_ID = {0} AND NODE_TYPE_ID = {1}", this.Node.Id, this.Node.NodeType));
+            this.History = _PxApp.GetHistory(this.Node);
         }
 
         /// <summary>
@@ -436,6 +392,7 @@ namespace Miner.Interop.Process
 
             if (this.Initialize(frameworkExtension, _PxApp.User))
             {
+                this.Update();
                 this.Hydrate();
             }
         }
