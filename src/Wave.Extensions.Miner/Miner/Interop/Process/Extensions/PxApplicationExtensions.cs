@@ -43,28 +43,64 @@ namespace Miner.Interop.Process
         public static IMMPxNodeHistory AddHistory(this IMMPxApplication source, int nodeId, int nodeType, string description, string extraData)
         {
             var list = source.GetHistory(nodeId, nodeType);
-            if (list != null)
+            source.AddHistory(list, nodeId, nodeType, description, extraData);
+            return list;
+        }
+
+        /// <summary>
+        ///     Adds the history record for the specified node id and type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="list">The list of history records.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <param name="nodeType">Type of the node.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="extraData">The extra data.</param>
+        /// <returns>
+        ///     Returns a <see cref="IMMPxHistory" /> representing the history record.
+        /// </returns>
+        public static IMMPxHistory AddHistory(this IMMPxApplication source, IMMPxNodeHistory list, int nodeId, int nodeType, string description, string extraData)
+        {
+            IMMPxHistory history = new PxHistoryClass();
+            history.CurrentUser = source.User.Id;
+            history.CurrentUserName = source.User.Name;
+            history.Date = DateTime.Now;
+            history.Description = description;
+            history.NodeId = nodeId;
+            history.nodeTypeId = nodeType;
+            history.ExtraData = extraData;
+
+            var property = source.Connection.Properties["Data Source Name"];
+            if (property != null)
             {
-                IMMPxHistory history = new PxHistoryClass();
-                history.CurrentUser = source.User.Id;
-                history.CurrentUserName = source.User.Name;
-                history.Date = DateTime.Now;
-                history.Description = description;
-                history.NodeId = nodeId;
-                history.nodeTypeId = nodeType;
-                history.ExtraData = extraData;
-
-                var property = source.Connection.Properties["Data Source Name"];
-                if (property != null)
-                {
-                    string server = (!Convert.IsDBNull(property.Value)) ? Convert.ToString(property.Value, CultureInfo.InvariantCulture) : string.Empty;
-                    history.Server = server;
-                }
-
-                list.Add(history);
+                string server = (!Convert.IsDBNull(property.Value)) ? Convert.ToString(property.Value, CultureInfo.InvariantCulture) : string.Empty;
+                history.Server = server;
             }
 
-            return list;
+            list.Add(history);
+
+            return history;
+        }
+
+        /// <summary>
+        ///     Creates a copy of the specified history.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IMMPxHistory" /> representing a copy of the history.</returns>
+        public static IMMPxHistory Copy(this IMMPxHistory source)
+        {
+            return new PxHistoryClass
+            {
+                CurrentUser = source.CurrentUser,
+                CurrentUserName = source.CurrentUserName,
+                Date = source.Date,
+                Description = source.Description,
+                ExtraData = source.ExtraData,
+                Server = source.Server,
+                Xml = source.Xml,
+                NodeId = source.NodeId,
+                nodeTypeId = source.nodeTypeId
+            };
         }
 
         /// <summary>

@@ -161,7 +161,7 @@ namespace Miner
                 /// <summary>
                 ///     The GUID of the QAQC tab extension for the ArcFM Attribute Editor.
                 /// </summary>
-                [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")] public const string QAQCTab = "{E5AC0B62-E4BE-11D3-B4A0-006008AD9A5E}";
+                public const string QAQCTab = "{E5AC0B62-E4BE-11D3-B4A0-006008AD9A5E}";
 
                 /// <summary>
                 ///     The GUID of the section tab extension for the ArcFM Attribute Editor.
@@ -232,7 +232,7 @@ namespace Miner
                 /// <summary>
                 ///     The name of the QAQC tab extension for the ArcFM Attribute Editor.
                 /// </summary>
-                [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")] public const string QAQCTab = "QAQCTopLevel";
+                public const string QAQCTab = "QAQCTopLevel";
 
                 /// <summary>
                 ///     The name of the section tab extension for the ArcFM Attribute Editor.

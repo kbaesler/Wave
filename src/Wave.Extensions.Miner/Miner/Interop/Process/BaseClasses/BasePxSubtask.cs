@@ -20,7 +20,6 @@ namespace Miner.Interop.Process
 
         private readonly string _Name;
 
-        private IDictionary _Parameters;
         private IMMPxApplication _PxApp;
         private IMMEnumExtensionNames _SupportedExtensions;
         private IDictionary _SupportedParameters;
@@ -147,11 +146,7 @@ namespace Miner.Interop.Process
         ///     Sets the parameters.
         /// </summary>
         /// <value>The parameters.</value>
-        public IDictionary Parameters
-        {
-            set { _Parameters = value; }
-            protected get { return _Parameters; }
-        }
+        public IDictionary Parameters { protected get; set; }
 
         /// <summary>
         ///     Gets the supported extensions.
@@ -268,9 +263,9 @@ namespace Miner.Interop.Process
             object objKey = key;
             string val = null;
 
-            if (_Parameters.Exists(ref objKey))
+            if (this.Parameters.Exists(ref objKey))
             {
-                object obj = _Parameters.get_Item(ref objKey);
+                object obj = this.Parameters.get_Item(ref objKey);
                 if (obj != null)
                     val = obj.ToString();
             }

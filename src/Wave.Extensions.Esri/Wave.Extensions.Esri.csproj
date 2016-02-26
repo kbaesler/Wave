@@ -443,10 +443,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="System\Windows\Controls\Watermark\Themes\Watermark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="System\Windows\Themes\Wave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

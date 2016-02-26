@@ -175,6 +175,7 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The name of the version.
         /// </value>
+        /// <remarks>The version name will not be accurate until the node has been saved to the database.</remarks>
         public virtual string VersionName
         {
             get { return _PxApp.GetVersionName(this.Node); }
@@ -188,7 +189,7 @@ namespace Miner.Interop.Process
         /// <param name="extraData">The extra data.</param>
         public void AddHistory(string description, string extraData)
         {
-            this.History = this.PxApplication.AddHistory(this.Node, description, extraData);
+            _PxApp.AddHistory(this.History, this.Node.Id, this.Node.NodeType, description, extraData);
         }
 
         /// <summary>
@@ -202,7 +203,7 @@ namespace Miner.Interop.Process
                 int status = 0;
 
                 IMMPxNodeDelete delete = (IMMPxNodeDelete) this.Node;
-                delete.Delete(_PxApp, ref msg, ref status);                
+                delete.Delete(_PxApp, ref msg, ref status);
             }
 
             this.Dirty = false;
@@ -240,18 +241,12 @@ namespace Miner.Interop.Process
             IMMPxHistory history;
             while ((history = this.History.Next()) != null)
             {
-                node.History.Add(new PxHistoryClass
-                {
-                    CurrentUser = history.CurrentUser,
-                    CurrentUserName = history.CurrentUserName,
-                    Date = history.Date,
-                    Description = history.Description,
-                    ExtraData = history.ExtraData,
-                    Server = history.Server,
-                    Xml = history.Xml,
-                    NodeId = node.Node.Id,
-                    nodeTypeId = node.Node.NodeType
-                });
+                var copy = history.Copy();
+
+                copy.NodeId = node.Node.Id;
+                copy.nodeTypeId = node.Node.NodeType;
+
+                node.History.Add(copy);
             }
 
             // Add another record for the clone to record the clone operation.
