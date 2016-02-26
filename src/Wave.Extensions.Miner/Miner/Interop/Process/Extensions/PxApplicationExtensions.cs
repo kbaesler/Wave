@@ -327,6 +327,17 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
+        ///     Gets the name of the node type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="node">The node.</param>
+        /// <returns>Returns a <see cref="string" /> representing the name of the node type.</returns>
+        public static string GetNodeTypeName(this IMMPxApplication source, IMMPxNode node)
+        {
+            return ((IMMPxHelper2) source.Helper).GetNodeTypeName(node.NodeType);
+        }
+
+        /// <summary>
         ///     Gets the fully qualified name of the table that will included (or exclude) the schema name depending on the
         ///     underlying database connection.
         /// </summary>
