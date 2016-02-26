@@ -180,6 +180,8 @@
 <li>Added <code>GetWorkspaces</code> extension method to the <code>IApplication</code> interface which will return the <code>IMMStandardWorkspace</code> interface that will give the <code>LoginWorkspace</code>, <code>LibraryWorkspace</code>, and <code>EditWorkspace</code>. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 <li>Added getter property for the <code>Locked</code> property on the <code>IPxControlUI</code> interface. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 <li>Added <code>GetCULibrary</code> to the <code>IApplication</code> interface which will return the <code>ICuLibrary</code> interface used for interacting with the storage of the library. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+<li>Added <code>GetHistory</code> extension methods to the <code>IMMPxApplication</code> for retrieving historical data for nodes. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+<li>Added <code>GetNodeTypeName</code> extension method to the <code>IMMPxApplication</code> to reduce the number of casts necessary to retrieve the information from the node objects.</li>
 </ul>
 <h3 id="removed">Removed</h3>
 <ul>
@@ -195,6 +197,8 @@
 <li>Initialize the <code>BehaviorsProperty</code> property in static constructor in the <code>CommandBehaviorCollection</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Defined the locale to be used in <code>String</code> operations. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>The <code>StartEditing</code> extension methods on the <code>IVersion</code> and <code>IWorkspace</code> interfaces were removed, as they were duplicates of the <code>PerformOperation</code> methods.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
+<li>The <code>BaseAutoText</code> implementation no longer requires the <code>progId</code> parameter in the constructor as it is derived from the <code>ProgIdAttribute</code> that is assigned to the class. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
+<li>A <code>Design</code> can no longer be created as an orphan, it requires a <code>WorkRequest</code> or <code>IMMWMSWorkRequest</code> to be constructed.</li>
 </ul>
 <hr />
 <h2 id="version-100-2016-02-06">Version 1.0.0 - 2016-02-06</h2>
