@@ -89,7 +89,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="commandText">The command text.</param>
         /// <returns>Returns a <see cref="ICursor" /> representing the results of the query.</returns>
         /// <exception cref="System.NotSupportedException"></exception>
-        public static ICursor Execute(this IWorkspace source, string commandText)
+        public static ICursor ExecuteReader(this IWorkspace source, string commandText)
         {
             ISqlWorkspace sw = source as ISqlWorkspace;
             if (sw == null) throw new NotSupportedException();

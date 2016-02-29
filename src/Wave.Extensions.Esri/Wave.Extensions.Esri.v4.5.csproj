@@ -194,6 +194,8 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\ClassAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\VersionAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\WorkspaceAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
