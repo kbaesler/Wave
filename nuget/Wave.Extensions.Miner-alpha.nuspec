@@ -19,13 +19,19 @@
         </dependencies>
     </metadata>
     <files>
-		    <file src="build\Wave.Extensions.Miner.targets" target="build\Wave.Extensions.Miner.targets" />
+		<file src="build\Wave.Extensions.Miner.targets" target="build\Wave.Extensions.Miner.targets" />
         <file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.pdb" target="lib\net35\Wave.Extensions.Esri.pdb" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.pdb" target="lib\net35\Wave.Extensions.Miner.pdb" />
-        <file src="..\src\bin\x86\Debug\Wave.Extensions.Miner.XML" target="lib\net35\Wave.Extensions.Miner.xml" />
+        <file src="..\src\bin\x86\Debug\net35\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />
+        <file src="..\src\bin\x86\Debug\net35\Wave.Extensions.Esri.pdb" target="lib\net35\Wave.Extensions.Esri.pdb" />
+        <file src="..\src\bin\x86\Debug\net35\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
+        <file src="..\src\bin\x86\Debug\net35\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />
+        <file src="..\src\bin\x86\Debug\net35\Wave.Extensions.Miner.pdb" target="lib\net35\Wave.Extensions.Miner.pdb" />
+        <file src="..\src\bin\x86\Debug\net35\Wave.Extensions.Miner.XML" target="lib\net35\Wave.Extensions.Miner.xml" />
+		<file src="..\src\bin\x86\Debug\net45\Wave.Extensions.Esri.dll" target="lib\net45\Wave.Extensions.Esri.dll" />
+        <file src="..\src\bin\x86\Debug\net45\Wave.Extensions.Esri.pdb" target="lib\net45\Wave.Extensions.Esri.pdb" />
+        <file src="..\src\bin\x86\Debug\net45\Wave.Extensions.Esri.XML" target="lib\net45\Wave.Extensions.Esri.xml" />
+        <file src="..\src\bin\x86\Debug\net45\Wave.Extensions.Miner.dll" target="lib\net45\Wave.Extensions.Miner.dll" />
+        <file src="..\src\bin\x86\Debug\net45\Wave.Extensions.Miner.pdb" target="lib\net45\Wave.Extensions.Miner.pdb" />
+        <file src="..\src\bin\x86\Debug\net45\Wave.Extensions.Miner.XML" target="lib\net45\Wave.Extensions.Miner.xml" />
     </files>
 </package>

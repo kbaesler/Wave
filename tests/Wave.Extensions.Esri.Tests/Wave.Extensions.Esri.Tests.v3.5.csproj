@@ -149,7 +149,7 @@
     <Folder Include="System\Diagnostics\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.csproj">
+    <ProjectReference Include="..\..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.v3.5.csproj">
       <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
       <Name>Wave.Extensions.Esri.v10</Name>
     </ProjectReference>

@@ -19,9 +19,11 @@
         </dependencies>
     </metadata>
     <files>
-		    <file src="build\Wave.Extensions.Esri.targets" target="build\Wave.Extensions.Esri.targets" />
-		    <file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
-        <file src="..\src\bin\x86\Release\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />
-        <file src="..\src\bin\x86\Release\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
+		<file src="build\Wave.Extensions.Esri.targets" target="build\Wave.Extensions.Esri.targets" />
+		<file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
+        <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />        
+        <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
+		<file src="..\src\bin\x86\Release\net45\Wave.Extensions.Esri.dll" target="lib\net45\Wave.Extensions.Esri.dll" />        
+        <file src="..\src\bin\x86\Release\net45\Wave.Extensions.Esri.XML" target="lib\net45\Wave.Extensions.Esri.xml" />
     </files>
 </package>
