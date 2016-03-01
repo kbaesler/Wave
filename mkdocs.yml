@@ -5,10 +5,10 @@ markdown_extensions:
     - smarty
     - admonition
     - footnotes
-theme: cinder
+theme: readthedocs
 pages:
 - Getting Started:
-  - Introduction: index.md
+  - Overview: index.md
   - Developer Guide: guide.md
 - Features: features.md
 - Frequently Asked Questions: faq.md

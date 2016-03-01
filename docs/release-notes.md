@@ -1,5 +1,5 @@
 # Release Notes
-This will serve as a reference to the release notes with regards to the `release` version of the nuget packages that are published.
+This will serve as a reference to the release notes with regards to the `release` version of the NuGet packages that are published.
 
 ## Roadmap
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
@@ -10,7 +10,7 @@ These are the changes, additions, removals that are actively being worked on and
 
 ### New
 - The packages now support the 3.5 and 4.5 .NET Framework. [^3]
-- The 4.5 .NET Framework packages now include supporting `async` methods (i.e. `IMap::GetLayersAsync` or `IMap::GetTablesAsync`). [^3]
+- The 4.5 .NET Framework packages now include supporting `async` methods. [^3]
 
 ### Added
 - Added `Execute` extension method to the `ISqlWorkspace` interface to support query cursors. [^1]

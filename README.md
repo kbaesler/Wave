@@ -34,7 +34,7 @@ To install **Wave Extensions for ArcFM**, run the following command in the Packa
 ### Requirements ###
 - ArcGIS for Desktop 10 (or higher)
 - ArcFM Solution 10 (or higher)
-- 3.5 SP 1 .NET Framework
+- 3.5 SP 1 or 4.5 .NET Framework
 - Visual Studio 2010 (or higher)
 
 ### Third Party Libraries ###
