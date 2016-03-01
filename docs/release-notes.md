@@ -4,6 +4,14 @@ This will serve as a reference to the release notes with regards to the `release
 ## Roadmap
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
+---
+
+## Version 1.0.1 - 2016-03-01
+
+### New
+- The packages now support the 3.5 and 4.5 .NET Framework. [^3]
+- The 4.5 .NET Framework packages now include supporting `async` methods (i.e. `IMap::GetLayersAsync` or `IMap::GetTablesAsync`). [^3]
+
 ### Added
 - Added `Execute` extension method to the `ISqlWorkspace` interface to support query cursors. [^1]
 - Added `GetWorkspaces` extension method to the `IApplication` interface which will return the `IMMStandardWorkspace` interface that will give the `LoginWorkspace`, `LibraryWorkspace`, and `EditWorkspace`. [^2]
@@ -39,6 +47,6 @@ These are the changes, additions, removals that are actively being worked on and
 
  [^2]: A change that is included in the **Wave Extensions for ArcFM** package.
 
- [^3]: A change that is included in both **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
+ [^3]: A change that is included in both the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
 
  [^4]: A change that *potentially* causes other components to **fail**.
