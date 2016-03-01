@@ -1,6 +1,5 @@
 # Developer Guide
 This will serve as a reference guide for developer samples, the purpose of the samples is to provide example usages of the extensions that are provided in the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
-
 - Not all of the features in the **Wave** project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub [issue tracker](https://github.com/Jumpercables/Wave/issues).
 
 ## Licenses
@@ -9,35 +8,41 @@ When a stand-alone executable needs to access and use geodatabase objects, a lic
 ### ArcGIS for Desktop
 The following snippets shows the proper way to check out licenses when working with the ArcGIS for Desktop product.
 
-```java
-using(EsriRuntimeAuthorization lic = new EsriRuntimeAuthorization(ProductCode.Desktop))
+```c#
+private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode)
 {
-    if(lic.Initialize(esriProductCode.esriProductCodeStandard))
+  using (var lic = new EsriRuntimeAuthorization())
+  {
+    if (lic.Initialize(esriLicenseProductCode))
     {
-      Console.WriteLine("Success.")
+      Console.WriteLine("Successfully checked-out the {0} license.", esriLicenseProductCode);
     }
     else
     {
-      Console.Writeline("Failed.")
+      Console.WriteLine("Unable to check-out the {0} license.", esriLicenseProductCode);
     }
-} // Check-in license
+  }            
+}
 ```
 
 ### ArcFM Solution
 The following snippet shows the proper way to check out licenses when working with the ArcFM Solution and ArcGIS for Desktop products.
 
-```java
-using(RuntimeAuthorization lic = new RuntimeAuthorization(ProductCode.Desktop))
+```c#
+private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode, mmLicensedProductCode mmLicensedProductCode)
 {
-  if(lic.Initialize(esriProductCode.esriProductCodeStandard, mmLicensedProductCode.mmLPArcFM))
+  using (var lic = new RuntimeAuthorization(ProductCode.Desktop))
   {
-    Console.WriteLine("Success.")
+    if (lic.Initialize(esriLicenseProductCode, mmLicensedProductCode))
+    {
+      Console.WriteLine("Successfully checked-out the {0} and {1} licenses.", esriLicenseProductCode, mmLicensedProductCode);
+    }
+    else
+    {
+      Console.WriteLine("Unable to check-out the {0} and/or {1} license.", esriLicenseProductCode, mmLicensedProductCode);
+    }
   }
-  else
-  {
-    Console.Writeline("Failed.")
-  }
-} // Check-in licenses.
+}
 ```
 
 - When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.
@@ -45,36 +50,34 @@ using(RuntimeAuthorization lic = new RuntimeAuthorization(ProductCode.Desktop))
 ## Geodatabase Connections
 The `WorkspaceFactories` static class will return the proper workspace (`sde`, `gdb`, or `mdb`) based on the connection file parameter.
 
-```java
-var connectionFile = Path.Combine(Environment.GetFolderPath(SpecialFolders.ApplicationData), "\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb")
-var workspace = WorkspaceFactories.Open(connectionFile
+```c#
+var connectionFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb");
+var workspace = WorkspaceFactories.Open(connectionFile);
 var dbms = workspace.GetDBMS();
 ```
 
 ## Disabling Auto Updaters
 There are cases when a **custom** ArcFM Auto Updater (AU) has been developed needs to temporarily `disable` subsequent calls.
 
-```java
+```c#
 using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
 {
     // All of the ArcFM Auto Updaters are now disabled.
 }
 ```
 
-## Map
-
-### Layers
+## Layers
 The feature layers in the map can be traverse using the `Where` method extension.
 
-```java
+```c#
 var layers = ArcMap.Application.GetActiveMap().Where(layer => layer.Valid);
 var structures = layers.Where(layer => layer.FeatureClass.IsAssignedClassModelName("STRUCTURE"));
 ```
 
-### Tables
+## Tables
 The tables in the map can be traverse using the `Where` method extension.
 
-```java
+```c#
 var tables = ArcMap.Application.GetActiveMap().GetTables(table => table.Valid);
 var arcfm = tables.Where(table=> table.IsAssignedClassModelName("ARCFMSYSTEMTABLE"));
 ```
