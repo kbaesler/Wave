@@ -10,7 +10,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>The Wave Extensions for ArcFM simplifies extending the ArcFM Solution by providing extensions to the most frequently used APIs.</description>
         <summary>The Wave Extensions for ArcFM is a C# library that is built on top of the Wave Extensions for ArcFM to provide extension methods for the APIs in the ArcFM library in an effort to simplify developing in the ArcFM Solution product.</summary>
-        <releaseNotes>http://jumpercables.github.io/Wave/release-notes/</releaseNotes>
+        <releaseNotes>http://wave.readthedocs.org/en/latest/release-notes/</releaseNotes>
         <copyright>Copyright 2014</copyright>
         <language>en-US</language>
         <tags>esri, arcgis, gis, arcobjects, arcfm, miner</tags>
@@ -21,13 +21,13 @@
     <files>
 		<file src="build\Wave.Extensions.Miner.targets" target="build\Wave.Extensions.Miner.targets" />
         <file src="content\Properties\LogInfo.cs.pp" target="content\Properties\LogInfo.cs.pp" />
-        <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />        
+        <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Esri.dll" target="lib\net35\Wave.Extensions.Esri.dll" />
         <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Esri.XML" target="lib\net35\Wave.Extensions.Esri.xml" />
-        <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />        
+        <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Miner.dll" target="lib\net35\Wave.Extensions.Miner.dll" />
         <file src="..\src\bin\x86\Release\net35\Wave.Extensions.Miner.XML" target="lib\net35\Wave.Extensions.Miner.xml" />
-		<file src="..\src\bin\x86\Release\net45\Wave.Extensions.Esri.dll" target="lib\net45\Wave.Extensions.Esri.dll" />        
+		<file src="..\src\bin\x86\Release\net45\Wave.Extensions.Esri.dll" target="lib\net45\Wave.Extensions.Esri.dll" />
         <file src="..\src\bin\x86\Release\net45\Wave.Extensions.Esri.XML" target="lib\net45\Wave.Extensions.Esri.xml" />
-        <file src="..\src\bin\x86\Release\net45\Wave.Extensions.Miner.dll" target="lib\net45\Wave.Extensions.Miner.dll" />        
+        <file src="..\src\bin\x86\Release\net45\Wave.Extensions.Miner.dll" target="lib\net45\Wave.Extensions.Miner.dll" />
         <file src="..\src\bin\x86\Release\net45\Wave.Extensions.Miner.XML" target="lib\net45\Wave.Extensions.Miner.xml" />
     </files>
 </package>
