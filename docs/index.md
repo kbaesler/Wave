@@ -4,16 +4,12 @@
 **Wave Extensions for ArcGIS**
 The package for the ArcGIS for Desktop extensions.
 
-- [![Wave Extensions for ArcGIS](http://img.shields.io/nuget/dt/Wave.Extensions.Esri.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Esri/)
-
-- [![Wave Extensions for ArcGIS](http://img.shields.io/nuget/v/Wave.Extensions.Esri.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Esri/)
+- [![Wave Extensions for ArcGIS](https://buildstats.info/nuget/Wave.Extensions.Esri)](https://www.nuget.org/packages/Wave.Extensions.Esri/)
 
 **Wave Extensions for ArcFM**
 The package for the ArcFM Solution extensions.
 
- - [![Wave Extensions for ArcFM](http://img.shields.io/nuget/dt/Wave.Extensions.Miner.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
-
- - [![Wave Extensions for ArcFM](http://img.shields.io/nuget/v/Wave.Extensions.Miner.svg?style=flat)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
+- [![Wave Extensions for ArcFM](https://buildstats.info/nuget/Wave.Extensions.Miner)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
 
 ## Installation ##
 You can download a release of the library using the Microsoft NuGet Package Manager within Visual Studio.
