@@ -5,6 +5,9 @@ This will serve as a reference to the release notes with regards to the `release
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
 ---
+## Version 1.0.2 - 2016-03-03
+### Fixed
+- Due to an issue with the build server the 4.5 .NET Framework packages were not included.
 
 ## Version 1.0.1 - 2016-03-01
 
