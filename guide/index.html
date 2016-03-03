@@ -80,7 +80,9 @@
                 
                     <li><a class="toctree-l4" href="#disabling-auto-updaters">Disabling Auto Updaters</a></li>
                 
-                    <li><a class="toctree-l4" href="#map">Map</a></li>
+                    <li><a class="toctree-l4" href="#layers">Layers</a></li>
+                
+                    <li><a class="toctree-l4" href="#tables">Tables</a></li>
                 
                     <li><a class="toctree-l4" href="#session-workflow-manager">Session / Workflow Manager</a></li>
                 
@@ -170,40 +172,44 @@
             <div class="section">
               
                 <h1 id="developer-guide">Developer Guide</h1>
-<p>This will serve as a reference guide for developer samples, the purpose of the samples is to provide example usages of the extensions that are provided in the <strong>Wave Extensions for ArcGIS</strong> and <strong>Wave Extensions for ArcFM</strong> packages.</p>
-<ul>
-<li>Not all of the features in the <strong>Wave</strong> project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>.</li>
-</ul>
+<p>This will serve as a reference guide for developer samples, the purpose of the samples is to provide example usages of the extensions that are provided in the <strong>Wave Extensions for ArcGIS</strong> and <strong>Wave Extensions for ArcFM</strong> packages.
+- Not all of the features in the <strong>Wave</strong> project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>.</p>
 <h2 id="licenses">Licenses</h2>
 <p>When a stand-alone executable needs to access and use geodatabase objects, a license must be checked out, depending on the product that has been installed.</p>
 <h3 id="arcgis-for-desktop">ArcGIS for Desktop</h3>
 <p>The following snippets shows the proper way to check out licenses when working with the ArcGIS for Desktop product.</p>
-<pre><code class="java">using(EsriRuntimeAuthorization lic = new EsriRuntimeAuthorization(ProductCode.Desktop))
+<pre><code class="java">private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode)
 {
-    if(lic.Initialize(esriProductCode.esriProductCodeStandard))
+  using (var lic = new EsriRuntimeAuthorization())
+  {
+    if (lic.Initialize(esriLicenseProductCode))
     {
-      Console.WriteLine(&quot;Success.&quot;)
+      Console.WriteLine(&quot;Successfully checked-out the {0} license.&quot;, esriLicenseProductCode);
     }
     else
     {
-      Console.Writeline(&quot;Failed.&quot;)
+      Console.WriteLine(&quot;Unable to check-out the {0} license.&quot;, esriLicenseProductCode);
     }
-} // Check-in license
+  }            
+}
 </code></pre>
 
 <h3 id="arcfm-solution">ArcFM Solution</h3>
 <p>The following snippet shows the proper way to check out licenses when working with the ArcFM Solution and ArcGIS for Desktop products.</p>
-<pre><code class="java">using(RuntimeAuthorization lic = new RuntimeAuthorization(ProductCode.Desktop))
+<pre><code class="java">private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode, mmLicensedProductCode mmLicensedProductCode)
 {
-  if(lic.Initialize(esriProductCode.esriProductCodeStandard, mmLicensedProductCode.mmLPArcFM))
+  using (var lic = new RuntimeAuthorization(ProductCode.Desktop))
   {
-    Console.WriteLine(&quot;Success.&quot;)
+    if (lic.Initialize(esriLicenseProductCode, mmLicensedProductCode))
+    {
+      Console.WriteLine(&quot;Successfully checked-out the {0} and {1} licenses.&quot;, esriLicenseProductCode, mmLicensedProductCode);
+    }
+    else
+    {
+      Console.WriteLine(&quot;Unable to check-out the {0} and/or {1} license.&quot;, esriLicenseProductCode, mmLicensedProductCode);
+    }
   }
-  else
-  {
-    Console.Writeline(&quot;Failed.&quot;)
-  }
-} // Check-in licenses.
+}
 </code></pre>
 
 <ul>
@@ -211,8 +217,8 @@
 </ul>
 <h2 id="geodatabase-connections">Geodatabase Connections</h2>
 <p>The <code>WorkspaceFactories</code> static class will return the proper workspace (<code>sde</code>, <code>gdb</code>, or <code>mdb</code>) based on the connection file parameter.</p>
-<pre><code class="java">var connectionFile = Path.Combine(Environment.GetFolderPath(SpecialFolders.ApplicationData), &quot;\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb&quot;)
-var workspace = WorkspaceFactories.Open(connectionFile
+<pre><code class="java">var connectionFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), &quot;\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb&quot;);
+var workspace = WorkspaceFactories.Open(connectionFile);
 var dbms = workspace.GetDBMS();
 </code></pre>
 
@@ -224,14 +230,13 @@ var dbms = workspace.GetDBMS();
 }
 </code></pre>
 
-<h2 id="map">Map</h2>
-<h3 id="layers">Layers</h3>
+<h2 id="layers">Layers</h2>
 <p>The feature layers in the map can be traverse using the <code>Where</code> method extension.</p>
 <pre><code class="java">var layers = ArcMap.Application.GetActiveMap().Where(layer =&gt; layer.Valid);
 var structures = layers.Where(layer =&gt; layer.FeatureClass.IsAssignedClassModelName(&quot;STRUCTURE&quot;));
 </code></pre>
 
-<h3 id="tables">Tables</h3>
+<h2 id="tables">Tables</h2>
 <p>The tables in the map can be traverse using the <code>Where</code> method extension.</p>
 <pre><code class="java">var tables = ArcMap.Application.GetActiveMap().GetTables(table =&gt; table.Valid);
 var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSYSTEMTABLE&quot;));
