@@ -8,7 +8,7 @@ When a stand-alone executable needs to access and use geodatabase objects, a lic
 ### ArcGIS for Desktop
 The following snippets shows the proper way to check out licenses when working with the ArcGIS for Desktop product.
 
-```c#
+```java
 private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode)
 {
   using (var lic = new EsriRuntimeAuthorization())
@@ -28,7 +28,7 @@ private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode)
 ### ArcFM Solution
 The following snippet shows the proper way to check out licenses when working with the ArcFM Solution and ArcGIS for Desktop products.
 
-```c#
+```java
 private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode, mmLicensedProductCode mmLicensedProductCode)
 {
   using (var lic = new RuntimeAuthorization(ProductCode.Desktop))
@@ -50,7 +50,7 @@ private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode, mmL
 ## Geodatabase Connections
 The `WorkspaceFactories` static class will return the proper workspace (`sde`, `gdb`, or `mdb`) based on the connection file parameter.
 
-```c#
+```java
 var connectionFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb");
 var workspace = WorkspaceFactories.Open(connectionFile);
 var dbms = workspace.GetDBMS();
@@ -59,7 +59,7 @@ var dbms = workspace.GetDBMS();
 ## Disabling Auto Updaters
 There are cases when a **custom** ArcFM Auto Updater (AU) has been developed needs to temporarily `disable` subsequent calls.
 
-```c#
+```java
 using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
 {
     // All of the ArcFM Auto Updaters are now disabled.
@@ -69,7 +69,7 @@ using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
 ## Layers
 The feature layers in the map can be traverse using the `Where` method extension.
 
-```c#
+```java
 var layers = ArcMap.Application.GetActiveMap().Where(layer => layer.Valid);
 var structures = layers.Where(layer => layer.FeatureClass.IsAssignedClassModelName("STRUCTURE"));
 ```
@@ -77,7 +77,7 @@ var structures = layers.Where(layer => layer.FeatureClass.IsAssignedClassModelNa
 ## Tables
 The tables in the map can be traverse using the `Where` method extension.
 
-```c#
+```java
 var tables = ArcMap.Application.GetActiveMap().GetTables(table => table.Valid);
 var arcfm = tables.Where(table=> table.IsAssignedClassModelName("ARCFMSYSTEMTABLE"));
 ```
