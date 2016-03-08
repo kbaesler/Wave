@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_8ede6764a6c6a25f5e4c05aff9332fcb" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal</compoundname>
+    <innerfile refid="_editable_workspace_8cs">EditableWorkspace.cs</innerfile>
+    <innerfile refid="_intermediate_relationship_8cs">IntermediateRelationship.cs</innerfile>
+    <innerfile refid="_intermediate_row_8cs">IntermediateRow.cs</innerfile>
+    <innerfile refid="_query_builder_8cs">QueryBuilder.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/"/>
+  </compounddef>
+</doxygen>

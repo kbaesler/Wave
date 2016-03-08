@@ -1,0 +1,448 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::Controls::ComboTreeBox</compoundname>
+    <basecompoundref refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control" prot="public" virt="non-virtual">System.Forms.Controls.BaseDropDownControl</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aad0320e48c9332f35442634f69a20cb6" prot="private" static="no" mutable="no">
+        <type>const TextFormatFlags</type>
+        <definition>const TextFormatFlags System.Forms.Controls.ComboTreeBox.FormatFlags</definition>
+        <argsstring></argsstring>
+        <name>FormatFlags</name>
+        <initializer>= TextFormatFlags.TextBoxControl | <ref refid="namespace_system_1_1_forms_1a9f0b854fd830b46055a1e8061698eddda945d5e233cf7d6240f6b783b36a374ff" kindref="member">TextFormatFlags.Left</ref> | TextFormatFlags.VerticalCenter | TextFormatFlags.PathEllipsis</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a51501f315ea89c2ddbec074677843d48" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down" kindref="compound">ComboTreeDropDown</ref></type>
+        <definition>readonly ComboTreeDropDown System.Forms.Controls.ComboTreeBox._DropDown</definition>
+        <argsstring></argsstring>
+        <name>_DropDown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a9776d7d25b96d72f6e862ae81a968702" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node_collection" kindref="compound">ComboTreeNodeCollection</ref></type>
+        <definition>readonly ComboTreeNodeCollection System.Forms.Controls.ComboTreeBox._Nodes</definition>
+        <argsstring></argsstring>
+        <name>_Nodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="27" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a6d875e5c5afdc7b985eaef04307a6758" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeBox._ExpandedImageIndex</definition>
+        <argsstring></argsstring>
+        <name>_ExpandedImageIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a72eb1edc0ccdeb5b4b3e4485d4de1430" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox._ExpandedImageKey</definition>
+        <argsstring></argsstring>
+        <name>_ExpandedImageKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="30" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a6cd95731a7815eee6a3c95a6a8533fb3" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeBox._ImageIndex</definition>
+        <argsstring></argsstring>
+        <name>_ImageIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aaa31afed92b759bc62c40faf48243eb7" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox._ImageKey</definition>
+        <argsstring></argsstring>
+        <name>_ImageKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="32" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1addd376108b2f516cc0c384f25ad58169" prot="private" static="no" mutable="no">
+        <type>ImageList</type>
+        <definition>ImageList System.Forms.Controls.ComboTreeBox._Images</definition>
+        <argsstring></argsstring>
+        <name>_Images</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="33" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aaabbf52b0dc1f1719e533bf60944c7de" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.ComboTreeBox._IsUpdating</definition>
+        <argsstring></argsstring>
+        <name>_IsUpdating</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a295630afd03202f746e75225da4b9ab1" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox._NullValue</definition>
+        <argsstring></argsstring>
+        <name>_NullValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a5068236129d5969293789c0d022e1c71" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox._PathSeparator</definition>
+        <argsstring></argsstring>
+        <name>_PathSeparator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1ac09d00a186c49e8cce5fba000ef5a753" prot="private" static="no" mutable="no">
+        <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node" kindref="compound">ComboTreeNode</ref></type>
+        <definition>ComboTreeNode System.Forms.Controls.ComboTreeBox._SelectedNode</definition>
+        <argsstring></argsstring>
+        <name>_SelectedNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a44133b163359e292cfcde93c347be5f2" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.ComboTreeBox._ShowPath</definition>
+        <argsstring></argsstring>
+        <name>_ShowPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a0553165e82f504e0a13c44aef6d2a2a4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.ComboTreeBox._UseNodeNamesForPath</definition>
+        <argsstring></argsstring>
+        <name>_UseNodeNamesForPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a34a600d7e30ff5d3a222dd74902dc20c" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler</type>
+        <definition>EventHandler System.Forms.Controls.ComboTreeBox.SelectedNodeChanged</definition>
+        <argsstring></argsstring>
+        <name>SelectedNodeChanged</name>
+        <initializer>\&quot;</initializer>
+        <briefdescription>
+<para>Fired when the SelectedNode property changes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="75" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a72139c4b663689babaabb46ab140d6c4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node" kindref="compound">ComboTreeNode</ref> &gt;</type>
+        <definition>IEnumerable&lt;ComboTreeNode&gt; System.Forms.Controls.ComboTreeBox.AllNodes</definition>
+        <argsstring></argsstring>
+        <name>AllNodes</name>
+        <briefdescription>
+<para>Gets the (recursive) superset of the entire tree of nodes contained within the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="85" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a27a4de7633b4ac84fcb097be8cfd595f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeBox.DropDownHeight</definition>
+        <argsstring></argsstring>
+        <name>DropDownHeight</name>
+        <briefdescription>
+<para>Gets or sets the height of the dropdown portion of the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="100" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a4423c13c1c9063e1a45c2938697a4b57" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeBox.ExpandedImageIndex</definition>
+        <argsstring></argsstring>
+        <name>ExpandedImageIndex</name>
+        <briefdescription>
+<para>Gets or sets the index of the default image to use for nodes when expanded. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="112" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a48c744bd6e8c49eddc02736a1393ce5b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox.ExpandedImageKey</definition>
+        <argsstring></argsstring>
+        <name>ExpandedImageKey</name>
+        <briefdescription>
+<para>Gets or sets the name of the default image to use for nodes when expanded. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="128" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1acd2ea569901c68efc53fa993541a107c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeBox.ImageIndex</definition>
+        <argsstring></argsstring>
+        <name>ImageIndex</name>
+        <briefdescription>
+<para>Gets or sets the index of the default image to use for nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="144" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aa4efc522067d06a3bd07a35e439e549c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox.ImageKey</definition>
+        <argsstring></argsstring>
+        <name>ImageKey</name>
+        <briefdescription>
+<para>Gets or sets the name of the default image to use for nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="160" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a3d219dc910eb02e9c7b76141bcac3545" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>ImageList</type>
+        <definition>ImageList System.Forms.Controls.ComboTreeBox.Images</definition>
+        <argsstring></argsstring>
+        <name>Images</name>
+        <briefdescription>
+<para>Gets or sets an ImageList component which provides the images displayed beside nodes in the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="176" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a5593bc50f24713c4f71c0be98c119130" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node_collection" kindref="compound">ComboTreeNodeCollection</ref></type>
+        <definition>ComboTreeNodeCollection System.Forms.Controls.ComboTreeBox.Nodes</definition>
+        <argsstring></argsstring>
+        <name>Nodes</name>
+        <briefdescription>
+<para>Gets the collection of top-level nodes contained by the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="192" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1af9f757a339cd9338fa38608fe586ea4a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox.NullValue</definition>
+        <argsstring></argsstring>
+        <name>NullValue</name>
+        <briefdescription>
+<para>Gets or sets the text displayed in the editable portion of the control if the SelectedNode property is null. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="203" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a5470af51cc19b795bcfafa49cf8df6ee" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Forms.Controls.ComboTreeBox.Path</definition>
+        <argsstring></argsstring>
+        <name>Path</name>
+        <briefdescription>
+<para>Gets or sets the path to the selected node. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="219" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1ab553e132fb3414103e14698a8ca31949" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Forms.Controls.ComboTreeBox.ComboTreeBox</definition>
+        <argsstring>()</argsstring>
+        <name>ComboTreeBox</name>
+        <briefdescription>
+<para>Initalises a new instance of <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kindref="compound">ComboTreeBox</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="48" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="48" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a control which provides ComboBox-like functionality, displaying its dropdown items (nodes) in a manner similar to a TreeView control. </para>    </briefdescription>
+    <detaileddescription>
+<para><ulink url="http://www.brad-smith.info/blog/archives/193">http://www.brad-smith.info/blog/archives/193</ulink></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="187">
+        <label>System.Forms.Controls.ComboTreeBox</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box"/>
+        <childnode refid="188" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>BaseDropDownControl</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control"/>
+        <childnode refid="189" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="189">
+        <label>Control</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="190">
+        <label>System.Forms.Controls.ComboTreeBox</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box"/>
+        <childnode refid="191" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="191">
+        <label>BaseDropDownControl</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control"/>
+        <childnode refid="192" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="192">
+        <label>Control</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeBox.cs" bodystart="16" bodyend="790"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a51501f315ea89c2ddbec074677843d48" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_DropDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a6d875e5c5afdc7b985eaef04307a6758" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_ExpandedImageIndex</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a72eb1edc0ccdeb5b4b3e4485d4de1430" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_ExpandedImageKey</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a6cd95731a7815eee6a3c95a6a8533fb3" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_ImageIndex</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aaa31afed92b759bc62c40faf48243eb7" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_ImageKey</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1addd376108b2f516cc0c384f25ad58169" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_Images</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aaabbf52b0dc1f1719e533bf60944c7de" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_IsUpdating</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a9776d7d25b96d72f6e862ae81a968702" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_Nodes</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a295630afd03202f746e75225da4b9ab1" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_NullValue</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a5068236129d5969293789c0d022e1c71" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_PathSeparator</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1ac09d00a186c49e8cce5fba000ef5a753" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_SelectedNode</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a44133b163359e292cfcde93c347be5f2" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_ShowPath</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a0553165e82f504e0a13c44aef6d2a2a4" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>_UseNodeNamesForPath</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a72139c4b663689babaabb46ab140d6c4" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>AllNodes</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad7ff5cd143d6d9a5563d453fc73a5994" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>BackColor</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a27c782692a8b6099fcbbe77c62550f2d" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>BackgroundImage</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ab24bcefb2379d87d6e30fc0e5b71ada3" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>BackgroundImageLayout</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a0568c30cc8b2d26a4e7d565f3a7dba1b" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>BaseDropDownControl</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1ab553e132fb3414103e14698a8ca31949" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>ComboTreeBox</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a1610b8ae3023c87d219f3466e4fa2517" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>DrawWithVisualStyles</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a238f6bdcd0697090d480550817031720" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>DropDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ac0b65d64f69cb01b794ecba804b351a9" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>DropDownButtonClick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a725bae12f581481b175b9d20635c06d7" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>DropDownClosed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a27a4de7633b4ac84fcb097be8cfd595f" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>DropDownHeight</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ae911c43011d93925aad6cf7a4885a060" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>DroppedDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a4423c13c1c9063e1a45c2938697a4b57" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>ExpandedImageIndex</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a48c744bd6e8c49eddc02736a1393ce5b" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>ExpandedImageKey</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aad0320e48c9332f35442634f69a20cb6" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>FormatFlags</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1acd2ea569901c68efc53fa993541a107c" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>ImageIndex</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1aa4efc522067d06a3bd07a35e439e549c" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>ImageKey</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a3d219dc910eb02e9c7b76141bcac3545" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>Images</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1aef1528c3db7a3e27e54bc9ea03a9403e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>IsInputKey</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a5593bc50f24713c4f71c0be98c119130" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>Nodes</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1af9f757a339cd9338fa38608fe586ea4a" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>NullValue</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4c3ffe262bc153a76b4ee2e9d3ac7f9b" prot="protected" virt="virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnDropDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a5a4b6c33eaf8a88081e7958b58f1f1af" prot="protected" virt="virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnDropDownButtonClick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a9bc874a193200906d2b9144d7c43bebc" prot="protected" virt="virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnDropDownClosed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a5d11fa8b5e14860a7f77c559422c2fff" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnFontChanged</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a50b010acfe37cb21ce7ab01d9b2fcac6" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnGotFocus</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1aa3582f8388484b6acecf7dbbe4ddd923" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnLostFocus</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6ef21de89c95ff93c36e02f3f217eb32" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnMouseClick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ac61158fa8952a885a3bf093d5d38056e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnMouseDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a3d20be98f9f342f9fe2dfeb4838b565e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnMouseEnter</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ae1d0aa304294e4c2085b2320f637479f" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnMouseLeave</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a8132b81edce642be50f325bc739c01d6" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnMouseMove</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6acbd0a8b6ffa45836798602bf52e11d" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnMouseUp</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1abdee5f2e4a2b0ff5361400994197a58d" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnPaint</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4a46430fe68c48782c5a48680f80dbaf" prot="protected" virt="virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnPaintContent</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad6f875ec02311704417470cf9d52a850" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>OnSizeChanged</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a28fc6c3d9babc27715a47be33d6a8339" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>PaintContent</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a5470af51cc19b795bcfafa49cf8df6ee" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>Path</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box_1a34a600d7e30ff5d3a222dd74902dc20c" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeBox</scope><name>SelectedNodeChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

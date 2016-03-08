@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_miner_1_1_interop_1_1_process" kind="namespace" language="C#">
+    <compoundname>Miner::Interop::Process</compoundname>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_address" prot="public">Miner::Interop::Process::Address</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_action_handler" prot="public">Miner::Interop::Process::BasePxActionHandler</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control" prot="public">Miner::Interop::Process::BasePxControl</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_cost_engine" prot="public">Miner::Interop::Process::BasePxCostEngine</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter" prot="public">Miner::Interop::Process::BasePxDeleter</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter" prot="public">Miner::Interop::Process::BasePxEdmDeleter</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository" prot="public">Miner::Interop::Process::BasePxEdmRepository</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter" prot="public">Miner::Interop::Process::BasePxFilter</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_inventory_engine" prot="public">Miner::Interop::Process::BasePxInventoryEngine</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder" prot="public">Miner::Interop::Process::BasePxListBuilder</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node" prot="public">Miner::Interop::Process::BasePxNode</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder" prot="public">Miner::Interop::Process::BasePxNodeBuilder</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_reporting_engine" prot="public">Miner::Interop::Process::BasePxReportingEngine</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_subtask" prot="public">Miner::Interop::Process::BasePxSubtask</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_px_tree_tool" prot="public">Miner::Interop::Process::BasePxTreeTool</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" prot="public">Miner::Interop::Process::BaseWMSNode</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_customer" prot="public">Miner::Interop::Process::Customer</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_design" prot="public">Miner::Interop::Process::Design</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_design_builder" prot="public">Miner::Interop::Process::DesignBuilder</innerclass>
+    <innerclass refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" prot="public">Miner::Interop::Process::EDM</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_edm_field" prot="public">Miner::Interop::Process::EdmField</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_edm_repository" prot="public">Miner::Interop::Process::EdmRepository</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_edm_table" prot="public">Miner::Interop::Process::EdmTable</innerclass>
+    <innerclass refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_control_u_i" prot="public">Miner::Interop::Process::IPxControlUI</innerclass>
+    <innerclass refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_design" prot="public">Miner::Interop::Process::IPxDesign</innerclass>
+    <innerclass refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_edm_repository" prot="public">Miner::Interop::Process::IPxEdmRepository</innerclass>
+    <innerclass refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node" prot="public">Miner::Interop::Process::IPxNode</innerclass>
+    <innerclass refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_session" prot="public">Miner::Interop::Process::IPxSession</innerclass>
+    <innerclass refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request" prot="public">Miner::Interop::Process::IPxWorkRequest</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_local_px_application_factory" prot="package">Miner::Interop::Process::LocalPxApplicationFactory</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_location" prot="public">Miner::Interop::Process::Location</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions" prot="public">Miner::Interop::Process::PxApplicationExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factories" prot="public">Miner::Interop::Process::PxApplicationFactories</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory" prot="public">Miner::Interop::Process::PxApplicationFactory</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_enumerable_extensions" prot="public">Miner::Interop::Process::PxEnumerableExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_helper_extensions" prot="public">Miner::Interop::Process::PxHelperExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_integration_cache" prot="public">Miner::Interop::Process::PxIntegrationCache</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions" prot="public">Miner::Interop::Process::PxNodeExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_property_set_extensions" prot="public">Miner::Interop::Process::PxPropertySetExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_state_extensions" prot="public">Miner::Interop::Process::PxStateExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_transition_extensions" prot="public">Miner::Interop::Process::PxTransitionExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_user" prot="public">Miner::Interop::Process::PxUser</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_user_extensions" prot="public">Miner::Interop::Process::PxUserExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_px_version_extensions" prot="public">Miner::Interop::Process::PxVersionExtensions</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_remote_px_application_factory" prot="package">Miner::Interop::Process::RemotePxApplicationFactory</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_session" prot="public">Miner::Interop::Process::Session</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_session_builder" prot="public">Miner::Interop::Process::SessionBuilder</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_work_request" prot="public">Miner::Interop::Process::WorkRequest</innerclass>
+    <innerclass refid="class_miner_1_1_interop_1_1_process_1_1_work_request_builder" prot="public">Miner::Interop::Process::WorkRequestBuilder</innerclass>
+    <innernamespace refid="namespace_miner_1_1_interop_1_1_process_1_1_base_classes">Miner::Interop::Process::BaseClasses</innernamespace>
+    <innernamespace refid="namespace_miner_1_1_interop_1_1_process_1_1_collections">Miner::Interop::Process::Collections</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_miner_1_1_interop_1_1_process_1aca23ca6f16493e97316fa7c16eecedad" prot="public" static="no">
+        <name>PxVersionStatus</name>
+        <enumvalue id="namespace_miner_1_1_interop_1_1_process_1aca23ca6f16493e97316fa7c16eecedada6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>The version doesn&apos;t exist. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_miner_1_1_interop_1_1_process_1aca23ca6f16493e97316fa7c16eecedada2a8eb028670e972535e8e246be645821" prot="public">
+          <name>Exists</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>The version exists. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_miner_1_1_interop_1_1_process_1aca23ca6f16493e97316fa7c16eecedada16cd452dda9d4398bf6240603eee40a9" prot="public">
+          <name>Posted</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>The version was posted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_miner_1_1_interop_1_1_process_1aca23ca6f16493e97316fa7c16eecedada286adf67b1340a66f87f5136846cdf1c" prot="public">
+          <name>Deletable</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>The version can be deleted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration of the version status. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/PxVersionStatus.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/PxVersionStatus.cs" bodystart="9" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxActionHandler.cs" line="5" column="1"/>
+  </compounddef>
+</doxygen>

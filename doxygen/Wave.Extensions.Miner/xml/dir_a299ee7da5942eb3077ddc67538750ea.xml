@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_a299ee7da5942eb3077ddc67538750ea" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions</compoundname>
+    <innerdir refid="dir_68078bbf29c4105c4a0b4e5527a89996">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/Exceptions</innerdir>
+    <innerfile refid="_class_extensions_8cs">ClassExtensions.cs</innerfile>
+    <innerfile refid="_feature_extensions_8cs">FeatureExtensions.cs</innerfile>
+    <innerfile refid="_row_extensions_8cs">RowExtensions.cs</innerfile>
+    <innerfile refid="_table_extensions_8cs">TableExtensions.cs</innerfile>
+    <innerfile refid="_version_extensions_8cs">VersionExtensions.cs</innerfile>
+    <innerfile refid="_workspace_extensions_8cs">WorkspaceExtensions.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/"/>
+  </compounddef>
+</doxygen>

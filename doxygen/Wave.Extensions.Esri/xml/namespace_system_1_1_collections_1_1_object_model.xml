@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_system_1_1_collections_1_1_object_model" kind="namespace" language="C#">
+    <compoundname>System::Collections::ObjectModel</compoundname>
+    <innerclass refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection" prot="public">System::Collections::ObjectModel::EdgeCollection</innerclass>
+    <innerclass refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection" prot="public">System::Collections::ObjectModel::VertexCollection</innerclass>
+    <innerclass refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_edge_dictionary" prot="public">System::Collections::ObjectModel::VertexEdgeDictionary</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" line="4" column="1"/>
+  </compounddef>
+</doxygen>

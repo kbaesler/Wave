@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_b530fdd33811ee5731070801be263b2d" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geoprocessing/BaseClasses</compoundname>
+    <innerdir refid="dir_ce1580fc8a4f877118bbdc919b15067c">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geoprocessing/BaseClasses/Extensions</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geoprocessing/BaseClasses/"/>
+  </compounddef>
+</doxygen>

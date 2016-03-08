@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_object_model_1_1_edge_collection" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::ObjectModel::EdgeCollection</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Collection&lt; TEdge &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+      <param>
+        <type>TEdge</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1a29dbdfc6f4468a989f22d7f95c596673" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.ObjectModel.EdgeCollection&lt; TVertex, TEdge &gt;.EdgeCollection</definition>
+        <argsstring>()</argsstring>
+        <name>EdgeCollection</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1a29dbdfc6f4468a989f22d7f95c596673" kindref="member">EdgeCollection&lt;TVertex, TEdge&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1a80790903028d73fd04bcbe6941476515" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.ObjectModel.EdgeCollection&lt; TVertex, TEdge &gt;.EdgeCollection</definition>
+        <argsstring>(EdgeCollection&lt; TVertex, TEdge &gt; list)</argsstring>
+        <name>EdgeCollection</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection" kindref="compound">EdgeCollection</ref>&lt; TVertex, TEdge &gt;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1a29dbdfc6f4468a989f22d7f95c596673" kindref="member">EdgeCollection&lt;TVertex, TEdge&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" line="27" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1ad98ad1fe19b54cd58494aba7d95f5a15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection" kindref="compound">EdgeCollection</ref>&lt; TVertex, TEdge &gt;</type>
+        <definition>EdgeCollection&lt;TVertex, TEdge&gt; System.Collections.ObjectModel.EdgeCollection&lt; TVertex, TEdge &gt;.Clone</definition>
+        <argsstring>()</argsstring>
+        <name>Clone</name>
+        <briefdescription>
+<para>Clones this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" bodystart="40" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An observable collection of edges and vertices. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the vertex.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TEdge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the edge.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="301">
+        <label>System.Collections.ObjectModel.EdgeCollection&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection"/>
+        <childnode refid="302" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="302">
+        <label>Collection&lt; TEdge &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="303">
+        <label>System.Collections.ObjectModel.EdgeCollection&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection"/>
+        <childnode refid="304" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="304">
+        <label>Collection&lt; TEdge &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/EdgeCollection.cs" bodystart="11" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1ad98ad1fe19b54cd58494aba7d95f5a15" prot="public" virt="non-virtual"><scope>System::Collections::ObjectModel::EdgeCollection</scope><name>Clone</name></member>
+      <member refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1a29dbdfc6f4468a989f22d7f95c596673" prot="public" virt="non-virtual"><scope>System::Collections::ObjectModel::EdgeCollection</scope><name>EdgeCollection</name></member>
+      <member refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection_1a80790903028d73fd04bcbe6941476515" prot="public" virt="non-virtual"><scope>System::Collections::ObjectModel::EdgeCollection</scope><name>EdgeCollection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

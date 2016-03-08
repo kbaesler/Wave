@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_df1cd6be33429e0d73825612b8548b05" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/PasswordBox</compoundname>
+    <innerfile refid="_password_box_behavior_8cs">PasswordBoxBehavior.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/PasswordBox/"/>
+  </compounddef>
+</doxygen>

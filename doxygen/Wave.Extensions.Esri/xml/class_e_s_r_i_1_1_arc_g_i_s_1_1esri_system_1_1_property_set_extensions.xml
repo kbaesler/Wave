@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_property_set_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::esriSystem::PropertySetExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_property_set_extensions_1a0adf3661397bb211f5a89cb30076da1a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; KeyValuePair&lt; string, object &gt; &gt;</type>
+        <definition>static IEnumerable&lt;KeyValuePair&lt;string, object&gt; &gt; ESRI.ArcGIS.esriSystem.PropertySetExtensions.AsEnumerable</definition>
+        <argsstring>(this IPropertySet source)</argsstring>
+        <name>AsEnumerable</name>
+        <param>
+          <type>this IPropertySet</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IEnumerable&lt;T&gt; from an IPropertySet </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An IPropertySet to create an IEnumerable&lt;T&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IEnumerable&lt;T&gt; that contains the property set from the input source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/PropertySetExtensions.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/PropertySetExtensions.cs" bodystart="18" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_property_set_extensions_1ab5005cec1cbdb2941d8a80d374022f58" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TValue</type>
+        <definition>static TValue ESRI.ArcGIS.esriSystem.PropertySetExtensions.GetProperty&lt; TValue &gt;</definition>
+        <argsstring>(this IPropertySet source, string name, TValue defaultValue)</argsstring>
+        <name>GetProperty&lt; TValue &gt;</name>
+        <param>
+          <type>this IPropertySet</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>defaultValue</declname>
+        </param>
+        <briefdescription>
+<para>Gets the value from the property set that has the given <emphasis>name</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The property set.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>defaultValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The default value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the value for the property with the specified name; otherwise the <emphasis>defaultValue</emphasis>  will be returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/PropertySetExtensions.cs" line="48" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/PropertySetExtensions.cs" bodystart="48" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.esriSystem.IPropertySet </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/PropertySetExtensions.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/PropertySetExtensions.cs" bodystart="9" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_property_set_extensions_1a0adf3661397bb211f5a89cb30076da1a" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::PropertySetExtensions</scope><name>AsEnumerable</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_property_set_extensions_1ab5005cec1cbdb2941d8a80d374022f58" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::PropertySetExtensions</scope><name>GetProperty&lt; TValue &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_system_1_1_windows_1_1_controls" kind="namespace" language="C#">
+    <compoundname>System::Windows::Controls</compoundname>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_auto_complete_text_box" prot="public">System::Windows::Controls::AutoCompleteTextBox</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_delayed_text_box" prot="public">System::Windows::Controls::DelayedTextBox</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_interop_text_box" prot="public">System::Windows::Controls::InteropTextBox</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_reveal" prot="public">System::Windows::Controls::Reveal</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_sort_adorner" prot="public">System::Windows::Controls::SortAdorner</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_token" prot="public">System::Windows::Controls::Token</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box" prot="public">System::Windows::Controls::TokenizedTextBox</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_commands" prot="public">System::Windows::Controls::TokenizedTextBoxCommands</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_watermark" prot="public">System::Windows::Controls::Watermark</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner" prot="package">System::Windows::Controls::WatermarkAdorner</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_system_1_1_windows_1_1_controls_1aa9ccbd3a9c787aa796bf1d8327ba2620" prot="public" static="no">
+        <name>HorizontalRevealMode</name>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1aa9ccbd3a9c787aa796bf1d8327ba2620a6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <briefdescription>
+<para>No horizontal reveal animation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1aa9ccbd3a9c787aa796bf1d8327ba2620a815ce8634a64fdb67d9247d0fa9ae618" prot="public">
+          <name>FromLeftToRight</name>
+          <briefdescription>
+<para><ref refid="class_system_1_1_windows_1_1_controls_1_1_reveal" kindref="compound">Reveal</ref> from the left to the right. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1aa9ccbd3a9c787aa796bf1d8327ba2620abf276cb812b8398522486c630408d15e" prot="public">
+          <name>FromRightToLeft</name>
+          <briefdescription>
+<para><ref refid="class_system_1_1_windows_1_1_controls_1_1_reveal" kindref="compound">Reveal</ref> from the right to the left. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1aa9ccbd3a9c787aa796bf1d8327ba2620a4e11cba8ff44beb6089524dd3a598d56" prot="public">
+          <name>FromCenterToEdge</name>
+          <briefdescription>
+<para><ref refid="class_system_1_1_windows_1_1_controls_1_1_reveal" kindref="compound">Reveal</ref> from the center to the bounding edge. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration that handles the type of horizontal reveal. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Reveal/Reveal.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Reveal/Reveal.cs" bodystart="11" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_system_1_1_windows_1_1_controls_1ae52e19ddd47fd4a312805a4fcbfce29f" prot="public" static="no">
+        <name>VerticalRevealMode</name>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1ae52e19ddd47fd4a312805a4fcbfce29fa6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <briefdescription>
+<para>No vertical reveal animation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1ae52e19ddd47fd4a312805a4fcbfce29fae7eab9b6030f94e580c64b57896e6d7f" prot="public">
+          <name>FromTopToBottom</name>
+          <briefdescription>
+<para><ref refid="class_system_1_1_windows_1_1_controls_1_1_reveal" kindref="compound">Reveal</ref> from top to bottom. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1ae52e19ddd47fd4a312805a4fcbfce29fae8df02a46dfb379f4b100074da95c3ce" prot="public">
+          <name>FromBottomToTop</name>
+          <briefdescription>
+<para><ref refid="class_system_1_1_windows_1_1_controls_1_1_reveal" kindref="compound">Reveal</ref> from bottom to top. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_system_1_1_windows_1_1_controls_1ae52e19ddd47fd4a312805a4fcbfce29fa4e11cba8ff44beb6089524dd3a598d56" prot="public">
+          <name>FromCenterToEdge</name>
+          <briefdescription>
+<para><ref refid="class_system_1_1_windows_1_1_controls_1_1_reveal" kindref="compound">Reveal</ref> from the center to the bounding edge. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration that handles the type of vertical reveal. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Reveal/Reveal.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Reveal/Reveal.cs" bodystart="37" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/AutoCompleteTextBox/AutoCompleteTextBox.cs" line="9" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_61c436948920e14a9ae5c5ab126a218b" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/ViewModel</compoundname>
+    <innerdir refid="dir_b683ce80730d9cb992fc4c4658bedf43">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/ViewModel/BaseClasses</innerdir>
+    <innerfile refid="_background_view_model_8cs">BackgroundViewModel.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/ViewModel/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_data_event_args" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::DataEventArgs</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">EventArgs</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TData</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_data_event_args_1ab3e7b8e1c13ee4d66a1bedfe9e001daf" prot="private" static="no" mutable="no">
+        <type>readonly TData</type>
+        <definition>readonly TData System.Windows.DataEventArgs&lt; TData &gt;._Value</definition>
+        <argsstring></argsstring>
+        <name>_Value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_data_event_args_1a6be4fba00dc7a4dd14e4669fb2d80072" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>TData</type>
+        <definition>TData System.Windows.DataEventArgs&lt; TData &gt;.Value</definition>
+        <argsstring></argsstring>
+        <name>Value</name>
+        <briefdescription>
+<para>Gets the information related to the event. </para>        </briefdescription>
+        <detaileddescription>
+<para>Information related to the event.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_data_event_args_1a25481903faeaa9ca5506986d7b95fab2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.DataEventArgs&lt; TData &gt;.DataEventArgs</definition>
+        <argsstring>(TData value)</argsstring>
+        <name>DataEventArgs</name>
+        <param>
+          <type>TData</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the <ref refid="class_system_1_1_windows_1_1_data_event_args" kindref="compound">DataEventArgs</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Information related to the event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" bodystart="21" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generic arguments class to pass to event handlers that need to receive data. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of data to pass.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="239">
+        <label>EventArgs</label>
+      </node>
+      <node id="238">
+        <label>System.Windows.DataEventArgs&lt; TData &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_data_event_args"/>
+        <childnode refid="239" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="241">
+        <label>EventArgs</label>
+      </node>
+      <node id="240">
+        <label>System.Windows.DataEventArgs&lt; TData &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_data_event_args"/>
+        <childnode refid="241" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" line="8" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DataEventArgs.cs" bodystart="7" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_data_event_args_1ab3e7b8e1c13ee4d66a1bedfe9e001daf" prot="private" virt="non-virtual"><scope>System::Windows::DataEventArgs</scope><name>_Value</name></member>
+      <member refid="class_system_1_1_windows_1_1_data_event_args_1a25481903faeaa9ca5506986d7b95fab2" prot="public" virt="non-virtual"><scope>System::Windows::DataEventArgs</scope><name>DataEventArgs</name></member>
+      <member refid="class_system_1_1_windows_1_1_data_event_args_1a6be4fba00dc7a4dd14e4669fb2d80072" prot="public" virt="non-virtual"><scope>System::Windows::DataEventArgs</scope><name>Value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

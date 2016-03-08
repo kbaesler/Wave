@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_system_1_1_windows_1_1_i_delegate_reference" kind="interface" language="C#" prot="public">
+    <compoundname>System::Windows::IDelegateReference</compoundname>
+    <derivedcompoundref refid="class_system_1_1_windows_1_1_delegate_reference" prot="public" virt="non-virtual">System.Windows.DelegateReference</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_system_1_1_windows_1_1_i_delegate_reference_1a8ecc22fd5999fae0cb1a3dc799a03f49" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Delegate</type>
+        <definition>Delegate System.Windows.IDelegateReference.Target</definition>
+        <argsstring></argsstring>
+        <name>Target</name>
+        <briefdescription>
+<para>Gets the referenced Delegate object. </para>        </briefdescription>
+        <detaileddescription>
+<para>A Delegate instance if the target is valid; otherwise .</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/IDelegateReference.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/IDelegateReference.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a reference to a Delegate. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="391">
+        <label>System.Windows.IDelegateReference</label>
+        <link refid="interface_system_1_1_windows_1_1_i_delegate_reference"/>
+      </node>
+      <node id="392">
+        <label>System.Windows.DelegateReference</label>
+        <link refid="class_system_1_1_windows_1_1_delegate_reference"/>
+        <childnode refid="391" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/IDelegateReference.cs" line="7" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/IDelegateReference.cs" bodystart="6" bodyend="17"/>
+    <listofallmembers>
+      <member refid="interface_system_1_1_windows_1_1_i_delegate_reference_1a8ecc22fd5999fae0cb1a3dc799a03f49" prot="public" virt="non-virtual"><scope>System::Windows::IDelegateReference</scope><name>Target</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

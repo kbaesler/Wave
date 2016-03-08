@@ -1,0 +1,701 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_observable_dictionary" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::ObservableDictionary</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDictionary&lt; TKey, TValue &gt;</basecompoundref>
+    <basecompoundref refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changed" prot="public" virt="non-virtual">System::Collections::INotifyDictionaryChanged&lt; TKey, TValue &gt;</basecompoundref>
+    <basecompoundref refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changing" prot="public" virt="non-virtual">System::Collections::INotifyDictionaryChanging&lt; TKey, TValue &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TKey</type>
+      </param>
+      <param>
+        <type>TValue</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_observable_dictionary_1abf0bb2b8f550db35bf31628c46af55dd" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>IDictionary&lt; TKey, TValue &gt;</type>
+        <definition>IDictionary&lt;TKey, TValue&gt; System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Dictionary</definition>
+        <argsstring></argsstring>
+        <name>Dictionary</name>
+        <briefdescription>
+<para>Gets the dictionary. </para>        </briefdescription>
+        <detaileddescription>
+<para>The dictionary.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_observable_dictionary_1a2b90e932d3557e7f34a4f3f2695e55c2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Count</definition>
+        <argsstring></argsstring>
+        <name>Count</name>
+        <briefdescription>
+<para>Gets the number of elements contained in the T:System.Collections.Generic.ICollection`1. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The number of elements contained in the T:System.Collections.Generic.ICollection`1. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="57" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_observable_dictionary_1aa45b2525eb5d3d1c145870d360f11dd5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.IsReadOnly</definition>
+        <argsstring></argsstring>
+        <name>IsReadOnly</name>
+        <briefdescription>
+<para>Gets a value indicating whether the T:System.Collections.Generic.ICollection`1 is read-only. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the T:System.Collections.Generic.ICollection`1 is read-only; otherwise, falSE. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="69" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_observable_dictionary_1a9c3520c50069aa3c8c612906865e7240" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>ICollection&lt; TKey &gt;</type>
+        <definition>ICollection&lt;TKey&gt; System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Keys</definition>
+        <argsstring></argsstring>
+        <name>Keys</name>
+        <briefdescription>
+<para>Gets an T:System.Collections.Generic.ICollection`1 containing the keys of the T:System.Collections.Generic.IDictionary`2. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An T:System.Collections.Generic.ICollection`1 containing the keys of the object that implements T:System.Collections.Generic.IDictionary`2. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="83" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_observable_dictionary_1a0c7a837de53ee6ce3f293c292ce241ca" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TValue</type>
+        <definition>TValue System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.this[TKey key]</definition>
+        <argsstring></argsstring>
+        <name>this[TKey key]</name>
+        <briefdescription>
+<para>Gets or sets the value with the specified key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the value for the key. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="95" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_observable_dictionary_1a1822b4cae8a110698894c13650abe6ee" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>ICollection&lt; TValue &gt;</type>
+        <definition>ICollection&lt;TValue&gt; System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Values</definition>
+        <argsstring></argsstring>
+        <name>Values</name>
+        <briefdescription>
+<para>Gets an T:System.Collections.Generic.ICollection`1 containing the values in the T:System.Collections.Generic.IDictionary`2. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An T:System.Collections.Generic.ICollection`1 containing the values in the object that implements T:System.Collections.Generic.IDictionary`2. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="122" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_system_1_1_collections_1_1_observable_dictionary_1ade5ce3b9b26d8d41ee829bc997e4b146" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args" kindref="compound">NotifyDictionaryChangedEventArgs</ref>&lt; TKey, TValue &gt; &gt;</type>
+        <definition>virtual EventHandler&lt;NotifyDictionaryChangedEventArgs&lt;TKey, TValue&gt; &gt; System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.DictionaryChanged</definition>
+        <argsstring></argsstring>
+        <name>DictionaryChanged</name>
+        <briefdescription>
+<para>Occurs when the dictionary has changed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="337" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_collections_1_1_observable_dictionary_1adec8e680374442a6a0fc728ea1e1ddf8" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args" kindref="compound">NotifyDictionaryChangingEventArgs</ref>&lt; TKey, TValue &gt; &gt;</type>
+        <definition>virtual EventHandler&lt;NotifyDictionaryChangingEventArgs&lt;TKey, TValue&gt; &gt; System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.DictionaryChanging</definition>
+        <argsstring></argsstring>
+        <name>DictionaryChanging</name>
+        <briefdescription>
+<para>Occurs when the dictionary is changing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="346" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="346" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1ada6a6e53eac14c93fb826f806e50a4e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.ObservableDictionary</definition>
+        <argsstring>()</argsstring>
+        <name>ObservableDictionary</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_observable_dictionary_1ada6a6e53eac14c93fb826f806e50a4e1" kindref="member">ObservableDictionary&lt;TKey, TValue&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1ae297ddebeb6d0fdd5a85654a1c6e5033" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.ObservableDictionary</definition>
+        <argsstring>(IDictionary&lt; TKey, TValue &gt; dictionary)</argsstring>
+        <name>ObservableDictionary</name>
+        <param>
+          <type>IDictionary&lt; TKey, TValue &gt;</type>
+          <declname>dictionary</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_observable_dictionary_1ada6a6e53eac14c93fb826f806e50a4e1" kindref="member">ObservableDictionary&lt;TKey, TValue&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dictionary</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dictionary.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a118b552239b06b451e153f6ca4926811" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Add</definition>
+        <argsstring>(TKey key, TValue value)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>TKey</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Adds an element with the provided key and value to the T:System.Collections.Generic.IDictionary`2. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to use as the key of the element to add.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to use as the value of the element to add.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>key</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An element with the same key already exists in the T:System.Collections.Generic.IDictionary`2. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The T:System.Collections.Generic.IDictionary`2 is read-only. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="141" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="141" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a2e2bf880e844a3c02c08a7cf1add229e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Add</definition>
+        <argsstring>(KeyValuePair&lt; TKey, TValue &gt; item)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>KeyValuePair&lt; TKey, TValue &gt;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Adds an item to the T:System.Collections.Generic.ICollection`1. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to add to the T:System.Collections.Generic.ICollection`1.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The T:System.Collections.Generic.ICollection`1 is read-only. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="159" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="159" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a0b206f8898e45f02068afcff89d4e984" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+<para>Removes all items from the T:System.Collections.Generic.ICollection`1. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The T:System.Collections.Generic.ICollection`1 is read-only. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="170" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="170" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a00374393c63bd26ac8e7245bddb43084" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Contains</definition>
+        <argsstring>(KeyValuePair&lt; TKey, TValue &gt; item)</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>KeyValuePair&lt; TKey, TValue &gt;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the T:System.Collections.Generic.ICollection`1 contains a specific value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to locate in the T:System.Collections.Generic.ICollection`1.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if <emphasis>item</emphasis>  is found in the T:System.Collections.Generic.ICollection`1; otherwise, falSE. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="189" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="189" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a4f47558279363a5821a2a5cda5d9af51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.ContainsKey</definition>
+        <argsstring>(TKey key)</argsstring>
+        <name>ContainsKey</name>
+        <param>
+          <type>TKey</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the T:System.Collections.Generic.IDictionary`2 contains an element with the specified key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key to locate in the T:System.Collections.Generic.IDictionary`2.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the T:System.Collections.Generic.IDictionary`2 contains an element with the key; otherwise, falSE. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>key</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="206" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="206" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a0265561a561f92a4edf7ab71435297d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.CopyTo</definition>
+        <argsstring>(KeyValuePair&lt; TKey, TValue &gt;[] array, int arrayIndex)</argsstring>
+        <name>CopyTo</name>
+        <param>
+          <type>KeyValuePair&lt; TKey, TValue &gt;[]</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>arrayIndex</declname>
+        </param>
+        <briefdescription>
+<para>Copies the elements of the T:System.Collections.Generic.ICollection`1 to an T:System.Array, starting at a particular T:System.Array index. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The one-dimensional T:System.Array that is the destination of the elements copied from T:System.Collections.Generic.ICollection`1. The T:System.Array must have zero-based indexing. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>arrayIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The zero-based index in <emphasis>array</emphasis>  at which copying begins.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>array</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>arrayIndex</emphasis>  is less than 0. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>array</emphasis>  is multidimensional. -or- <emphasis>arrayIndex</emphasis>  is equal to or greater than the length of <emphasis>array</emphasis> . -or- The number of elements in the source T:System.Collections.Generic.ICollection`1 is greater than the available space from <emphasis>arrayIndex</emphasis>  to the end of the destination <emphasis>array</emphasis> . </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="235" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="235" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a1c30806c8b0da1bfd589618de4ad2f91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator&lt; KeyValuePair&lt; TKey, TValue &gt; &gt;</type>
+        <definition>IEnumerator&lt;KeyValuePair&lt;TKey, TValue&gt; &gt; System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.GetEnumerator</definition>
+        <argsstring>()</argsstring>
+        <name>GetEnumerator</name>
+        <briefdescription>
+<para>Returns an enumerator that iterates through the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A T:System.Collections.Generic.IEnumerator`1 that can be used to iterate through the collection. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="246" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="246" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a1f790582240b7a3b3f59819aca6cac64" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Remove</definition>
+        <argsstring>(TKey key)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type>TKey</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Removes the element with the specified key from the T:System.Collections.Generic.IDictionary`2. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key of the element to remove.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the element is successfully removed; otherwise, falSE. This method also returns false if <emphasis>key</emphasis>  was not found in the original T:System.Collections.Generic.IDictionary`2. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>key</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The T:System.Collections.Generic.IDictionary`2 is read-only. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="276" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="276" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1aa2968ed29914e4e37b08fd205cc642d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.Remove</definition>
+        <argsstring>(KeyValuePair&lt; TKey, TValue &gt; item)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type>KeyValuePair&lt; TKey, TValue &gt;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Removes the first occurrence of a specific object from the T:System.Collections.Generic.ICollection`1. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to remove from the T:System.Collections.Generic.ICollection`1.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if <emphasis>item</emphasis>  was successfully removed from the T:System.Collections.Generic.ICollection`1; otherwise, falSE. This method also returns false if <emphasis>item</emphasis>  is not found in the original T:System.Collections.Generic.ICollection`1. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The T:System.Collections.Generic.ICollection`1 is read-only. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="304" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="304" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1afd283e5215549982fa8787149cce97a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.TryGetValue</definition>
+        <argsstring>(TKey key, out TValue value)</argsstring>
+        <name>TryGetValue</name>
+        <param>
+          <type>TKey</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>out TValue</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Gets the value associated with the specified key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key whose value to get.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the <emphasis>value</emphasis>  parameter. This parameter is passed uninitialized. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the object that implements T:System.Collections.Generic.IDictionary`2 contains an element with the specified key; otherwise, falSE. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>key</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="325" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="325" bodyend="328"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1af74bd184c8bf70c4801e3e61b3fb71a1" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator IEnumerable.</type>
+        <definition>IEnumerator IEnumerable. System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.GetEnumerator</definition>
+        <argsstring>()</argsstring>
+        <name>GetEnumerator</name>
+        <briefdescription>
+<para>Returns an enumerator that iterates through a collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An T:System.Collections.IEnumerator object that can be used to iterate through the collection. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="257" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="257" bodyend="260"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a2759dd36d676a2271ade452c2f1c533c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.OnDictionaryChanged</definition>
+        <argsstring>(NotifyDictionaryChangedEventArgs&lt; TKey, TValue &gt; e)</argsstring>
+        <name>OnDictionaryChanged</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args" kindref="compound">NotifyDictionaryChangedEventArgs</ref>&lt; TKey, TValue &gt;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_collections_1_1_observable_dictionary_1ade5ce3b9b26d8d41ee829bc997e4b146" kindref="member">DictionaryChanged</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Collections.NotifyDictionaryChangedEventArgs&lt;TKey,TValue&gt; instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="359" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="359" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_observable_dictionary_1a08d456f22bb0c80ec9fa8c6e667ddb44" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Collections.ObservableDictionary&lt; TKey, TValue &gt;.OnDictionaryChanging</definition>
+        <argsstring>(NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt; e)</argsstring>
+        <name>OnDictionaryChanging</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args" kindref="compound">NotifyDictionaryChangingEventArgs</ref>&lt; TKey, TValue &gt;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_collections_1_1_observable_dictionary_1adec8e680374442a6a0fc728ea1e1ddf8" kindref="member">DictionaryChanging</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Collections.NotifyDictionaryChangingEventArgs&lt;TKey,TValue&gt; instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="373" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="373" bodyend="378"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the key.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="533">
+        <label>IDictionary&lt; TKey, TValue &gt;</label>
+      </node>
+      <node id="532">
+        <label>System.Collections.ObservableDictionary&lt; TKey, TValue &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_observable_dictionary"/>
+        <childnode refid="533" relation="public-inheritance">
+        </childnode>
+        <childnode refid="534" relation="public-inheritance">
+        </childnode>
+        <childnode refid="535" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="535">
+        <label>INotifyDictionaryChanging&lt; TKey, TValue &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changing"/>
+      </node>
+      <node id="534">
+        <label>INotifyDictionaryChanged&lt; TKey, TValue &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changed"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="537">
+        <label>IDictionary&lt; TKey, TValue &gt;</label>
+      </node>
+      <node id="536">
+        <label>System.Collections.ObservableDictionary&lt; TKey, TValue &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_observable_dictionary"/>
+        <childnode refid="537" relation="public-inheritance">
+        </childnode>
+        <childnode refid="538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="539" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="539">
+        <label>INotifyDictionaryChanging&lt; TKey, TValue &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changing"/>
+      </node>
+      <node id="538">
+        <label>INotifyDictionaryChanged&lt; TKey, TValue &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changed"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/ObservableDictionary.cs" bodystart="15" bodyend="381"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a118b552239b06b451e153f6ca4926811" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Add</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a2e2bf880e844a3c02c08a7cf1add229e" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Add</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a0b206f8898e45f02068afcff89d4e984" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Clear</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a00374393c63bd26ac8e7245bddb43084" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Contains</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a4f47558279363a5821a2a5cda5d9af51" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>ContainsKey</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a0265561a561f92a4edf7ab71435297d6" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>CopyTo</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a2b90e932d3557e7f34a4f3f2695e55c2" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Count</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1abf0bb2b8f550db35bf31628c46af55dd" prot="protected" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Dictionary</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1ade5ce3b9b26d8d41ee829bc997e4b146" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>DictionaryChanged</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1adec8e680374442a6a0fc728ea1e1ddf8" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>DictionaryChanging</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a1c30806c8b0da1bfd589618de4ad2f91" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>GetEnumerator</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1af74bd184c8bf70c4801e3e61b3fb71a1" prot="private" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>GetEnumerator</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1aa45b2525eb5d3d1c145870d360f11dd5" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>IsReadOnly</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a9c3520c50069aa3c8c612906865e7240" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Keys</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1ada6a6e53eac14c93fb826f806e50a4e1" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>ObservableDictionary</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1ae297ddebeb6d0fdd5a85654a1c6e5033" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>ObservableDictionary</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a2759dd36d676a2271ade452c2f1c533c" prot="protected" virt="virtual"><scope>System::Collections::ObservableDictionary</scope><name>OnDictionaryChanged</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a08d456f22bb0c80ec9fa8c6e667ddb44" prot="protected" virt="virtual"><scope>System::Collections::ObservableDictionary</scope><name>OnDictionaryChanging</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a1f790582240b7a3b3f59819aca6cac64" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Remove</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1aa2968ed29914e4e37b08fd205cc642d0" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Remove</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a0c7a837de53ee6ce3f293c292ce241ca" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>this[TKey key]</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1afd283e5215549982fa8787149cce97a5" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>TryGetValue</name></member>
+      <member refid="class_system_1_1_collections_1_1_observable_dictionary_1a1822b4cae8a110698894c13650abe6ee" prot="public" virt="non-virtual"><scope>System::Collections::ObservableDictionary</scope><name>Values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

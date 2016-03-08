@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields" kind="struct" language="C#" prot="package">
+    <compoundname>Miner::Interop::Process::BasePxEdmRepository::Fields</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a2f36a6207b6f7362efb735ce5a7d353f" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.BasePxEdmRepository.Fields.CompatibleUnitID</definition>
+        <argsstring></argsstring>
+        <name>CompatibleUnitID</name>
+        <initializer>= &quot;COMPATIBLE_UNIT_ID&quot;</initializer>
+        <briefdescription>
+<para>The COMPATIBLE_UNIT_ID field name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" line="502" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" bodystart="502" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a3629eef162b01dd0c870ff5237b37264" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.BasePxEdmRepository.Fields.DesignID</definition>
+        <argsstring></argsstring>
+        <name>DesignID</name>
+        <initializer>= &quot;DESIGN_ID&quot;</initializer>
+        <briefdescription>
+<para>The DESIGN_ID field name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" line="507" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" bodystart="507" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a720b308f6fc34e6db4c7c0592e443d1b" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.BasePxEdmRepository.Fields.WorkLocationID</definition>
+        <argsstring></argsstring>
+        <name>WorkLocationID</name>
+        <initializer>= &quot;WORK_LOCATION_ID&quot;</initializer>
+        <briefdescription>
+<para>The WORK_LOCATION_ID field name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" line="512" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" bodystart="512" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a55e11ff25fa6fb94c635215091ca0005" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.BasePxEdmRepository.Fields.WorkRequestID</definition>
+        <argsstring></argsstring>
+        <name>WorkRequestID</name>
+        <initializer>= &quot;WORK_REQUEST_ID&quot;</initializer>
+        <briefdescription>
+<para>The WORK_REQUEST_ID field name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" line="517" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" bodystart="517" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The fields names that are required by the underlying storage tables. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" line="496" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses/BasePxEdmRepository.cs" bodystart="495" bodyend="520"/>
+    <listofallmembers>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a2f36a6207b6f7362efb735ce5a7d353f" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmRepository::Fields</scope><name>CompatibleUnitID</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a3629eef162b01dd0c870ff5237b37264" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmRepository::Fields</scope><name>DesignID</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a720b308f6fc34e6db4c7c0592e443d1b" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmRepository::Fields</scope><name>WorkLocationID</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository_1_1_fields_1a55e11ff25fa6fb94c635215091ca0005" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmRepository::Fields</scope><name>WorkRequestID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

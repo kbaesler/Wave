@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_customer" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::Customer</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" prot="public" virt="non-virtual">Miner.Interop.Process.BaseWMSNode</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_customer_1a6bbd067dfcbb09c2886179efbfcb5e6a" prot="private" static="no" mutable="no">
+        <type>readonly IMMWMSCustomer</type>
+        <definition>readonly IMMWMSCustomer Miner.Interop.Process.Customer._Customer</definition>
+        <argsstring></argsstring>
+        <name>_Customer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_customer_1af2d4e5b211b2906d1399256db7af7a3b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_address" kindref="compound">Address</ref></type>
+        <definition>Address Miner.Interop.Process.Customer._Address</definition>
+        <argsstring></argsstring>
+        <name>_Address</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1a9ced649b45557f4d320a19d213865a09" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.AccountNumber</definition>
+        <argsstring></argsstring>
+        <name>AccountNumber</name>
+        <briefdescription>
+<para>Gets or sets the account number. </para>        </briefdescription>
+        <detaileddescription>
+<para>The account number.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1af9b02334af5e3b17ea5fab55df4076eb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_address" kindref="compound">Address</ref></type>
+        <definition>Address Miner.Interop.Process.Customer.Address</definition>
+        <argsstring></argsstring>
+        <name>Address</name>
+        <briefdescription>
+<para>Gets the address. </para>        </briefdescription>
+        <detaileddescription>
+<para>The address.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="56" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1a1b9a692f04bc832eb8ede950b12513e8" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.Email</definition>
+        <argsstring></argsstring>
+        <name>Email</name>
+        <briefdescription>
+<para>Gets or sets the email. </para>        </briefdescription>
+        <detaileddescription>
+<para>The email.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="65" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1a4874c21ff4f03585e725b2b47c5f93d7" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.Fax</definition>
+        <argsstring></argsstring>
+        <name>Fax</name>
+        <briefdescription>
+<para>Gets or sets the fax. </para>        </briefdescription>
+        <detaileddescription>
+<para>The fax.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="84" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1a6a666448bd5bbc7b61dda7dfa6b118ed" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.FirstName</definition>
+        <argsstring></argsstring>
+        <name>FirstName</name>
+        <briefdescription>
+<para>Gets or sets the first name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The first name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="103" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1acbe639e5aa2900509c0db923770ab2ea" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Interop.Process.Customer.ID</definition>
+        <argsstring></argsstring>
+        <name>ID</name>
+        <briefdescription>
+<para>Gets the ID. </para>        </briefdescription>
+        <detaileddescription>
+<para>The ID.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="122" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1a7c7fb59546636b077df940e99da13a51" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.LastName</definition>
+        <argsstring></argsstring>
+        <name>LastName</name>
+        <briefdescription>
+<para>Gets or sets the last name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The last name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="131" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1aacc25ca2f326f8941485c24daac9b10c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.Mobile</definition>
+        <argsstring></argsstring>
+        <name>Mobile</name>
+        <briefdescription>
+<para>Gets or sets the mobile. </para>        </briefdescription>
+        <detaileddescription>
+<para>The mobile.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="150" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1ada0b6839336d63d49debdf13ba7dda3f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets or sets the name of the customer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="169" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_customer_1aebdc74f63ec1640f0b183c88d9c3c695" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Customer.Phone</definition>
+        <argsstring></argsstring>
+        <name>Phone</name>
+        <briefdescription>
+<para>Gets or sets the phone. </para>        </briefdescription>
+        <detaileddescription>
+<para>The phone.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="184" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_customer_1ace29dfb0fa8f4d6066f7a130bd618a8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.Customer.Customer</definition>
+        <argsstring>(IMMWMSCustomer customer)</argsstring>
+        <name>Customer</name>
+        <param>
+          <type>IMMWMSCustomer</type>
+          <declname>customer</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_customer" kindref="compound">Customer</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>customer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The customer.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="22" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_customer_1a9965b91b3982b089d26fe2061744c2f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.Customer.Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a3a87b4e36941be0bea34326e9130b6c3">Update</reimplements>
+        <briefdescription>
+<para>Updates the node by flushing the information to the database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="206" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="206" bodyend="214"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_customer_1ac42a951daa66602107c6387f16f0b9b3" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.Customer.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a32b466bee441911b62fa9ef4ccb2cdb8">Dispose</reimplements>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="227" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="227" bodyend="236"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A wrapper around the product Miner.Interop.Process.IMMWMSCustomer interface into an workable object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="295">
+        <label>BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="296" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="296">
+        <label>IDisposable</label>
+      </node>
+      <node id="294">
+        <label>Miner.Interop.Process.Customer</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_customer"/>
+        <childnode refid="295" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="298">
+        <label>BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="299" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="299">
+        <label>IDisposable</label>
+      </node>
+      <node id="297">
+        <label>Miner.Interop.Process.Customer</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_customer"/>
+        <childnode refid="298" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" line="7" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Customer.cs" bodystart="6" bodyend="239"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1af2d4e5b211b2906d1399256db7af7a3b" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>_Address</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a6bbd067dfcbb09c2886179efbfcb5e6a" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>_Customer</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a9ced649b45557f4d320a19d213865a09" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>AccountNumber</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1af9b02334af5e3b17ea5fab55df4076eb" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Address</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a18fc0c61e3bcf6650e112e2d01ea71af" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>BaseWMSNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1ace29dfb0fa8f4d6066f7a130bd618a8d" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Customer</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a1f9855aed1ac2de930ad4611578fe227" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Dirty</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1ac42a951daa66602107c6387f16f0b9b3" prot="protected" virt="virtual"><scope>Miner::Interop::Process::Customer</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4e6cb2c359dfc047f7c68ca0a2fb9152" prot="public" virt="non-virtual" ambiguityscope="Miner::Interop::Process::BaseWMSNode."><scope>Miner::Interop::Process::Customer</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a1b9a692f04bc832eb8ede950b12513e8" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Email</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a4874c21ff4f03585e725b2b47c5f93d7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Fax</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a6a666448bd5bbc7b61dda7dfa6b118ed" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>FirstName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1acbe639e5aa2900509c0db923770ab2ea" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>ID</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a7c7fb59546636b077df940e99da13a51" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>LastName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1aacc25ca2f326f8941485c24daac9b10c" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Mobile</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1ada0b6839336d63d49debdf13ba7dda3f" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4118d431b4bbec1e92a5fe4c52670e15" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Node</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1aebdc74f63ec1640f0b183c88d9c3c695" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Phone</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a9965b91b3982b089d26fe2061744c2f2" prot="public" virt="virtual"><scope>Miner::Interop::Process::Customer</scope><name>Update</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1ab85e684a1de0591e268fbb7e95629491" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Customer</scope><name>Valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

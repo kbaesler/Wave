@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_collections_1_1_string_list_view_comparer" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Collections::StringListViewComparer</compoundname>
+    <basecompoundref refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer" prot="public" virt="non-virtual">System.Windows.Collections.BaseListViewComparer&lt; object &gt;</basecompoundref>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_collections_1_1_string_list_view_comparer_1a557dfdabe652762982c21d2e849496ac" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int System.Windows.Collections.StringListViewComparer.Compare</definition>
+        <argsstring>(string propertyName, object x, object y)</argsstring>
+        <name>Compare</name>
+        <param>
+          <type>string</type>
+          <declname>propertyName</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>propertyName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the property.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first object to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second object to compare.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Value Condition Less than zero <emphasis>x</emphasis>  is less than <emphasis>y</emphasis> . Zero <emphasis>x</emphasis>  equals <emphasis>y</emphasis> . Greater than zero <emphasis>x</emphasis>  is greater than <emphasis>y</emphasis> . </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Neither <emphasis>x</emphasis>  nor <emphasis>y</emphasis>  implements the T:System.IComparable interface. -or- <emphasis>x</emphasis>  and <emphasis>y</emphasis>  are of different types and neither one can handle comparisons with the other. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Collections/StringListViewComparer.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Collections/StringListViewComparer.cs" bodystart="39" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A string comparer that compares two specified System.String objects and returns an integer that indicates their relationship to one another in the sort order. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="623">
+        <label>System.Windows.Collections.StringListViewComparer</label>
+        <link refid="class_system_1_1_windows_1_1_collections_1_1_string_list_view_comparer"/>
+        <childnode refid="624" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="624">
+        <label>BaseListViewComparer&lt; object &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="625">
+        <label>System.Windows.Collections.StringListViewComparer</label>
+        <link refid="class_system_1_1_windows_1_1_collections_1_1_string_list_view_comparer"/>
+        <childnode refid="626" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="626">
+        <label>BaseListViewComparer&lt; object &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Collections/StringListViewComparer.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Collections/StringListViewComparer.cs" bodystart="12" bodyend="57"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_collections_1_1_string_list_view_comparer_1a557dfdabe652762982c21d2e849496ac" prot="protected" virt="non-virtual"><scope>System::Windows::Collections::StringListViewComparer</scope><name>Compare</name></member>
+      <member refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer_1ad5fbb0021c7a10027368949b4224dadc" prot="public" virt="non-virtual" ambiguityscope="BaseListViewComparer&lt; object &gt;."><scope>System::Windows::Collections::StringListViewComparer</scope><name>Compare</name></member>
+      <member refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer_1a5f023e5fe6ea1b949986c45532f2fa5f" prot="protected" virt="pure-virtual" ambiguityscope="BaseListViewComparer&lt; object &gt;."><scope>System::Windows::Collections::StringListViewComparer</scope><name>Compare</name></member>
+      <member refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer_1a71f0329c12ee030c33940343e48c431d" prot="public" virt="non-virtual"><scope>System::Windows::Collections::StringListViewComparer</scope><name>Direction</name></member>
+      <member refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer_1ae02f0a773d3fbd126f21f9963745353a" prot="public" virt="non-virtual"><scope>System::Windows::Collections::StringListViewComparer</scope><name>PropertyName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

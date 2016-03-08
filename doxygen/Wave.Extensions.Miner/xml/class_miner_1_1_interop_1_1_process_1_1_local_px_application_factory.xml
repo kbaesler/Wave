@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_local_px_application_factory" kind="class" language="C#" prot="package">
+    <compoundname>Miner::Interop::Process::LocalPxApplicationFactory</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory" prot="public" virt="non-virtual">Miner.Interop.Process.PxApplicationFactory</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_local_px_application_factory_1a3edcd70d0eab73cd21304ab9d7252281" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override IMMPxApplication</type>
+        <definition>override IMMPxApplication Miner.Interop.Process.LocalPxApplicationFactory.Open</definition>
+        <argsstring>(string userName, string password, string dataSource, string database, bool isOSA, params string[] extensionNames)</argsstring>
+        <name>Open</name>
+        <param>
+          <type>string</type>
+          <declname>userName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>password</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>dataSource</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>database</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isOSA</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>extensionNames</declname>
+        </param>
+        <briefdescription>
+<para>Opens a connection to the process framework database. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>userName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the user.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The password.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>database</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The database.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isOSA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> the connection should be made using operating system authentication.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extensionNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The names of process framework extensions.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the IMMPxApplication application reference; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/LocalPxApplicationFactory.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/LocalPxApplicationFactory.cs" bodystart="24" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A factory used to make a connection to an Access Database (or MDB) process framework database. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="400">
+        <label>Miner.Interop.Process.LocalPxApplicationFactory</label>
+        <childnode refid="401" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="401">
+        <label>PxApplicationFactory</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="402">
+        <label>Miner.Interop.Process.LocalPxApplicationFactory</label>
+        <childnode refid="403" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="403">
+        <label>PxApplicationFactory</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/LocalPxApplicationFactory.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/LocalPxApplicationFactory.cs" bodystart="8" bodyend="37"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_local_px_application_factory_1a3edcd70d0eab73cd21304ab9d7252281" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::LocalPxApplicationFactory</scope><name>Open</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory_1a699b0d4bc71e5f3236ba61389bee6e2e" prot="public" virt="virtual" ambiguityscope="Miner::Interop::Process::PxApplicationFactory."><scope>Miner::Interop::Process::LocalPxApplicationFactory</scope><name>Open</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

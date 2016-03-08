@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_command_reference" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::CommandReference</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Freezable</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">ICommand</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_command_reference_1aa3d602886c0d5f24aa870868a6310aec" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.CommandReference.CommandParameterProperty</definition>
+        <argsstring></argsstring>
+        <name>CommandParameterProperty</name>
+        <initializer>= DependencyProperty.Register(&quot;CommandParameter&quot;, typeof (object), typeof (<ref refid="class_system_1_1_windows_1_1_command_reference" kindref="compound">CommandReference</ref>), new UIPropertyMetadata(null))</initializer>
+        <briefdescription>
+<para>The command parameters property </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_command_reference_1afcce93f6580bf4fa9ec0d7bf316246a3" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.CommandReference.CommandProperty</definition>
+        <argsstring></argsstring>
+        <name>CommandProperty</name>
+        <initializer>= DependencyProperty.Register(&quot;Command&quot;, typeof (ICommand), typeof (<ref refid="class_system_1_1_windows_1_1_command_reference" kindref="compound">CommandReference</ref>), new PropertyMetadata(OnCommandChanged))</initializer>
+        <briefdescription>
+<para>The command property </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_command_reference_1a3e43afc84256f11cc1ba4e3839461d25" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>ICommand</type>
+        <definition>ICommand System.Windows.CommandReference.Command</definition>
+        <argsstring></argsstring>
+        <name>Command</name>
+        <briefdescription>
+<para>Gets or sets the command. </para>        </briefdescription>
+        <detaileddescription>
+<para>The command. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="45" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_command_reference_1a75a6034804be811b48261b302bed8c14" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>object</type>
+        <definition>object System.Windows.CommandReference.CommandParameter</definition>
+        <argsstring></argsstring>
+        <name>CommandParameter</name>
+        <briefdescription>
+<para>Gets or sets the command parameters. </para>        </briefdescription>
+        <detaileddescription>
+<para>The command parameters. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="57" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_system_1_1_windows_1_1_command_reference_1a0f32bbdbef1343649b1a5d97f2b3d4b0" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler</type>
+        <definition>EventHandler System.Windows.CommandReference.CanExecuteChanged</definition>
+        <argsstring></argsstring>
+        <name>CanExecuteChanged</name>
+        <briefdescription>
+<para>Occurs when changes occur that affect whether or not the command should execute. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="99" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_command_reference_1a12e9a4055d555abee6fe046cabf6a1b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.CommandReference.CommandReference</definition>
+        <argsstring>()</argsstring>
+        <name>CommandReference</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_command_reference" kindref="compound">CommandReference</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_command_reference_1ad3d10baffb73d24284103669f88e58a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Windows.CommandReference.CanExecute</definition>
+        <argsstring>(object parameter)</argsstring>
+        <name>CanExecute</name>
+        <param>
+          <type>object</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+<para>Defines the method that determines whether the command can execute in its current state. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="namespace_system_1_1_data" kindref="compound">Data</ref> used by the command. If the command does not require data to be passed, this object can be set to null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if this command can be executed; otherwise, false. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="77" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="77" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_command_reference_1abdf203c7532e44f86bafdac100097195" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Windows.CommandReference.Execute</definition>
+        <argsstring>(object parameter)</argsstring>
+        <name>Execute</name>
+        <param>
+          <type>object</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+<para>Defines the method to be called when the command is invoked. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="namespace_system_1_1_data" kindref="compound">Data</ref> used by the command. If the command does not require data to be passed, this object can be set to null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="91" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_command_reference_1ad190c5e7b2094b07d96f52741efd0967" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override Freezable</type>
+        <definition>override Freezable System.Windows.CommandReference.CreateInstanceCore</definition>
+        <argsstring>()</argsstring>
+        <name>CreateInstanceCore</name>
+        <briefdescription>
+<para>When implemented in a derived class, creates a new instance of the T:System.Windows.Freezable derived class. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The new instance. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>NotImplementedException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="113" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="113" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_command_reference_1ad28bd9ad73dad2751a1b3b0704471cb7" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.CommandReference.OnCommandChanged</definition>
+        <argsstring>(DependencyObject d, DependencyPropertyChangedEventArgs e)</argsstring>
+        <name>OnCommandChanged</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>DependencyPropertyChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="122" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="122" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This class facilitates associating a key binding in XAML markup to a command defined in a View Model by exposing a <ref refid="class_system_1_1_windows_1_1_command" kindref="compound">Command</ref> dependency property. </para>    </briefdescription>
+    <detaileddescription>
+<para>The class derives from Freezable to work around a limitation in WPF when data-binding from XAML. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="223">
+        <label>Freezable</label>
+      </node>
+      <node id="224">
+        <label>ICommand</label>
+      </node>
+      <node id="222">
+        <label>System.Windows.CommandReference</label>
+        <link refid="class_system_1_1_windows_1_1_command_reference"/>
+        <childnode refid="223" relation="public-inheritance">
+        </childnode>
+        <childnode refid="224" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="226">
+        <label>Freezable</label>
+      </node>
+      <node id="227">
+        <label>ICommand</label>
+      </node>
+      <node id="225">
+        <label>System.Windows.CommandReference</label>
+        <link refid="class_system_1_1_windows_1_1_command_reference"/>
+        <childnode refid="226" relation="public-inheritance">
+        </childnode>
+        <childnode refid="227" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/CommandReference.cs" bodystart="10" bodyend="142"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1ad3d10baffb73d24284103669f88e58a1" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>CanExecute</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1a0f32bbdbef1343649b1a5d97f2b3d4b0" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>CanExecuteChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1a3e43afc84256f11cc1ba4e3839461d25" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>Command</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1a75a6034804be811b48261b302bed8c14" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>CommandParameter</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1aa3d602886c0d5f24aa870868a6310aec" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>CommandParameterProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1afcce93f6580bf4fa9ec0d7bf316246a3" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>CommandProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1a12e9a4055d555abee6fe046cabf6a1b4" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>CommandReference</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1ad190c5e7b2094b07d96f52741efd0967" prot="protected" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>CreateInstanceCore</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1abdf203c7532e44f86bafdac100097195" prot="public" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>Execute</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_reference_1ad28bd9ad73dad2751a1b3b0704471cb7" prot="private" virt="non-virtual"><scope>System::Windows::CommandReference</scope><name>OnCommandChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

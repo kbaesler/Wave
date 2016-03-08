@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_field_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::FieldExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_field_extensions_1abd7f1e5f1a90d7b42f3549e3cc9ffba3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IDictionary&lt; string, int &gt;</type>
+        <definition>static IDictionary&lt;string, int&gt; ESRI.ArcGIS.Geodatabase.FieldExtensions.ToDictionary</definition>
+        <argsstring>(this IFields source)</argsstring>
+        <name>ToDictionary</name>
+        <param>
+          <type>this IFields</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IDictionary&lt;TKey, TValue&gt; from an IFields </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An IFields to create an IDictionary&lt;TKey, TValue&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IDictionary&lt;TKey, TValue&gt; that contains the fields from the input source. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/FieldExtensions.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/FieldExtensions.cs" bodystart="21" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.Geodatabase.IField interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/FieldExtensions.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/FieldExtensions.cs" bodystart="10" bodyend="35"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_field_extensions_1abd7f1e5f1a90d7b42f3549e3cc9ffba3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FieldExtensions</scope><name>ToDictionary</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

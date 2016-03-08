@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kind="interface" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::IIntermediateRow</compoundname>
+    <derivedcompoundref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_intermediate_row" prot="public" virt="non-virtual">ESRI.ArcGIS.Geodatabase.Internal.IntermediateRow</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1aa921918a71865ca9f2e01ca5a80fc146" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ESRI.ArcGIS.Geodatabase.IIntermediateRow.DestinationForeignKey</definition>
+        <argsstring></argsstring>
+        <name>DestinationForeignKey</name>
+        <briefdescription>
+<para>Gets the destination foreign key. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1aea216c395fce56f3b2357bde10b60897" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IDictionary&lt; string, object &gt;</type>
+        <definition>IDictionary&lt;string, object&gt; ESRI.ArcGIS.Geodatabase.IIntermediateRow.Items</definition>
+        <argsstring></argsstring>
+        <name>Items</name>
+        <briefdescription>
+<para>Gets the items. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1a1f8415d0604250e6ad0e739923b5fd63" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ESRI.ArcGIS.Geodatabase.IIntermediateRow.OriginForeignKey</definition>
+        <argsstring></argsstring>
+        <name>OriginForeignKey</name>
+        <briefdescription>
+<para>Gets the origin foreign key. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1aeea79013d119a7c7910acd94320debd0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IRow</type>
+        <definition>IRow ESRI.ArcGIS.Geodatabase.IIntermediateRow.Row</definition>
+        <argsstring></argsstring>
+        <name>Row</name>
+        <briefdescription>
+<para>Gets the physical intermediate row. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" line="30" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1a0bac22a7cf82515575b40f9e4e872656" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Geodatabase.IIntermediateRow.Update</definition>
+        <argsstring>(string fieldName, object value)</argsstring>
+        <name>Update</name>
+        <param>
+          <type>string</type>
+          <declname>fieldName</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Updates the field with specified <emphasis>fieldName</emphasis>  with the <emphasis>value</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fieldName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" line="41" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides the methods and properties for accessing the intermediate row information. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="426">
+        <label>ESRI.ArcGIS.Geodatabase.Internal.IntermediateRow</label>
+        <childnode refid="425" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="425">
+        <label>ESRI.ArcGIS.Geodatabase.IIntermediateRow</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRow.cs" bodystart="8" bodyend="44"/>
+    <listofallmembers>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1aa921918a71865ca9f2e01ca5a80fc146" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRow</scope><name>DestinationForeignKey</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1aea216c395fce56f3b2357bde10b60897" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRow</scope><name>Items</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1a1f8415d0604250e6ad0e739923b5fd63" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRow</scope><name>OriginForeignKey</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1aeea79013d119a7c7910acd94320debd0" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRow</scope><name>Row</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row_1a0bac22a7cf82515575b40f9e4e872656" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRow</scope><name>Update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

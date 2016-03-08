@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Framework::Trace::AdjacencyNode</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Edge&lt; IEIDInfo &gt;</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1aee179d45b16abf6a0f69b832d16388b6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>IEIDInfo</type>
+        <definition>IEIDInfo Miner.Framework.Trace.AdjacencyNode.Edge</definition>
+        <argsstring></argsstring>
+        <name>Edge</name>
+        <briefdescription>
+<para>Gets the edge. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="41" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1afb64413c53502e55d2210434e0469a8b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Framework.Trace.AdjacencyNode.SourceAlreadyVisited</definition>
+        <argsstring></argsstring>
+        <name>SourceAlreadyVisited</name>
+        <briefdescription>
+<para>Gets a value indicating whether the source junction participates in a loop. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the source junction participates in a loop; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="51" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1ae58a1c2be1d978b7f580e3cb4dbd5b9d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Framework.Trace.AdjacencyNode.TargetAlreadyVisited</definition>
+        <argsstring></argsstring>
+        <name>TargetAlreadyVisited</name>
+        <briefdescription>
+<para>Gets a value indicating whether the target junction participates in a loop. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the target jnuction participates in a loop; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="61" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1a7fb3a2a3eb0a89299da1f8570fc7339a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.Trace.AdjacencyNode.AdjacencyNode</definition>
+        <argsstring>(IEIDInfo edge, IEIDInfo source, IEIDInfo target, bool sourceAlreadyVisited, bool targetAlreadyVisited)</argsstring>
+        <name>AdjacencyNode</name>
+        <param>
+          <type>IEIDInfo</type>
+          <declname>edge</declname>
+        </param>
+        <param>
+          <type>IEIDInfo</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IEIDInfo</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sourceAlreadyVisited</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>targetAlreadyVisited</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node" kindref="compound">AdjacencyNode</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edge.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source (or from) junction.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target (or to) junction.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sourceAlreadyVisited</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if the source junction parcipates in a loop.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>targetAlreadyVisited</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if the target junction parcipates in a loop.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1a57ad00fb404a66046117c7c632100397" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Miner.Framework.Trace.AdjacencyNode.Equals</definition>
+        <argsstring>(object obj)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified object is equal to this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to compare with this instance.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified object is equal to this instance; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.NullReferenceException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <emphasis>obj</emphasis>  parameter is null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="77" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="77" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1aa370de2472e5e3079d3423573f5078bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int Miner.Framework.Trace.AdjacencyNode.GetHashCode</definition>
+        <argsstring>()</argsstring>
+        <name>GetHashCode</name>
+        <briefdescription>
+<para>Returns a hash code for this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="92" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="92" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1aae8a0ab89527d9276fd03419794df5bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override string</type>
+        <definition>override string Miner.Framework.Trace.AdjacencyNode.ToString</definition>
+        <argsstring>()</argsstring>
+        <name>ToString</name>
+        <briefdescription>
+<para>Returns a string that represents this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A string that represents this instance. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="103" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="103" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A geometric network edge that represents an edge connected by two junctions. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13">
+        <label>Edge&lt; IEIDInfo &gt;</label>
+      </node>
+      <node id="12">
+        <label>Miner.Framework.Trace.AdjacencyNode</label>
+        <link refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="15">
+        <label>Edge&lt; IEIDInfo &gt;</label>
+      </node>
+      <node id="14">
+        <label>Miner.Framework.Trace.AdjacencyNode</label>
+        <link refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/AdjacencyNode.cs" bodystart="14" bodyend="109"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1a7fb3a2a3eb0a89299da1f8570fc7339a" prot="public" virt="non-virtual"><scope>Miner::Framework::Trace::AdjacencyNode</scope><name>AdjacencyNode</name></member>
+      <member refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1aee179d45b16abf6a0f69b832d16388b6" prot="public" virt="non-virtual"><scope>Miner::Framework::Trace::AdjacencyNode</scope><name>Edge</name></member>
+      <member refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1a57ad00fb404a66046117c7c632100397" prot="public" virt="non-virtual"><scope>Miner::Framework::Trace::AdjacencyNode</scope><name>Equals</name></member>
+      <member refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1aa370de2472e5e3079d3423573f5078bb" prot="public" virt="non-virtual"><scope>Miner::Framework::Trace::AdjacencyNode</scope><name>GetHashCode</name></member>
+      <member refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1afb64413c53502e55d2210434e0469a8b" prot="public" virt="non-virtual"><scope>Miner::Framework::Trace::AdjacencyNode</scope><name>SourceAlreadyVisited</name></member>
+      <member refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1ae58a1c2be1d978b7f580e3cb4dbd5b9d" prot="public" virt="non-virtual"><scope>Miner::Framework::Trace::AdjacencyNode</scope><name>TargetAlreadyVisited</name></member>
+      <member refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node_1aae8a0ab89527d9276fd03419794df5bc" prot="public" virt="non-virtual"><scope>Miner::Framework::Trace::AdjacencyNode</scope><name>ToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_fe10d77472034480810d596a8cd3cbed" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces</compoundname>
+    <innerfile refid="_i_editable_workspace_8cs">IEditableWorkspace.cs</innerfile>
+    <innerfile refid="_i_intermediate_relationship_8cs">IIntermediateRelationship.cs</innerfile>
+    <innerfile refid="_i_intermediate_row_8cs">IIntermediateRow.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,509 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Miner::Framework::BaseClasses::BaseTreeTool</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IMMTreeTool</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a984656fe8f452bf88e67918c63fe67b8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1afdec42a58300f324aed8d89075cf9f88" kindref="member">Bitmap</ref></type>
+        <definition>Bitmap Miner.Framework.BaseClasses.BaseTreeTool._Bitmap</definition>
+        <argsstring></argsstring>
+        <name>_Bitmap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a14a803e0f06c0bc2ed4f9037422c46e6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>bool</type>
+        <definition>bool Miner.Framework.BaseClasses.BaseTreeTool.AllowAsDefault</definition>
+        <argsstring></argsstring>
+        <name>AllowAsDefault</name>
+        <briefdescription>
+<para>Gets a value indicating whether the menu item as the default action to be performed when the user double-clicks the TreeView item. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if there the menu item as the default action to be performed when the user double-clicks the TreeView item.; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="87" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1afdec42a58300f324aed8d89075cf9f88" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Framework.BaseClasses.BaseTreeTool.Bitmap</definition>
+        <argsstring></argsstring>
+        <name>Bitmap</name>
+        <briefdescription>
+<para>Gets the bitmap. </para>        </briefdescription>
+        <detaileddescription>
+<para>The bitmap.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="93" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1aa341e4a65efe5c236f718041929dd58e" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>int</type>
+        <definition>int Miner.Framework.BaseClasses.BaseTreeTool.Category</definition>
+        <argsstring></argsstring>
+        <name>Category</name>
+        <briefdescription>
+<para>Gets the category. </para>        </briefdescription>
+        <detaileddescription>
+<para>The category. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="104" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1aedc1bb099e9ce6a3fd7b5c9f22062667" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseTreeTool.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets the name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="110" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a68da0fe65dc54ed88f0aae9dc628e377" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>int</type>
+        <definition>int Miner.Framework.BaseClasses.BaseTreeTool.Priority</definition>
+        <argsstring></argsstring>
+        <name>Priority</name>
+        <briefdescription>
+<para>Gets the priority. </para>        </briefdescription>
+        <detaileddescription>
+<para>The priority.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="116" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1ade6e8088a4404c42c8e1acdf2c8e328c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>mmShortCutKey</type>
+        <definition>mmShortCutKey Miner.Framework.BaseClasses.BaseTreeTool.ShortCut</definition>
+        <argsstring></argsstring>
+        <name>ShortCut</name>
+        <briefdescription>
+<para>Gets the short cut. </para>        </briefdescription>
+        <detaileddescription>
+<para>The short cut.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="122" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a8d604129f3a6d807f504b0e3b23f92d6" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseTreeTool.BaseTreeTool</definition>
+        <argsstring>(string name, int priority, int category)</argsstring>
+        <name>BaseTreeTool</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>priority</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>category</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool" kindref="compound">BaseTreeTool</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The priority.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The category.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a9f728a5eda6b0ce48dc7ff64beb0e1cf" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseTreeTool.BaseTreeTool</definition>
+        <argsstring>(string name, int priority, int category, bool allowAsDefault, mmShortCutKey shortCutKey)</argsstring>
+        <name>BaseTreeTool</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>priority</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>category</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allowAsDefault</declname>
+        </param>
+        <param>
+          <type>mmShortCutKey</type>
+          <declname>shortCutKey</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool" kindref="compound">BaseTreeTool</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The priority.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The category.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>allowAsDefault</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the menu item as the default action to be performed when the user double-clicks the TreeView item. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shortCutKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The short cut key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="52" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1ad7eaae28e9296d4a72ff78bb24c99e1d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Framework.BaseClasses.BaseTreeTool.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="172" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="172" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1afed5bd9b000f9cd03133e4378b3b0636" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract int</type>
+        <definition>abstract int Miner.Framework.BaseClasses.BaseTreeTool.InternalEnabled</definition>
+        <argsstring>(ID8EnumListItem enumItems, int itemCount)</argsstring>
+        <name>InternalEnabled</name>
+        <param>
+          <type>ID8EnumListItem</type>
+          <declname>enumItems</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>itemCount</declname>
+        </param>
+        <briefdescription>
+<para>Determines of the tree tool is enabled for the specified selection of items. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enumItems</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The enumeration of items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>itemCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item count.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns bitwise flag combination of the mmToolState to specify if enabled.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="187" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a7ac71d5d8ddb5dcee233791eed51219f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Miner.Framework.BaseClasses.BaseTreeTool.InternalExecute</definition>
+        <argsstring>(ID8EnumListItem enumItems, int itemCount)</argsstring>
+        <name>InternalExecute</name>
+        <param>
+          <type>ID8EnumListItem</type>
+          <declname>enumItems</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>itemCount</declname>
+        </param>
+        <briefdescription>
+<para>Executes the tree tool within error handling that reports all exceptions to the user via a Log </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enumItems</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The enumeration of items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>itemCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item count.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="194" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a25cb67c8e7d6fcd1a0fb03b379ce0d4f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Framework.BaseClasses.BaseTreeTool.UpdateBitmap</definition>
+        <argsstring>(Stream stream, int x, int y)</argsstring>
+        <name>UpdateBitmap</name>
+        <param>
+          <type>Stream</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Loads the specified bitmap for command and sets the transparence for the X and Y location. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream of the bitmap.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x pixel that is used to make the transparent color.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y pixel that is used to make the transparent color.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="202" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="202" bodyend="216"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a816db08afcfa6e4dea97a190691e2443" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Framework.BaseClasses.BaseTreeTool.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="68" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="68" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1adc824943671c8d3d617177bfece3e448" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Framework.BaseClasses.BaseTreeTool.Execute</definition>
+        <argsstring>(ID8EnumListItem pEnumItems, int lItemCount)</argsstring>
+        <name>Execute</name>
+        <param>
+          <type>ID8EnumListItem</type>
+          <declname>pEnumItems</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lItemCount</declname>
+        </param>
+        <briefdescription>
+<para>Executes the specified tree tool using the selected items. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pEnumItems</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The enumeration of selected items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lItemCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of items selected.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="129" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="129" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1ac9dbb3ad01f33bfa4269962287883112" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int Miner.Framework.BaseClasses.BaseTreeTool.get_Enabled</definition>
+        <argsstring>(ID8EnumListItem pEnumItems, int lItemCount)</argsstring>
+        <name>get_Enabled</name>
+        <param>
+          <type>ID8EnumListItem</type>
+          <declname>pEnumItems</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lItemCount</declname>
+        </param>
+        <briefdescription>
+<para>Returns <computeroutput>true</computeroutput> if the tool should be enabled for the specified selection of items. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pEnumItems</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The enumeration of items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lItemCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item count.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the tool should be enabled; otherwise <computeroutput>false</computeroutput></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="147" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="147" bodyend="159"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides an abstract implementation for Tree Tools used to execute in ArcMap and ArcFM Viewer. </para>    </briefdescription>
+    <detaileddescription>
+<para>You must provide your own COM Registration because they can be registered in multiple categories. For instance, the D8CUTreeViewTool, D8SelectedCuTreeTool, D8SelectionTreeTool and/or D8DesignTreeViewTool categories. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="251">
+        <label>Miner.Framework.BaseClasses.BaseTreeTool</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool"/>
+        <childnode refid="252" relation="public-inheritance">
+        </childnode>
+        <childnode refid="253" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="253">
+        <label>IDisposable</label>
+      </node>
+      <node id="252">
+        <label>IMMTreeTool</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="254">
+        <label>Miner.Framework.BaseClasses.BaseTreeTool</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool"/>
+        <childnode refid="255" relation="public-inheritance">
+        </childnode>
+        <childnode refid="256" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="256">
+        <label>IDisposable</label>
+      </node>
+      <node id="255">
+        <label>IMMTreeTool</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseTreeTool.cs" bodystart="20" bodyend="219"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a984656fe8f452bf88e67918c63fe67b8" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>_Bitmap</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a14a803e0f06c0bc2ed4f9037422c46e6" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>AllowAsDefault</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a8d604129f3a6d807f504b0e3b23f92d6" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>BaseTreeTool</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a9f728a5eda6b0ce48dc7ff64beb0e1cf" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>BaseTreeTool</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1afdec42a58300f324aed8d89075cf9f88" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>Bitmap</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1aa341e4a65efe5c236f718041929dd58e" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>Category</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a816db08afcfa6e4dea97a190691e2443" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1ad7eaae28e9296d4a72ff78bb24c99e1d" prot="protected" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1adc824943671c8d3d617177bfece3e448" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>Execute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1ac9dbb3ad01f33bfa4269962287883112" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>get_Enabled</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1afed5bd9b000f9cd03133e4378b3b0636" prot="protected" virt="pure-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>InternalEnabled</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a7ac71d5d8ddb5dcee233791eed51219f" prot="protected" virt="pure-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>InternalExecute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1aedc1bb099e9ce6a3fd7b5c9f22062667" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a68da0fe65dc54ed88f0aae9dc628e377" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>Priority</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1ade6e8088a4404c42c8e1acdf2c8e328c" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>ShortCut</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_tree_tool_1a25cb67c8e7d6fcd1a0fb03b379ce0d4f" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseTreeTool</scope><name>UpdateBitmap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

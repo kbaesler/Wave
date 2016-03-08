@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_roles" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Process::WorkflowManager::Roles</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_roles_1a8ba82cdc4e7960a30598f26bc47e1241" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.WorkflowManager.Roles.Designer</definition>
+        <argsstring></argsstring>
+        <name>Designer</name>
+        <initializer>= &quot;WMS_DESIGNER&quot;</initializer>
+        <briefdescription>
+<para>The designer user role. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="537" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="537" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_roles_1aeed6464d89d55148984a9e2defa63e36" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.WorkflowManager.Roles.Mobile</definition>
+        <argsstring></argsstring>
+        <name>Mobile</name>
+        <initializer>= &quot;WMS_MOBILE_DESIGNER&quot;</initializer>
+        <briefdescription>
+<para>The mobile designer user role. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="542" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="542" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Container for the WorkflowManager.Roles class used to identify the common roles for Workflow Manager. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="531" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="530" bodyend="545"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_roles_1a8ba82cdc4e7960a30598f26bc47e1241" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::WorkflowManager::Roles</scope><name>Designer</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_roles_1aeed6464d89d55148984a9e2defa63e36" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::WorkflowManager::Roles</scope><name>Mobile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

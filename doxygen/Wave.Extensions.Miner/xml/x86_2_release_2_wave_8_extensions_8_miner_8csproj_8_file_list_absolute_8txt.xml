@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="x86_2_release_2_wave_8_extensions_8_miner_8csproj_8_file_list_absolute_8txt" kind="file" language="C++">
+    <compoundname>Wave.Extensions.Miner.csproj.FileListAbsolute.txt</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">C:\Users\ad-kbaesler\Documents\GitHub\Wave\src\bin\x86\Release\Wave.Extensions.Miner.dll</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">C:\Users\ad-kbaesler\Documents\GitHub\Wave\src\bin\x86\Release\Wave.Extensions.Miner.pdb</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">C:\Users\ad-kbaesler\Documents\GitHub\Wave\src\Wave.Extensions.Miner\obj\x86\Release\Wave.Extensions.Miner.csprojResolveAssemblyReference.cache</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">C:\Users\ad-kbaesler\Documents\GitHub\Wave\src\Wave.Extensions.Miner\obj\x86\Release\Wave.Extensions.Miner.g.resources</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">C:\Users\ad-kbaesler\Documents\GitHub\Wave\src\Wave.Extensions.Miner\obj\x86\Release\Wave.Extensions.Miner.dll</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">C:\Users\ad-kbaesler\Documents\GitHub\Wave\src\Wave.Extensions.Miner\obj\x86\Release\Wave.Extensions.Miner.pdb</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">C:\Users\ad-kbaesler\Documents\GitHub\Wave\src\bin\x86\Release\Wave.Extensions.Miner.XML</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/obj/x86/Release/Wave.Extensions.Miner.csproj.FileListAbsolute.txt"/>
+  </compounddef>
+</doxygen>

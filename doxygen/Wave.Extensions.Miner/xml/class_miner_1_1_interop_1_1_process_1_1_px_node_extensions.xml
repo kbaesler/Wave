@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::PxNodeExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1ac1081ec7e9453936c859feffca087e07" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.Process.PxNodeExtensions.Add</definition>
+        <argsstring>(this IMMPxNode source, IMMPxNode parent)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>this IMMPxNode</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IMMPxNode</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+<para>Adds the node as a child to the specified <emphasis>parent</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parent.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parent</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" bodystart="20" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a0c11f57a0148b58046c5489daf778b43" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxTask</type>
+        <definition>static IMMPxTask Miner.Interop.Process.PxNodeExtensions.GetTask</definition>
+        <argsstring>(this IMMPxNode source, string taskName, bool enabledTask=false)</argsstring>
+        <name>GetTask</name>
+        <param>
+          <type>this IMMPxNode</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>taskName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enabledTask</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Finds the task using the specified <emphasis>source</emphasis>  and <emphasis>taskName</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>taskName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the task.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enabledTask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if the task must be enabled.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxTask representing the tasks that matches specified task name for the given node; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>taskName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" bodystart="42" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a8e5c11a125e098ed60e2a1a64dc524f5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxTask</type>
+        <definition>static IMMPxTask Miner.Interop.Process.PxNodeExtensions.GetTask</definition>
+        <argsstring>(this IMMPxNode source, int taskID)</argsstring>
+        <name>GetTask</name>
+        <param>
+          <type>this IMMPxNode</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>taskID</declname>
+        </param>
+        <briefdescription>
+<para>Finds the task using the specified <emphasis>source</emphasis>  and <emphasis>taskID</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>taskID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxTask representing the tasks that matches specified task name for the given node; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" line="75" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" bodystart="75" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1ae179e75624c155f6f1b77ee9b65688e5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxNode</type>
+        <definition>static IMMPxNode Miner.Interop.Process.PxNodeExtensions.GetTopLevelNode</definition>
+        <argsstring>(this IMMPxNode source)</argsstring>
+        <name>GetTopLevelNode</name>
+        <param>
+          <type>this IMMPxNode</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns the current top level node of the list that the specified node belongs to. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The starting node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the Miner.Interop.Process.IMMPxNode representing the top level node; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" line="99" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" bodystart="99" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a2987c858db9e215cf53d639688432727" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxTransition</type>
+        <definition>static IMMPxTransition Miner.Interop.Process.PxNodeExtensions.GetTransition</definition>
+        <argsstring>(this IMMPxNode source, string transitionName)</argsstring>
+        <name>GetTransition</name>
+        <param>
+          <type>this IMMPxNode</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>transitionName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the transition that matches the specified <emphasis>transitionName</emphasis>  in the name or display name for the available transitions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transitionName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the transition.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxTransition representing the state that matches the identifier; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transitionName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" line="121" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" bodystart="121" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a3ad0df67f0589a02495921be84967fa5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxTransition</type>
+        <definition>static IMMPxTransition Miner.Interop.Process.PxNodeExtensions.GetTransition</definition>
+        <argsstring>(this IMMPxNode source, int transitionID)</argsstring>
+        <name>GetTransition</name>
+        <param>
+          <type>this IMMPxNode</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>transitionID</declname>
+        </param>
+        <briefdescription>
+<para>Finds the transition using the specified <emphasis>transitionID</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transitionID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transition ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The IMMPxTransition matching the specified transition name; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" line="146" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" bodystart="146" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the Miner.Interop.Process.IMMPxNode interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxNodeExtensions.cs" bodystart="10" bodyend="160"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1ac1081ec7e9453936c859feffca087e07" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxNodeExtensions</scope><name>Add</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a0c11f57a0148b58046c5489daf778b43" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxNodeExtensions</scope><name>GetTask</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a8e5c11a125e098ed60e2a1a64dc524f5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxNodeExtensions</scope><name>GetTask</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1ae179e75624c155f6f1b77ee9b65688e5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxNodeExtensions</scope><name>GetTopLevelNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a2987c858db9e215cf53d639688432727" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxNodeExtensions</scope><name>GetTransition</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_node_extensions_1a3ad0df67f0589a02495921be84967fa5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxNodeExtensions</scope><name>GetTransition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

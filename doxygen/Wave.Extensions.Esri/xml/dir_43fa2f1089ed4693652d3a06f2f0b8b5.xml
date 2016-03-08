@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_43fa2f1089ed4693652d3a06f2f0b8b5" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics</compoundname>
+    <innerdir refid="dir_c9c584651b21358022c5bc3651af57fc">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders</innerdir>
+    <innerdir refid="dir_589dc703eead8a7c1542da217363b84e">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Extensions</innerdir>
+    <innerfile refid="_log_8cs">Log.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/"/>
+  </compounddef>
+</doxygen>

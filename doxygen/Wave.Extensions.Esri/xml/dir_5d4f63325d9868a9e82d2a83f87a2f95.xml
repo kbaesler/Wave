@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_5d4f63325d9868a9e82d2a83f87a2f95" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Forms/Controls/Line</compoundname>
+    <innerfile refid="_line_8cs">Line.cs</innerfile>
+    <innerfile refid="_line_8designer_8cs">Line.designer.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Forms/Controls/Line/"/>
+  </compounddef>
+</doxygen>

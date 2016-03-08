@@ -1,0 +1,411 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::BaseClasses::BaseContentsView</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IComPropertySheetEvents</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IContentsView2</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a9f35b9255eabd2ab2c798657162ae739" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>object</type>
+        <definition>object ESRI.ArcGIS.BaseClasses.BaseContentsView.ContextItem</definition>
+        <argsstring></argsstring>
+        <name>ContextItem</name>
+        <briefdescription>
+<para>Gets or sets the context item (could be an enumerator). </para>        </briefdescription>
+        <detaileddescription>
+<para>The context item. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a90f67ca6cdb80985d1ad0181937a3d56" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>string</type>
+        <definition>string ESRI.ArcGIS.BaseClasses.BaseContentsView.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets or sets the name of the contents view. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="75" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1ae415dd7947b925f720b0c863fa3c7c7e" prot="public" static="no" readable="no" writable="no" gettable="no" privategettable="no" protectedgettable="yes" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.BaseClasses.BaseContentsView.ProcessEvents</definition>
+        <argsstring></argsstring>
+        <name>ProcessEvents</name>
+        <briefdescription>
+<para>Gets or sets a boolean that indicates if the view is currently responding to events. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the view is currently responding to events; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="83" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a8390f1e5b391b5a5f0caef5d7fe7037b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>object</type>
+        <definition>object ESRI.ArcGIS.BaseClasses.BaseContentsView.SelectedItem</definition>
+        <argsstring></argsstring>
+        <name>SelectedItem</name>
+        <briefdescription>
+<para>Gets or sets the selected item (could be an enumerator). </para>        </briefdescription>
+        <detaileddescription>
+<para>The selected item. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a84da81a7ef28809415e15ffa76a528e6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.BaseClasses.BaseContentsView.ShowLines</definition>
+        <argsstring></argsstring>
+        <name>ShowLines</name>
+        <briefdescription>
+<para>Gets or sets a boolean that indicates if lines are shown in the TOC tree. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="97" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a0a706b7bf24ec73197ff98a7eb1218fb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.BaseClasses.BaseContentsView.Visible</definition>
+        <argsstring></argsstring>
+        <name>Visible</name>
+        <briefdescription>
+<para>Gets or sets a boolean that indicates if the view is visible. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if visible; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="105" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1aea1d70116c0cd93578c1852fb0db98f0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>abstract int</type>
+        <definition>abstract int ESRI.ArcGIS.BaseClasses.BaseContentsView.hWnd</definition>
+        <argsstring></argsstring>
+        <name>hWnd</name>
+        <briefdescription>
+<para>Gets the HWND of the contents view. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="110" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a01cbb0b8cc25cd2e4f35a1c88743caa1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.BaseClasses.BaseContentsView.BaseContentsView</definition>
+        <argsstring>(string name)</argsstring>
+        <name>BaseContentsView</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view" kindref="compound">BaseContentsView</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="28" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1af2b87aa98edd3e2a968dcf9fdd50913e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseContentsView.OnApply</definition>
+        <argsstring>()</argsstring>
+        <name>OnApply</name>
+        <briefdescription>
+<para>Occurs when changes are applied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="53" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1aba999091c3142b4c4e3438c365f3db93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseContentsView.Activate</definition>
+        <argsstring>(int parentHWnd, IMxDocument document)</argsstring>
+        <name>Activate</name>
+        <param>
+          <type>int</type>
+          <declname>parentHWnd</declname>
+        </param>
+        <param>
+          <type>IMxDocument</type>
+          <declname>document</declname>
+        </param>
+        <briefdescription>
+<para>Called when the contents view is selected. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parentHWnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parent window handle.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>document</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The document.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="117" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="117" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a431bfe5d1c6d59c8e51b0146c74160b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseContentsView.BasicActivate</definition>
+        <argsstring>(int parentHWnd, IDocument document)</argsstring>
+        <name>BasicActivate</name>
+        <param>
+          <type>int</type>
+          <declname>parentHWnd</declname>
+        </param>
+        <param>
+          <type>IDocument</type>
+          <declname>document</declname>
+        </param>
+        <briefdescription>
+<para>Activates the contents view. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parentHWnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parent window handle.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>document</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The document.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="126" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="126" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a7128af9456fb234b286519e1d8c15b28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseContentsView.AddToSelectedItems</definition>
+        <argsstring>(object item)</argsstring>
+        <name>AddToSelectedItems</name>
+        <param>
+          <type>object</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Adds to the selected items. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="134" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a655499d9764b380d368fced33379c553" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseContentsView.Deactivate</definition>
+        <argsstring>()</argsstring>
+        <name>Deactivate</name>
+        <briefdescription>
+<para>Called when the contents view has been deactivated or when the tab in the table of contents has changed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="141" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a56556ebf7973fde22185bf351080d291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseContentsView.Refresh</definition>
+        <argsstring>(object item)</argsstring>
+        <name>Refresh</name>
+        <param>
+          <type>object</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Refreshes the contents view. </para>        </briefdescription>
+        <detaileddescription>
+<para>If a non-null item is specified, it refreshes only that item and its children. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="149" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="149" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a1a9908e72db6c65295b9fab44e6fe432" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseContentsView.RemoveFromSelectedItems</definition>
+        <argsstring>(object item)</argsstring>
+        <name>RemoveFromSelectedItems</name>
+        <param>
+          <type>object</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Removes an item from the selected items. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="157" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="157" bodyend="159"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a2fc27e8b31366f5f014b5c2f2a29d2d3" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseContentsView.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="170" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="170" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a86f89a3e72b9a368490cb1445edbe149" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseContentsView.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="180" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="180" bodyend="183"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract class used to create a contents view in the Table of Contents in ArcMap. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="50">
+        <label>IContentsView2</label>
+      </node>
+      <node id="48">
+        <label>ESRI.ArcGIS.BaseClasses.BaseContentsView</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view"/>
+        <childnode refid="49" relation="public-inheritance">
+        </childnode>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>IComPropertySheetEvents</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="53">
+        <label>IContentsView2</label>
+      </node>
+      <node id="51">
+        <label>ESRI.ArcGIS.BaseClasses.BaseContentsView</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view"/>
+        <childnode refid="52" relation="public-inheritance">
+        </childnode>
+        <childnode refid="53" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>IComPropertySheetEvents</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseContentsView.cs" bodystart="14" bodyend="201"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1aba999091c3142b4c4e3438c365f3db93" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>Activate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a7128af9456fb234b286519e1d8c15b28" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>AddToSelectedItems</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a01cbb0b8cc25cd2e4f35a1c88743caa1" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>BaseContentsView</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a431bfe5d1c6d59c8e51b0146c74160b4" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>BasicActivate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a9f35b9255eabd2ab2c798657162ae739" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>ContextItem</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a655499d9764b380d368fced33379c553" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>Deactivate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1aea1d70116c0cd93578c1852fb0db98f0" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>hWnd</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a90f67ca6cdb80985d1ad0181937a3d56" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>Name</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1af2b87aa98edd3e2a968dcf9fdd50913e" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>OnApply</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1ae415dd7947b925f720b0c863fa3c7c7e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>ProcessEvents</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a56556ebf7973fde22185bf351080d291" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>Refresh</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a2fc27e8b31366f5f014b5c2f2a29d2d3" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>Register</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a1a9908e72db6c65295b9fab44e6fe432" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>RemoveFromSelectedItems</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a8390f1e5b391b5a5f0caef5d7fe7037b" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>SelectedItem</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a84da81a7ef28809415e15ffa76a528e6" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>ShowLines</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a86f89a3e72b9a368490cb1445edbe149" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>Unregister</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_contents_view_1a0a706b7bf24ec73197ff98a7eb1218fb" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseContentsView</scope><name>Visible</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

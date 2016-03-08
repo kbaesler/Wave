@@ -1,0 +1,831 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::PxApplicationExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1add3515804165b915d891679b4c74e455" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Miner.Interop.Process.PxApplicationExtensions.ExecuteNonQuery</definition>
+        <argsstring>(this IMMPxApplication source, string commandText)</argsstring>
+        <name>ExecuteNonQuery</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>commandText</declname>
+        </param>
+        <briefdescription>
+<para>Executes the given statement which is usually an Insert, Update or Delete statement and returns the number of rows affected. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commandText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The command text.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a int representing the number of rows affected. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>commandText</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="29" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1ac57180dfbaf444fc197b773571acc2aa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>DataTable</type>
+        <definition>static DataTable Miner.Interop.Process.PxApplicationExtensions.ExecuteQuery</definition>
+        <argsstring>(this IMMPxApplication source, string commandText)</argsstring>
+        <name>ExecuteQuery</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>commandText</declname>
+        </param>
+        <briefdescription>
+<para>Queries the database and populates a DataTable with the resulting data from the specified SQL statement. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commandText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The command text.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a DataTable representing the records returned by the command text. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>commandText</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="50" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="50" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a7f82581027b43e41692a2ef7a72c5553" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TValue</type>
+        <definition>static TValue Miner.Interop.Process.PxApplicationExtensions.ExecuteScalar&lt; TValue &gt;</definition>
+        <argsstring>(this IMMPxApplication source, string commandText, TValue fallbackValue)</argsstring>
+        <name>ExecuteScalar&lt; TValue &gt;</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>commandText</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>fallbackValue</declname>
+        </param>
+        <briefdescription>
+<para>Retrieves a single value (for example, an aggregate value) from a database. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commandText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The command text.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fallbackValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The fallback value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns an object representing the results of the single value from the database, or the fallback value. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>commandText</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="84" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="84" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a9d25f13f11ce4f23fa4cfd5007d05c65" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxNode</type>
+        <definition>static IMMPxNode Miner.Interop.Process.PxApplicationExtensions.GetCurrentNode</definition>
+        <argsstring>(this IMMPxApplication source)</argsstring>
+        <name>GetCurrentNode</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets the current node that the IMMPxApplication is referencing. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxNode representing the current node. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="124" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="124" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a93c9ca8f553301321e843f8fe0b544b5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TDesign</type>
+        <definition>static TDesign Miner.Interop.Process.PxApplicationExtensions.GetDesign&lt; TDesign &gt;</definition>
+        <argsstring>(this IMMPxApplication source, Func&lt; int, IMMPxApplication, TDesign &gt; action)</argsstring>
+        <name>GetDesign&lt; TDesign &gt;</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; int, IMMPxApplication, TDesign &gt;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="class_miner_1_1_interop_1_1_process_1_1_design" kindref="compound">Design</ref> implementation of the current open design. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TDesign</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the design.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function that will initialize the design (should be used for custom implementations).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="class_miner_1_1_interop_1_1_process_1_1_design" kindref="compound">Design</ref> representing the design; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>action</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="141" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="141" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a5950e58d5af0f7d801f3629f5997c179" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_design" kindref="compound">Design</ref></type>
+        <definition>static Design Miner.Interop.Process.PxApplicationExtensions.GetDesign</definition>
+        <argsstring>(this IMMPxApplication source)</argsstring>
+        <name>GetDesign</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="class_miner_1_1_interop_1_1_process_1_1_design" kindref="compound">Design</ref> implementation of the current open design. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application reference.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="class_miner_1_1_interop_1_1_process_1_1_design" kindref="compound">Design</ref> representing the design; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="162" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="162" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1aa174283702e3ce977956edb20cbeb75f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxFilter</type>
+        <definition>static IMMPxFilter Miner.Interop.Process.PxApplicationExtensions.GetFilter</definition>
+        <argsstring>(this IMMPxApplication source, string filterName)</argsstring>
+        <name>GetFilter</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>filterName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the filter that matches the specified <emphasis>filterName</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filterName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the filter.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxFilter representing the filter that matches the name; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="182" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="182" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a491d68d2d19393febdab08ff84327b57" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string Miner.Interop.Process.PxApplicationExtensions.GetQualifiedTableName</definition>
+        <argsstring>(this IMMPxApplication source, string tableName)</argsstring>
+        <name>GetQualifiedTableName</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+<para>Gets the fully qualified name of the table that will included (or exclude) the schema name depending on the underlying database connection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tableName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a String representing the fully qualified table with schema name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tableName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="208" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="208" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a3ca09d0e4390c4f6e33923f195335ea7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TSession</type>
+        <definition>static TSession Miner.Interop.Process.PxApplicationExtensions.GetSession&lt; TSession &gt;</definition>
+        <argsstring>(this IMMPxApplication source, Func&lt; int, IMMPxApplication, TSession &gt; action)</argsstring>
+        <name>GetSession&lt; TSession &gt;</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; int, IMMPxApplication, TSession &gt;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> implementation of the current open session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSession</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the session.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function that will initialize the session (should be used for custom implementations).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> representing the session; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>action</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="238" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="238" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1aa8eb506801a48bb31d5cc8bdb95c503f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref></type>
+        <definition>static Session Miner.Interop.Process.PxApplicationExtensions.GetSession</definition>
+        <argsstring>(this IMMPxApplication source)</argsstring>
+        <name>GetSession</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> implementation of the current open session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> representing the session; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="259" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="259" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a2c81444b9bce8704c3535ec56298fcd9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMSessionManager</type>
+        <definition>static IMMSessionManager Miner.Interop.Process.PxApplicationExtensions.GetSessionManager</definition>
+        <argsstring>(this IMMPxApplication source)</argsstring>
+        <name>GetSessionManager</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets the session manager extension using the application reference. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application reference.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMSessionManager representing the <ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> Manager extension.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="276" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="276" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1af6efbbe3d69a65714e7404cc7bc0fff4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxState</type>
+        <definition>static IMMPxState Miner.Interop.Process.PxApplicationExtensions.GetState</definition>
+        <argsstring>(this IMMPxApplication source, int stateID)</argsstring>
+        <name>GetState</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stateID</declname>
+        </param>
+        <briefdescription>
+<para>Finds the state with the specified <emphasis>stateID</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stateID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxState representing the state that matches the identifier; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="291" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="291" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a82b5210310dcb77c2a03f32afac804d6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxState</type>
+        <definition>static IMMPxState Miner.Interop.Process.PxApplicationExtensions.GetState</definition>
+        <argsstring>(this IMMPxApplication source, string stateName)</argsstring>
+        <name>GetState</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>stateName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the state that matches the specified <emphasis>stateName</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stateName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the state.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxState representing the state that matches the specified state name; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="313" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="313" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a01933bebce07c1b61a4a6db9a3e7bc8e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxUser</type>
+        <definition>static IMMPxUser Miner.Interop.Process.PxApplicationExtensions.GetUser</definition>
+        <argsstring>(this IMMPxApplication source, int userID)</argsstring>
+        <name>GetUser</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>userID</declname>
+        </param>
+        <briefdescription>
+<para>Finds the user that matches the specified <emphasis>userID</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The user ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxUser representing the user that matches the specified identifier; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="335" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="335" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1aab469b27cd6047d37da4b30e1b0c3a60" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMPxUser</type>
+        <definition>static IMMPxUser Miner.Interop.Process.PxApplicationExtensions.GetUser</definition>
+        <argsstring>(this IMMPxApplication source, string userName)</argsstring>
+        <name>GetUser</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>userName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the user that matches the specified <emphasis>userName</emphasis>  in the name or display name. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the user.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMPxUser representing the user that matches the specified user; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>userName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="357" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="357" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a2c23999bd882765a6e437fb08a8a0d7f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string Miner.Interop.Process.PxApplicationExtensions.GetVersionName</definition>
+        <argsstring>(this IMMPxApplication source, IMMPxNode node)</argsstring>
+        <name>GetVersionName</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IMMPxNode</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Gets the name of the version for the specified <emphasis>node</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a String representing the name of the version; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>node</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>The node needs to be refer to a session or design, otherwise the version name will be <computeroutput>null</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="391" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="391" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a5587ac3ee59c1f243aa0ab86c6b0ca88" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref></type>
+        <definition>static WorkRequest Miner.Interop.Process.PxApplicationExtensions.GetWorkRequest</definition>
+        <argsstring>(this IMMPxApplication source)</argsstring>
+        <name>GetWorkRequest</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> implementation of the current open work request. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> representing the work request; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="407" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="407" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a4e3851d6f560d574cca72ab734e8732a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TWorkRequest</type>
+        <definition>static TWorkRequest Miner.Interop.Process.PxApplicationExtensions.GetWorkRequest&lt; TWorkRequest &gt;</definition>
+        <argsstring>(this IMMPxApplication source, Func&lt; int, IMMPxApplication, TWorkRequest &gt; action)</argsstring>
+        <name>GetWorkRequest&lt; TWorkRequest &gt;</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; int, IMMPxApplication, TWorkRequest &gt;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> implementation of the current open work request. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TWorkRequest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the work request.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function that will initialize the work request (should be used for custom implementations).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> representing the work request; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>action</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="428" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="428" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a6aa36fd3a81d99b1b5e21a20baa989d9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMWorkflowManager</type>
+        <definition>static IMMWorkflowManager Miner.Interop.Process.PxApplicationExtensions.GetWorkflowManager</definition>
+        <argsstring>(this IMMPxApplication source)</argsstring>
+        <name>GetWorkflowManager</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets the workflow manager extension using the application reference. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application reference.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IMMWorkflowManager representing the <ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> Manager extension.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="445" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="445" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a627281f452f3832ec0b4d0db99bc4db5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.Process.PxApplicationExtensions.SetCurrentNode</definition>
+        <argsstring>(this IMMPxApplication source, IMMPxNode node)</argsstring>
+        <name>SetCurrentNode</name>
+        <param>
+          <type>this IMMPxApplication</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IMMPxNode</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Sets the IMMPxApplication to reference the specified <emphasis>node</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>node</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="458" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="458" bodyend="464"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the Miner.Interop.Process.IMMPxApplication interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxApplicationExtensions.cs" bodystart="15" bodyend="467"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1add3515804165b915d891679b4c74e455" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>ExecuteNonQuery</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1ac57180dfbaf444fc197b773571acc2aa" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>ExecuteQuery</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a7f82581027b43e41692a2ef7a72c5553" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>ExecuteScalar&lt; TValue &gt;</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a9d25f13f11ce4f23fa4cfd5007d05c65" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetCurrentNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a5950e58d5af0f7d801f3629f5997c179" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetDesign</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a93c9ca8f553301321e843f8fe0b544b5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetDesign&lt; TDesign &gt;</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1aa174283702e3ce977956edb20cbeb75f" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetFilter</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a491d68d2d19393febdab08ff84327b57" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetQualifiedTableName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1aa8eb506801a48bb31d5cc8bdb95c503f" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetSession</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a3ca09d0e4390c4f6e33923f195335ea7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetSession&lt; TSession &gt;</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a2c81444b9bce8704c3535ec56298fcd9" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetSessionManager</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1af6efbbe3d69a65714e7404cc7bc0fff4" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetState</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a82b5210310dcb77c2a03f32afac804d6" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetState</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a01933bebce07c1b61a4a6db9a3e7bc8e" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetUser</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1aab469b27cd6047d37da4b30e1b0c3a60" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetUser</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a2c23999bd882765a6e437fb08a8a0d7f" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetVersionName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a6aa36fd3a81d99b1b5e21a20baa989d9" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetWorkflowManager</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a5587ac3ee59c1f243aa0ab86c6b0ca88" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetWorkRequest</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a4e3851d6f560d574cca72ab734e8732a" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>GetWorkRequest&lt; TWorkRequest &gt;</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_extensions_1a627281f452f3832ec0b4d0db99bc4db5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxApplicationExtensions</scope><name>SetCurrentNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

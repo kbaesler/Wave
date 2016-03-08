@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_4ed27bf511461bbbcab70b73eb94c9a9" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile</compoundname>
+    <innerdir refid="dir_c184ebbafa718cb16b745b28f1dd4923">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/BaseClasses</innerdir>
+    <innerdir refid="dir_ebc9457a4c21ec6fbfa0b4a80b52094c">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces</innerdir>
+    <innerdir refid="dir_b6830ca4b471e052c3c9624d9a3c2bec">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Internal</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/"/>
+  </compounddef>
+</doxygen>

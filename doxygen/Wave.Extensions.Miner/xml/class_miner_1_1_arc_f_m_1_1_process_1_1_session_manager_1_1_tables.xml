@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_tables" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Process::SessionManager::Tables</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_tables_1ab4f9678b4fce470211000465c31fe33d" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.SessionManager.Tables.Session</definition>
+        <argsstring></argsstring>
+        <name>Session</name>
+        <initializer>= &quot;MM_SESSION&quot;</initializer>
+        <briefdescription>
+<para>The session table name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="385" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="385" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Container for the SessionManager.Tables class used to identify the common tasks for Session Manager. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="379" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="378" bodyend="388"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_tables_1ab4f9678b4fce470211000465c31fe33d" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::SessionManager::Tables</scope><name>Session</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

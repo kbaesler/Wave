@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4" kind="class" prot="public">
+    <compoundname>System::Collections::VertexEventArgs&lt; TVertex &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">EventArgs</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4_1a09bb442f33f5574a35467f2723a84b7e" prot="private" static="no" mutable="no">
+        <type>readonly TVertex</type>
+        <definition>readonly TVertex System.Collections.VertexEventArgs&lt; TVertex &gt;._Vertex</definition>
+        <argsstring></argsstring>
+        <name>_Vertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="111" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4_1ab612d46f5131dc9548bd9e030c389830" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>TVertex</type>
+        <definition>TVertex System.Collections.VertexEventArgs&lt; TVertex &gt;.Vertex</definition>
+        <argsstring></argsstring>
+        <name>Vertex</name>
+        <briefdescription>
+<para>Gets the vertex. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertex.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="134" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4_1ade27dffeeabfc5bb0dc6263c4a548347" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.VertexEventArgs&lt; TVertex &gt;.VertexEventArgs</definition>
+        <argsstring>(TVertex vertex)</argsstring>
+        <name>VertexEventArgs</name>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the VertexEventArgs&amp;lt;TVertex&amp;gt; class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="121" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="121" bodyend="124"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An event involving a vertex. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="690">
+        <label>System.Collections.VertexEventArgs&lt; TVertex &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4"/>
+        <childnode refid="691" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="691">
+        <label>EventArgs</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="692">
+        <label>System.Collections.VertexEventArgs&lt; TVertex &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4"/>
+        <childnode refid="693" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="693">
+        <label>EventArgs</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="108" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="107" bodyend="140"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4_1a09bb442f33f5574a35467f2723a84b7e" prot="private" virt="non-virtual"><scope>System::Collections::VertexEventArgs&lt; TVertex &gt;</scope><name>_Vertex</name></member>
+      <member refid="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4_1ab612d46f5131dc9548bd9e030c389830" prot="public" virt="non-virtual"><scope>System::Collections::VertexEventArgs&lt; TVertex &gt;</scope><name>Vertex</name></member>
+      <member refid="class_system_1_1_collections_1_1_vertex_event_args_3_01_t_vertex_01_4_1ade27dffeeabfc5bb0dc6263c4a548347" prot="public" virt="non-virtual"><scope>System::Collections::VertexEventArgs&lt; TVertex &gt;</scope><name>VertexEventArgs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

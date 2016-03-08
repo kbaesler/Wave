@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::Controls::DropDownPaintEventArgs</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">PaintEventArgs</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args_1ae216b1acfd0542e72328baee2d90dc6b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>Rectangle</type>
+        <definition>Rectangle System.Forms.Controls.DropDownPaintEventArgs.Bounds</definition>
+        <argsstring></argsstring>
+        <name>Bounds</name>
+        <briefdescription>
+<para>Gets the display rectangle for the editable portion of the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="478" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="478" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args_1a331e012f2b6b2937c59564ed7c088d09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Forms.Controls.DropDownPaintEventArgs.DropDownPaintEventArgs</definition>
+        <argsstring>(Graphics graphics, Rectangle clipRect, Rectangle bounds)</argsstring>
+        <name>DropDownPaintEventArgs</name>
+        <param>
+          <type>Graphics</type>
+          <declname>graphics</declname>
+        </param>
+        <param>
+          <type>Rectangle</type>
+          <declname>clipRect</declname>
+        </param>
+        <param>
+          <type>Rectangle</type>
+          <declname>bounds</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new instance of the <ref refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args" kindref="compound">DropDownPaintEventArgs</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>graphics</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clipRect</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bounds</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="465" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="465" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args_1a4e52127f621ad30e31637450273bb930" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.DropDownPaintEventArgs.DrawFocusRectangle</definition>
+        <argsstring>()</argsstring>
+        <name>DrawFocusRectangle</name>
+        <briefdescription>
+<para>Draws a focus rectangle on the editable portion of the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="487" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="487" bodyend="493"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>EventArgs class for the </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="294">
+        <label>PaintEventArgs</label>
+      </node>
+      <node id="293">
+        <label>System.Forms.Controls.DropDownPaintEventArgs</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args"/>
+        <childnode refid="294" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="296">
+        <label>PaintEventArgs</label>
+      </node>
+      <node id="295">
+        <label>System.Forms.Controls.DropDownPaintEventArgs</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args"/>
+        <childnode refid="296" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="456" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="455" bodyend="496"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args_1ae216b1acfd0542e72328baee2d90dc6b" prot="public" virt="non-virtual"><scope>System::Forms::Controls::DropDownPaintEventArgs</scope><name>Bounds</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args_1a4e52127f621ad30e31637450273bb930" prot="public" virt="non-virtual"><scope>System::Forms::Controls::DropDownPaintEventArgs</scope><name>DrawFocusRectangle</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args_1a331e012f2b6b2937c59564ed7c088d09" prot="public" virt="non-virtual"><scope>System::Forms::Controls::DropDownPaintEventArgs</scope><name>DropDownPaintEventArgs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

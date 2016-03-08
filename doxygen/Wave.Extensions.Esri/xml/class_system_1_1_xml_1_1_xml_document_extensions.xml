@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_xml_1_1_xml_document_extensions" kind="class" language="C#" prot="public">
+    <compoundname>System::Xml::XmlDocumentExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_xml_1_1_xml_document_extensions_1afe2be84c487c303e916706a77334603b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Xml.XmlDocumentExtensions.Transform</definition>
+        <argsstring>(this XmlDocument source, Stream stream, string outputFileName)</argsstring>
+        <name>Transform</name>
+        <param>
+          <type>this XmlDocument</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Stream</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>outputFileName</declname>
+        </param>
+        <briefdescription>
+<para>Transforms the specified document using the XSLT stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream containing the XSLT document.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputFileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the output file.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml/Extensions/XmlDocumentExtensions.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml/Extensions/XmlDocumentExtensions.cs" bodystart="19" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the XmlDocument object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml/Extensions/XmlDocumentExtensions.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml/Extensions/XmlDocumentExtensions.cs" bodystart="9" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_xml_1_1_xml_document_extensions_1afe2be84c487c303e916706a77334603b" prot="public" virt="non-virtual"><scope>System::Xml::XmlDocumentExtensions</scope><name>Transform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

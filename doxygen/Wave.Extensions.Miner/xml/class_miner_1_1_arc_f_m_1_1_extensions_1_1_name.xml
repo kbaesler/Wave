@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Extensions::Name</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aeffbc7bb6a7d7fb96fc8133b0aaf16aa" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.CUTab</definition>
+        <argsstring></argsstring>
+        <name>CUTab</name>
+        <initializer>= &quot;CUTopLevel&quot;</initializer>
+        <briefdescription>
+<para>The name of the compatible units tab extension for CU tab. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="193" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1ab2ad14a34a3cc8ae3c62e5afe44a4f2d" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.DesignTab</definition>
+        <argsstring></argsstring>
+        <name>DesignTab</name>
+        <initializer>= &quot;DesignerTopLevel&quot;</initializer>
+        <briefdescription>
+<para>The name of the design tab extension for the ArcFM Attribute Editor (Designer only). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="198" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a71ad87f55e01422ddb80349f61512a35" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.Designer</definition>
+        <argsstring></argsstring>
+        <name>Designer</name>
+        <initializer>= &quot;Designer XML API Extension&quot;</initializer>
+        <briefdescription>
+<para>The name of the Designer extension. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="203" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aa3d53b5a561a7f0da9ea6890680da29d" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.FeaturesTab</definition>
+        <argsstring></argsstring>
+        <name>FeaturesTab</name>
+        <initializer>= &quot;FeatureTopLevel&quot;</initializer>
+        <briefdescription>
+<para>The name of the features tab extension that list of all features on the Features tab that are available for placement. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="209" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1ac2d9f4169cfef4316eed6aa05f0f745e" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.FeederSpace</definition>
+        <argsstring></argsstring>
+        <name>FeederSpace</name>
+        <initializer>= &quot;MMFeeder&quot;</initializer>
+        <briefdescription>
+<para>The name of the feeder space extension for ArcFM Feeder Manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="214" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a9ddc5ce118bce1627b621e41130255c4" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.ProcessFrameworkCache</definition>
+        <argsstring></argsstring>
+        <name>ProcessFrameworkCache</name>
+        <initializer>= &quot;Process Framework Integration&quot;</initializer>
+        <briefdescription>
+<para>The name of the process framework extension for the ArcFM Session Manager or Workflow Manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="219" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aa274f151ed29c802604f115d58f576ed" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.Properties</definition>
+        <argsstring></argsstring>
+        <name>Properties</name>
+        <initializer>= &quot;MMPropertiesExt&quot;</initializer>
+        <briefdescription>
+<para>The name of the ArcFM Properties extension. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="224" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a0a96bd61a381e09da682b24d1afaba3d" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.QAQCTab</definition>
+        <argsstring></argsstring>
+        <name>QAQCTab</name>
+        <initializer>= &quot;QAQCTopLevel&quot;</initializer>
+        <briefdescription>
+<para>The name of the QAQC tab extension for the ArcFM Attribute Editor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="230" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a7f474ca4dfb194f911f6fbaa67a807c0" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.SelectionTab</definition>
+        <argsstring></argsstring>
+        <name>SelectionTab</name>
+        <initializer>= &quot;FeSelTopLevel&quot;</initializer>
+        <briefdescription>
+<para>The name of the section tab extension for the ArcFM Attribute Editor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="235" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a8f8ef03a5ab32c0e7647c529b4ddbfb2" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.TargetsTab</definition>
+        <argsstring></argsstring>
+        <name>TargetsTab</name>
+        <initializer>= &quot;CUSelTopLevel&quot;</initializer>
+        <briefdescription>
+<para>The name of the targets tab extension for the ArcFM Attribute Editor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="240" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aa5131e686a2c5cf5264d07cca89494dd" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Extensions.Name.TraceBridge</definition>
+        <argsstring></argsstring>
+        <name>TraceBridge</name>
+        <initializer>= &quot;ElectricGasWaterExt&quot;</initializer>
+        <briefdescription>
+<para>The name of the trace bridge extension used by the IMMTraceBridge interface. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="245" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the extension names for the ArcFM extensions which may be used for customization. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="187" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="186" bodyend="248"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aeffbc7bb6a7d7fb96fc8133b0aaf16aa" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>CUTab</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a71ad87f55e01422ddb80349f61512a35" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>Designer</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1ab2ad14a34a3cc8ae3c62e5afe44a4f2d" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>DesignTab</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aa3d53b5a561a7f0da9ea6890680da29d" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>FeaturesTab</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1ac2d9f4169cfef4316eed6aa05f0f745e" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>FeederSpace</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a9ddc5ce118bce1627b621e41130255c4" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>ProcessFrameworkCache</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aa274f151ed29c802604f115d58f576ed" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>Properties</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a0a96bd61a381e09da682b24d1afaba3d" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>QAQCTab</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a7f474ca4dfb194f911f6fbaa67a807c0" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>SelectionTab</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1a8f8ef03a5ab32c0e7647c529b4ddbfb2" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>TargetsTab</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name_1aa5131e686a2c5cf5264d07cca89494dd" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Extensions::Name</scope><name>TraceBridge</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

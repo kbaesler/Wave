@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_design_builder" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::DesignBuilder</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder" prot="public" virt="non-virtual">Miner.Interop.Process.BasePxNodeBuilder</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_design_builder_1a7c95c8fb4f07cf8fcef0be96a265071c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.DesignBuilder.DesignBuilder</definition>
+        <argsstring>(IMMPxApplication pxApp, IList&lt; int &gt; nodeIDs)</argsstring>
+        <name>DesignBuilder</name>
+        <param>
+          <type>IMMPxApplication</type>
+          <declname>pxApp</declname>
+        </param>
+        <param>
+          <type>IList&lt; int &gt;</type>
+          <declname>nodeIDs</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_design_builder" kindref="compound">DesignBuilder</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pxApp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application refernece.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nodeIDs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node IDs.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/DesignBuilder.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/DesignBuilder.cs" bodystart="17" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_design_builder_1a4c66d69e53a16180f9c156c77377128a" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override IMMPxNode</type>
+        <definition>override IMMPxNode Miner.Interop.Process.DesignBuilder.GetNode</definition>
+        <argsstring>(int nodeID)</argsstring>
+        <name>GetNode</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder_1aa124be8b7d29d1f8c518cc2157a1b794">GetNode</reimplements>
+        <param>
+          <type>int</type>
+          <declname>nodeID</declname>
+        </param>
+        <briefdescription>
+<para>Gets the node with the specified <emphasis>nodeID</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nodeID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the Miner.Interop.Process.IMMPxNode representing the node. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/DesignBuilder.cs" line="33" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/DesignBuilder.cs" bodystart="33" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A list builder that can be used to build design nodes. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="316">
+        <label>BasePxListBuilder</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder"/>
+        <childnode refid="317" relation="public-inheritance">
+        </childnode>
+        <childnode refid="318" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="318">
+        <label>IMMPxListBuilderInit</label>
+      </node>
+      <node id="314">
+        <label>Miner.Interop.Process.DesignBuilder</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_design_builder"/>
+        <childnode refid="315" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="315">
+        <label>BasePxNodeBuilder</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder"/>
+        <childnode refid="316" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="317">
+        <label>IMMListBuilder</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="321">
+        <label>BasePxListBuilder</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder"/>
+        <childnode refid="322" relation="public-inheritance">
+        </childnode>
+        <childnode refid="323" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="323">
+        <label>IMMPxListBuilderInit</label>
+      </node>
+      <node id="319">
+        <label>Miner.Interop.Process.DesignBuilder</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_design_builder"/>
+        <childnode refid="320" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="320">
+        <label>BasePxNodeBuilder</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder"/>
+        <childnode refid="321" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="322">
+        <label>IMMListBuilder</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/DesignBuilder.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/DesignBuilder.cs" bodystart="8" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder_1a4a98e3b18ac2ac263a9e141cb24efc06" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>BasePxListBuilder</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder_1adffe5aafa85d3ea690cd5be98568dd93" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>BasePxListBuilder</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder_1aea862c44fea7abc9c3cb57942110b42c" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>BasePxNodeBuilder</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder_1aa4baf6e3cd7f8022a31b6881f7efdbdf" prot="public" virt="virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>BuildList</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_design_builder_1a7c95c8fb4f07cf8fcef0be96a265071c" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>DesignBuilder</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_design_builder_1a4c66d69e53a16180f9c156c77377128a" prot="protected" virt="virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>GetNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder_1a284fa9c2e9b22cd71c275c59d958f344" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder_1a6beb029d6c717857df2ae420104a57f3" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>NodeIDs</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder_1a3f39694ae35b5c9043726ae4b50d9fb4" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>PxApplication</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_list_builder_1aba8dff076880559fc9bd54f7eda94267" prot="public" virt="virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>UpdateNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_builder_1a183f6659a753f0f284a0f404d7863093" prot="protected" virt="virtual"><scope>Miner::Interop::Process::DesignBuilder</scope><name>Validate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

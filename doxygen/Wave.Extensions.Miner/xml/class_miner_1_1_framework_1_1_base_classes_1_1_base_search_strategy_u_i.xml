@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Miner::Framework::BaseClasses::BaseSearchStrategyUI</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IMMSearchStrategyUI</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a064cef49d507652e499471df1418b76b" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>UserControl</type>
+        <definition>UserControl Miner.Framework.BaseClasses.BaseSearchStrategyUI.Control</definition>
+        <argsstring></argsstring>
+        <name>Control</name>
+        <briefdescription>
+<para>Gets the control. </para>        </briefdescription>
+        <detaileddescription>
+<para>The control. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a07cfb4aae16feee051c64d7375e9544d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseSearchStrategyUI.Caption</definition>
+        <argsstring></argsstring>
+        <name>Caption</name>
+        <briefdescription>
+<para>Gets the caption. </para>        </briefdescription>
+        <detaileddescription>
+<para>The caption. </para><para>This property contains the name of the search strategy as it appears in the Locator tool pulldown menu (e.g., Attribute Query). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="68" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a9876247e375799912b0efcc86c291659" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>int</type>
+        <definition>int Miner.Framework.BaseClasses.BaseSearchStrategyUI.Priority</definition>
+        <argsstring></argsstring>
+        <name>Priority</name>
+        <briefdescription>
+<para>Gets the priority. </para>        </briefdescription>
+        <detaileddescription>
+<para>The priority. </para><para>Allows you to set the order in which the locators appear in the dropdown menu. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="79" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a62cb7f704f08fd27c0527a8779b4c1c5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>IMMSearchStrategy</type>
+        <definition>IMMSearchStrategy Miner.Framework.BaseClasses.BaseSearchStrategyUI.SearchStrategy</definition>
+        <argsstring></argsstring>
+        <name>SearchStrategy</name>
+        <briefdescription>
+<para>Gets the search strategy. </para>        </briefdescription>
+        <detaileddescription>
+<para>The search strategy. </para><para>This property takes an Miner.Interop.IMMSearchStrategy object. This object contains the Find method that executes the search. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1afbaf1748be5f4234bfe56b228b34e7cf" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>virtual string Miner.Framework.BaseClasses.BaseSearchStrategyUI.COMProgID</definition>
+        <argsstring></argsstring>
+        <name>COMProgID</name>
+        <briefdescription>
+<para>Gets the COM prog ID. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the search strategy has been written in VB6, this property requires its ProgID. If the search strategy has been written in C#, this returns an empty string. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="100" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a160e50358eaf932f142daf64dd09bb58" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IMMResultsProcessor</type>
+        <definition>virtual IMMResultsProcessor Miner.Framework.BaseClasses.BaseSearchStrategyUI.ResultsProcessor</definition>
+        <argsstring></argsstring>
+        <name>ResultsProcessor</name>
+        <briefdescription>
+<para>Gets the results processor. </para>        </briefdescription>
+        <detaileddescription>
+<para>The results processor. </para><para>This optional property returns an Miner.Interop.IMMResultsProcessor object. This object allows you to determine how the objects in the tree appear (e.g., grouped). Enter a value of Null to use the standard format as it is displayed in the Attribute Editor. While in Feeder Manager mode, the results processor for Feeder Manager is always used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="117" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1af9591c639918cbd9dec5de41d19d4d77" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseSearchStrategyUI.BaseSearchStrategyUI</definition>
+        <argsstring>(string caption, int priority, IMMSearchStrategy searchStrategy, UserControl control)</argsstring>
+        <name>BaseSearchStrategyUI</name>
+        <param>
+          <type>string</type>
+          <declname>caption</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>priority</declname>
+        </param>
+        <param>
+          <type>IMMSearchStrategy</type>
+          <declname>searchStrategy</declname>
+        </param>
+        <param>
+          <type>UserControl</type>
+          <declname>control</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i" kindref="compound">BaseSearchStrategyUI</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>caption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the search strategy as it appears in the Locator tool pulldown menu (e.g., Attribute Query). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The order in which the locators appear in the dropdown menu.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>searchStrategy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The search strategy that contains the Find method that executes the search.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The user control.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="33" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="33" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a62d69772262ddda212ba6236d53aeeec" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>object</type>
+        <definition>virtual object Miner.Framework.BaseClasses.BaseSearchStrategyUI.GetSearchParameters</definition>
+        <argsstring>(mmSearchOptionFlags searchOptions)</argsstring>
+        <name>GetSearchParameters</name>
+        <param>
+          <type>mmSearchOptionFlags</type>
+          <declname>searchOptions</declname>
+        </param>
+        <briefdescription>
+<para>Gets the search parameters for the Miner.Interop.IMMSearchStrategy </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>searchOptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The search options.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The search parameters that are passed into the Miner.Interop.IMMSearchStrategy. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="193" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="193" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a25cdf28f449571c04468f9dcfb7d6458" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Miner.Framework.BaseClasses.BaseSearchStrategyUI.InitializeComponent</definition>
+        <argsstring>(UserControl control, IMap map, IObjectClass classFilter)</argsstring>
+        <name>InitializeComponent</name>
+        <param>
+          <type>UserControl</type>
+          <declname>control</declname>
+        </param>
+        <param>
+          <type>IMap</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>classFilter</declname>
+        </param>
+        <briefdescription>
+<para>Uses the map and an object class to initialize the search strategy. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The control.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>classFilter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class filter.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>It may be called several times during the lifetime of the application depending on changes to the map and map layers. This method is called each time items are added or removed from the map. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="209" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1ad7ab8436bb6a284e09f2da5ea21aaa99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Framework.BaseClasses.BaseSearchStrategyUI.InitializeStrategyUI</definition>
+        <argsstring>(IMap map, IObjectClass classFilter)</argsstring>
+        <name>InitializeStrategyUI</name>
+        <param>
+          <type>IMap</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>classFilter</declname>
+        </param>
+        <briefdescription>
+<para>Uses the map and an object class to initialize the search strategy. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>classFilter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class filter.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>It may be called several times during the lifetime of the application depending on changes to the map and map layers. This method is called each time items are added or removed from the map. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="132" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="132" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a662d161f888e57615c57b99df575c0ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Framework.BaseClasses.BaseSearchStrategyUI.Deactivated</definition>
+        <argsstring>()</argsstring>
+        <name>Deactivated</name>
+        <briefdescription>
+<para>Notifies a current open locator that the user has selected another locator and provides the opportunity to perform any necessary state changes </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="148" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="148" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a1a7277064da5a910817c1e0bb21b7586" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>IMMSearchConfiguration</type>
+        <definition>virtual IMMSearchConfiguration Miner.Framework.BaseClasses.BaseSearchStrategyUI.GetSearchConfiguration</definition>
+        <argsstring>(mmSearchOptionFlags optionFlags)</argsstring>
+        <name>GetSearchConfiguration</name>
+        <param>
+          <type>mmSearchOptionFlags</type>
+          <declname>optionFlags</declname>
+        </param>
+        <briefdescription>
+<para>Returns an Miner.Interop.IMMSearchConfiguration object that contains the ESRI.ArcGIS.esriSystem.IPropertySet specific to the search being conducted. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>optionFlags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The option flags.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the Miner.Interop.IMMSearchConfiguration that contains the ESRI.ArcGIS.esriSystem.IPropertySet specific to the search. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="161" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="161" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a82f46b66519a6c1d6c0a790af0346974" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Framework.BaseClasses.BaseSearchStrategyUI.Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+<para>Clears the user interface in preparation for the next search. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="171" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="171" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a25ccb245dbe9bd78372218a248985191" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Framework.BaseClasses.BaseSearchStrategyUI.Shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>Shutdown</name>
+        <briefdescription>
+<para>Cleans up in preparation for shutting down the application. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="178" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="178" bodyend="180"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract class that is used to display the user interface for the locator strategies. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="229">
+        <label>Miner.Framework.BaseClasses.BaseSearchStrategyUI</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i"/>
+        <childnode refid="230" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="230">
+        <label>IMMSearchStrategyUI</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="231">
+        <label>Miner.Framework.BaseClasses.BaseSearchStrategyUI</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i"/>
+        <childnode refid="232" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="232">
+        <label>IMMSearchStrategyUI</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSearchStrategyUI.cs" bodystart="19" bodyend="212"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1af9591c639918cbd9dec5de41d19d4d77" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>BaseSearchStrategyUI</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a07cfb4aae16feee051c64d7375e9544d" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>Caption</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1afbaf1748be5f4234bfe56b228b34e7cf" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>COMProgID</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a064cef49d507652e499471df1418b76b" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>Control</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a662d161f888e57615c57b99df575c0ed" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>Deactivated</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a1a7277064da5a910817c1e0bb21b7586" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>GetSearchConfiguration</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a62d69772262ddda212ba6236d53aeeec" prot="protected" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>GetSearchParameters</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a25cdf28f449571c04468f9dcfb7d6458" prot="protected" virt="pure-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>InitializeComponent</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1ad7ab8436bb6a284e09f2da5ea21aaa99" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>InitializeStrategyUI</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a9876247e375799912b0efcc86c291659" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>Priority</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a82f46b66519a6c1d6c0a790af0346974" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>Reset</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a160e50358eaf932f142daf64dd09bb58" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>ResultsProcessor</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a62cb7f704f08fd27c0527a8779b4c1c5" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>SearchStrategy</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_search_strategy_u_i_1a25ccb245dbe9bd78372218a248985191" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSearchStrategyUI</scope><name>Shutdown</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

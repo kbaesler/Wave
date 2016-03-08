@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace" kind="class" language="C#" prot="package">
+    <compoundname>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</compoundname>
+    <basecompoundref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" prot="public" virt="non-virtual">ESRI.ArcGIS.Geodatabase.IEditableWorkspace</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1aa46d0e0798cf6efbc3f56e9a65e96592" prot="private" static="no" mutable="no">
+        <type>readonly IWorkspace</type>
+        <definition>readonly IWorkspace ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace._Workspace</definition>
+        <argsstring></argsstring>
+        <name>_Workspace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1ab8cbc3891a98769cb7c30c5e6f607c9d" prot="private" static="no" mutable="no">
+        <type>readonly IWorkspaceEdit2</type>
+        <definition>readonly IWorkspaceEdit2 ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace._WorkspaceEdit</definition>
+        <argsstring></argsstring>
+        <name>_WorkspaceEdit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a0a341aa1f54f332526b2a5f8715c1053" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.IsBeingEdited</definition>
+        <argsstring></argsstring>
+        <name>IsBeingEdited</name>
+        <briefdescription>
+<para>Gets a value indicating whether workspace is being edited. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if workspace is being edited; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a8479dd22ac599b9339ea23648a224dbd" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.IsInEditOperation</definition>
+        <argsstring></argsstring>
+        <name>IsInEditOperation</name>
+        <briefdescription>
+<para>Gets a value indicating whether the workspace is in the middle of an edit operation. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the workspace is in the middle of an edit operation.; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="119" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a63ce270dd2837f764347a07b4024fb17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.EditableWorkspace</definition>
+        <argsstring>(IWorkspace workspace)</argsstring>
+        <name>EditableWorkspace</name>
+        <param>
+          <type>IWorkspace</type>
+          <declname>workspace</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the EditableWorkspace class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>workspace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1aba593e35e5c861a92a49798b42d941f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="36" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1aac68a6ea878ffd9dc678c357d2eac9e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.StartEditing</definition>
+        <argsstring>(bool withUndoRedo=true, esriMultiuserEditSessionMode multiuserEditSessionMode=esriMultiuserEditSessionMode.esriMESMVersioned)</argsstring>
+        <name>StartEditing</name>
+        <param>
+          <type>bool</type>
+          <declname>withUndoRedo</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>esriMultiuserEditSessionMode</type>
+          <declname>multiuserEditSessionMode</declname>
+          <defval>esriMultiuserEditSessionMode.esriMESMVersioned</defval>
+        </param>
+        <briefdescription>
+<para>Starts editing the workspace </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>withUndoRedo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the changes are reverted when the edits are aborted.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiuserEditSessionMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit session mode that can be used to indicate non-versioned or versioned editing for workspaces that support multiuser editing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace does not support the edit session mode.;multiuserEditSessionMode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="66" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a8e277e167a841a86d2aebe142a3945d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.AbortEditing</definition>
+        <argsstring>()</argsstring>
+        <name>AbortEditing</name>
+        <briefdescription>
+<para>Aborts the editing operations and stops editing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="88" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="88" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a9957ef3fc8db31695cca31d8726d801e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.StopEditing</definition>
+        <argsstring>(bool saveEdits)</argsstring>
+        <name>StopEditing</name>
+        <param>
+          <type>bool</type>
+          <declname>saveEdits</declname>
+        </param>
+        <briefdescription>
+<para>Stops editing the workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>saveEdits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> to commit the edits.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="102" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="102" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a5604b4c5069ce8d69567563bdbc6f762" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="135" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="135" bodyend="141"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A wrapper to provide a managed workspace editing operations. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="309">
+        <label>ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace</label>
+        <childnode refid="310" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="310">
+        <label>IEditableWorkspace</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace"/>
+        <childnode refid="311" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="311">
+        <label>IDisposable</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="312">
+        <label>ESRI.ArcGIS.Geodatabase.Internal.EditableWorkspace</label>
+        <childnode refid="313" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="313">
+        <label>IEditableWorkspace</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace"/>
+        <childnode refid="314" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="314">
+        <label>IDisposable</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Internal/EditableWorkspace.cs" bodystart="8" bodyend="144"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1aa46d0e0798cf6efbc3f56e9a65e96592" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>_Workspace</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1ab8cbc3891a98769cb7c30c5e6f607c9d" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>_WorkspaceEdit</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a8e277e167a841a86d2aebe142a3945d9" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>AbortEditing</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1aba593e35e5c861a92a49798b42d941f8" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a5604b4c5069ce8d69567563bdbc6f762" prot="protected" virt="virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a63ce270dd2837f764347a07b4024fb17" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>EditableWorkspace</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a0a341aa1f54f332526b2a5f8715c1053" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>IsBeingEdited</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a8479dd22ac599b9339ea23648a224dbd" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>IsInEditOperation</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1aac68a6ea878ffd9dc678c357d2eac9e4" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>StartEditing</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_editable_workspace_1a9957ef3fc8db31695cca31d8726d801e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Internal::EditableWorkspace</scope><name>StopEditing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

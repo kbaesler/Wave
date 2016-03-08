@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</compoundname>
+    <basecompoundref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window" prot="public" virt="non-virtual">ESRI.ArcGIS.BaseClasses.BaseDockableWindow</basecompoundref>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window_1a2075c012d7d83340210cbdcd77cb5319" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.BaseClasses.BaseMxDockableWindow.BaseMxDockableWindow</definition>
+        <argsstring>(string name, string caption)</argsstring>
+        <name>BaseMxDockableWindow</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>caption</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window" kindref="compound">BaseMxDockableWindow</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the window.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>caption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The caption for the window.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" bodystart="20" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window_1ac0c91d90d8bdb083207be2f301f37041" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseMxDockableWindow.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window_1adfe3fe739432448b4f3c8ed6126b2c09" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseMxDockableWindow.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" bodystart="44" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract class used to create a dockable window in ArcMap. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="99">
+        <label>BaseDockableWindow</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window"/>
+        <childnode refid="100" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>ESRI.ArcGIS.BaseClasses.BaseMxDockableWindow</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window"/>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>IDockableWindowDef</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="102">
+        <label>BaseDockableWindow</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window"/>
+        <childnode refid="103" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>ESRI.ArcGIS.BaseClasses.BaseMxDockableWindow</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window"/>
+        <childnode refid="102" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>IDockableWindowDef</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxDockableWindow.cs" bodystart="11" bodyend="50"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a462669770b09629ca4ef1dd950042538" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Application</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a05f9d1409bea328a4cc68c44b672db96" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>BaseDockableWindow</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window_1a2075c012d7d83340210cbdcd77cb5319" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>BaseMxDockableWindow</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a3cb64145b5835e2d42277b88b72a53d2" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Caption</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a7762df2f1a2e15ddaa914821f5349f92" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>ChildHWND</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a63d5040e2cdb4794f3f947ac287fbd24" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Dock</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a9ab3c872e4a9768c18ee344075c7bfc0" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Hide</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1aebd588a69929413509c37dbad58484f1" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>IsVisible</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a1ff461e19080e3c9e45f60e4d44e9075" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Name</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a8b2bdb60074e2146f3184d1fa8e500e0" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>OnCreate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a1e86352600401c8039f4120a58457871" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>OnDestroy</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window_1ac0c91d90d8bdb083207be2f301f37041" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Register</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a95c574fe9b1b4ffde313cf067843cc5f" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Show</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_dockable_window_1adfe3fe739432448b4f3c8ed6126b2c09" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>Unregister</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_dockable_window_1a8ac6769c5a8ee020cb1c64d5381a3e94" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxDockableWindow</scope><name>UserData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

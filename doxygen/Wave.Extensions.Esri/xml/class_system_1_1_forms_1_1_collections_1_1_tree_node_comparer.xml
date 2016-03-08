@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_collections_1_1_tree_node_comparer" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::Collections::TreeNodeComparer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IComparer</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_collections_1_1_tree_node_comparer_1a09a6966eac53ec841055c0bd4a0f1555" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Forms.Collections.TreeNodeComparer.Compare</definition>
+        <argsstring>(object x, object y)</argsstring>
+        <name>Compare</name>
+        <param>
+          <type>object</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first object to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second object to compare.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Value Condition Less than zero x is less than y. Zero x equals y. Greater than zero x is greater than y. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Neither x nor y implements the <ref refid="" kindref="compound">T:System.IComparable</ref> interface.-or- x and y are of different types and neither one can handle comparisons with the other. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Collections/TreeNodeComparer.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Collections/TreeNodeComparer.cs" bodystart="25" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Compares the node values against each other based on the text. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="658">
+        <label>IComparer</label>
+      </node>
+      <node id="657">
+        <label>System.Forms.Collections.TreeNodeComparer</label>
+        <link refid="class_system_1_1_forms_1_1_collections_1_1_tree_node_comparer"/>
+        <childnode refid="658" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="660">
+        <label>IComparer</label>
+      </node>
+      <node id="659">
+        <label>System.Forms.Collections.TreeNodeComparer</label>
+        <link refid="class_system_1_1_forms_1_1_collections_1_1_tree_node_comparer"/>
+        <childnode refid="660" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Collections/TreeNodeComparer.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Collections/TreeNodeComparer.cs" bodystart="9" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_collections_1_1_tree_node_comparer_1a09a6966eac53ec841055c0bd4a0f1555" prot="public" virt="non-virtual"><scope>System::Forms::Collections::TreeNodeComparer</scope><name>Compare</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

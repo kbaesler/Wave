@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request" kind="interface" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::IPxWorkRequest</compoundname>
+    <basecompoundref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node" prot="public" virt="non-virtual">Miner.Interop.Process.IPxNode</basecompoundref>
+    <derivedcompoundref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" prot="public" virt="non-virtual">Miner.Interop.Process.WorkRequest</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a030ceedbc13f6a7a0b3ba6a2fb4c0c36" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.IPxWorkRequest.Comments</definition>
+        <argsstring></argsstring>
+        <name>Comments</name>
+        <briefdescription>
+<para>Get or set the Comments associated with this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para>The comments. </para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The comments cannot be larger then 255 characters.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1afaa82d63c60e0b958eeca726fe6b3507" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_customer" kindref="compound">Customer</ref></type>
+        <definition>Customer Miner.Interop.Process.IPxWorkRequest.Customer</definition>
+        <argsstring></argsstring>
+        <name>Customer</name>
+        <briefdescription>
+<para>Gets the customer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The customer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="30" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a672ac4cdfc27f23ce9703fe2270ceab5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.IPxWorkRequest.Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <briefdescription>
+<para>Gets or sets the description. </para>        </briefdescription>
+        <detaileddescription>
+<para>The description. </para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The description cannot be larger then 128 characters.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a70e77faa60647e4f3de8d020b9136779" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; <ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_design" kindref="compound">IPxDesign</ref> &gt;</type>
+        <definition>IEnumerable&lt;IPxDesign&gt; Miner.Interop.Process.IPxWorkRequest.Designs</definition>
+        <argsstring></argsstring>
+        <name>Designs</name>
+        <briefdescription>
+<para>Gets all of the designs that are associated with the <ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request" kindref="compound">IPxWorkRequest</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a8d796a2198b97b93a95a30c47ac9d096" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DateTime</type>
+        <definition>DateTime Miner.Interop.Process.IPxWorkRequest.EndDate</definition>
+        <argsstring></argsstring>
+        <name>EndDate</name>
+        <briefdescription>
+<para>Gets or sets the end date. </para>        </briefdescription>
+        <detaileddescription>
+<para>The end date. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a8726a1ffc83f09c367b84288b9fe3b3c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_location" kindref="compound">Location</ref></type>
+        <definition>Location Miner.Interop.Process.IPxWorkRequest.Location</definition>
+        <argsstring></argsstring>
+        <name>Location</name>
+        <briefdescription>
+<para>Gets the location. </para>        </briefdescription>
+        <detaileddescription>
+<para>The location. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="60" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1aadc2456d15d92c695e255e22829be104" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>IMMPxUser</type>
+        <definition>IMMPxUser Miner.Interop.Process.IPxWorkRequest.Owner</definition>
+        <argsstring></argsstring>
+        <name>Owner</name>
+        <briefdescription>
+<para>Gets or sets the owner. </para>        </briefdescription>
+        <detaileddescription>
+<para>The owner. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="68" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a19d437161d116b40099e402acce038ef" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DateTime</type>
+        <definition>DateTime Miner.Interop.Process.IPxWorkRequest.StartDate</definition>
+        <argsstring></argsstring>
+        <name>StartDate</name>
+        <briefdescription>
+<para>Gets or sets the start date. </para>        </briefdescription>
+        <detaileddescription>
+<para>The start date. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="76" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An interface used to construct a process framework work request entity. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="395">
+        <label>Miner.Interop.Process.IPxWorkRequest</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request"/>
+        <childnode refid="396" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="396">
+        <label>IPxNode</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node"/>
+      </node>
+      <node id="397">
+        <label>Miner.Interop.Process.WorkRequest</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_work_request"/>
+        <childnode refid="395" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="398">
+        <label>Miner.Interop.Process.IPxWorkRequest</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request"/>
+        <childnode refid="399" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="399">
+        <label>IPxNode</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxWorkRequest.cs" bodystart="11" bodyend="79"/>
+    <listofallmembers>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad3ba80f580fc50bb3a6aff8c9d691fa7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>AddHistory</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a030ceedbc13f6a7a0b3ba6a2fb4c0c36" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Comments</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad6b6f65f03e869bec480d9e845ccf4ed" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>CreateNew</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1afaa82d63c60e0b958eeca726fe6b3507" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Customer</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a41c3359ff434d447ca6ed66ec083f3e4" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Delete</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a672ac4cdfc27f23ce9703fe2270ceab5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Description</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a70e77faa60647e4f3de8d020b9136779" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Designs</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a8d796a2198b97b93a95a30c47ac9d096" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>EndDate</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a27c70ed0026af35ec3cfb9d8f95db1e2" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>History</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a62f198b80396c802a12a996e8d768ff7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>ID</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ac871659531e6211a6939b9162a249f86" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Initialize</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a4fa8762f48e94bd229e845adedb3d719" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>IsOpen</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a8726a1ffc83f09c367b84288b9fe3b3c" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Location</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a28d37aac92ddc0831c57ffd96fda051a" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Locked</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad68e7377981a98c89f42bfc189ec4e4c" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Name</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1abd0d826ed0c0d8d8d0c5a77214134115" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Node</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1aadc2456d15d92c695e255e22829be104" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Owner</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1afe58e97e3c711c3565815057e12046e5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Set</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request_1a19d437161d116b40099e402acce038ef" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>StartDate</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a3cd43d1866882ddef6a1b1e087010acf" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>State</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1aebd977423f71a2b23210b9e04796cd18" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Update</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a8399acfc277a5a44c76cd8cf81169169" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>Valid</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1aab5d28be273b80ff92da3eb71cb108e6" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxWorkRequest</scope><name>VersionName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

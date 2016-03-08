@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_8e87ddae42c8b733ac4e3983a3b57f2a" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors</compoundname>
+    <innerdir refid="dir_d4e6d487cabc4772cd52f9a9640b40fc">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls</innerdir>
+    <innerfile refid="_behavior_binding_8cs">BehaviorBinding.cs</innerfile>
+    <innerfile refid="_behavior_event_handler_8cs">BehaviorEventHandler.cs</innerfile>
+    <innerfile refid="_command_behavior_8cs">CommandBehavior.cs</innerfile>
+    <innerfile refid="_command_behavior_binding_8cs">CommandBehaviorBinding.cs</innerfile>
+    <innerfile refid="_command_behavior_collection_8cs">CommandBehaviorCollection.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/"/>
+  </compounddef>
+</doxygen>

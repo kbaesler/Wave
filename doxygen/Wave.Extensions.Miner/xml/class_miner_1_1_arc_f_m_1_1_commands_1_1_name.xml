@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_commands_1_1_name" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Commands::Name</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_commands_1_1_name_1a18b010c21162baf1cb4916c8265cb40e" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Commands.Name.ClearResults</definition>
+        <argsstring></argsstring>
+        <name>ClearResults</name>
+        <initializer>= &quot;MMTraceUI.clsClear&quot;</initializer>
+        <briefdescription>
+<para>The name of the command that will clear the trace results. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_commands_1_1_name_1a5682ec22e696453681359941530d54ef" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Commands.Name.ResultsAsSelection</definition>
+        <argsstring></argsstring>
+        <name>ResultsAsSelection</name>
+        <initializer>= &quot;MMTraceUI.clsResultsAsSelection&quot;</initializer>
+        <briefdescription>
+<para>The name of the button that will indicate if the trace results should be a selection or graphic. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_commands_1_1_name_1aab071e33fef7ea3468372957af0723c2" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Commands.Name.ZoomToResults</definition>
+        <argsstring></argsstring>
+        <name>ZoomToResults</name>
+        <initializer>= &quot;MMTraceUI.clsZoomToResults&quot;</initializer>
+        <briefdescription>
+<para>The name of the button that will zoom to the results of a trace. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the common command names for the ArcFM commands which may be used for customization. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="30" bodyend="50"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_arc_f_m_1_1_commands_1_1_name_1a18b010c21162baf1cb4916c8265cb40e" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Commands::Name</scope><name>ClearResults</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_commands_1_1_name_1a5682ec22e696453681359941530d54ef" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Commands::Name</scope><name>ResultsAsSelection</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_commands_1_1_name_1aab071e33fef7ea3468372957af0723c2" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Commands::Name</scope><name>ZoomToResults</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

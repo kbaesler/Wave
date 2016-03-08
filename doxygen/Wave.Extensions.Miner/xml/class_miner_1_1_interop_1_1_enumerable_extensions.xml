@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_enumerable_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::EnumerableExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_enumerable_extensions_1a2ab1ba6803d4913769fb9cbb1de7e89d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IField &gt;</type>
+        <definition>static IEnumerable&lt;IField&gt; Miner.Interop.EnumerableExtensions.AsEnumerable</definition>
+        <argsstring>(this IMMEnumField source)</argsstring>
+        <name>AsEnumerable</name>
+        <param>
+          <type>this IMMEnumField</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IEnumerable&lt;T&gt; from an IMMEnumField </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An IMMEnumField to create an IEnumerable&lt;T&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IEnumerable&lt;T&gt; that contains the feature classes from the input source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" bodystart="19" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_enumerable_extensions_1a4b730e9ae875cbc9811e622ca068b598" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; ITable &gt;</type>
+        <definition>static IEnumerable&lt;ITable&gt; Miner.Interop.EnumerableExtensions.AsEnumerable</definition>
+        <argsstring>(this IMMEnumTable source)</argsstring>
+        <name>AsEnumerable</name>
+        <param>
+          <type>this IMMEnumTable</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IEnumerable&lt;T&gt; from an IMMEnumTable </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An IMMEnumTable to create an IEnumerable&lt;T&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IEnumerable&lt;T&gt; that contains the feature classes from the input source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" bodystart="38" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_enumerable_extensions_1ab5c496c1d965a8265047a3093657961f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IObjectClass &gt;</type>
+        <definition>static IEnumerable&lt;IObjectClass&gt; Miner.Interop.EnumerableExtensions.AsEnumerable</definition>
+        <argsstring>(this IMMEnumObjectClass source)</argsstring>
+        <name>AsEnumerable</name>
+        <param>
+          <type>this IMMEnumObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IEnumerable&lt;T&gt; from an IMMEnumObjectClass </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An IMMEnumObjectClass to create an IEnumerable&lt;T&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IEnumerable&lt;T&gt; that contains the feature classes from the input source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" line="57" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" bodystart="57" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_enumerable_extensions_1a684d5da53bb83d7814202d033378fd36" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IMMFeederSource &gt;</type>
+        <definition>static IEnumerable&lt;IMMFeederSource&gt; Miner.Interop.EnumerableExtensions.AsEnumerable</definition>
+        <argsstring>(this IMMEnumFeederSource source)</argsstring>
+        <name>AsEnumerable</name>
+        <param>
+          <type>this IMMEnumFeederSource</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IEnumerable&lt;T&gt; from an IMMEnumFeederSource </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An IMMEnumFeederSource to create an IEnumerable&lt;T&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IEnumerable&lt;T&gt; that contains the datasets from the input source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" line="77" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" bodystart="77" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for ArcGIS COM collections </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/EnumerableExtensions.cs" bodystart="10" bodyend="92"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_enumerable_extensions_1a2ab1ba6803d4913769fb9cbb1de7e89d" prot="public" virt="non-virtual"><scope>Miner::Interop::EnumerableExtensions</scope><name>AsEnumerable</name></member>
+      <member refid="class_miner_1_1_interop_1_1_enumerable_extensions_1a4b730e9ae875cbc9811e622ca068b598" prot="public" virt="non-virtual"><scope>Miner::Interop::EnumerableExtensions</scope><name>AsEnumerable</name></member>
+      <member refid="class_miner_1_1_interop_1_1_enumerable_extensions_1ab5c496c1d965a8265047a3093657961f" prot="public" virt="non-virtual"><scope>Miner::Interop::EnumerableExtensions</scope><name>AsEnumerable</name></member>
+      <member refid="class_miner_1_1_interop_1_1_enumerable_extensions_1a684d5da53bb83d7814202d033378fd36" prot="public" virt="non-virtual"><scope>Miner::Interop::EnumerableExtensions</scope><name>AsEnumerable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

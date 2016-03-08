@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_2958cd13990df789f42e374fa001565a" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/TokenizedTextBox</compoundname>
+    <innerfile refid="_token_8cs">Token.cs</innerfile>
+    <innerfile refid="_tokenized_text_box_8cs">TokenizedTextBox.cs</innerfile>
+    <innerfile refid="_tokenized_text_box_commands_8cs">TokenizedTextBoxCommands.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/TokenizedTextBox/"/>
+  </compounddef>
+</doxygen>

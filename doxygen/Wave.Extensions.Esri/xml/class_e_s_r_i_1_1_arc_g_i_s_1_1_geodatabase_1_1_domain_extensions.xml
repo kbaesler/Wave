@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::DomainExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions_1a03b8c62735b0e955c15bc71507ad39c6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; KeyValuePair&lt; string, string &gt; &gt;</type>
+        <definition>static IEnumerable&lt;KeyValuePair&lt;string, string&gt; &gt; ESRI.ArcGIS.Geodatabase.DomainExtensions.AsEnumerable</definition>
+        <argsstring>(this ICodedValueDomain source)</argsstring>
+        <name>AsEnumerable</name>
+        <param>
+          <type>this ICodedValueDomain</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IEnumerable&lt;T&gt; from an ICodedValueDomain </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An ICodedValueDomain to create an IEnumerable&lt;T&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IEnumerable&lt;T&gt; that contains the domain from the input source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" bodystart="19" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions_1af777d592b17155f27124e06ae4079f19" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string ESRI.ArcGIS.Geodatabase.DomainExtensions.GetDescription</definition>
+        <argsstring>(this ICodedValueDomain source, object value)</argsstring>
+        <name>GetDescription</name>
+        <param>
+          <type>this ICodedValueDomain</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Finds the description in the domain that matches the specified <emphasis>value</emphasis>  </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a string representing the name (or description) otherwise <computeroutput>null</computeroutput>.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" bodystart="36" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions_1a1d8128dfdf9d25158e823a01d4a18aee" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TValue</type>
+        <definition>static TValue ESRI.ArcGIS.Geodatabase.DomainExtensions.GetValue&lt; TValue &gt;</definition>
+        <argsstring>(this ICodedValueDomain source, string name, TValue fallbackValue)</argsstring>
+        <name>GetValue&lt; TValue &gt;</name>
+        <param>
+          <type>this ICodedValueDomain</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>fallbackValue</declname>
+        </param>
+        <briefdescription>
+<para>Finds the value in the domain that matches the specified <emphasis>name</emphasis>  </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fallbackValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The fallback value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the value representing the name (or description) otherwise the fallback value is used. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" line="57" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" bodystart="57" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.Geodatabase.IDomain interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/DomainExtensions.cs" bodystart="10" bodyend="75"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions_1a03b8c62735b0e955c15bc71507ad39c6" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::DomainExtensions</scope><name>AsEnumerable</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions_1af777d592b17155f27124e06ae4079f19" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::DomainExtensions</scope><name>GetDescription</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions_1a1d8128dfdf9d25158e823a01d4a18aee" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::DomainExtensions</scope><name>GetValue&lt; TValue &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_collections_extensions" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::CollectionsExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_collections_extensions_1ab53ca82d14469e0cb67d19c864d7fc5c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Collections.CollectionsExtensions.AddRange&lt; TSource &gt;</definition>
+        <argsstring>(this ICollection&lt; TSource &gt; source, IEnumerable&lt; TSource &gt; collection)</argsstring>
+        <name>AddRange&lt; TSource &gt;</name>
+        <param>
+          <type>this ICollection&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IEnumerable&lt; TSource &gt;</type>
+          <declname>collection</declname>
+        </param>
+        <briefdescription>
+<para>Adds the <emphasis>collection</emphasis>  to the <emphasis>source</emphasis>  collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>collection</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The collection.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" bodystart="18" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_collections_extensions_1af76717e713f88316fd67c95f2ccc09ab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Collections.CollectionsExtensions.Clear&lt; TSource &gt;</definition>
+        <argsstring>(this ICollection&lt; TSource &gt; source, Action&lt; TSource &gt; action)</argsstring>
+        <name>Clear&lt; TSource &gt;</name>
+        <param>
+          <type>this ICollection&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Action&lt; TSource &gt;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Performs that specified <emphasis>action</emphasis>  on all of the items prior to clearing the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" line="32" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" bodystart="32" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_collections_extensions_1af93db51de71d3ee7389cae0fe5b659e6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool System.Collections.CollectionsExtensions.IsEmpty&lt; TSource &gt;</definition>
+        <argsstring>(this IEnumerable&lt; TSource &gt; source)</argsstring>
+        <name>IsEmpty&lt; TSource &gt;</name>
+        <param>
+          <type>this IEnumerable&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if <emphasis>source</emphasis>  has no items in it; otherwise, falSE. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified source is empty; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para><para>If an ICollection&lt;TSource&gt; is provided, ICollection&lt;TSource&gt;.Count is used. </para><para>Yes, this does basically the same thing as the System.Linq.Enumerable.Any&lt;TSource&gt;(IEnumerable&lt;TSource&gt;) extension. The differences: &apos;IsEmpty&apos; is easier to remember and it leverages <ref refid="" kindref="compound">ICollection.Count</ref> if it exists. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" line="62" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" bodystart="62" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_collections_extensions_1ab5d303f43ce8f73ec2e7f00358c92802" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Collections.CollectionsExtensions.Remove&lt; TSource &gt;</definition>
+        <argsstring>(this IList&lt; TSource &gt; source, Predicate&lt; TSource &gt; predicate)</argsstring>
+        <name>Remove&lt; TSource &gt;</name>
+        <param>
+          <type>this IList&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Predicate&lt; TSource &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Removes each element from the <emphasis>source</emphasis>  if it satisfies the specific <emphasis>predicate</emphasis>  </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the elements of <emphasis>source</emphasis> .</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list from which to remove the elements that satisfy the <emphasis>predicate</emphasis> .</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate that defines a set of criteria and determines whether the specified object meets those criteria. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" line="85" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" bodystart="85" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_collections_extensions_1a6aedc427496b32855aa83cada283f68a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TSource</type>
+        <definition>static TSource System.Collections.CollectionsExtensions.RemoveLast&lt; TSource &gt;</definition>
+        <argsstring>(this IList&lt; TSource &gt; source)</argsstring>
+        <name>RemoveLast&lt; TSource &gt;</name>
+        <param>
+          <type>this IList&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Removes the last element from <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the elements of <emphasis>source</emphasis> .</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list from which to remove the last element.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The last element. </para></simplesect>
+</para><para><emphasis>source</emphasis>  must have at least one element and allow changes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" line="105" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" bodystart="105" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A static class providing extension methods for working with the collections tree. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/CollectionsExtensions.cs" bodystart="8" bodyend="114"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_collections_extensions_1ab53ca82d14469e0cb67d19c864d7fc5c" prot="public" virt="non-virtual"><scope>System::Collections::CollectionsExtensions</scope><name>AddRange&lt; TSource &gt;</name></member>
+      <member refid="class_system_1_1_collections_1_1_collections_extensions_1af76717e713f88316fd67c95f2ccc09ab" prot="public" virt="non-virtual"><scope>System::Collections::CollectionsExtensions</scope><name>Clear&lt; TSource &gt;</name></member>
+      <member refid="class_system_1_1_collections_1_1_collections_extensions_1af93db51de71d3ee7389cae0fe5b659e6" prot="public" virt="non-virtual"><scope>System::Collections::CollectionsExtensions</scope><name>IsEmpty&lt; TSource &gt;</name></member>
+      <member refid="class_system_1_1_collections_1_1_collections_extensions_1ab5d303f43ce8f73ec2e7f00358c92802" prot="public" virt="non-virtual"><scope>System::Collections::CollectionsExtensions</scope><name>Remove&lt; TSource &gt;</name></member>
+      <member refid="class_system_1_1_collections_1_1_collections_extensions_1a6aedc427496b32855aa83cada283f68a" prot="public" virt="non-virtual"><scope>System::Collections::CollectionsExtensions</scope><name>RemoveLast&lt; TSource &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

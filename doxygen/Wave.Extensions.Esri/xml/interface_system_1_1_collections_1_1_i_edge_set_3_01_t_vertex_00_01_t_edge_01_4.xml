@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4" kind="interface" prot="public">
+    <compoundname>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</compoundname>
+    <derivedcompoundref refid="interface_system_1_1_collections_1_1_i_graph_3_01_t_vertex_00_01_t_edge_01_4" prot="public" virt="non-virtual">System.Collections.IGraph&lt; TVertex, TEdge &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+      <param>
+        <type>TEdge</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1af4c2a2a6d1ef5c6c28ee7fb50da74808" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; EdgeEventArgs&lt; TVertex, TEdge &gt; &gt;</type>
+        <definition>EventHandler&lt;EdgeEventArgs&lt;TVertex, TEdge&gt; &gt; System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.EdgeAdded</definition>
+        <argsstring></argsstring>
+        <name>EdgeAdded</name>
+        <briefdescription>
+<para>Raised when an edge is added to the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a69d4fa1728c369888d5e804b05edde3a" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; EdgeEventArgs&lt; TVertex, TEdge &gt; &gt;</type>
+        <definition>EventHandler&lt;EdgeEventArgs&lt;TVertex, TEdge&gt; &gt; System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.EdgeRemoved</definition>
+        <argsstring></argsstring>
+        <name>EdgeRemoved</name>
+        <briefdescription>
+<para>Raised when an edge has been removed from the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a177797b2923ee4f8a979b160e89092bb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.EdgeCount</definition>
+        <argsstring></argsstring>
+        <name>EdgeCount</name>
+        <briefdescription>
+<para>Gets the edge count. </para>        </briefdescription>
+        <detaileddescription>
+<para>The edge count.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a42c550db3189681c4a152005e5e56cc8" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; TEdge &gt;</type>
+        <definition>IEnumerable&lt;TEdge&gt; System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.Edges</definition>
+        <argsstring></argsstring>
+        <name>Edges</name>
+        <briefdescription>
+<para>Gets the edges. </para>        </briefdescription>
+        <detaileddescription>
+<para>The edges.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="41" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a352b02e4e66e1deca7c7425483003e42" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.IsEdgesEmpty</definition>
+        <argsstring></argsstring>
+        <name>IsEdgesEmpty</name>
+        <briefdescription>
+<para>Gets a value indicating whether there are no edges in this set. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if this set is empty; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a1bdd182ba6173cc325f621fad5812897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.AddEdge</definition>
+        <argsstring>(TEdge edge)</argsstring>
+        <name>AddEdge</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1ab59af8ce57b40ecda3ec6e58cae40514">AddEdge</reimplementedby>
+        <param>
+          <type>TEdge</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Adds the edge to the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the edge was added, otherwise <computeroutput>false</computeroutput>.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1ac45d4d2ab2898d30c20dbdc0aea82ca8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.AddEdgeRange</definition>
+        <argsstring>(IEnumerable&lt; TEdge &gt; edges)</argsstring>
+        <name>AddEdgeRange</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1a620f9b7fd2311bc0cd8e34b884715273">AddEdgeRange</reimplementedby>
+        <param>
+          <type>IEnumerable&lt; TEdge &gt;</type>
+          <declname>edges</declname>
+        </param>
+        <briefdescription>
+<para>Adds a set of edges to the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edges</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of edges successfully added to the graph.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="67" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a6944612a734aee8ff51c3daffee87b8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.ContainsEdge</definition>
+        <argsstring>(TEdge edge)</argsstring>
+        <name>ContainsEdge</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1abc61f6cfa0b63181cd0e552c5372a876">ContainsEdge</reimplementedby>
+        <param>
+          <type>TEdge</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified edge contains edge. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edge.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified edge contains edge; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="76" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1afd2fcec064ddc3eaf39918eb86746dbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.ContainsEdge</definition>
+        <argsstring>(TVertex source, TVertex target)</argsstring>
+        <name>ContainsEdge</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1a0004f642c948ed7f3bf83168d600cfe8">ContainsEdge</reimplementedby>
+        <param>
+          <type>TVertex</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>TVertex</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified set contains both the vertices. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified set contains both the vertices; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a5fe301dfac42b510c0ec59777990ccb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.RemoveEdge</definition>
+        <argsstring>(TEdge edge)</argsstring>
+        <name>RemoveEdge</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1a49942d745fab27f8ffe6ca3b18a367df">RemoveEdge</reimplementedby>
+        <param>
+          <type>TEdge</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Removes <emphasis>edge</emphasis>  from the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if <emphasis>edge</emphasis>  was successfully removed; otherwise <computeroutput>false</computeroutput>.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="93" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a0a5afba1c2301681ed621626357dada1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;.RemoveEdge</definition>
+        <argsstring>(TVertex vertex, Func&lt; TEdge, bool &gt; predicate)</argsstring>
+        <name>RemoveEdge</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1aa89fa893b7b1aab8ef7a078a92c3055c">RemoveEdge</reimplementedby>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <param>
+          <type>Func&lt; TEdge, bool &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Removes all edges that match <emphasis>predicate</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pure delegate that takes an <emphasis>TEdge</emphasis>  and returns true if the edge should be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of edges removed.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="104" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A set of edges </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the vertex.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TEdge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the edge.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="384">
+        <label>System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4"/>
+        <childnode refid="383" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="382">
+        <label>System.Collections.IEdgeSet&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4"/>
+      </node>
+      <node id="383">
+        <label>System.Collections.IGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_graph_3_01_t_vertex_00_01_t_edge_01_4"/>
+        <childnode refid="382" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="12" bodyend="107"/>
+    <listofallmembers>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a1bdd182ba6173cc325f621fad5812897" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>AddEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1ac45d4d2ab2898d30c20dbdc0aea82ca8" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>AddEdgeRange</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a6944612a734aee8ff51c3daffee87b8d" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>ContainsEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1afd2fcec064ddc3eaf39918eb86746dbd" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>ContainsEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1af4c2a2a6d1ef5c6c28ee7fb50da74808" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>EdgeAdded</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a177797b2923ee4f8a979b160e89092bb" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>EdgeCount</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a69d4fa1728c369888d5e804b05edde3a" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>EdgeRemoved</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a42c550db3189681c4a152005e5e56cc8" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>Edges</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a352b02e4e66e1deca7c7425483003e42" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>IsEdgesEmpty</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a5fe301dfac42b510c0ec59777990ccb4" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>RemoveEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_3_01_t_vertex_00_01_t_edge_01_4_1a0a5afba1c2301681ed621626357dada1" prot="public" virt="non-virtual"><scope>System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</scope><name>RemoveEdge</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

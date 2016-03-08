@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase" kind="namespace" language="C#">
+    <compoundname>ESRI::ArcGIS::Geodatabase</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions" prot="public">ESRI::ArcGIS::Geodatabase::ClassExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_cursor_extensions" prot="public">ESRI::ArcGIS::Geodatabase::CursorExtensions</innerclass>
+    <innerclass refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_delta_row" prot="public">ESRI::ArcGIS::Geodatabase::DeltaRow</innerclass>
+    <innerclass refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" prot="public">ESRI::ArcGIS::Geodatabase::DifferenceRow</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_domain_extensions" prot="public">ESRI::ArcGIS::Geodatabase::DomainExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator" prot="public">ESRI::ArcGIS::Geodatabase::FeatureClassEnumerator</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_extensions" prot="public">ESRI::ArcGIS::Geodatabase::FeatureExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_field_extensions" prot="public">ESRI::ArcGIS::Geodatabase::FieldExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer" prot="public">ESRI::ArcGIS::Geodatabase::FieldsEqualityComparer</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions" prot="public">ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</innerclass>
+    <innerclass refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" prot="public">ESRI::ArcGIS::Geodatabase::IEditableWorkspace</innerclass>
+    <innerclass refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship" prot="public">ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</innerclass>
+    <innerclass refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" prot="public">ESRI::ArcGIS::Geodatabase::IIntermediateRow</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_object_equality_comparer" prot="public">ESRI::ArcGIS::Geodatabase::ObjectEqualityComparer</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_ole_db_connection_factories" prot="public">ESRI::ArcGIS::Geodatabase::OleDbConnectionFactories</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_relationship_class_extensions" prot="public">ESRI::ArcGIS::Geodatabase::RelationshipClassExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_equality_comparer" prot="public">ESRI::ArcGIS::Geodatabase::RowEqualityComparer</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions" prot="public">ESRI::ArcGIS::Geodatabase::RowExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_selection_set_extensions" prot="public">ESRI::ArcGIS::Geodatabase::SelectionSetExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_system_extensions" prot="public">ESRI::ArcGIS::Geodatabase::SystemExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_table_extensions" prot="public">ESRI::ArcGIS::Geodatabase::TableExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions" prot="public">ESRI::ArcGIS::Geodatabase::VersionExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions" prot="public">ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_factories" prot="public">ESRI::ArcGIS::Geodatabase::WorkspaceFactories</innerclass>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_extensions">ESRI::ArcGIS::Geodatabase::Extensions</innernamespace>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal">ESRI::ArcGIS::Geodatabase::Internal</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92" prot="public" static="no">
+        <name>ComparisonOperator</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92a0ccb67e7eaae09d9e4078d161eeca100" prot="public">
+          <name>Equals</name>
+          <briefdescription>
+<para>This is the equals operator for strict equality comparisons. </para>          </briefdescription>
+          <detaileddescription>
+<para>The framework automatically uses the correct syntax for null value comparisons. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92a34b5af77cc5bf3a5f2a999f11f578255" prot="public">
+          <name>NotEquals</name>
+          <briefdescription>
+<para>This is the negated equals operator. </para>          </briefdescription>
+          <detaileddescription>
+<para>The framework automatically uses the correct syntax for null value comparisons. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92a98b82c200a2e309b24cb481970f3fcc4" prot="public">
+          <name>Like</name>
+          <briefdescription>
+<para>This is the equals operator for partial equality comparisons. </para>          </briefdescription>
+          <detaileddescription>
+<para>The parameter value should be a string to match with percent characters used as wildcards. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92ab270372be5b4433b4736daaf25e1c74e" prot="public">
+          <name>Contains</name>
+          <briefdescription>
+<para>This is the equals operator for partial equality comparisons. </para>          </briefdescription>
+          <detaileddescription>
+<para>The parameter value should be a string to match with percent characters used as wildcards. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92a9d1a2cba952f9245c54397bbbf3e8183" prot="public">
+          <name>StartsWith</name>
+          <briefdescription>
+<para>This is the equals operator for partial equality comparisons. </para>          </briefdescription>
+          <detaileddescription>
+<para>The parameter value should be a string to match with percent characters used as wildcards. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92a213068b7e25d045126e9b1702fae80db" prot="public">
+          <name>EndsWith</name>
+          <briefdescription>
+<para>This is the equals operator for partial equality comparisons. </para>          </briefdescription>
+          <detaileddescription>
+<para>The parameter value should be a string to match with percent characters used as wildcards. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92a4a099d34042d925bb0baa06718a5a140" prot="public">
+          <name>NotLike</name>
+          <briefdescription>
+<para>This is the negated equals operator for partial equality comparisons. </para>          </briefdescription>
+          <detaileddescription>
+<para>The parameter value should be a string to match with percent characters used as wildcards. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92ac6d9d7bb9939f62f01c80f8b1251501c" prot="public">
+          <name>LessThan</name>
+          <briefdescription>
+<para>This is the less than operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92a32643384e2970a6ca75e35112415251f" prot="public">
+          <name>LessThanOrEquals</name>
+          <briefdescription>
+<para>This is the less than or equals operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92af6d044fe1f01fb0c956b80099e2a3072" prot="public">
+          <name>GreaterThan</name>
+          <briefdescription>
+<para>This is the greater than operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92af64389ec17f3793363f97bb6d97c9adb" prot="public">
+          <name>GreaterThanOrEquals</name>
+          <briefdescription>
+<para>This is the greater than or equals operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92aefeb369cccbd560588a756610865664c" prot="public">
+          <name>In</name>
+          <briefdescription>
+<para>This is the in operator which tests for set membership. </para>          </briefdescription>
+          <detaileddescription>
+<para>Constraints using <ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92aefeb369cccbd560588a756610865664c" kindref="member">Operator.In</ref> can only be added by specifying a list of elements (though the lists may contain 0 or 1 elements). </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ab00bd2dc267155a9beed571de7f9fe92ac949090e2cb12faab4dabb4621dd6c9e" prot="public">
+          <name>NotIn</name>
+          <briefdescription>
+<para>This is the negated in operator which tests for set non-membership. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration of the comparison operators supported in SQL statements. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Enumerations.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Enumerations.cs" bodystart="9" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a5817cbc7d0e128828b05a968bc6dd9" prot="public" static="no">
+        <name>LogicalOperator</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a5817cbc7d0e128828b05a968bc6dd9ac33315685a0cba3ce53be378b3c7874b" prot="public">
+          <name>And</name>
+          <briefdescription>
+<para>This is the AND operator. </para>          </briefdescription>
+          <detaileddescription>
+<para>Combines two conditions together. Selects a record if both conditions are true. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a5817cbc7d0e128828b05a968bc6dd9a3a2d5fe857d8f9541136a124c2edec6c" prot="public">
+          <name>Or</name>
+          <briefdescription>
+<para>This is the OR operator. </para>          </briefdescription>
+          <detaileddescription>
+<para>Combines two conditions together. Selects a record if at least one condition is true. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a5817cbc7d0e128828b05a968bc6dd9aa74c05d080620f087c4e523977230666" prot="public">
+          <name>Not</name>
+          <briefdescription>
+<para>This is the NOT operator. </para>          </briefdescription>
+          <detaileddescription>
+<para>Selects a record if it doesn&apos;t match the following expression. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration of the logic operators supported in SQL statements. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Enumerations.cs" line="89" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Enumerations.cs" bodystart="88" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5d" prot="public" static="no">
+        <name>DBMS</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5dabf733d8a933c1601697f364223fc7ecb" prot="public">
+          <name>Access</name>
+          <briefdescription>
+<para>A local Microsoft Access geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5da0b27918290ff5323bea1e3b78a9cf04e" prot="public">
+          <name>File</name>
+          <briefdescription>
+<para>A local <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> File geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5da30162ed78b6c10f731411f2fc440c24f" prot="public">
+          <name>Oracle</name>
+          <briefdescription>
+<para>A remote Oracle geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5dae86e829e4d4c68b30a4fd26aa2bfca72" prot="public">
+          <name>SqlServer</name>
+          <briefdescription>
+<para>A remote Microsoft SQL Server geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5dacfb994965cca9e9f7c8be40e579d74b7" prot="public">
+          <name>Db2</name>
+          <briefdescription>
+<para>A remote IBM DB2 geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5da39046d7db7de492f0295971f225974ff" prot="public">
+          <name>Informix</name>
+          <briefdescription>
+<para>A remote Informix geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5da916034aa0fb4ca924846e1a6a2d54c9c" prot="public">
+          <name>PostgreSql</name>
+          <briefdescription>
+<para>A remote Postgre SQL geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5da88183b946cc5f0e8c96b2e66e1c74a7e" prot="public">
+          <name>Unknown</name>
+          <briefdescription>
+<para>An unknown geodatabase. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration of the various supported relational (DBMS) geodatabase. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="18" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1afdba23baec1c2353c67d6a89dbe18f32" prot="public" static="no">
+        <name>OleDbGeometryType</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1afdba23baec1c2353c67d6a89dbe18f32a5c9b4389e0ef492ccbed326cfde93d89" prot="public">
+          <name>Wkb</name>
+          <briefdescription>
+<para>The well-known binary representation is a contiguous stream of bytes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1afdba23baec1c2353c67d6a89dbe18f32a497031794414a552435f90151ac3b54b" prot="public">
+          <name>Object</name>
+          <briefdescription>
+<para>The object representing is in <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> formatted bytes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The enumerations of the supported geometry types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/OleDbConnectionFactories.cs" line="89" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/OleDbConnectionFactories.cs" bodystart="88" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" line="4" column="1"/>
+  </compounddef>
+</doxygen>

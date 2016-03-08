@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_behaviors_1_1_behavior_event_handler" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Behaviors::BehaviorEventHandler</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_behavior_event_handler_1a26b6476cec2e2c2092c7eee5a8252357" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Delegate</type>
+        <definition>static Delegate System.Windows.Behaviors.BehaviorEventHandler.CreateDelegate</definition>
+        <argsstring>(Type eventHandlerType, MethodInfo methodToInvoke, object methodInvoker)</argsstring>
+        <name>CreateDelegate</name>
+        <param>
+          <type>Type</type>
+          <declname>eventHandlerType</declname>
+        </param>
+        <param>
+          <type>MethodInfo</type>
+          <declname>methodToInvoke</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>methodInvoker</declname>
+        </param>
+        <briefdescription>
+<para>Creates a delegate with a matching signature of the supplied eventHandlerType This method only supports Events that have a delegate of type void </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>eventHandlerType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate type to wrap. Note that this must always be a void delegate</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>methodToInvoke</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The method to invoke</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>methodInvoker</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object where the method resides</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a delegate with the same signature as eventHandlerType that calls the methodToInvoke inside</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/BehaviorEventHandler.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/BehaviorEventHandler.cs" bodystart="24" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generates delegates according to the specified signature on runtime. </para>    </briefdescription>
+    <detaileddescription>
+<para>There are limitations of this generator:<orderedlist>
+<listitem><para>It can only hook to Events that have a Delegate of type void (for example EventHandler)</para></listitem><listitem><para>It uses <ref refid="namespace_system_1_1_reflection" kindref="compound">Reflection</ref> so it cannot be used in XBAPs because of the security restrictions there are in XBAPs. </para></listitem></orderedlist>
+</para>    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/BehaviorEventHandler.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/BehaviorEventHandler.cs" bodystart="12" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_event_handler_1a26b6476cec2e2c2092c7eee5a8252357" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::BehaviorEventHandler</scope><name>CreateDelegate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

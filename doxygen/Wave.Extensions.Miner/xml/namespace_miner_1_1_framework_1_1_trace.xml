@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_miner_1_1_framework_1_1_trace" kind="namespace" language="C#">
+    <compoundname>Miner::Framework::Trace</compoundname>
+    <innerclass refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_eid_results" prot="public">Miner::Framework::Trace::AdjacencyEidResults</innerclass>
+    <innerclass refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_node" prot="public">Miner::Framework::Trace::AdjacencyNode</innerclass>
+    <innerclass refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_queue" prot="public">Miner::Framework::Trace::AdjacencyQueue</innerclass>
+    <innerclass refid="class_miner_1_1_framework_1_1_trace_1_1_adjacency_trace" prot="public">Miner::Framework::Trace::AdjacencyTrace</innerclass>
+    <innerclass refid="class_miner_1_1_framework_1_1_trace_1_1_connectivity_trace" prot="public">Miner::Framework::Trace::ConnectivityTrace</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Results/AdjacencyEidResults.cs" line="9" column="1"/>
+  </compounddef>
+</doxygen>

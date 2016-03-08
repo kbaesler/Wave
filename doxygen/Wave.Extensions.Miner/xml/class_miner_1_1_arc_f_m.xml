@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM</compoundname>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_commands" prot="public">Miner::ArcFM::Commands</innerclass>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_extensions" prot="public">Miner::ArcFM::Extensions</innerclass>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_process" prot="public">Miner::ArcFM::Process</innerclass>
+    <briefdescription>
+<para>Container class for Miner.ArcFM classes. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="11" bodyend="646"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

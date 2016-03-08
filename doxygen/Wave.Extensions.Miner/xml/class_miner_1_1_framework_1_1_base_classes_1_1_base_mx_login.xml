@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Framework::BaseClasses::BaseMxLogin</compoundname>
+    <basecompoundref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_login" prot="public" virt="non-virtual">Miner.Framework.BaseClasses.BaseLogin&lt; TWindow &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TWindow</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a565f66d76dfcf61e71ca470904829be8" prot="private" static="no" mutable="no">
+        <type>readonly MMDefaultLoginObjectClass</type>
+        <definition>readonly MMDefaultLoginObjectClass Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;._LoginObject</definition>
+        <argsstring></argsstring>
+        <name>_LoginObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1ad4dd4fc372df1617475ce928d7a25ffd" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override Connection</type>
+        <definition>override Connection Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;.Connection</definition>
+        <argsstring></argsstring>
+        <name>Connection</name>
+        <briefdescription>
+<para>Gets the connection. </para>        </briefdescription>
+        <detaileddescription>
+<para>The connection. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="50" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a7fdb407d308002bf5f8af038115e3b90" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override bool</type>
+        <definition>override bool Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;.IsValidLogin</definition>
+        <argsstring></argsstring>
+        <name>IsValidLogin</name>
+        <briefdescription>
+<para>Gets a value indicating whether this instance is valid login. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if this instance is valid login; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="61" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a8c2cc8fdba7e9b974f2e07361df0a325" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override IWorkspace</type>
+        <definition>override IWorkspace Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;.LoginWorkspace</definition>
+        <argsstring></argsstring>
+        <name>LoginWorkspace</name>
+        <briefdescription>
+<para>Gets the login workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para>The login workspace. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="72" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1acedacff48c1fc563cd92e00965512bbf" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override string</type>
+        <definition>override string Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;.UserName</definition>
+        <argsstring></argsstring>
+        <name>UserName</name>
+        <briefdescription>
+<para>Gets the name of the user. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the user. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="83" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a5c161a92c43fd0661c7bd9491baada81" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;.BaseMxLogin</definition>
+        <argsstring>(TWindow window)</argsstring>
+        <name>BaseMxLogin</name>
+        <param>
+          <type>TWindow</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a5c161a92c43fd0661c7bd9491baada81" kindref="member">BaseMxLogin&lt;TWindow&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>window</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The window.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="34" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a6e3d6748dfa634c1ab24f39249dff5a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;.ChangeDefaultVersion</definition>
+        <argsstring>(IVersion pVersion)</argsstring>
+        <name>ChangeDefaultVersion</name>
+        <param>
+          <type>IVersion</type>
+          <declname>pVersion</declname>
+        </param>
+        <briefdescription>
+<para>Changes the default version. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pVersion</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The version.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="96" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1aec60f3de8131144d401781256625f38a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override string</type>
+        <definition>override string Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;.GetFullTableName</definition>
+        <argsstring>(string bstrBaseTableName)</argsstring>
+        <name>GetFullTableName</name>
+        <param>
+          <type>string</type>
+          <declname>bstrBaseTableName</declname>
+        </param>
+        <briefdescription>
+<para>Gets the full name of the table. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bstrBaseTableName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the BSTR base table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The full name of the table name. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="108" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="108" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract class that can be used to customize the user interface of the ArcFM Login </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TWindow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the window.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>It uses the Miner.Interop.MMDefaultLoginObjectClass to handling logging into the ArcFM Desktop. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="85">
+        <label>Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login"/>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>BaseLogin&lt; TWindow &gt;</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_login"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="87">
+        <label>Miner.Framework.BaseClasses.BaseMxLogin&lt; TWindow &gt;</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login"/>
+        <childnode refid="88" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>BaseLogin&lt; TWindow &gt;</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_login"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseMxLogin.cs" bodystart="19" bodyend="114"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a565f66d76dfcf61e71ca470904829be8" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>_LoginObject</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a5c161a92c43fd0661c7bd9491baada81" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>BaseMxLogin</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a6e3d6748dfa634c1ab24f39249dff5a2" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>ChangeDefaultVersion</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1ad4dd4fc372df1617475ce928d7a25ffd" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>Connection</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1aec60f3de8131144d401781256625f38a" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>GetFullTableName</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a7fdb407d308002bf5f8af038115e3b90" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>IsValidLogin</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1a8c2cc8fdba7e9b974f2e07361df0a325" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>LoginWorkspace</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_mx_login_1acedacff48c1fc563cd92e00965512bbf" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseMxLogin</scope><name>UserName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1a40bd3b6dbdb56e96714b87520f6c2fd3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumNetEID</type>
+        <definition>static IEnumNetEID ESRI.ArcGIS.Geodatabase.GeometricNetworkExtensions.CreateEnumNetEID</definition>
+        <argsstring>(this IGeometricNetwork source, esriElementType elementType, List&lt; int &gt; eids)</argsstring>
+        <name>CreateEnumNetEID</name>
+        <param>
+          <type>this IGeometricNetwork</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriElementType</type>
+          <declname>elementType</declname>
+        </param>
+        <param>
+          <type>List&lt; int &gt;</type>
+          <declname>eids</declname>
+        </param>
+        <briefdescription>
+<para>Builds the IEnumNetEID from the specified list of elements. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elementType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the element.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The eids.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A IEnumNetEID from the list of elements. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>eids</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1ac43fbcbc695e97b04cc87fba8d0d7254" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumNetEID</type>
+        <definition>static IEnumNetEID ESRI.ArcGIS.Geodatabase.GeometricNetworkExtensions.CreateEnumNetEID</definition>
+        <argsstring>(this IGeometricNetwork source, esriElementType elementType, params int[] eids)</argsstring>
+        <name>CreateEnumNetEID</name>
+        <param>
+          <type>this IGeometricNetwork</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriElementType</type>
+          <declname>elementType</declname>
+        </param>
+        <param>
+          <type>params int[]</type>
+          <declname>eids</declname>
+        </param>
+        <briefdescription>
+<para>Builds the IEnumNetEID from the specified list of elements. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elementType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the element.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The network element IDs.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A IEnumNetEID from the list of elements. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>eids</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" bodystart="44" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1a6d2617048b5aa78fdb8ed34e81141dcb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ESRI.ArcGIS.Geodatabase.GeometricNetworkExtensions.GetEID</definition>
+        <argsstring>(this INetworkFeature source, out esriElementType elementType)</argsstring>
+        <name>GetEID</name>
+        <param>
+          <type>this INetworkFeature</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>out esriElementType</type>
+          <declname>elementType</declname>
+        </param>
+        <briefdescription>
+<para>Gets the network element identifier for the network feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elementType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the element.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a int representing the network element identifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" line="65" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" bodystart="65" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1af8ad6be14f4cfeae21d6ab0b1af3d868" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEIDInfo</type>
+        <definition>static IEIDInfo ESRI.ArcGIS.Geodatabase.GeometricNetworkExtensions.GetEIDInfo</definition>
+        <argsstring>(this INetworkFeature source, out esriElementType elementType)</argsstring>
+        <name>GetEIDInfo</name>
+        <param>
+          <type>this INetworkFeature</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>out esriElementType</type>
+          <declname>elementType</declname>
+        </param>
+        <briefdescription>
+<para>Returns the IEIDInfo for the specified network feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elementType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the element.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEIDInfo representing the network information. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" line="87" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" bodystart="87" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1ad3fe2eef251bd59dfcc32a67d8be388d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEIDInfo</type>
+        <definition>static IEIDInfo ESRI.ArcGIS.Geodatabase.GeometricNetworkExtensions.GetEIDInfo</definition>
+        <argsstring>(this IGeometricNetwork source, int eid, esriElementType elementType, bool returnFeatures=true, bool returnGeometries=true)</argsstring>
+        <name>GetEIDInfo</name>
+        <param>
+          <type>this IGeometricNetwork</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>eid</declname>
+        </param>
+        <param>
+          <type>esriElementType</type>
+          <declname>elementType</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>returnFeatures</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>returnGeometries</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns the IEIDInfo for the specified network element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element ID.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elementType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the element.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>returnFeatures</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if the created IEIDInfo should contain features.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>returnGeometries</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if the created EIDInfo should contain geometries.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the IEIDInfo interface for the network element. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" line="104" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" bodystart="104" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1ac7feaa135aac883757f08d06a6ed0390" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.GeometricNetworkExtensions.IsAssignedWeightName</definition>
+        <argsstring>(this IGeometricNetwork source, string weightName)</argsstring>
+        <name>IsAssignedWeightName</name>
+        <param>
+          <type>this IGeometricNetwork</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>weightName</declname>
+        </param>
+        <briefdescription>
+<para>Checks the if the trace weight is set on the geometric network </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The geometric network.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weightName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the trace weight.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing <computeroutput>true</computeroutput> if the weight exists; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>weightName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" line="129" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" bodystart="129" bodyend="137"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the IGeometricNetwork interface </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/GeometricNetworkExtensions.cs" bodystart="12" bodyend="140"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1a40bd3b6dbdb56e96714b87520f6c2fd3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</scope><name>CreateEnumNetEID</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1ac43fbcbc695e97b04cc87fba8d0d7254" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</scope><name>CreateEnumNetEID</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1a6d2617048b5aa78fdb8ed34e81141dcb" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</scope><name>GetEID</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1af8ad6be14f4cfeae21d6ab0b1af3d868" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</scope><name>GetEIDInfo</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1ad3fe2eef251bd59dfcc32a67d8be388d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</scope><name>GetEIDInfo</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_geometric_network_extensions_1ac7feaa135aac883757f08d06a6ed0390" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::GeometricNetworkExtensions</scope><name>IsAssignedWeightName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_security_1_1_cryptography_1_1_data_protection" kind="class" language="C#" prot="public">
+    <compoundname>System::Security::Cryptography::DataProtection</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a135e9e31b09b20a95410c0a7460bae21" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.DataProtection.Protect</definition>
+        <argsstring>(string unencryptedData)</argsstring>
+        <name>Protect</name>
+        <param>
+          <type>string</type>
+          <declname>unencryptedData</declname>
+        </param>
+        <briefdescription>
+<para>Protects the specified value by applying an encryption algorthim specified using the DataProtectionScope.LocalMachine scope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unencryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unencrypted data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The encrypted data in string format.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The system ran out of memory while encrypting the data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a27237fdee452e85e6709d797206bb4c6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.DataProtection.Protect</definition>
+        <argsstring>(string unencryptedData, string optionalEntropy)</argsstring>
+        <name>Protect</name>
+        <param>
+          <type>string</type>
+          <declname>unencryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>optionalEntropy</declname>
+        </param>
+        <briefdescription>
+<para>Protects the specified value by applying an encryption algorthim specified using the DataProtectionScope.LocalMachine scope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unencryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unencrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>optionalEntropy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The optional entropy.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The encrypted data in string format.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The system ran out of memory while encrypting the data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a850305fbea1a72b7ef9ffbc92cdbbe0b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.DataProtection.Protect</definition>
+        <argsstring>(string unencryptedData, string optionalEntropy, DataProtectionScope scope)</argsstring>
+        <name>Protect</name>
+        <param>
+          <type>string</type>
+          <declname>unencryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>optionalEntropy</declname>
+        </param>
+        <param>
+          <type>DataProtectionScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+<para>Protects the specified data by applying an encryption algorthim specified by the DataProtectionScope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unencryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unencrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>optionalEntropy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The optional entropy.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scope.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The encrypted data in a byte array.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The system ran out of memory while encrypting the data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="54" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="54" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a544669ab5917e8a3b13f465c28ef3221" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>static byte [] System.Security.Cryptography.DataProtection.Protect</definition>
+        <argsstring>(byte[] unencryptedData, string optionalEntropy, DataProtectionScope scope)</argsstring>
+        <name>Protect</name>
+        <param>
+          <type>byte[]</type>
+          <declname>unencryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>optionalEntropy</declname>
+        </param>
+        <param>
+          <type>DataProtectionScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+<para>Protects the specified data by applying an encryption algorthim specified by the DataProtectionScope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unencryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unencrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>optionalEntropy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The optional entropy.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scope.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The encrypted data in a byte array.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The system ran out of memory while encrypting the data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="71" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="71" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1abd03c1f7bc6ac1d82428d1b64c754a48" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.DataProtection.Unprotect</definition>
+        <argsstring>(string encryptedData)</argsstring>
+        <name>Unprotect</name>
+        <param>
+          <type>string</type>
+          <declname>encryptedData</declname>
+        </param>
+        <briefdescription>
+<para>Unprotects the specified value by applying an decryption algorthim specified using the DataProtectionScope.LocalMachine scope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encrypted data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unencrypted data value, otherwise the original encrypted string value. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Out of memory.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="90" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a3c82be815415b8964adfec1fa6dc32c4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.DataProtection.Unprotect</definition>
+        <argsstring>(string encryptedData, string optionalEntropy)</argsstring>
+        <name>Unprotect</name>
+        <param>
+          <type>string</type>
+          <declname>encryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>optionalEntropy</declname>
+        </param>
+        <briefdescription>
+<para>Unprotects the specified value by applying an decryption algorthim specified using the DataProtectionScope.LocalMachine scope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>optionalEntropy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The optional entropy.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unencrypted data value, otherwise the original encrypted string value. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Out of memory.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="108" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="108" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1ada38c4c5cd921542eaf7145e871a8a00" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.DataProtection.Unprotect</definition>
+        <argsstring>(string encryptedData, string optionalEntropy, DataProtectionScope scope)</argsstring>
+        <name>Unprotect</name>
+        <param>
+          <type>string</type>
+          <declname>encryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>optionalEntropy</declname>
+        </param>
+        <param>
+          <type>DataProtectionScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+<para>Unprotects the specified encrypted data by applying an decryption algorthim specified by the DataProtectionScope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>optionalEntropy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The optional entropy.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scope.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unencrypted byte array, otherwise the original encrypted byte array. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Out of memory.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="127" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="127" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a38d6102b0c574a1f3e8efedd94708a83" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>static byte [] System.Security.Cryptography.DataProtection.Unprotect</definition>
+        <argsstring>(byte[] encryptedData, string optionalEntropy, DataProtectionScope scope)</argsstring>
+        <name>Unprotect</name>
+        <param>
+          <type>byte[]</type>
+          <declname>encryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>optionalEntropy</declname>
+        </param>
+        <param>
+          <type>DataProtectionScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+<para>Unprotects the specified encrypted data by applying an decryption algorthim specified by the DataProtectionScope. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>optionalEntropy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The optional entropy.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scope.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unencrypted byte array, otherwise the original encrypted byte array. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encryptedData parameter is null.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CryptographicException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cryptographic protection failed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PlatformNotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operating system does not support this method.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutOfMemoryException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Out of memory.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="147" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="147" bodyend="152"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides protection using the user or machine credentials to encrypt or decrypt data. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/DataProtection.cs" bodystart="8" bodyend="155"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a135e9e31b09b20a95410c0a7460bae21" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Protect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a27237fdee452e85e6709d797206bb4c6" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Protect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a850305fbea1a72b7ef9ffbc92cdbbe0b" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Protect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a544669ab5917e8a3b13f465c28ef3221" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Protect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1abd03c1f7bc6ac1d82428d1b64c754a48" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Unprotect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a3c82be815415b8964adfec1fa6dc32c4" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Unprotect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1ada38c4c5cd921542eaf7145e871a8a00" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Unprotect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_data_protection_1a38d6102b0c574a1f3e8efedd94708a83" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::DataProtection</scope><name>Unprotect</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

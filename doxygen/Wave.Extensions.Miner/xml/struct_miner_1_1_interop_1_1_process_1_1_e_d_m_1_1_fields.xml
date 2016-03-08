@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields" kind="struct" language="C#" prot="package">
+    <compoundname>Miner::Interop::Process::EDM::Fields</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields_1a226f1b17c486cb7eaae13f2b991da32a" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.EDM.Fields.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <initializer>= &quot;EDM_NAME&quot;</initializer>
+        <briefdescription>
+<para>The EDM_NAME field name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="130" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields_1ab4609f3288c552fb7ed26740c1ad157a" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.EDM.Fields.Type</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <initializer>= &quot;EDM_TYPE&quot;</initializer>
+        <briefdescription>
+<para>The EDM_TYPE field name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="135" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields_1a8ce3a4a992ca3f793db7d604ce34e397" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.EDM.Fields.Value</definition>
+        <argsstring></argsstring>
+        <name>Value</name>
+        <initializer>= &quot;EDM_VALUE&quot;</initializer>
+        <briefdescription>
+<para>The EDM_VALUE field name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="140" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The field names that are required by the DataRow for the <ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref> struct. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="124" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="123" bodyend="143"/>
+    <listofallmembers>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields_1a226f1b17c486cb7eaae13f2b991da32a" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM::Fields</scope><name>Name</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields_1ab4609f3288c552fb7ed26740c1ad157a" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM::Fields</scope><name>Type</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields_1a8ce3a4a992ca3f793db7d604ce34e397" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM::Fields</scope><name>Value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_distinct_by_extensions" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::DistinctByExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_distinct_by_extensions_1ab9ad5f4921a28e8f8620fbc7c8b95aa5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; TSource &gt;</type>
+        <definition>static IEnumerable&lt;TSource&gt; System.Collections.DistinctByExtensions.DistinctBy&lt; TSource, TKey &gt;</definition>
+        <argsstring>(this IEnumerable&lt; TSource &gt; source, Func&lt; TSource, TKey &gt; keySelector)</argsstring>
+        <name>DistinctBy&lt; TSource, TKey &gt;</name>
+        <param>
+          <type>this IEnumerable&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; TSource, TKey &gt;</type>
+          <declname>keySelector</declname>
+        </param>
+        <briefdescription>
+<para>Returns all distinct elements of the given source, where &quot;distinctness&quot; is determined via a projection and the default equality comparer for the projected type. </para>        </briefdescription>
+        <detaileddescription>
+<para>This operator uses deferred execution and streams the results, although a set of already-seen keys is retained. If a key is seen multiple times, only the first element with that key is returned. </para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the source sequence</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the projected element</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source sequence</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keySelector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Projection for determining &quot;distinctness&quot;</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A sequence consisting of distinct elements from the source sequence, comparing them by the specified key projection. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_distinct_by_extensions_1a3e831f69620d80b63d96b07e3e294cc1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; TSource &gt;</type>
+        <definition>static IEnumerable&lt;TSource&gt; System.Collections.DistinctByExtensions.DistinctBy&lt; TSource, TKey &gt;</definition>
+        <argsstring>(this IEnumerable&lt; TSource &gt; source, Func&lt; TSource, TKey &gt; keySelector, IEqualityComparer&lt; TKey &gt; comparer)</argsstring>
+        <name>DistinctBy&lt; TSource, TKey &gt;</name>
+        <param>
+          <type>this IEnumerable&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; TSource, TKey &gt;</type>
+          <declname>keySelector</declname>
+        </param>
+        <param>
+          <type>IEqualityComparer&lt; TKey &gt;</type>
+          <declname>comparer</declname>
+        </param>
+        <briefdescription>
+<para>Returns all distinct elements of the given source, where &quot;distinctness&quot; is determined via a projection and the specified comparer for the projected type. </para>        </briefdescription>
+        <detaileddescription>
+<para>This operator uses deferred execution and streams the results, although a set of already-seen keys is retained. If a key is seen multiple times, only the first element with that key is returned. </para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the source sequence</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the projected element</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source sequence</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keySelector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Projection for determining &quot;distinctness&quot;</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>comparer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The equality comparer to use to determine whether or not keys are equal. If null, the default equality comparer for <computeroutput>TSource</computeroutput> is used. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A sequence consisting of distinct elements from the source sequence, comparing them by the specified key projection. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" line="56" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" bodystart="56" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_distinct_by_extensions_1a3dbb62620e378e3acfc34ff6d139bdd7" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; TSource &gt;</type>
+        <definition>static IEnumerable&lt;TSource&gt; System.Collections.DistinctByExtensions.DistinctByImpl&lt; TSource, TKey &gt;</definition>
+        <argsstring>(IEnumerable&lt; TSource &gt; source, Func&lt; TSource, TKey &gt; keySelector, IEqualityComparer&lt; TKey &gt; comparer)</argsstring>
+        <name>DistinctByImpl&lt; TSource, TKey &gt;</name>
+        <param>
+          <type>IEnumerable&lt; TSource &gt;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; TSource, TKey &gt;</type>
+          <declname>keySelector</declname>
+        </param>
+        <param>
+          <type>IEqualityComparer&lt; TKey &gt;</type>
+          <declname>comparer</declname>
+        </param>
+        <briefdescription>
+<para>Returns all distinct elements of the given source, where &quot;distinctness&quot; is determined via a projection and the specified comparer for the projected type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the source sequence</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the projected element</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source sequence</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keySelector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Projection for determining &quot;distinctness&quot;</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>comparer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The equality comparer to use to determine whether or not keys are equal. If null, the default equality comparer for <computeroutput>TSource</computeroutput> is used. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A sequence consisting of distinct elements from the source sequence, comparing them by the specified key projection. </para></simplesect>
+</para><para>This operator uses deferred execution and streams the results, although a set of already-seen keys is retained. If a key is seen multiple times, only the first element with that key is returned. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" bodystart="91" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides a LINQ implmentation for returning distinct eleemnts of the given source. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Extensions/DistinctByExtensions.cs" bodystart="8" bodyend="105"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_distinct_by_extensions_1ab9ad5f4921a28e8f8620fbc7c8b95aa5" prot="public" virt="non-virtual"><scope>System::Collections::DistinctByExtensions</scope><name>DistinctBy&lt; TSource, TKey &gt;</name></member>
+      <member refid="class_system_1_1_collections_1_1_distinct_by_extensions_1a3e831f69620d80b63d96b07e3e294cc1" prot="public" virt="non-virtual"><scope>System::Collections::DistinctByExtensions</scope><name>DistinctBy&lt; TSource, TKey &gt;</name></member>
+      <member refid="class_system_1_1_collections_1_1_distinct_by_extensions_1a3dbb62620e378e3acfc34ff6d139bdd7" prot="private" virt="non-virtual"><scope>System::Collections::DistinctByExtensions</scope><name>DistinctByImpl&lt; TSource, TKey &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

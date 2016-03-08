@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_f511270daf09e4f91748bd0bdef7e212" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System</compoundname>
+    <innerdir refid="dir_bfae0317e1df8d257cf40c0689846b27">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections</innerdir>
+    <innerdir refid="dir_f438a7e12cfca9c8c7a309e0c56de633">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration</innerdir>
+    <innerdir refid="dir_f472767c320211542d51f069404a70a4">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data</innerdir>
+    <innerdir refid="dir_43fa2f1089ed4693652d3a06f2f0b8b5">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics</innerdir>
+    <innerdir refid="dir_1946ff72b3d2b466b2b2601924b1c502">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Extensions</innerdir>
+    <innerdir refid="dir_9758efad5e30a60507c54e18029bc45d">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms</innerdir>
+    <innerdir refid="dir_6e2ac3a4b20ffba73b31d7488a3b5f9a">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Interfaces</innerdir>
+    <innerdir refid="dir_034be6fdffa268777a24c7e912a8406a">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native</innerdir>
+    <innerdir refid="dir_aa8468104b4cce67d49978ab50028964">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Reflection</innerdir>
+    <innerdir refid="dir_60ebc89d8e8b78952235a59451d79b2c">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security</innerdir>
+    <innerdir refid="dir_fce1fdf9ddea362e1e23ef6e6dd2ecb1">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows</innerdir>
+    <innerdir refid="dir_432f1f7c436ab82ee9362fa9785abee3">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml</innerdir>
+    <innerfile refid="_hierarchy_8cs">Hierarchy.cs</innerfile>
+    <innerfile refid="_recursion_8cs">Recursion.cs</innerfile>
+    <innerfile refid="_type_cast_8cs">TypeCast.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_diagnostics_1_1_exception_extensions" kind="class" language="C#" prot="public">
+    <compoundname>System::Diagnostics::ExceptionExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_exception_extensions_1a1c6eadc1ea65837caa6aa0704b6fc0d4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Diagnostics.ExceptionExtensions.GetErrorMessage</definition>
+        <argsstring>(this Exception exception)</argsstring>
+        <name>GetErrorMessage</name>
+        <param>
+          <type>this Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Gets the error message and appends the translated exception return codes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the message for the error. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Extensions/ExceptionExtensions.cs" line="27" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Extensions/ExceptionExtensions.cs" bodystart="27" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_exception_extensions_1a53edc6d6212934e107382ed3931d9fb6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Diagnostics.ExceptionExtensions.GetErrorName</definition>
+        <argsstring>(this ExternalException externalException)</argsstring>
+        <name>GetErrorName</name>
+        <param>
+          <type>this ExternalException</type>
+          <declname>externalException</declname>
+        </param>
+        <briefdescription>
+<para>Gets the name of the error by translating the error code into it&apos;s corresponding enumeration. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>externalException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The external exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the enumeration of the error code otherwise <computeroutput>UNSPECIFIED FAILURE</computeroutput> is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Extensions/ExceptionExtensions.cs" line="45" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Extensions/ExceptionExtensions.cs" bodystart="45" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Extension methods for exceptions. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Extensions/ExceptionExtensions.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Extensions/ExceptionExtensions.cs" bodystart="16" bodyend="89"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_diagnostics_1_1_exception_extensions_1a1c6eadc1ea65837caa6aa0704b6fc0d4" prot="public" virt="non-virtual"><scope>System::Diagnostics::ExceptionExtensions</scope><name>GetErrorMessage</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_exception_extensions_1a53edc6d6212934e107382ed3931d9fb6" prot="public" virt="non-virtual"><scope>System::Diagnostics::ExceptionExtensions</scope><name>GetErrorName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

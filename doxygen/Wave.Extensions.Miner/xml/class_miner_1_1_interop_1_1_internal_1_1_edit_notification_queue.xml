@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_internal_1_1_edit_notification_queue" kind="class" language="C#" prot="package">
+    <compoundname>Miner::Interop::Internal::EditNotificationQueue</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_internal_1_1_edit_notification_queue_1a94f27b52cc4376729f836414c6a8b782" prot="public" static="yes" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IMMEditNotificationQueue</type>
+        <definition>IMMEditNotificationQueue Miner.Interop.Internal.EditNotificationQueue.Instance</definition>
+        <argsstring></argsstring>
+        <name>Instance</name>
+        <briefdescription>
+<para>Gets the instance. </para>        </briefdescription>
+        <detaileddescription>
+<para>The instance. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/EditNotificationQueue.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/EditNotificationQueue.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A singleton wrapper for the IMMEditNotificationQueue for the <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> Editor extension. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/EditNotificationQueue.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/EditNotificationQueue.cs" bodystart="10" bodyend="34"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_edit_notification_queue_1a94f27b52cc4376729f836414c6a8b782" prot="public" virt="non-virtual"><scope>Miner::Interop::Internal::EditNotificationQueue</scope><name>Instance</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

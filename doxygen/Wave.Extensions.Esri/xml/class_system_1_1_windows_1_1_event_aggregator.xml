@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_event_aggregator" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::EventAggregator</compoundname>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_event_aggregator_1a59d54ae54037046e6bf70087182c4345" prot="private" static="yes" mutable="no">
+        <type>readonly SynchronizationContext</type>
+        <definition>readonly SynchronizationContext System.Windows.EventAggregator.Context</definition>
+        <argsstring></argsstring>
+        <name>Context</name>
+        <initializer>= SynchronizationContext.Current</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_event_aggregator_1a771ca7680cecafcf37991cd69d11c7d0" prot="private" static="yes" mutable="no">
+        <type>readonly Dictionary&lt; Type, <ref refid="class_system_1_1_windows_1_1_event_base" kindref="compound">EventBase</ref> &gt;</type>
+        <definition>readonly Dictionary&lt;Type, EventBase&gt; System.Windows.EventAggregator.Events</definition>
+        <argsstring></argsstring>
+        <name>Events</name>
+        <initializer>= new Dictionary&lt;Type, <ref refid="class_system_1_1_windows_1_1_event_base" kindref="compound">EventBase</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_aggregator_1acd7748ff5de2144acb1ed23c60945158" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TEventType</type>
+        <definition>static TEventType System.Windows.EventAggregator.GetEvent&lt; TEventType &gt;</definition>
+        <argsstring>()</argsstring>
+        <name>GetEvent&lt; TEventType &gt;</name>
+        <briefdescription>
+<para>Gets the single instance of the event managed by this EventAggregator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Multiple calls to this method with the same <emphasis>TEventType</emphasis>  returns the same event instance. </para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TEventType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of event to get. This must inherit from <ref refid="class_system_1_1_windows_1_1_event_base" kindref="compound">EventBase</ref>.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A singleton instance of an event object of type <emphasis>TEventType</emphasis> .</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" bodystart="28" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides access to the static event aggreator. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventAggregator.cs" bodystart="10" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_event_aggregator_1a59d54ae54037046e6bf70087182c4345" prot="private" virt="non-virtual"><scope>System::Windows::EventAggregator</scope><name>Context</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_aggregator_1a771ca7680cecafcf37991cd69d11c7d0" prot="private" virt="non-virtual"><scope>System::Windows::EventAggregator</scope><name>Events</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_aggregator_1acd7748ff5de2144acb1ed23c60945158" prot="public" virt="non-virtual"><scope>System::Windows::EventAggregator</scope><name>GetEvent&lt; TEventType &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

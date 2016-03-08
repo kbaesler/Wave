@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_02984d7592283e1b1df85d6be65147a5" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory</compoundname>
+    <innerdir refid="dir_1210282f89ccd8b599879063aab0437f">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces</innerdir>
+    <innerdir refid="dir_d1d60e07eaeb563d00d797cb79ddabd3">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel</innerdir>
+    <innerfile refid="_adjacency_graph_8cs">AdjacencyGraph.cs</innerfile>
+    <innerfile refid="_edge_8cs">Edge.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level" kind="class" language="C#" prot="public">
+    <compoundname>System::Diagnostics::Appenders::TextStyleLevel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">LevelMappingEntry</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a736b14dae30410f3ec85296991e42ad2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Diagnostics.Appenders.TextStyleLevel.BackColorName</definition>
+        <argsstring></argsstring>
+        <name>BackColorName</name>
+        <briefdescription>
+<para>Gets or sets the name of the back color. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the back color. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a9fe449f40eb7da86200ae60db8c26200" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Diagnostics.Appenders.TextStyleLevel.Bold</definition>
+        <argsstring></argsstring>
+        <name>Bold</name>
+        <briefdescription>
+<para>Gets or sets a value indicating whether this <ref refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level" kindref="compound">TextStyleLevel</ref> is bold. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if bold; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="46" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a508b5e4aeb5add12387bedf752ab3658" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Diagnostics.Appenders.TextStyleLevel.FontFamilyName</definition>
+        <argsstring></argsstring>
+        <name>FontFamilyName</name>
+        <briefdescription>
+<para>Gets or sets the name of the font family. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the font family. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="54" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1adbe3e9ad13cef132adfe213dc96f7645" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Diagnostics.Appenders.TextStyleLevel.Italic</definition>
+        <argsstring></argsstring>
+        <name>Italic</name>
+        <briefdescription>
+<para>Gets or sets a value indicating whether this <ref refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level" kindref="compound">TextStyleLevel</ref> is italic. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if italic; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="62" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a6ae833342a748e72882515d4b7da7739" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float System.Diagnostics.Appenders.TextStyleLevel.SizeInPoints</definition>
+        <argsstring></argsstring>
+        <name>SizeInPoints</name>
+        <briefdescription>
+<para>Gets or sets the size of the point. </para>        </briefdescription>
+        <detaileddescription>
+<para>The size of the point. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="70" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1af3392e846f53a99321f73e749b0a7aee" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Diagnostics.Appenders.TextStyleLevel.TextColorName</definition>
+        <argsstring></argsstring>
+        <name>TextColorName</name>
+        <briefdescription>
+<para>Gets or sets the name of the text color. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the text color. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="78" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1abed60d467b71430acf7481b6454c4777" prot="package" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Color</type>
+        <definition>Color System.Diagnostics.Appenders.TextStyleLevel.BackColor</definition>
+        <argsstring></argsstring>
+        <name>BackColor</name>
+        <briefdescription>
+<para>Gets or sets the color of the back. </para>        </briefdescription>
+        <detaileddescription>
+<para>The color of the back. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="90" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1ad4c89399d728ebd6bc85170621115012" prot="package" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Font</type>
+        <definition>Font System.Diagnostics.Appenders.TextStyleLevel.Font</definition>
+        <argsstring></argsstring>
+        <name>Font</name>
+        <briefdescription>
+<para>Gets or sets the font. </para>        </briefdescription>
+        <detaileddescription>
+<para>The font. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="98" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a22ea37e8b99ddedcb327230f6fcce3d1" prot="package" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>FontStyle</type>
+        <definition>FontStyle System.Diagnostics.Appenders.TextStyleLevel.FontStyle</definition>
+        <argsstring></argsstring>
+        <name>FontStyle</name>
+        <briefdescription>
+<para>Gets or sets the font style. </para>        </briefdescription>
+        <detaileddescription>
+<para>The font style. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="106" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a82e6008a441ca512c57bfcb52490f283" prot="package" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Color</type>
+        <definition>Color System.Diagnostics.Appenders.TextStyleLevel.TextColor</definition>
+        <argsstring></argsstring>
+        <name>TextColor</name>
+        <briefdescription>
+<para>Gets or sets the color of the text. </para>        </briefdescription>
+        <detaileddescription>
+<para>The color of the text. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="114" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a2d371ae7a14c3c54a32ccb6646c73f51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Diagnostics.Appenders.TextStyleLevel.TextStyleLevel</definition>
+        <argsstring>(Level level)</argsstring>
+        <name>TextStyleLevel</name>
+        <param>
+          <type>Level</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level" kindref="compound">TextStyleLevel</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The level.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="19" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a0686b0168d99c1007583dd5498dac9de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Diagnostics.Appenders.TextStyleLevel.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="123" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="123" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a309e74eddc2cb3957d99279e18b0ef2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Diagnostics.Appenders.TextStyleLevel.ActivateOptions</definition>
+        <argsstring>()</argsstring>
+        <name>ActivateOptions</name>
+        <briefdescription>
+<para>Initialize the options for the object </para>        </briefdescription>
+        <detaileddescription>
+<para>Parse the properties</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="138" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="138" bodyend="161"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a64db2648aa6310c95d4c7e219f480797" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Diagnostics.Appenders.TextStyleLevel.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="174" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="174" bodyend="184"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides the ability to control the style of the level. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="641">
+        <label>System.Diagnostics.Appenders.TextStyleLevel</label>
+        <link refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level"/>
+        <childnode refid="642" relation="public-inheritance">
+        </childnode>
+        <childnode refid="643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="643">
+        <label>IDisposable</label>
+      </node>
+      <node id="642">
+        <label>LevelMappingEntry</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="644">
+        <label>System.Diagnostics.Appenders.TextStyleLevel</label>
+        <link refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level"/>
+        <childnode refid="645" relation="public-inheritance">
+        </childnode>
+        <childnode refid="646" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="646">
+        <label>IDisposable</label>
+      </node>
+      <node id="645">
+        <label>LevelMappingEntry</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Appenders/TextStyleLevel.cs" bodystart="11" bodyend="187"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a309e74eddc2cb3957d99279e18b0ef2d" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>ActivateOptions</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1abed60d467b71430acf7481b6454c4777" prot="package" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>BackColor</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a736b14dae30410f3ec85296991e42ad2" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>BackColorName</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a9fe449f40eb7da86200ae60db8c26200" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>Bold</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a0686b0168d99c1007583dd5498dac9de" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>Dispose</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a64db2648aa6310c95d4c7e219f480797" prot="protected" virt="virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>Dispose</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1ad4c89399d728ebd6bc85170621115012" prot="package" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>Font</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a508b5e4aeb5add12387bedf752ab3658" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>FontFamilyName</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a22ea37e8b99ddedcb327230f6fcce3d1" prot="package" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>FontStyle</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1adbe3e9ad13cef132adfe213dc96f7645" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>Italic</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a6ae833342a748e72882515d4b7da7739" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>SizeInPoints</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a82e6008a441ca512c57bfcb52490f283" prot="package" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>TextColor</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1af3392e846f53a99321f73e749b0a7aee" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>TextColorName</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_appenders_1_1_text_style_level_1a2d371ae7a14c3c54a32ccb6646c73f51" prot="public" virt="non-virtual"><scope>System::Diagnostics::Appenders::TextStyleLevel</scope><name>TextStyleLevel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

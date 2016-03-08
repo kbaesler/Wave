@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_cb103460c3ffd99c3ce2fb174fe18a16" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data</compoundname>
+    <innerdir refid="dir_547aa0545b5d51d9da8997ac9a8d50e0">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal</innerdir>
+    <innerfile refid="_px_application_factories_8cs">PxApplicationFactories.cs</innerfile>
+    <innerfile refid="_px_application_factory_8cs">PxApplicationFactory.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/"/>
+  </compounddef>
+</doxygen>

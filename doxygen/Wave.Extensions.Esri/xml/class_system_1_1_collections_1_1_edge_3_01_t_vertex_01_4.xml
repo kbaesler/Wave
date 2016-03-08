@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4" kind="class" prot="public">
+    <compoundname>System::Collections::Edge&lt; TVertex &gt;</compoundname>
+    <basecompoundref refid="interface_system_1_1_collections_1_1_i_edge_3_01out_01_t_vertex_01_4" prot="public" virt="non-virtual">System.Collections.IEdge&lt; out TVertex &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1a686fddcad5c36012230792af191f617b" prot="private" static="no" mutable="no">
+        <type>readonly TVertex</type>
+        <definition>readonly TVertex System.Collections.Edge&lt; TVertex &gt;._Source</definition>
+        <argsstring></argsstring>
+        <name>_Source</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1a45969ed8771c2a265bac6675fcc06d9d" prot="private" static="no" mutable="no">
+        <type>readonly TVertex</type>
+        <definition>readonly TVertex System.Collections.Edge&lt; TVertex &gt;._Target</definition>
+        <argsstring></argsstring>
+        <name>_Target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1a0b317a542ac1e7330f50aefb876cee92" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>TVertex</type>
+        <definition>TVertex System.Collections.Edge&lt; TVertex &gt;.Source</definition>
+        <argsstring></argsstring>
+        <name>Source</name>
+        <briefdescription>
+<para>Gets the source vertex </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1abd94c8e369caded95ebea42c27f36b36" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>TVertex</type>
+        <definition>TVertex System.Collections.Edge&lt; TVertex &gt;.Target</definition>
+        <argsstring></argsstring>
+        <name>Target</name>
+        <briefdescription>
+<para>Gets the target vertex </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" line="51" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1aa17acfa66755ffe34c675c3b1d5339bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.Edge&lt; TVertex &gt;.Edge</definition>
+        <argsstring>(TVertex source, TVertex target)</argsstring>
+        <name>Edge</name>
+        <param>
+          <type>TVertex</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>TVertex</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the Edge&amp;lt;TVertex&amp;gt; class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1af30cfa5e555a7f96a2cf89094f320c9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override string</type>
+        <definition>override string System.Collections.Edge&lt; TVertex &gt;.ToString</definition>
+        <argsstring>()</argsstring>
+        <name>ToString</name>
+        <briefdescription>
+<para>Returns a T:System.String that represents the current T:System.Object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A T:System.String that represents the current T:System.Object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" bodystart="66" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The default IEdge&amp;lt;TVertex&amp;gt; implementation. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="295">
+        <label>IEdge&lt; TVertex &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_edge_3_01out_01_t_vertex_01_4"/>
+      </node>
+      <node id="294">
+        <label>System.Collections.Edge&lt; TVertex &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4"/>
+        <childnode refid="295" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="297">
+        <label>IEdge&lt; TVertex &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_edge_3_01out_01_t_vertex_01_4"/>
+      </node>
+      <node id="296">
+        <label>System.Collections.Edge&lt; TVertex &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4"/>
+        <childnode refid="297" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Edge.cs" bodystart="12" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1a686fddcad5c36012230792af191f617b" prot="private" virt="non-virtual"><scope>System::Collections::Edge&lt; TVertex &gt;</scope><name>_Source</name></member>
+      <member refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1a45969ed8771c2a265bac6675fcc06d9d" prot="private" virt="non-virtual"><scope>System::Collections::Edge&lt; TVertex &gt;</scope><name>_Target</name></member>
+      <member refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1aa17acfa66755ffe34c675c3b1d5339bf" prot="public" virt="non-virtual"><scope>System::Collections::Edge&lt; TVertex &gt;</scope><name>Edge</name></member>
+      <member refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1a0b317a542ac1e7330f50aefb876cee92" prot="public" virt="non-virtual"><scope>System::Collections::Edge&lt; TVertex &gt;</scope><name>Source</name></member>
+      <member refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1abd94c8e369caded95ebea42c27f36b36" prot="public" virt="non-virtual"><scope>System::Collections::Edge&lt; TVertex &gt;</scope><name>Target</name></member>
+      <member refid="class_system_1_1_collections_1_1_edge_3_01_t_vertex_01_4_1af30cfa5e555a7f96a2cf89094f320c9f" prot="public" virt="non-virtual"><scope>System::Collections::Edge&lt; TVertex &gt;</scope><name>ToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

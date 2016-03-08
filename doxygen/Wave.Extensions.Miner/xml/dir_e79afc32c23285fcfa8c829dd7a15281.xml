@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_e79afc32c23285fcfa8c829dd7a15281" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Internal</compoundname>
+    <innerfile refid="_conflict_class_8cs">ConflictClass.cs</innerfile>
+    <innerfile refid="_conflict_row_8cs">ConflictRow.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Internal/"/>
+  </compounddef>
+</doxygen>

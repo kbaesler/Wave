@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_hierarchy" kind="class" language="C#" prot="public">
+    <compoundname>System::Hierarchy</compoundname>
+    <basecompoundref refid="interface_system_1_1_i_hierarchy" prot="public" virt="non-virtual">System::IHierarchy&lt; TValue &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TValue</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_hierarchy_1a9000f10935d9a9f4bd2199233f45fe57" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; <ref refid="interface_system_1_1_i_hierarchy" kindref="compound">IHierarchy</ref>&lt; TValue &gt; &gt;</type>
+        <definition>IEnumerable&lt;IHierarchy&lt;TValue&gt; &gt; System.Hierarchy&lt; TValue &gt;.Children</definition>
+        <argsstring></argsstring>
+        <name>Children</name>
+        <briefdescription>
+<para>Gets or sets the child nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>The child nodes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_hierarchy_1add9787a28bb39b096ec098468dab2576" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Hierarchy&lt; TValue &gt;.Depth</definition>
+        <argsstring></argsstring>
+        <name>Depth</name>
+        <briefdescription>
+<para>Gets or sets the depth. </para>        </briefdescription>
+        <detaileddescription>
+<para>The depth. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_hierarchy_1a686609736342e309ee22c35262d07f60" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TValue</type>
+        <definition>TValue System.Hierarchy&lt; TValue &gt;.Value</definition>
+        <argsstring></argsstring>
+        <name>Value</name>
+        <briefdescription>
+<para>Gets or sets the value. </para>        </briefdescription>
+        <detaileddescription>
+<para>The value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_hierarchy_1abb0f5f693b31ebb8ab7a87bff08ed0a0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TValue</type>
+        <definition>TValue System.Hierarchy&lt; TValue &gt;.Parent</definition>
+        <argsstring></argsstring>
+        <name>Parent</name>
+        <briefdescription>
+<para>Gets or sets the parent. </para>        </briefdescription>
+        <detaileddescription>
+<para>The parent. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides methods and properties for the hierarchy data structure. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="385">
+        <label>IRecursion&lt; TValue &gt;</label>
+        <link refid="interface_system_1_1_i_recursion"/>
+      </node>
+      <node id="384">
+        <label>IHierarchy&lt; TValue &gt;</label>
+        <link refid="interface_system_1_1_i_hierarchy"/>
+        <childnode refid="385" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="383">
+        <label>System.Hierarchy&lt; TValue &gt;</label>
+        <link refid="class_system_1_1_hierarchy"/>
+        <childnode refid="384" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="388">
+        <label>IRecursion&lt; TValue &gt;</label>
+        <link refid="interface_system_1_1_i_recursion"/>
+      </node>
+      <node id="387">
+        <label>IHierarchy&lt; TValue &gt;</label>
+        <link refid="interface_system_1_1_i_hierarchy"/>
+        <childnode refid="388" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="386">
+        <label>System.Hierarchy&lt; TValue &gt;</label>
+        <link refid="class_system_1_1_hierarchy"/>
+        <childnode refid="387" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Hierarchy.cs" bodystart="12" bodyend="50"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_hierarchy_1a9000f10935d9a9f4bd2199233f45fe57" prot="public" virt="non-virtual"><scope>System::Hierarchy</scope><name>Children</name></member>
+      <member refid="class_system_1_1_hierarchy_1add9787a28bb39b096ec098468dab2576" prot="public" virt="non-virtual"><scope>System::Hierarchy</scope><name>Depth</name></member>
+      <member refid="class_system_1_1_hierarchy_1abb0f5f693b31ebb8ab7a87bff08ed0a0" prot="public" virt="non-virtual"><scope>System::Hierarchy</scope><name>Parent</name></member>
+      <member refid="class_system_1_1_hierarchy_1a686609736342e309ee22c35262d07f60" prot="public" virt="non-virtual"><scope>System::Hierarchy</scope><name>Value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

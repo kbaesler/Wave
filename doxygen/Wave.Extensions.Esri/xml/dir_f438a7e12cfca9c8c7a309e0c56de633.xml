@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_f438a7e12cfca9c8c7a309e0c56de633" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration</compoundname>
+    <innerdir refid="dir_d72b86e5eb70185e58d947279ed381f8">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/Interfaces</innerdir>
+    <innerfile refid="_keyed_element_8cs">KeyedElement.cs</innerfile>
+    <innerfile refid="_keyed_element_collection_8cs">KeyedElementCollection.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/"/>
+  </compounddef>
+</doxygen>

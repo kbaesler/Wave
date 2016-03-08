@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship" kind="interface" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</compoundname>
+    <derivedcompoundref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_intermediate_relationship" prot="public" virt="non-virtual">ESRI.ArcGIS.Geodatabase.Internal.IntermediateRelationship</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1ab5dc218a274e7af66810282265c70aa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">IIntermediateRow</ref></type>
+        <definition>IIntermediateRow ESRI.ArcGIS.Geodatabase.IIntermediateRelationship.Create</definition>
+        <argsstring>(IObject originObject, IObject destinationObject)</argsstring>
+        <name>Create</name>
+        <param>
+          <type>IObject</type>
+          <declname>originObject</declname>
+        </param>
+        <param>
+          <type>IObject</type>
+          <declname>destinationObject</declname>
+        </param>
+        <briefdescription>
+<para>Creates record in the intermediate table for the relationship that is linked to the <emphasis>originObject</emphasis>  and <emphasis>destinationObject</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>originObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destinationObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">ESRI.ArcGIS.Geodatabase.IIntermediateRow</ref> interface for the new row. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a4f36f9ed10c6fdd224936f70aa00c807" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ESRI.ArcGIS.Geodatabase.IIntermediateRelationship.Delete</definition>
+        <argsstring>(IObject relationshipObject, string fieldName, string fieldValue)</argsstring>
+        <name>Delete</name>
+        <param>
+          <type>IObject</type>
+          <declname>relationshipObject</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldValue</declname>
+        </param>
+        <briefdescription>
+<para>Removes those rows from the intermediate relationship table that have a relationship with the <emphasis>relationshipObject</emphasis>  have the <emphasis>fieldName</emphasis>  attribute value of <emphasis>fieldValue</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relationshipObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relationship object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field value. (assumes a string character).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the System.Int32 representing the number of records that have been deleted. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1afd886a208ea2babb06b96d9309c467ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ESRI.ArcGIS.Geodatabase.IIntermediateRelationship.Delete</definition>
+        <argsstring>(IObject originObject, IObject destinationObject, string fieldName, string fieldValue)</argsstring>
+        <name>Delete</name>
+        <param>
+          <type>IObject</type>
+          <declname>originObject</declname>
+        </param>
+        <param>
+          <type>IObject</type>
+          <declname>destinationObject</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldValue</declname>
+        </param>
+        <briefdescription>
+<para>Removes those rows from the intermediate relationship table that have a relationship with the <emphasis>destinationObject</emphasis>  have the <emphasis>fieldName</emphasis>  attribute value of <emphasis>fieldValue</emphasis>  but do not have a relationship with the <emphasis>originObject</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>originObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destinationObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field value. (assumes a string character).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the System.Int32 representing the number of records that have been deleted. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="51" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a49555c61f6ac99a42041a6dbda7d8445" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IList&lt; <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">IIntermediateRow</ref> &gt;</type>
+        <definition>IList&lt;IIntermediateRow&gt; ESRI.ArcGIS.Geodatabase.IIntermediateRelationship.GetRows</definition>
+        <argsstring>(IObject relationshipObject)</argsstring>
+        <name>GetRows</name>
+        <param>
+          <type>IObject</type>
+          <declname>relationshipObject</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the rows that have associations with the <emphasis>relationshipObject</emphasis>  object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relationshipObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relationship object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">ESRI.ArcGIS.Geodatabase.IIntermediateRow</ref> interfaces. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a917156411bd6e43083e261e128343ada" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IList&lt; <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">IIntermediateRow</ref> &gt;</type>
+        <definition>IList&lt;IIntermediateRow&gt; ESRI.ArcGIS.Geodatabase.IIntermediateRelationship.GetRows</definition>
+        <argsstring>(IObject relationshipObject, string fieldName, string fieldValue)</argsstring>
+        <name>GetRows</name>
+        <param>
+          <type>IObject</type>
+          <declname>relationshipObject</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldValue</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the rows that have associations with the <emphasis>relationshipObject</emphasis>  object that have a <emphasis>fieldName</emphasis>  with the <emphasis>fieldValue</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relationshipObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relationship object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">ESRI.ArcGIS.Geodatabase.IIntermediateRow</ref> interfaces. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a80643751b32f6776ca3371357bf90421" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IList&lt; <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">IIntermediateRow</ref> &gt;</type>
+        <definition>IList&lt;IIntermediateRow&gt; ESRI.ArcGIS.Geodatabase.IIntermediateRelationship.GetRows</definition>
+        <argsstring>(IObject originObject, IObject destinationObject)</argsstring>
+        <name>GetRows</name>
+        <param>
+          <type>IObject</type>
+          <declname>originObject</declname>
+        </param>
+        <param>
+          <type>IObject</type>
+          <declname>destinationObject</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the rows that have associations between the <emphasis>originObject</emphasis>  and <emphasis>destinationObject</emphasis>  objects. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>originObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destinationObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">ESRI.ArcGIS.Geodatabase.IIntermediateRow</ref> interfaces. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1addb1c99f9df0f2da40be81181ea16b84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IList&lt; <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">IIntermediateRow</ref> &gt;</type>
+        <definition>IList&lt;IIntermediateRow&gt; ESRI.ArcGIS.Geodatabase.IIntermediateRelationship.GetRows</definition>
+        <argsstring>(IObject originObject, IObject destinationObject, string fieldName, string fieldValue)</argsstring>
+        <name>GetRows</name>
+        <param>
+          <type>IObject</type>
+          <declname>originObject</declname>
+        </param>
+        <param>
+          <type>IObject</type>
+          <declname>destinationObject</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>fieldValue</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the rows that have associations between the <emphasis>originObject</emphasis>  and <emphasis>destinationObject</emphasis>  objects that have a <emphasis>fieldName</emphasis>  with the <emphasis>fieldValue</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>originObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destinationObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_row" kindref="compound">ESRI.ArcGIS.Geodatabase.IIntermediateRow</ref> interfaces. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="97" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides interaction with the intermediate relationship class table that created when a many-to-many cardinality or attributed relationship class created. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="423">
+        <label>ESRI.ArcGIS.Geodatabase.Internal.IntermediateRelationship</label>
+        <childnode refid="422" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="422">
+        <label>ESRI.ArcGIS.Geodatabase.IIntermediateRelationship</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Interfaces/IIntermediateRelationship.cs" bodystart="9" bodyend="100"/>
+    <listofallmembers>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1ab5dc218a274e7af66810282265c70aa8" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</scope><name>Create</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a4f36f9ed10c6fdd224936f70aa00c807" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</scope><name>Delete</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1afd886a208ea2babb06b96d9309c467ad" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</scope><name>Delete</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a49555c61f6ac99a42041a6dbda7d8445" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</scope><name>GetRows</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a917156411bd6e43083e261e128343ada" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</scope><name>GetRows</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1a80643751b32f6776ca3371357bf90421" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</scope><name>GetRows</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_intermediate_relationship_1addb1c99f9df0f2da40be81181ea16b84" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IIntermediateRelationship</scope><name>GetRows</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

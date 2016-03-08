@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::BasePxEdmDeleter</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter" prot="public" virt="non-virtual">Miner.Interop.Process.BasePxDeleter</basecompoundref>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter_1ad121dba7bec47f6eb269fb76addf6160" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.BasePxEdmDeleter.BasePxEdmDeleter</definition>
+        <argsstring>(string deleterName)</argsstring>
+        <name>BasePxEdmDeleter</name>
+        <param>
+          <type>string</type>
+          <declname>deleterName</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter" kindref="compound">BasePxEdmDeleter</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>deleterName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the deleter.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter_1a609f690913e539f8a62a029a66dced85" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository" kindref="compound">BasePxEdmRepository</ref></type>
+        <definition>virtual BasePxEdmRepository Miner.Interop.Process.BasePxEdmDeleter.GetEdmRepository</definition>
+        <argsstring>(IMMPxApplication pxApp)</argsstring>
+        <name>GetEdmRepository</name>
+        <param>
+          <type>IMMPxApplication</type>
+          <declname>pxApp</declname>
+        </param>
+        <briefdescription>
+<para>Gets the <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository" kindref="compound">BasePxEdmRepository</ref> repository used to manage the extended data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pxApp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application reference.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_repository" kindref="compound">BasePxEdmRepository</ref> representing the <ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref> management controller. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pxApp</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>System.NullReferenceException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The WMSEDM process framework configuration value is null.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" bodystart="36" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter_1ab368cb63e7136c9ae97e02ed769e62c7" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.BasePxEdmDeleter.InternalDelete</definition>
+        <argsstring>(IMMPxNode node, ref string message, ref int status)</argsstring>
+        <name>InternalDelete</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1ae7a4b01fb31fe60eb27f08606b052ddb">InternalDelete</reimplements>
+        <param>
+          <type>IMMPxNode</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>ref string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>ref int</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Deletes the specified <emphasis>node</emphasis> from the process framework database table </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The status.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" bodystart="67" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A process framework deleter that will delete the <ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref> values stored in the custom tables for the given node. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="121">
+        <label>BasePxDeleter</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter"/>
+        <childnode refid="122" relation="public-inheritance">
+        </childnode>
+        <childnode refid="123" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="123">
+        <label>IMMPxDisplayName</label>
+      </node>
+      <node id="122">
+        <label>IMMPxDeleter</label>
+      </node>
+      <node id="120">
+        <label>Miner.Interop.Process.BasePxEdmDeleter</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter"/>
+        <childnode refid="121" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="125">
+        <label>BasePxDeleter</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter"/>
+        <childnode refid="126" relation="public-inheritance">
+        </childnode>
+        <childnode refid="127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>IMMPxDisplayName</label>
+      </node>
+      <node id="126">
+        <label>IMMPxDeleter</label>
+      </node>
+      <node id="124">
+        <label>Miner.Interop.Process.BasePxEdmDeleter</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter"/>
+        <childnode refid="125" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters/BaseClasses/BasePxEdmDeleter.cs" bodystart="10" bodyend="87"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1a66ba2f686f360d7a8ae93f6a548e3d21" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>BasePxDeleter</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter_1ad121dba7bec47f6eb269fb76addf6160" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>BasePxEdmDeleter</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1a525b2b82ca54809c8559b7a91a3ec8af" prot="public" virt="virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>Delete</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1a46a3245c5eb926b36d8dd566aa717709" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>DisplayName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1a8987af79c9495ae40dc82235a674ac71" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>GetBaseDeleter</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter_1a609f690913e539f8a62a029a66dced85" prot="protected" virt="virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>GetEdmRepository</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_edm_deleter_1ab368cb63e7136c9ae97e02ed769e62c7" prot="protected" virt="virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>InternalDelete</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1ad6f5ee2655b22c2677796356d0c72484" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>PxApplication</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1afd4324a64e0cdda0e582f83afe822419" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>Register</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_deleter_1aa157c9b035bedcd1f48260dae5f291d3" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::BasePxEdmDeleter</scope><name>Unregister</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

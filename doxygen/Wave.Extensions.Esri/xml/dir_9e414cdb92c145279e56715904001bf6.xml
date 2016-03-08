@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_9e414cdb92c145279e56715904001bf6" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System</compoundname>
+    <innerdir refid="dir_16a5f55f4d56f9cb25f686d120d6b946">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses</innerdir>
+    <innerdir refid="dir_665dc2de9873a35980f4ea0b59f74d73">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Collections</innerdir>
+    <innerdir refid="dir_006eaee64010704269441e29de4e72ac">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions</innerdir>
+    <innerdir refid="dir_ba8ef3fc40552a2843badf95881ae946">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal</innerdir>
+    <innerfile refid="_esri_runtime_authorization_8cs">EsriRuntimeAuthorization.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/"/>
+  </compounddef>
+</doxygen>

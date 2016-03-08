@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_u_i_d_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::esriSystem::UIDExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_u_i_d_extensions_1a71d16c04954eb706500c3059a0fcca71" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TValue</type>
+        <definition>static TValue ESRI.ArcGIS.esriSystem.UIDExtensions.Create&lt; TValue &gt;</definition>
+        <argsstring>(this IUID source)</argsstring>
+        <name>Create&lt; TValue &gt;</name>
+        <param>
+          <type>this IUID</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an instance of the class using the specified IUID. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The class for the GUID; otherwise null. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/UIDExtensions.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/UIDExtensions.cs" bodystart="20" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.esriSystem.IUID interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/UIDExtensions.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Extensions/UIDExtensions.cs" bodystart="8" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_u_i_d_extensions_1a71d16c04954eb706500c3059a0fcca71" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::UIDExtensions</scope><name>Create&lt; TValue &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

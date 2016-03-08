@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner" kind="class" language="C#" prot="package">
+    <compoundname>System::Windows::Controls::WatermarkAdorner</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Adorner</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a0801d91ad17aa97342405d130aeb06a8" prot="private" static="no" mutable="no">
+        <type>readonly FrameworkElement</type>
+        <definition>readonly FrameworkElement System.Windows.Controls.WatermarkAdorner._ContentPresenter</definition>
+        <argsstring></argsstring>
+        <name>_ContentPresenter</name>
+        <briefdescription>
+<para>FrameworkElement that holds the watermark </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1ae11c67ef893983e09da6f4f49a70d7c9" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override int</type>
+        <definition>override int System.Windows.Controls.WatermarkAdorner.VisualChildrenCount</definition>
+        <argsstring></argsstring>
+        <name>VisualChildrenCount</name>
+        <briefdescription>
+<para>Gets the number of children for the ContainerVisual. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="55" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a2c7b4d36d89543f4fbafcd8e355c8235" prot="private" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Control</type>
+        <definition>Control System.Windows.Controls.WatermarkAdorner.Control</definition>
+        <argsstring></argsstring>
+        <name>Control</name>
+        <briefdescription>
+<para>Gets the control that is being adorned </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a47d0f859088ecddc6a002a494e3c7674" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.Controls.WatermarkAdorner.WatermarkAdorner</definition>
+        <argsstring>(UIElement adornedElement, FrameworkElement watermarkElement)</argsstring>
+        <name>WatermarkAdorner</name>
+        <param>
+          <type>UIElement</type>
+          <declname>adornedElement</declname>
+        </param>
+        <param>
+          <type>FrameworkElement</type>
+          <declname>watermarkElement</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the WatermarkAdorner class </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adornedElement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UIElement to be adorned</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>watermarkElement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The watermark element.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="28" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a777f831bed77e0f1f2c3696e7d2c85e6" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override Size</type>
+        <definition>override Size System.Windows.Controls.WatermarkAdorner.ArrangeOverride</definition>
+        <argsstring>(Size finalSize)</argsstring>
+        <name>ArrangeOverride</name>
+        <param>
+          <type>Size</type>
+          <declname>finalSize</declname>
+        </param>
+        <briefdescription>
+<para>When overridden in a derived class, positions child elements and determines a size for a FrameworkElement derived class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>finalSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The final area within the parent that this element should use to arrange itself and its children. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The actual size used.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="85" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="85" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a8ab0801b219e6ae188bf947448917bae" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override Visual</type>
+        <definition>override Visual System.Windows.Controls.WatermarkAdorner.GetVisualChild</definition>
+        <argsstring>(int index)</argsstring>
+        <name>GetVisualChild</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns a specified child Visual for the parent ContainerVisual. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A 32-bit signed integer that represents the index value of the child Visual. The value of index must be between 0 and VisualChildrenCount - 1. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The child Visual.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="99" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a7cb72c97dcfaf773e55144a1a8f6384f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override Size</type>
+        <definition>override Size System.Windows.Controls.WatermarkAdorner.MeasureOverride</definition>
+        <argsstring>(Size constraint)</argsstring>
+        <name>MeasureOverride</name>
+        <param>
+          <type>Size</type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+<para>Implements any custom measuring behavior for the adorner. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>constraint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A size to constrain the adorner to.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A Size object representing the amount of layout space needed by the adorner.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="109" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="109" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Adorner for the watermark </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="693">
+        <label>System.Windows.Controls.WatermarkAdorner</label>
+        <childnode refid="694" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="694">
+        <label>Adorner</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="695">
+        <label>System.Windows.Controls.WatermarkAdorner</label>
+        <childnode refid="696" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="696">
+        <label>Adorner</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Internal/WatermarkAdorner.cs" bodystart="10" bodyend="117"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a0801d91ad17aa97342405d130aeb06a8" prot="private" virt="non-virtual"><scope>System::Windows::Controls::WatermarkAdorner</scope><name>_ContentPresenter</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a777f831bed77e0f1f2c3696e7d2c85e6" prot="protected" virt="non-virtual"><scope>System::Windows::Controls::WatermarkAdorner</scope><name>ArrangeOverride</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a2c7b4d36d89543f4fbafcd8e355c8235" prot="private" virt="non-virtual"><scope>System::Windows::Controls::WatermarkAdorner</scope><name>Control</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a8ab0801b219e6ae188bf947448917bae" prot="protected" virt="non-virtual"><scope>System::Windows::Controls::WatermarkAdorner</scope><name>GetVisualChild</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a7cb72c97dcfaf773e55144a1a8f6384f" prot="protected" virt="non-virtual"><scope>System::Windows::Controls::WatermarkAdorner</scope><name>MeasureOverride</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1ae11c67ef893983e09da6f4f49a70d7c9" prot="protected" virt="non-virtual"><scope>System::Windows::Controls::WatermarkAdorner</scope><name>VisualChildrenCount</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_adorner_1a47d0f859088ecddc6a002a494e3c7674" prot="public" virt="non-virtual"><scope>System::Windows::Controls::WatermarkAdorner</scope><name>WatermarkAdorner</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1724 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_diagnostics_1_1_log" kind="class" language="C#" prot="public">
+    <compoundname>System::Diagnostics::Log</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_system_1_1_diagnostics_1_1_log_1a6e4595403050a90a2fe27d6c2489d8a0" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string System.Diagnostics.Log.FileName</definition>
+        <argsstring></argsstring>
+        <name>FileName</name>
+        <initializer>= &quot;log4net.config&quot;</initializer>
+        <briefdescription>
+<para>The name of the log configuration file. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_diagnostics_1_1_log_1ad729cf5d1d4e198abba387712fb01bbb" prot="private" static="yes" mutable="no">
+        <type>readonly object</type>
+        <definition>readonly object System.Diagnostics.Log.Lock</definition>
+        <argsstring></argsstring>
+        <name>Lock</name>
+        <initializer>= new object()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_diagnostics_1_1_log_1a48ede0c47b47569ebd48095fe896a614" prot="private" static="yes" mutable="no">
+        <type>readonly Dictionary&lt; Type, ILog &gt;</type>
+        <definition>readonly Dictionary&lt;Type, ILog&gt; System.Diagnostics.Log.Loggers</definition>
+        <argsstring></argsstring>
+        <name>Loggers</name>
+        <initializer>= new Dictionary&lt;Type, ILog&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a7b4eeef5afcedca1e9f870404d93c775" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.AddAppender</definition>
+        <argsstring>(object source, IAppender appender)</argsstring>
+        <name>AddAppender</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IAppender</type>
+          <declname>appender</declname>
+        </param>
+        <briefdescription>
+<para>Adds the appender. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>appender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The appender.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="40" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a200d6008e8a8b332ecbace8d71b253b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.AddAppender</definition>
+        <argsstring>(Type source, IAppender appender)</argsstring>
+        <name>AddAppender</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IAppender</type>
+          <declname>appender</declname>
+        </param>
+        <briefdescription>
+<para>Adds the appender. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>appender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The appender.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="53" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="53" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a0b54566d5929974d81a0eaf85474a3ab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Debug</definition>
+        <argsstring>(Type source, string message)</argsstring>
+        <name>Debug</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Debug level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="70" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="70" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1ac2e94a3a1c2de62ef0fd2761966000da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Debug</definition>
+        <argsstring>(object source, string format, params object[] args)</argsstring>
+        <name>Debug</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Debug level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="89" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="89" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a1842141423adbb775818151f2abdb66d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Debug</definition>
+        <argsstring>(Type source, string format, params object[] args)</argsstring>
+        <name>Debug</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Debug level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="103" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1ae58b0e018ee5bf980ff0c9706c775f54" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Debug</definition>
+        <argsstring>(object source, string message)</argsstring>
+        <name>Debug</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Debug level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="114" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="114" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a591fc89c40cc6fac8130f9a794822bca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Debug</definition>
+        <argsstring>(Type source, string message, Exception exception)</argsstring>
+        <name>Debug</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Debug level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="129" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="129" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1ad4d0e33e6137dacf0d604b7041570ca0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Debug</definition>
+        <argsstring>(object source, string message, Exception exception)</argsstring>
+        <name>Debug</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Debug level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="148" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="148" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a0aa6459839fe01de2c239f4018a4569a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(object source, Exception exception)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="162" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="162" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a82b662e9587d27027566bf74e92e54f5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(Type source, Exception exception)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="173" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="173" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a7e72d17bbc74221199ce9c4a53047e91" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(Type source, string message)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="184" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="184" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a7c44b79bb8783172a9b1634b4da53327" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(object source, string format, params object[] args)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="203" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="203" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a4d0af4d17736640a6d013cf64953c385" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(Type source, string format, params object[] args)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="217" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="217" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1aafaa21dc91b9d6b11559c1c8373bcfda" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(object source, string message)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="228" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="228" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a8e3c32e71570e7605c6ae66023465f6a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(Type source, string message, Exception exception)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="243" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="243" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a48af3474e6c2426a8edb6e2b2ba54618" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(object source, string message, Exception exception)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="262" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="262" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1abe7094873a05efc66c75176a6c7af592" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(Type source, IWin32Window owner, string title, Exception exception)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IWin32Window</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level including the stack trace of the exception and displays a message box to the user with the contents of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The owner of the message box.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The title of the message box.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="279" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="279" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a79ac51f36689dde04a85a997913e28f0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Error</definition>
+        <argsstring>(object source, IWin32Window owner, string title, Exception exception)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IWin32Window</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Error level including the stack trace of the exception and displays a message box to the user with the contents of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The owner of the message box.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The title of the message box.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="297" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="297" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1af44cccdc259f2a0dcabd544a1f10cd63" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; TAppender &gt;</type>
+        <definition>static IEnumerable&lt;TAppender&gt; System.Diagnostics.Log.GetAppenders&lt; TAppender &gt;</definition>
+        <argsstring>(Func&lt; TAppender, bool &gt; selector)</argsstring>
+        <name>GetAppenders&lt; TAppender &gt;</name>
+        <param>
+          <type>Func&lt; TAppender, bool &gt;</type>
+          <declname>selector</declname>
+        </param>
+        <briefdescription>
+<para>Returns the appenders that exist in the repository of the given type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TAppender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the appender.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>selector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A function used to select the appenders.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns an enumeration of IAppender interfaces. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="313" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="313" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a387f3ce583202cee214110f328c6b952" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Info</definition>
+        <argsstring>(Type source, string message)</argsstring>
+        <name>Info</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Info level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="325" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="325" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a719d15afb7fe437aba3ef75749c5f5e2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Info</definition>
+        <argsstring>(object source, string format, params object[] args)</argsstring>
+        <name>Info</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Info level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="344" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="344" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a4c730634613263bc8951f6c095c5ed6e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Info</definition>
+        <argsstring>(Type source, string format, params object[] args)</argsstring>
+        <name>Info</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Info level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="358" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="358" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1ac071062c7365833e0b81832fffa5abd0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Info</definition>
+        <argsstring>(object source, string message)</argsstring>
+        <name>Info</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Info level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="369" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="369" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a9504b4fc61ddd1c75c103db5a9d379da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Info</definition>
+        <argsstring>(Type source, string message, Exception exception)</argsstring>
+        <name>Info</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Info level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="384" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="384" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1acbccffee74b56c81ec64312f8ec6eedd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Info</definition>
+        <argsstring>(object source, string message, Exception exception)</argsstring>
+        <name>Info</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Info level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="403" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="403" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a33366ece39a0ac14c0849d2fee7c73b8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.RemoveAppender</definition>
+        <argsstring>(object source, IAppender appender)</argsstring>
+        <name>RemoveAppender</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IAppender</type>
+          <declname>appender</declname>
+        </param>
+        <briefdescription>
+<para>Removes the appender. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>appender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The appender.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="416" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="416" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a4c1ef48528a5388ea0b2e4b9b4af8c9b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.RemoveAppender</definition>
+        <argsstring>(Type source, IAppender appender)</argsstring>
+        <name>RemoveAppender</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IAppender</type>
+          <declname>appender</declname>
+        </param>
+        <briefdescription>
+<para>Removes the appender. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>appender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The appender.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="429" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="429" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a3e51b900d2567ec5891722d87493d1c3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Warn</definition>
+        <argsstring>(Type source, string message)</argsstring>
+        <name>Warn</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Warn level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="445" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="445" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a49bfb8e9f10b04cd0a3b2f81868dcf12" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Warn</definition>
+        <argsstring>(object source, string format, params object[] args)</argsstring>
+        <name>Warn</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Warn level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="464" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="464" bodyend="470"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1acfc54fecfbd42e07026e16596e4dfa43" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Warn</definition>
+        <argsstring>(Type source, string format, params object[] args)</argsstring>
+        <name>Warn</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>params object[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Warn level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A composite format string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object array that contains zero or more objects to format.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="478" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="478" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a68990b472c411a3ed92297fb792fd011" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Warn</definition>
+        <argsstring>(object source, string message)</argsstring>
+        <name>Warn</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Warn level. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="489" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="489" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1af4aa4dc2ab664fd64fa22f2e9abef551" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Warn</definition>
+        <argsstring>(Type source, string message, Exception exception)</argsstring>
+        <name>Warn</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Warn level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="504" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="504" bodyend="514"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a8391ece95306634052659c21df5b9b62" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Diagnostics.Log.Warn</definition>
+        <argsstring>(object source, string message, Exception exception)</argsstring>
+        <name>Warn</name>
+        <param>
+          <type>object</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>exception</declname>
+        </param>
+        <briefdescription>
+<para>Log a message object with the Warn level including the stack trace of the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="523" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="523" bodyend="529"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_diagnostics_1_1_log_1a02c80423ba5bab14593a897918356954" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ILog</type>
+        <definition>static ILog System.Diagnostics.Log.GetLogger</definition>
+        <argsstring>(Type source)</argsstring>
+        <name>GetLogger</name>
+        <param>
+          <type>Type</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets the logger from the dictionary. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the logger.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the ILog representing the logger for the source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="540" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="540" bodyend="553"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides methods for logging at different levels using the Apache log4net framework. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Diagnostics/Log.cs" bodystart="15" bodyend="556"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a7b4eeef5afcedca1e9f870404d93c775" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>AddAppender</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a200d6008e8a8b332ecbace8d71b253b9" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>AddAppender</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a0b54566d5929974d81a0eaf85474a3ab" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Debug</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1ac2e94a3a1c2de62ef0fd2761966000da" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Debug</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a1842141423adbb775818151f2abdb66d" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Debug</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1ae58b0e018ee5bf980ff0c9706c775f54" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Debug</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a591fc89c40cc6fac8130f9a794822bca" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Debug</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1ad4d0e33e6137dacf0d604b7041570ca0" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Debug</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a0aa6459839fe01de2c239f4018a4569a" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a82b662e9587d27027566bf74e92e54f5" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a7e72d17bbc74221199ce9c4a53047e91" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a7c44b79bb8783172a9b1634b4da53327" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a4d0af4d17736640a6d013cf64953c385" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1aafaa21dc91b9d6b11559c1c8373bcfda" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a8e3c32e71570e7605c6ae66023465f6a" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a48af3474e6c2426a8edb6e2b2ba54618" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1abe7094873a05efc66c75176a6c7af592" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a79ac51f36689dde04a85a997913e28f0" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Error</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a6e4595403050a90a2fe27d6c2489d8a0" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>FileName</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1af44cccdc259f2a0dcabd544a1f10cd63" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>GetAppenders&lt; TAppender &gt;</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a02c80423ba5bab14593a897918356954" prot="private" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>GetLogger</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a387f3ce583202cee214110f328c6b952" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Info</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a719d15afb7fe437aba3ef75749c5f5e2" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Info</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a4c730634613263bc8951f6c095c5ed6e" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Info</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1ac071062c7365833e0b81832fffa5abd0" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Info</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a9504b4fc61ddd1c75c103db5a9d379da" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Info</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1acbccffee74b56c81ec64312f8ec6eedd" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Info</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1ad729cf5d1d4e198abba387712fb01bbb" prot="private" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Lock</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a48ede0c47b47569ebd48095fe896a614" prot="private" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Loggers</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a33366ece39a0ac14c0849d2fee7c73b8" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>RemoveAppender</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a4c1ef48528a5388ea0b2e4b9b4af8c9b" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>RemoveAppender</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a3e51b900d2567ec5891722d87493d1c3" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Warn</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a49bfb8e9f10b04cd0a3b2f81868dcf12" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Warn</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1acfc54fecfbd42e07026e16596e4dfa43" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Warn</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a68990b472c411a3ed92297fb792fd011" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Warn</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1af4aa4dc2ab664fd64fa22f2e9abef551" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Warn</name></member>
+      <member refid="class_system_1_1_diagnostics_1_1_log_1a8391ece95306634052659c21df5b9b62" prot="public" virt="non-virtual"><scope>System::Diagnostics::Log</scope><name>Warn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_9e3316ba5fe3e5ebc874ed14c70e1889" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml/Extensions</compoundname>
+    <innerfile refid="_x_document_extensions_8cs">XDocumentExtensions.cs</innerfile>
+    <innerfile refid="_xml_document_extensions_8cs">XmlDocumentExtensions.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml/Extensions/"/>
+  </compounddef>
+</doxygen>

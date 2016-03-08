@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::BaseWMSNode</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+    <derivedcompoundref refid="class_miner_1_1_interop_1_1_process_1_1_address" prot="public" virt="non-virtual">Miner.Interop.Process.Address</derivedcompoundref>
+    <derivedcompoundref refid="class_miner_1_1_interop_1_1_process_1_1_customer" prot="public" virt="non-virtual">Miner.Interop.Process.Customer</derivedcompoundref>
+    <derivedcompoundref refid="class_miner_1_1_interop_1_1_process_1_1_location" prot="public" virt="non-virtual">Miner.Interop.Process.Location</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1ab85e684a1de0591e268fbb7e95629491" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.BaseWMSNode.Valid</definition>
+        <argsstring></argsstring>
+        <name>Valid</name>
+        <briefdescription>
+<para>Gets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" kindref="compound">BaseWMSNode</ref> is valid. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if valid; otherwise, <computeroutput>false</computeroutput>.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a1f9855aed1ac2de930ad4611578fe227" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.BaseWMSNode.Dirty</definition>
+        <argsstring></argsstring>
+        <name>Dirty</name>
+        <briefdescription>
+<para>Gets or sets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" kindref="compound">BaseWMSNode</ref> is dirty. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if dirty; otherwise, <computeroutput>false</computeroutput>.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="50" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4118d431b4bbec1e92a5fe4c52670e15" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>IMMWMSNode</type>
+        <definition>IMMWMSNode Miner.Interop.Process.BaseWMSNode.Node</definition>
+        <argsstring></argsstring>
+        <name>Node</name>
+        <briefdescription>
+<para>Gets the node. </para>        </briefdescription>
+        <detaileddescription>
+<para>The node.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="72" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a18fc0c61e3bcf6650e112e2d01ea71af" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.BaseWMSNode.BaseWMSNode</definition>
+        <argsstring>(IMMWMSNode node)</argsstring>
+        <name>BaseWMSNode</name>
+        <param>
+          <type>IMMWMSNode</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" kindref="compound">BaseWMSNode</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a32b466bee441911b62fa9ef4ccb2cdb8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Interop.Process.BaseWMSNode.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_location_1a2f4483002c29961f54645b00d771e404">Dispose</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_customer_1ac42a951daa66602107c6387f16f0b9b3">Dispose</reimplementedby>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="119" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="119" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4e6cb2c359dfc047f7c68ca0a2fb9152" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.BaseWMSNode.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="81" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a3a87b4e36941be0bea34326e9130b6c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Interop.Process.BaseWMSNode.Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_location_1a9e043cfcd5d5e4c3c1a01701a352f218">Update</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_customer_1a9965b91b3982b089d26fe2061744c2f2">Update</reimplementedby>
+        <briefdescription>
+<para>Updates the node by flushing the information to the database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="95" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="95" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract implemenation of the process framework nodes that don&apos;t correspond to a Miner.Interop.Process.IMMPxNode </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="265">
+        <label>Miner.Interop.Process.BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="266" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="269">
+        <label>Miner.Interop.Process.Location</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_location"/>
+        <childnode refid="265" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="266">
+        <label>IDisposable</label>
+      </node>
+      <node id="267">
+        <label>Miner.Interop.Process.Address</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_address"/>
+        <childnode refid="265" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>Miner.Interop.Process.Customer</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_customer"/>
+        <childnode refid="265" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="270">
+        <label>Miner.Interop.Process.BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="271" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="271">
+        <label>IDisposable</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses/BaseWMSNode.cs" bodystart="10" bodyend="133"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a18fc0c61e3bcf6650e112e2d01ea71af" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BaseWMSNode</scope><name>BaseWMSNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a1f9855aed1ac2de930ad4611578fe227" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BaseWMSNode</scope><name>Dirty</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4e6cb2c359dfc047f7c68ca0a2fb9152" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BaseWMSNode</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a32b466bee441911b62fa9ef4ccb2cdb8" prot="protected" virt="virtual"><scope>Miner::Interop::Process::BaseWMSNode</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4118d431b4bbec1e92a5fe4c52670e15" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BaseWMSNode</scope><name>Node</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a3a87b4e36941be0bea34326e9130b6c3" prot="public" virt="virtual"><scope>Miner::Interop::Process::BaseWMSNode</scope><name>Update</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1ab85e684a1de0591e268fbb7e95629491" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BaseWMSNode</scope><name>Valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

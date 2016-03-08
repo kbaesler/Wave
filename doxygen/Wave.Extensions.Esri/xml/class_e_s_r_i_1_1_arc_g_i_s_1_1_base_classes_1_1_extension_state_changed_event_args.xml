@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::BaseClasses::ExtensionStateChangedEventArgs</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">EventArgs</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args_1a84a3391ffad9561880e64410f88a5c4e" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>esriExtensionState</type>
+        <definition>esriExtensionState ESRI.ArcGIS.BaseClasses.ExtensionStateChangedEventArgs.NewValue</definition>
+        <argsstring></argsstring>
+        <name>NewValue</name>
+        <briefdescription>
+<para>Gets or sets the new value. </para>        </briefdescription>
+        <detaileddescription>
+<para>The new value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" line="98" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args_1af1b70889d7ed1ab3176cae5bed7053f5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>esriExtensionState</type>
+        <definition>esriExtensionState ESRI.ArcGIS.BaseClasses.ExtensionStateChangedEventArgs.OldValue</definition>
+        <argsstring></argsstring>
+        <name>OldValue</name>
+        <briefdescription>
+<para>Gets or sets the old value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" line="103" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args_1a8397837b2e57208b723ad63691667b36" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.BaseClasses.ExtensionStateChangedEventArgs.ExtensionStateChangedEventArgs</definition>
+        <argsstring>(esriExtensionState oldValue, esriExtensionState newValue)</argsstring>
+        <name>ExtensionStateChangedEventArgs</name>
+        <param>
+          <type>esriExtensionState</type>
+          <declname>oldValue</declname>
+        </param>
+        <param>
+          <type>esriExtensionState</type>
+          <declname>newValue</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args" kindref="compound">ExtensionStateChangedEventArgs</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oldValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The old value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" line="82" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" bodystart="82" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The instance event data for the event that is raised. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="337">
+        <label>EventArgs</label>
+      </node>
+      <node id="336">
+        <label>ESRI.ArcGIS.BaseClasses.ExtensionStateChangedEventArgs</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args"/>
+        <childnode refid="337" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="339">
+        <label>EventArgs</label>
+      </node>
+      <node id="338">
+        <label>ESRI.ArcGIS.BaseClasses.ExtensionStateChangedEventArgs</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args"/>
+        <childnode refid="339" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" line="74" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseExtension.cs" bodystart="73" bodyend="106"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args_1a8397837b2e57208b723ad63691667b36" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::ExtensionStateChangedEventArgs</scope><name>ExtensionStateChangedEventArgs</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args_1a84a3391ffad9561880e64410f88a5c4e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::ExtensionStateChangedEventArgs</scope><name>NewValue</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_extension_state_changed_event_args_1af1b70889d7ed1ab3176cae5bed7053f5" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::ExtensionStateChangedEventArgs</scope><name>OldValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

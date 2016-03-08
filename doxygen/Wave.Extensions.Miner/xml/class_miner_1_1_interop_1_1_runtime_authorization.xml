@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_runtime_authorization" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::RuntimeAuthorization</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_runtime_authorization_1a811e5a22612377dbfd583d51c29cb655" prot="private" static="no" mutable="no">
+        <type>readonly EsriRuntimeAuthorization</type>
+        <definition>readonly EsriRuntimeAuthorization Miner.Interop.RuntimeAuthorization._EsriRuntime</definition>
+        <argsstring></argsstring>
+        <name>_EsriRuntime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_runtime_authorization_1a43507ee6adcf190e771679aafd2ebdc3" prot="private" static="no" mutable="no">
+        <type>readonly MinerRuntimeAuthorization</type>
+        <definition>readonly MinerRuntimeAuthorization Miner.Interop.RuntimeAuthorization._MinerRuntime</definition>
+        <argsstring></argsstring>
+        <name>_MinerRuntime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_runtime_authorization_1ade46a4008373257a4c969a30a38866a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.RuntimeAuthorization.RuntimeAuthorization</definition>
+        <argsstring>()</argsstring>
+        <name>RuntimeAuthorization</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_runtime_authorization" kindref="compound">RuntimeAuthorization</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="32" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="32" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_runtime_authorization_1a862de54ac78ae2006ac9cd685d61d822" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.RuntimeAuthorization.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="65" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="65" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_runtime_authorization_1acc3f57355d7056d817d11552ffd064ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Miner.Interop.RuntimeAuthorization.Initialize</definition>
+        <argsstring>(esriLicenseProductCode licensedProduct, params esriLicenseExtensionCode[] licensedExtension)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>esriLicenseProductCode</type>
+          <declname>licensedProduct</declname>
+        </param>
+        <param>
+          <type>params esriLicenseExtensionCode[]</type>
+          <declname>licensedExtension</declname>
+        </param>
+        <briefdescription>
+<para>Attempts to checkout the license for the specific <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> <emphasis>licensedProduct</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licensedProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The licensed product.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>licensedExtension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The licensed extension.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Boolean representing <computeroutput>true</computeroutput> when the initialization is successful; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="85" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="85" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_runtime_authorization_1a095361cd8bb22021469e9dbce48472d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Miner.Interop.RuntimeAuthorization.Initialize</definition>
+        <argsstring>(mmLicensedProductCode licensedProduct, params mmLicensedExtensionCode[] licensedExtension)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>mmLicensedProductCode</type>
+          <declname>licensedProduct</declname>
+        </param>
+        <param>
+          <type>params mmLicensedExtensionCode[]</type>
+          <declname>licensedExtension</declname>
+        </param>
+        <briefdescription>
+<para>Attempts to checkout the license for the specific ArcFM <emphasis>licensedProduct</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licensedProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The licensed product.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>licensedExtension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The extension codes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Boolean representing <computeroutput>true</computeroutput> when the initialization is successful; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="99" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_runtime_authorization_1ad7f48b18e33e8f71492c075ba123488e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Miner.Interop.RuntimeAuthorization.Initialize</definition>
+        <argsstring>(esriLicenseProductCode esriLicensedProduct, mmLicensedProductCode mmLicensedProduct)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>esriLicenseProductCode</type>
+          <declname>esriLicensedProduct</declname>
+        </param>
+        <param>
+          <type>mmLicensedProductCode</type>
+          <declname>mmLicensedProduct</declname>
+        </param>
+        <briefdescription>
+<para>Attempts to checkout the license for the specific ArcFM <emphasis>mmLicensedProduct</emphasis>  and <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> <emphasis>esriLicensedProduct</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>esriLicensedProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ArFM product code.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mmLicensedProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mm licensed product.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Boolean representing <computeroutput>true</computeroutput> when the initialization is successful; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="114" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_runtime_authorization_1a52c9f319af90157e9156c8c726853a60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.RuntimeAuthorization.Shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>Shutdown</name>
+        <briefdescription>
+<para>Checks in all ArcGIS and ArcFM licenses that have been checked out. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="122" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="122" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_runtime_authorization_1a97201d84d2f8c27f88076a12fa6714fe" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.RuntimeAuthorization.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="141" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="141" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A supporting class used to check out the licenses necessary to run applications outside of <ref refid="namespace_miner" kindref="compound">Miner</ref> and <ref refid="namespace_miner" kindref="compound">Miner</ref> and <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> products. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="496">
+        <label>IDisposable</label>
+      </node>
+      <node id="495">
+        <label>Miner.Interop.RuntimeAuthorization</label>
+        <link refid="class_miner_1_1_interop_1_1_runtime_authorization"/>
+        <childnode refid="496" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="498">
+        <label>IDisposable</label>
+      </node>
+      <node id="497">
+        <label>Miner.Interop.RuntimeAuthorization</label>
+        <link refid="class_miner_1_1_interop_1_1_runtime_authorization"/>
+        <childnode refid="498" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/RuntimeAuthorization.cs" bodystart="17" bodyend="154"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1a811e5a22612377dbfd583d51c29cb655" prot="private" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>_EsriRuntime</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1a43507ee6adcf190e771679aafd2ebdc3" prot="private" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>_MinerRuntime</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1a862de54ac78ae2006ac9cd685d61d822" prot="public" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1a97201d84d2f8c27f88076a12fa6714fe" prot="private" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1acc3f57355d7056d817d11552ffd064ad" prot="public" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>Initialize</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1a095361cd8bb22021469e9dbce48472d7" prot="public" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>Initialize</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1ad7f48b18e33e8f71492c075ba123488e" prot="public" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>Initialize</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1ade46a4008373257a4c969a30a38866a4" prot="public" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>RuntimeAuthorization</name></member>
+      <member refid="class_miner_1_1_interop_1_1_runtime_authorization_1a52c9f319af90157e9156c8c726853a60" prot="public" virt="non-virtual"><scope>Miner::Interop::RuntimeAuthorization</scope><name>Shutdown</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

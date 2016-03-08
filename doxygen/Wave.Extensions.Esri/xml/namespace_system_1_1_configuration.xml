@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_system_1_1_configuration" kind="namespace" language="C#">
+    <compoundname>System::Configuration</compoundname>
+    <innerclass refid="interface_system_1_1_configuration_1_1_i_keyed_element_collection" prot="public">System::Configuration::IKeyedElementCollection</innerclass>
+    <innerclass refid="class_system_1_1_configuration_1_1_keyed_element" prot="public">System::Configuration::KeyedElement</innerclass>
+    <innerclass refid="class_system_1_1_configuration_1_1_keyed_element_collection" prot="public">System::Configuration::KeyedElementCollection</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/Interfaces/IKeyedElementCollection.cs" line="4" column="1"/>
+  </compounddef>
+</doxygen>

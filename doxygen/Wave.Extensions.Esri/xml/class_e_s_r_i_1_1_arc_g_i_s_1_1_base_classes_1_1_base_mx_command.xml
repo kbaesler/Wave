@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::BaseClasses::BaseMxCommand</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BaseCommand</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1a4442117db2418a9ee5624247bc8daee4" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>IApplication</type>
+        <definition>IApplication ESRI.ArcGIS.BaseClasses.BaseMxCommand.Application</definition>
+        <argsstring></argsstring>
+        <name>Application</name>
+        <briefdescription>
+<para>Gets the application. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" line="41" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1a6a6c470996916b1dbd04decc48e73afc" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.BaseClasses.BaseMxCommand.BaseMxCommand</definition>
+        <argsstring>(string name, string caption, string category, string message, string toolTip)</argsstring>
+        <name>BaseMxCommand</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>caption</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>category</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>toolTip</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command" kindref="compound">BaseMxCommand</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>caption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The caption</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The category.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>toolTip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool tip</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" bodystart="25" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1a1897fd46b76a82c665121034b3a48c0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void ESRI.ArcGIS.BaseClasses.BaseMxCommand.OnCreate</definition>
+        <argsstring>(object hook)</argsstring>
+        <name>OnCreate</name>
+        <param>
+          <type>object</type>
+          <declname>hook</declname>
+        </param>
+        <briefdescription>
+<para>Called when the command is created inside the application. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hook</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to the application in which the command was created. The hook may be an IApplication reference (for commands created in <ref refid="namespace_e_s_r_i_1_1_arc_g_i_s" kindref="compound">ArcGIS</ref> Desktop applications) or an IHookHelper reference (for commands created on an Engine ToolbarControl). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" line="55" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" bodystart="55" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1aa70374d25f8166964fca2dce3d3e6fcf" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseMxCommand.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" line="69" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1ab8f7b7841457acff51926251a85eaecf" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseMxCommand.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" line="79" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" bodystart="79" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract class used to create a buttons in ArcMap. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="95">
+        <label>BaseCommand</label>
+      </node>
+      <node id="94">
+        <label>ESRI.ArcGIS.BaseClasses.BaseMxCommand</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command"/>
+        <childnode refid="95" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="97">
+        <label>BaseCommand</label>
+      </node>
+      <node id="96">
+        <label>ESRI.ArcGIS.BaseClasses.BaseMxCommand</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command"/>
+        <childnode refid="97" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseMxCommand.cs" bodystart="13" bodyend="85"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1a4442117db2418a9ee5624247bc8daee4" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxCommand</scope><name>Application</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1a6a6c470996916b1dbd04decc48e73afc" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxCommand</scope><name>BaseMxCommand</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1a1897fd46b76a82c665121034b3a48c0d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxCommand</scope><name>OnCreate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1aa70374d25f8166964fca2dce3d3e6fcf" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxCommand</scope><name>Register</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_mx_command_1ab8f7b7841457acff51926251a85eaecf" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseMxCommand</scope><name>Unregister</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

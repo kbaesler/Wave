@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_extensions_1_1_query_def_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::Extensions::QueryDefExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_extensions_1_1_query_def_extensions_1a2c34e4eb6ee74eea1c5cbb568f272f00" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ESRI.ArcGIS.Geodatabase.Extensions.QueryDefExtensions.Count</definition>
+        <argsstring>(this IQueryDef source)</argsstring>
+        <name>Count</name>
+        <param>
+          <type>this IQueryDef</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns the number of records affected by executing the query definition. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a int representing the number of records affected. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/QueryDefExtensions.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/QueryDefExtensions.cs" bodystart="19" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the IQueryDef interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/QueryDefExtensions.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/QueryDefExtensions.cs" bodystart="8" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_extensions_1_1_query_def_extensions_1a2c34e4eb6ee74eea1c5cbb568f272f00" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::Extensions::QueryDefExtensions</scope><name>Count</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

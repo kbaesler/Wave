@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row" kind="interface" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::IConflictRow</compoundname>
+    <derivedcompoundref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal_1_1_conflict_row" prot="public" virt="non-virtual">ESRI.ArcGIS.Geodatabase.Internal.ConflictRow</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1a27a34d63d46fe8a463de16781ed8d711" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int ESRI.ArcGIS.Geodatabase.IConflictRow.OID</definition>
+        <argsstring></argsstring>
+        <name>OID</name>
+        <briefdescription>
+<para>Gets the row OID that is in conflict. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" line="98" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1a26f9f542506521986eced805c1229c17" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fe" kindref="member">ConflictResolution</ref></type>
+        <definition>ConflictResolution ESRI.ArcGIS.Geodatabase.IConflictRow.Resolution</definition>
+        <argsstring></argsstring>
+        <name>Resolution</name>
+        <briefdescription>
+<para>Gets or sets a value indicating the resolution to the conflict. </para>        </briefdescription>
+        <detaileddescription>
+<para>The conflict resolution. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" line="106" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1a5ce03d1fb45d99a7ce5b664ad7fa661f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ESRI.ArcGIS.Geodatabase.IConflictRow.TableName</definition>
+        <argsstring></argsstring>
+        <name>TableName</name>
+        <briefdescription>
+<para>Gets the name of the table. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the table. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" line="114" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1aaa6ac101772cdece3a40fa9d04f0e235" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71c" kindref="member">RowConflictType</ref></type>
+        <definition>RowConflictType ESRI.ArcGIS.Geodatabase.IConflictRow.Type</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+<para>Gets the type of the row conflict. </para>        </briefdescription>
+        <detaileddescription>
+<para>The type of the row conflict. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" line="122" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides the methods and properties for a row that has conflicts. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="366">
+        <label>ESRI.ArcGIS.Geodatabase.Internal.ConflictRow</label>
+        <childnode refid="365" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="365">
+        <label>ESRI.ArcGIS.Geodatabase.IConflictRow</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" line="92" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" bodystart="91" bodyend="125"/>
+    <listofallmembers>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1a27a34d63d46fe8a463de16781ed8d711" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictRow</scope><name>OID</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1a26f9f542506521986eced805c1229c17" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictRow</scope><name>Resolution</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1a5ce03d1fb45d99a7ce5b664ad7fa661f" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictRow</scope><name>TableName</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row_1aaa6ac101772cdece3a40fa9d04f0e235" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictRow</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

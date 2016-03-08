@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Framework::ArcMap</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions" prot="package">ESRI::ArcGIS::Framework::ArcMap::Extensions</innerclass>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1a90fae60a0fe3fbd1cc74ccece0cc49db" prot="public" static="yes" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IApplication</type>
+        <definition>IApplication ESRI.ArcGIS.Framework.ArcMap.Application</definition>
+        <argsstring></argsstring>
+        <name>Application</name>
+        <briefdescription>
+<para>This returns the current running instance of application. </para>        </briefdescription>
+        <detaileddescription>
+<para>The application.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides access to the IApplication singleton instance for ArcMap. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" bodystart="8" bodyend="95"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1a90fae60a0fe3fbd1cc74ccece0cc49db" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::ArcMap</scope><name>Application</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

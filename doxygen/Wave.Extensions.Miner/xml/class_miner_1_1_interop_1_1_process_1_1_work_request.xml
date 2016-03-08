@@ -1,0 +1,541 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_work_request" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::WorkRequest</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node" prot="public" virt="non-virtual">Miner.Interop.Process.BasePxNode</basecompoundref>
+    <basecompoundref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request" prot="public" virt="non-virtual">Miner.Interop.Process.IPxWorkRequest</basecompoundref>
+      <sectiondef kind="package-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a610f3cd8b1840cafe7380a2bc56873ed" prot="package" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.Interop.Process.WorkRequest.NodeTypeName</definition>
+        <argsstring></argsstring>
+        <name>NodeTypeName</name>
+        <initializer>= &quot;WorkRequest&quot;</initializer>
+        <briefdescription>
+<para>The name of the node type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a90854d4b37f92fab779caafafe65cfee" prot="private" static="no" mutable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_customer" kindref="compound">Customer</ref></type>
+        <definition>Customer Miner.Interop.Process.WorkRequest._Customer</definition>
+        <argsstring></argsstring>
+        <name>_Customer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1ac3c60b016ce1cb15997a54de8afb3e2f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_location" kindref="compound">Location</ref></type>
+        <definition>Location Miner.Interop.Process.WorkRequest._Location</definition>
+        <argsstring></argsstring>
+        <name>_Location</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a1dbfc85656b70bdb932be49dbf7a9cf4" prot="private" static="no" mutable="no">
+        <type>IMMWMSWorkRequest</type>
+        <definition>IMMWMSWorkRequest Miner.Interop.Process.WorkRequest._WorkRequest</definition>
+        <argsstring></argsstring>
+        <name>_WorkRequest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="30" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a53460e2deb5e16cd731bbe1020c1f6f6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.WorkRequest.Comments</definition>
+        <argsstring></argsstring>
+        <name>Comments</name>
+        <briefdescription>
+<para>Get or set the Comments associated with this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para>The comments. </para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The comments cannot be larger then 255 characters.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a7ea7c06ee73e15652c266df2fbe2819c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_customer" kindref="compound">Customer</ref></type>
+        <definition>Customer Miner.Interop.Process.WorkRequest.Customer</definition>
+        <argsstring></argsstring>
+        <name>Customer</name>
+        <briefdescription>
+<para>Gets the customer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The customer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="88" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1af1783ce0437f488d6d0c3bbf8e4125f0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.WorkRequest.Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <briefdescription>
+<para>Gets or sets the description. </para>        </briefdescription>
+        <detaileddescription>
+<para>The description. </para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The description cannot be larger then 128 characters.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="109" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a31d7419d638065ab46fba74a5a183ed1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; <ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_design" kindref="compound">IPxDesign</ref> &gt;</type>
+        <definition>IEnumerable&lt;IPxDesign&gt; Miner.Interop.Process.WorkRequest.Designs</definition>
+        <argsstring></argsstring>
+        <name>Designs</name>
+        <briefdescription>
+<para>Gets all of the designs that are associated with the <ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request" kindref="compound">IPxWorkRequest</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="128" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a399a08a08a50854b2d79446e8a8e4307" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DateTime</type>
+        <definition>DateTime Miner.Interop.Process.WorkRequest.EndDate</definition>
+        <argsstring></argsstring>
+        <name>EndDate</name>
+        <briefdescription>
+<para>Gets or sets the end date. </para>        </briefdescription>
+        <detaileddescription>
+<para>The end date. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="157" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a3aa2783495837235b267dee4acaf7a30" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_location" kindref="compound">Location</ref></type>
+        <definition>Location Miner.Interop.Process.WorkRequest.Location</definition>
+        <argsstring></argsstring>
+        <name>Location</name>
+        <briefdescription>
+<para>Gets the location. </para>        </briefdescription>
+        <detaileddescription>
+<para>The location. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="178" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1af922ce3e91b8e4f189c81c2437005b86" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>IMMPxUser</type>
+        <definition>IMMPxUser Miner.Interop.Process.WorkRequest.Owner</definition>
+        <argsstring></argsstring>
+        <name>Owner</name>
+        <briefdescription>
+<para>Gets or sets the owner. </para>        </briefdescription>
+        <detaileddescription>
+<para>The owner.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="196" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a47dc945ba1c7dc5050c3a219511dad05" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DateTime</type>
+        <definition>DateTime Miner.Interop.Process.WorkRequest.StartDate</definition>
+        <argsstring></argsstring>
+        <name>StartDate</name>
+        <briefdescription>
+<para>Gets or sets the start date. </para>        </briefdescription>
+        <detaileddescription>
+<para>The start date. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="214" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a8046a31bbbe287636f3e60c7712369c2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override int</type>
+        <definition>override int Miner.Interop.Process.WorkRequest.ID</definition>
+        <argsstring></argsstring>
+        <name>ID</name>
+        <briefdescription>
+<para>Gets the ID. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="232" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1ae616314a3e153954adcbb25b39d1a812" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Process.WorkRequest.IsOpen</definition>
+        <argsstring></argsstring>
+        <name>IsOpen</name>
+        <briefdescription>
+<para>Gets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> is open. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if this <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> is open; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="243" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1aec9ad5e714b27d89878c77fd5771a7fb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override string</type>
+        <definition>override string Miner.Interop.Process.WorkRequest.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets or sets the name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name.</para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name cannot be larger then 64 characters.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="260" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a97568300b174d3ec73366470354be067" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Process.WorkRequest.Valid</definition>
+        <argsstring></argsstring>
+        <name>Valid</name>
+        <briefdescription>
+<para>Gets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> is valid. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if valid; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="282" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a6c0ec9c7660392e62563dbcff6727d97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.WorkRequest.WorkRequest</definition>
+        <argsstring>(IMMPxApplication pxApp)</argsstring>
+        <name>WorkRequest</name>
+        <param>
+          <type>IMMPxApplication</type>
+          <declname>pxApp</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pxApp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application reference.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1ab36657006410da880d8bb45fa97cd705" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.WorkRequest.WorkRequest</definition>
+        <argsstring>(IMMPxApplication pxApp, IMMWMSWorkRequest workRequest)</argsstring>
+        <name>WorkRequest</name>
+        <param>
+          <type>IMMPxApplication</type>
+          <declname>pxApp</declname>
+        </param>
+        <param>
+          <type>IMMWMSWorkRequest</type>
+          <declname>workRequest</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_work_request" kindref="compound">WorkRequest</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pxApp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process framework application reference.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>workRequest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The work request.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="50" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="50" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a1f7663d87a8e4196300578f7a06fc88f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Process.WorkRequest.CreateNew</definition>
+        <argsstring>(IMMPxUser user)</argsstring>
+        <name>CreateNew</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1ac1658937629a8cab25f5fa57c1ab1f8c">CreateNew</reimplements>
+        <param>
+          <type>IMMPxUser</type>
+          <declname>user</declname>
+        </param>
+        <briefdescription>
+<para>Creates the process framework node wrapper for the specified the <emphasis>user</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The current user.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns Boolean representing <computeroutput>true</computeroutput> if the node was successfully created; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="295" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="295" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1ab2e971d3d3dad4b6ebbf9e628a713758" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.WorkRequest.Delete</definition>
+        <argsstring>()</argsstring>
+        <name>Delete</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a1298c1d55bc354ab35376b995c835e34">Delete</reimplements>
+        <briefdescription>
+<para>Deletes the node from the process framework database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="313" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="313" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a773126808b5e4bc5534300e28abd4b87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Process.WorkRequest.Initialize</definition>
+        <argsstring>(int nodeID)</argsstring>
+        <name>Initialize</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a5ad1f3bb88bc87400f5664bc65adccd0">Initialize</reimplements>
+        <param>
+          <type>int</type>
+          <declname>nodeID</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the process framework node wrapper using the specified <emphasis>nodeID</emphasis>  for the node. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nodeID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns Boolean representing <computeroutput>true</computeroutput> if the node was successfully initialized; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="330" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="330" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1ae1085337b574f7da9f33049b50fc89f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.WorkRequest.Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a9d7e7e90a4910fe1081f1e7492a55b2a">Update</reimplements>
+        <briefdescription>
+<para>Updates the node by flushing the information to the database and reinitializing the underlying Miner.Interop.Process.IMMPxNode. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="353" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="353" bodyend="373"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a8cbc0b507068a0220a45c8a983f4dd60" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.WorkRequest.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1ab41dbe60c1787b1e9a10ab748c964af9">Dispose</reimplements>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="386" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="386" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_work_request_1a5657226a2c59ca26aa2ecb855e73b265" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override IMMListBuilder</type>
+        <definition>override IMMListBuilder Miner.Interop.Process.WorkRequest.GetListBuilder</definition>
+        <argsstring>()</argsstring>
+        <name>GetListBuilder</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1aee1a6fc578878c59554ceaf4b690602b">GetListBuilder</reimplements>
+        <briefdescription>
+<para>Gets the list builder for the node. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns the IMMListBuilder representing the builder for the node. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="415" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="415" bodyend="421"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Wraps the product Miner.Interop.Process.IMMWMSWorkRequest interface into an workable object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="547">
+        <label>IDisposable</label>
+      </node>
+      <node id="549">
+        <label>IPxWorkRequest</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request"/>
+        <childnode refid="548" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="548">
+        <label>IPxNode</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node"/>
+      </node>
+      <node id="545">
+        <label>Miner.Interop.Process.WorkRequest</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_work_request"/>
+        <childnode refid="546" relation="public-inheritance">
+        </childnode>
+        <childnode refid="549" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="546">
+        <label>BasePxNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node"/>
+        <childnode refid="547" relation="public-inheritance">
+        </childnode>
+        <childnode refid="548" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="552">
+        <label>IDisposable</label>
+      </node>
+      <node id="554">
+        <label>IPxWorkRequest</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request"/>
+        <childnode refid="553" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="553">
+        <label>IPxNode</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node"/>
+      </node>
+      <node id="550">
+        <label>Miner.Interop.Process.WorkRequest</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_work_request"/>
+        <childnode refid="551" relation="public-inheritance">
+        </childnode>
+        <childnode refid="554" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="551">
+        <label>BasePxNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node"/>
+        <childnode refid="552" relation="public-inheritance">
+        </childnode>
+        <childnode refid="553" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/WorkRequest.cs" bodystart="15" bodyend="424"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a90854d4b37f92fab779caafafe65cfee" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>_Customer</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1ac3c60b016ce1cb15997a54de8afb3e2f" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>_Location</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a1dbfc85656b70bdb932be49dbf7a9cf4" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>_WorkRequest</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1ae7fbe212c97f8ace9cafe4b91f2ecab7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>AddHistory</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a1d003a6e96bd0faf338fa17e5d6a00b8" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>BasePxNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a53460e2deb5e16cd731bbe1020c1f6f6" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Comments</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a94da71226af9e829101bba2a29edb3bf" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>CopyHistory</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a6f6c9fbad9d2c2a21318aca051dbedc4" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>CopyPacket</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a1f7663d87a8e4196300578f7a06fc88f" prot="public" virt="virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>CreateNew</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a7ea7c06ee73e15652c266df2fbe2819c" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Customer</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1ab2e971d3d3dad4b6ebbf9e628a713758" prot="public" virt="virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Delete</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1af1783ce0437f488d6d0c3bbf8e4125f0" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Description</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a31d7419d638065ab46fba74a5a183ed1" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Designs</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a26ed1db6c17042c3a67d4106dd02604c" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Dirty</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a8cbc0b507068a0220a45c8a983f4dd60" prot="protected" virt="virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1aef292feea6155997c1084c97706673cc" prot="public" virt="non-virtual" ambiguityscope="Miner::Interop::Process::BasePxNode."><scope>Miner::Interop::Process::WorkRequest</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a399a08a08a50854b2d79446e8a8e4307" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>EndDate</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a5657226a2c59ca26aa2ecb855e73b265" prot="protected" virt="virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>GetListBuilder</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1af11a2cbdd552241da20155aec132a52e" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>History</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a8046a31bbbe287636f3e60c7712369c2" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>ID</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a773126808b5e4bc5534300e28abd4b87" prot="public" virt="virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Initialize</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1ae616314a3e153954adcbb25b39d1a812" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>IsOpen</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a3aa2783495837235b267dee4acaf7a30" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Location</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a80b923cafc6d469d65d403eedae0b5e0" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Locked</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1aec9ad5e714b27d89878c77fd5771a7fb" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a24c00f04c3f5be9494cc1b5277a011d5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Node</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a610f3cd8b1840cafe7380a2bc56873ed" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>NodeTypeName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1af922ce3e91b8e4f189c81c2437005b86" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Owner</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a4452b9888a29e85af2c60e90c457bfbe" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>PxApplication</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a307a55d654bcd866c36f2d41c3945d5a" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Set</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a47dc945ba1c7dc5050c3a219511dad05" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>StartDate</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1aef5d1cb438613237a3b339d8b2c32023" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>State</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1ae1085337b574f7da9f33049b50fc89f9" prot="public" virt="virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Update</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a97568300b174d3ec73366470354be067" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>Valid</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1aad3d65a9295c3ef97b041123710bc9aa" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>VersionName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a6c0ec9c7660392e62563dbcff6727d97" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>WorkRequest</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1ab36657006410da880d8bb45fa97cd705" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::WorkRequest</scope><name>WorkRequest</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

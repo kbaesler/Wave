@@ -1,0 +1,441 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Behaviors::ListViewBehavior</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a9c301aafa925e6eb5399969be9f4006a" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Behaviors.ListViewBehavior.IsSortedWithColumnHeaderProperty</definition>
+        <argsstring></argsstring>
+        <name>IsSortedWithColumnHeaderProperty</name>
+        <initializer>=
+            DependencyProperty.RegisterAttached(&quot;IsSortedWithColumnHeader&quot;, typeof (bool), typeof (ListViewBehavior),
+                new FrameworkPropertyMetadata(false,
+                    OnIsSortedWithColumnHeaderChanged))</initializer>
+        <briefdescription>
+<para>A dependency property that indiciates if the columns will be sorted when their headers are clicked. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1aab3070fa7aabd25d948a01c019ae65c5" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Behaviors.ListViewBehavior.PropertyNameProperty</definition>
+        <argsstring></argsstring>
+        <name>PropertyNameProperty</name>
+        <initializer>=
+            DependencyProperty.RegisterAttached(&quot;PropertyName&quot;, typeof (string), typeof (ListViewBehavior))</initializer>
+        <briefdescription>
+<para>A dependency property for the property name on the column that is used by the sorting. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a21e719ed9e944187275454065079615f" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Behaviors.ListViewBehavior.SortComparerProperty</definition>
+        <argsstring></argsstring>
+        <name>SortComparerProperty</name>
+        <initializer>=
+            DependencyProperty.RegisterAttached(&quot;SortComparer&quot;, typeof (<ref refid="interface_system_1_1_windows_1_1_collections_1_1_i_list_view_comparer" kindref="compound">IListViewComparer</ref>), typeof (ListViewBehavior),
+                new PropertyMetadata(new <ref refid="class_system_1_1_windows_1_1_collections_1_1_string_list_view_comparer" kindref="compound">StringListViewComparer</ref>()))</initializer>
+        <briefdescription>
+<para>A dependency property for the comparer that is used for the sorting of the columns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a61e96ea7dd665ee9ad9e7c7d0ebc37c4" prot="private" static="yes" mutable="no">
+        <type>GridViewColumnHeader</type>
+        <definition>GridViewColumnHeader System.Windows.Behaviors.ListViewBehavior.SortedColumnHeader</definition>
+        <argsstring></argsstring>
+        <name>SortedColumnHeader</name>
+        <briefdescription>
+<para>The last column clicked. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1aa3b8262d17329fd6c0f992afc03defab" prot="private" static="yes" mutable="no">
+        <type>ListSortDirection</type>
+        <definition>ListSortDirection System.Windows.Behaviors.ListViewBehavior.SortedDirection</definition>
+        <argsstring></argsstring>
+        <name>SortedDirection</name>
+        <briefdescription>
+<para>The last sorted direction. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1ac3620d93bf962b318ddd5b8ebbfae14e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>DataTable</type>
+        <definition>static DataTable System.Windows.Behaviors.ListViewBehavior.AsDataTable</definition>
+        <argsstring>(this ListView listView, ProgressChangedEventHandler eventHandler)</argsstring>
+        <name>AsDataTable</name>
+        <param>
+          <type>this ListView</type>
+          <declname>listView</declname>
+        </param>
+        <param>
+          <type>ProgressChangedEventHandler</type>
+          <declname>eventHandler</declname>
+        </param>
+        <briefdescription>
+<para>Creates a DataTable containing the data within the specified ListView. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>listView</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list view.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eventHandler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The event handler.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A DataTable of the contents of the list view. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="63" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="63" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a345397b1e686ddf5a0277bef24e01c70" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Windows.Behaviors.ListViewBehavior.GetPropertyName</definition>
+        <argsstring>(DependencyObject o)</argsstring>
+        <name>GetPropertyName</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Gets the name of the property. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The o.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="139" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="139" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1ae304987f9b9e99eaad28ef7abaea7d35" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="interface_system_1_1_windows_1_1_collections_1_1_i_list_view_comparer" kindref="compound">IListViewComparer</ref></type>
+        <definition>static IListViewComparer System.Windows.Behaviors.ListViewBehavior.GetSortComparer</definition>
+        <argsstring>(DependencyObject o)</argsstring>
+        <name>GetSortComparer</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Gets the sort comparer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The o.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para><para>The sort comparer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="152" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="152" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a002ad9747371c3812b3e6335423b132d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.ListViewBehavior.SetIsSortedWithColumnHeader</definition>
+        <argsstring>(DependencyObject o, bool value)</argsstring>
+        <name>SetIsSortedWithColumnHeader</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the is sorted with column header. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The o.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="162" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="162" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a4209eaf71484d6655ad5d76537f3895c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.ListViewBehavior.SetPropertyName</definition>
+        <argsstring>(DependencyObject o, string value)</argsstring>
+        <name>SetPropertyName</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the name of the property. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The o.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="172" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="172" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a88c7ffeec77737157ea07aa202d52645" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.ListViewBehavior.SetSortComparer</definition>
+        <argsstring>(DependencyObject o, IListViewComparer value)</argsstring>
+        <name>SetSortComparer</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type><ref refid="interface_system_1_1_windows_1_1_collections_1_1_i_list_view_comparer" kindref="compound">IListViewComparer</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the sort comparer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The o.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="182" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="182" bodyend="185"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1adcf31f1125fdf4ca078590fc3f473916" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.ListViewBehavior.ColumnHeader_Click</definition>
+        <argsstring>(object sender, RoutedEventArgs e)</argsstring>
+        <name>ColumnHeader_Click</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>RoutedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles the Click event of the ColumnHeader control. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Windows.RoutedEventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="196" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="196" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1ab739fea2e5e3ff2b59676093d7f56487" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ListSortDirection</type>
+        <definition>static ListSortDirection System.Windows.Behaviors.ListViewBehavior.GetSortingDirection</definition>
+        <argsstring>(GridViewColumnHeader columnHeader)</argsstring>
+        <name>GetSortingDirection</name>
+        <param>
+          <type>GridViewColumnHeader</type>
+          <declname>columnHeader</declname>
+        </param>
+        <briefdescription>
+<para>Gets the sorting direction. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>columnHeader</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The column header.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="252" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="252" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a06997c8d8c770bbe07cbc1db74ae9d9a" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.ListViewBehavior.OnIsSortedWithColumnHeaderChanged</definition>
+        <argsstring>(DependencyObject o, DependencyPropertyChangedEventArgs e)</argsstring>
+        <name>OnIsSortedWithColumnHeaderChanged</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>DependencyPropertyChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Called when the IsSortedWithColumnHeader property changes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The o.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Windows.DependencyPropertyChangedEventArgs instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="268" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="268" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a68125bf2ffa34830252ce80ee1cbdd98" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.ListViewBehavior.UpdateAdorner</definition>
+        <argsstring>(GridViewColumnHeader columnHeader, ListSortDirection direction)</argsstring>
+        <name>UpdateAdorner</name>
+        <param>
+          <type>GridViewColumnHeader</type>
+          <declname>columnHeader</declname>
+        </param>
+        <param>
+          <type>ListSortDirection</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Updates the adorner. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>columnHeader</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The column header.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The direction.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="293" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="293" bodyend="311"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Additional attached behaviors for the ListView control. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/Controls/ListView/ListViewBehavior.cs" bodystart="16" bodyend="314"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1ac3620d93bf962b318ddd5b8ebbfae14e" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>AsDataTable</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1adcf31f1125fdf4ca078590fc3f473916" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>ColumnHeader_Click</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a345397b1e686ddf5a0277bef24e01c70" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>GetPropertyName</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1ae304987f9b9e99eaad28ef7abaea7d35" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>GetSortComparer</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1ab739fea2e5e3ff2b59676093d7f56487" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>GetSortingDirection</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a9c301aafa925e6eb5399969be9f4006a" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>IsSortedWithColumnHeaderProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a06997c8d8c770bbe07cbc1db74ae9d9a" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>OnIsSortedWithColumnHeaderChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1aab3070fa7aabd25d948a01c019ae65c5" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>PropertyNameProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a002ad9747371c3812b3e6335423b132d" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>SetIsSortedWithColumnHeader</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a4209eaf71484d6655ad5d76537f3895c" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>SetPropertyName</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a88c7ffeec77737157ea07aa202d52645" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>SetSortComparer</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a21e719ed9e944187275454065079615f" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>SortComparerProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a61e96ea7dd665ee9ad9e7c7d0ebc37c4" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>SortedColumnHeader</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1aa3b8262d17329fd6c0f992afc03defab" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>SortedDirection</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior_1a68125bf2ffa34830252ce80ee1cbdd98" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::ListViewBehavior</scope><name>UpdateAdorner</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

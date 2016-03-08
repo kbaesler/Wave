@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_system" kind="namespace" language="C#">
+    <compoundname>System</compoundname>
+    <innerclass refid="class_system_1_1_hierarchy" prot="public">System::Hierarchy</innerclass>
+    <innerclass refid="class_system_1_1_hierarchy_extensions" prot="public">System::HierarchyExtensions</innerclass>
+    <innerclass refid="interface_system_1_1_i_hierarchy" prot="public">System::IHierarchy</innerclass>
+    <innerclass refid="interface_system_1_1_i_recursion" prot="public">System::IRecursion</innerclass>
+    <innerclass refid="class_system_1_1_recursion" prot="public">System::Recursion</innerclass>
+    <innerclass refid="class_system_1_1_recursion_extensions" prot="public">System::RecursionExtensions</innerclass>
+    <innerclass refid="class_system_1_1_type_cast" prot="public">System::TypeCast</innerclass>
+    <innernamespace refid="namespace_system_1_1_collections">System::Collections</innernamespace>
+    <innernamespace refid="namespace_system_1_1_configuration">System::Configuration</innernamespace>
+    <innernamespace refid="namespace_system_1_1_data">System::Data</innernamespace>
+    <innernamespace refid="namespace_system_1_1_diagnostics">System::Diagnostics</innernamespace>
+    <innernamespace refid="namespace_system_1_1_forms">System::Forms</innernamespace>
+    <innernamespace refid="namespace_system_1_1_native">System::Native</innernamespace>
+    <innernamespace refid="namespace_system_1_1_reflection">System::Reflection</innernamespace>
+    <innernamespace refid="namespace_system_1_1_security">System::Security</innernamespace>
+    <innernamespace refid="namespace_system_1_1_windows">System::Windows</innernamespace>
+    <innernamespace refid="namespace_system_1_1_xml">System::Xml</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="[generated]" line="1" column="1"/>
+  </compounddef>
+</doxygen>

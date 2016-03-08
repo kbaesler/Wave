@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_7fb9aa731d18dd49a5d31606a4f85978" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes</compoundname>
+    <innerdir refid="dir_287f0067dcc6a872e5620acd7fae4fd3">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/BaseClasses</innerdir>
+    <innerdir refid="dir_f82989daa6d0acfe4c0ce238b08793c1">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders</innerdir>
+    <innerdir refid="dir_b7def36d939fb0f298784051247ad50e">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces</innerdir>
+    <innerfile refid="_address_8cs">Address.cs</innerfile>
+    <innerfile refid="_customer_8cs">Customer.cs</innerfile>
+    <innerfile refid="_design_8cs">Design.cs</innerfile>
+    <innerfile refid="_location_8cs">Location.cs</innerfile>
+    <innerfile refid="_session_8cs">Session.cs</innerfile>
+    <innerfile refid="_work_request_8cs">WorkRequest.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/"/>
+  </compounddef>
+</doxygen>

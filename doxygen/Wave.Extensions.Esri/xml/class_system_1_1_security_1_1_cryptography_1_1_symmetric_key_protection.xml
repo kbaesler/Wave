@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection" kind="class" language="C#" prot="public">
+    <compoundname>System::Security::Cryptography::SymmetricKeyProtection</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a3e074d0c039dd2909f1df7bac148cdb0" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string System.Security.Cryptography.SymmetricKeyProtection.IV</definition>
+        <argsstring></argsstring>
+        <name>IV</name>
+        <initializer>= &quot;@1B2c3D4e5F6g7H8&quot;</initializer>
+        <briefdescription>
+<para>The Initialization vector (or IV). </para>        </briefdescription>
+        <detaileddescription>
+<para>This value is required to encrypt the first block of plaintext data. For RijndaelManaged class IV must be exactly 16 ASCII characters long. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a7040050ce225540547afbbe4f54b360d" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string System.Security.Cryptography.SymmetricKeyProtection.SALT</definition>
+        <argsstring></argsstring>
+        <name>SALT</name>
+        <initializer>= &quot;s@lt&quot;</initializer>
+        <briefdescription>
+<para>Salt value used along with passphrase to generate password. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1ac0ce477be582803d9d7d94d904df5f2e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.SymmetricKeyProtection.Protect</definition>
+        <argsstring>(string unencryptedData)</argsstring>
+        <name>Protect</name>
+        <param>
+          <type>string</type>
+          <declname>unencryptedData</declname>
+        </param>
+        <briefdescription>
+<para>Encrypts specified plaintext using Rijndael symmetric key algorithm and returns a base64-encoded result. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unencryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unencrypted data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Encrypted value formatted as a base64-encoded string. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a9b7e12d1c1117ca47f0cff8229a4d27c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.SymmetricKeyProtection.Protect</definition>
+        <argsstring>(string unencryptedData, string passphrase)</argsstring>
+        <name>Protect</name>
+        <param>
+          <type>string</type>
+          <declname>unencryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>passphrase</declname>
+        </param>
+        <briefdescription>
+<para>Encrypts specified plaintext using Rijndael symmetric key algorithm and returns a base64-encoded result. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unencryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unencrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passphrase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The passphraSE.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Encrypted value formatted as a base64-encoded string. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a5cec16c4c804a0b5b12930215b643135" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.SymmetricKeyProtection.Protect</definition>
+        <argsstring>(string unencryptedData, string passphrase, string salt, string initializationVector, int iterations=100, int keySize=256)</argsstring>
+        <name>Protect</name>
+        <param>
+          <type>string</type>
+          <declname>unencryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>passphrase</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>initializationVector</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>keySize</declname>
+          <defval>256</defval>
+        </param>
+        <briefdescription>
+<para>Encrypts specified plaintext using Rijndael symmetric key algorithm and returns a base64-encoded result. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unencryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plaintext value to be encrypted.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passphrase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Passphrase from which a pseudo-random password will be derived. The derived password will be used to generate the encryption key. Passphrase can be any string. In this example we assume that this passphrase is an ASCII string. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>salt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Salt value used along with passphrase to generate password. Salt can be any string.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>initializationVector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initialization vector (or IV). This value is required to encrypt the first block of plaintext data. For RijndaelManaged class IV must be exactly 16 ASCII characters long. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of iterations used to generate password. One or two iterations should be enough.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keySize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of encryption key in bits. Allowed values are: 128, 192, and 256. Longer keys are more secure than shorter keys. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Encrypted value formatted as a base64-encoded string. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="81" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1aa964428bfc346868cbbc1cafe17e5ab6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.SymmetricKeyProtection.Unprotect</definition>
+        <argsstring>(string encryptedData)</argsstring>
+        <name>Unprotect</name>
+        <param>
+          <type>string</type>
+          <declname>encryptedData</declname>
+        </param>
+        <briefdescription>
+<para>Decrypts specified ciphertext using Rijndael symmetric key algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encrypted data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Decrypted string value. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="135" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="135" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1ae0a020db5df269b3f28ad2d5afe29e1b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.SymmetricKeyProtection.Unprotect</definition>
+        <argsstring>(string encryptedData, string passphrase)</argsstring>
+        <name>Unprotect</name>
+        <param>
+          <type>string</type>
+          <declname>encryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>passphrase</declname>
+        </param>
+        <briefdescription>
+<para>Decrypts specified ciphertext using Rijndael symmetric key algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encrypted data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passphrase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The passphraSE.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Decrypted string value. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="148" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="148" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a347da3299f803b04ecae5c97e6454732" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string System.Security.Cryptography.SymmetricKeyProtection.Unprotect</definition>
+        <argsstring>(string encryptedData, string passphrase, string salt, string initializationVector, int iterations=100, int keySize=256)</argsstring>
+        <name>Unprotect</name>
+        <param>
+          <type>string</type>
+          <declname>encryptedData</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>passphrase</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>initializationVector</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>keySize</declname>
+          <defval>256</defval>
+        </param>
+        <briefdescription>
+<para>Decrypts specified ciphertext using Rijndael symmetric key algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encryptedData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Base64-formatted ciphertext value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passphrase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Passphrase from which a pseudo-random password will be derived. The derived password will be used to generate the encryption key. Passphrase can be any string. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>salt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Salt value used along with passphrase to generate password. Salt can be any string. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>initializationVector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initialization vector (or IV). This value is required to encrypt the first block of plaintext data. For RijndaelManaged class IV must be exactly 16 ASCII characters long. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of iterations used to generate password. One or two iterations should be enough.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keySize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of encryption key in bits. Allowed values are: 128, 192, and 256. Longer keys are more secure than shorter keys. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Decrypted string value. </para></simplesect>
+</para><para>Most of the logic in this function is similar to the Encrypt logic. In order for decryption to work, all parameters of this function<itemizedlist>
+<listitem><para>except cipherText value - must match the corresponding parameters of the Encrypt function which was called to generate the ciphertext. </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="184" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="184" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1aa458b24a96ead8941aa159d818e562ce" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>RijndaelManaged</type>
+        <definition>static RijndaelManaged System.Security.Cryptography.SymmetricKeyProtection.CreateAlgorithm</definition>
+        <argsstring>(CipherMode cipherMode)</argsstring>
+        <name>CreateAlgorithm</name>
+        <param>
+          <type>CipherMode</type>
+          <declname>cipherMode</declname>
+        </param>
+        <briefdescription>
+<para>Returns the managed version of the encryption algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipherMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cipher mode.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a RijndaelManaged representing the encryption / decrypting object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="241" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="241" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1ac443e0e1c71c80cfc4e448b185e17023" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>static byte [] System.Security.Cryptography.SymmetricKeyProtection.GenerateEncryptionKey</definition>
+        <argsstring>(int keySize, string passphrase, byte[] saltBytes, int iterations)</argsstring>
+        <name>GenerateEncryptionKey</name>
+        <param>
+          <type>int</type>
+          <declname>keySize</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>passphrase</declname>
+        </param>
+        <param>
+          <type>byte[]</type>
+          <declname>saltBytes</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <briefdescription>
+<para>Returns a generate pseudo-random bytes for the encryption key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keySize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the key.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passphrase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The passphraSE.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>saltBytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The salt bytes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterations.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a byte array of the encryption key. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="260" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="260" bodyend="273"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A symmetric key algorithm (Rijndael (pronounced rain-dahl) or Advanced Encryption Standard (AES)) to encrypt and decrypt data. </para>    </briefdescription>
+    <detaileddescription>
+<para>The algorithm described by AES is a symmetric-key algorithm, meaning the same key is used for both encrypting and decrypting the data. </para>    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Security/Cryptography/SymmetricKeyProtection.cs" bodystart="11" bodyend="276"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1aa458b24a96ead8941aa159d818e562ce" prot="private" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>CreateAlgorithm</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1ac443e0e1c71c80cfc4e448b185e17023" prot="private" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>GenerateEncryptionKey</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a3e074d0c039dd2909f1df7bac148cdb0" prot="private" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>IV</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1ac0ce477be582803d9d7d94d904df5f2e" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>Protect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a9b7e12d1c1117ca47f0cff8229a4d27c" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>Protect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a5cec16c4c804a0b5b12930215b643135" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>Protect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a7040050ce225540547afbbe4f54b360d" prot="private" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>SALT</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1aa964428bfc346868cbbc1cafe17e5ab6" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>Unprotect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1ae0a020db5df269b3f28ad2d5afe29e1b" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>Unprotect</name></member>
+      <member refid="class_system_1_1_security_1_1_cryptography_1_1_symmetric_key_protection_1a347da3299f803b04ecae5c97e6454732" prot="public" virt="non-virtual"><scope>System::Security::Cryptography::SymmetricKeyProtection</scope><name>Unprotect</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

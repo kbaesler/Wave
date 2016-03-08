@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4" kind="class" prot="public">
+    <compoundname>System::Windows::DelegateCommand&lt; T &gt;</compoundname>
+    <basecompoundref refid="class_system_1_1_windows_1_1_command" prot="public" virt="non-virtual">System.Windows.Command</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a264026b30fcf639fbd2624a39bb4a967" prot="private" static="no" mutable="no">
+        <type>readonly Predicate&lt; T &gt;</type>
+        <definition>readonly Predicate&lt;T&gt; System.Windows.DelegateCommand&lt; T &gt;._CanExecute</definition>
+        <argsstring></argsstring>
+        <name>_CanExecute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" line="70" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a9e47c69bf5300c5fbf9eeb92798fd978" prot="private" static="no" mutable="no">
+        <type>readonly Action&lt; T &gt;</type>
+        <definition>readonly Action&lt;T&gt; System.Windows.DelegateCommand&lt; T &gt;._Execute</definition>
+        <argsstring></argsstring>
+        <name>_Execute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" line="71" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1aa71e72e33ab176d9bc640a1a6155dba0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.DelegateCommand&lt; T &gt;.DelegateCommand</definition>
+        <argsstring>(Action&lt; T &gt; action)</argsstring>
+        <name>DelegateCommand</name>
+        <param>
+          <type>Action&lt; T &gt;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_delegate_command" kindref="compound">DelegateCommand</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate to invoke when the command is executed.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a68a260047709c712e58c83aca792bd63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.DelegateCommand&lt; T &gt;.DelegateCommand</definition>
+        <argsstring>(Action&lt; T &gt; action, Predicate&lt; T &gt; predicate)</argsstring>
+        <name>DelegateCommand</name>
+        <param>
+          <type>Action&lt; T &gt;</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>Predicate&lt; T &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_delegate_command" kindref="compound">DelegateCommand</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate to invoke when the command is executed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate to invoke to determine whether the command can execute.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" bodystart="91" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a90c22b1720eac62d46c0d6a1c8689f7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override bool</type>
+        <definition>override bool System.Windows.DelegateCommand&lt; T &gt;.CanExecute</definition>
+        <argsstring>(object parameter)</argsstring>
+        <name>CanExecute</name>
+        <reimplements refid="class_system_1_1_windows_1_1_command_1a412a5aae0b37dc7c24836563da7dcefa">CanExecute</reimplements>
+        <param>
+          <type>object</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+<para>Defines the method that determines whether the command can execute in its current state. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="namespace_system_1_1_data" kindref="compound">Data</ref> used by the command. If the command does not require data to be passed, this object can be set to null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if this command can be executed; otherwise, falSE. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" line="114" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" bodystart="114" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a01e1a61e9961b370ae3c23edb99a78f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void System.Windows.DelegateCommand&lt; T &gt;.Execute</definition>
+        <argsstring>(object parameter)</argsstring>
+        <name>Execute</name>
+        <reimplements refid="class_system_1_1_windows_1_1_command_1ad44d41b57df66bd67269e45353689552">Execute</reimplements>
+        <param>
+          <type>object</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+<para>Defines the method to be called when the command is invoked. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="namespace_system_1_1_data" kindref="compound">Data</ref> used by the command. If the command does not require data to be passed, this object can be set to null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" line="129" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" bodystart="129" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A command that executes delegates to determine whether the command can execute, and to execute the command. </para>    </briefdescription>
+    <detaileddescription>
+<para>This command implementation is useful when the command simply needs to execute a method on a view model. The delegate for determining whether the command can execute is optional. If it is not provided, the command is considered always eligible to execute. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="273">
+        <label>Command</label>
+        <link refid="class_system_1_1_windows_1_1_command"/>
+        <childnode refid="274" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="274">
+        <label>ICommand</label>
+      </node>
+      <node id="272">
+        <label>System.Windows.DelegateCommand&lt; T &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4"/>
+        <childnode refid="273" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="276">
+        <label>Command</label>
+        <link refid="class_system_1_1_windows_1_1_command"/>
+        <childnode refid="277" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="277">
+        <label>ICommand</label>
+      </node>
+      <node id="275">
+        <label>System.Windows.DelegateCommand&lt; T &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4"/>
+        <childnode refid="276" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/DelegateCommand.cs" bodystart="66" bodyend="135"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a264026b30fcf639fbd2624a39bb4a967" prot="private" virt="non-virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>_CanExecute</name></member>
+      <member refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a9e47c69bf5300c5fbf9eeb92798fd978" prot="private" virt="non-virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>_Execute</name></member>
+      <member refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a90c22b1720eac62d46c0d6a1c8689f7b" prot="public" virt="virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>CanExecute</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_1a65794b9f0aa3672096f085b84ffd9a9c" prot="public" virt="non-virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>CanExecuteChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_1ae04b8c46e1b1845592148b854d6418f6" prot="protected" virt="non-virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>Command</name></member>
+      <member refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1aa71e72e33ab176d9bc640a1a6155dba0" prot="public" virt="non-virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>DelegateCommand</name></member>
+      <member refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a68a260047709c712e58c83aca792bd63" prot="public" virt="non-virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>DelegateCommand</name></member>
+      <member refid="class_system_1_1_windows_1_1_delegate_command_3_01_t_01_4_1a01e1a61e9961b370ae3c23edb99a78f5" prot="public" virt="virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>Execute</name></member>
+      <member refid="class_system_1_1_windows_1_1_command_1afd42c1a591f31fa3c819d1f2457605cc" prot="protected" virt="virtual"><scope>System::Windows::DelegateCommand&lt; T &gt;</scope><name>OnCanExecuteChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

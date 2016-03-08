@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_b7def36d939fb0f298784051247ad50e" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces</compoundname>
+    <innerfile refid="_i_px_design_8cs">IPxDesign.cs</innerfile>
+    <innerfile refid="_i_px_node_8cs">IPxNode.cs</innerfile>
+    <innerfile refid="_i_px_session_8cs">IPxSession.cs</innerfile>
+    <innerfile refid="_i_px_work_request_8cs">IPxWorkRequest.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/"/>
+  </compounddef>
+</doxygen>

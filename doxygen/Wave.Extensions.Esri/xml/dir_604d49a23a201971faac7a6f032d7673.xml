@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_604d49a23a201971faac7a6f032d7673" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Forms/ComponentModel</compoundname>
+    <innerfile refid="_window_state_component_8cs">WindowStateComponent.cs</innerfile>
+    <innerfile refid="_window_state_component_8_designer_8cs">WindowStateComponent.Designer.cs</innerfile>
+    <innerfile refid="_xml_node_wrapper_8cs">XmlNodeWrapper.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Forms/ComponentModel/"/>
+  </compounddef>
+</doxygen>

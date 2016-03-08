@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_wave_theme" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::WaveTheme</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ResourceDictionary</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_wave_theme_1a3929b09a7c0e136f356d9cb54d894abe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.WaveTheme.WaveTheme</definition>
+        <argsstring>()</argsstring>
+        <name>WaveTheme</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_wave_theme" kindref="compound">WaveTheme</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Themes/WaveTheme.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Themes/WaveTheme.cs" bodystart="19" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The default WPF theme that should be used by all customizations in ArcMap customizations. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="698">
+        <label>ResourceDictionary</label>
+      </node>
+      <node id="697">
+        <label>System.Windows.WaveTheme</label>
+        <link refid="class_system_1_1_windows_1_1_wave_theme"/>
+        <childnode refid="698" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="700">
+        <label>ResourceDictionary</label>
+      </node>
+      <node id="699">
+        <label>System.Windows.WaveTheme</label>
+        <link refid="class_system_1_1_windows_1_1_wave_theme"/>
+        <childnode refid="700" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Themes/WaveTheme.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Themes/WaveTheme.cs" bodystart="12" bodyend="28"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_wave_theme_1a3929b09a7c0e136f356d9cb54d894abe" prot="public" virt="non-virtual"><scope>System::Windows::WaveTheme</scope><name>WaveTheme</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

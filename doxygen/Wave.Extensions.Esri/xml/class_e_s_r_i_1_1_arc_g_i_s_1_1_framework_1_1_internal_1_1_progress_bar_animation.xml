@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation" kind="class" language="C#" prot="package">
+    <compoundname>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation</basecompoundref>
+    <basecompoundref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation" prot="public" virt="non-virtual">ESRI.ArcGIS.Framework.Internal.IProgressBarAnimation</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1a230d15b13a3f90f5cc2a1316479fb588" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation.Percentage</definition>
+        <argsstring></argsstring>
+        <name>Percentage</name>
+        <briefdescription>
+<para>Gets or sets the percent complete. </para>        </briefdescription>
+        <detaileddescription>
+<para>The percent complete.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1ac70d2148bd0569dc62c63200693a006b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation.ProgressBarAnimation</definition>
+        <argsstring>(IApplication application)</argsstring>
+        <name>ProgressBarAnimation</name>
+        <param>
+          <type>IApplication</type>
+          <declname>application</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the ProgressBarAnimation class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>application</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The application.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1a1a495f6c92fb1d04c012b06c152a0e81" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation.Step</definition>
+        <argsstring>(string statusMessage)</argsstring>
+        <name>Step</name>
+        <param>
+          <type>string</type>
+          <declname>statusMessage</declname>
+        </param>
+        <briefdescription>
+<para>Increments the progress bar and updates the status bar with specified status message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statusMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The status message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="38" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1adb1d75df4e913c4de87a8bb5759d1572" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation.Initialize</definition>
+        <argsstring>(int min, int max, int position, int step=1)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>int</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>step</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Initializes the progress bar with the specified values. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The minimum.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The step.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>min;The minimum cannot be greater than the maximum. or max;The maximum cannot be less than the minimum. or position;The value position be less than 0. or step;The step cannot be less than 1. or step;The step cannot be greater than the maximum. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="67" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1a32a95a2b93d61a855989aac80db5e167" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="93" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="93" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An internal class used to control the animation actions of the progress bar on the status bar. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="565">
+        <label>IProgressBarAnimation</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation"/>
+        <childnode refid="564" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="564">
+        <label>IDisposable</label>
+      </node>
+      <node id="562">
+        <label>ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation</label>
+        <childnode refid="563" relation="public-inheritance">
+        </childnode>
+        <childnode refid="565" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="563">
+        <label>ProgressGlobeAnimation</label>
+        <childnode refid="564" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="569">
+        <label>IProgressBarAnimation</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation"/>
+        <childnode refid="568" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="568">
+        <label>IDisposable</label>
+      </node>
+      <node id="566">
+        <label>ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation</label>
+        <childnode refid="567" relation="public-inheritance">
+        </childnode>
+        <childnode refid="569" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="567">
+        <label>ProgressGlobeAnimation</label>
+        <childnode refid="568" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="8" bodyend="104"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1afdf239550d497ee1581e028d276d4f65" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>Application</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1a32a95a2b93d61a855989aac80db5e167" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1a63756b57bbaf5e606a56c67be5e23764" prot="public" virt="non-virtual" ambiguityscope="ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation."><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1adb1d75df4e913c4de87a8bb5759d1572" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>Initialize</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1a230d15b13a3f90f5cc2a1316479fb588" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>Percentage</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1ad5f9dd4ad954189a160bd6ca51c2f0e9" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>Play</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1ac70d2148bd0569dc62c63200693a006b" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>ProgressBarAnimation</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1ab497c1c5fac17bbe68ea23bed903947d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>ProgressGlobeAnimation</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation_1a1a495f6c92fb1d04c012b06c152a0e81" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressBarAnimation</scope><name>Step</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

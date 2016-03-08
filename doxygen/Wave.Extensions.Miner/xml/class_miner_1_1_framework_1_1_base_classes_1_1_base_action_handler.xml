@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_action_handler" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Framework::BaseClasses::BaseActionHandler</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ActionHandler</basecompoundref>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_action_handler_1a231a6382935902e6db06ccd091b763bd" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseActionHandler.BaseActionHandler</definition>
+        <argsstring>(string name, string description)</argsstring>
+        <name>BaseActionHandler</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_action_handler" kindref="compound">BaseActionHandler</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The description.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseActionHandler.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseActionHandler.cs" bodystart="17" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract class used for creating an Action Handler </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="37">
+        <label>ActionHandler</label>
+      </node>
+      <node id="36">
+        <label>Miner.Framework.BaseClasses.BaseActionHandler</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_action_handler"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="39">
+        <label>ActionHandler</label>
+      </node>
+      <node id="38">
+        <label>Miner.Framework.BaseClasses.BaseActionHandler</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_action_handler"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseActionHandler.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseActionHandler.cs" bodystart="8" bodyend="24"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_action_handler_1a231a6382935902e6db06ccd091b763bd" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseActionHandler</scope><name>BaseActionHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

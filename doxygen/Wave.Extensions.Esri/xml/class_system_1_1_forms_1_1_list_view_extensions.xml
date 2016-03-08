@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_list_view_extensions" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::ListViewExtensions</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_list_view_extensions_1a152fdc2af2078c0a9c0f29884ab41106" prot="private" static="no" mutable="no">
+        <type>const char</type>
+        <definition>const char System.Forms.ListViewExtensions.AscendingOrder</definition>
+        <argsstring></argsstring>
+        <name>AscendingOrder</name>
+        <initializer>= &apos;\u25B2&apos;</initializer>
+        <briefdescription>
+<para>A character representing an ascending arrow. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_list_view_extensions_1ab361df82b808a98bb4315619e7509981" prot="private" static="no" mutable="no">
+        <type>const char</type>
+        <definition>const char System.Forms.ListViewExtensions.DescendingOrder</definition>
+        <argsstring></argsstring>
+        <name>DescendingOrder</name>
+        <initializer>= &apos;\u25BC&apos;</initializer>
+        <briefdescription>
+<para>A character rperesenting a descending arrow. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_list_view_extensions_1aac2c5ac616f476e19fb9d6e68c09a4ac" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Forms.ListViewExtensions.AutoResizeAllColumns</definition>
+        <argsstring>(this ListView source)</argsstring>
+        <name>AutoResizeAllColumns</name>
+        <param>
+          <type>this ListView</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Automatically resizes the columns to the appropriate width to either contain all of the contents or size of the header. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list view.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" bodystart="35" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_list_view_extensions_1a819730acf6a0c8826af407b691084c05" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Forms.ListViewExtensions.Sort</definition>
+        <argsstring>(this ListView source, int columnIndex, SortOrder sortOrder)</argsstring>
+        <name>Sort</name>
+        <param>
+          <type>this ListView</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>columnIndex</declname>
+        </param>
+        <param>
+          <type>SortOrder</type>
+          <declname>sortOrder</declname>
+        </param>
+        <briefdescription>
+<para>Sorts the items in the list on the specified <emphasis>columnIndex</emphasis>  and draws a sort direction arrow to the column header. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>columnIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the column.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sortOrder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sort order.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" bodystart="66" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_list_view_extensions_1a8abc89f4e8336b91960b28cab417f23c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Forms.ListViewExtensions.Sort</definition>
+        <argsstring>(this ListView source, int columnIndex, IComparer comparer)</argsstring>
+        <name>Sort</name>
+        <param>
+          <type>this ListView</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>columnIndex</declname>
+        </param>
+        <param>
+          <type>IComparer</type>
+          <declname>comparer</declname>
+        </param>
+        <briefdescription>
+<para>Sorts the items in the list on the specified <emphasis>columnIndex</emphasis>  and draws a sort direction arrow to the column header. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>columnIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the column.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>comparer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list item comparer used for the sorting.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" bodystart="81" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the System.Windows.Forms.ListView control. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ListViewExtensions.cs" bodystart="12" bodyend="117"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_list_view_extensions_1a152fdc2af2078c0a9c0f29884ab41106" prot="private" virt="non-virtual"><scope>System::Forms::ListViewExtensions</scope><name>AscendingOrder</name></member>
+      <member refid="class_system_1_1_forms_1_1_list_view_extensions_1aac2c5ac616f476e19fb9d6e68c09a4ac" prot="public" virt="non-virtual"><scope>System::Forms::ListViewExtensions</scope><name>AutoResizeAllColumns</name></member>
+      <member refid="class_system_1_1_forms_1_1_list_view_extensions_1ab361df82b808a98bb4315619e7509981" prot="private" virt="non-virtual"><scope>System::Forms::ListViewExtensions</scope><name>DescendingOrder</name></member>
+      <member refid="class_system_1_1_forms_1_1_list_view_extensions_1a819730acf6a0c8826af407b691084c05" prot="public" virt="non-virtual"><scope>System::Forms::ListViewExtensions</scope><name>Sort</name></member>
+      <member refid="class_system_1_1_forms_1_1_list_view_extensions_1a8abc89f4e8336b91960b28cab417f23c" prot="public" virt="non-virtual"><scope>System::Forms::ListViewExtensions</scope><name>Sort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

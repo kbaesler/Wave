@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Framework::MouseCursorReverter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1ab0afb20e69c224764ef81223fe220277" prot="private" static="no" mutable="no">
+        <type>readonly IMouseCursor</type>
+        <definition>readonly IMouseCursor ESRI.ArcGIS.Framework.MouseCursorReverter._Cursor</definition>
+        <argsstring></argsstring>
+        <name>_Cursor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" line="78" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1a19f65a5dbc5298df63a4adf567b30f62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.Framework.MouseCursorReverter.MouseCursorReverter</definition>
+        <argsstring>(MouseCursorImage cursor)</argsstring>
+        <name>MouseCursorReverter</name>
+        <param>
+          <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623f" kindref="member">MouseCursorImage</ref></type>
+          <declname>cursor</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter" kindref="compound">MouseCursorReverter</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cursor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cursor.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" line="88" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1ab28ec03421da1870c39cf407b9aef2d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.Framework.MouseCursorReverter.MouseCursorReverter</definition>
+        <argsstring>(int cursor)</argsstring>
+        <name>MouseCursorReverter</name>
+        <param>
+          <type>int</type>
+          <declname>cursor</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter" kindref="compound">MouseCursorReverter</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cursor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cursor.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" line="97" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" bodystart="97" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1a61f9bfcfd5fd2bffd0e78a94b5426403" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Framework.MouseCursorReverter.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" line="110" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" bodystart="110" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1adf020b7e056d6b8f686a21bd08d78c67" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Framework.MouseCursorReverter.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" line="128" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" bodystart="128" bodyend="137"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A supporting class used to change the mouse pointer in ArcMap. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="498">
+        <label>IDisposable</label>
+      </node>
+      <node id="497">
+        <label>ESRI.ArcGIS.Framework.MouseCursorReverter</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter"/>
+        <childnode refid="498" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="500">
+        <label>IDisposable</label>
+      </node>
+      <node id="499">
+        <label>ESRI.ArcGIS.Framework.MouseCursorReverter</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter"/>
+        <childnode refid="500" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" line="75" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" bodystart="74" bodyend="140"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1ab0afb20e69c224764ef81223fe220277" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::MouseCursorReverter</scope><name>_Cursor</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1a61f9bfcfd5fd2bffd0e78a94b5426403" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::MouseCursorReverter</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1adf020b7e056d6b8f686a21bd08d78c67" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::MouseCursorReverter</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1a19f65a5dbc5298df63a4adf567b30f62" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::MouseCursorReverter</scope><name>MouseCursorReverter</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter_1ab28ec03421da1870c39cf407b9aef2d0" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::MouseCursorReverter</scope><name>MouseCursorReverter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

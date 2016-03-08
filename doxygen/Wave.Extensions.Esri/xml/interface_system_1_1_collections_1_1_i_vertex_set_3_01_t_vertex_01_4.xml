@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4" kind="interface" prot="public">
+    <compoundname>System::Collections::IVertexSet&lt; TVertex &gt;</compoundname>
+    <derivedcompoundref refid="interface_system_1_1_collections_1_1_i_graph_3_01_t_vertex_00_01_t_edge_01_4" prot="public" virt="non-virtual">System.Collections.IGraph&lt; TVertex, TEdge &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a7ce4cb2d3fc8908fce4f98e69c07d072" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; VertexEventArgs&lt; TVertex &gt; &gt;</type>
+        <definition>EventHandler&lt;VertexEventArgs&lt;TVertex&gt; &gt; System.Collections.IVertexSet&lt; TVertex &gt;.VertexAdded</definition>
+        <argsstring></argsstring>
+        <name>VertexAdded</name>
+        <briefdescription>
+<para>Raised when an vertex is added to the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a033c3d5c44d651f7e955641f210e93e8" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; VertexEventArgs&lt; TVertex &gt; &gt;</type>
+        <definition>EventHandler&lt;VertexEventArgs&lt;TVertex&gt; &gt; System.Collections.IVertexSet&lt; TVertex &gt;.VertexRemoved</definition>
+        <argsstring></argsstring>
+        <name>VertexRemoved</name>
+        <briefdescription>
+<para>Raised when an vertex has been removed from the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a167a6241277eb1e385c80d866bb0886c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Collections.IVertexSet&lt; TVertex &gt;.IsVerticesEmpty</definition>
+        <argsstring></argsstring>
+        <name>IsVerticesEmpty</name>
+        <briefdescription>
+<para>Gets a value indicating whether there are no vertices in this set. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the vertex set is empty; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1af89b81a5d1beef42118de51d5618c979" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Collections.IVertexSet&lt; TVertex &gt;.VertexCount</definition>
+        <argsstring></argsstring>
+        <name>VertexCount</name>
+        <briefdescription>
+<para>Gets the vertex count. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertex count.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="41" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a965aaf20d1c49f9f07d445a2d3ea8df0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; TVertex &gt;</type>
+        <definition>IEnumerable&lt;TVertex&gt; System.Collections.IVertexSet&lt; TVertex &gt;.Vertices</definition>
+        <argsstring></argsstring>
+        <name>Vertices</name>
+        <briefdescription>
+<para>Gets the vertices. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertices.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1abdbc9693b9435cbbf9c53ceeb510856b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.IVertexSet&lt; TVertex &gt;.AddVertex</definition>
+        <argsstring>(TVertex vertex)</argsstring>
+        <name>AddVertex</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1a8339d8c3af2797ae84e16841fd7dcf3d">AddVertex</reimplementedby>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Adds the vertex to the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the vertex was added, otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a06042ec649159c3db12fae6f4330e51c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.IVertexSet&lt; TVertex &gt;.AddVertexRange</definition>
+        <argsstring>(IEnumerable&lt; TVertex &gt; vertices)</argsstring>
+        <name>AddVertexRange</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1acd8f5d69c1e512204c2d4c0fbf2e7902">AddVertexRange</reimplementedby>
+        <param>
+          <type>IEnumerable&lt; TVertex &gt;</type>
+          <declname>vertices</declname>
+        </param>
+        <briefdescription>
+<para>Adds a set of vertices to the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertices</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertices.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of vertices successfully added to the graph. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="69" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a2bd9c1df319d9904a03d29cd72ab4b53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.IVertexSet&lt; TVertex &gt;.ContainsVertex</definition>
+        <argsstring>(TVertex vertex)</argsstring>
+        <name>ContainsVertex</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1aa03290bf3d17a8ae2f2a265a67289afd">ContainsVertex</reimplementedby>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified vertex contains vertex. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified vertex contains vertex; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1af18536221a7a39b6c03ea068b3b57873" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.IVertexSet&lt; TVertex &gt;.RemoveVertex</definition>
+        <argsstring>(TVertex vertex)</argsstring>
+        <name>RemoveVertex</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1a157d20275b9f40269cce676402f99a4f">RemoveVertex</reimplementedby>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Removes <emphasis>vertex</emphasis>  from the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if <emphasis>vertex</emphasis>  was successfully removed; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a58cd0f581d1eead902d797d1e61cc702" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.IVertexSet&lt; TVertex &gt;.RemoveVertex</definition>
+        <argsstring>(Func&lt; TVertex, bool &gt; predicate)</argsstring>
+        <name>RemoveVertex</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4_1a730e2ca8dbb34624cfb3621ec8584338">RemoveVertex</reimplementedby>
+        <param>
+          <type>Func&lt; TVertex, bool &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Removes all edges that match <emphasis>predicate</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pure delegate that takes an <emphasis>TVertex</emphasis>  and returns true if the edge should be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of vertices removed.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="97" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A set of vertices </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the vertices</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="449">
+        <label>System.Collections.IVertexSet&lt; TVertex &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4"/>
+      </node>
+      <node id="451">
+        <label>System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_adjacency_graph_3_01_t_vertex_00_01_t_edge_01_4"/>
+        <childnode refid="450" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="450">
+        <label>System.Collections.IGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_graph_3_01_t_vertex_00_01_t_edge_01_4"/>
+        <childnode refid="449" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IVertexSet.cs" bodystart="11" bodyend="100"/>
+    <listofallmembers>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1abdbc9693b9435cbbf9c53ceeb510856b" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>AddVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a06042ec649159c3db12fae6f4330e51c" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>AddVertexRange</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a2bd9c1df319d9904a03d29cd72ab4b53" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>ContainsVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a167a6241277eb1e385c80d866bb0886c" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>IsVerticesEmpty</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1af18536221a7a39b6c03ea068b3b57873" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>RemoveVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a58cd0f581d1eead902d797d1e61cc702" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>RemoveVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a7ce4cb2d3fc8908fce4f98e69c07d072" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>VertexAdded</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1af89b81a5d1beef42118de51d5618c979" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>VertexCount</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a033c3d5c44d651f7e955641f210e93e8" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>VertexRemoved</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_3_01_t_vertex_01_4_1a965aaf20d1c49f9f07d445a2d3ea8df0" prot="public" virt="non-virtual"><scope>System::Collections::IVertexSet&lt; TVertex &gt;</scope><name>Vertices</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_699c62fd68921ba8465db1e6550f0ce6" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies</compoundname>
+    <innerfile refid="_adjacency_node_8cs">AdjacencyNode.cs</innerfile>
+    <innerfile refid="_adjacency_queue_8cs">AdjacencyQueue.cs</innerfile>
+    <innerfile refid="_adjacency_trace_8cs">AdjacencyTrace.cs</innerfile>
+    <innerfile refid="_connectivity_trace_8cs">ConnectivityTrace.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/Trace/Strategies/"/>
+  </compounddef>
+</doxygen>

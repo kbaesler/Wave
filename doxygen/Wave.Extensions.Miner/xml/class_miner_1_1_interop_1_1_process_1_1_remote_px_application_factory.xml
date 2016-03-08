@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_remote_px_application_factory" kind="class" language="C#" prot="package">
+    <compoundname>Miner::Interop::Process::RemotePxApplicationFactory</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory" prot="public" virt="non-virtual">Miner.Interop.Process.PxApplicationFactory</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_remote_px_application_factory_1a770f6c65f36a38ef4aa1cd791b64ccb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override IMMPxApplication</type>
+        <definition>override IMMPxApplication Miner.Interop.Process.RemotePxApplicationFactory.Open</definition>
+        <argsstring>(string userName, string password, string dataSource, string database, bool isOSA, params string[] extensionNames)</argsstring>
+        <name>Open</name>
+        <param>
+          <type>string</type>
+          <declname>userName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>password</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>dataSource</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>database</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isOSA</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>extensionNames</declname>
+        </param>
+        <briefdescription>
+<para>Opens a connection to the process framework database. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>userName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the user.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The password.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data source or SID of the database instance.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>database</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The database (used for SQL Server).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isOSA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> the connection should be made using operating system authentication.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extensionNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The names of process framework extensions.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the IMMPxApplication application reference; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/RemotePxApplicationFactory.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/RemotePxApplicationFactory.cs" bodystart="24" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A factory for making a connection to an Oracle or SQL Server process framework database. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="486">
+        <label>PxApplicationFactory</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory"/>
+      </node>
+      <node id="485">
+        <label>Miner.Interop.Process.RemotePxApplicationFactory</label>
+        <childnode refid="486" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="488">
+        <label>PxApplicationFactory</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory"/>
+      </node>
+      <node id="487">
+        <label>Miner.Interop.Process.RemotePxApplicationFactory</label>
+        <childnode refid="488" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/RemotePxApplicationFactory.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data/Internal/RemotePxApplicationFactory.cs" bodystart="8" bodyend="64"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_remote_px_application_factory_1a770f6c65f36a38ef4aa1cd791b64ccb5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::RemotePxApplicationFactory</scope><name>Open</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_application_factory_1a699b0d4bc71e5f3236ba61389bee6e2e" prot="public" virt="virtual" ambiguityscope="Miner::Interop::Process::PxApplicationFactory."><scope>Miner::Interop::Process::RemotePxApplicationFactory</scope><name>Open</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

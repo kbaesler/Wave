@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Miner::Framework::BaseClasses::BaseAttributeAU</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IMMAttrAUStrategy</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a94dc1ef6fe53f673d0c287a57ab8e683" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Framework.BaseClasses.BaseAttributeAU._DomainName</definition>
+        <argsstring></argsstring>
+        <name>_DomainName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a01e14b5079ddc7dd031b85f0200eec88" prot="private" static="no" mutable="no">
+        <type>readonly esriFieldType</type>
+        <definition>readonly esriFieldType Miner.Framework.BaseClasses.BaseAttributeAU._FieldType</definition>
+        <argsstring></argsstring>
+        <name>_FieldType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1ab79e42f1ffbc4fd2655d7f01b90398e6" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Framework.BaseClasses.BaseAttributeAU._Name</definition>
+        <argsstring></argsstring>
+        <name>_Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1ad40c6194f6bb4f3770b2301acd0a079a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseAttributeAU.DomainName</definition>
+        <argsstring></argsstring>
+        <name>DomainName</name>
+        <briefdescription>
+<para>Gets the name of the domain. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the domain.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a9c3ceac16d59643a8dec036e34ab1104" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>esriFieldType</type>
+        <definition>esriFieldType Miner.Framework.BaseClasses.BaseAttributeAU.FieldType</definition>
+        <argsstring></argsstring>
+        <name>FieldType</name>
+        <briefdescription>
+<para>Gets the type of the field. </para>        </briefdescription>
+        <detaileddescription>
+<para>The type of the field.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="58" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a34ff66df062c367df2f8ac22435a9822" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseAttributeAU.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets the name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a79002a8b1b1aff115f46fee62af7402f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseAttributeAU.BaseAttributeAU</definition>
+        <argsstring>(string name, string domainName, esriFieldType fieldType)</argsstring>
+        <name>BaseAttributeAU</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>domainName</declname>
+        </param>
+        <param>
+          <type>esriFieldType</type>
+          <declname>fieldType</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u" kindref="compound">BaseAttributeAU</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>domainName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the domain.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the field.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a48101ec7ae0bf62e19bd2eedae6f6073" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Framework.BaseClasses.BaseAttributeAU.Abort</definition>
+        <argsstring>(string message)</argsstring>
+        <name>Abort</name>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Aborts the execution by causing an exception to be raised that notifies ArcFM to rollback the edits. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Miner.CancelEditException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="138" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a5c5e852b84a538f4ab3d74ddecde0bb9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract object</type>
+        <definition>abstract object Miner.Framework.BaseClasses.BaseAttributeAU.InternalExecute</definition>
+        <argsstring>(IObject obj)</argsstring>
+        <name>InternalExecute</name>
+        <param>
+          <type>IObject</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Returns the value for the field on the <emphasis>obj</emphasis>  object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A value for the assigned field. </para></simplesect>
+</para><para>This method will be called from interface method and is wrapped within the exception handling for that method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="154" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1ab4f64ea9d25e4e0f27e942dbf95beadc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>object</type>
+        <definition>virtual object Miner.Framework.BaseClasses.BaseAttributeAU.GetAutoValue</definition>
+        <argsstring>(IObject pObj)</argsstring>
+        <name>GetAutoValue</name>
+        <param>
+          <type>IObject</type>
+          <declname>pObj</declname>
+        </param>
+        <briefdescription>
+<para>Returns the value for the field on the <emphasis>pObj</emphasis>  object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pObj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A value for the assigned field. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="79" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="79" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a45cbc852b20fe8398d28afb06afb11d5" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Framework.BaseClasses.BaseAttributeAU.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="114" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1af2ae2a931ccca3f0ac087429e8436f33" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Framework.BaseClasses.BaseAttributeAU.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="124" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="124" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1abe9b7508e905db2cad6344066fb29bd6" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Framework.BaseClasses.BaseAttributeAU.WriteError</definition>
+        <argsstring>(Exception e)</argsstring>
+        <name>WriteError</name>
+        <param>
+          <type>Exception</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Logs the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="164" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="164" bodyend="170"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for Attribute AutoUpdaters. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="41">
+        <label>IMMAttrAUStrategy</label>
+      </node>
+      <node id="40">
+        <label>Miner.Framework.BaseClasses.BaseAttributeAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u"/>
+        <childnode refid="41" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="43">
+        <label>IMMAttrAUStrategy</label>
+      </node>
+      <node id="42">
+        <label>Miner.Framework.BaseClasses.BaseAttributeAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u"/>
+        <childnode refid="43" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAttributeAU.cs" bodystart="16" bodyend="173"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a94dc1ef6fe53f673d0c287a57ab8e683" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>_DomainName</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a01e14b5079ddc7dd031b85f0200eec88" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>_FieldType</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1ab79e42f1ffbc4fd2655d7f01b90398e6" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>_Name</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a48101ec7ae0bf62e19bd2eedae6f6073" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>Abort</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a79002a8b1b1aff115f46fee62af7402f" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>BaseAttributeAU</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1ad40c6194f6bb4f3770b2301acd0a079a" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>DomainName</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a9c3ceac16d59643a8dec036e34ab1104" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>FieldType</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1ab4f64ea9d25e4e0f27e942dbf95beadc" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>GetAutoValue</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a5c5e852b84a538f4ab3d74ddecde0bb9" prot="protected" virt="pure-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>InternalExecute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a34ff66df062c367df2f8ac22435a9822" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1a45cbc852b20fe8398d28afb06afb11d5" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>Register</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1af2ae2a931ccca3f0ac087429e8436f33" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>Unregister</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_attribute_a_u_1abe9b7508e905db2cad6344066fb29bd6" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAttributeAU</scope><name>WriteError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

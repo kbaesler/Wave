@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_system_1_1_windows_1_1_collections" kind="namespace" language="C#">
+    <compoundname>System::Windows::Collections</compoundname>
+    <innerclass refid="class_system_1_1_windows_1_1_collections_1_1_base_list_view_comparer" prot="public">System::Windows::Collections::BaseListViewComparer</innerclass>
+    <innerclass refid="interface_system_1_1_windows_1_1_collections_1_1_i_list_view_comparer" prot="public">System::Windows::Collections::IListViewComparer</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_collections_1_1_string_list_view_comparer" prot="public">System::Windows::Collections::StringListViewComparer</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Collections/BaseClasses/BaseListViewComparer.cs" line="5" column="1"/>
+  </compounddef>
+</doxygen>

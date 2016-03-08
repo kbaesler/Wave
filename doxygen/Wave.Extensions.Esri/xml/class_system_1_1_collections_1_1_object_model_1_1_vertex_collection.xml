@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::ObjectModel::VertexCollection</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Collection&lt; TVertex &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a51128534208db54fa70296e7ad64ffcd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.ObjectModel.VertexCollection&lt; TVertex &gt;.VertexCollection</definition>
+        <argsstring>()</argsstring>
+        <name>VertexCollection</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a51128534208db54fa70296e7ad64ffcd" kindref="member">VertexCollection&lt;TVertex&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a88bbd795436d6db5e302b4b9c97511ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.ObjectModel.VertexCollection&lt; TVertex &gt;.VertexCollection</definition>
+        <argsstring>(VertexCollection&lt; TVertex &gt; other)</argsstring>
+        <name>VertexCollection</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection" kindref="compound">VertexCollection</ref>&lt; TVertex &gt;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a51128534208db54fa70296e7ad64ffcd" kindref="member">VertexCollection&lt;TVertex&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a2d77054a65d3aa039fd2e56017501447" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection" kindref="compound">VertexCollection</ref>&lt; TVertex &gt;</type>
+        <definition>VertexCollection&lt;TVertex&gt; System.Collections.ObjectModel.VertexCollection&lt; TVertex &gt;.Clone</definition>
+        <argsstring>()</argsstring>
+        <name>Clone</name>
+        <briefdescription>
+<para>Clones this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" bodystart="38" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An observable collection of vertices. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="680">
+        <label>Collection&lt; TVertex &gt;</label>
+      </node>
+      <node id="679">
+        <label>System.Collections.ObjectModel.VertexCollection&lt; TVertex &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection"/>
+        <childnode refid="680" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="682">
+        <label>Collection&lt; TVertex &gt;</label>
+      </node>
+      <node id="681">
+        <label>System.Collections.ObjectModel.VertexCollection&lt; TVertex &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection"/>
+        <childnode refid="682" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/VertexCollection.cs" bodystart="10" bodyend="44"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a2d77054a65d3aa039fd2e56017501447" prot="public" virt="non-virtual"><scope>System::Collections::ObjectModel::VertexCollection</scope><name>Clone</name></member>
+      <member refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a51128534208db54fa70296e7ad64ffcd" prot="public" virt="non-virtual"><scope>System::Collections::ObjectModel::VertexCollection</scope><name>VertexCollection</name></member>
+      <member refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_collection_1a88bbd795436d6db5e302b4b9c97511ce" prot="public" virt="non-virtual"><scope>System::Collections::ObjectModel::VertexCollection</scope><name>VertexCollection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

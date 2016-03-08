@@ -1,0 +1,1027 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ad31e3a21e631417b7ddd3be48bf3e422" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.Escape</definition>
+        <argsstring>(this ISQLSyntax source, string value)</argsstring>
+        <name>Escape</name>
+        <param>
+          <type>this ISQLSyntax</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Escaping quote characters by use two quotes for every one displayed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a string representing the escaped value.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="76" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="76" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a21f4c7a902b59e3b0bbd342d678c250f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5d" kindref="member">DBMS</ref></type>
+        <definition>static DBMS ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetDBMS</definition>
+        <argsstring>(this IWorkspace source)</argsstring>
+        <name>GetDBMS</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets the database management system that is used with conjunction of the <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5d" kindref="member">DBMS</ref> enumeration value. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="91" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a2b363a6a23df51fdb88394f1c5d3be40" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IDomain</type>
+        <definition>static IDomain ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetDomain</definition>
+        <argsstring>(this IWorkspace source, string domainName)</argsstring>
+        <name>GetDomain</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>domainName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the IDomain that equals the specified <emphasis>domainName</emphasis>  using a non case sensitive comparison. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>domainName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the domain.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IDomain representing the domain with the given name; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>domainName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="139" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="139" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a49fc5420c77d549e454fee734ee3796c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IDomain &gt;</type>
+        <definition>static IEnumerable&lt;IDomain&gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetDomains</definition>
+        <argsstring>(this IWorkspace source)</argsstring>
+        <name>GetDomains</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the IDomain values that have been configured in the workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;IDomain&gt; representing the domains available; otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="160" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="160" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ae54b0363148e9989d416f799c2c5cfd4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, List&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, List&lt;DifferenceRow&gt; &gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetEditChanges</definition>
+        <argsstring>(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func&lt; string, bool &gt; func, Predicate&lt; DifferenceRow &gt; predicate, params esriDifferenceType[] differenceTypes)</argsstring>
+        <name>GetEditChanges</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriEditDataChangesType</type>
+          <declname>editDataChangesType</declname>
+        </param>
+        <param>
+          <type>Func&lt; string, bool &gt;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>Predicate&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>params esriDifferenceType[]</type>
+          <declname>differenceTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the changes (or edits) that have been made in the current edit session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source workspace.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editDataChangesType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the edit data changes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function used to determine if the differences should be determined for the specified table.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate used to determine if the differences are returned.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>differenceTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of differences.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;TKey,TValue&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>differenceTypes</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>System.InvalidOperationException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace must be within an edit session in order to determine the edit changes. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="186" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="186" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a0150dfc78de1bc69f28a299347876d12" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, List&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, List&lt;DifferenceRow&gt; &gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetEditChanges</definition>
+        <argsstring>(this IWorkspace source, esriEditDataChangesType editDataChangesType, Predicate&lt; DifferenceRow &gt; predicate, params esriDifferenceType[] differenceTypes)</argsstring>
+        <name>GetEditChanges</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriEditDataChangesType</type>
+          <declname>editDataChangesType</declname>
+        </param>
+        <param>
+          <type>Predicate&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>params esriDifferenceType[]</type>
+          <declname>differenceTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the changes (or edits) that have been made in the current edit session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source workspace.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editDataChangesType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the edit data changes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate used to determine if the differences are returned.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>differenceTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of differences.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;TKey,TValue&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>differenceTypes</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>System.InvalidOperationException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace must be within an edit session in order to determine the edit changes. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="257" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="257" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1aaa8de9d943c70ec21b1343f2e52a59f2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, List&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, List&lt;DifferenceRow&gt; &gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetEditChanges</definition>
+        <argsstring>(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func&lt; string, bool &gt; func, params esriDifferenceType[] differenceTypes)</argsstring>
+        <name>GetEditChanges</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriEditDataChangesType</type>
+          <declname>editDataChangesType</declname>
+        </param>
+        <param>
+          <type>Func&lt; string, bool &gt;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>params esriDifferenceType[]</type>
+          <declname>differenceTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the changes (or edits) that have been made in the current edit session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source workspace.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editDataChangesType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the edit data changes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function used to determine if the differences should be determined for the specified table.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>differenceTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of differences.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;TKey,TValue&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>differenceTypes</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>System.InvalidOperationException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace must be within an edit session in order to determine the edit changes. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="278" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="278" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a02c8da96c579a15f82ca51c0ca07d5ad" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, List&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, List&lt;DifferenceRow&gt; &gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetEditChanges</definition>
+        <argsstring>(this IWorkspace source, esriEditDataChangesType editDataChangesType, params esriDifferenceType[] differenceTypes)</argsstring>
+        <name>GetEditChanges</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriEditDataChangesType</type>
+          <declname>editDataChangesType</declname>
+        </param>
+        <param>
+          <type>params esriDifferenceType[]</type>
+          <declname>differenceTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the changes (or edits) that have been made in the current edit session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source workspace.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editDataChangesType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the edit data changes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>differenceTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of differences.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;TKey,TValue&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>differenceTypes</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>System.InvalidOperationException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace must be within an edit session in order to determine the edit changes. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="298" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="298" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a199e983e4965898334f0c07a0239bbeb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IFeatureClass</type>
+        <definition>static IFeatureClass ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetFeatureClass</definition>
+        <argsstring>(this IWorkspace source, string schemaName, string tableName)</argsstring>
+        <name>GetFeatureClass</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>schemaName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the IFeatureClass with the specified <emphasis>tableName</emphasis>  in the <emphasis>schemaName</emphasis>  that resides within the specified <emphasis>source</emphasis>  workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schemaName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the schema (optional).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tableName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IFeatureClass representing the feature class that has the name, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tableName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="316" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="316" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ae8ecc19cdc9ae24c6248940b897317d2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IFeatureClass &gt;</type>
+        <definition>static IEnumerable&lt;IFeatureClass&gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetFeatureClasses</definition>
+        <argsstring>(this IWorkspace source)</argsstring>
+        <name>GetFeatureClasses</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the feature classes in the workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;IFeatureClass&gt; representing the feature classes.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="330" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="330" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a417436754d817bf8adccf33248be27b2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetFormattedDate</definition>
+        <argsstring>(this IWorkspace source, DateTime dateTime)</argsstring>
+        <name>GetFormattedDate</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>DateTime</type>
+          <declname>dateTime</declname>
+        </param>
+        <briefdescription>
+<para>Gets the formatted date time for the workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dateTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The date time.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns String representing the formatted date time for the workspace. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="357" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="357" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a34161b54d0cb73f914f2e237c20e9849" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetFunctionName</definition>
+        <argsstring>(this IWorkspace source, esriSQLFunctionName sqlFunctionName)</argsstring>
+        <name>GetFunctionName</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriSQLFunctionName</type>
+          <declname>sqlFunctionName</declname>
+        </param>
+        <briefdescription>
+<para>Gets the name of the SQL function. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sqlFunctionName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the SQL function.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a string representing the name of the function. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function is not supported.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="398" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="398" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a32f8ad6f96d15b71e294f81e9fcbf2af" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IRelationshipClass</type>
+        <definition>static IRelationshipClass ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetRelationshipClass</definition>
+        <argsstring>(this IWorkspace source, string schemaName, string relationshipName)</argsstring>
+        <name>GetRelationshipClass</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>schemaName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>relationshipName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the IRelationshipClass with the specified <emphasis>relationshipName</emphasis>  in the <emphasis>schemaName</emphasis>  that resides within the specified <emphasis>source</emphasis>  workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schemaName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the schema (optional).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>relationshipName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the relationship table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IRelationshipClass representing the relationship that has the name, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tableName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="423" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="423" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ab05af39d7a38ea678dd3cdf3ebfda0f2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IRelationshipClass &gt;</type>
+        <definition>static IEnumerable&lt;IRelationshipClass&gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetRelationshipClasses</definition>
+        <argsstring>(this IWorkspace source)</argsstring>
+        <name>GetRelationshipClasses</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the feature classes in the workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;IFeatureClass&gt; representing the feature classes.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="437" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="437" bodyend="453"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ac9acbc302d4797403e2e1d64ee34aa9b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ITable</type>
+        <definition>static ITable ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetTable</definition>
+        <argsstring>(this IWorkspace source, string schemaName, string tableName)</argsstring>
+        <name>GetTable</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>schemaName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the ITable with the specified <emphasis>tableName</emphasis>  in the <emphasis>schemaName</emphasis>  that resides within the specified <emphasis>source</emphasis>  workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schemaName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the schema (optional).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tableName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a ITable representing the table that has the name, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tableName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="468" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="468" bodyend="475"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a407c4988e6ec26accda01ff7cf9b788f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; ITable &gt;</type>
+        <definition>static IEnumerable&lt;ITable&gt; ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.GetTables</definition>
+        <argsstring>(this IWorkspace source)</argsstring>
+        <name>GetTables</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the tables in the workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;ITable&gt; representing the feature classes.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="482" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="482" bodyend="486"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ae4385eb5e5fa567dd53044a50dbe6197" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.IsDBMS</definition>
+        <argsstring>(this IWorkspace source, DBMS database)</argsstring>
+        <name>IsDBMS</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a77996adc122a390508ef7c3b1f72af5d" kindref="member">DBMS</ref></type>
+          <declname>database</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified workspace is the <emphasis>database</emphasis>  system. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>database</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The database.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing <computeroutput>true</computeroutput> if the specified workspace is DBMS; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="496" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="496" bodyend="501"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a9402f91d2a474eeddd93fa56d2c3ca77" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.IsPredicateSupported</definition>
+        <argsstring>(this IWorkspace source, esriSQLPredicates predicate)</argsstring>
+        <name>IsPredicateSupported</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriSQLPredicates</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the predicate is supported by the workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the bool representing <computeroutput>true</computeroutput> when the predicate is supported; otherwise <computeroutput>false</computeroutput> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="513" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="513" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a8dec63584a0f25d2355face6b4d725cb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.PerformOperation</definition>
+        <argsstring>(this IWorkspace source, Func&lt; bool &gt; operation, bool withUndoRedo=true, esriMultiuserEditSessionMode multiuserEditSessionMode=esriMultiuserEditSessionMode.esriMESMVersioned)</argsstring>
+        <name>PerformOperation</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; bool &gt;</type>
+          <declname>operation</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>withUndoRedo</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>esriMultiuserEditSessionMode</type>
+          <declname>multiuserEditSessionMode</declname>
+          <defval>esriMultiuserEditSessionMode.esriMESMVersioned</defval>
+        </param>
+        <briefdescription>
+<para>Encapsulates the <emphasis>operation</emphasis>  by the necessary start and stop edit constructs using the specified <emphasis>withUndoRedo</emphasis>  and <emphasis>multiuserEditSessionMode</emphasis>  parameters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>operation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit operation delegate that handles making the necessary edits. When the delegate returns <computeroutput>true</computeroutput> the edits will be saved; otherwise they will not be saved. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>withUndoRedo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the changes are reverted when the edits are aborted.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiuserEditSessionMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit session mode that can be used to indicate non-versioned or versioned editing for workspaces that support multiuser editing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing the state of the operation. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>action</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace does not support the edit session mode.;multiuserEditSessionMode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="551" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="551" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1acf29f8173e1663e3fd5143a5d795c86f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.SetCurrentVersion</definition>
+        <argsstring>(this IWorkspace source)</argsstring>
+        <name>SetCurrentVersion</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Updates the Multiversioned views to point to the current version. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>Before issuing any queries against the view, you must ensure that they will take place against the correct version. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="574" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="574" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a24dda44fec12cfbce258fd3db04d17ca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" kindref="compound">IEditableWorkspace</ref></type>
+        <definition>static IEditableWorkspace ESRI.ArcGIS.Geodatabase.WorkspaceExtensions.StartEditing</definition>
+        <argsstring>(this IWorkspace source, bool withUndoRedo=true, esriMultiuserEditSessionMode multiuserEditSessionMode=esriMultiuserEditSessionMode.esriMESMVersioned)</argsstring>
+        <name>StartEditing</name>
+        <param>
+          <type>this IWorkspace</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>withUndoRedo</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>esriMultiuserEditSessionMode</type>
+          <declname>multiuserEditSessionMode</declname>
+          <defval>esriMultiuserEditSessionMode.esriMESMVersioned</defval>
+        </param>
+        <briefdescription>
+<para>Starts editing the workspace using the specified <emphasis>withUndoRedo</emphasis>  and <emphasis>multiuserEditSessionMode</emphasis>  parameters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>withUndoRedo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the changes are reverted when the edits are aborted.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiuserEditSessionMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit session mode that can be used to indicate non-versioned or versioned editing for workspaces that support multiuser editing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" kindref="compound">IEditableWorkspace</ref> respresenting an editable workspace (that is disposable). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace does not support the edit session mode.;multiuserEditSessionMode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>The <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" kindref="compound">IEditableWorkspace</ref> implements the IDisposable interface, meaning it should be used within a using statement. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="615" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="615" bodyend="623"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.Geodatabase.IWorkspace interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/WorkspaceExtensions.cs" bodystart="66" bodyend="626"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ad31e3a21e631417b7ddd3be48bf3e422" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>Escape</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a21f4c7a902b59e3b0bbd342d678c250f" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetDBMS</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a2b363a6a23df51fdb88394f1c5d3be40" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetDomain</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a49fc5420c77d549e454fee734ee3796c" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetDomains</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ae54b0363148e9989d416f799c2c5cfd4" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetEditChanges</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a0150dfc78de1bc69f28a299347876d12" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetEditChanges</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1aaa8de9d943c70ec21b1343f2e52a59f2" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetEditChanges</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a02c8da96c579a15f82ca51c0ca07d5ad" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetEditChanges</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a199e983e4965898334f0c07a0239bbeb" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetFeatureClass</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ae8ecc19cdc9ae24c6248940b897317d2" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetFeatureClasses</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a417436754d817bf8adccf33248be27b2" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetFormattedDate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a34161b54d0cb73f914f2e237c20e9849" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetFunctionName</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a32f8ad6f96d15b71e294f81e9fcbf2af" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetRelationshipClass</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ab05af39d7a38ea678dd3cdf3ebfda0f2" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetRelationshipClasses</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ac9acbc302d4797403e2e1d64ee34aa9b" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetTable</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a407c4988e6ec26accda01ff7cf9b788f" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>GetTables</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1ae4385eb5e5fa567dd53044a50dbe6197" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>IsDBMS</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a9402f91d2a474eeddd93fa56d2c3ca77" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>IsPredicateSupported</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a8dec63584a0f25d2355face6b4d725cb" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>PerformOperation</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1acf29f8173e1663e3fd5143a5d795c86f" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>SetCurrentVersion</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions_1a24dda44fec12cfbce258fd3db04d17ca" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</scope><name>StartEditing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Converters::BoolToVisibilityConverter</compoundname>
+    <basecompoundref refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter" prot="public" virt="non-virtual">System.Windows.Converters.BoolToValueConverter&lt; Visibility &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter_1ad82b22d420f9764e90ee097ec566dd61" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.Converters.BoolToVisibilityConverter.BoolToVisibilityConverter</definition>
+        <argsstring>()</argsstring>
+        <name>BoolToVisibilityConverter</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter" kindref="compound">BoolToVisibilityConverter</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToVisibilityConverter.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToVisibilityConverter.cs" bodystart="17" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A converter that converts the boolean value to either Visibility.Collapsed if the value is <computeroutput>false</computeroutput>; otherwise Visibility.Visible when the value is <computeroutput>true</computeroutput>. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="178">
+        <label>BoolToValueConverter&lt; Visibility &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter"/>
+      </node>
+      <node id="177">
+        <label>System.Windows.Converters.BoolToVisibilityConverter</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter"/>
+        <childnode refid="178" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="180">
+        <label>BoolToValueConverter&lt; Visibility &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter"/>
+      </node>
+      <node id="179">
+        <label>System.Windows.Converters.BoolToVisibilityConverter</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter"/>
+        <childnode refid="180" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToVisibilityConverter.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToVisibilityConverter.cs" bodystart="10" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1ab1631873f7e92f407e5d016dd555dea8" prot="protected" virt="non-virtual"><scope>System::Windows::Converters::BoolToVisibilityConverter</scope><name>BoolToValueConverter</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter_1ad82b22d420f9764e90ee097ec566dd61" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToVisibilityConverter</scope><name>BoolToVisibilityConverter</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1ab63637f5df4c6c3dacceb1c6768cd1ec" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToVisibilityConverter</scope><name>Convert</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1ac4255ce46ce17e3a9610176c66187c90" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToVisibilityConverter</scope><name>ConvertBack</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1a0e889ae5bec033f2f2c2958031d93abd" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToVisibilityConverter</scope><name>FalseValue</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1adf8aefb4469c0d0de17a91f4ca374a85" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToVisibilityConverter</scope><name>TrueValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="interface_system_1_1_i_recursion_3_01_t_value_01_4" kind="interface" prot="public">
+    <compoundname>System::IRecursion&lt; TValue &gt;</compoundname>
+    <derivedcompoundref refid="interface_system_1_1_i_hierarchy_3_01_t_value_01_4" prot="public" virt="non-virtual">System.IHierarchy&lt; TValue &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_system_1_1_recursion_3_01_t_value_01_4" prot="public" virt="non-virtual">System.Recursion&lt; TValue &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>TValue</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_system_1_1_i_recursion_3_01_t_value_01_4_1a78a0b90c63e216f808abb9e51c9552ac" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.IRecursion&lt; TValue &gt;.Depth</definition>
+        <argsstring></argsstring>
+        <name>Depth</name>
+        <briefdescription>
+<para>Gets or sets the recursive depth. </para>        </briefdescription>
+        <detaileddescription>
+<para>The depth.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Interfaces/IRecursion.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Interfaces/IRecursion.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_system_1_1_i_recursion_3_01_t_value_01_4_1acdae85c3c5b556fca066bc3c43c8989a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TValue</type>
+        <definition>TValue System.IRecursion&lt; TValue &gt;.Value</definition>
+        <argsstring></argsstring>
+        <name>Value</name>
+        <briefdescription>
+<para>Gets or sets the value. </para>        </briefdescription>
+        <detaileddescription>
+<para>The value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Interfaces/IRecursion.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Interfaces/IRecursion.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides the properties to represent an item in a recursive projection. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="447">
+        <label>System.Recursion&lt; TValue &gt;</label>
+        <link refid="class_system_1_1_recursion_3_01_t_value_01_4"/>
+        <childnode refid="444" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="444">
+        <label>System.IRecursion&lt; TValue &gt;</label>
+        <link refid="interface_system_1_1_i_recursion_3_01_t_value_01_4"/>
+      </node>
+      <node id="445">
+        <label>System.IHierarchy&lt; TValue &gt;</label>
+        <link refid="interface_system_1_1_i_hierarchy_3_01_t_value_01_4"/>
+        <childnode refid="444" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="446">
+        <label>System.Hierarchy&lt; TValue &gt;</label>
+        <link refid="class_system_1_1_hierarchy_3_01_t_value_01_4"/>
+        <childnode refid="445" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Interfaces/IRecursion.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Interfaces/IRecursion.cs" bodystart="10" bodyend="29"/>
+    <listofallmembers>
+      <member refid="interface_system_1_1_i_recursion_3_01_t_value_01_4_1a78a0b90c63e216f808abb9e51c9552ac" prot="public" virt="non-virtual"><scope>System::IRecursion&lt; TValue &gt;</scope><name>Depth</name></member>
+      <member refid="interface_system_1_1_i_recursion_3_01_t_value_01_4_1acdae85c3c5b556fca066bc3c43c8989a" prot="public" virt="non-virtual"><scope>System::IRecursion&lt; TValue &gt;</scope><name>Value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

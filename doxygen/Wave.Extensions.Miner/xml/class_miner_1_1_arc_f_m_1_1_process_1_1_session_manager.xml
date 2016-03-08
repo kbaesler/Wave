@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Process::SessionManager</compoundname>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_configurations" prot="public">Miner::ArcFM::Process::SessionManager::Configurations</innerclass>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_filters" prot="public">Miner::ArcFM::Process::SessionManager::Filters</innerclass>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_roles" prot="public">Miner::ArcFM::Process::SessionManager::Roles</innerclass>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_tables" prot="public">Miner::ArcFM::Process::SessionManager::Tables</innerclass>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_tasks" prot="public">Miner::ArcFM::Process::SessionManager::Tasks</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1a355d5b8c690da1ba4dd77baa8024f3d7" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.SessionManager.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <initializer>= &quot;MMSessionManager&quot;</initializer>
+        <briefdescription>
+<para>The name extension. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="279" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Container for the SessionManager.Configurations, SessionManager.Tasks, SessionManager.Tables, SessionManager.Filters and SessionManager.Roles classes class used to identify the common configurations for Session Manager. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="273" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="272" bodyend="447"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1a355d5b8c690da1ba4dd77baa8024f3d7" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::SessionManager</scope><name>Name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="class_system_1_1_data_1_1_ole_db_database_connection" kind="class" prot="public">
+    <compoundname>System::Data::OleDbDatabaseConnection</compoundname>
+    <basecompoundref refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4" prot="public" virt="non-virtual">System.Data.DatabaseConnection&lt; TConnection &gt;</basecompoundref>
+    <derivedcompoundref refid="class_system_1_1_data_1_1_access_database_connection" prot="public" virt="non-virtual">System.Data.AccessDatabaseConnection</derivedcompoundref>
+    <derivedcompoundref refid="class_system_1_1_data_1_1_oracle_database_connection" prot="public" virt="non-virtual">System.Data.OracleDatabaseConnection</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_data_1_1_ole_db_database_connection_1a7b09b3f59ea0dfb280d15db1cc77a604" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Data.OleDbDatabaseConnection.OleDbDatabaseConnection</definition>
+        <argsstring>(string connectionString)</argsstring>
+        <name>OleDbDatabaseConnection</name>
+        <param>
+          <type>string</type>
+          <declname>connectionString</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_data_1_1_ole_db_database_connection" kindref="compound">OleDbDatabaseConnection</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>connectionString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The connection string.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/OleDb/OleDbDatabaseConnection.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/OleDb/OleDbDatabaseConnection.cs" bodystart="21" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_data_1_1_ole_db_database_connection_1a2463e2a690ee77c6e2dc548ebe514530" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override DbDataAdapter</type>
+        <definition>override DbDataAdapter System.Data.OleDbDatabaseConnection.CreateAdapter</definition>
+        <argsstring>()</argsstring>
+        <name>CreateAdapter</name>
+        <reimplements refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a95835dea77ca7efbfe4a3e4edfc56360">CreateAdapter</reimplements>
+        <reimplementedby refid="class_system_1_1_data_1_1_oracle_database_connection_1ab71bcfb45f9ad5cf58e7fc868b34e557">CreateAdapter</reimplementedby>
+        <briefdescription>
+<para>Creates the adapter that is used by the System.Data.Common.DbConnection. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The System.Data.Common.DbDataAdapter for the specified connection.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/OleDb/OleDbDatabaseConnection.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/OleDb/OleDbDatabaseConnection.cs" bodystart="34" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A supporting class for handling simple queries against a connection using the System.Data.OleDb drivers. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="537">
+        <label>IDatabaseConnection</label>
+        <link refid="interface_system_1_1_data_1_1_i_database_connection"/>
+        <childnode refid="538" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="539">
+        <label>System.Data.AccessDatabaseConnection</label>
+        <link refid="class_system_1_1_data_1_1_access_database_connection"/>
+        <childnode refid="535" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="538">
+        <label>IDisposable</label>
+      </node>
+      <node id="540">
+        <label>System.Data.OracleDatabaseConnection</label>
+        <link refid="class_system_1_1_data_1_1_oracle_database_connection"/>
+        <childnode refid="535" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="536">
+        <label>DatabaseConnection&lt; OleDbConnection &gt;</label>
+        <link refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4"/>
+        <childnode refid="537" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="535">
+        <label>System.Data.OleDbDatabaseConnection</label>
+        <link refid="class_system_1_1_data_1_1_ole_db_database_connection"/>
+        <childnode refid="536" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="543">
+        <label>IDatabaseConnection</label>
+        <link refid="interface_system_1_1_data_1_1_i_database_connection"/>
+        <childnode refid="544" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="544">
+        <label>IDisposable</label>
+      </node>
+      <node id="542">
+        <label>DatabaseConnection&lt; OleDbConnection &gt;</label>
+        <link refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4"/>
+        <childnode refid="543" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="541">
+        <label>System.Data.OleDbDatabaseConnection</label>
+        <link refid="class_system_1_1_data_1_1_ole_db_database_connection"/>
+        <childnode refid="542" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/OleDb/OleDbDatabaseConnection.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/OleDb/OleDbDatabaseConnection.cs" bodystart="13" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1ad004f6a0648a97899ba953e2b1746432" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>BeginTransaction</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a1f7d0d0cf39af305e1cc2a89ade0e3fb" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>BeginTransaction</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a7d518cf656dd2c27fd5fe627fe68520e" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>Close</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a935df410f35f17c1245f7f208be12fec" prot="protected" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>Connection</name></member>
+      <member refid="class_system_1_1_data_1_1_ole_db_database_connection_1a2463e2a690ee77c6e2dc548ebe514530" prot="protected" virt="virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>CreateAdapter</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a5208c77bb769bf21f455435592bf6aaa" prot="protected" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>DatabaseConnection</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a1054dcb973187d5b17f5f52ca02ac2f8" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>Dispose</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1af81f682eaef2c04a54eab5d65d4a6252" prot="protected" virt="virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>Dispose</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a192907f597e4b845f7646bbd1b1fc5a0" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>ExecuteNonQuery</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a278319bdd90993a245cf92c806178c7d" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>ExecuteNonQuery</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a53faf279abd1588b7b9ee8e3974dbc27" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>ExecuteReader</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1aa1de052ab95772b30b49a8df6562b15d" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>ExecuteScalar&lt; TValue &gt;</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a204939367a1b8addcea162b23cd63bbc" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>Fill</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1a779a2d3abddb4ed10b05c8cf378ce439" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>IsOpen</name></member>
+      <member refid="class_system_1_1_data_1_1_ole_db_database_connection_1a7b09b3f59ea0dfb280d15db1cc77a604" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>OleDbDatabaseConnection</name></member>
+      <member refid="class_system_1_1_data_1_1_database_connection_3_01_t_connection_01_4_1afdb761a5a1d927e2f17acd7426d660a4" prot="public" virt="non-virtual"><scope>System::Data::OleDbDatabaseConnection</scope><name>Open</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

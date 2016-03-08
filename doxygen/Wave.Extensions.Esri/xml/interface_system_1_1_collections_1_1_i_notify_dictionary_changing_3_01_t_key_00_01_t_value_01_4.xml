@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="interface_system_1_1_collections_1_1_i_notify_dictionary_changing_3_01_t_key_00_01_t_value_01_4" kind="interface" prot="public">
+    <compoundname>System::Collections::INotifyDictionaryChanging&lt; TKey, TValue &gt;</compoundname>
+    <derivedcompoundref refid="class_system_1_1_collections_1_1_observable_dictionary_3_01_t_key_00_01_t_value_01_4" prot="public" virt="non-virtual">System.Collections.ObservableDictionary&lt; TKey, TValue &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>TKey</type>
+      </param>
+      <param>
+        <type>TValue</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="interface_system_1_1_collections_1_1_i_notify_dictionary_changing_3_01_t_key_00_01_t_value_01_4_1ad7ab01249a57ef8cfc755bea0c3b9833" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt; &gt;</type>
+        <definition>EventHandler&lt;NotifyDictionaryChangingEventArgs&lt;TKey, TValue&gt; &gt; System.Collections.INotifyDictionaryChanging&lt; TKey, TValue &gt;.DictionaryChanging</definition>
+        <argsstring></argsstring>
+        <name>DictionaryChanging</name>
+        <briefdescription>
+<para>Occurs when the dictionary is changing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Interfaces/INotifyDictionaryChanging.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Interfaces/INotifyDictionaryChanging.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An interface used to notify the dictionary is changing </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the key.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="423">
+        <label>System.Collections.ObjectModel.VertexEdgeDictionary&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_edge_dictionary_3_01_t_vertex_00_01_t_edge_01_4"/>
+        <childnode refid="422" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="422">
+        <label>System.Collections.ObservableDictionary&lt; TKey, TValue &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_observable_dictionary_3_01_t_key_00_01_t_value_01_4"/>
+        <childnode refid="421" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="421">
+        <label>System.Collections.INotifyDictionaryChanging&lt; TKey, TValue &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changing_3_01_t_key_00_01_t_value_01_4"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Interfaces/INotifyDictionaryChanging.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Interfaces/INotifyDictionaryChanging.cs" bodystart="11" bodyend="21"/>
+    <listofallmembers>
+      <member refid="interface_system_1_1_collections_1_1_i_notify_dictionary_changing_3_01_t_key_00_01_t_value_01_4_1ad7ab01249a57ef8cfc755bea0c3b9833" prot="public" virt="non-virtual"><scope>System::Collections::INotifyDictionaryChanging&lt; TKey, TValue &gt;</scope><name>DictionaryChanging</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

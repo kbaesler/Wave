@@ -1,0 +1,779 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_adjacency_graph" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::AdjacencyGraph</compoundname>
+    <basecompoundref refid="interface_system_1_1_collections_1_1_i_graph" prot="public" virt="non-virtual">System::Collections::IGraph&lt; TVertex, TEdge &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+      <param>
+        <type>TEdge</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1a94e2b9147b43d2a60fea5d2e0c53f59b" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>IList&lt; TEdge &gt;</type>
+        <definition>IList&lt;TEdge&gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.EdgeList</definition>
+        <argsstring></argsstring>
+        <name>EdgeList</name>
+        <briefdescription>
+<para>Gets or sets the index edges. </para>        </briefdescription>
+        <detaileddescription>
+<para>The index edges. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1a2e9fc472eaf91185a555426af3619bbe" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type><ref refid="class_system_1_1_collections_1_1_object_model_1_1_vertex_edge_dictionary" kindref="compound">VertexEdgeDictionary</ref>&lt; TVertex, TEdge &gt;</type>
+        <definition>VertexEdgeDictionary&lt;TVertex, TEdge&gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.VertexEdges</definition>
+        <argsstring></argsstring>
+        <name>VertexEdges</name>
+        <briefdescription>
+<para>Gets or sets the vertex edges. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertex edges.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="50" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1a88470c4c553308a280e58cf063915e04" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.EdgeCount</definition>
+        <argsstring></argsstring>
+        <name>EdgeCount</name>
+        <briefdescription>
+<para>Gets the edge count. </para>        </briefdescription>
+        <detaileddescription>
+<para>The edge count.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="80" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1ae9b769133446fdf3b11391de11be5737" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; TEdge &gt;</type>
+        <definition>IEnumerable&lt;TEdge&gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.Edges</definition>
+        <argsstring></argsstring>
+        <name>Edges</name>
+        <briefdescription>
+<para>Gets the edges. </para>        </briefdescription>
+        <detaileddescription>
+<para>The edges.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="89" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1a82dbf1325991af3f7341e3c9cc2e8000" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.IsEdgesEmpty</definition>
+        <argsstring></argsstring>
+        <name>IsEdgesEmpty</name>
+        <briefdescription>
+<para>Gets a value indicating whether there are no edges in this set. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if this set is empty; otherwise, <computeroutput>false</computeroutput>.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="98" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1a8233c73aef431295bd508cce023a77dc" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.IsVerticesEmpty</definition>
+        <argsstring></argsstring>
+        <name>IsVerticesEmpty</name>
+        <briefdescription>
+<para>Gets a value indicating whether there are no vertices in this set. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the vertex set is empty; otherwise, <computeroutput>false</computeroutput>.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="107" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1abd799235a8ee10bd642f24f35bcb31c0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.VertexCount</definition>
+        <argsstring></argsstring>
+        <name>VertexCount</name>
+        <briefdescription>
+<para>Gets the vertex count. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertex count.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="116" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_adjacency_graph_1a21739e33030d30476c677b9a26b23c34" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; TVertex &gt;</type>
+        <definition>IEnumerable&lt;TVertex&gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.Vertices</definition>
+        <argsstring></argsstring>
+        <name>Vertices</name>
+        <briefdescription>
+<para>Gets the vertices. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertices.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="125" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_system_1_1_collections_1_1_adjacency_graph_1a5e5130ffd793f84840f871f90ba9140e" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_collections_1_1_edge_event_args" kindref="compound">EdgeEventArgs</ref>&lt; TVertex, TEdge &gt; &gt;</type>
+        <definition>EventHandler&lt;EdgeEventArgs&lt;TVertex, TEdge&gt; &gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.EdgeAdded</definition>
+        <argsstring></argsstring>
+        <name>EdgeAdded</name>
+        <briefdescription>
+<para>Raised when an edge is added to the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="59" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_collections_1_1_adjacency_graph_1a39381dafe898c1954e91d7a6c7c47cf0" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_collections_1_1_edge_event_args" kindref="compound">EdgeEventArgs</ref>&lt; TVertex, TEdge &gt; &gt;</type>
+        <definition>EventHandler&lt;EdgeEventArgs&lt;TVertex, TEdge&gt; &gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.EdgeRemoved</definition>
+        <argsstring></argsstring>
+        <name>EdgeRemoved</name>
+        <briefdescription>
+<para>Raised when an edge has been removed from the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="64" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_collections_1_1_adjacency_graph_1a508eec92bcb5b6cb03bf1199ccfdc013" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_collections_1_1_vertex_event_args" kindref="compound">VertexEventArgs</ref>&lt; TVertex &gt; &gt;</type>
+        <definition>EventHandler&lt;VertexEventArgs&lt;TVertex&gt; &gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.VertexAdded</definition>
+        <argsstring></argsstring>
+        <name>VertexAdded</name>
+        <briefdescription>
+<para>Raised when an vertex is added to the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="69" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_collections_1_1_adjacency_graph_1a69b936da8fb32daf688713ee0a792fc4" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_collections_1_1_vertex_event_args" kindref="compound">VertexEventArgs</ref>&lt; TVertex &gt; &gt;</type>
+        <definition>EventHandler&lt;VertexEventArgs&lt;TVertex&gt; &gt; System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.VertexRemoved</definition>
+        <argsstring></argsstring>
+        <name>VertexRemoved</name>
+        <briefdescription>
+<para>Raised when an vertex has been removed from the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="74" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a7801cb339103fd26034f2d9efaa8e75a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.AdjacencyGraph</definition>
+        <argsstring>()</argsstring>
+        <name>AdjacencyGraph</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_adjacency_graph_1a7801cb339103fd26034f2d9efaa8e75a" kindref="member">AdjacencyGraph&lt;TVertex, TEdge&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="27" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="27" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1ab59af8ce57b40ecda3ec6e58cae40514" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.AddEdge</definition>
+        <argsstring>(TEdge edge)</argsstring>
+        <name>AddEdge</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_edge_set_1a1bdd182ba6173cc325f621fad5812897">AddEdge</reimplements>
+        <param>
+          <type>TEdge</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Adds the edge to the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edge.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the edge was added, otherwise <computeroutput>false</computeroutput>.</para></simplesect>
+</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="137" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="137" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a620f9b7fd2311bc0cd8e34b884715273" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.AddEdgeRange</definition>
+        <argsstring>(IEnumerable&lt; TEdge &gt; edges)</argsstring>
+        <name>AddEdgeRange</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_edge_set_1ac45d4d2ab2898d30c20dbdc0aea82ca8">AddEdgeRange</reimplements>
+        <param>
+          <type>IEnumerable&lt; TEdge &gt;</type>
+          <declname>edges</declname>
+        </param>
+        <briefdescription>
+<para>Adds a set of edges to the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edges</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edges.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of edges successfully added to the graph. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="158" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a8339d8c3af2797ae84e16841fd7dcf3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.AddVertex</definition>
+        <argsstring>(TVertex vertex)</argsstring>
+        <name>AddVertex</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_vertex_set_1abdbc9693b9435cbbf9c53ceeb510856b">AddVertex</reimplements>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Adds the vertex to the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the vertex was added, otherwise <computeroutput>false</computeroutput>.</para></simplesect>
+</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="170" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="170" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1acd8f5d69c1e512204c2d4c0fbf2e7902" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.AddVertexRange</definition>
+        <argsstring>(IEnumerable&lt; TVertex &gt; vertices)</argsstring>
+        <name>AddVertexRange</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_vertex_set_1a06042ec649159c3db12fae6f4330e51c">AddVertexRange</reimplements>
+        <param>
+          <type>IEnumerable&lt; TVertex &gt;</type>
+          <declname>vertices</declname>
+        </param>
+        <briefdescription>
+<para>Adds a set of vertices to the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertices</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertices.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of vertices successfully added to the graph. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="187" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="187" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1af1c435e7c75c1efa770d9967e0951326" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_graph_1a105e7e544340a9f15082d96e6c7e0e83">Clear</reimplements>
+        <briefdescription>
+<para>Clears the vertex and edges </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="195" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="195" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a0004f642c948ed7f3bf83168d600cfe8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.ContainsEdge</definition>
+        <argsstring>(TVertex source, TVertex target)</argsstring>
+        <name>ContainsEdge</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_edge_set_1afd2fcec064ddc3eaf39918eb86746dbd">ContainsEdge</reimplements>
+        <param>
+          <type>TVertex</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>TVertex</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified set contains both the vertices. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified set contains both the vertices; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="209" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="209" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1abc61f6cfa0b63181cd0e552c5372a876" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.ContainsEdge</definition>
+        <argsstring>(TEdge edge)</argsstring>
+        <name>ContainsEdge</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_edge_set_1a6944612a734aee8ff51c3daffee87b8d">ContainsEdge</reimplements>
+        <param>
+          <type>TEdge</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified edge contains edge. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edge.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified edge contains edge; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="225" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="225" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1aa03290bf3d17a8ae2f2a265a67289afd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.ContainsVertex</definition>
+        <argsstring>(TVertex vertex)</argsstring>
+        <name>ContainsVertex</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_vertex_set_1a2bd9c1df319d9904a03d29cd72ab4b53">ContainsVertex</reimplements>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified vertex contains vertex. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified vertex contains vertex; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="238" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="238" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a49942d745fab27f8ffe6ca3b18a367df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.RemoveEdge</definition>
+        <argsstring>(TEdge edge)</argsstring>
+        <name>RemoveEdge</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_edge_set_1a5fe301dfac42b510c0ec59777990ccb4">RemoveEdge</reimplements>
+        <param>
+          <type>TEdge</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Removes <emphasis>edge</emphasis>  from the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if <emphasis>edge</emphasis>  was successfully removed; otherwise falSE. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="250" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="250" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1aa89fa893b7b1aab8ef7a078a92c3055c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.RemoveEdge</definition>
+        <argsstring>(TVertex vertex, Func&lt; TEdge, bool &gt; predicate)</argsstring>
+        <name>RemoveEdge</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_edge_set_1a0a5afba1c2301681ed621626357dada1">RemoveEdge</reimplements>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <param>
+          <type>Func&lt; TEdge, bool &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Removes all edges that match <emphasis>predicate</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pure delegate that takes an <emphasis>TEdge</emphasis>  and returns true if the edge should be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of edges removed. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>predicate</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="275" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="275" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a157d20275b9f40269cce676402f99a4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.RemoveVertex</definition>
+        <argsstring>(TVertex vertex)</argsstring>
+        <name>RemoveVertex</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_vertex_set_1af18536221a7a39b6c03ea068b3b57873">RemoveVertex</reimplements>
+        <param>
+          <type>TVertex</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Removes <emphasis>vertex</emphasis>  from the graph </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vertex.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if <emphasis>vertex</emphasis>  was successfully removed; otherwise falSE. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="307" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="307" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a730e2ca8dbb34624cfb3621ec8584338" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.RemoveVertex</definition>
+        <argsstring>(Func&lt; TVertex, bool &gt; predicate)</argsstring>
+        <name>RemoveVertex</name>
+        <reimplements refid="interface_system_1_1_collections_1_1_i_vertex_set_1a58cd0f581d1eead902d797d1e61cc702">RemoveVertex</reimplements>
+        <param>
+          <type>Func&lt; TVertex, bool &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Removes all edges that match <emphasis>predicate</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pure delegate that takes an <emphasis>TVertex</emphasis>  and returns true if the edge should be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of vertices removed.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="343" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="343" bodyend="353"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1ac8e93440e66c90f95ed1affa864613ae" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.OnDictionaryChanged</definition>
+        <argsstring>(object sender, NotifyDictionaryChangedEventArgs&lt; TVertex, EdgeCollection&lt; TVertex, TEdge &gt;&gt; e)</argsstring>
+        <name>OnDictionaryChanged</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args" kindref="compound">NotifyDictionaryChangedEventArgs</ref>&lt; TVertex, <ref refid="class_system_1_1_collections_1_1_object_model_1_1_edge_collection" kindref="compound">EdgeCollection</ref>&lt; TVertex, TEdge &gt;&gt;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles the dictionary changed event of the vertex / edges dictionary. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The event instance data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>e</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="366" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="366" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1aa86cd67fafc0862fed3439beefa4aab6" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.OnEdgeAdded</definition>
+        <argsstring>(EdgeEventArgs&lt; TVertex, TEdge &gt; e)</argsstring>
+        <name>OnEdgeAdded</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_edge_event_args" kindref="compound">EdgeEventArgs</ref>&lt; TVertex, TEdge &gt;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_collections_1_1_adjacency_graph_1a5e5130ffd793f84840f871f90ba9140e" kindref="member">EdgeAdded</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Collections.EdgeEventArgs&lt;TVertex,TEdge&gt; instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="426" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="426" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1a5e191cbe2d55d57ae5c75d5f27d00663" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.OnEdgeRemoved</definition>
+        <argsstring>(EdgeEventArgs&lt; TVertex, TEdge &gt; e)</argsstring>
+        <name>OnEdgeRemoved</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_edge_event_args" kindref="compound">EdgeEventArgs</ref>&lt; TVertex, TEdge &gt;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_collections_1_1_adjacency_graph_1a39381dafe898c1954e91d7a6c7c47cf0" kindref="member">EdgeRemoved</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Collections.EdgeEventArgs&lt;TVertex,TEdge&gt; instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="440" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="440" bodyend="445"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1afb91004fa8ef821b7f167ef570e16785" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.OnVertexAdded</definition>
+        <argsstring>(VertexEventArgs&lt; TVertex &gt; e)</argsstring>
+        <name>OnVertexAdded</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_vertex_event_args" kindref="compound">VertexEventArgs</ref>&lt; TVertex &gt;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_collections_1_1_adjacency_graph_1a508eec92bcb5b6cb03bf1199ccfdc013" kindref="member">VertexAdded</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Collections.VertexEventArgs&lt;TVertex&gt; instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="454" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="454" bodyend="459"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_adjacency_graph_1aeb89b7ae812953089ad1297cde29d8d0" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;.OnVertexRemoved</definition>
+        <argsstring>(VertexEventArgs&lt; TVertex &gt; e)</argsstring>
+        <name>OnVertexRemoved</name>
+        <param>
+          <type><ref refid="class_system_1_1_collections_1_1_vertex_event_args" kindref="compound">VertexEventArgs</ref>&lt; TVertex &gt;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_collections_1_1_adjacency_graph_1a69b936da8fb32daf688713ee0a792fc4" kindref="member">VertexRemoved</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Collections.VertexEventArgs&lt;TVertex&gt; instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="468" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="468" bodyend="473"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A mutable directed graph data structure efficient for sparse graph representation where out-edge need to be enumerated only. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the vertices</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TEdge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the edges</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IEdgeSet&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_edge_set"/>
+      </node>
+      <node id="0">
+        <label>System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_adjacency_graph"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>IGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_graph"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IVertexSet&lt; TVertex &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_vertex_set"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6">
+        <label>IEdgeSet&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_edge_set"/>
+      </node>
+      <node id="4">
+        <label>System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_adjacency_graph"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_graph"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>IVertexSet&lt; TVertex &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_vertex_set"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/AdjacencyGraph.cs" bodystart="19" bodyend="476"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1ab59af8ce57b40ecda3ec6e58cae40514" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>AddEdge</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a620f9b7fd2311bc0cd8e34b884715273" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>AddEdgeRange</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a8339d8c3af2797ae84e16841fd7dcf3d" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>AddVertex</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1acd8f5d69c1e512204c2d4c0fbf2e7902" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>AddVertexRange</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a7801cb339103fd26034f2d9efaa8e75a" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>AdjacencyGraph</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1af1c435e7c75c1efa770d9967e0951326" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>Clear</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a0004f642c948ed7f3bf83168d600cfe8" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>ContainsEdge</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1abc61f6cfa0b63181cd0e552c5372a876" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>ContainsEdge</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1aa03290bf3d17a8ae2f2a265a67289afd" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>ContainsVertex</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a5e5130ffd793f84840f871f90ba9140e" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>EdgeAdded</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a88470c4c553308a280e58cf063915e04" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>EdgeCount</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a94e2b9147b43d2a60fea5d2e0c53f59b" prot="protected" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>EdgeList</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a39381dafe898c1954e91d7a6c7c47cf0" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>EdgeRemoved</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1ae9b769133446fdf3b11391de11be5737" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>Edges</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a82dbf1325991af3f7341e3c9cc2e8000" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>IsEdgesEmpty</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a8233c73aef431295bd508cce023a77dc" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>IsVerticesEmpty</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1ac8e93440e66c90f95ed1affa864613ae" prot="protected" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>OnDictionaryChanged</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1aa86cd67fafc0862fed3439beefa4aab6" prot="protected" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>OnEdgeAdded</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a5e191cbe2d55d57ae5c75d5f27d00663" prot="protected" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>OnEdgeRemoved</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1afb91004fa8ef821b7f167ef570e16785" prot="protected" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>OnVertexAdded</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1aeb89b7ae812953089ad1297cde29d8d0" prot="protected" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>OnVertexRemoved</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a49942d745fab27f8ffe6ca3b18a367df" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>RemoveEdge</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1aa89fa893b7b1aab8ef7a078a92c3055c" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>RemoveEdge</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a157d20275b9f40269cce676402f99a4f" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>RemoveVertex</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a730e2ca8dbb34624cfb3621ec8584338" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>RemoveVertex</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a508eec92bcb5b6cb03bf1199ccfdc013" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>VertexAdded</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1abd799235a8ee10bd642f24f35bcb31c0" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>VertexCount</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a2e9fc472eaf91185a555426af3619bbe" prot="protected" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>VertexEdges</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a69b936da8fb32daf688713ee0a792fc4" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>VertexRemoved</name></member>
+      <member refid="class_system_1_1_collections_1_1_adjacency_graph_1a21739e33030d30476c677b9a26b23c34" prot="public" virt="non-virtual"><scope>System::Collections::AdjacencyGraph</scope><name>Vertices</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

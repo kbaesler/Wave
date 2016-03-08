@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_composite_presentation_event" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::CompositePresentationEvent</compoundname>
+    <basecompoundref refid="class_system_1_1_windows_1_1_event_base" prot="public" virt="non-virtual">System.Windows.EventBase</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TPayload</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1a38b8b1083830a0266fbdb62068952fab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Contains</definition>
+        <argsstring>(Action&lt; TPayload &gt; subscriber)</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>Action&lt; TPayload &gt;</type>
+          <declname>subscriber</declname>
+        </param>
+        <briefdescription>
+<para>Returns  if there is a subscriber matching <simplesect kind="see"><para>Action&lt;TPayload&gt;</para></simplesect>
+. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subscriber</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Action&lt;TPayload&gt; used when subscribing to the event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if there is an <simplesect kind="see"><para>Action&lt;TPayload&gt;</para></simplesect>
+that matches; otherwise . </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="42" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1a1a94946116d5f4641864f0f8d0d228ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Publish</definition>
+        <argsstring>(TPayload payload)</argsstring>
+        <name>Publish</name>
+        <param>
+          <type>TPayload</type>
+          <declname>payload</declname>
+        </param>
+        <briefdescription>
+<para>Publishes the CompositePresentationEvent&lt;TPayload&gt;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to pass to the subscribers.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="56" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1a758c83fdd4533c02415ceb6c2b1ad333" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+        <definition>SubscriptionToken System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Subscribe</definition>
+        <argsstring>(Action&lt; TPayload &gt; action)</argsstring>
+        <name>Subscribe</name>
+        <param>
+          <type>Action&lt; TPayload &gt;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Subscribes a delegate to an event that will be published on the <ref refid="namespace_system_1_1_windows_1ac964fb857628681e976d56bc3e56d8deaafb104150ec0a732f9b88726eba1b6dd" kindref="member">ThreadOption.PublisherThread</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>CompositePresentationEvent&lt;TPayload&gt; will maintain a <simplesect kind="see"><para>WeakReference</para></simplesect>
+to the target of the supplied <emphasis>action</emphasis>  delegate. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate that gets executed when the event is published.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that uniquely identifies the added subscription.</para></simplesect>
+</para><para>The <ref refid="class_system_1_1_windows_1_1_composite_presentation_event" kindref="compound">CompositePresentationEvent</ref> collection is thread-safe. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="71" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="71" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1a83b357665c7504434674b6b0ae71c4f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+        <definition>SubscriptionToken System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Subscribe</definition>
+        <argsstring>(Action&lt; TPayload &gt; action, ThreadOption threadOption)</argsstring>
+        <name>Subscribe</name>
+        <param>
+          <type>Action&lt; TPayload &gt;</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_system_1_1_windows_1ac964fb857628681e976d56bc3e56d8de" kindref="member">ThreadOption</ref></type>
+          <declname>threadOption</declname>
+        </param>
+        <briefdescription>
+<para>Subscribes a delegate to an event. </para>        </briefdescription>
+        <detaileddescription>
+<para><ref refid="class_system_1_1_windows_1_1_composite_presentation_event" kindref="compound">CompositePresentationEvent</ref> will maintain a <simplesect kind="see"><para>WeakReference</para></simplesect>
+to the Target of the supplied <emphasis>action</emphasis>  delegate. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate that gets executed when the event is raised.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>threadOption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies on which thread to receive the delegate callback.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that uniquely identifies the added subscription.</para></simplesect>
+</para><para>The <ref refid="class_system_1_1_windows_1_1_composite_presentation_event" kindref="compound">CompositePresentationEvent</ref> collection is thread-safe. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="87" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1a526779d4af1c6f11d4fe04779e31d63a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+        <definition>SubscriptionToken System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Subscribe</definition>
+        <argsstring>(Action&lt; TPayload &gt; action, bool keepSubscriberReferenceAlive)</argsstring>
+        <name>Subscribe</name>
+        <param>
+          <type>Action&lt; TPayload &gt;</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>keepSubscriberReferenceAlive</declname>
+        </param>
+        <briefdescription>
+<para>Subscribes a delegate to an event that will be published on the <ref refid="namespace_system_1_1_windows_1ac964fb857628681e976d56bc3e56d8deaafb104150ec0a732f9b88726eba1b6dd" kindref="member">ThreadOption.PublisherThread</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate that gets executed when the event is published.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keepSubscriberReferenceAlive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When , the <simplesect kind="see"><para>CompositePresentationEvent&lt;TPayload&gt;</para></simplesect>
+keeps a reference to the subscriber so it does not get garbage collected. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that uniquely identifies the added subscription.</para></simplesect>
+</para><para>If <emphasis>keepSubscriberReferenceAlive</emphasis>  is set to , CompositePresentationEvent&lt;TPayload&gt; will maintain a <simplesect kind="see"><para>WeakReference</para></simplesect>
+to the Target of the supplied <emphasis>action</emphasis>  delegate. If not using a WeakReference (<emphasis>keepSubscriberReferenceAlive</emphasis>  is ), the user must explicitly call Unsubscribe for the event when disposing the subscriber in order to avoid memory leaks or unexepcted behavior. </para><para>The <ref refid="class_system_1_1_windows_1_1_composite_presentation_event" kindref="compound">CompositePresentationEvent</ref> collection is thread-safe. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="112" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="112" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1ab7aa15bc8da87aa09cb20eb843db4426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+        <definition>SubscriptionToken System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Subscribe</definition>
+        <argsstring>(Action&lt; TPayload &gt; action, ThreadOption threadOption, bool keepSubscriberReferenceAlive)</argsstring>
+        <name>Subscribe</name>
+        <param>
+          <type>Action&lt; TPayload &gt;</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_system_1_1_windows_1ac964fb857628681e976d56bc3e56d8de" kindref="member">ThreadOption</ref></type>
+          <declname>threadOption</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>keepSubscriberReferenceAlive</declname>
+        </param>
+        <briefdescription>
+<para>Subscribes a delegate to an event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate that gets executed when the event is published.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>threadOption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies on which thread to receive the delegate callback.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keepSubscriberReferenceAlive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When , the <simplesect kind="see"><para>CompositePresentationEvent&lt;TPayload&gt;</para></simplesect>
+keeps a reference to the subscriber so it does not get garbage collected. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that uniquely identifies the added subscription.</para></simplesect>
+</para><para>If <emphasis>keepSubscriberReferenceAlive</emphasis>  is set to , CompositePresentationEvent&lt;TPayload&gt; will maintain a <simplesect kind="see"><para>WeakReference</para></simplesect>
+to the Target of the supplied <emphasis>action</emphasis>  delegate. If not using a WeakReference (<emphasis>keepSubscriberReferenceAlive</emphasis>  is ), the user must explicitly call Unsubscribe for the event when disposing the subscriber in order to avoid memory leaks or unexepcted behavior. </para><para>The <ref refid="class_system_1_1_windows_1_1_composite_presentation_event" kindref="compound">CompositePresentationEvent</ref> collection is thread-safe. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="138" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1a4fbde26a8fb3d18af99c0caa354b7a33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+        <definition>virtual SubscriptionToken System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Subscribe</definition>
+        <argsstring>(Action&lt; TPayload &gt; action, ThreadOption threadOption, bool keepSubscriberReferenceAlive, Predicate&lt; TPayload &gt; filter)</argsstring>
+        <name>Subscribe</name>
+        <param>
+          <type>Action&lt; TPayload &gt;</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_system_1_1_windows_1ac964fb857628681e976d56bc3e56d8de" kindref="member">ThreadOption</ref></type>
+          <declname>threadOption</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>keepSubscriberReferenceAlive</declname>
+        </param>
+        <param>
+          <type>Predicate&lt; TPayload &gt;</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+<para>Subscribes a delegate to an event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delegate that gets executed when the event is published.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>threadOption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies on which thread to receive the delegate callback.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keepSubscriberReferenceAlive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When , the <simplesect kind="see"><para>CompositePresentationEvent&lt;TPayload&gt;</para></simplesect>
+keeps a reference to the subscriber so it does not get garbage collected. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filter to evaluate if the subscriber should receive the event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that uniquely identifies the added subscription.</para></simplesect>
+</para><para>If <emphasis>keepSubscriberReferenceAlive</emphasis>  is set to , CompositePresentationEvent&lt;TPayload&gt; will maintain a <simplesect kind="see"><para>WeakReference</para></simplesect>
+to the Target of the supplied <emphasis>action</emphasis>  delegate. If not using a WeakReference (<emphasis>keepSubscriberReferenceAlive</emphasis>  is ), the user must explicitly call Unsubscribe for the event when disposing the subscriber in order to avoid memory leaks or unexepcted behavior. The <ref refid="class_system_1_1_windows_1_1_composite_presentation_event" kindref="compound">CompositePresentationEvent</ref> collection is thread-safe. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="164" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="164" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_composite_presentation_event_1a7491c180cc6ab3bd66a311fbdebb5797" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Windows.CompositePresentationEvent&lt; TPayload &gt;.Unsubscribe</definition>
+        <argsstring>(Action&lt; TPayload &gt; subscriber)</argsstring>
+        <name>Unsubscribe</name>
+        <param>
+          <type>Action&lt; TPayload &gt;</type>
+          <declname>subscriber</declname>
+        </param>
+        <briefdescription>
+<para>Removes the first subscriber matching <simplesect kind="see"><para>Action&lt;TPayload&gt;</para></simplesect>
+from the subscribers&apos; list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subscriber</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Action&lt;TPayload&gt; used when subscribing to the event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="204" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="204" bodyend="214"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Defines a class that manages publication and subscription to events. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TPayload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of message that will be passed to the subscribers.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="229">
+        <label>EventBase</label>
+        <link refid="class_system_1_1_windows_1_1_event_base"/>
+      </node>
+      <node id="228">
+        <label>System.Windows.CompositePresentationEvent&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_composite_presentation_event"/>
+        <childnode refid="229" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="231">
+        <label>EventBase</label>
+        <link refid="class_system_1_1_windows_1_1_event_base"/>
+      </node>
+      <node id="230">
+        <label>System.Windows.CompositePresentationEvent&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_composite_presentation_event"/>
+        <childnode refid="231" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/CompositePresentationEvent.cs" bodystart="30" bodyend="217"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1a38b8b1083830a0266fbdb62068952fab" prot="public" virt="virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Contains</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a95cfa462814d2bedee57c9a08688fe4b" prot="public" virt="virtual" ambiguityscope="System::Windows::EventBase."><scope>System::Windows::CompositePresentationEvent</scope><name>Contains</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1ac6b49963ba6214f1abc257810992af63" prot="protected" virt="virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>InternalPublish</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1ad752ff670511106072cf98f62d6bb3ca" prot="protected" virt="virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>InternalSubscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1a1a94946116d5f4641864f0f8d0d228ee" prot="public" virt="virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Publish</name></member>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1a758c83fdd4533c02415ceb6c2b1ad333" prot="public" virt="non-virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Subscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1a83b357665c7504434674b6b0ae71c4f5" prot="public" virt="non-virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Subscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1a526779d4af1c6f11d4fe04779e31d63a" prot="public" virt="non-virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Subscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1ab7aa15bc8da87aa09cb20eb843db4426" prot="public" virt="non-virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Subscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1a4fbde26a8fb3d18af99c0caa354b7a33" prot="public" virt="virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Subscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a194797bfb83f4d28b95b1025b762b7d2" prot="protected" virt="non-virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Subscriptions</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a4bc03bd7655e415594b2e65a8a5b6c85" prot="public" virt="non-virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>SynchronizationContext</name></member>
+      <member refid="class_system_1_1_windows_1_1_composite_presentation_event_1a7491c180cc6ab3bd66a311fbdebb5797" prot="public" virt="virtual"><scope>System::Windows::CompositePresentationEvent</scope><name>Unsubscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a98f971dc60304d24d24bfdf8f352819c" prot="public" virt="virtual" ambiguityscope="System::Windows::EventBase."><scope>System::Windows::CompositePresentationEvent</scope><name>Unsubscribe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

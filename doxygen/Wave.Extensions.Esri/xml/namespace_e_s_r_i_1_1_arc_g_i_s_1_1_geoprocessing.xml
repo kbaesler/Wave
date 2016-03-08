@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing" kind="namespace" language="C#">
+    <compoundname>ESRI::ArcGIS::Geoprocessing</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing_1_1_g_p_function_extensions" prot="public">ESRI::ArcGIS::Geoprocessing::GPFunctionExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing_1_1_g_p_messages_extensions" prot="public">ESRI::ArcGIS::Geoprocessing::GPMessagesExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing_1_1_g_p_multi_value_extensions" prot="public">ESRI::ArcGIS::Geoprocessing::GPMultiValueExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing_1_1_g_p_utilities_extensions" prot="public">ESRI::ArcGIS::Geoprocessing::GPUtilitiesExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing_1_1_g_p_value_extensions" prot="public">ESRI::ArcGIS::Geoprocessing::GPValueExtensions</innerclass>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing_1_1_base_classes">ESRI::ArcGIS::Geoprocessing::BaseClasses</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="[generated]" line="1" column="1"/>
+  </compounddef>
+</doxygen>

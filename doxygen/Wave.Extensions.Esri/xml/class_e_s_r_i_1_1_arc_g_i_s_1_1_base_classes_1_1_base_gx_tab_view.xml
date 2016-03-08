@@ -1,0 +1,372 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>ESRI::ArcGIS::BaseClasses::BaseGxTabView</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IGxView</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a713d940d95434d7f1e6b6c87acfafefb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>string</type>
+        <definition>string ESRI.ArcGIS.BaseClasses.BaseGxTabView.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets the name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="51" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a1c2acd228ffb4cf4f06e97f7b81e3fad" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>abstract int</type>
+        <definition>abstract int ESRI.ArcGIS.BaseClasses.BaseGxTabView.hWnd</definition>
+        <argsstring></argsstring>
+        <name>hWnd</name>
+        <briefdescription>
+<para>Gets the view&apos;s window handle. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="56" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ae98ea79af3aad0f44e8aec40395a151a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>UID</type>
+        <definition>virtual UID ESRI.ArcGIS.BaseClasses.BaseGxTabView.ClassID</definition>
+        <argsstring></argsstring>
+        <name>ClassID</name>
+        <briefdescription>
+<para>Gets the class ID. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="61" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a0def4a8b3ffd973177202adb38d7d251" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>UID</type>
+        <definition>virtual UID ESRI.ArcGIS.BaseClasses.BaseGxTabView.DefaultToolbarCLSID</definition>
+        <argsstring></argsstring>
+        <name>DefaultToolbarCLSID</name>
+        <briefdescription>
+<para>Gets the default toolbar CLSID. </para>        </briefdescription>
+        <detaileddescription>
+<para>The class ID of the view&apos;s default toolbar. Not currently used.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="78" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1afc3792d1513a908e5590f4c645655148" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>virtual bool ESRI.ArcGIS.BaseClasses.BaseGxTabView.SupportsTools</definition>
+        <argsstring></argsstring>
+        <name>SupportsTools</name>
+        <briefdescription>
+<para>Gets a value indicating if the view supports tools. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the view supports tools; otherwise, <computeroutput>false</computeroutput>. </para><para>If the SupportsTools property returns True, ArcCatalog will intercept mouse events normally destined for the view, and instead send them to the active tool. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="93" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ae9b97de757d2e9cb031b5e1680bcf73c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.BaseClasses.BaseGxTabView.BaseGxTabView</definition>
+        <argsstring>(string name)</argsstring>
+        <name>BaseGxTabView</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view" kindref="compound">BaseGxTabView</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a5157a4daf7156a0f9921c85095384360" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseGxTabView.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="179" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="179" bodyend="181"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a89c6e94567071f013f05965fb26d8ceb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.BaseClasses.BaseGxTabView.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="37" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1af85ef90b21777b63d18a917fec17a5c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void ESRI.ArcGIS.BaseClasses.BaseGxTabView.Activate</definition>
+        <argsstring>(IGxApplication application, IGxCatalog catalog)</argsstring>
+        <name>Activate</name>
+        <param>
+          <type>IGxApplication</type>
+          <declname>application</declname>
+        </param>
+        <param>
+          <type>IGxCatalog</type>
+          <declname>catalog</declname>
+        </param>
+        <briefdescription>
+<para>Activates the specified view. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>application</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The application.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>catalog</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The catalog.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>Use the Activate method to hold on to the application reference and GxCatalog objects that are passed in as parameters. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="107" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a4b4ba309984a303156ea26646a6181f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool ESRI.ArcGIS.BaseClasses.BaseGxTabView.Applies</definition>
+        <argsstring>(IGxObject selection)</argsstring>
+        <name>Applies</name>
+        <param>
+          <type>IGxObject</type>
+          <declname>selection</declname>
+        </param>
+        <briefdescription>
+<para>Indicates if the view can display the given object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>selection</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The selection.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> to display the object, otherwise <computeroutput>false</computeroutput> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="116" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1aa9f6f533b32ec9443ea14e2fc3bc84e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseGxTabView.Deactivate</definition>
+        <argsstring>()</argsstring>
+        <name>Deactivate</name>
+        <briefdescription>
+<para>Deactivates the view by releasing references. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="124" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ac0c6ff72f9d45ffcc39fe5bca40d4186" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseGxTabView.Refresh</definition>
+        <argsstring>()</argsstring>
+        <name>Refresh</name>
+        <briefdescription>
+<para>Refreshes the view. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="131" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ab5b8fa5f71977ce91d0a2c54ab305086" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.BaseClasses.BaseGxTabView.SystemSettingChanged</definition>
+        <argsstring>(int flag, string section)</argsstring>
+        <name>SystemSettingChanged</name>
+        <param>
+          <type>int</type>
+          <declname>flag</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>section</declname>
+        </param>
+        <briefdescription>
+<para>Informs the view that a system setting has changed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>flag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The flag.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>section</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The section.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="140" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="140" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ae09def186745d76a709132939ca3bd99" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseGxTabView.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="153" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="153" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a76f6e491541fd7a91e37910be7f1b58c" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.BaseClasses.BaseGxTabView.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="163" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="163" bodyend="166"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract GxView which is used within ArcCatalog and requires a window / control to display the contents through the hWnd property. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="84">
+        <label>IDisposable</label>
+      </node>
+      <node id="83">
+        <label>IGxView</label>
+      </node>
+      <node id="82">
+        <label>ESRI.ArcGIS.BaseClasses.BaseGxTabView</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view"/>
+        <childnode refid="83" relation="public-inheritance">
+        </childnode>
+        <childnode refid="84" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="87">
+        <label>IDisposable</label>
+      </node>
+      <node id="86">
+        <label>IGxView</label>
+      </node>
+      <node id="85">
+        <label>ESRI.ArcGIS.BaseClasses.BaseGxTabView</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view"/>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/BaseClasses/BaseGxTabView.cs" bodystart="17" bodyend="184"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1af85ef90b21777b63d18a917fec17a5c6" prot="public" virt="pure-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Activate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a4b4ba309984a303156ea26646a6181f4" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Applies</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ae9b97de757d2e9cb031b5e1680bcf73c" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>BaseGxTabView</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ae98ea79af3aad0f44e8aec40395a151a" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>ClassID</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1aa9f6f533b32ec9443ea14e2fc3bc84e9" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Deactivate</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a0def4a8b3ffd973177202adb38d7d251" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>DefaultToolbarCLSID</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a89c6e94567071f013f05965fb26d8ceb" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a5157a4daf7156a0f9921c85095384360" prot="protected" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a1c2acd228ffb4cf4f06e97f7b81e3fad" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>hWnd</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a713d940d95434d7f1e6b6c87acfafefb" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Name</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ac0c6ff72f9d45ffcc39fe5bca40d4186" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Refresh</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ae09def186745d76a709132939ca3bd99" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Register</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1afc3792d1513a908e5590f4c645655148" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>SupportsTools</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1ab5b8fa5f71977ce91d0a2c54ab305086" prot="public" virt="virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>SystemSettingChanged</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_base_classes_1_1_base_gx_tab_view_1a76f6e491541fd7a91e37910be7f1b58c" prot="package" virt="non-virtual"><scope>ESRI::ArcGIS::BaseClasses::BaseGxTabView</scope><name>Unregister</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_131598c2d29b72e8b7a74a05f60d1f5f" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions</compoundname>
+    <innerfile refid="_geometry_extensions_8cs">GeometryExtensions.cs</innerfile>
+    <innerfile refid="_line_extensions_8cs">LineExtensions.cs</innerfile>
+    <innerfile refid="_polyline_extensions_8cs">PolylineExtensions.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/"/>
+  </compounddef>
+</doxygen>

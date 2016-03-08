@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4" kind="class" prot="public">
+    <compoundname>System::Windows::Converters::BoolToValueConverter&lt; TValue &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IValueConverter</basecompoundref>
+    <derivedcompoundref refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_bool_converter" prot="public" virt="non-virtual">System.Windows.Converters.BoolToBoolConverter</derivedcompoundref>
+    <derivedcompoundref refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter" prot="public" virt="non-virtual">System.Windows.Converters.BoolToStringConverter</derivedcompoundref>
+    <derivedcompoundref refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter" prot="public" virt="non-virtual">System.Windows.Converters.BoolToVisibilityConverter</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>TValue</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1a0e889ae5bec033f2f2c2958031d93abd" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TValue</type>
+        <definition>TValue System.Windows.Converters.BoolToValueConverter&lt; TValue &gt;.FalseValue</definition>
+        <argsstring></argsstring>
+        <name>FalseValue</name>
+        <briefdescription>
+<para>Gets or sets the false value. </para>        </briefdescription>
+        <detaileddescription>
+<para>The false value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1adf8aefb4469c0d0de17a91f4ca374a85" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TValue</type>
+        <definition>TValue System.Windows.Converters.BoolToValueConverter&lt; TValue &gt;.TrueValue</definition>
+        <argsstring></argsstring>
+        <name>TrueValue</name>
+        <briefdescription>
+<para>Gets or sets the true value. </para>        </briefdescription>
+        <detaileddescription>
+<para>The true value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" line="43" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1ab1631873f7e92f407e5d016dd555dea8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.Converters.BoolToValueConverter&lt; TValue &gt;.BoolToValueConverter</definition>
+        <argsstring>(TValue trueValue, TValue falseValue)</argsstring>
+        <name>BoolToValueConverter</name>
+        <param>
+          <type>TValue</type>
+          <declname>trueValue</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>falseValue</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the BoolToValueConverter{TValue} class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trueValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The true value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>falseValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The false value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" bodystart="19" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1ab63637f5df4c6c3dacceb1c6768cd1ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>object</type>
+        <definition>object System.Windows.Converters.BoolToValueConverter&lt; TValue &gt;.Convert</definition>
+        <argsstring>(object value, Type targetType, object parameter, CultureInfo culture)</argsstring>
+        <name>Convert</name>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>targetType</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type>CultureInfo</type>
+          <declname>culture</declname>
+        </param>
+        <briefdescription>
+<para>Converts a value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value produced by the binding source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>targetType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the binding target property.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The converter parameter to uSE.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>culture</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The culture to use in the converter.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A converted value. If the method returns null, the valid null value is used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" line="59" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" bodystart="59" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1ac4255ce46ce17e3a9610176c66187c90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>object</type>
+        <definition>object System.Windows.Converters.BoolToValueConverter&lt; TValue &gt;.ConvertBack</definition>
+        <argsstring>(object value, Type targetType, object parameter, CultureInfo culture)</argsstring>
+        <name>ConvertBack</name>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>targetType</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type>CultureInfo</type>
+          <declname>culture</declname>
+        </param>
+        <briefdescription>
+<para>Converts a value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value that is produced by the binding target.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>targetType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type to convert to.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The converter parameter to uSE.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>culture</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The culture to use in the converter.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A converted value. If the method returns null, the valid null value is used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" line="77" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" bodystart="77" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A generic boolean to type converter. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="184">
+        <label>System.Windows.Converters.BoolToBoolConverter</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_bool_converter"/>
+        <childnode refid="182" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="183">
+        <label>IValueConverter</label>
+      </node>
+      <node id="182">
+        <label>System.Windows.Converters.BoolToValueConverter&lt; TValue &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4"/>
+        <childnode refid="183" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="186">
+        <label>System.Windows.Converters.BoolToVisibilityConverter</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_visibility_converter"/>
+        <childnode refid="182" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>System.Windows.Converters.BoolToStringConverter</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter"/>
+        <childnode refid="182" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="188">
+        <label>IValueConverter</label>
+      </node>
+      <node id="187">
+        <label>System.Windows.Converters.BoolToValueConverter&lt; TValue &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4"/>
+        <childnode refid="188" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Converters/BoolToValueConverter.cs" bodystart="10" bodyend="83"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1ab1631873f7e92f407e5d016dd555dea8" prot="protected" virt="non-virtual"><scope>System::Windows::Converters::BoolToValueConverter&lt; TValue &gt;</scope><name>BoolToValueConverter</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1ab63637f5df4c6c3dacceb1c6768cd1ec" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToValueConverter&lt; TValue &gt;</scope><name>Convert</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1ac4255ce46ce17e3a9610176c66187c90" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToValueConverter&lt; TValue &gt;</scope><name>ConvertBack</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1a0e889ae5bec033f2f2c2958031d93abd" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToValueConverter&lt; TValue &gt;</scope><name>FalseValue</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_3_01_t_value_01_4_1adf8aefb4469c0d0de17a91f4ca374a85" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToValueConverter&lt; TValue &gt;</scope><name>TrueValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

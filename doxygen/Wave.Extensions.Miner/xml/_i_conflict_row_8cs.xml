@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_i_conflict_row_8cs" kind="file" language="C#">
+    <compoundname>IConflictRow.cs</compoundname>
+    <innerclass refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row" prot="public">ESRI::ArcGIS::Geodatabase::IConflictRow</innerclass>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase">ESRI::ArcGIS::Geodatabase</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref>.ArcGIS.Geodatabase</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#region<sp/>Enumerations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fe" kindref="member">ConflictResolution</ref></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fea6adf97f83acf6453d4a6a4b1070f3754" kindref="member">None</ref>,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fead4e590f932d57d927d3be06965a337a5" kindref="member">PreReconcile</ref>,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774feafad857d5c329e6b67a007175c80bc7fe" kindref="member">Reconcile</ref></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71c" kindref="member">RowConflictType</ref></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca39d37985563580eed4c3437071005ae5" kindref="member">DeletePreReconcile</ref>,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71caf7815d48120e4f574a647ca080540918" kindref="member">InsertPreReconcile</ref>,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca0ad0242de2b7ca957e37041a23afab27" kindref="member">UpdatePreReconcile</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71cafca2cdeba653d6db164e7d712486812d" kindref="member">UpdatePreReconcileUpdateReconcile</ref>,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca17721b72bd13937b98c22e207329cfc6" kindref="member">UpdatePreReconcileDeleteReconcile</ref>,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71caf1392d9189eeeadb97976c70c5075035" kindref="member">DeleteReconcile</ref>,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca539aa3adbd932207fe82bd45ea0cc683" kindref="member">DeletePreReconcileUpdateReconcile</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71cab83f7ced0506ebeebbd9d500e483c915" kindref="member">InsertReconcile</ref>,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71cac3da2cbd82f070240b04efeddde154f8" kindref="member">UpdateReconcile</ref>,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca2c3cdb9a96b0dfef487e3d66d5c99364" kindref="member">DeletePreReconcileDeleteReconcile</ref></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endregion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row" kindref="compound">IConflictRow</ref></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#region<sp/>Public<sp/>Properties</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>OID<sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fe" kindref="member">ConflictResolution</ref><sp/>Resolution<sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/></highlight><highlight class="keyword">set</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>TableName<sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71c" kindref="member">RowConflictType</ref><sp/>Type<sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endregion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs"/>
+  </compounddef>
+</doxygen>

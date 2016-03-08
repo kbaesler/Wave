@@ -1,0 +1,662 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::VersionExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a58d4e66fce5dbf6737ef7e8282603798" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, List&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_delta_row" kindref="compound">DeltaRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, List&lt;DeltaRow&gt; &gt; ESRI.ArcGIS.Geodatabase.VersionExtensions.GetDataChanges</definition>
+        <argsstring>(this IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)</argsstring>
+        <name>GetDataChanges</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IVersion</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>params esriDataChangeType[]</type>
+          <declname>dataChangeTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the differences between the <emphasis>source</emphasis>  and <emphasis>target</emphasis>  versions that need to be checked-in or exported. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source (or child) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target (or parent) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataChangeTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data change types.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;String, DeltaRow&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target or dataChangeTypes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="33" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="33" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ace4fcf6efce199c5fcdbafcc1b287e43" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, List&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_delta_row" kindref="compound">DeltaRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, List&lt;DeltaRow&gt; &gt; ESRI.ArcGIS.Geodatabase.VersionExtensions.GetDataChanges</definition>
+        <argsstring>(this IVersion source, IVersion target, Func&lt; string, ITable, bool &gt; predicate, params esriDataChangeType[] dataChangeTypes)</argsstring>
+        <name>GetDataChanges</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IVersion</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>Func&lt; string, ITable, bool &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>params esriDataChangeType[]</type>
+          <declname>dataChangeTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the differences between the <emphasis>source</emphasis>  and <emphasis>target</emphasis>  versions that need to be checked-in or exported. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source (or child) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target (or parent) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate that defines a set of criteria and determines whether the specified differences will be loaded. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataChangeTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data change types.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;String, DeltaRow&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target or predicate or dataChangeTypes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="64" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="64" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ae37bfd83badc34462c4f4c33c0837657" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt;</type>
+        <definition>static IEnumerable&lt;DifferenceRow&gt; ESRI.ArcGIS.Geodatabase.VersionExtensions.GetDifferences</definition>
+        <argsstring>(this IVersionedTable source, ITable table, IQueryFilter filter, params esriDifferenceType[] differenceTypes)</argsstring>
+        <name>GetDifferences</name>
+        <param>
+          <type>this IVersionedTable</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>ITable</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>IQueryFilter</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>params esriDifferenceType[]</type>
+          <declname>differenceTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the changes between the <emphasis>source</emphasis>  (or child) and <emphasis>table</emphasis>  (or parent) version of the table. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source (or child) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The table (or parent) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate used to filter the differences.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>differenceTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The types of differences that are detected.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;DifferenceRow&gt; representing the differences for the table. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>table or differenceTypes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="145" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="145" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a54998559fd75622fb95446f6c41b2a48" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, IEnumerable&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, IEnumerable&lt;DifferenceRow&gt; &gt; ESRI.ArcGIS.Geodatabase.VersionExtensions.GetDifferences</definition>
+        <argsstring>(this IVersion source, IVersion target, IQueryFilter filter, params esriDifferenceType[] differenceTypes)</argsstring>
+        <name>GetDifferences</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IVersion</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>IQueryFilter</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>params esriDifferenceType[]</type>
+          <declname>differenceTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the differences between the <emphasis>source</emphasis>  and <emphasis>target</emphasis>  versions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source (or child) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target (or parent) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate to filter the results.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>differenceTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of differences that will be determined.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;String, DifferenceRow&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target or differenceTypes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="207" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="207" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a22c84712a4021de0b7806690151c48e6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, IEnumerable&lt; <ref refid="struct_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_difference_row" kindref="compound">DifferenceRow</ref> &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, IEnumerable&lt;DifferenceRow&gt; &gt; ESRI.ArcGIS.Geodatabase.VersionExtensions.GetDifferences</definition>
+        <argsstring>(this IVersion source, IVersion target, IQueryFilter filter, Func&lt; string, ITable, bool &gt; predicate, params esriDifferenceType[] differenceTypes)</argsstring>
+        <name>GetDifferences</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IVersion</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>IQueryFilter</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>Func&lt; string, ITable, bool &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>params esriDifferenceType[]</type>
+          <declname>differenceTypes</declname>
+        </param>
+        <briefdescription>
+<para>Gets the differences between the <emphasis>source</emphasis>  and <emphasis>target</emphasis>  versions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source (or child) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target (or parent) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate to filter the results.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicate that defines a set of criteria and determines whether the specified differences will be loaded. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>differenceTypes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of differences that will be determined.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;String, DifferenceRow&gt; representing the differences for the table (or key). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target or differenceTypes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="236" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="236" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1aa1dee374c7c73dec0a7e86492e830d69" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IFeatureClass</type>
+        <definition>static IFeatureClass ESRI.ArcGIS.Geodatabase.VersionExtensions.GetFeatureClass</definition>
+        <argsstring>(this IVersion source, string schemaName, string tableName)</argsstring>
+        <name>GetFeatureClass</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>schemaName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the IFeatureClass with the specified <emphasis>tableName</emphasis>  in the <emphasis>schemaName</emphasis>  that resides within the specified <emphasis>source</emphasis>  workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schemaName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the schema (optional).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tableName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IFeatureClass representing the feature class that has the name, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tableName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="286" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="286" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1adcbcbdc45bff47c8db6f9087329fe91f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IRelationshipClass</type>
+        <definition>static IRelationshipClass ESRI.ArcGIS.Geodatabase.VersionExtensions.GetRelationshipClass</definition>
+        <argsstring>(this IVersion source, string schemaName, string relationshipName)</argsstring>
+        <name>GetRelationshipClass</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>schemaName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>relationshipName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the IRelationshipClass with the specified <emphasis>relationshipName</emphasis>  in the <emphasis>schemaName</emphasis>  that resides within the specified <emphasis>source</emphasis>  workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schemaName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the schema (optional).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>relationshipName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the relationship table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IRelationshipClass representing the relationship that has the name, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tableName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="304" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="304" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a6908b8905ec2af5e5e793d8c922149a3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ITable</type>
+        <definition>static ITable ESRI.ArcGIS.Geodatabase.VersionExtensions.GetTable</definition>
+        <argsstring>(this IVersion source, string schemaName, string tableName)</argsstring>
+        <name>GetTable</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>schemaName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+<para>Finds the ITable with the specified <emphasis>tableName</emphasis>  in the <emphasis>schemaName</emphasis>  that resides within the specified <emphasis>source</emphasis>  workspace. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schemaName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the schema (optional).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tableName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the table.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a ITable representing the table that has the name, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tableName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="322" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="322" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ab62e09c6d890bf486838225e47ae867d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.VersionExtensions.PerformOperation</definition>
+        <argsstring>(this IVersion source, Func&lt; bool &gt; operation, bool withUndoRedo=true, esriMultiuserEditSessionMode multiuserEditSessionMode=esriMultiuserEditSessionMode.esriMESMVersioned)</argsstring>
+        <name>PerformOperation</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Func&lt; bool &gt;</type>
+          <declname>operation</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>withUndoRedo</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>esriMultiuserEditSessionMode</type>
+          <declname>multiuserEditSessionMode</declname>
+          <defval>esriMultiuserEditSessionMode.esriMESMVersioned</defval>
+        </param>
+        <briefdescription>
+<para>Encapsulates the <emphasis>operation</emphasis>  by the necessary start and stop edit constructs using the specified <emphasis>withUndoRedo</emphasis>  and <emphasis>multiuserEditSessionMode</emphasis>  parameters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>operation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit operation delegate that handles making the necessary edits. When the delegate returns <computeroutput>true</computeroutput> the edits will be saved; otherwise they will not be saved. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>withUndoRedo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the changes are reverted when the edits are aborted.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiuserEditSessionMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit session mode that can be used to indicate non-versioned or versioned editing for workspaces that support multiuser editing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing the state of the operation. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>action</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace does not support the edit session mode.;multiuserEditSessionMode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="350" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="350" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ab91eca01464d5f22c22e1809ba3a87c4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" kindref="compound">IEditableWorkspace</ref></type>
+        <definition>static IEditableWorkspace ESRI.ArcGIS.Geodatabase.VersionExtensions.StartEditing</definition>
+        <argsstring>(this IVersion source, bool withUndoRedo=true, esriMultiuserEditSessionMode multiuserEditSessionMode=esriMultiuserEditSessionMode.esriMESMVersioned)</argsstring>
+        <name>StartEditing</name>
+        <param>
+          <type>this IVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>withUndoRedo</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>esriMultiuserEditSessionMode</type>
+          <declname>multiuserEditSessionMode</declname>
+          <defval>esriMultiuserEditSessionMode.esriMESMVersioned</defval>
+        </param>
+        <briefdescription>
+<para>Starts editing the workspace using the specified <emphasis>withUndoRedo</emphasis>  and <emphasis>multiuserEditSessionMode</emphasis>  parameters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>withUndoRedo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the changes are reverted when the edits are aborted.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiuserEditSessionMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit session mode that can be used to indicate non-versioned or versioned editing for workspaces that support multiuser editing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" kindref="compound">IEditableWorkspace</ref> respresenting an editable workspace (that is disposable). </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The workspace does not support the edit session mode.;multiuserEditSessionMode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>The <ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_editable_workspace" kindref="compound">IEditableWorkspace</ref> implements the IDisposable interface, meaning it should be used within a using statement. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="376" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="376" bodyend="379"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the IVersion interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Extensions/VersionExtensions.cs" bodystart="13" bodyend="382"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a58d4e66fce5dbf6737ef7e8282603798" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetDataChanges</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ace4fcf6efce199c5fcdbafcc1b287e43" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetDataChanges</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ae37bfd83badc34462c4f4c33c0837657" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetDifferences</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a54998559fd75622fb95446f6c41b2a48" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetDifferences</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a22c84712a4021de0b7806690151c48e6" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetDifferences</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1aa1dee374c7c73dec0a7e86492e830d69" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetFeatureClass</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1adcbcbdc45bff47c8db6f9087329fe91f" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetRelationshipClass</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1a6908b8905ec2af5e5e793d8c922149a3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>GetTable</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ab62e09c6d890bf486838225e47ae867d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>PerformOperation</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions_1ab91eca01464d5f22c22e1809ba3a87c4" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::VersionExtensions</scope><name>StartEditing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

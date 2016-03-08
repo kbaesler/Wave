@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_system_1_1_xml" kind="namespace" language="C#">
+    <compoundname>System::Xml</compoundname>
+    <innerclass refid="class_system_1_1_xml_1_1_x_document_extensions" prot="public">System::Xml::XDocumentExtensions</innerclass>
+    <innerclass refid="class_system_1_1_xml_1_1_xml_document_extensions" prot="public">System::Xml::XmlDocumentExtensions</innerclass>
+    <innerclass refid="class_system_1_1_xml_1_1_xml_serialization" prot="public">System::Xml::XmlSerialization</innerclass>
+    <innerclass refid="class_system_1_1_xml_1_1_xml_transformation" prot="public">System::Xml::XmlTransformation</innerclass>
+    <innerclass refid="class_system_1_1_xml_1_1_xml_validation" prot="public">System::Xml::XmlValidation</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Xml/Extensions/XDocumentExtensions.cs" line="6" column="1"/>
+  </compounddef>
+</doxygen>

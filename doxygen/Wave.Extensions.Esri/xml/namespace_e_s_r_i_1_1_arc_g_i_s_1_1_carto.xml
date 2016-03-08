@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_carto" kind="namespace" language="C#">
+    <compoundname>ESRI::ArcGIS::Carto</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_layer_extensions" prot="public">ESRI::ArcGIS::Carto::LayerExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions" prot="public">ESRI::ArcGIS::Carto::MapExtensions</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Carto/Extensions/LayerExtensions.cs" line="8" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Extensions</compoundname>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_guid" prot="public">Miner::ArcFM::Extensions::Guid</innerclass>
+    <innerclass refid="class_miner_1_1_arc_f_m_1_1_extensions_1_1_name" prot="public">Miner::ArcFM::Extensions::Name</innerclass>
+    <briefdescription>
+<para>Container for the Miner.ArcFM.Extensions.Name and Miner.ArcFM.Extensions.Guid classes used to identify the common extensions for the ArcFM extensions which may be used for customization. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="117" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="116" bodyend="251"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

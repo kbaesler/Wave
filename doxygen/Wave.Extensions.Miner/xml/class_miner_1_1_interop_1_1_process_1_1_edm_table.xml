@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_edm_table" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::EdmTable</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_edm_table_1ae0a0d6223319980c0cdb215d52e72d83" prot="private" static="no" mutable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_edm_field" kindref="compound">EdmField</ref>[]</type>
+        <definition>EdmField [] Miner.Interop.Process.EdmTable.fieldsField</definition>
+        <argsstring></argsstring>
+        <name>fieldsField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" line="159" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_edm_table_1a9d3a6f38a80d07dedc7e70d2b4fe6cd4" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.EdmTable.tableNameField</definition>
+        <argsstring></argsstring>
+        <name>tableNameField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" line="160" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_edm_table_1a04eaabb799f7561ef2a727ff485b8762" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_edm_field" kindref="compound">EdmField</ref>[]</type>
+        <definition>EdmField [] Miner.Interop.Process.EdmTable.Fields</definition>
+        <argsstring></argsstring>
+        <name>Fields</name>
+        <briefdescription>
+<para>Gets or sets the fields. </para>        </briefdescription>
+        <detaileddescription>
+<para>The fields. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" line="173" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_edm_table_1ab9c5a4361316822a9aaa915159b01462" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.EdmTable.TableName</definition>
+        <argsstring></argsstring>
+        <name>TableName</name>
+        <briefdescription>
+<para>Gets or sets the name of the table. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the table. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" line="186" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_edm_table_1a61c85e0520ae7434cd8111fbf06c0c20" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.EdmTable.Valid</definition>
+        <argsstring></argsstring>
+        <name>Valid</name>
+        <briefdescription>
+<para>Gets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_edm_table" kindref="compound">EdmTable</ref> is valid. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if valid; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmTable.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmTable.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A partial extension of the EDMTable element.</para>    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" line="156" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration/EdmRepository.cs" bodystart="155" bodyend="193"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_edm_table_1a04eaabb799f7561ef2a727ff485b8762" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EdmTable</scope><name>Fields</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_edm_table_1ae0a0d6223319980c0cdb215d52e72d83" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::EdmTable</scope><name>fieldsField</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_edm_table_1ab9c5a4361316822a9aaa915159b01462" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EdmTable</scope><name>TableName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_edm_table_1a9d3a6f38a80d07dedc7e70d2b4fe6cd4" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::EdmTable</scope><name>tableNameField</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_edm_table_1a61c85e0520ae7434cd8111fbf06c0c20" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EdmTable</scope><name>Valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

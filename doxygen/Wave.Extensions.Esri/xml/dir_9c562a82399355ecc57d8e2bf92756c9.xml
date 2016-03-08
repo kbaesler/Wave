@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_9c562a82399355ecc57d8e2bf92756c9" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/BaseClasses</compoundname>
+    <innerdir refid="dir_de2f1e9cd063085733ece4ee0a2ce598">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/BaseClasses/Interfaces</innerdir>
+    <innerfile refid="_database_connection_8cs">DatabaseConnection.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Data/BaseClasses/"/>
+  </compounddef>
+</doxygen>

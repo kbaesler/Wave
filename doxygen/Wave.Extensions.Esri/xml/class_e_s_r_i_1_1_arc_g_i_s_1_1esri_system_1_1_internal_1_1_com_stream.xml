@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream" kind="class" language="C#" prot="package">
+    <compoundname>ESRI::ArcGIS::esriSystem::Internal::ComStream</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Stream</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a17c312c3eb9716abe1bdc02b025b9b2e" prot="private" static="no" mutable="no">
+        <type>global::System.Runtime.InteropServices.ComTypes.IStream</type>
+        <definition>global::System.Runtime.InteropServices.ComTypes.IStream ESRI.ArcGIS.esriSystem.Internal.ComStream._Stream</definition>
+        <argsstring></argsstring>
+        <name>_Stream</name>
+        <briefdescription>
+<para>The COM stream being wrapped </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a61f43197840c2efb0d4c421fe3a05fa8" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override bool</type>
+        <definition>override bool ESRI.ArcGIS.esriSystem.Internal.ComStream.CanRead</definition>
+        <argsstring></argsstring>
+        <name>CanRead</name>
+        <briefdescription>
+<para>When overridden in a derived class, gets a value indicating whether the current stream supports reading. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the stream supports reading; otherwise, false. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a5f1f10ad9318747e7ab85a67bbb4759a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override bool</type>
+        <definition>override bool ESRI.ArcGIS.esriSystem.Internal.ComStream.CanSeek</definition>
+        <argsstring></argsstring>
+        <name>CanSeek</name>
+        <briefdescription>
+<para>When overridden in a derived class, gets a value indicating whether the current stream supports seeking. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the stream supports seeking; otherwise, false. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="77" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a90831325d4ce185c30eb9cc2dc58ab2a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override bool</type>
+        <definition>override bool ESRI.ArcGIS.esriSystem.Internal.ComStream.CanWrite</definition>
+        <argsstring></argsstring>
+        <name>CanWrite</name>
+        <briefdescription>
+<para>When overridden in a derived class, gets a value indicating whether the current stream supports writing. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the stream supports writing; otherwise, false. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="88" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a7407df290365759fd91ea098a5ab7895" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override long</type>
+        <definition>override long ESRI.ArcGIS.esriSystem.Internal.ComStream.Length</definition>
+        <argsstring></argsstring>
+        <name>Length</name>
+        <briefdescription>
+<para>When overridden in a derived class, gets the length in bytes of the stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A long value representing the length of the stream in bytes. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A class derived from Stream does not support seeking. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ObjectDisposedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Methods were called after the stream was closed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="105" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ab3a2a74b5a92580285b75f68be72bed3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override long</type>
+        <definition>override long ESRI.ArcGIS.esriSystem.Internal.ComStream.Position</definition>
+        <argsstring></argsstring>
+        <name>Position</name>
+        <briefdescription>
+<para>When overridden in a derived class, gets or sets the position within the current stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current position within the stream. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.IO.IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An I/O error occurs. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream does not support seeking. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ObjectDisposedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Methods were called after the stream was closed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="131" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ad587b26e72218e3f35e594934abae5ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.esriSystem.Internal.ComStream.ComStream</definition>
+        <argsstring>(IStream stream)</argsstring>
+        <name>ComStream</name>
+        <param>
+          <type>IStream</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the ComStream class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ad3e0a55f92d2d67572f3acffbe9846b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.esriSystem.Internal.ComStream.ComStream</definition>
+        <argsstring>(global::System.Runtime.InteropServices.ComTypes.IStream stream)</argsstring>
+        <name>ComStream</name>
+        <param>
+          <type>global::System.Runtime.InteropServices.ComTypes.IStream</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the ComStream class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ad486fe9cd955eb6430d290430a9d604e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void ESRI.ArcGIS.esriSystem.Internal.ComStream.Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <briefdescription>
+<para>Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="145" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="145" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a98c2ead0a24d47245545ff67d5a83004" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void ESRI.ArcGIS.esriSystem.Internal.ComStream.Flush</definition>
+        <argsstring>()</argsstring>
+        <name>Flush</name>
+        <briefdescription>
+<para>When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.IO.IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An I/O error occurs. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="165" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="165" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a743f026d928e36318b21c858ee67e18f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int ESRI.ArcGIS.esriSystem.Internal.ComStream.Read</definition>
+        <argsstring>(byte[] buffer, int offset, int count)</argsstring>
+        <name>Read</name>
+        <param>
+          <type>byte[]</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of bytes. When this method returns, the buffer contains the specified byte array with the values between <emphasis>offset</emphasis>  and (<emphasis>offset</emphasis>  + <emphasis>count</emphasis>  - 1) replaced by the bytes read from the current source. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The zero-based byte offset in <emphasis>buffer</emphasis>  at which to begin storing the data read from the current stream. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum number of bytes to be read from the current stream.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sum of <emphasis>offset</emphasis>  and <emphasis>count</emphasis>  is larger than the buffer length. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>buffer</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>offset</emphasis>  or <emphasis>count</emphasis>  is negative. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.IO.IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An I/O error occurs. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream does not support reading. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ObjectDisposedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Methods were called after the stream was closed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="206" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="206" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ac341a81d806349a7ab55cbe6e496708e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override long</type>
+        <definition>override long ESRI.ArcGIS.esriSystem.Internal.ComStream.Seek</definition>
+        <argsstring>(long offset, SeekOrigin origin)</argsstring>
+        <name>Seek</name>
+        <param>
+          <type>long</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>SeekOrigin</type>
+          <declname>origin</declname>
+        </param>
+        <briefdescription>
+<para>When overridden in a derived class, sets the position within the current stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A byte offset relative to the <emphasis>origin</emphasis>  parameter.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value of type T:System.IO.SeekOrigin indicating the reference point used to obtain the new position. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The new position within the current stream. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.IO.IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An I/O error occurs. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream does not support seeking, such as if the stream is constructed from a pipe or console output. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ObjectDisposedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Methods were called after the stream was closed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="240" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="240" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a9c9e0eab493781568311e7c72fe3dcf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void ESRI.ArcGIS.esriSystem.Internal.ComStream.SetLength</definition>
+        <argsstring>(long value)</argsstring>
+        <name>SetLength</name>
+        <param>
+          <type>long</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>When overridden in a derived class, sets the length of the current stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The desired length of the current stream in bytes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.IO.IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An I/O error occurs. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ObjectDisposedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Methods were called after the stream was closed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="262" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="262" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1aee6357a57f9d6c9a8403a3768e4aed3e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void ESRI.ArcGIS.esriSystem.Internal.ComStream.Write</definition>
+        <argsstring>(byte[] buffer, int offset, int count)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>byte[]</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of bytes. This method copies <emphasis>count</emphasis>  bytes from <emphasis>buffer</emphasis>  to the current stream. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The zero-based byte offset in <emphasis>buffer</emphasis>  at which to begin copying bytes to the current stream. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes to be written to the current stream.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sum of <emphasis>offset</emphasis>  and <emphasis>count</emphasis>  is greater than the buffer length. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>buffer</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><emphasis>offset</emphasis>  or <emphasis>count</emphasis>  is negative. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.IO.IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An I/O error occurs. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.NotSupportedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream does not support writing. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T:System.ObjectDisposedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Methods were called after the stream was closed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="298" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="298" bodyend="305"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a4817d2f9fe371c575f130bb4f3f22cc0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.esriSystem.Internal.ComStream.~ComStream</definition>
+        <argsstring>()</argsstring>
+        <name>~ComStream</name>
+        <briefdescription>
+<para>Releases unmanaged resources and performs other cleanup operations before the ComStream is reclaimed by garbage collection. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="51" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="51" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides a .NET Stream for the ESRI.ArcGIS.esriSystem.IStream COM stream interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="232">
+        <label>ESRI.ArcGIS.esriSystem.Internal.ComStream</label>
+        <childnode refid="233" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="233">
+        <label>Stream</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="234">
+        <label>ESRI.ArcGIS.esriSystem.Internal.ComStream</label>
+        <childnode refid="235" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="235">
+        <label>Stream</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/Internal/ComStream.cs" bodystart="12" bodyend="308"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a17c312c3eb9716abe1bdc02b025b9b2e" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>_Stream</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a61f43197840c2efb0d4c421fe3a05fa8" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>CanRead</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a5f1f10ad9318747e7ab85a67bbb4759a" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>CanSeek</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a90831325d4ce185c30eb9cc2dc58ab2a" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>CanWrite</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ad486fe9cd955eb6430d290430a9d604e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>Close</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ad587b26e72218e3f35e594934abae5ab" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>ComStream</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ad3e0a55f92d2d67572f3acffbe9846b5" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>ComStream</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a98c2ead0a24d47245545ff67d5a83004" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>Flush</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a7407df290365759fd91ea098a5ab7895" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>Length</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ab3a2a74b5a92580285b75f68be72bed3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>Position</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a743f026d928e36318b21c858ee67e18f" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>Read</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1ac341a81d806349a7ab55cbe6e496708e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>Seek</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a9c9e0eab493781568311e7c72fe3dcf7" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>SetLength</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1aee6357a57f9d6c9a8403a3768e4aed3e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>Write</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal_1_1_com_stream_1a4817d2f9fe371c575f130bb4f3f22cc0" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::Internal::ComStream</scope><name>~ComStream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

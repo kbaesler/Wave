@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization" kind="class" language="C#" prot="package">
+    <compoundname>Miner::Interop::Internal::MinerRuntimeAuthorization</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BaseRuntimeAuthorization&lt; mmLicensedProductCode, mmLicensedExtensionCode, mmLicenseStatus &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1ac96dd37746b19687ecb4fa655d79e5bd" prot="private" static="no" mutable="no">
+        <type>IMMAppInitialize</type>
+        <definition>IMMAppInitialize Miner.Interop.Internal.MinerRuntimeAuthorization._AppInit</definition>
+        <argsstring></argsstring>
+        <name>_AppInit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a0e3eceb743ff2802f850c43f35b2b19d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override mmLicensedProductCode</type>
+        <definition>override mmLicensedProductCode Miner.Interop.Internal.MinerRuntimeAuthorization.InitializedProduct</definition>
+        <argsstring></argsstring>
+        <name>InitializedProduct</name>
+        <briefdescription>
+<para>Gets the product code that has been initialized. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a816dc093929644b600a1064d44ace1ef" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IMMAppInitialize</type>
+        <definition>IMMAppInitialize Miner.Interop.Internal.MinerRuntimeAuthorization.License</definition>
+        <argsstring></argsstring>
+        <name>License</name>
+        <briefdescription>
+<para>Gets the license. </para>        </briefdescription>
+        <detaileddescription>
+<para>The license. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a6aa6b4121fc57eca58c5030bb85a7064" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override mmLicenseStatus</type>
+        <definition>override mmLicenseStatus Miner.Interop.Internal.MinerRuntimeAuthorization.CheckInExtension</definition>
+        <argsstring>(mmLicensedExtensionCode licensedExtension)</argsstring>
+        <name>CheckInExtension</name>
+        <param>
+          <type>mmLicensedExtensionCode</type>
+          <declname>licensedExtension</declname>
+        </param>
+        <briefdescription>
+<para>Check in extension when it is no longer needed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licensedExtension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The licensed extension.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the mmLicenseStatus representing the status of the extension. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="52" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1ad3908368fbb69583a434ab4142397540" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override mmLicenseStatus</type>
+        <definition>override mmLicenseStatus Miner.Interop.Internal.MinerRuntimeAuthorization.CheckOutExtension</definition>
+        <argsstring>(mmLicensedProductCode licensedProduct, mmLicensedExtensionCode licensedExtension)</argsstring>
+        <name>CheckOutExtension</name>
+        <param>
+          <type>mmLicensedProductCode</type>
+          <declname>licensedProduct</declname>
+        </param>
+        <param>
+          <type>mmLicensedExtensionCode</type>
+          <declname>licensedExtension</declname>
+        </param>
+        <briefdescription>
+<para>Initializes or (checks out) the extension that correspond to the specified extension code. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licensedProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product code.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>licensedExtension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The extension code.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the mmLicenseStatus representing the status of the extension. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="68" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="68" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a2db51889be4f3242638e004d21dfe9e8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Internal.MinerRuntimeAuthorization.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="88" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="88" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a95034cf1c36a6dcae58c21419352c35e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override mmLicenseStatus</type>
+        <definition>override mmLicenseStatus Miner.Interop.Internal.MinerRuntimeAuthorization.InitializeProduct</definition>
+        <argsstring>(mmLicensedProductCode licensedProduct)</argsstring>
+        <name>InitializeProduct</name>
+        <param>
+          <type>mmLicensedProductCode</type>
+          <declname>licensedProduct</declname>
+        </param>
+        <briefdescription>
+<para>Initializes or (checks out) the product licenses that correspond to the specified product code. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licensedProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product code.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the mmLicenseStatus representing the status of the product. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="106" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="106" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a4fa0d698d305910a2b08fa08bc6ed1fe" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Internal.MinerRuntimeAuthorization.IsExtensionInitialized</definition>
+        <argsstring>(mmLicenseStatus licenseStatus)</argsstring>
+        <name>IsExtensionInitialized</name>
+        <param>
+          <type>mmLicenseStatus</type>
+          <declname>licenseStatus</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the license has been initialized based on the status. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The license status.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the license has been initialized based on the status; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="128" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="128" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a4a13ef721e370af13f741d0a3d001bb1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Internal.MinerRuntimeAuthorization.IsProductInitialized</definition>
+        <argsstring>(mmLicenseStatus licenseStatus)</argsstring>
+        <name>IsProductInitialized</name>
+        <param>
+          <type>mmLicenseStatus</type>
+          <declname>licenseStatus</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the product has been initialized based on the status. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The license status.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the license has been initialized based on the status; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="141" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="141" bodyend="145"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A helper class used to handle initialize the ArcFM licenses. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="412">
+        <label>Miner.Interop.Internal.MinerRuntimeAuthorization</label>
+        <childnode refid="413" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="413">
+        <label>BaseRuntimeAuthorization&lt; mmLicensedProductCode, mmLicensedExtensionCode, mmLicenseStatus &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="414">
+        <label>Miner.Interop.Internal.MinerRuntimeAuthorization</label>
+        <childnode refid="415" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="415">
+        <label>BaseRuntimeAuthorization&lt; mmLicensedProductCode, mmLicensedExtensionCode, mmLicenseStatus &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/MinerRuntimeAuthorization.cs" bodystart="8" bodyend="148"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1ac96dd37746b19687ecb4fa655d79e5bd" prot="private" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>_AppInit</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a6aa6b4121fc57eca58c5030bb85a7064" prot="public" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>CheckInExtension</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1ad3908368fbb69583a434ab4142397540" prot="public" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>CheckOutExtension</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a2db51889be4f3242638e004d21dfe9e8" prot="protected" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a0e3eceb743ff2802f850c43f35b2b19d" prot="public" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>InitializedProduct</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a95034cf1c36a6dcae58c21419352c35e" prot="protected" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>InitializeProduct</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a4fa0d698d305910a2b08fa08bc6ed1fe" prot="protected" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>IsExtensionInitialized</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a4a13ef721e370af13f741d0a3d001bb1" prot="protected" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>IsProductInitialized</name></member>
+      <member refid="class_miner_1_1_interop_1_1_internal_1_1_miner_runtime_authorization_1a816dc093929644b600a1064d44ace1ef" prot="protected" virt="non-virtual"><scope>Miner::Interop::Internal::MinerRuntimeAuthorization</scope><name>License</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

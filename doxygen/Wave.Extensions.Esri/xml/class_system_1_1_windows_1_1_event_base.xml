@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_event_base" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::EventBase</compoundname>
+    <derivedcompoundref refid="class_system_1_1_windows_1_1_composite_presentation_event" prot="public" virt="non-virtual">System.Windows.CompositePresentationEvent&lt; TPayload &gt;</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_event_base_1a23e3471e3ad93811f909e899447bc50e" prot="private" static="no" mutable="no">
+        <type>readonly List&lt; <ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref> &gt;</type>
+        <definition>readonly List&lt;IEventSubscription&gt; System.Windows.EventBase._Subscriptions</definition>
+        <argsstring></argsstring>
+        <name>_Subscriptions</name>
+        <initializer>= new List&lt;<ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_event_base_1a4bc03bd7655e415594b2e65a8a5b6c85" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>SynchronizationContext</type>
+        <definition>SynchronizationContext System.Windows.EventBase.SynchronizationContext</definition>
+        <argsstring></argsstring>
+        <name>SynchronizationContext</name>
+        <briefdescription>
+<para>Allows the SynchronizationContext to be set by the EventAggregator for UI Thread Dispatching </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_event_base_1a194797bfb83f4d28b95b1025b762b7d2" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>ICollection&lt; <ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref> &gt;</type>
+        <definition>ICollection&lt;IEventSubscription&gt; System.Windows.EventBase.Subscriptions</definition>
+        <argsstring></argsstring>
+        <name>Subscriptions</name>
+        <briefdescription>
+<para>Gets the list of current subscriptions. </para>        </briefdescription>
+        <detaileddescription>
+<para>The current subscribers.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="33" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_base_1a95cfa462814d2bedee57c9a08688fe4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool System.Windows.EventBase.Contains</definition>
+        <argsstring>(SubscriptionToken token)</argsstring>
+        <name>Contains</name>
+        <param>
+          <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+<para>Returns  if there is a subscriber matching <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>token</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> returned by <ref refid="class_system_1_1_windows_1_1_event_base" kindref="compound">EventBase</ref> while subscribing to the event. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if there is a <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that matches; otherwise . </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="53" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="53" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_base_1a98f971dc60304d24d24bfdf8f352819c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Windows.EventBase.Unsubscribe</definition>
+        <argsstring>(SubscriptionToken token)</argsstring>
+        <name>Unsubscribe</name>
+        <param>
+          <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+<para>Removes the subscriber matching the <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>token</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> returned by <ref refid="class_system_1_1_windows_1_1_event_base" kindref="compound">EventBase</ref> while subscribing to the event. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="69" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="69" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_base_1ac6b49963ba6214f1abc257810992af63" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Windows.EventBase.InternalPublish</definition>
+        <argsstring>(params object[] arguments)</argsstring>
+        <name>InternalPublish</name>
+        <param>
+          <type>params object[]</type>
+          <declname>arguments</declname>
+        </param>
+        <briefdescription>
+<para>Calls all the execution strategies exposed by the list of <ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>arguments</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments that will be passed to the listeners.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>Before executing the strategies, this class will prune all the subscribers from the list that return a  Action&lt;T&gt; when calling the <ref refid="interface_system_1_1_windows_1_1_i_event_subscription_1a038d54bbb3b716b4c24439a1377e3687" kindref="member">IEventSubscription.GetExecutionStrategy</ref> method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="94" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="94" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_base_1ad752ff670511106072cf98f62d6bb3ca" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+        <definition>virtual SubscriptionToken System.Windows.EventBase.InternalSubscribe</definition>
+        <argsstring>(IEventSubscription eventSubscription)</argsstring>
+        <name>InternalSubscribe</name>
+        <param>
+          <type><ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref></type>
+          <declname>eventSubscription</declname>
+        </param>
+        <briefdescription>
+<para>Adds the specified <ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref> to the subscribers&apos; collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>eventSubscription</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The subscriber.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that uniquely identifies every subscriber.</para></simplesect>
+</para><para>Adds the subscription to the internal list and assigns it a new <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="111" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="111" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_base_1ae429482a24c3069d67978aef306fe815" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; Action&lt; object[]&gt; &gt;</type>
+        <definition>List&lt;Action&lt;object[]&gt; &gt; System.Windows.EventBase.PruneAndReturnStrategies</definition>
+        <argsstring>()</argsstring>
+        <name>PruneAndReturnStrategies</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="128" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="128" bodyend="152"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Defines a base class to publish and subscribe to events. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="324">
+        <label>System.Windows.CompositePresentationEvent&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_composite_presentation_event"/>
+        <childnode refid="323" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="323">
+        <label>System.Windows.EventBase</label>
+        <link refid="class_system_1_1_windows_1_1_event_base"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventBase.cs" bodystart="10" bodyend="155"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a23e3471e3ad93811f909e899447bc50e" prot="private" virt="non-virtual"><scope>System::Windows::EventBase</scope><name>_Subscriptions</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a95cfa462814d2bedee57c9a08688fe4b" prot="public" virt="virtual"><scope>System::Windows::EventBase</scope><name>Contains</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1ac6b49963ba6214f1abc257810992af63" prot="protected" virt="virtual"><scope>System::Windows::EventBase</scope><name>InternalPublish</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1ad752ff670511106072cf98f62d6bb3ca" prot="protected" virt="virtual"><scope>System::Windows::EventBase</scope><name>InternalSubscribe</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1ae429482a24c3069d67978aef306fe815" prot="private" virt="non-virtual"><scope>System::Windows::EventBase</scope><name>PruneAndReturnStrategies</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a194797bfb83f4d28b95b1025b762b7d2" prot="protected" virt="non-virtual"><scope>System::Windows::EventBase</scope><name>Subscriptions</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a4bc03bd7655e415594b2e65a8a5b6c85" prot="public" virt="non-virtual"><scope>System::Windows::EventBase</scope><name>SynchronizationContext</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_base_1a98f971dc60304d24d24bfdf8f352819c" prot="public" virt="virtual"><scope>System::Windows::EventBase</scope><name>Unsubscribe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

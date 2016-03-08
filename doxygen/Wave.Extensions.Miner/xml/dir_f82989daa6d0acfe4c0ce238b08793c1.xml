@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_f82989daa6d0acfe4c0ce238b08793c1" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders</compoundname>
+    <innerdir refid="dir_b904916dfc59160416c6c686698897b9">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/BaseClasses</innerdir>
+    <innerfile refid="_design_builder_8cs">DesignBuilder.cs</innerfile>
+    <innerfile refid="_session_builder_8cs">SessionBuilder.cs</innerfile>
+    <innerfile refid="_work_request_builder_8cs">WorkRequestBuilder.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Builders/"/>
+  </compounddef>
+</doxygen>

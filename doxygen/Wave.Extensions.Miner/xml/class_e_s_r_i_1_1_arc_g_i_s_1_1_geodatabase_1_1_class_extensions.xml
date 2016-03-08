@@ -1,0 +1,1022 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::ClassExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a668c5d00b380d2d542daabf1398b3e16" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; string &gt;</type>
+        <definition>static IEnumerable&lt;string&gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetClassModelNames</definition>
+        <argsstring>(this IObjectClass source)</argsstring>
+        <name>GetClassModelNames</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of the model names that are assigned to the <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;T&gt; representing the class model names assigned to the object class. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="28" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a2743241e868945b100cc3576cb4cf034" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IField</type>
+        <definition>static IField ESRI.ArcGIS.Geodatabase.ClassExtensions.GetField</definition>
+        <argsstring>(this IObjectClass source, string modelName, bool throwException=true)</argsstring>
+        <name>GetField</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Finds the IField that has been assigned the <emphasis>modelName</emphasis>  that is within the specified <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class to check for model names</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field model name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the ESRI.ArcGIS.Geodatabase.IField that has been assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_field_model_name_exception" kindref="compound">MissingFieldModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="52" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a3b07477561a93a533770385bb2ce8e69" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldIndex</definition>
+        <argsstring>(this IObjectClass source, string modelName, bool throwException=true)</argsstring>
+        <name>GetFieldIndex</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Finds index of the IField that has been assigned the <emphasis>modelName</emphasis>  that is within the specified <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field model name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the int representing the index of the field assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_field_model_name_exception" kindref="compound">MissingFieldModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="80" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="80" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a792e36c8214761303125f0d2dd2a25fc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; string, List&lt; int &gt; &gt;</type>
+        <definition>static Dictionary&lt;string, List&lt;int&gt; &gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldIndexes</definition>
+        <argsstring>(this IObjectClass source, params string[] modelNames)</argsstring>
+        <name>GetFieldIndexes</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <briefdescription>
+<para>Gets a dictionary of the fields that are assigned the <emphasis>modelNames</emphasis>  organized by the model name followed by the field indexes. </para>        </briefdescription>
+        <detaileddescription>
+<para>specified <emphasis>source</emphasis> . </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the Dictionary&lt;Key, Value&gt; representing the field model name for the field indexes. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="100" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="100" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1af17fc7626651a98a714adaa76600879e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMFieldManager</type>
+        <definition>static IMMFieldManager ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldManager</definition>
+        <argsstring>(this IObjectClass source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder=null)</argsstring>
+        <name>GetFieldManager</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subtypeCode</declname>
+        </param>
+        <param>
+          <type>IMMAuxiliaryFieldBuilder</type>
+          <declname>auxiliaryFieldBuilder</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+<para>Gets the field manager for the specified <emphasis>source</emphasis>  </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subtypeCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The subtype code.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>auxiliaryFieldBuilder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The auxiliary field builder.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the IMMFieldManager representing the properties for the class. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="131" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="131" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a5f4c061fa9d5e11f914082bd545ba14d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; IField, List&lt; string &gt; &gt;</type>
+        <definition>static Dictionary&lt;IField, List&lt;string&gt; &gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldModelNames</definition>
+        <argsstring>(this IObjectClass source)</argsstring>
+        <name>GetFieldModelNames</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns a dictionary of the fields and model names that are assigned to the field for the specified <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;Key, Value&gt; representing the model names assigned to the field. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>field</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="153" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="153" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1adcc3e3a905e3e905718c2178aeca0b17" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; string &gt;</type>
+        <definition>static IEnumerable&lt;string&gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldModelNames</definition>
+        <argsstring>(this IObjectClass source, IField field)</argsstring>
+        <name>GetFieldModelNames</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IField</type>
+          <declname>field</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of the model names that are assigned to the <emphasis>field</emphasis>  for the specified <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;T&gt; representing the model names assigned to the field. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>field</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="178" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="178" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aa541bf70fc609efe3c7a173f9b764098" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldName</definition>
+        <argsstring>(this IObjectClass source, string modelName, bool throwException=true)</argsstring>
+        <name>GetFieldName</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns the name of the field that is assigned the <emphasis>modelName</emphasis>  on the <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field model name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a string representing the name of the field, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_field_model_name_exception" kindref="compound">MissingFieldModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="201" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="201" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a59abc11adb7ac68c4c77283b72038a61" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; string &gt;</type>
+        <definition>static IEnumerable&lt;string&gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldNames</definition>
+        <argsstring>(this IObjectClass source, string modelName)</argsstring>
+        <name>GetFieldNames</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of the name of the fields that are assigned the specified <emphasis>modelName</emphasis>  on the particiular <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field model name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;T&gt; representing the name of the fields that are assigned the field model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="220" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="220" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aa687bc61bf69beb2709bee7d2c389a82" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; string &gt;</type>
+        <definition>static IEnumerable&lt;string&gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFieldNames</definition>
+        <argsstring>(this IObjectClass source, params string[] modelNames)</argsstring>
+        <name>GetFieldNames</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of the name of the fields that are assigned the specified <emphasis>modelNames</emphasis>  on the particiular <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;T&gt; representing the name of the fields that are assigned the field model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="239" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="239" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a167fd9f6afc0ad7b82d44813fe01302e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IField &gt;</type>
+        <definition>static IEnumerable&lt;IField&gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetFields</definition>
+        <argsstring>(this IObjectClass source, params string[] modelNames)</argsstring>
+        <name>GetFields</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the fields that has been assigned the <emphasis>modelNames</emphasis>  that is within the specified <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class to check for model names</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the IEnumerable&lt;IField&gt; that has been assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="261" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="261" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a64c570c3442e0ea7ae2ad1f118154e65" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IField</type>
+        <definition>static IField ESRI.ArcGIS.Geodatabase.ClassExtensions.GetPrimaryDisplayField</definition>
+        <argsstring>(this IObjectClass source)</argsstring>
+        <name>GetPrimaryDisplayField</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Get the value of field that has been configured to be the primary display field. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IField representing the field for the primary display. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="281" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="281" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a2a1977f6e06447f40979fafebe5b6af3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IRelationshipClass</type>
+        <definition>static IRelationshipClass ESRI.ArcGIS.Geodatabase.ClassExtensions.GetRelationshipClass</definition>
+        <argsstring>(this IObjectClass source, esriRelRole relationshipRole, string modelName, bool throwException=true)</argsstring>
+        <name>GetRelationshipClass</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriRelRole</type>
+          <declname>relationshipRole</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Finds the IRelationshipClass using the specified <emphasis>source</emphasis>  and <emphasis>relationshipRole</emphasis>  that has been assigned the <emphasis>modelName</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>relationshipRole</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relationship role.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a ESRI.ArcGIS.Geodatabase.IRelationshipClass representing the relationship assigned any of the class model names, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" kindref="compound">MissingClassModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="308" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="308" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aa5f516ef938ce1e063fa3828dc748e3a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IRelationshipClass</type>
+        <definition>static IRelationshipClass ESRI.ArcGIS.Geodatabase.ClassExtensions.GetRelationshipClass</definition>
+        <argsstring>(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames, bool throwException=true)</argsstring>
+        <name>GetRelationshipClass</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriRelRole</type>
+          <declname>relationshipRole</declname>
+        </param>
+        <param>
+          <type>string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Finds the IRelationshipClass using the specified <emphasis>source</emphasis>  and <emphasis>relationshipRole</emphasis>  that has been assigned any of the <emphasis>modelNames</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>relationshipRole</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relationship role.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model names.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a ESRI.ArcGIS.Geodatabase.IRelationshipClass representing the relationship assigned any of the class model names, otherwise <computeroutput>null</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" kindref="compound">MissingClassModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="333" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="333" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a3570a47255abc83529ffe3fef0a1899b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IRelationshipClass &gt;</type>
+        <definition>static IEnumerable&lt;IRelationshipClass&gt; ESRI.ArcGIS.Geodatabase.ClassExtensions.GetRelationshipClasses</definition>
+        <argsstring>(this IObjectClass source, esriRelRole relationshipRole, params string[] modelNames)</argsstring>
+        <name>GetRelationshipClasses</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>esriRelRole</type>
+          <declname>relationshipRole</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <briefdescription>
+<para>Finds all of the relationship classes using the specified <emphasis>source</emphasis>  and <emphasis>relationshipRole</emphasis>  that has been assigned any of the <emphasis>modelNames</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>relationshipRole</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relationship role.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a T:IList&lt;ESRI.ArcGIS.Geodatabase.IRelationshipClass&gt; representing those relationships that are assigned one or more of the class model names. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="361" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="361" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a96d631ac4152b3308bd33e1aaedae9ca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.ClassExtensions.IsAssignedClassModelName</definition>
+        <argsstring>(this IObjectClass source, string modelName)</argsstring>
+        <name>IsAssignedClassModelName</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <briefdescription>
+<para>Determines if the <emphasis>source</emphasis>  contains any of the class model names specified in the <emphasis>modelName</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class to check for model names</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the model.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns <computeroutput>true</computeroutput> if object class contains any of the class model name; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="402" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="402" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1af157a613666c312b37ddd18b6e5b84a9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.ClassExtensions.IsAssignedClassModelName</definition>
+        <argsstring>(this IObjectClass source, params string[] modelNames)</argsstring>
+        <name>IsAssignedClassModelName</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <briefdescription>
+<para>Determines if the <emphasis>source</emphasis>  contains any of the class model names specified in the <emphasis>modelNames</emphasis>  array. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class to check for model names</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns <computeroutput>true</computeroutput> if object class contains any of the class model name; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="420" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="420" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aecbb983c1f1630bfb2bf0313f37d4309" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.ClassExtensions.IsAssignedFieldModelName</definition>
+        <argsstring>(this IObjectClass source, string modelName)</argsstring>
+        <name>IsAssignedFieldModelName</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <briefdescription>
+<para>Determines if the <emphasis>source</emphasis>  contains any of the field model names specified in the <emphasis>modelName</emphasis>  array. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class to check for model names</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns <computeroutput>true</computeroutput> if object class contains any of the field model name; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="438" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="438" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a6e1eca193f783760fa4a8dc5b19e90ab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.ClassExtensions.IsAssignedFieldModelName</definition>
+        <argsstring>(this IObjectClass source, IField field, params string[] modelNames)</argsstring>
+        <name>IsAssignedFieldModelName</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IField</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <briefdescription>
+<para>Determines if the <emphasis>field</emphasis>  on the <emphasis>source</emphasis>  contains any of the field model names specified in the <emphasis>modelNames</emphasis>  array. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if object class contains any of the field model name; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="457" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="457" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1ae8054874b73ad05041c46cfd96e6cc74" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.ClassExtensions.IsAssignedFieldModelName</definition>
+        <argsstring>(this IObjectClass source, params string[] modelNames)</argsstring>
+        <name>IsAssignedFieldModelName</name>
+        <param>
+          <type>this IObjectClass</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>modelNames</declname>
+        </param>
+        <briefdescription>
+<para>Determines if the <emphasis>source</emphasis>  contains any of the field model names specified in the <emphasis>modelNames</emphasis>  array. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class to check for model names</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field model names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns <computeroutput>true</computeroutput> if object class contains any of the field model name; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelNames</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="475" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="475" bodyend="481"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.Geodatabase.IClass and ESRI.ArcGIS.Geodatabase.IObjectClass interfaces. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" bodystart="17" bodyend="484"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a668c5d00b380d2d542daabf1398b3e16" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetClassModelNames</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a2743241e868945b100cc3576cb4cf034" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetField</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a3b07477561a93a533770385bb2ce8e69" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldIndex</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a792e36c8214761303125f0d2dd2a25fc" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldIndexes</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1af17fc7626651a98a714adaa76600879e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldManager</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a5f4c061fa9d5e11f914082bd545ba14d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldModelNames</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1adcc3e3a905e3e905718c2178aeca0b17" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldModelNames</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aa541bf70fc609efe3c7a173f9b764098" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldName</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a59abc11adb7ac68c4c77283b72038a61" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldNames</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aa687bc61bf69beb2709bee7d2c389a82" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFieldNames</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a167fd9f6afc0ad7b82d44813fe01302e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetFields</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a64c570c3442e0ea7ae2ad1f118154e65" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetPrimaryDisplayField</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a2a1977f6e06447f40979fafebe5b6af3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetRelationshipClass</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aa5f516ef938ce1e063fa3828dc748e3a" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetRelationshipClass</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a3570a47255abc83529ffe3fef0a1899b" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>GetRelationshipClasses</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a96d631ac4152b3308bd33e1aaedae9ca" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>IsAssignedClassModelName</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1af157a613666c312b37ddd18b6e5b84a9" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>IsAssignedClassModelName</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1aecbb983c1f1630bfb2bf0313f37d4309" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>IsAssignedFieldModelName</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1a6e1eca193f783760fa4a8dc5b19e90ab" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>IsAssignedFieldModelName</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions_1ae8054874b73ad05041c46cfd96e6cc74" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::ClassExtensions</scope><name>IsAssignedFieldModelName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

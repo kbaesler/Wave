@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</compoundname>
+    <basecompoundref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u" prot="public" virt="non-virtual">Miner.Framework.BaseClasses.BaseRelationshipAU</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IEnumerable&lt; IMMRelationshipAUStrategy &gt;</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a44e1d1f91761506f45ccc7b246476015" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>abstract IEnumerable&lt; IMMRelationshipAUStrategy &gt;</type>
+        <definition>abstract IEnumerable&lt;IMMRelationshipAUStrategy&gt; Miner.Framework.BaseClasses.BaseRelationshipCollectionAU.Items</definition>
+        <argsstring></argsstring>
+        <name>Items</name>
+        <briefdescription>
+<para>Gets the list of IMMRelationshipAUStrategy classes that will be executed. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The list of IMMRelationshipAUStrategy classes that will be executed.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a12e110a962f1d3a15cab9c27a61e0e05" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseRelationshipCollectionAU.BaseRelationshipCollectionAU</definition>
+        <argsstring>(string name)</argsstring>
+        <name>BaseRelationshipCollectionAU</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u" kindref="compound">BaseRelationshipCollectionAU</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a8f5790b821988a9490a0516c8438c35c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override bool</type>
+        <definition>override bool Miner.Framework.BaseClasses.BaseRelationshipCollectionAU.InternalEnabled</definition>
+        <argsstring>(IRelationshipClass relClass, IObjectClass originClass, IObjectClass destClass, mmEditEvent editEvent)</argsstring>
+        <name>InternalEnabled</name>
+        <reimplements refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a888dfc07f77ea465c8f6f05db76b271f">InternalEnabled</reimplements>
+        <param>
+          <type>IRelationshipClass</type>
+          <declname>relClass</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>originClass</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>destClass</declname>
+        </param>
+        <param>
+          <type>mmEditEvent</type>
+          <declname>editEvent</declname>
+        </param>
+        <briefdescription>
+<para>Implementation of enabled method for derived classes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relelationship class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>originClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if this AutoUpdater is enabled; otherwise <computeroutput>false</computeroutput> </para></simplesect>
+</para><para>This method will be called from IMMRelationshipAUStrategyEx::get_Enabled and is wrapped within the exception handling for that method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" bodystart="81" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1aa6286b91dfdee1cf79c363054823e768" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Framework.BaseClasses.BaseRelationshipCollectionAU.InternalExecute</definition>
+        <argsstring>(IRelationship relationship, mmAutoUpdaterMode mode, mmEditEvent editEvent)</argsstring>
+        <name>InternalExecute</name>
+        <reimplements refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1ad8686109cc1c6fa2893911fc26e13c21">InternalExecute</reimplements>
+        <param>
+          <type>IRelationship</type>
+          <declname>relationship</declname>
+        </param>
+        <param>
+          <type>mmAutoUpdaterMode</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>mmEditEvent</type>
+          <declname>editEvent</declname>
+        </param>
+        <briefdescription>
+<para>Implementation of execute method for derived classes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>relationship</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relationship.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mode.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>This method will be called from IMMRelationshipAUStrategy::Execute and is wrapped within the exception handling for that method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" line="104" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" bodystart="104" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a9712c7c6a9989996e34d1ecf56e9afa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator&lt; IMMRelationshipAUStrategy &gt;</type>
+        <definition>IEnumerator&lt;IMMRelationshipAUStrategy&gt; Miner.Framework.BaseClasses.BaseRelationshipCollectionAU.GetEnumerator</definition>
+        <argsstring>()</argsstring>
+        <name>GetEnumerator</name>
+        <briefdescription>
+<para>Returns an enumerator that iterates through the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A T:System.Collections.Generic.IEnumerator`1 that can be used to iterate through the collection. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" bodystart="47" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a9b8f75f1d4455fd3290ce657558669ac" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator IEnumerable.</type>
+        <definition>IEnumerator IEnumerable. Miner.Framework.BaseClasses.BaseRelationshipCollectionAU.GetEnumerator</definition>
+        <argsstring>()</argsstring>
+        <name>GetEnumerator</name>
+        <briefdescription>
+<para>Returns an enumerator that iterates through a collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An T:System.Collections.IEnumerator object that can be used to iterate through the collection. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" line="58" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" bodystart="58" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract Relationship Auto Updater (AU) that is used to to execute multiple <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u" kindref="compound">BaseRelationshipAU</ref> for the same relationship. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="219">
+        <label>IEnumerable&lt; IMMRelationshipAUStrategy &gt;</label>
+      </node>
+      <node id="215">
+        <label>Miner.Framework.BaseClasses.BaseRelationshipCollectionAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u"/>
+        <childnode refid="216" relation="public-inheritance">
+        </childnode>
+        <childnode refid="219" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="217">
+        <label>IMMRelationshipAUStrategy</label>
+      </node>
+      <node id="216">
+        <label>BaseRelationshipAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u"/>
+        <childnode refid="217" relation="public-inheritance">
+        </childnode>
+        <childnode refid="218" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="218">
+        <label>IMMRelationshipAUStrategyEx</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="224">
+        <label>IEnumerable&lt; IMMRelationshipAUStrategy &gt;</label>
+      </node>
+      <node id="220">
+        <label>Miner.Framework.BaseClasses.BaseRelationshipCollectionAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u"/>
+        <childnode refid="221" relation="public-inheritance">
+        </childnode>
+        <childnode refid="224" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="222">
+        <label>IMMRelationshipAUStrategy</label>
+      </node>
+      <node id="221">
+        <label>BaseRelationshipAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u"/>
+        <childnode refid="222" relation="public-inheritance">
+        </childnode>
+        <childnode refid="223" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="223">
+        <label>IMMRelationshipAUStrategyEx</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseRelationshipCollectionAU.cs" bodystart="14" bodyend="113"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a9e667e0fcf747c7acccd3d6c7735e51d" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>Abort</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a0bf3c9955fc22ae1782906d8fd3bd50c" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>BaseRelationshipAU</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a12e110a962f1d3a15cab9c27a61e0e05" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>BaseRelationshipCollectionAU</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a8b2e8fa2c54e80b1e32b0acdd2dad033" prot="protected" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>CanExecute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a88becd11e17fb3586ac2d12c087971f6" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>Execute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a86677a94f3e272d4231b04f58551ab6a" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>get_Enabled</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a7a5ad0a4a8e8e204347d340097fc6c8e" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>get_Enabled</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a9712c7c6a9989996e34d1ecf56e9afa5" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>GetEnumerator</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a9b8f75f1d4455fd3290ce657558669ac" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>GetEnumerator</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a8f5790b821988a9490a0516c8438c35c" prot="protected" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>InternalEnabled</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1aa6286b91dfdee1cf79c363054823e768" prot="protected" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>InternalExecute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_collection_a_u_1a44e1d1f91761506f45ccc7b246476015" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>Items</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a8de3a9740efaed1bbc731034feed8c97" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a2ea2d39dd7277a85753e5ea0e8a8eea4" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>Register</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_relationship_a_u_1a90f6be7e69e28a1ffa8d45db07b7a694" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseRelationshipCollectionAU</scope><name>Unregister</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

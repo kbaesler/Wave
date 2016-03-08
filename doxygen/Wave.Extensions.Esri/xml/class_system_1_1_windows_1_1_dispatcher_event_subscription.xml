@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_dispatcher_event_subscription" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::DispatcherEventSubscription</compoundname>
+    <basecompoundref refid="class_system_1_1_windows_1_1_event_subscription" prot="public" virt="non-virtual">System::Windows::EventSubscription&lt; TPayload &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TPayload</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_dispatcher_event_subscription_1a17361dac8d897f9c413b7f6066d5f687" prot="private" static="no" mutable="no">
+        <type>readonly SynchronizationContext</type>
+        <definition>readonly SynchronizationContext System.Windows.DispatcherEventSubscription&lt; TPayload &gt;._SyncContext</definition>
+        <argsstring></argsstring>
+        <name>_SyncContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_dispatcher_event_subscription_1a3be4261753e4b6003458d94d22e5c73c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.DispatcherEventSubscription&lt; TPayload &gt;.DispatcherEventSubscription</definition>
+        <argsstring>(IDelegateReference actionReference, IDelegateReference filterReference, SynchronizationContext context)</argsstring>
+        <name>DispatcherEventSubscription</name>
+        <param>
+          <type><ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref></type>
+          <declname>actionReference</declname>
+        </param>
+        <param>
+          <type><ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref></type>
+          <declname>filterReference</declname>
+        </param>
+        <param>
+          <type>SynchronizationContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new instance of BackgroundEventSubscription&lt;TPayload&gt;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>actionReference</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a delegate of type System.Action&lt;TPayload&gt;.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filterReference</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a delegate of type Predicate&lt;TPayload&gt;.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The synchronization context to use for UI thread dispatching.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When <emphasis>actionReference</emphasis>  or  are . </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When the target of <emphasis>actionReference</emphasis>  is not of type System.Action&lt;TPayload&gt;, or the target of <emphasis>filterReference</emphasis>  is not of type Predicate&lt;TPayload&gt;. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" bodystart="38" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_dispatcher_event_subscription_1a7a58333000e66b9ecda83ef9856828e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void System.Windows.DispatcherEventSubscription&lt; TPayload &gt;.InvokeAction</definition>
+        <argsstring>(Action&lt; TPayload &gt; action, TPayload argument)</argsstring>
+        <name>InvokeAction</name>
+        <reimplements refid="class_system_1_1_windows_1_1_event_subscription_1a748e3dba0c877cacdcc6d16c892eb15c">InvokeAction</reimplements>
+        <param>
+          <type><ref refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" kindref="member">Action</ref>&lt; TPayload &gt;</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>TPayload</type>
+          <declname>argument</declname>
+        </param>
+        <briefdescription>
+<para>Invokes the specified System.Action&lt;TPayload&gt; asynchronously in the specified SynchronizationContext. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action to execute.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The payload to pass <emphasis>action</emphasis>  while invoking it.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" line="54" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" bodystart="54" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Extends <ref refid="class_system_1_1_windows_1_1_event_subscription_1a293d09601a4f26daefcb7225ffdc381a" kindref="member">EventSubscription&lt;TPayload&gt;</ref> to invoke the <ref refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" kindref="member">EventSubscription&lt;TPayload&gt;.Action</ref> delegate in a specific SynchronizationContext. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TPayload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type to use for the generic System.Action&lt;TPayload&gt; and Predicate&lt;TPayload&gt; types. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="279">
+        <label>System.Windows.DispatcherEventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_dispatcher_event_subscription"/>
+        <childnode refid="280" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="281">
+        <label>IEventSubscription</label>
+        <link refid="interface_system_1_1_windows_1_1_i_event_subscription"/>
+      </node>
+      <node id="280">
+        <label>EventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_event_subscription"/>
+        <childnode refid="281" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="282">
+        <label>System.Windows.DispatcherEventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_dispatcher_event_subscription"/>
+        <childnode refid="283" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="284">
+        <label>IEventSubscription</label>
+        <link refid="interface_system_1_1_windows_1_1_i_event_subscription"/>
+      </node>
+      <node id="283">
+        <label>EventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_event_subscription"/>
+        <childnode refid="284" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/DispatcherEventSubscription.cs" bodystart="14" bodyend="60"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_dispatcher_event_subscription_1a17361dac8d897f9c413b7f6066d5f687" prot="private" virt="non-virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>_SyncContext</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" prot="public" virt="non-virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>Action</name></member>
+      <member refid="class_system_1_1_windows_1_1_dispatcher_event_subscription_1a3be4261753e4b6003458d94d22e5c73c" prot="public" virt="non-virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>DispatcherEventSubscription</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a293d09601a4f26daefcb7225ffdc381a" prot="public" virt="non-virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>EventSubscription</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a70cae1c925fabaf7ed27b661ab7b5fe8" prot="public" virt="non-virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>Filter</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1ae111dc8195efa1f53629ae7a9a5d94e1" prot="public" virt="virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>GetExecutionStrategy</name></member>
+      <member refid="class_system_1_1_windows_1_1_dispatcher_event_subscription_1a7a58333000e66b9ecda83ef9856828e3" prot="public" virt="virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>InvokeAction</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a2b20187b3e81759eddab052c172e077a" prot="public" virt="non-virtual"><scope>System::Windows::DispatcherEventSubscription</scope><name>SubscriptionToken</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

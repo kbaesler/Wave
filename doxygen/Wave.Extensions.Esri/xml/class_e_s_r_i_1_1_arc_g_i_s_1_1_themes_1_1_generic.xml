@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Themes::Generic</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UserControl</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IComponentConnector</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic_1a68ee6d2d7a2b74aa8e857a0397fd18de" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.Themes.Generic._contentLoaded</definition>
+        <argsstring></argsstring>
+        <name>_contentLoaded</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic_1a281780888e60758819de8965a3dd7357" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Themes.Generic.InitializeComponent</definition>
+        <argsstring>()</argsstring>
+        <name>InitializeComponent</name>
+        <briefdescription>
+<para>InitializeComponent </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" bodystart="49" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic_1ab58a31b99ff1b0755a584c3636281304" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void System.Windows.Markup.IComponentConnector.</type>
+        <definition>void System.Windows.Markup.IComponentConnector. ESRI.ArcGIS.Themes.Generic.Connect</definition>
+        <argsstring>(int connectionId, object target)</argsstring>
+        <name>Connect</name>
+        <param>
+          <type>int</type>
+          <declname>connectionId</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" line="69" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" bodystart="69" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic" kindref="compound">Generic</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="356">
+        <label>ESRI.ArcGIS.Themes.Generic</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic"/>
+        <childnode refid="357" relation="public-inheritance">
+        </childnode>
+        <childnode refid="358" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="357">
+        <label>System::Windows::Controls::UserControl</label>
+      </node>
+      <node id="358">
+        <label>System::Windows::Markup::IComponentConnector</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="359">
+        <label>ESRI.ArcGIS.Themes.Generic</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic"/>
+        <childnode refid="360" relation="public-inheritance">
+        </childnode>
+        <childnode refid="361" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="360">
+        <label>System::Windows::Controls::UserControl</label>
+      </node>
+      <node id="361">
+        <label>System::Windows::Markup::IComponentConnector</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/obj/x86/Debug/Themes/Generic.g.i.cs" bodystart="40" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic_1a68ee6d2d7a2b74aa8e857a0397fd18de" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Themes::Generic</scope><name>_contentLoaded</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic_1ab58a31b99ff1b0755a584c3636281304" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Themes::Generic</scope><name>Connect</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_themes_1_1_generic_1a281780888e60758819de8965a3dd7357" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Themes::Generic</scope><name>InitializeComponent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

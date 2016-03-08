@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_da835e82777e65c1e8091225b6fe35f2" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal</compoundname>
+    <innerfile refid="_edit_notification_queue_8cs">EditNotificationQueue.cs</innerfile>
+    <innerfile refid="_miner_runtime_authorizatio_8cs">MinerRuntimeAuthorizatio.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Internal/"/>
+  </compounddef>
+</doxygen>

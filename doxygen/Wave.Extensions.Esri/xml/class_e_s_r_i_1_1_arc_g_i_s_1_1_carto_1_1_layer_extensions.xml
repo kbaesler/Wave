@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_layer_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Carto::LayerExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_layer_extensions_1a29a196289be7135c9ef9ebbf6b7ee9b8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; ILayer &gt;</type>
+        <definition>static IEnumerable&lt;ILayer&gt; ESRI.ArcGIS.Carto.LayerExtensions.AsEnumerable</definition>
+        <argsstring>(this IEnumLayer source)</argsstring>
+        <name>AsEnumerable</name>
+        <param>
+          <type>this IEnumLayer</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Creates an IEnumerable&lt;T&gt; from an ILayer </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An IEnumLayer to create an IEnumerable&lt;T&gt; from.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An IEnumerable&lt;T&gt; that contains the layers from the input source.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Carto/Extensions/LayerExtensions.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Carto/Extensions/LayerExtensions.cs" bodystart="21" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_layer_extensions_1a29fc481e32e64fb44550463417f3a2c0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IFeatureIdentifyObj &gt;</type>
+        <definition>static IEnumerable&lt;IFeatureIdentifyObj&gt; ESRI.ArcGIS.Carto.LayerExtensions.Identify</definition>
+        <argsstring>(this IFeatureLayer source, IGeometry geometry, ITrackCancel trackCancel=null)</argsstring>
+        <name>Identify</name>
+        <param>
+          <type>this IFeatureLayer</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IGeometry</type>
+          <declname>geometry</declname>
+        </param>
+        <param>
+          <type>ITrackCancel</type>
+          <declname>trackCancel</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+<para>Performs an identify operation with the provided geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>When identifying layers, typically a small envelope is passed in rather than a point to account for differences in the precision of the display and the feature geometry. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>geometry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The geometry.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trackCancel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cancel tracker object to monitor the Esc key and to terminate processes at the request of the user. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;IFeatureIdentifyObj&gt; representing the features that have been identified. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>geometry</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>On a FeatureIdentifyObject, you can do a QI to the IIdentifyObj interface to get more information about the identified feature. The IIdentifyObj interface returns the window handle, layer, and name of the feature; it has methods to flash the feature in the display and to display a context menu at the Identify location. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Carto/Extensions/LayerExtensions.cs" line="56" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Carto/Extensions/LayerExtensions.cs" bodystart="56" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the IEnumLayer enumeration. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Carto/Extensions/LayerExtensions.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Carto/Extensions/LayerExtensions.cs" bodystart="12" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_layer_extensions_1a29a196289be7135c9ef9ebbf6b7ee9b8" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::LayerExtensions</scope><name>AsEnumerable</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_layer_extensions_1a29fc481e32e64fb44550463417f3a2c0" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::LayerExtensions</scope><name>Identify</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

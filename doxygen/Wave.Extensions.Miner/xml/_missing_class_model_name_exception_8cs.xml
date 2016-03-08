@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_missing_class_model_name_exception_8cs" kind="file" language="C#">
+    <compoundname>MissingClassModelNameException.cs</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" prot="public">ESRI::ArcGIS::Geodatabase::MissingClassModelNameException</innerclass>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase">ESRI::ArcGIS::Geodatabase</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref>.ArcGIS.Geodatabase</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6" refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" kindref="compound">MissingClassModelNameException</ref><sp/>:<sp/><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_model_name_exception" kindref="compound">MissingModelNameException</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#region<sp/>Constructors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" kindref="compound">MissingClassModelNameException</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>modelName)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>base(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Format(</highlight><highlight class="stringliteral">&quot;The<sp/>&apos;{0}&apos;<sp/>class<sp/>model<sp/>name<sp/>is<sp/>not<sp/>assgined.&quot;</highlight><highlight class="normal">,<sp/>modelName),<sp/>modelName)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" kindref="compound">MissingClassModelNameException</ref>(IObjectClass<sp/>oclass,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>modelName)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>base(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Format(</highlight><highlight class="stringliteral">&quot;The<sp/>&apos;{0}&apos;<sp/>is<sp/>not<sp/>assigned<sp/>the<sp/>&apos;{1}&apos;<sp/>class<sp/>model<sp/>name.&quot;</highlight><highlight class="normal">,<sp/>((IDataset)<sp/>oclass).Name,<sp/>modelName),<sp/>modelName)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" kindref="compound">MissingClassModelNameException</ref>(IObjectClass<sp/>oclass,<sp/>params<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">[]<sp/>modelNames)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>base(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Format(</highlight><highlight class="stringliteral">&quot;The<sp/>&apos;{0}&apos;<sp/>is<sp/>not<sp/>assigned<sp/>the<sp/>&apos;{1}&apos;<sp/>class<sp/>model<sp/>name.&quot;</highlight><highlight class="normal">,<sp/>((IDataset)<sp/>oclass).Name,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Join(</highlight><highlight class="stringliteral">&quot;<sp/>or<sp/>&quot;</highlight><highlight class="normal">,<sp/>modelNames)),<sp/>modelNames)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" kindref="compound">MissingClassModelNameException</ref>(IObjectClass<sp/>oclass,<sp/>esriRelRole<sp/>relationshipRole,<sp/>params<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">[]<sp/>modelNames)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>base(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Format(</highlight><highlight class="stringliteral">&quot;There<sp/>are<sp/>no<sp/>&apos;{0}&apos;<sp/>relationships<sp/>with<sp/>the<sp/>&apos;{1}&apos;<sp/>that<sp/>are<sp/>assigned<sp/>the<sp/>&apos;{2}&apos;<sp/>class<sp/>model<sp/>name.&quot;</highlight><highlight class="normal">,<sp/>relationshipRole,<sp/>((IDataset)<sp/>oclass).Name,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Join(</highlight><highlight class="stringliteral">&quot;<sp/>or<sp/>&quot;</highlight><highlight class="normal">,<sp/>modelNames)),<sp/>modelNames)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endregion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/Exceptions/MissingClassModelNameException.cs"/>
+  </compounddef>
+</doxygen>

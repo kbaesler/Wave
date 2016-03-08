@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter" kind="interface" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::IConflictFilter</compoundname>
+    <derivedcompoundref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_base_conflict_filter" prot="public" virt="non-virtual">ESRI.ArcGIS.Geodatabase.BaseConflictFilter</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1ac54713b84e01c51ef73c2f3193f1cf07" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ESRI.ArcGIS.Geodatabase.IConflictFilter.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets the name of the conflict filter. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1a70af4ff8c73054d3f45528e002821a2f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int ESRI.ArcGIS.Geodatabase.IConflictFilter.Priority</definition>
+        <argsstring></argsstring>
+        <name>Priority</name>
+        <briefdescription>
+<para>Gets the priority. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1a16f52fd6bc9aec537963fb12f428c347" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.Geodatabase.IConflictFilter.CanResolve</definition>
+        <argsstring>(TableConflictType conflictType, IConflictClass conflictClass)</argsstring>
+        <name>CanResolve</name>
+        <reimplementedby refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_base_conflict_filter_1a2b224da27c2c4635ab42f1da3ab81aef">CanResolve</reimplementedby>
+        <param>
+          <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ac6a2d7b184e6725271419acaa4fd4a22" kindref="member">TableConflictType</ref></type>
+          <declname>conflictType</declname>
+        </param>
+        <param>
+          <type>IConflictClass</type>
+          <declname>conflictClass</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether this instance can resolve the specified conflict type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>conflictType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the conflict.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>conflictClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The conflict class.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if this instance can resolve the specified conflict type; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" line="63" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1a9a3fcdda853b6a3bd23c253508a2e96e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fe" kindref="member">ConflictResolution</ref></type>
+        <definition>ConflictResolution ESRI.ArcGIS.Geodatabase.IConflictFilter.Resolve</definition>
+        <argsstring>(IConflictRow conflictRow, IConflictClass conflictClass, IRow currentRow, IRow preReconcileRow, IRow reconcileRow, IRow commonAncestorRow, bool childWins, bool columnLevel)</argsstring>
+        <name>Resolve</name>
+        <reimplementedby refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_base_conflict_filter_1a27980968089e0863aa6c89a210f7fea6">Resolve</reimplementedby>
+        <param>
+          <type><ref refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row" kindref="compound">IConflictRow</ref></type>
+          <declname>conflictRow</declname>
+        </param>
+        <param>
+          <type>IConflictClass</type>
+          <declname>conflictClass</declname>
+        </param>
+        <param>
+          <type>IRow</type>
+          <declname>currentRow</declname>
+        </param>
+        <param>
+          <type>IRow</type>
+          <declname>preReconcileRow</declname>
+        </param>
+        <param>
+          <type>IRow</type>
+          <declname>reconcileRow</declname>
+        </param>
+        <param>
+          <type>IRow</type>
+          <declname>commonAncestorRow</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>childWins</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>columnLevel</declname>
+        </param>
+        <briefdescription>
+<para>Resolves the reconcile conflicts that have been detected. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>conflictRow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The conflict row.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>conflictClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The conflict class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>currentRow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row in the current version that is being edited.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>preReconcileRow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row prior to reconciliation or edit (child) version (these are edits that you made).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reconcileRow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row that the current version is reconciling against or target (parent) version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commonAncestorRow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The common ancestor row of this version and the reconcile version (as they are in the database; this is what the feature and attributes were before any edits were made).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>childWins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> indicating whether the child conflicts should over rule the targets.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>columnLevel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> indicating whether conflicts will be defined at the column level.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a <ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fe" kindref="member">ConflictResolution</ref> enumeration representing the state of the resolution. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" line="80" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An interface the provides the ability to resolve the conflicts. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="363">
+        <label>ESRI.ArcGIS.Geodatabase.BaseConflictFilter</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_base_conflict_filter"/>
+        <childnode refid="362" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="362">
+        <label>ESRI.ArcGIS.Geodatabase.IConflictFilter</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" bodystart="37" bodyend="83"/>
+    <listofallmembers>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1a16f52fd6bc9aec537963fb12f428c347" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictFilter</scope><name>CanResolve</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1ac54713b84e01c51ef73c2f3193f1cf07" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictFilter</scope><name>Name</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1a70af4ff8c73054d3f45528e002821a2f" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictFilter</scope><name>Priority</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter_1a9a3fcdda853b6a3bd23c253508a2e96e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::IConflictFilter</scope><name>Resolve</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

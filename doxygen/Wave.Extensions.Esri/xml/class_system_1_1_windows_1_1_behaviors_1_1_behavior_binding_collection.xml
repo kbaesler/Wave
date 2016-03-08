@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Behaviors::BehaviorBindingCollection</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">FreezableCollection&lt; BehaviorBinding &gt;</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection_1a510bd75bd3f2d858c6a6fa1c463eae52" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DependencyObject</type>
+        <definition>DependencyObject System.Windows.Behaviors.BehaviorBindingCollection.Owner</definition>
+        <argsstring></argsstring>
+        <name>Owner</name>
+        <briefdescription>
+<para>Gets or sets the Owner of the binding </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Collection to store the list of behaviors. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is done so that you can intiniate it from XAML This inherits from freezable so that it gets inheritance context for DataBinding to work </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="152">
+        <label>FreezableCollection&lt; BehaviorBinding &gt;</label>
+      </node>
+      <node id="151">
+        <label>System.Windows.Behaviors.BehaviorBindingCollection</label>
+        <link refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection"/>
+        <childnode refid="152" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="154">
+        <label>FreezableCollection&lt; BehaviorBinding &gt;</label>
+      </node>
+      <node id="153">
+        <label>System.Windows.Behaviors.BehaviorBindingCollection</label>
+        <link refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection"/>
+        <childnode refid="154" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="12" bodyend="22"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection_1a510bd75bd3f2d858c6a6fa1c463eae52" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::BehaviorBindingCollection</scope><name>Owner</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_bfc9f66a2af4aca49eae65d2a854fd22" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions</compoundname>
+    <innerfile refid="_config_top_level_extensions_8cs">ConfigTopLevelExtensions.cs</innerfile>
+    <innerfile refid="_d8_list_extensions_8cs">D8ListExtensions.cs</innerfile>
+    <innerfile refid="_enumerable_extensions_8cs">EnumerableExtensions.cs</innerfile>
+    <innerfile refid="_relationship_class_extensions_8cs">RelationshipClassExtensions.cs</innerfile>
+    <innerfile refid="_subtype_extensions_8cs">SubtypeExtensions.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/"/>
+  </compounddef>
+</doxygen>

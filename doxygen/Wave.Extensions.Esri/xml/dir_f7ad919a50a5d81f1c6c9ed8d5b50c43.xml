@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_f7ad919a50a5d81f1c6c9ed8d5b50c43" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls</compoundname>
+    <innerdir refid="dir_a5620a2c8c021e06ff817433c4032a84">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/AutoCompleteTextBox</innerdir>
+    <innerdir refid="dir_50f7aea1164c8b7b2a81477e0dc8544a">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/DelayTextBox</innerdir>
+    <innerdir refid="dir_f35ee4e4a1aca141e678215cc2474236">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/InteropTextBox</innerdir>
+    <innerdir refid="dir_c047e17574d2caf8c2bb4303170cf40c">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/Reveal</innerdir>
+    <innerdir refid="dir_2958cd13990df789f42e374fa001565a">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/TokenizedTextBox</innerdir>
+    <innerdir refid="dir_4676a6a0ceae086c8dd4eb443513720b">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/Watermark</innerdir>
+    <innerfile refid="_sort_adorner_8cs">SortAdorner.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/UX/Windows/Controls/"/>
+  </compounddef>
+</doxygen>

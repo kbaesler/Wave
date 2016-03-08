@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::FieldsEqualityComparer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IEqualityComparer&lt; IRow &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1a82d10c6502789f865359bd67a3fb4cd2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.Geodatabase.FieldsEqualityComparer.Equals</definition>
+        <argsstring>(IRow x, IRow y)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>IRow</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>IRow</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified objects are equal. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first object of type to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second object of type to compare.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the specified objects are equal; otherwise, false. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1afa00c55f6a1e47faee2db13c1780d382" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int ESRI.ArcGIS.Geodatabase.FieldsEqualityComparer.GetHashCode</definition>
+        <argsstring>(IRow obj)</argsstring>
+        <name>GetHashCode</name>
+        <param>
+          <type>IRow</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Returns a hash code for this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The obj.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>T:System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of <emphasis>obj</emphasis>  is a reference type and <emphasis>obj</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1a0e94e63fe72b9fbe6e3734b545b1da19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.Geodatabase.FieldsEqualityComparer.Equals</definition>
+        <argsstring>(IRow x, IRow y, Func&lt; IField, bool &gt; action)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>IRow</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>IRow</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>Func&lt; IField, bool &gt;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified objects are equal. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first object of type to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second object of type to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action that evaluates the IField value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the specified objects are equal; otherwise, false. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" line="57" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" bodystart="57" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1a09da79e3063f068ed6519433e82550de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool ESRI.ArcGIS.Geodatabase.FieldsEqualityComparer.Equals</definition>
+        <argsstring>(IRow x, IRow y, int index)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>IRow</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>IRow</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified objects are equal. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first object of type to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second object of type to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the field that will be compare.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing <computeroutput>true</computeroutput> if the specified objects are equal; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" line="89" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" bodystart="89" bodyend="121"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1ad438626e7438b4dbff4c3628908330b8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool ESRI.ArcGIS.Geodatabase.FieldsEqualityComparer.AreEqual</definition>
+        <argsstring>(object x, object y)</argsstring>
+        <name>AreEqual</name>
+        <param>
+          <type>object</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified objects are equal. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first object to compare.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second object to compare.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing <computeroutput>true</computeroutput> if the specified objects are equal; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" line="135" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" bodystart="135" bodyend="154"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An equaility comparer that validates that all of the field values are equal. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="348">
+        <label>ESRI.ArcGIS.Geodatabase.FieldsEqualityComparer</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer"/>
+        <childnode refid="349" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="349">
+        <label>IEqualityComparer&lt; IRow &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="350">
+        <label>ESRI.ArcGIS.Geodatabase.FieldsEqualityComparer</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer"/>
+        <childnode refid="351" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="351">
+        <label>IEqualityComparer&lt; IRow &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FieldsEqualityComparer.cs" bodystart="12" bodyend="157"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1ad438626e7438b4dbff4c3628908330b8" prot="protected" virt="virtual"><scope>ESRI::ArcGIS::Geodatabase::FieldsEqualityComparer</scope><name>AreEqual</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1a82d10c6502789f865359bd67a3fb4cd2" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FieldsEqualityComparer</scope><name>Equals</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1a0e94e63fe72b9fbe6e3734b545b1da19" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FieldsEqualityComparer</scope><name>Equals</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1a09da79e3063f068ed6519433e82550de" prot="public" virt="virtual"><scope>ESRI::ArcGIS::Geodatabase::FieldsEqualityComparer</scope><name>Equals</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_fields_equality_comparer_1afa00c55f6a1e47faee2db13c1780d382" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FieldsEqualityComparer</scope><name>GetHashCode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,470 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Controls::TokenizedTextBox</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">RichTextBox</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a382db5e0462bca6c82376b76b8abc021" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Controls.TokenizedTextBox.TextProperty</definition>
+        <argsstring></argsstring>
+        <name>TextProperty</name>
+        <initializer>= DependencyProperty.Register(&quot;Text&quot;, typeof (string), typeof (<ref refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box" kindref="compound">TokenizedTextBox</ref>), new FrameworkPropertyMetadata(String.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextPropertyChanged, CoerceTextProperty, true, UpdateSourceTrigger.LostFocus))</initializer>
+        <briefdescription>
+<para>The text property </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ab8472365a4b55d494b689995ecaf0db2" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Controls.TokenizedTextBox.TokenDelimiterProperty</definition>
+        <argsstring></argsstring>
+        <name>TokenDelimiterProperty</name>
+        <initializer>=
+            DependencyProperty.Register(&quot;TokenDelimiter&quot;, typeof (string), typeof (<ref refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box" kindref="compound">TokenizedTextBox</ref>))</initializer>
+        <briefdescription>
+<para>The token delimiter property </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ab573b4438a24a38b4ac41c7b3eb52494" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Controls.TokenizedTextBox.TokenTemplateProperty</definition>
+        <argsstring></argsstring>
+        <name>TokenTemplateProperty</name>
+        <initializer>=
+            DependencyProperty.Register(&quot;TokenTemplate&quot;, typeof (DataTemplate), typeof (<ref refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box" kindref="compound">TokenizedTextBox</ref>))</initializer>
+        <briefdescription>
+<para>The token template property </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ae7ddd93219a54fcbaea20857c72e05f6" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Windows.Controls.TokenizedTextBox._SuppressTextChanged</definition>
+        <argsstring></argsstring>
+        <name>_SuppressTextChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a558c048edfbe31ee93af548b440e690b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Windows.Controls.TokenizedTextBox.Text</definition>
+        <argsstring></argsstring>
+        <name>Text</name>
+        <briefdescription>
+<para>Gets or sets the text. </para>        </briefdescription>
+        <detaileddescription>
+<para>The text. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ae2991d5aa4d3c2c2e151c615d4413d65" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Windows.Controls.TokenizedTextBox.TokenDelimiter</definition>
+        <argsstring></argsstring>
+        <name>TokenDelimiter</name>
+        <briefdescription>
+<para>Gets or sets the token delimiter. </para>        </briefdescription>
+        <detaileddescription>
+<para>The token delimiter. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="79" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a7be27b79187e07ba0d8f96d26954ae48" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DataTemplate</type>
+        <definition>DataTemplate System.Windows.Controls.TokenizedTextBox.TokenTemplate</definition>
+        <argsstring></argsstring>
+        <name>TokenTemplate</name>
+        <briefdescription>
+<para>Gets or sets the token template. </para>        </briefdescription>
+        <detaileddescription>
+<para>The token template. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a2fa465f650309e51cad57d8b88576a47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.Controls.TokenizedTextBox.TokenizedTextBox</definition>
+        <argsstring>()</argsstring>
+        <name>TokenizedTextBox</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box" kindref="compound">TokenizedTextBox</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="48" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="48" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ada531b89f41a0c6539e8a14a2fb1ec08" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Windows.Controls.TokenizedTextBox.Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+<para>Gets or sets the tokens. </para>        </briefdescription>
+        <detaileddescription>
+<para>The tokens. </para><para>Clears this instance. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="110" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="110" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a4fed2659ae6f3812ca6b0d1cc73ebaf5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>InlineUIContainer</type>
+        <definition>InlineUIContainer System.Windows.Controls.TokenizedTextBox.CreateTokenContainer</definition>
+        <argsstring>(string inputText, object token)</argsstring>
+        <name>CreateTokenContainer</name>
+        <param>
+          <type>string</type>
+          <declname>inputText</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+<para>Creates the token container. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input text.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>token</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The token.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the InlineUIContainer representing the container. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="134" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="134" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1abb3fc826accb9f73b2767e60d91adf44" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Windows.Controls.TokenizedTextBox.DeleteToken</definition>
+        <argsstring>(object sender, ExecutedRoutedEventArgs e)</argsstring>
+        <name>DeleteToken</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>ExecutedRoutedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Deletes the token. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ExecutedRoutedEventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="151" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="151" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a476dc4d5f67923da62509aa6db89c3da" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Windows.Controls.TokenizedTextBox.OnTextChanged</definition>
+        <argsstring>(object sender, TextChangedEventArgs e)</argsstring>
+        <name>OnTextChanged</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>TextChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles when the Text is changed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The TextChangedEventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="178" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="178" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1af866576da758d0dc18c6b26a259acf76" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Windows.Controls.TokenizedTextBox.ReplaceTextWithToken</definition>
+        <argsstring>(string inputText, string token)</argsstring>
+        <name>ReplaceTextWithToken</name>
+        <param>
+          <type>string</type>
+          <declname>inputText</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+<para>Replaces the text with token. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input text.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>token</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The token.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="233" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="233" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1aef96ebdb0d1c774db95db036b0e1c594" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Windows.Controls.TokenizedTextBox.ReplaceTextWithTokens</definition>
+        <argsstring>()</argsstring>
+        <name>ReplaceTextWithTokens</name>
+        <briefdescription>
+<para>Replaces the strings in the Text property with tokens. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="278" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="278" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ae902b3fe5cad2a1c258c757f337b9280" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Windows.Controls.TokenizedTextBox.SetText</definition>
+        <argsstring>(string data)</argsstring>
+        <name>SetText</name>
+        <param>
+          <type>string</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Sets the text. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="307" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="307" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1afbed7f515ba716d5167a26005848e24b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string System.Windows.Controls.TokenizedTextBox.Tokenize</definition>
+        <argsstring>(string text)</argsstring>
+        <name>Tokenize</name>
+        <param>
+          <type>string</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Tokenizes the specified text into a token. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the string representing the token.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="319" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="319" bodyend="328"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a9744bfcc57df9edf3562878cc5c8f1b3" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>object</type>
+        <definition>static object System.Windows.Controls.TokenizedTextBox.CoerceTextProperty</definition>
+        <argsstring>(DependencyObject d, object value)</argsstring>
+        <name>CoerceTextProperty</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Coerces the text property. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The d.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="121" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="121" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1aa33a8c59888edaa9f919bf58ab38cef7" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.TokenizedTextBox.OnTextPropertyChanged</definition>
+        <argsstring>(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)</argsstring>
+        <name>OnTextPropertyChanged</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>dependencyObject</declname>
+        </param>
+        <param>
+          <type>DependencyPropertyChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Called when the Text dependency propery is changed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dependencyObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dependency property.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The DependencyPropertyChangedEventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="199" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="199" bodyend="225"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A RichTextBox control that parses text on the fly. </para>    </briefdescription>
+    <detaileddescription>
+<para>Once a delimiter (e.g., &quot;;&quot;) is detected, this control converts the text preceding the delimeter into a &quot;token&quot;, which is a distinct UI element. This code is adapted from <ulink url="http://blog.pixelingene.com/2010/10/tokenizing-control-convert-text-to-tokens/">http://blog.pixelingene.com/2010/10/tokenizing-control-convert-text-to-tokens/</ulink> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="652">
+        <label>RichTextBox</label>
+      </node>
+      <node id="651">
+        <label>System.Windows.Controls.TokenizedTextBox</label>
+        <link refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box"/>
+        <childnode refid="652" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="654">
+        <label>RichTextBox</label>
+      </node>
+      <node id="653">
+        <label>System.Windows.Controls.TokenizedTextBox</label>
+        <link refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box"/>
+        <childnode refid="654" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/TokenizedTextBox.cs" bodystart="16" bodyend="331"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ae7ddd93219a54fcbaea20857c72e05f6" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>_SuppressTextChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ada531b89f41a0c6539e8a14a2fb1ec08" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>Clear</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a9744bfcc57df9edf3562878cc5c8f1b3" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>CoerceTextProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a4fed2659ae6f3812ca6b0d1cc73ebaf5" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>CreateTokenContainer</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1abb3fc826accb9f73b2767e60d91adf44" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>DeleteToken</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a476dc4d5f67923da62509aa6db89c3da" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>OnTextChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1aa33a8c59888edaa9f919bf58ab38cef7" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>OnTextPropertyChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1af866576da758d0dc18c6b26a259acf76" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>ReplaceTextWithToken</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1aef96ebdb0d1c774db95db036b0e1c594" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>ReplaceTextWithTokens</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ae902b3fe5cad2a1c258c757f337b9280" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>SetText</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a558c048edfbe31ee93af548b440e690b" prot="public" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>Text</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a382db5e0462bca6c82376b76b8abc021" prot="public" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>TextProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ae2991d5aa4d3c2c2e151c615d4413d65" prot="public" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>TokenDelimiter</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ab8472365a4b55d494b689995ecaf0db2" prot="public" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>TokenDelimiterProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1afbed7f515ba716d5167a26005848e24b" prot="private" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>Tokenize</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a2fa465f650309e51cad57d8b88576a47" prot="public" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>TokenizedTextBox</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1a7be27b79187e07ba0d8f96d26954ae48" prot="public" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>TokenTemplate</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_tokenized_text_box_1ab573b4438a24a38b4ac41c7b3eb52494" prot="public" virt="non-virtual"><scope>System::Windows::Controls::TokenizedTextBox</scope><name>TokenTemplateProperty</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

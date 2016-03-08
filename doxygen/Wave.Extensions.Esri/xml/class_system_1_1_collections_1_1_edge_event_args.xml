@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_edge_event_args" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::EdgeEventArgs</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">EventArgs</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+      <param>
+        <type>TEdge</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_collections_1_1_edge_event_args_1a8967a0dd462dfc481561841a877772a5" prot="private" static="no" mutable="no">
+        <type>readonly TEdge</type>
+        <definition>readonly TEdge System.Collections.EdgeEventArgs&lt; TVertex, TEdge &gt;._Edge</definition>
+        <argsstring></argsstring>
+        <name>_Edge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="120" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_edge_event_args_1a64de252ff07bf37f1c2a7bfd4a008a0d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>TEdge</type>
+        <definition>TEdge System.Collections.EdgeEventArgs&lt; TVertex, TEdge &gt;.Edge</definition>
+        <argsstring></argsstring>
+        <name>Edge</name>
+        <briefdescription>
+<para>Gets the edge. </para>        </briefdescription>
+        <detaileddescription>
+<para>The edge.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="143" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_edge_event_args_1a6b81f66c78fe54e7bbe9caac597211db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.EdgeEventArgs&lt; TVertex, TEdge &gt;.EdgeEventArgs</definition>
+        <argsstring>(TEdge edge)</argsstring>
+        <name>EdgeEventArgs</name>
+        <param>
+          <type>TEdge</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_edge_event_args_1a6b81f66c78fe54e7bbe9caac597211db" kindref="member">EdgeEventArgs&lt;TVertex, TEdge&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>edge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edge.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="130" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="130" bodyend="133"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An event involving an edge. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the vertex.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TEdge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the edge.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="306">
+        <label>EventArgs</label>
+      </node>
+      <node id="305">
+        <label>System.Collections.EdgeEventArgs&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_edge_event_args"/>
+        <childnode refid="306" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="308">
+        <label>EventArgs</label>
+      </node>
+      <node id="307">
+        <label>System.Collections.EdgeEventArgs&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_edge_event_args"/>
+        <childnode refid="308" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" line="117" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IEdgeSet.cs" bodystart="115" bodyend="149"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_edge_event_args_1a8967a0dd462dfc481561841a877772a5" prot="private" virt="non-virtual"><scope>System::Collections::EdgeEventArgs</scope><name>_Edge</name></member>
+      <member refid="class_system_1_1_collections_1_1_edge_event_args_1a64de252ff07bf37f1c2a7bfd4a008a0d" prot="public" virt="non-virtual"><scope>System::Collections::EdgeEventArgs</scope><name>Edge</name></member>
+      <member refid="class_system_1_1_collections_1_1_edge_event_args_1a6b81f66c78fe54e7bbe9caac597211db" prot="public" virt="non-virtual"><scope>System::Collections::EdgeEventArgs</scope><name>EdgeEventArgs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

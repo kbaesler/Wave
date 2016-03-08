@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::ComponentModel::WindowStateInfo</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1aa46799a2149d207f8314c6dd4e1548f7" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.ComponentModel.WindowStateInfo.AllowSaveMinimized</definition>
+        <argsstring></argsstring>
+        <name>AllowSaveMinimized</name>
+        <briefdescription>
+<para>Determines whether the window information can be saved if it&apos;s been minimized. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="421" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="421" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a772c128f2b69b9483e7b25265898f03c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>FormBorderStyle</type>
+        <definition>FormBorderStyle System.Forms.ComponentModel.WindowStateInfo.BorderStyle</definition>
+        <argsstring></argsstring>
+        <name>BorderStyle</name>
+        <briefdescription>
+<para>The border style of the window. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="426" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a8233ab4c256f559d50951543708e2a3c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Int32</type>
+        <definition>Int32 System.Forms.ComponentModel.WindowStateInfo.Height</definition>
+        <argsstring></argsstring>
+        <name>Height</name>
+        <briefdescription>
+<para>The height of the window. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="431" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1ab3cf72bef2696259dd41224a43b9fbe8" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Int32</type>
+        <definition>Int32 System.Forms.ComponentModel.WindowStateInfo.Left</definition>
+        <argsstring></argsstring>
+        <name>Left</name>
+        <briefdescription>
+<para>The left window position. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="436" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a8590e2202c7fc89104b4ebec844977dc" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Int32</type>
+        <definition>Int32 System.Forms.ComponentModel.WindowStateInfo.Top</definition>
+        <argsstring></argsstring>
+        <name>Top</name>
+        <briefdescription>
+<para>The top window position. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="441" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="441" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a5c1523389e9374b94a93ea7394c47a8d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Int32</type>
+        <definition>Int32 System.Forms.ComponentModel.WindowStateInfo.Width</definition>
+        <argsstring></argsstring>
+        <name>Width</name>
+        <briefdescription>
+<para>The width of the window. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="446" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="446" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1abdf25936726dea70f52f2920866c5cfb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>FormWindowState</type>
+        <definition>FormWindowState System.Forms.ComponentModel.WindowStateInfo.WindowState</definition>
+        <argsstring></argsstring>
+        <name>WindowState</name>
+        <briefdescription>
+<para>The window state. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="451" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="451" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A structure to hold the window state info. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="415" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="414" bodyend="454"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1aa46799a2149d207f8314c6dd4e1548f7" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateInfo</scope><name>AllowSaveMinimized</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a772c128f2b69b9483e7b25265898f03c" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateInfo</scope><name>BorderStyle</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a8233ab4c256f559d50951543708e2a3c" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateInfo</scope><name>Height</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1ab3cf72bef2696259dd41224a43b9fbe8" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateInfo</scope><name>Left</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a8590e2202c7fc89104b4ebec844977dc" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateInfo</scope><name>Top</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1a5c1523389e9374b94a93ea7394c47a8d" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateInfo</scope><name>Width</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_1abdf25936726dea70f52f2920866c5cfb" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateInfo</scope><name>WindowState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_location" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::Location</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" prot="public" virt="non-virtual">Miner.Interop.Process.BaseWMSNode</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_location_1ab3502d2331355463b72cd3ef94244f14" prot="private" static="no" mutable="no">
+        <type>readonly IMMWMSLocation</type>
+        <definition>readonly IMMWMSLocation Miner.Interop.Process.Location._Location</definition>
+        <argsstring></argsstring>
+        <name>_Location</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_location_1a08fab6cf692db0422455f09ebb8a2aae" prot="private" static="no" mutable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_address" kindref="compound">Address</ref></type>
+        <definition>Address Miner.Interop.Process.Location._Address</definition>
+        <argsstring></argsstring>
+        <name>_Address</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_location_1ad6f991888c184034982a470c5fad3b26" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_address" kindref="compound">Address</ref></type>
+        <definition>Address Miner.Interop.Process.Location.Address</definition>
+        <argsstring></argsstring>
+        <name>Address</name>
+        <briefdescription>
+<para>Gets the address. </para>        </briefdescription>
+        <detaileddescription>
+<para>The address.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_location_1abd5299e868fd31503513947766e588ce" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Interop.Process.Location.AdministrativeAreaID</definition>
+        <argsstring></argsstring>
+        <name>AdministrativeAreaID</name>
+        <briefdescription>
+<para>Gets or sets the administrative area ID. </para>        </briefdescription>
+        <detaileddescription>
+<para>The administrative area ID.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="46" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_location_1a297c91dd4e9bedaae545d397926c1e38" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Location.FacilityDisplayField</definition>
+        <argsstring></argsstring>
+        <name>FacilityDisplayField</name>
+        <briefdescription>
+<para>Gets or sets the facility display field. </para>        </briefdescription>
+        <detaileddescription>
+<para>The facility display field.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="65" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_location_1a4400519974144bd3ff44976fc4061615" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Interop.Process.Location.FacilityTypeID</definition>
+        <argsstring></argsstring>
+        <name>FacilityTypeID</name>
+        <briefdescription>
+<para>Gets or sets the facility type ID. </para>        </briefdescription>
+        <detaileddescription>
+<para>The facility type ID.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="84" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_location_1a2450cf1846310c77bf8e632a7c4110c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.Location.Location</definition>
+        <argsstring>(IMMWMSLocation location)</argsstring>
+        <name>Location</name>
+        <param>
+          <type>IMMWMSLocation</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_location" kindref="compound">Location</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The location.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="22" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_location_1a9e043cfcd5d5e4c3c1a01701a352f218" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.Location.Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a3a87b4e36941be0bea34326e9130b6c3">Update</reimplements>
+        <briefdescription>
+<para>Updates the node by flushing the information to the database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="106" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="106" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_location_1a2f4483002c29961f54645b00d771e404" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.Location.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <reimplements refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a32b466bee441911b62fa9ef4ccb2cdb8">Dispose</reimplements>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="127" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="127" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A wrapper around the product Miner.Interop.Process.IMMWMSLocation interface into an workable object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="404">
+        <label>Miner.Interop.Process.Location</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_location"/>
+        <childnode refid="405" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="405">
+        <label>BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="406" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="406">
+        <label>IDisposable</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="407">
+        <label>Miner.Interop.Process.Location</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_location"/>
+        <childnode refid="408" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="408">
+        <label>BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="409" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="409">
+        <label>IDisposable</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" line="7" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Location.cs" bodystart="6" bodyend="139"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1a08fab6cf692db0422455f09ebb8a2aae" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>_Address</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1ab3502d2331355463b72cd3ef94244f14" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>_Location</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1ad6f991888c184034982a470c5fad3b26" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>Address</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1abd5299e868fd31503513947766e588ce" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>AdministrativeAreaID</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a18fc0c61e3bcf6650e112e2d01ea71af" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>BaseWMSNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a1f9855aed1ac2de930ad4611578fe227" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>Dirty</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1a2f4483002c29961f54645b00d771e404" prot="protected" virt="virtual"><scope>Miner::Interop::Process::Location</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4e6cb2c359dfc047f7c68ca0a2fb9152" prot="public" virt="non-virtual" ambiguityscope="Miner::Interop::Process::BaseWMSNode."><scope>Miner::Interop::Process::Location</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1a297c91dd4e9bedaae545d397926c1e38" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>FacilityDisplayField</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1a4400519974144bd3ff44976fc4061615" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>FacilityTypeID</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1a2450cf1846310c77bf8e632a7c4110c8" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>Location</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4118d431b4bbec1e92a5fe4c52670e15" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>Node</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_location_1a9e043cfcd5d5e4c3c1a01701a352f218" prot="public" virt="virtual"><scope>Miner::Interop::Process::Location</scope><name>Update</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1ab85e684a1de0591e268fbb7e95629491" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Location</scope><name>Valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

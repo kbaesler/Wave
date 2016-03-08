@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_controls_1_1_drop_down_control_designer" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::Controls::DropDownControlDesigner</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ControlDesigner</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_drop_down_control_designer_1af2eb229a82c7d9ec872efa16ad5507c3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override SelectionRules</type>
+        <definition>override SelectionRules System.Forms.Controls.DropDownControlDesigner.SelectionRules</definition>
+        <argsstring></argsstring>
+        <name>SelectionRules</name>
+        <briefdescription>
+<para>Ensures that this control can only be sized horizontally. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="428" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_drop_down_control_designer_1ade6c52651c6a8c56fe5ca631b139ce3f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override IList</type>
+        <definition>override IList System.Forms.Controls.DropDownControlDesigner.SnapLines</definition>
+        <argsstring></argsstring>
+        <name>SnapLines</name>
+        <briefdescription>
+<para>Gets a list containing the four main alignment points plus the baseline for the text. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="436" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="437" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Designer for DropDownControlBase </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="290">
+        <label>ControlDesigner</label>
+      </node>
+      <node id="289">
+        <label>System.Forms.Controls.DropDownControlDesigner</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_control_designer"/>
+        <childnode refid="290" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="292">
+        <label>ControlDesigner</label>
+      </node>
+      <node id="291">
+        <label>System.Forms.Controls.DropDownControlDesigner</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_control_designer"/>
+        <childnode refid="292" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="422" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="421" bodyend="450"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_control_designer_1af2eb229a82c7d9ec872efa16ad5507c3" prot="public" virt="non-virtual"><scope>System::Forms::Controls::DropDownControlDesigner</scope><name>SelectionRules</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_control_designer_1ade6c52651c6a8c56fe5ca631b139ce3f" prot="public" virt="non-virtual"><scope>System::Forms::Controls::DropDownControlDesigner</scope><name>SnapLines</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_px_user_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::PxUserExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_user_extensions_1af88fbae7fff6a5af3d4f618e50b30675" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Miner.Interop.Process.PxUserExtensions.AnyRoleForTransition</definition>
+        <argsstring>(this IMMPxUser source, IMMPxTransition transition)</argsstring>
+        <name>AnyRoleForTransition</name>
+        <param>
+          <type>this IMMPxUser</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IMMPxTransition</type>
+          <declname>transition</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the given <emphasis>source</emphasis>  has at least one matching role for the <emphasis>transition</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The user.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transition.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the user has at least one matching role with the transition; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transition</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxUserExtensions.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxUserExtensions.cs" bodystart="22" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the Miner.Interop.Process.IMMPxUser interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxUserExtensions.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxUserExtensions.cs" bodystart="8" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_user_extensions_1af88fbae7fff6a5af3d4f618e50b30675" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxUserExtensions</scope><name>AnyRoleForTransition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

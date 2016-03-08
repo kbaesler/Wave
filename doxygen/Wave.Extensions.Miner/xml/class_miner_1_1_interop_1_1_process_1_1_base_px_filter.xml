@@ -1,0 +1,523 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Miner::Interop::Process::BasePxFilter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IMMPxFilter</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IMMPxFilterEx</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ae6c3b2c101394f2b873a1358140405d6" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Interop.Process.BasePxFilter._Category</definition>
+        <argsstring></argsstring>
+        <name>_Category</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1afe275c374310faba8744443dc3298fe8" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Interop.Process.BasePxFilter._DisplayName</definition>
+        <argsstring></argsstring>
+        <name>_DisplayName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a247a71772d43f8f6fe42d67cf068fd12" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Interop.Process.BasePxFilter._ExtensionName</definition>
+        <argsstring></argsstring>
+        <name>_ExtensionName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ae7ff8e253b969557111d7af7eab296dc" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Interop.Process.BasePxFilter._Name</definition>
+        <argsstring></argsstring>
+        <name>_Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1af64f648ae72b532390ea67efc4362666" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Interop.Process.BasePxFilter._NodeTypeName</definition>
+        <argsstring></argsstring>
+        <name>_NodeTypeName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a632019bb606765a56fe76358cd7150f4" prot="private" static="no" mutable="no">
+        <type>readonly int</type>
+        <definition>readonly int Miner.Interop.Process.BasePxFilter._Priority</definition>
+        <argsstring></argsstring>
+        <name>_Priority</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="27" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1af6714cd9aaa8d7034d78349c60242602" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Interop.Process.BasePxFilter._ProgID</definition>
+        <argsstring></argsstring>
+        <name>_ProgID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ad13f963bcb98c7e7a34f0c7947883c48" prot="private" static="no" mutable="no">
+        <type>IMMPxApplication</type>
+        <definition>IMMPxApplication Miner.Interop.Process.BasePxFilter._PxApp</definition>
+        <argsstring></argsstring>
+        <name>_PxApp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="30" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a22f4e2c03a7cdc76121a34840e6e351a" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IMMPxApplication</type>
+        <definition>IMMPxApplication Miner.Interop.Process.BasePxFilter.PxApplication</definition>
+        <argsstring></argsstring>
+        <name>PxApplication</name>
+        <briefdescription>
+<para>Gets the px application. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="64" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ac3b761fb91a845525b74255be00d5df7" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>IPictureDisp</type>
+        <definition>virtual IPictureDisp Miner.Interop.Process.BasePxFilter.LargeImage</definition>
+        <argsstring></argsstring>
+        <name>LargeImage</name>
+        <briefdescription>
+<para>Gets the large image. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="76" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a5c9c07d3bd40423e5de8deb5491ff9fb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>IPictureDisp</type>
+        <definition>virtual IPictureDisp Miner.Interop.Process.BasePxFilter.SmallImage</definition>
+        <argsstring></argsstring>
+        <name>SmallImage</name>
+        <briefdescription>
+<para>Gets the small image. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a6ce431dcc06d30318c3fd55e32cc09e1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.BasePxFilter.Category</definition>
+        <argsstring></argsstring>
+        <name>Category</name>
+        <briefdescription>
+<para>Gets the category. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="86" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a3e5e08eea46f85d40ba394216e562e78" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.BasePxFilter.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets the name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="94" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a697487b624c1fe6a9bce2c96c5db2fdb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Interop.Process.BasePxFilter.Priority</definition>
+        <argsstring></argsstring>
+        <name>Priority</name>
+        <briefdescription>
+<para>Gets the priority. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="102" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1abd49c24d18f02f5c8cd5e168344d876b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>virtual bool Miner.Interop.Process.BasePxFilter.Visible</definition>
+        <argsstring></argsstring>
+        <name>Visible</name>
+        <briefdescription>
+<para>Gets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter" kindref="compound">BasePxFilter</ref> is visible. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if visible; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="113" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1aec16ea7abffdf2d1efcb09e9b5773635" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.BasePxFilter.ExtensionName</definition>
+        <argsstring></argsstring>
+        <name>ExtensionName</name>
+        <briefdescription>
+<para>Gets the name of the extension. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the extension. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="173" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a6ffd8ed10f4d4ecd9a4ca3ed0fa89df0" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.BasePxFilter.BasePxFilter</definition>
+        <argsstring>(string name, string progID, int priority, string category, string extensionName, string nodeTypeName, string displayName)</argsstring>
+        <name>BasePxFilter</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>progID</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>priority</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>category</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>extensionName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>nodeTypeName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>displayName</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter" kindref="compound">BasePxFilter</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>progID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The prog ID.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The priority.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The category (<ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> Manager or Workflow Manager).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extensionName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the extension (MMSessionManager or MMWorkflowManager).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nodeTypeName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the node type.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>displayName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The display name of the top level node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="46" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="46" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a9b7d191d0a336b1019b724ce7b9f89a6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract IMMListBuilder</type>
+        <definition>abstract IMMListBuilder Miner.Interop.Process.BasePxFilter.GetNodeBuilder</definition>
+        <argsstring>(IMMPxApplication pxApp)</argsstring>
+        <name>GetNodeBuilder</name>
+        <param>
+          <type>IMMPxApplication</type>
+          <declname>pxApp</declname>
+        </param>
+        <briefdescription>
+<para>Gets the builder that is used to build the list of nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pxApp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process application reference.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the Miner.Interop.Process.IMMListBuilder representing the builder.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="211" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ab494b7668699e90b83b1dae97c12227f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>ID8ListItem</type>
+        <definition>virtual ID8ListItem Miner.Interop.Process.BasePxFilter.InternalExecute</definition>
+        <argsstring>()</argsstring>
+        <name>InternalExecute</name>
+        <briefdescription>
+<para>Executes the filter and returns the ID8ListItem of the results. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An ID8ListItem containing the results. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="219" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="219" bodyend="237"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1aaacb6e775e85467a512bac70887c8db1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.BasePxFilter.FilterProgID</definition>
+        <argsstring>()</argsstring>
+        <name>FilterProgID</name>
+        <briefdescription>
+<para>Gets the ProgID that has been assigned to the filter. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A string of the ProgID assigned to the filter. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="129" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="129" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1af11d863d27659426907c38f5abe2b21f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.BasePxFilter.Initialize</definition>
+        <argsstring>(object vInitData)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>object</type>
+          <declname>vInitData</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the filter using the initialization data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vInitData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initialization data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="138" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1abc03115849accf96388ba97ab5992794" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>ID8ListItem</type>
+        <definition>virtual ID8ListItem Miner.Interop.Process.BasePxFilter.Execute</definition>
+        <argsstring>()</argsstring>
+        <name>Execute</name>
+        <briefdescription>
+<para>Executes the filter and returns the ID8ListItem of the results. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An ID8ListItem containing the results. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="149" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="149" bodyend="161"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a6eb7d35f82477e58e697ffd83687f7e1" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.Process.BasePxFilter.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="187" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="187" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1add15b58e5c75c6f904436514e877a04a" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.Process.BasePxFilter.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="197" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="197" bodyend="200"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A abstract filter that can be used for either <ref refid="class_miner_1_1_interop_1_1_process_1_1_session" kindref="compound">Session</ref> Manager or Workflow Manager. </para>    </briefdescription>
+    <detaileddescription>
+<para><ulink url="http://resources.arcfmsolution.com/10.1/EngineSDK/FiltersBuilders.html">http://resources.arcfmsolution.com/10.1/EngineSDK/FiltersBuilders.html</ulink></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="136">
+        <label>Miner.Interop.Process.BasePxFilter</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter"/>
+        <childnode refid="137" relation="public-inheritance">
+        </childnode>
+        <childnode refid="138" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="138">
+        <label>IMMPxFilterEx</label>
+      </node>
+      <node id="137">
+        <label>IMMPxFilter</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="139">
+        <label>Miner.Interop.Process.BasePxFilter</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter"/>
+        <childnode refid="140" relation="public-inheritance">
+        </childnode>
+        <childnode refid="141" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="141">
+        <label>IMMPxFilterEx</label>
+      </node>
+      <node id="140">
+        <label>IMMPxFilter</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxFilter.cs" bodystart="18" bodyend="240"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ae6c3b2c101394f2b873a1358140405d6" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_Category</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1afe275c374310faba8744443dc3298fe8" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_DisplayName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a247a71772d43f8f6fe42d67cf068fd12" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_ExtensionName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ae7ff8e253b969557111d7af7eab296dc" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_Name</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1af64f648ae72b532390ea67efc4362666" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_NodeTypeName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a632019bb606765a56fe76358cd7150f4" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_Priority</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1af6714cd9aaa8d7034d78349c60242602" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_ProgID</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ad13f963bcb98c7e7a34f0c7947883c48" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>_PxApp</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a6ffd8ed10f4d4ecd9a4ca3ed0fa89df0" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>BasePxFilter</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a6ce431dcc06d30318c3fd55e32cc09e1" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Category</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1abc03115849accf96388ba97ab5992794" prot="public" virt="virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Execute</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1aec16ea7abffdf2d1efcb09e9b5773635" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>ExtensionName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1aaacb6e775e85467a512bac70887c8db1" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>FilterProgID</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a9b7d191d0a336b1019b724ce7b9f89a6" prot="protected" virt="pure-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>GetNodeBuilder</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1af11d863d27659426907c38f5abe2b21f" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Initialize</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ab494b7668699e90b83b1dae97c12227f" prot="protected" virt="virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>InternalExecute</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1ac3b761fb91a845525b74255be00d5df7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>LargeImage</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a3e5e08eea46f85d40ba394216e562e78" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a697487b624c1fe6a9bce2c96c5db2fdb" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Priority</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a22f4e2c03a7cdc76121a34840e6e351a" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>PxApplication</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a6eb7d35f82477e58e697ffd83687f7e1" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Register</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1a5c9c07d3bd40423e5de8deb5491ff9fb" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>SmallImage</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1add15b58e5c75c6f904436514e877a04a" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Unregister</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_filter_1abd49c24d18f02f5c8cd5e168344d876b" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxFilter</scope><name>Visible</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

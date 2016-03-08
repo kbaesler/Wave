@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Miner::Framework::BaseClasses::BaseAutoText</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IMMAutoTextSource</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a50af38aaf676a569e8bf965e4f624114" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseAutoText.Caption</definition>
+        <argsstring></argsstring>
+        <name>Caption</name>
+        <briefdescription>
+<para>Gets the caption. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is the autotext element&apos;s display name. The name will appear in the ArcFM Autotext menu. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1ac83b06e9e3727f52dedd3c7db031db01" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseAutoText.Message</definition>
+        <argsstring></argsstring>
+        <name>Message</name>
+        <briefdescription>
+<para>Gets the message. </para>        </briefdescription>
+        <detaileddescription>
+<para>This property isn&apos;t currently used by ArcFM. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="45" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a05f273d894048e44c7bf50ccd3db66ba" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseAutoText.ProgID</definition>
+        <argsstring></argsstring>
+        <name>ProgID</name>
+        <briefdescription>
+<para>Gets the program ID. </para>        </briefdescription>
+        <detaileddescription>
+<para>The program ID links the autotext element with its text source class. The program ID is from the class module that implements this interface. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="54" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a24d9bab0cb4fb56f9a30e4bb8cf3018f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseAutoText.BaseAutoText</definition>
+        <argsstring>(string caption, string progID)</argsstring>
+        <name>BaseAutoText</name>
+        <param>
+          <type>string</type>
+          <declname>caption</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>progID</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text" kindref="compound">BaseAutoText</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>caption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The caption.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>progID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The prog ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="25" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a594278945ca44d2053678d70c12895bc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract string</type>
+        <definition>abstract string Miner.Framework.BaseClasses.BaseAutoText.GetText</definition>
+        <argsstring>(mmAutoTextEvents textEvent, IMMMapProductionInfo mapProdInfo)</argsstring>
+        <name>GetText</name>
+        <param>
+          <type>mmAutoTextEvents</type>
+          <declname>textEvent</declname>
+        </param>
+        <param>
+          <type>IMMMapProductionInfo</type>
+          <declname>mapProdInfo</declname>
+        </param>
+        <briefdescription>
+<para>Returns the text string that will appear on the map layout based on the <emphasis>textEvent</emphasis>  value and the status of the <emphasis>mapProdInfo</emphasis>  parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>mapProdInfo</emphasis>  parameter passed in will be &quot;Nothing&quot; for all <emphasis>textEvent</emphasis>  except mmPlotNewPage and mmFinishPlot. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>textEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mapProdInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map prod info.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Returns the text string that will appear on the map layout based on the <emphasis>textEvent</emphasis>  value and the status of the <emphasis>mapProdInfo</emphasis>  parameter. </para><para>This method should always return a non-empty string. If nothing is provided, it is automatically set to &quot; &quot;.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="147" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1aaaa211958694008f311652d2c38cb9d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseAutoText.TextString</definition>
+        <argsstring>(mmAutoTextEvents eTextEvent, IMMMapProductionInfo pMapProdInfo)</argsstring>
+        <name>TextString</name>
+        <param>
+          <type>mmAutoTextEvents</type>
+          <declname>eTextEvent</declname>
+        </param>
+        <param>
+          <type>IMMMapProductionInfo</type>
+          <declname>pMapProdInfo</declname>
+        </param>
+        <briefdescription>
+<para>Returns the text string that will appear on the map layout based on the <emphasis>eTextEvent</emphasis>  value and the status of the <emphasis>pMapProdInfo</emphasis>  parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>pMapProdInfo</emphasis>  parameter passed in will be &quot;Nothing&quot; for all <emphasis>eTextEvent</emphasis>  except mmPlotNewPage and mmFinishPlot. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>eTextEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMapProdInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map production information.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+Returns the text string that will appear on the map layout based on the <emphasis>eTextEvent</emphasis>  value and the status of the <emphasis>pMapProdInfo</emphasis>  parameter. </para><para>This method should always return a non-empty string. If nothing is provided, it is automatically set to &quot; &quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="74" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="74" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a7bd9784eea1d57cdae6e54a0ec6df92e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Miner.Framework.BaseClasses.BaseAutoText.NeedRefresh</definition>
+        <argsstring>(mmAutoTextEvents eTextEvent)</argsstring>
+        <name>NeedRefresh</name>
+        <param>
+          <type>mmAutoTextEvents</type>
+          <declname>eTextEvent</declname>
+        </param>
+        <briefdescription>
+<para>Returns a boolean value indicating whether the element should be refreshed based on the <emphasis>eTextEvent</emphasis>  value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>eTextEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a boolean value indicating whether the element should be refreshed based on the mmAutoTextEvents value. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="99" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="99" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a001386cd696bc28c317a995463cad6fa" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Framework.BaseClasses.BaseAutoText.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="113" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="113" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a26bf4224be6376c57cb9f6019823de9b" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Framework.BaseClasses.BaseAutoText.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="123" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="123" bodyend="126"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides autotext elements with access to text strings which are updated in various ways and at various times depending on the auto text source object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="45">
+        <label>IMMAutoTextSource</label>
+      </node>
+      <node id="44">
+        <label>Miner.Framework.BaseClasses.BaseAutoText</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text"/>
+        <childnode refid="45" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="47">
+        <label>IMMAutoTextSource</label>
+      </node>
+      <node id="46">
+        <label>Miner.Framework.BaseClasses.BaseAutoText</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text"/>
+        <childnode refid="47" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseAutoText.cs" bodystart="16" bodyend="150"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a24d9bab0cb4fb56f9a30e4bb8cf3018f" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>BaseAutoText</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a50af38aaf676a569e8bf965e4f624114" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>Caption</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a594278945ca44d2053678d70c12895bc" prot="protected" virt="pure-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>GetText</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1ac83b06e9e3727f52dedd3c7db031db01" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>Message</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a7bd9784eea1d57cdae6e54a0ec6df92e" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>NeedRefresh</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a05f273d894048e44c7bf50ccd3db66ba" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>ProgID</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a001386cd696bc28c317a995463cad6fa" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>Register</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1aaaa211958694008f311652d2c38cb9d1" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>TextString</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_auto_text_1a26bf4224be6376c57cb9f6019823de9b" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseAutoText</scope><name>Unregister</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

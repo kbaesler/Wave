@@ -1,0 +1,548 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::RowExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a8f95010dc45c38359a4c99f2af127c81" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IRow</type>
+        <definition>static IRow ESRI.ArcGIS.Geodatabase.RowExtensions.Clone</definition>
+        <argsstring>(this IRow source, mmAutoUpdaterMode mode)</argsstring>
+        <name>Clone</name>
+        <param>
+          <type>this IRow</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>mmAutoUpdaterMode</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Creates a copy of the row. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The auto updater mode.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IRow representings a duplicate copy of the row. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="23" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a3541157ec4565fcb28317bef04dc4a56" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IDomain</type>
+        <definition>static IDomain ESRI.ArcGIS.Geodatabase.RowExtensions.GetDomain</definition>
+        <argsstring>(this IRow source, string modelName, bool throwException=true)</argsstring>
+        <name>GetDomain</name>
+        <param>
+          <type>this IRow</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns the domain assigned to the IField that is assigned the field model name on the specified object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the model.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IDomain representing the domain. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>IndexOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_field_model_name_exception" kindref="compound">MissingFieldModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="47" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a98983e228cd7e7f8213bf10b483df716" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IMMFieldManager</type>
+        <definition>static IMMFieldManager ESRI.ArcGIS.Geodatabase.RowExtensions.GetFieldManager</definition>
+        <argsstring>(this IRow source, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder=null)</argsstring>
+        <name>GetFieldManager</name>
+        <param>
+          <type>this IRow</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IMMAuxiliaryFieldBuilder</type>
+          <declname>auxiliaryFieldBuilder</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+<para>Gets the field manager for the specified <emphasis>source</emphasis>  </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>auxiliaryFieldBuilder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The auxiliary field builder.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the IMMFieldManager representing the properties for the row. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="66" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a701c3c69833d865a853a675fba1292de" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TValue</type>
+        <definition>static TValue ESRI.ArcGIS.Geodatabase.RowExtensions.GetValue&lt; TValue &gt;</definition>
+        <argsstring>(this IRow source, string modelName, TValue fallbackValue, bool throwException=true)</argsstring>
+        <name>GetValue&lt; TValue &gt;</name>
+        <param>
+          <type>this IRow</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>fallbackValue</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns the field value that has been assigned the <emphasis>modelName</emphasis>  that is within the specified <emphasis>source</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the model.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fallbackValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The default value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns an object representing the converted value to the specified type. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>IndexOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_field_model_name_exception" kindref="compound">MissingFieldModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="97" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="97" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a81bc796b82cb5e4bddd87da79ba30d27" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ESRI.ArcGIS.Geodatabase.RowExtensions.Store</definition>
+        <argsstring>(this IRow source, mmAutoUpdaterMode mode)</argsstring>
+        <name>Store</name>
+        <param>
+          <type>this IRow</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>mmAutoUpdaterMode</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Commits the changes to the row while using the specified Auto Updater mode. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mode.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="115" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="115" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1adeb6068c72159cc0deeebfffdb64534b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.RowExtensions.Update</definition>
+        <argsstring>(this IRow source, string modelName, object value, bool throwException, bool equalityComparer=true)</argsstring>
+        <name>Update</name>
+        <param>
+          <type>this IRow</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>equalityComparer</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Updates the field assigned the <emphasis>modelName</emphasis>  with the <emphasis>value</emphasis>  for the specified <emphasis>source</emphasis>  when the value is different than the original value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the model.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>equalityComparer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the changes need to be compared prior to updating.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing <computeroutput>true</computeroutput> when the row updated; otherwise <computeroutput>false</computeroutput> </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>IndexOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_field_model_name_exception" kindref="compound">MissingFieldModelNameException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="141" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="141" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1adb825220eb5714be8dd8c8326098cf4d" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.RowExtensions.Update</definition>
+        <argsstring>(this IRowBuffer source, int index, object value, bool equalityCompare=true, IMMFieldAdapter fieldAdapter=null)</argsstring>
+        <name>Update</name>
+        <param>
+          <type>this IRowBuffer</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>equalityCompare</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>IMMFieldAdapter</type>
+          <declname>fieldAdapter</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+<para>Updates the column index on the row with the value when the original value and the specified <emphasis>value</emphasis>  are different. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value for the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>equalityCompare</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> when the changes need to be compared prior to updating.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldAdapter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field adapter used to read the values from the ArcFM attribute editor.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing <computeroutput>true</computeroutput> when the row updated; otherwise <computeroutput>false</computeroutput> </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>IndexOutOfRangeException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="172" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="172" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a3f684c36c9982dfa9f7376e9f42fa53c" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ESRI.ArcGIS.Geodatabase.RowExtensions.Update&lt; TValue &gt;</definition>
+        <argsstring>(this IRowBuffer source, int index, TValue value, IEqualityComparer&lt; TValue &gt; equalityComparer, IMMFieldAdapter fieldAdapter)</argsstring>
+        <name>Update&lt; TValue &gt;</name>
+        <param>
+          <type>this IRowBuffer</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>IEqualityComparer&lt; TValue &gt;</type>
+          <declname>equalityComparer</declname>
+        </param>
+        <param>
+          <type>IMMFieldAdapter</type>
+          <declname>fieldAdapter</declname>
+        </param>
+        <briefdescription>
+<para>Updates the column index on the row with the value when the original value and the specified <emphasis>value</emphasis>  are different. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value for the field.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>equalityComparer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The equality comparer to use to determine whether or not values are equal. If null, the default equality comparer for object is used. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldAdapter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field adapter used to read the values from the ArcFM attribute editor.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a bool representing <computeroutput>true</computeroutput> when the row updated; otherwise <computeroutput>false</computeroutput> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="223" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="223" bodyend="248"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.Geodatabase.IRow interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/RowExtensions.cs" bodystart="11" bodyend="251"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a8f95010dc45c38359a4c99f2af127c81" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>Clone</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a3541157ec4565fcb28317bef04dc4a56" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>GetDomain</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a98983e228cd7e7f8213bf10b483df716" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>GetFieldManager</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a701c3c69833d865a853a675fba1292de" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>GetValue&lt; TValue &gt;</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a81bc796b82cb5e4bddd87da79ba30d27" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>Store</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1adeb6068c72159cc0deeebfffdb64534b" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>Update</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1adb825220eb5714be8dd8c8326098cf4d" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>Update</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions_1a3f684c36c9982dfa9f7376e9f42fa53c" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::RowExtensions</scope><name>Update&lt; TValue &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

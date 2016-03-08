@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_combo_box_extensions" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::ComboBoxExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_combo_box_extensions_1a8cf3b3cab426691606679ff72c72f8b2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Forms.ComboBoxExtensions.ResizeToFit</definition>
+        <argsstring>(this ComboBox control, int appendWidth)</argsstring>
+        <name>ResizeToFit</name>
+        <param>
+          <type>this ComboBox</type>
+          <declname>control</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>appendWidth</declname>
+        </param>
+        <briefdescription>
+<para>Resizes the control to fit all of the contents. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The control.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>appendWidth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The width that is appended.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ComboBoxExtensions.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ComboBoxExtensions.cs" bodystart="18" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_combo_box_extensions_1a5c22ad92b6fa959406194a4c06135650" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Forms.ComboBoxExtensions.ResizeToFit</definition>
+        <argsstring>(this ComboBox control)</argsstring>
+        <name>ResizeToFit</name>
+        <param>
+          <type>this ComboBox</type>
+          <declname>control</declname>
+        </param>
+        <briefdescription>
+<para>Resizes the control to fit all of the contents. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The control.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ComboBoxExtensions.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ComboBoxExtensions.cs" bodystart="42" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the System.Windows.Forms.ComboBox control. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ComboBoxExtensions.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Extensions/ComboBoxExtensions.cs" bodystart="9" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_combo_box_extensions_1a8cf3b3cab426691606679ff72c72f8b2" prot="public" virt="non-virtual"><scope>System::Forms::ComboBoxExtensions</scope><name>ResizeToFit</name></member>
+      <member refid="class_system_1_1_forms_1_1_combo_box_extensions_1a5c22ad92b6fa959406194a4c06135650" prot="public" virt="non-virtual"><scope>System::Forms::ComboBoxExtensions</scope><name>ResizeToFit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

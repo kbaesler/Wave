@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_event_subscription" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::EventSubscription</compoundname>
+    <basecompoundref refid="interface_system_1_1_windows_1_1_i_event_subscription" prot="public" virt="non-virtual">System.Windows.IEventSubscription</basecompoundref>
+    <derivedcompoundref refid="class_system_1_1_windows_1_1_background_event_subscription" prot="public" virt="non-virtual">System.Windows.BackgroundEventSubscription&lt; TPayload &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_system_1_1_windows_1_1_dispatcher_event_subscription" prot="public" virt="non-virtual">System.Windows.DispatcherEventSubscription&lt; TPayload &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>TPayload</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_event_subscription_1adf38eb96515568bd9842a30b62acea82" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref></type>
+        <definition>readonly IDelegateReference System.Windows.EventSubscription&lt; TPayload &gt;._ActionReference</definition>
+        <argsstring></argsstring>
+        <name>_ActionReference</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_event_subscription_1af73c683498ec7891460782677d0f4989" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref></type>
+        <definition>readonly IDelegateReference System.Windows.EventSubscription&lt; TPayload &gt;._FilterReference</definition>
+        <argsstring></argsstring>
+        <name>_FilterReference</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Action&lt; TPayload &gt;</type>
+        <definition>Action&lt;TPayload&gt; System.Windows.EventSubscription&lt; TPayload &gt;.Action</definition>
+        <argsstring></argsstring>
+        <name>Action</name>
+        <briefdescription>
+<para>Gets the target System.Action&lt;T&gt; that is referenced by the <ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>An System.Action&lt;T&gt; or  if the referenced target is not alive.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="61" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_event_subscription_1a70cae1c925fabaf7ed27b661ab7b5fe8" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Predicate&lt; TPayload &gt;</type>
+        <definition>Predicate&lt;TPayload&gt; System.Windows.EventSubscription&lt; TPayload &gt;.Filter</definition>
+        <argsstring></argsstring>
+        <name>Filter</name>
+        <briefdescription>
+<para>Gets the target Predicate&lt;T&gt; that is referenced by the <ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>An Predicate&lt;T&gt; or  if the referenced target is not alive.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="70" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_event_subscription_1a2b20187b3e81759eddab052c172e077a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref></type>
+        <definition>SubscriptionToken System.Windows.EventSubscription&lt; TPayload &gt;.SubscriptionToken</definition>
+        <argsstring></argsstring>
+        <name>SubscriptionToken</name>
+        <briefdescription>
+<para>Gets or sets a <ref refid="class_system_1_1_windows_1_1_subscription_token" kindref="compound">SubscriptionToken</ref> that identifies this <ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>A token that identifies this <ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref>.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="83" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_subscription_1a293d09601a4f26daefcb7225ffdc381a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.EventSubscription&lt; TPayload &gt;.EventSubscription</definition>
+        <argsstring>(IDelegateReference actionReference, IDelegateReference filterReference)</argsstring>
+        <name>EventSubscription</name>
+        <param>
+          <type><ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref></type>
+          <declname>actionReference</declname>
+        </param>
+        <param>
+          <type><ref refid="interface_system_1_1_windows_1_1_i_delegate_reference" kindref="compound">IDelegateReference</ref></type>
+          <declname>filterReference</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new instance of <ref refid="class_system_1_1_windows_1_1_event_subscription_1a293d09601a4f26daefcb7225ffdc381a" kindref="member">EventSubscription&lt;TPayload&gt;</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>actionReference</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a delegate of type System.Action&lt;TPayload&gt;.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filterReference</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a delegate of type Predicate&lt;TPayload&gt;.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When <emphasis>actionReference</emphasis>  or  are . </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ArgumentException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When the target of <emphasis>actionReference</emphasis>  is not of type System.Action&lt;TPayload&gt;, or the target of <emphasis>filterReference</emphasis>  is not of type Predicate&lt;TPayload&gt;. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="37" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_subscription_1ae111dc8195efa1f53629ae7a9a5d94e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" kindref="member">Action</ref>&lt; object[]&gt;</type>
+        <definition>virtual Action&lt;object[]&gt; System.Windows.EventSubscription&lt; TPayload &gt;.GetExecutionStrategy</definition>
+        <argsstring>()</argsstring>
+        <name>GetExecutionStrategy</name>
+        <reimplements refid="interface_system_1_1_windows_1_1_i_event_subscription_1a038d54bbb3b716b4c24439a1377e3687">GetExecutionStrategy</reimplements>
+        <briefdescription>
+<para>Gets the execution strategy to publish this event. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An System.Action&lt;T&gt; with the execution strategy, or  if the <ref refid="interface_system_1_1_windows_1_1_i_event_subscription" kindref="compound">IEventSubscription</ref> is no longer valid. </para></simplesect>
+</para><para>If <ref refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" kindref="member">Action</ref> or <ref refid="class_system_1_1_windows_1_1_event_subscription_1a70cae1c925fabaf7ed27b661ab7b5fe8" kindref="member">Filter</ref> are no longer valid because they were garbage collected, this method will return . Otherwise it will return a delegate that evaluates the <ref refid="class_system_1_1_windows_1_1_event_subscription_1a70cae1c925fabaf7ed27b661ab7b5fe8" kindref="member">Filter</ref> and if it returns  will then call <ref refid="class_system_1_1_windows_1_1_event_subscription_1a748e3dba0c877cacdcc6d16c892eb15c" kindref="member">InvokeAction</ref>. The returned delegate holds hard references to the <ref refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" kindref="member">Action</ref> and <ref refid="class_system_1_1_windows_1_1_event_subscription_1a70cae1c925fabaf7ed27b661ab7b5fe8" kindref="member">Filter</ref> target <ref refid="" kindref="compound">delegates</ref>. As long as the returned delegate is not garbage collected, the <ref refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" kindref="member">Action</ref> and <ref refid="class_system_1_1_windows_1_1_event_subscription_1a70cae1c925fabaf7ed27b661ab7b5fe8" kindref="member">Filter</ref> references delegates won&apos;t get collected either. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="101" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="101" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_event_subscription_1a748e3dba0c877cacdcc6d16c892eb15c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Windows.EventSubscription&lt; TPayload &gt;.InvokeAction</definition>
+        <argsstring>(Action&lt; TPayload &gt; action, TPayload argument)</argsstring>
+        <name>InvokeAction</name>
+        <reimplementedby refid="class_system_1_1_windows_1_1_background_event_subscription_1a5ab057b80fe431c91b6439d52c5ee6d3">InvokeAction</reimplementedby>
+        <reimplementedby refid="class_system_1_1_windows_1_1_dispatcher_event_subscription_1a7a58333000e66b9ecda83ef9856828e3">InvokeAction</reimplementedby>
+        <param>
+          <type><ref refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" kindref="member">Action</ref>&lt; TPayload &gt;</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>TPayload</type>
+          <declname>argument</declname>
+        </param>
+        <briefdescription>
+<para>Invokes the specified System.Action&lt;TPayload&gt; synchronously when not overridden. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action to execute.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The payload to pass <emphasis>action</emphasis>  while invoking it.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An ArgumentNullException is thrown if <emphasis>action</emphasis>  is null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="136" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="136" bodyend="141"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides a way to retrieve a Delegate to execute an action depending on the value of a second filter predicate that returns true if the action should execute. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TPayload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type to use for the generic System.Action&lt;TPayload&gt; and Predicate&lt;TPayload&gt; types. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="326">
+        <label>System.Windows.EventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_event_subscription"/>
+        <childnode refid="327" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="329">
+        <label>System::Windows::DispatcherEventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_dispatcher_event_subscription"/>
+        <childnode refid="326" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="328">
+        <label>System::Windows::BackgroundEventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_background_event_subscription"/>
+        <childnode refid="326" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="327">
+        <label>IEventSubscription</label>
+        <link refid="interface_system_1_1_windows_1_1_i_event_subscription"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="330">
+        <label>System.Windows.EventSubscription&lt; TPayload &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_event_subscription"/>
+        <childnode refid="331" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="331">
+        <label>IEventSubscription</label>
+        <link refid="interface_system_1_1_windows_1_1_i_event_subscription"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Events/EventSubscription.cs" bodystart="13" bodyend="144"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1adf38eb96515568bd9842a30b62acea82" prot="private" virt="non-virtual"><scope>System::Windows::EventSubscription</scope><name>_ActionReference</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1af73c683498ec7891460782677d0f4989" prot="private" virt="non-virtual"><scope>System::Windows::EventSubscription</scope><name>_FilterReference</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a5f0109f9437f3c3aa8e20b96d0a1a578" prot="public" virt="non-virtual"><scope>System::Windows::EventSubscription</scope><name>Action</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a293d09601a4f26daefcb7225ffdc381a" prot="public" virt="non-virtual"><scope>System::Windows::EventSubscription</scope><name>EventSubscription</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a70cae1c925fabaf7ed27b661ab7b5fe8" prot="public" virt="non-virtual"><scope>System::Windows::EventSubscription</scope><name>Filter</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1ae111dc8195efa1f53629ae7a9a5d94e1" prot="public" virt="virtual"><scope>System::Windows::EventSubscription</scope><name>GetExecutionStrategy</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a748e3dba0c877cacdcc6d16c892eb15c" prot="public" virt="virtual"><scope>System::Windows::EventSubscription</scope><name>InvokeAction</name></member>
+      <member refid="class_system_1_1_windows_1_1_event_subscription_1a2b20187b3e81759eddab052c172e077a" prot="public" virt="non-virtual"><scope>System::Windows::EventSubscription</scope><name>SubscriptionToken</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

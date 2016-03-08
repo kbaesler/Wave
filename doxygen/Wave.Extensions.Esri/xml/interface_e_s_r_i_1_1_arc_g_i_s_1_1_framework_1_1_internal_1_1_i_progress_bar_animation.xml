@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation" kind="interface" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Framework::Internal::IProgressBarAnimation</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+    <derivedcompoundref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation" prot="public" virt="non-virtual">ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation_1a5cdf856154ffbf2af1ef7d416f614682" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float ESRI.ArcGIS.Framework.Internal.IProgressBarAnimation.Percentage</definition>
+        <argsstring></argsstring>
+        <name>Percentage</name>
+        <briefdescription>
+<para>Gets or sets the percent complete. </para>        </briefdescription>
+        <detaileddescription>
+<para>The percent complete.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="117" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation_1a39278b5d9a84a2fdec335385f256fe9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Framework.Internal.IProgressBarAnimation.Step</definition>
+        <argsstring>(string statusMessage)</argsstring>
+        <name>Step</name>
+        <param>
+          <type>string</type>
+          <declname>statusMessage</declname>
+        </param>
+        <briefdescription>
+<para>Increments the progress bar and updates the status bar with specified status message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statusMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The status message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="127" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides access to the progress bar animation on the status bar. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="456">
+        <label>IDisposable</label>
+      </node>
+      <node id="457">
+        <label>ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation</label>
+        <childnode refid="455" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="455">
+        <label>ESRI.ArcGIS.Framework.Internal.IProgressBarAnimation</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation"/>
+        <childnode refid="456" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="459">
+        <label>IDisposable</label>
+      </node>
+      <node id="458">
+        <label>ESRI.ArcGIS.Framework.Internal.IProgressBarAnimation</label>
+        <link refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation"/>
+        <childnode refid="459" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" line="110" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressBarAnimation.cs" bodystart="109" bodyend="130"/>
+    <listofallmembers>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation_1a5cdf856154ffbf2af1ef7d416f614682" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::IProgressBarAnimation</scope><name>Percentage</name></member>
+      <member refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_i_progress_bar_animation_1a39278b5d9a84a2fdec335385f256fe9d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::IProgressBarAnimation</scope><name>Step</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

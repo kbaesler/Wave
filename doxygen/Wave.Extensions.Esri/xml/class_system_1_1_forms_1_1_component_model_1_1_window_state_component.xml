@@ -1,0 +1,607 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::ComponentModel::WindowStateComponent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Component</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7b755741f5f8bd9fe5d1b6a281f14a1c" prot="public" static="no">
+        <name>PersistWindowState</name>
+        <enumvalue id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7b755741f5f8bd9fe5d1b6a281f14a1ca4e1ab36884b253ce24768da1c4080a14" prot="public">
+          <name>Registry</name>
+          <briefdescription>
+<para>Persists the window position to the registry. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7b755741f5f8bd9fe5d1b6a281f14a1ca90589c47f06eb971d548591f23c285af" prot="public">
+          <name>Custom</name>
+          <briefdescription>
+<para>Persists the window position using a custom implementation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration of the avaiable presist methods. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="20" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a8e1e155818120c84a3140416c18fdcf0" prot="private" static="no" mutable="no">
+        <type><ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a1f0e73febe0de7001ce0b5345a27763e" kindref="member">Form</ref></type>
+        <definition>Form System.Forms.ComponentModel.WindowStateComponent._Parent</definition>
+        <argsstring></argsstring>
+        <name>_Parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a9f7e760d6ad14fd09fbfc14feabd2241" prot="private" static="no" mutable="no">
+        <type><ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7b755741f5f8bd9fe5d1b6a281f14a1c" kindref="member">PersistWindowState</ref></type>
+        <definition>PersistWindowState System.Forms.ComponentModel.WindowStateComponent._PersistMethod</definition>
+        <argsstring></argsstring>
+        <name>_PersistMethod</name>
+        <initializer>= <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7b755741f5f8bd9fe5d1b6a281f14a1ca4e1ab36884b253ce24768da1c4080a14" kindref="member">PersistWindowState.Registry</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1af5e45c7832e685f29266ba5472f303d5" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string System.Forms.ComponentModel.WindowStateComponent._RegistryPath</definition>
+        <argsstring></argsstring>
+        <name>_RegistryPath</name>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a36ac1d2a52198a396881af4256d04106" prot="private" static="no" mutable="no">
+        <type><ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info" kindref="compound">WindowStateInfo</ref></type>
+        <definition>WindowStateInfo System.Forms.ComponentModel.WindowStateComponent._WindowInfo</definition>
+        <argsstring></argsstring>
+        <name>_WindowInfo</name>
+        <initializer>= new <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info" kindref="compound">WindowStateInfo</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a5edc9efb31f70bd2f7d946d972075607" prot="private" static="no" mutable="no">
+        <type>System.ComponentModel.IContainer</type>
+        <definition>System.ComponentModel.IContainer System.Forms.ComponentModel.WindowStateComponent.components</definition>
+        <argsstring></argsstring>
+        <name>components</name>
+        <initializer>= null</initializer>
+        <briefdescription>
+<para>Required designer variable. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.Designer.cs" line="8" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.Designer.cs" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad7bfe130a0be1feef96c067cd504d40e" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_event_args" kindref="compound">WindowStateInfoEventArgs</ref> &gt;</type>
+        <definition>EventHandler&lt;WindowStateInfoEventArgs&gt; System.Forms.ComponentModel.WindowStateComponent.Load</definition>
+        <argsstring></argsstring>
+        <name>Load</name>
+        <briefdescription>
+<para>Occurs when the window state is loaded. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="72" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a2fa86c8a4b8e680e875931a06a2c4abb" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_event_args" kindref="compound">WindowStateInfoEventArgs</ref> &gt;</type>
+        <definition>EventHandler&lt;WindowStateInfoEventArgs&gt; System.Forms.ComponentModel.WindowStateComponent.Save</definition>
+        <argsstring></argsstring>
+        <name>Save</name>
+        <briefdescription>
+<para>Occurs when the window state is saved. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="77" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a1f0e73febe0de7001ce0b5345a27763e" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Form</type>
+        <definition>Form System.Forms.ComponentModel.WindowStateComponent.Form</definition>
+        <argsstring></argsstring>
+        <name>Form</name>
+        <briefdescription>
+<para>Gets or sets the form. </para>        </briefdescription>
+        <detaileddescription>
+<para>The form. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="90" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7af07de5ff97e1b1d0e03ee539906785" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7b755741f5f8bd9fe5d1b6a281f14a1c" kindref="member">PersistWindowState</ref></type>
+        <definition>PersistWindowState System.Forms.ComponentModel.WindowStateComponent.PersistMethod</definition>
+        <argsstring></argsstring>
+        <name>PersistMethod</name>
+        <briefdescription>
+<para>Gets or sets the persist method. </para>        </briefdescription>
+        <detaileddescription>
+<para>The persist method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="145" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad2f17bf363bd4e4a0b81439ac7acf5df" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Forms.ComponentModel.WindowStateComponent.RegistryPath</definition>
+        <argsstring></argsstring>
+        <name>RegistryPath</name>
+        <briefdescription>
+<para>Gets or sets the registry path for the current user. </para>        </briefdescription>
+        <detaileddescription>
+<para>The registry path. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="160" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ab46ef765ce564188e1341d0dd5407e3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Forms.ComponentModel.WindowStateComponent.WindowStateComponent</definition>
+        <argsstring>()</argsstring>
+        <name>WindowStateComponent</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component" kindref="compound">WindowStateComponent</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a8bdb419b7d284be89d3074ff1787dc7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Forms.ComponentModel.WindowStateComponent.WindowStateComponent</definition>
+        <argsstring>(IContainer container)</argsstring>
+        <name>WindowStateComponent</name>
+        <param>
+          <type>IContainer</type>
+          <declname>container</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component" kindref="compound">WindowStateComponent</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>container</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The container.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="58" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="58" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a1fe0d32c630624b512df2359d5c183d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.SetWindowInfo</definition>
+        <argsstring>(WindowStateInfo windowInfo)</argsstring>
+        <name>SetWindowInfo</name>
+        <param>
+          <type><ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info" kindref="compound">WindowStateInfo</ref></type>
+          <declname>windowInfo</declname>
+        </param>
+        <briefdescription>
+<para>Sets the window info. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>windowInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The window info.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="179" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="179" bodyend="186"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a1d34ff61a421811e138cf5408d0f4da7" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Forms.ComponentModel.WindowStateComponent.OnLoad</definition>
+        <argsstring>(WindowStateInfoEventArgs e)</argsstring>
+        <name>OnLoad</name>
+        <param>
+          <type><ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_event_args" kindref="compound">WindowStateInfoEventArgs</ref></type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad7bfe130a0be1feef96c067cd504d40e" kindref="member">Load</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_event_args" kindref="compound">System.Forms.ComponentModel.WindowStateInfoEventArgs</ref> instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="199" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="199" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a78401e7448d3a6c71cc0683240bbec64" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Forms.ComponentModel.WindowStateComponent.OnSave</definition>
+        <argsstring>(WindowStateInfoEventArgs e)</argsstring>
+        <name>OnSave</name>
+        <param>
+          <type><ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_event_args" kindref="compound">WindowStateInfoEventArgs</ref></type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a2fa86c8a4b8e680e875931a06a2c4abb" kindref="member">Save</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_info_event_args" kindref="compound">System.Forms.ComponentModel.WindowStateInfoEventArgs</ref> instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="213" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="213" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7c8c71ce9d454b1f38343571cda5eaa5" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.ComponentModel.WindowStateComponent.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Clean up any resources being used. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true if managed resources should be disposed; otherwise, falSE.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.Designer.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.Designer.cs" bodystart="14" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a30403ec8841360d30f3a29b4aa96cc59" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Forms.ComponentModel.WindowStateComponent.IsFormBorderStyleFixed</definition>
+        <argsstring>(FormBorderStyle borderStyle)</argsstring>
+        <name>IsFormBorderStyleFixed</name>
+        <param>
+          <type>FormBorderStyle</type>
+          <declname>borderStyle</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified border style is fixed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>borderStyle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The border style.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified border style is fixed; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="231" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="231" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad97b814ad0c900c35fd86879c8ae7259" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Forms.ComponentModel.WindowStateComponent.IsVisibleWithinAnyScreen</definition>
+        <argsstring>(Rectangle rectangle)</argsstring>
+        <name>IsVisibleWithinAnyScreen</name>
+        <param>
+          <type>Rectangle</type>
+          <declname>rectangle</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the <emphasis>rectangle</emphasis>  is visible on any of the available screens. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rectangle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The rectangle.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the rectangle is visible on any of the available screens; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="243" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="243" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a26ec95419d7ee2a29006dd7782ec78c9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.LoadInfoFromRegistry</definition>
+        <argsstring>()</argsstring>
+        <name>LoadInfoFromRegistry</name>
+        <briefdescription>
+<para>Loads the info from registry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="260" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="260" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a02d076a438330e1a3e394130e074cfd8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.OnClosing</definition>
+        <argsstring>(object sender, CancelEventArgs e)</argsstring>
+        <name>OnClosing</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>CancelEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raised when the parent window is being closed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.ComponentModel.CancelEventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="303" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="303" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ae51ef2ee0e8f4085d57e578854c4d112" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.OnLoad</definition>
+        <argsstring>(object sender, EventArgs e)</argsstring>
+        <name>OnLoad</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raised when the parent window is being loaded. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.EventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="333" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="333" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a3e6b42cd9aa97e7c68351f7e40f7d2b5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.OnMove</definition>
+        <argsstring>(object sender, EventArgs e)</argsstring>
+        <name>OnMove</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raised when the parent window is being moved. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.EventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="356" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="356" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1afadb5b2aad4f70aa7eecd4d0a0a71218" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.OnResize</definition>
+        <argsstring>(object sender, EventArgs e)</argsstring>
+        <name>OnResize</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raised when the parent window is being resized. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.EventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="374" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="374" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7ec7d4ee0d40a2afcae9daa45efee000" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.SaveInfoToRegistry</definition>
+        <argsstring>()</argsstring>
+        <name>SaveInfoToRegistry</name>
+        <briefdescription>
+<para>Saves the info to registry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="387" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="387" bodyend="406"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad080953a444539d9f7b1f12053512a67" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.ComponentModel.WindowStateComponent.InitializeComponent</definition>
+        <argsstring>()</argsstring>
+        <name>InitializeComponent</name>
+        <briefdescription>
+<para>Required method for Designer support - do not modify the contents of this method with the code editor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.Designer.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.Designer.cs" bodystart="29" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A component that can be used to save the window state to the registry or xml file. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="706">
+        <label>Component</label>
+      </node>
+      <node id="705">
+        <label>System.Forms.ComponentModel.WindowStateComponent</label>
+        <link refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component"/>
+        <childnode refid="706" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="708">
+        <label>Component</label>
+      </node>
+      <node id="707">
+        <label>System.Forms.ComponentModel.WindowStateComponent</label>
+        <link refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component"/>
+        <childnode refid="708" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/WindowStateComponent.cs" bodystart="13" bodyend="409"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a8e1e155818120c84a3140416c18fdcf0" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>_Parent</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a9f7e760d6ad14fd09fbfc14feabd2241" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>_PersistMethod</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1af5e45c7832e685f29266ba5472f303d5" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>_RegistryPath</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a36ac1d2a52198a396881af4256d04106" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>_WindowInfo</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a5edc9efb31f70bd2f7d946d972075607" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>components</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7c8c71ce9d454b1f38343571cda5eaa5" prot="protected" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>Dispose</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a1f0e73febe0de7001ce0b5345a27763e" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>Form</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad080953a444539d9f7b1f12053512a67" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>InitializeComponent</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a30403ec8841360d30f3a29b4aa96cc59" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>IsFormBorderStyleFixed</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad97b814ad0c900c35fd86879c8ae7259" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>IsVisibleWithinAnyScreen</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad7bfe130a0be1feef96c067cd504d40e" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>Load</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a26ec95419d7ee2a29006dd7782ec78c9" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>LoadInfoFromRegistry</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a02d076a438330e1a3e394130e074cfd8" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>OnClosing</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a1d34ff61a421811e138cf5408d0f4da7" prot="protected" virt="virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>OnLoad</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ae51ef2ee0e8f4085d57e578854c4d112" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>OnLoad</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a3e6b42cd9aa97e7c68351f7e40f7d2b5" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>OnMove</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1afadb5b2aad4f70aa7eecd4d0a0a71218" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>OnResize</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a78401e7448d3a6c71cc0683240bbec64" prot="protected" virt="virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>OnSave</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7af07de5ff97e1b1d0e03ee539906785" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>PersistMethod</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7b755741f5f8bd9fe5d1b6a281f14a1c" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>PersistWindowState</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ad2f17bf363bd4e4a0b81439ac7acf5df" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>RegistryPath</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a2fa86c8a4b8e680e875931a06a2c4abb" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>Save</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a7ec7d4ee0d40a2afcae9daa45efee000" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>SaveInfoToRegistry</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a1fe0d32c630624b512df2359d5c183d9" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>SetWindowInfo</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1ab46ef765ce564188e1341d0dd5407e3f" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>WindowStateComponent</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_window_state_component_1a8bdb419b7d284be89d3074ff1787dc7c" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::WindowStateComponent</scope><name>WindowStateComponent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

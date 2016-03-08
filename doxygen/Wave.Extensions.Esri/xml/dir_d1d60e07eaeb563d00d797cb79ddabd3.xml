@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_d1d60e07eaeb563d00d797cb79ddabd3" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel</compoundname>
+    <innerfile refid="_edge_collection_8cs">EdgeCollection.cs</innerfile>
+    <innerfile refid="_vertex_collection_8cs">VertexCollection.cs</innerfile>
+    <innerfile refid="_vertex_edge_dictionary_8cs">VertexEdgeDictionary.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/ObjectModel/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_native_1_1_unsafe_window_methods" kind="class" language="C#" prot="public">
+    <compoundname>System::Native::UnsafeWindowMethods</compoundname>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06af" prot="private" static="no">
+        <name>WindowIndex</name>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06afa3dd6de6031e095d43e1d1308393c2f05" prot="private">
+          <name>ExtendedWindowStyles</name>
+          <initializer>= -20</initializer>
+          <briefdescription>
+<para>Retrieves the extended window styles. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06afa1d98ce391bfbc7475c7aa4b87c1a2fb5" prot="private">
+          <name>InstanceHandle</name>
+          <initializer>= -6</initializer>
+          <briefdescription>
+<para>Retrieves a handle to the application instance. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06afa7b3ab02e28b731ee604f432c66e74746" prot="private">
+          <name>InstanceHandleParent</name>
+          <initializer>= -8</initializer>
+          <briefdescription>
+<para>Retrieves a handle to the parent window, if there is one. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06afa15be1c43d67cd14ce024311ba8a16dca" prot="private">
+          <name>WindowID</name>
+          <initializer>= -12</initializer>
+          <briefdescription>
+<para>Retrieves the identifier of the window. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06afa19016adf6cb407aad6e6939390017941" prot="private">
+          <name>WindowStyles</name>
+          <initializer>= -16</initializer>
+          <briefdescription>
+<para>Retrieves the window styles. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06afa12b4595813f48775b089bc59c0f97152" prot="private">
+          <name>UserData</name>
+          <initializer>= -21</initializer>
+          <briefdescription>
+<para>Retrieves the user data associated with the window. </para>          </briefdescription>
+          <detaileddescription>
+<para>This data is intended for use by the application that created the window. Its value is initially zero. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06afa014e93fb5d0aa23e57a976511ac378b0" prot="private">
+          <name>WindowProc</name>
+          <initializer>= -4</initializer>
+          <briefdescription>
+<para>Retrieves the pointer to the window procedure, or a handle representing the pointer to the window procedure. </para>          </briefdescription>
+          <detaileddescription>
+<para>You must use the CallWindowProc function to call the window procedure. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The zero-based offset to the value to be retrieved. </para>        </briefdescription>
+        <detaileddescription>
+<para>Valid values are in the range zero through the number of bytes of extra window memory, minus the size of an integer. To retrieve any other value, specify one of the following values. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" bodystart="21" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_system_1_1_native_1_1_unsafe_window_methods_1afbb16fd10cdba26fd887255ad7ad48e7" prot="private" static="no">
+        <name>WindowStyles</name>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1afbb16fd10cdba26fd887255ad7ad48e7ad5a78ee261786f60d6d6b4edbe74fd5c" prot="private">
+          <name>MaximizeBox</name>
+          <initializer>= 0x00010000</initializer>
+          <briefdescription>
+<para>The window has a maximize button. </para>          </briefdescription>
+          <detaileddescription>
+<para>Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must also be specified. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1afbb16fd10cdba26fd887255ad7ad48e7af1f8047bbc8eb6a95eec678d8cae1649" prot="private">
+          <name>MinimizeBox</name>
+          <initializer>= 0x00020000</initializer>
+          <briefdescription>
+<para>The window has a minimize button. </para>          </briefdescription>
+          <detaileddescription>
+<para>Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must also be specified. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1afbb16fd10cdba26fd887255ad7ad48e7ada67c689decfbc19705499bc5f29df91" prot="private">
+          <name>WindowMenu</name>
+          <initializer>= 0x00080000</initializer>
+          <briefdescription>
+<para>The window has a window menu on its title bar. </para>          </briefdescription>
+          <detaileddescription>
+<para>The WS_CAPTION style must also be specified. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The following are the window styles. </para>        </briefdescription>
+        <detaileddescription>
+<para>After the window has been created, these styles cannot be modified, except as noted. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="159" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" bodystart="158" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43f" prot="public" static="no">
+        <name>WindowShowStyle</name>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa62a5e490880a92eef74f167d9dc6dca0" prot="public">
+          <name>Hide</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Hides the window and activates another window. </para>          </briefdescription>
+          <detaileddescription>
+<para>See SW_HIDE</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa64d164fc3308f7cdb41ff9cfb29e9271" prot="public">
+          <name>ShowNormal</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Activates and displays a window. </para>          </briefdescription>
+          <detaileddescription>
+<para>If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time. </para><para>See SW_SHOWNORMAL</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa34fc41539143b36bfb6197c7b18fc6c0" prot="public">
+          <name>ShowMinimized</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Activates the window and displays it as a minimized window. </para>          </briefdescription>
+          <detaileddescription>
+<para>See SW_SHOWMINIMIZED</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa4ff987727b3b233ae5b2447f53194f82" prot="public">
+          <name>ShowMaximized</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Activates the window and displays it as a maximized window. </para>          </briefdescription>
+          <detaileddescription>
+<para>See SW_SHOWMAXIMIZED</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa9369ba148ee259473fc1fb4939b6c2e8" prot="public">
+          <name>Maximize</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Maximizes the specified window. </para>          </briefdescription>
+          <detaileddescription>
+<para>See SW_MAXIMIZE</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa8d59d5dcadc4ed982e24c0df1044e1f3" prot="public">
+          <name>ShowNormalNoActivate</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Displays a window in its most recent size and position. </para>          </briefdescription>
+          <detaileddescription>
+<para>This value is similar to &quot;ShowNormal&quot;, except the window is not activated. </para><para>See SW_SHOWNOACTIVATE</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa498f79c4c5bbde77f1bceb6c86fd0f6d" prot="public">
+          <name>Show</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Activates the window and displays it in its current size and position. </para>          </briefdescription>
+          <detaileddescription>
+<para>See SW_SHOW</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fad27532d90ecd513e97ab811c0f34dbfd" prot="public">
+          <name>Minimize</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Minimizes the specified window and activates the next top-level window in the Z order. </para>          </briefdescription>
+          <detaileddescription>
+<para>See SW_MINIMIZE</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa299b81c95b0bf43766d86f1a3009f675" prot="public">
+          <name>ShowMinNoActivate</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>Displays the window as a minimized window. </para>          </briefdescription>
+          <detaileddescription>
+<para>This value is similar to &quot;ShowMinimized&quot;, except the window is not activated. </para><para>See SW_SHOWMINNOACTIVE</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa6c7160cf3e40c3792a99cbffce7d8729" prot="public">
+          <name>ShowNoActivate</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+<para>Displays the window in its current size and position. </para>          </briefdescription>
+          <detaileddescription>
+<para>This value is similar to &quot;Show&quot;, except the window is not activated. </para><para>See SW_SHOWNA</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fa2bd339d85ee3b33e513359ce781b60cc" prot="public">
+          <name>Restore</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+<para>Activates and displays the window. </para>          </briefdescription>
+          <detaileddescription>
+<para>If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window. </para><para>See SW_RESTORE</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43fae335ef739a01e6bbb5e2961b337ce178" prot="public">
+          <name>ShowDefault</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+<para>Sets the show state based on the SW_ value specified in the STARTUPINFO structure passed to the CreateProcess function by the program that started the application. </para>          </briefdescription>
+          <detaileddescription>
+<para>See SW_SHOWDEFAULT</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43faaa1bdc53aff5ddfa10a49b1f7cea252b" prot="public">
+          <name>ForceMinimized</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+<para><ref refid="namespace_system_1_1_windows" kindref="compound">Windows</ref> 2000/XP: Minimizes a window, even if the thread that owns the window is hung. </para>          </briefdescription>
+          <detaileddescription>
+<para>This flag should only be used when minimizing windows from a different thread. </para><para>See SW_FORCEMINIMIZE</para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration of the different ways of showing a window using ShowWindow </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" bodystart="65" bodyend="152"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_native_1_1_unsafe_window_methods_1a586138a67791be2067034f5f32080b5e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Native.UnsafeWindowMethods.SetMaximizeBoxVisibility</definition>
+        <argsstring>(Window window, Visibility visibility)</argsstring>
+        <name>SetMaximizeBoxVisibility</name>
+        <param>
+          <type>Window</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>Visibility</type>
+          <declname>visibility</declname>
+        </param>
+        <briefdescription>
+<para>Sets the maximize box visibility. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>window</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The window.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>visibility</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The visibility.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="187" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" bodystart="187" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_native_1_1_unsafe_window_methods_1a036635414ba8d77017a9aa600390c3b2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Native.UnsafeWindowMethods.SetMinimizeBoxVisibility</definition>
+        <argsstring>(Window window, Visibility visibility)</argsstring>
+        <name>SetMinimizeBoxVisibility</name>
+        <param>
+          <type>Window</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>Visibility</type>
+          <declname>visibility</declname>
+        </param>
+        <briefdescription>
+<para>Sets the minimize box visibility. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>window</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The window.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>visibility</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The visibility.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="207" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" bodystart="207" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_native_1_1_unsafe_window_methods_1a509a2c0c9623afc76e77769578067e6d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Native.UnsafeWindowMethods.SetWindowMenuVisibility</definition>
+        <argsstring>(Window window, Visibility visibility)</argsstring>
+        <name>SetWindowMenuVisibility</name>
+        <param>
+          <type>Window</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>Visibility</type>
+          <declname>visibility</declname>
+        </param>
+        <briefdescription>
+<para>Sets the window menu visibility. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>window</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The window.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>visibility</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The visibility.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="227" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" bodystart="227" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_native_1_1_unsafe_window_methods_1a1e6d739ebbc671301c50df33c970e741" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool System.Native.UnsafeWindowMethods.ShowWindow</definition>
+        <argsstring>(IntPtr hWnd, WindowShowStyle nCmdShow)</argsstring>
+        <name>ShowWindow</name>
+        <param>
+          <type>IntPtr</type>
+          <declname>hWnd</declname>
+        </param>
+        <param>
+          <type>WindowShowStyle</type>
+          <declname>nCmdShow</declname>
+        </param>
+        <briefdescription>
+<para>Shows a Window</para>        </briefdescription>
+        <detaileddescription>
+<para>To perform certain special effects when showing or hiding a window, use AnimateWindow. </para><para>The first time an application calls ShowWindow, it should use the WinMain function&apos;s nCmdShow parameter as its nCmdShow parameter. Subsequent calls to ShowWindow must use one of the values in the given list, instead of the one specified by the WinMain function&apos;s nCmdShow parameter. </para><para>As noted in the discussion of the nCmdShow parameter, the nCmdShow value is ignored in the first call to ShowWindow if the program that launched the application specifies startup information in the structure. In this case, ShowWindow uses the information specified in the STARTUPINFO structure to show the window. On subsequent calls, the application must call ShowWindow with nCmdShow set to SW_SHOWDEFAULT to use the startup information provided by the program that launched the application. This behavior is designed for the following situations: </para><para><itemizedlist>
+<listitem>
+<para>Applications create their main window by calling CreateWindow with the WS_VISIBLE flag set.  </para></listitem>
+<listitem>
+<para>Applications create their main window by calling CreateWindow with the WS_VISIBLE flag cleared, and later call ShowWindow with the SW_SHOW flag set to make it visible.  </para></listitem>
+</itemizedlist>
+</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hWnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Handle to the window.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nCmdShow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies how the window is to be shown. This parameter is ignored the first time an application calls ShowWindow, if the program that launched the application provides a STARTUPINFO structure. Otherwise, the first time ShowWindow is called, the value should be the value obtained by the WinMain function in its nCmdShow parameter. In subsequent calls, this parameter can be one of the WindowShowStyle members. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>If the window was previously visible, the return value is nonzero. If the window was previously hidden, the return value is zero. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="294" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_system_1_1_native_1_1_unsafe_window_methods_1a2340f90feabc3672ef991f340c79e504" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int System.Native.UnsafeWindowMethods.GetWindowLongPtr</definition>
+        <argsstring>(IntPtr hWnd, WindowIndex nIndex)</argsstring>
+        <name>GetWindowLongPtr</name>
+        <param>
+          <type>IntPtr</type>
+          <declname>hWnd</declname>
+        </param>
+        <param>
+          <type>WindowIndex</type>
+          <declname>nIndex</declname>
+        </param>
+        <briefdescription>
+<para>Retrieves information about the specified window. </para>        </briefdescription>
+        <detaileddescription>
+<para>The function also retrieves the value at a specified offset into the extra window memory. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hWnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A handle to the window and, indirectly, the class to which the window belongs.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The zero-based offset to the value to be retrieved. Valid values are in the range zero through the number of bytes of extra window memory, minus the size of an integer. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>If the function succeeds, the return value is the requested value. If the function fails, the return value is zero. To get extended error information, call GetLastError. </para></simplesect>
+</para><para>To write code that is compatible with both 32-bit and 64-bit versions of <ref refid="namespace_system_1_1_windows" kindref="compound">Windows</ref>, use GetWindowLongPtr. When compiling for 32-bit <ref refid="namespace_system_1_1_windows" kindref="compound">Windows</ref>, GetWindowLongPtr is defined as a call to the GetWindowLong function. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="318" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_native_1_1_unsafe_window_methods_1a7fd4b5e710cd3f04da332108739d2031" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int System.Native.UnsafeWindowMethods.SetWindowLongPtr</definition>
+        <argsstring>(IntPtr hWnd, WindowIndex nIndex, int dwNewLong)</argsstring>
+        <name>SetWindowLongPtr</name>
+        <param>
+          <type>IntPtr</type>
+          <declname>hWnd</declname>
+        </param>
+        <param>
+          <type>WindowIndex</type>
+          <declname>nIndex</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dwNewLong</declname>
+        </param>
+        <briefdescription>
+<para>Changes an attribute of the specified window. </para>        </briefdescription>
+        <detaileddescription>
+<para>The function also sets a value at the specified offset in the extra window memory. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hWnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A handle to the window and, indirectly, the class to which the window belongs. The SetWindowLongPtr function fails if the process that owns the window specified by the hWnd parameter is at a higher process privilege in the UIPI hierarchy than the process the calling thread resides in. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The zero-based offset to the value to be set. Valid values are in the range zero through the number of bytes of extra window memory, minus the size of an integer. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dwNewLong</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The replacement value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>If the function succeeds, the return value is the previous value of the specified offset. If the function fails, the return value is zero. To get extended error information, call GetLastError. </para></simplesect>
+</para><para>To write code that is compatible with both 32-bit and 64-bit versions of <ref refid="namespace_system_1_1_windows" kindref="compound">Windows</ref>, use SetWindowLongPtr. When compiling for 32-bit <ref refid="namespace_system_1_1_windows" kindref="compound">Windows</ref>, SetWindowLongPtr is defined as a call to the SetWindowLong function. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="343" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Assists with P/Invoke API calls between <ref refid="namespace_system_1_1_windows" kindref="compound">Windows</ref> Presentation Foundation (WPF) and Win32 code. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Native/UnsafeWindowMethods.cs" bodystart="12" bodyend="346"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1a2340f90feabc3672ef991f340c79e504" prot="private" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>GetWindowLongPtr</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1a586138a67791be2067034f5f32080b5e" prot="public" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>SetMaximizeBoxVisibility</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1a036635414ba8d77017a9aa600390c3b2" prot="public" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>SetMinimizeBoxVisibility</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1a7fd4b5e710cd3f04da332108739d2031" prot="private" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>SetWindowLongPtr</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1a509a2c0c9623afc76e77769578067e6d" prot="public" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>SetWindowMenuVisibility</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1a1e6d739ebbc671301c50df33c970e741" prot="public" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>ShowWindow</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1ac0dffee8ce3e6bdedbfb766937bf06af" prot="private" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>WindowIndex</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1a8d23f407e3aa1b93c2bec15eeec7e43f" prot="public" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>WindowShowStyle</name></member>
+      <member refid="class_system_1_1_native_1_1_unsafe_window_methods_1afbb16fd10cdba26fd887255ad7ad48e7" prot="private" virt="non-virtual"><scope>System::Native::UnsafeWindowMethods</scope><name>WindowStyles</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

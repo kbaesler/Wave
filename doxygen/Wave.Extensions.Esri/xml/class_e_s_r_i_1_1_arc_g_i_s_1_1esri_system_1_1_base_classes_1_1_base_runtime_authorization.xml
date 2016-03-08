@@ -1,0 +1,473 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TLicenseProduct</type>
+      </param>
+      <param>
+        <type>TLicenseExtension</type>
+      </param>
+      <param>
+        <type>TLicenseStatus</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a13fa2eae0661c6d7c27c3a71a300744b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>Dictionary&lt; TLicenseExtension, TLicenseStatus &gt;</type>
+        <definition>Dictionary&lt;TLicenseExtension, TLicenseStatus&gt; ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.ExtensionStatus</definition>
+        <argsstring></argsstring>
+        <name>ExtensionStatus</name>
+        <briefdescription>
+<para>Gets or sets the extension status. </para>        </briefdescription>
+        <detaileddescription>
+<para>The extension status. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ab109f07e98ca604f27a0b3b8da8f78c9" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.InitializeLowerProductFirst</definition>
+        <argsstring></argsstring>
+        <name>InitializeLowerProductFirst</name>
+        <briefdescription>
+<para>Get/Set the ordering of product code checking. </para>        </briefdescription>
+        <detaileddescription>
+<para>If true, check from lowest to highest license. True by default. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1af227ca0d0f44a9954cef090cff8bbef5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>TLicenseProduct</type>
+        <definition>virtual TLicenseProduct ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.InitializedProduct</definition>
+        <argsstring></argsstring>
+        <name>InitializedProduct</name>
+        <briefdescription>
+<para>Gets the product code that has been initialized. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ac63a07694f15f140f506b94e44fc88d2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>Dictionary&lt; TLicenseProduct, TLicenseStatus &gt;</type>
+        <definition>Dictionary&lt;TLicenseProduct, TLicenseStatus&gt; ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.ProductStatus</definition>
+        <argsstring></argsstring>
+        <name>ProductStatus</name>
+        <briefdescription>
+<para>Gets or sets the product status. </para>        </briefdescription>
+        <detaileddescription>
+<para>The product status. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="57" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a23b78aca8a8c23b1c5d0b495c47c012d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.BaseRuntimeAuthorization</definition>
+        <argsstring>()</argsstring>
+        <name>BaseRuntimeAuthorization</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a23b78aca8a8c23b1c5d0b495c47c012d" kindref="member">BaseRuntimeAuthorization&lt;TLicenseProduct, TLicenseExtension, TLicenseStatus&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ab132fa5f4943bc3eecc2e58ca17bf73a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <reimplementedby refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_esri_runtime_authorization_1a0770564386fd6a6eb16baeebbb9cc85b">Dispose</reimplementedby>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="224" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1adf04e5d6ee3955bc85ae46744e1552f0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract TLicenseStatus</type>
+        <definition>abstract TLicenseStatus ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.InitializeProduct</definition>
+        <argsstring>(TLicenseProduct licenseProduct)</argsstring>
+        <name>InitializeProduct</name>
+        <param>
+          <type>TLicenseProduct</type>
+          <declname>licenseProduct</declname>
+        </param>
+        <briefdescription>
+<para>Initializes or (checks out) the product licenses that correspond to the specified product code. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product code.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the status code representing the status of the product. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="233" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ab2a965886bcb47ddb711eb58a538d497" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract bool</type>
+        <definition>abstract bool ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.IsExtensionInitialized</definition>
+        <argsstring>(TLicenseStatus licenseStatus)</argsstring>
+        <name>IsExtensionInitialized</name>
+        <param>
+          <type>TLicenseStatus</type>
+          <declname>licenseStatus</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the license has been initialized based on the status. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The license status.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the license has been initialized based on the status; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="242" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a26b1acb18003f372f1d9083a710aef32" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract bool</type>
+        <definition>abstract bool ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.IsProductInitialized</definition>
+        <argsstring>(TLicenseStatus licenseStatus)</argsstring>
+        <name>IsProductInitialized</name>
+        <param>
+          <type>TLicenseStatus</type>
+          <declname>licenseStatus</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the license has been initialized based on the status. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The license status.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the license has been initialized based on the status; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="251" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1add8896a4401019a4895df9e0cad093bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="66" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a8e98b9fab52c03b1cae75332f597d509" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract TLicenseStatus</type>
+        <definition>abstract TLicenseStatus ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.CheckInExtension</definition>
+        <argsstring>(TLicenseExtension licenseExtension)</argsstring>
+        <name>CheckInExtension</name>
+        <param>
+          <type>TLicenseExtension</type>
+          <declname>licenseExtension</declname>
+        </param>
+        <briefdescription>
+<para>Check in extension when it is no longer needed. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseExtension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The license extension.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the status code representing the status of the extension. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="84" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a5db147226768dc5b497e3c717a4fc898" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract TLicenseStatus</type>
+        <definition>abstract TLicenseStatus ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.CheckOutExtension</definition>
+        <argsstring>(TLicenseProduct licenseProduct, TLicenseExtension licenseExtension)</argsstring>
+        <name>CheckOutExtension</name>
+        <param>
+          <type>TLicenseProduct</type>
+          <declname>licenseProduct</declname>
+        </param>
+        <param>
+          <type>TLicenseExtension</type>
+          <declname>licenseExtension</declname>
+        </param>
+        <briefdescription>
+<para>Initializes or (checks out) the extension that correspond to the specified extension code. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product code.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>licenseExtension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The extension code.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the status code representing the status of the extension. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a30678cd4bd60d872ffd44f550b4a9172" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.Initialize</definition>
+        <argsstring>(TLicenseProduct licenseProduct)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>TLicenseProduct</type>
+          <declname>licenseProduct</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the application with the specified product code. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product codes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> when the initialization is successful; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>productCodes or extensionCodes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>Make sure an active <ref refid="namespace_e_s_r_i_1_1_arc_g_i_s" kindref="compound">ArcGIS</ref> runtime has been bound before license initialization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="111" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="111" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a8f220c4ac4e5ba71a35196c04e21be92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.Initialize</definition>
+        <argsstring>(TLicenseProduct licenseProduct, params TLicenseExtension[] licenseExtensions)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>TLicenseProduct</type>
+          <declname>licenseProduct</declname>
+        </param>
+        <param>
+          <type>params TLicenseExtension[]</type>
+          <declname>licenseExtensions</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the application with the specified product and extension codes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product codes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>licenseExtensions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The license extensions.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> when the initialization is successful; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>productCodes or extensionCodes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>Make sure an active <ref refid="namespace_e_s_r_i_1_1_arc_g_i_s" kindref="compound">ArcGIS</ref> runtime has been bound before license initialization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="132" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ae3135d31db9222e8daacce9a61062cb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.Initialize</definition>
+        <argsstring>(IEnumerable&lt; TLicenseProduct &gt; licenseProducts, TLicenseExtension[] licenseExtensions)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>IEnumerable&lt; TLicenseProduct &gt;</type>
+          <declname>licenseProducts</declname>
+        </param>
+        <param>
+          <type>TLicenseExtension[]</type>
+          <declname>licenseExtensions</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the application with the specified product and extension license codes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>licenseProducts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product codes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>licenseExtensions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The extension codes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> when the initialization is successful; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>productCodes or extensionCodes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>Make sure an active <ref refid="namespace_e_s_r_i_1_1_arc_g_i_s" kindref="compound">ArcGIS</ref> runtime has been bound before license initialization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="153" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="153" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a12bb7d25905903bc247b30355b942a63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;.Shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>Shutdown</name>
+        <briefdescription>
+<para>Shuts down object and check back in extensions to ensure any libraries that have been used are unloaded in the correct order. </para>        </briefdescription>
+        <detaileddescription>
+<para>Once Shutdown has been called, you cannot re-initialize the product license and should not make any ArcObjects call. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="199" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="199" bodyend="211"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An internal abstract class used to handle initialization the runtime licenses for use of ArcObjects code outside of the <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> environment. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TLicenseProduct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the product codes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TLicenseExtension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the extension codes.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TLicenseStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the status codes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="115">
+        <label>IDisposable</label>
+      </node>
+      <node id="114">
+        <label>ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization"/>
+        <childnode refid="115" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="117">
+        <label>IDisposable</label>
+      </node>
+      <node id="116">
+        <label>ESRI.ArcGIS.esriSystem.BaseClasses.BaseRuntimeAuthorization&lt; TLicenseProduct, TLicenseExtension, TLicenseStatus &gt;</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization"/>
+        <childnode refid="117" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/System/BaseClasses/BaseRuntimeAuthorization.cs" bodystart="13" bodyend="254"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a23b78aca8a8c23b1c5d0b495c47c012d" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>BaseRuntimeAuthorization</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a8e98b9fab52c03b1cae75332f597d509" prot="public" virt="pure-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>CheckInExtension</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a5db147226768dc5b497e3c717a4fc898" prot="public" virt="pure-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>CheckOutExtension</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1add8896a4401019a4895df9e0cad093bc" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ab132fa5f4943bc3eecc2e58ca17bf73a" prot="protected" virt="pure-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a13fa2eae0661c6d7c27c3a71a300744b" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>ExtensionStatus</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a30678cd4bd60d872ffd44f550b4a9172" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>Initialize</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a8f220c4ac4e5ba71a35196c04e21be92" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>Initialize</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ae3135d31db9222e8daacce9a61062cb3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>Initialize</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1af227ca0d0f44a9954cef090cff8bbef5" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>InitializedProduct</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ab109f07e98ca604f27a0b3b8da8f78c9" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>InitializeLowerProductFirst</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1adf04e5d6ee3955bc85ae46744e1552f0" prot="protected" virt="pure-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>InitializeProduct</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ab2a965886bcb47ddb711eb58a538d497" prot="protected" virt="pure-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>IsExtensionInitialized</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a26b1acb18003f372f1d9083a710aef32" prot="protected" virt="pure-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>IsProductInitialized</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1ac63a07694f15f140f506b94e44fc88d2" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>ProductStatus</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes_1_1_base_runtime_authorization_1a12bb7d25905903bc247b30355b942a63" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::esriSystem::BaseClasses::BaseRuntimeAuthorization</scope><name>Shutdown</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

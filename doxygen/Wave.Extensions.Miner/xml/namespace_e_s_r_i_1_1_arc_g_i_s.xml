@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_e_s_r_i_1_1_arc_g_i_s" kind="namespace" language="C#">
+    <compoundname>ESRI::ArcGIS</compoundname>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_carto">ESRI::ArcGIS::Carto</innernamespace>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework">ESRI::ArcGIS::Framework</innernamespace>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase">ESRI::ArcGIS::Geodatabase</innernamespace>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geoprocessing">ESRI::ArcGIS::Geoprocessing</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="[generated]" line="1" column="1"/>
+  </compounddef>
+</doxygen>

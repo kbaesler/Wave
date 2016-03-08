@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_ebc9457a4c21ec6fbfa0b4a80b52094c" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces</compoundname>
+    <innerfile refid="_i_conflict_filter_8cs">IConflictFilter.cs</innerfile>
+    <innerfile refid="_i_conflict_row_8cs">IConflictRow.cs</innerfile>
+    <innerfile refid="_i_conflict_workspace_extension_8cs">IConflictWorkspaceExtension.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_relationship_class_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::RelationshipClassExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_relationship_class_extensions_1ab0a8ea174fac60acafb993b9290d3f4b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.RelationshipClassExtensions.Notify</definition>
+        <argsstring>(this IRelationshipClass source)</argsstring>
+        <name>Notify</name>
+        <param>
+          <type>this IRelationshipClass</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Notifies ArcFM that the relationship has been modified. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/RelationshipClassExtensions.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/RelationshipClassExtensions.cs" bodystart="21" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the ESRI.ArcGIS.Geodatabase.IRelationshipClass interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/RelationshipClassExtensions.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/RelationshipClassExtensions.cs" bodystart="13" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_relationship_class_extensions_1ab0a8ea174fac60acafb993b9290d3f4b" prot="public" virt="non-virtual"><scope>Miner::Interop::RelationshipClassExtensions</scope><name>Notify</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,756 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::Controls::BaseDropDownControl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Control</basecompoundref>
+    <derivedcompoundref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" prot="public" virt="non-virtual">System.Forms.Controls.ComboTreeBox</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad77a911c2489176af3d3f564e89cbccf" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int System.Forms.Controls.BaseDropDownControl.CONTROL_HEIGHT</definition>
+        <argsstring></argsstring>
+        <name>CONTROL_HEIGHT</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a0f240b3d9284f77bc67e5f9fba98a914" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int System.Forms.Controls.BaseDropDownControl.DROPDOWNBUTTON_WIDTH</definition>
+        <argsstring></argsstring>
+        <name>DROPDOWNBUTTON_WIDTH</name>
+        <initializer>= 17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a8d7cf76033a30a92d23f53a727ef63e9" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.BaseDropDownControl._DrawWithVisualStyles</definition>
+        <argsstring></argsstring>
+        <name>_DrawWithVisualStyles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a1bc3518c0b5206f33891bb63dd52fe33" prot="private" static="no" mutable="no">
+        <type>Rectangle</type>
+        <definition>Rectangle System.Forms.Controls.BaseDropDownControl._DropDownButtonBounds</definition>
+        <argsstring></argsstring>
+        <name>_DropDownButtonBounds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a9c19b4bb25a8e80754ad6a5847af4093" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.BaseDropDownControl._DroppedDown</definition>
+        <argsstring></argsstring>
+        <name>_DroppedDown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="30" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a238f6bdcd0697090d480550817031720" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler</type>
+        <definition>EventHandler System.Forms.Controls.BaseDropDownControl.DropDown</definition>
+        <argsstring></argsstring>
+        <name>DropDown</name>
+        <briefdescription>
+<para>Fired when the drop-down portion of the control is displayed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="64" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ac0b65d64f69cb01b794ecba804b351a9" prot="protected" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler</type>
+        <definition>EventHandler System.Forms.Controls.BaseDropDownControl.DropDownButtonClick</definition>
+        <argsstring></argsstring>
+        <name>DropDownButtonClick</name>
+        <briefdescription>
+<para>Fired when the user clicks the dropdown button at the right edge of the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="70" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a725bae12f581481b175b9d20635c06d7" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler</type>
+        <definition>EventHandler System.Forms.Controls.BaseDropDownControl.DropDownClosed</definition>
+        <argsstring></argsstring>
+        <name>DropDownClosed</name>
+        <briefdescription>
+<para>Fired when the drop-down portion of the control is closed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="76" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a28fc6c3d9babc27715a47be33d6a8339" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; <ref refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args" kindref="compound">DropDownPaintEventArgs</ref> &gt;</type>
+        <definition>EventHandler&lt;DropDownPaintEventArgs&gt; System.Forms.Controls.BaseDropDownControl.PaintContent</definition>
+        <argsstring></argsstring>
+        <name>PaintContent</name>
+        <briefdescription>
+<para>Fired when the content of the editable portion of the control is painted. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="82" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad7ff5cd143d6d9a5563d453fc73a5994" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override Color</type>
+        <definition>override Color System.Forms.Controls.BaseDropDownControl.BackColor</definition>
+        <argsstring></argsstring>
+        <name>BackColor</name>
+        <briefdescription>
+<para>Gets or sets the background color to use for this control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="92" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a27c782692a8b6099fcbbe77c62550f2d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override Image</type>
+        <definition>override Image System.Forms.Controls.BaseDropDownControl.BackgroundImage</definition>
+        <argsstring></argsstring>
+        <name>BackgroundImage</name>
+        <briefdescription>
+<para>Hides the BackgroundImage property on the designer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="102" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ab24bcefb2379d87d6e30fc0e5b71ada3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override ImageLayout</type>
+        <definition>override ImageLayout System.Forms.Controls.BaseDropDownControl.BackgroundImageLayout</definition>
+        <argsstring></argsstring>
+        <name>BackgroundImageLayout</name>
+        <briefdescription>
+<para>Hides the BackgroundImageLayout property on the designer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="112" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a1610b8ae3023c87d219f3466e4fa2517" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.BaseDropDownControl.DrawWithVisualStyles</definition>
+        <argsstring></argsstring>
+        <name>DrawWithVisualStyles</name>
+        <briefdescription>
+<para>Determines whether to draw the control with visual styles. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="124" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ae911c43011d93925aad6cf7a4885a060" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>virtual bool System.Forms.Controls.BaseDropDownControl.DroppedDown</definition>
+        <argsstring></argsstring>
+        <name>DroppedDown</name>
+        <briefdescription>
+<para>Opens or closes the dropdown portion of the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="142" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a0568c30cc8b2d26a4e7d565f3a7dba1b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Forms.Controls.BaseDropDownControl.BaseDropDownControl</definition>
+        <argsstring>()</argsstring>
+        <name>BaseDropDownControl</name>
+        <briefdescription>
+<para>Creates a new instance of DropDownControlBaSE. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="39" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1aef1528c3db7a3e27e54bc9ea03a9403e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool System.Forms.Controls.BaseDropDownControl.IsInputKey</definition>
+        <argsstring>(Keys keyData)</argsstring>
+        <name>IsInputKey</name>
+        <param>
+          <type>Keys</type>
+          <declname>keyData</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified key is a regular input key or a special key that requires preprocessing. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keyData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One of the T:System.Windows.Forms.Keys values.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the specified key is a regular input key; otherwise, falSE. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="163" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="163" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4c3ffe262bc153a76b4ee2e9d3ac7f9b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Forms.Controls.BaseDropDownControl.OnDropDown</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnDropDown</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a238f6bdcd0697090d480550817031720" kindref="member">DropDown</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.EventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="186" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="186" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a5a4b6c33eaf8a88081e7958b58f1f1af" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Forms.Controls.BaseDropDownControl.OnDropDownButtonClick</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnDropDownButtonClick</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ac0b65d64f69cb01b794ecba804b351a9" kindref="member">DropDownButtonClick</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.EventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="197" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="197" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a9bc874a193200906d2b9144d7c43bebc" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Forms.Controls.BaseDropDownControl.OnDropDownClosed</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnDropDownClosed</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a725bae12f581481b175b9d20635c06d7" kindref="member">DropDownClosed</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.EventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="208" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="208" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a5d11fa8b5e14860a7f77c559422c2fff" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnFontChanged</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnFontChanged</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.FontChanged event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.EventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="219" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="219" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a50b010acfe37cb21ce7ab01d9b2fcac6" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnGotFocus</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnGotFocus</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.GotFocus event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.EventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="229" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="229" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1aa3582f8388484b6acecf7dbbe4ddd923" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnLostFocus</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnLostFocus</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.LostFocus event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.EventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="239" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="239" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6ef21de89c95ff93c36e02f3f217eb32" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnMouseClick</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseClick</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.MouseClick event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.Windows.Forms.MouseEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="249" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="249" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ac61158fa8952a885a3bf093d5d38056e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnMouseDown</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseDown</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.MouseDown event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A T:System.Windows.Forms.MouseEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="259" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="259" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a3d20be98f9f342f9fe2dfeb4838b565e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnMouseEnter</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnMouseEnter</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.MouseEnter event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.EventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="270" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="270" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ae1d0aa304294e4c2085b2320f637479f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnMouseLeave</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnMouseLeave</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.MouseLeave event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.EventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="280" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="280" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a8132b81edce642be50f325bc739c01d6" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnMouseMove</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseMove</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Repaints the control when the mouse is moved over the control. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="290" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="290" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6acbd0a8b6ffa45836798602bf52e11d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnMouseUp</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseUp</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.MouseUp event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A T:System.Windows.Forms.MouseEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="300" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="300" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1abdee5f2e4a2b0ff5361400994197a58d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnPaint</definition>
+        <argsstring>(PaintEventArgs e)</argsstring>
+        <name>OnPaint</name>
+        <param>
+          <type>PaintEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.Paint event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A T:System.Windows.Forms.PaintEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="310" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="310" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4a46430fe68c48782c5a48680f80dbaf" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Forms.Controls.BaseDropDownControl.OnPaintContent</definition>
+        <argsstring>(DropDownPaintEventArgs e)</argsstring>
+        <name>OnPaintContent</name>
+        <param>
+          <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args" kindref="compound">DropDownPaintEventArgs</ref></type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the <ref refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a28fc6c3d9babc27715a47be33d6a8339" kindref="member">PaintContent</ref> event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="class_system_1_1_forms_1_1_controls_1_1_drop_down_paint_event_args" kindref="compound">System.Forms.Controls.DropDownPaintEventArgs</ref> instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="337" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="337" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad6f875ec02311704417470cf9d52a850" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.BaseDropDownControl.OnSizeChanged</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnSizeChanged</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Raises the E:System.Windows.Forms.Control.SizeChanged event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.EventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="348" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="348" bodyend="352"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4d3dbfd66c087d522054bd351970f64f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ComboBoxState</type>
+        <definition>ComboBoxState System.Forms.Controls.BaseDropDownControl.GetDropDownButtonState</definition>
+        <argsstring>()</argsstring>
+        <name>GetDropDownButtonState</name>
+        <briefdescription>
+<para>Determines the state in which to render the dropdown button portion of the control (when using visual styles). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="362" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="362" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a0f6186a2e3eb8bb7c90dce61aae5273c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ButtonState</type>
+        <definition>ButtonState System.Forms.Controls.BaseDropDownControl.GetPlainButtonState</definition>
+        <argsstring>()</argsstring>
+        <name>GetPlainButtonState</name>
+        <briefdescription>
+<para>Determines the state in which to render the dropdown button portion of the control (when not using visual styles). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="375" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="375" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6c0d1230c6a2dc8131c3593dd6513bbe" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rectangle</type>
+        <definition>Rectangle System.Forms.Controls.BaseDropDownControl.GetTextBoxBounds</definition>
+        <argsstring>()</argsstring>
+        <name>GetTextBoxBounds</name>
+        <briefdescription>
+<para>Gets the bounds of the textbox portion of the control by subtracting the dropdown button bounds from the client rectangle. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="389" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="389" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a97f3c5477af3d05de564cecf72ff1035" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ComboBoxState</type>
+        <definition>ComboBoxState System.Forms.Controls.BaseDropDownControl.GetTextBoxState</definition>
+        <argsstring>()</argsstring>
+        <name>GetTextBoxState</name>
+        <briefdescription>
+<para>Determines the state in which to render the textbox portion of the control (when using visual styles). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="398" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="398" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ace45d776ab00d65d11c1dedb7d56d3e7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.BaseDropDownControl.SetHeight</definition>
+        <argsstring>()</argsstring>
+        <name>SetHeight</name>
+        <briefdescription>
+<para>Sets the fixed height of the control, based on the font size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="410" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="410" bodyend="413"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for a control which behaves like a dropdown but does not contain logic for displaying a popup window. </para>    </briefdescription>
+    <detaileddescription>
+<para><ulink url="http://www.brad-smith.info/blog/archives/193">http://www.brad-smith.info/blog/archives/193</ulink></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="61">
+        <label>System.Forms.Controls.ComboTreeBox</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box"/>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>System.Forms.Controls.BaseDropDownControl</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control"/>
+        <childnode refid="60" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>Control</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="62">
+        <label>System.Forms.Controls.BaseDropDownControl</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control"/>
+        <childnode refid="63" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>Control</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/BaseClasses/BaseDropDownControl.cs" bodystart="17" bodyend="416"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a8d7cf76033a30a92d23f53a727ef63e9" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>_DrawWithVisualStyles</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a1bc3518c0b5206f33891bb63dd52fe33" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>_DropDownButtonBounds</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a9c19b4bb25a8e80754ad6a5847af4093" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>_DroppedDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad7ff5cd143d6d9a5563d453fc73a5994" prot="public" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>BackColor</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a27c782692a8b6099fcbbe77c62550f2d" prot="public" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>BackgroundImage</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ab24bcefb2379d87d6e30fc0e5b71ada3" prot="public" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>BackgroundImageLayout</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a0568c30cc8b2d26a4e7d565f3a7dba1b" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>BaseDropDownControl</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad77a911c2489176af3d3f564e89cbccf" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>CONTROL_HEIGHT</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a1610b8ae3023c87d219f3466e4fa2517" prot="public" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>DrawWithVisualStyles</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a238f6bdcd0697090d480550817031720" prot="public" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>DropDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a0f240b3d9284f77bc67e5f9fba98a914" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>DROPDOWNBUTTON_WIDTH</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ac0b65d64f69cb01b794ecba804b351a9" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>DropDownButtonClick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a725bae12f581481b175b9d20635c06d7" prot="public" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>DropDownClosed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ae911c43011d93925aad6cf7a4885a060" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>DroppedDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4d3dbfd66c087d522054bd351970f64f" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>GetDropDownButtonState</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a0f6186a2e3eb8bb7c90dce61aae5273c" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>GetPlainButtonState</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6c0d1230c6a2dc8131c3593dd6513bbe" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>GetTextBoxBounds</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a97f3c5477af3d05de564cecf72ff1035" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>GetTextBoxState</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1aef1528c3db7a3e27e54bc9ea03a9403e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>IsInputKey</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4c3ffe262bc153a76b4ee2e9d3ac7f9b" prot="protected" virt="virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnDropDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a5a4b6c33eaf8a88081e7958b58f1f1af" prot="protected" virt="virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnDropDownButtonClick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a9bc874a193200906d2b9144d7c43bebc" prot="protected" virt="virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnDropDownClosed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a5d11fa8b5e14860a7f77c559422c2fff" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnFontChanged</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a50b010acfe37cb21ce7ab01d9b2fcac6" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnGotFocus</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1aa3582f8388484b6acecf7dbbe4ddd923" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnLostFocus</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6ef21de89c95ff93c36e02f3f217eb32" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnMouseClick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ac61158fa8952a885a3bf093d5d38056e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnMouseDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a3d20be98f9f342f9fe2dfeb4838b565e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnMouseEnter</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ae1d0aa304294e4c2085b2320f637479f" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnMouseLeave</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a8132b81edce642be50f325bc739c01d6" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnMouseMove</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a6acbd0a8b6ffa45836798602bf52e11d" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnMouseUp</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1abdee5f2e4a2b0ff5361400994197a58d" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnPaint</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a4a46430fe68c48782c5a48680f80dbaf" prot="protected" virt="virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnPaintContent</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ad6f875ec02311704417470cf9d52a850" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>OnSizeChanged</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1a28fc6c3d9babc27715a47be33d6a8339" prot="public" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>PaintContent</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_base_drop_down_control_1ace45d776ab00d65d11c1dedb7d56d3e7" prot="private" virt="non-virtual"><scope>System::Forms::Controls::BaseDropDownControl</scope><name>SetHeight</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

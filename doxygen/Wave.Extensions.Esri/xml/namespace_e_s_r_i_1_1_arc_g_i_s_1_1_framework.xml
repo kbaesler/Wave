@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework" kind="namespace" language="C#">
+    <compoundname>ESRI::ArcGIS::Framework</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_application_extensions" prot="public">ESRI::ArcGIS::Framework::ApplicationExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_catalog" prot="public">ESRI::ArcGIS::Framework::ArcCatalog</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map" prot="public">ESRI::ArcGIS::Framework::ArcMap</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_editor_extensions" prot="public">ESRI::ArcGIS::Framework::EditorExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter" prot="public">ESRI::ArcGIS::Framework::MouseCursorReverter</innerclass>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal">ESRI::ArcGIS::Framework::Internal</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623f" prot="public" static="no">
+        <name>MouseCursorImage</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa0f4e1aaabd074689b7d3ead824d1ee8e" prot="public">
+          <name>Arrow</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>An arrow cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fadc6e84a67852dd96c1ba57da273b26ac" prot="public">
+          <name>Beam</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>An IBeam cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa0f68101772bd5397ef8eb1b632798652" prot="public">
+          <name>Wait</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>A Wait cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fae76b449b9fc8536af7557ffa6321d269" prot="public">
+          <name>Cross</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>A Cross cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa0b513090f0a012194da83d5515882b13" prot="public">
+          <name>UpArrow</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>A UpArrow cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa6ba8042ceea48823ba6c4c72b9354cea" prot="public">
+          <name>SizeAll</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>A SizeAll cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa8cfa3f5cbcc23e58611dc92662ddac09" prot="public">
+          <name>SizeNWSE</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>A SizeNWSE cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa6f0db7974d460608c90ad08e351619cf" prot="public">
+          <name>SizeNESW</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>A SizeNESW cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa520236df30bebadfd156ccc777bb84cd" prot="public">
+          <name>SizeWE</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+<para>A SizeWE cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fad24a7fbad35193c43fb833d4c3b33fb6" prot="public">
+          <name>SizeNS</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+<para>A SizeNS cursor. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623fa6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+<para>Nothing. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the image used to paint the mouse pointer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/MouseCursorReverter.cs" bodystart="11" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcCatalog.cs" line="4" column="1"/>
+  </compounddef>
+</doxygen>

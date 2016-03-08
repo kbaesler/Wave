@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_address" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::Address</compoundname>
+    <basecompoundref refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node" prot="public" virt="non-virtual">Miner.Interop.Process.BaseWMSNode</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_process_1_1_address_1a04d15e765203e55b00eb632ba2aab470" prot="private" static="no" mutable="no">
+        <type>readonly IMMWMSAddress</type>
+        <definition>readonly IMMWMSAddress Miner.Interop.Process.Address._Address</definition>
+        <argsstring></argsstring>
+        <name>_Address</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_address_1afe822fe6d5a1c730c65d3035b91bbee9" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Address.Address1</definition>
+        <argsstring></argsstring>
+        <name>Address1</name>
+        <briefdescription>
+<para>Gets or sets the address1. </para>        </briefdescription>
+        <detaileddescription>
+<para>The address1.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_address_1a8fec442239460117f4d154de57c5b2e0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Address.Address2</definition>
+        <argsstring></argsstring>
+        <name>Address2</name>
+        <briefdescription>
+<para>Gets or sets the address2. </para>        </briefdescription>
+        <detaileddescription>
+<para>The address2.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="53" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_address_1a7c7eedf9b3ada36814ab034f717a3d7b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Address.City</definition>
+        <argsstring></argsstring>
+        <name>City</name>
+        <briefdescription>
+<para>Gets or sets the city. </para>        </briefdescription>
+        <detaileddescription>
+<para>The city.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="72" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_address_1a8eddf9dc0f1f76aae6d1297c8ff2ecf3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Interop.Process.Address.Id</definition>
+        <argsstring></argsstring>
+        <name>Id</name>
+        <briefdescription>
+<para>Gets the ID. </para>        </briefdescription>
+        <detaileddescription>
+<para>The ID.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_address_1a68d3337786ed1b2cf53986d30a516b5e" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Address.State</definition>
+        <argsstring></argsstring>
+        <name>State</name>
+        <briefdescription>
+<para>Gets or sets the state. </para>        </briefdescription>
+        <detaileddescription>
+<para>The state.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="100" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_address_1a2805ee4a8e5baef598e8775ca3c18577" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.Address.Zip</definition>
+        <argsstring></argsstring>
+        <name>Zip</name>
+        <briefdescription>
+<para>Gets or sets the zip. </para>        </briefdescription>
+        <detaileddescription>
+<para>The zip.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="119" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_address_1ad8b1ac4dee49b0518e9ebd3e1ab68920" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.Address.Address</definition>
+        <argsstring>(IMMWMSAddress address)</argsstring>
+        <name>Address</name>
+        <param>
+          <type>IMMWMSAddress</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_address" kindref="compound">Address</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="20" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A wrapper around the product Miner.Interop.Process.IMMWMSAddress interface into an workable object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IDisposable</label>
+      </node>
+      <node id="0">
+        <label>Miner.Interop.Process.Address</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_address"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>BaseWMSNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IDisposable</label>
+      </node>
+      <node id="3">
+        <label>Miner.Interop.Process.Address</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_address"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" line="7" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Address.cs" bodystart="6" bodyend="135"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1a04d15e765203e55b00eb632ba2aab470" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>_Address</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1ad8b1ac4dee49b0518e9ebd3e1ab68920" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Address</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1afe822fe6d5a1c730c65d3035b91bbee9" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Address1</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1a8fec442239460117f4d154de57c5b2e0" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Address2</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a18fc0c61e3bcf6650e112e2d01ea71af" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>BaseWMSNode</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1a7c7eedf9b3ada36814ab034f717a3d7b" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>City</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a1f9855aed1ac2de930ad4611578fe227" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Dirty</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4e6cb2c359dfc047f7c68ca0a2fb9152" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a32b466bee441911b62fa9ef4ccb2cdb8" prot="protected" virt="virtual"><scope>Miner::Interop::Process::Address</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1a8eddf9dc0f1f76aae6d1297c8ff2ecf3" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Id</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a4118d431b4bbec1e92a5fe4c52670e15" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Node</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1a68d3337786ed1b2cf53986d30a516b5e" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>State</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1a3a87b4e36941be0bea34326e9130b6c3" prot="public" virt="virtual"><scope>Miner::Interop::Process::Address</scope><name>Update</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_w_m_s_node_1ab85e684a1de0591e268fbb7e95629491" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Valid</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_address_1a2805ee4a8e5baef598e8775ca3c18577" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::Address</scope><name>Zip</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

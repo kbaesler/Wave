@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_77d8ddd3d54fdf2c15c3fd9974c65638" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process</compoundname>
+    <innerdir refid="dir_bb80b1fb0f523f0bc8638d6f776c9ea3">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses</innerdir>
+    <innerdir refid="dir_e574fc9af3418926992fc074e571a747">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Collections</innerdir>
+    <innerdir refid="dir_155841678c0a2288d147bd4f020ba4dd">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Data</innerdir>
+    <innerdir refid="dir_0b8d5c3cf41a8c957a24580c800b3fc5">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM</innerdir>
+    <innerdir refid="dir_55162b21049a19d5ac1cf45eef4b22f4">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions</innerdir>
+    <innerdir refid="dir_b76f5f3eae0d496d4798995571ae5ce7">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes</innerdir>
+    <innerfile refid="_px_integration_cache_8cs">PxIntegrationCache.cs</innerfile>
+    <innerfile refid="_px_user_8cs">PxUser.cs</innerfile>
+    <innerfile refid="_px_version_status_8cs">PxVersionStatus.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/"/>
+  </compounddef>
+</doxygen>

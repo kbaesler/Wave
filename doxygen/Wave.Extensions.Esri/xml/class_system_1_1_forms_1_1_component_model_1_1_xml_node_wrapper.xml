@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::ComponentModel::XmlNodeWrapper</compoundname>
+    <innerclass refid="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1_1_xml_node_wrapper_converter" prot="private">System::Forms::ComponentModel::XmlNodeWrapper::XmlNodeWrapperConverter</innerclass>
+    <innerclass refid="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1_1_xml_node_wrapper_property_descriptor" prot="private">System::Forms::ComponentModel::XmlNodeWrapper::XmlNodeWrapperPropertyDescriptor</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1a209024252f305988321df7065f41814a" prot="private" static="no" mutable="no">
+        <type>readonly XmlNode</type>
+        <definition>readonly XmlNode System.Forms.ComponentModel.XmlNodeWrapper._Node</definition>
+        <argsstring></argsstring>
+        <name>_Node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1ae9fe5c6b161d38cb943249b45bb8253e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Forms.ComponentModel.XmlNodeWrapper.XmlNodeWrapper</definition>
+        <argsstring>(XmlNode node)</argsstring>
+        <name>XmlNodeWrapper</name>
+        <param>
+          <type>XmlNode</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper" kindref="compound">XmlNodeWrapper</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" bodystart="26" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides the means for supporting XML with the System.Windows.Forms.PropertyGrid control. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" bodystart="12" bodyend="276"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1a209024252f305988321df7065f41814a" prot="private" virt="non-virtual"><scope>System::Forms::ComponentModel::XmlNodeWrapper</scope><name>_Node</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1ae9fe5c6b161d38cb943249b45bb8253e" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::XmlNodeWrapper</scope><name>XmlNodeWrapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

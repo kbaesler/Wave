@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_system_1_1_collections_1_1_i_graph" kind="interface" language="C#" prot="public">
+    <compoundname>System::Collections::IGraph</compoundname>
+    <basecompoundref refid="interface_system_1_1_collections_1_1_i_edge_set" prot="public" virt="non-virtual">System::Collections::IEdgeSet&lt; TVertex, TEdge &gt;</basecompoundref>
+    <basecompoundref refid="interface_system_1_1_collections_1_1_i_vertex_set" prot="public" virt="non-virtual">System::Collections::IVertexSet&lt; TVertex &gt;</basecompoundref>
+    <derivedcompoundref refid="class_system_1_1_collections_1_1_adjacency_graph" prot="public" virt="non-virtual">System.Collections.AdjacencyGraph&lt; TVertex, TEdge &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>TVertex</type>
+      </param>
+      <param>
+        <type>TEdge</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_system_1_1_collections_1_1_i_graph_1a105e7e544340a9f15082d96e6c7e0e83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Collections.IGraph&lt; TVertex, TEdge &gt;.Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <reimplementedby refid="class_system_1_1_collections_1_1_adjacency_graph_1af1c435e7c75c1efa770d9967e0951326">Clear</reimplementedby>
+        <briefdescription>
+<para>Clears the vertex and edges </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IGraph.cs" line="20" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A graph with vertices of type <emphasis>TVertex</emphasis>  and edges of type <emphasis>TEdge</emphasis>  </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TVertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the vertices</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TEdge</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the edges</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="411">
+        <label>IEdgeSet&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_edge_set"/>
+      </node>
+      <node id="413">
+        <label>System::Collections::AdjacencyGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_adjacency_graph"/>
+        <childnode refid="410" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="410">
+        <label>System.Collections.IGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_graph"/>
+        <childnode refid="411" relation="public-inheritance">
+        </childnode>
+        <childnode refid="412" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="412">
+        <label>IVertexSet&lt; TVertex &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_vertex_set"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="415">
+        <label>IEdgeSet&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_edge_set"/>
+      </node>
+      <node id="414">
+        <label>System.Collections.IGraph&lt; TVertex, TEdge &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_graph"/>
+        <childnode refid="415" relation="public-inheritance">
+        </childnode>
+        <childnode refid="416" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="416">
+        <label>IVertexSet&lt; TVertex &gt;</label>
+        <link refid="interface_system_1_1_collections_1_1_i_vertex_set"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IGraph.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/Theory/Interfaces/IGraph.cs" bodystart="12" bodyend="23"/>
+    <listofallmembers>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a1bdd182ba6173cc325f621fad5812897" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>AddEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1ac45d4d2ab2898d30c20dbdc0aea82ca8" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>AddEdgeRange</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1abdbc9693b9435cbbf9c53ceeb510856b" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>AddVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1a06042ec649159c3db12fae6f4330e51c" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>AddVertexRange</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_graph_1a105e7e544340a9f15082d96e6c7e0e83" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>Clear</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a6944612a734aee8ff51c3daffee87b8d" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>ContainsEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1afd2fcec064ddc3eaf39918eb86746dbd" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>ContainsEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1a2bd9c1df319d9904a03d29cd72ab4b53" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>ContainsVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1af4c2a2a6d1ef5c6c28ee7fb50da74808" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>EdgeAdded</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a177797b2923ee4f8a979b160e89092bb" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>EdgeCount</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a69d4fa1728c369888d5e804b05edde3a" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>EdgeRemoved</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a42c550db3189681c4a152005e5e56cc8" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>Edges</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a352b02e4e66e1deca7c7425483003e42" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>IsEdgesEmpty</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1a167a6241277eb1e385c80d866bb0886c" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>IsVerticesEmpty</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a5fe301dfac42b510c0ec59777990ccb4" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>RemoveEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_edge_set_1a0a5afba1c2301681ed621626357dada1" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>RemoveEdge</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1af18536221a7a39b6c03ea068b3b57873" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>RemoveVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1a58cd0f581d1eead902d797d1e61cc702" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>RemoveVertex</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1a7ce4cb2d3fc8908fce4f98e69c07d072" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>VertexAdded</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1af89b81a5d1beef42118de51d5618c979" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>VertexCount</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1a033c3d5c44d651f7e955641f210e93e8" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>VertexRemoved</name></member>
+      <member refid="interface_system_1_1_collections_1_1_i_vertex_set_1a965aaf20d1c49f9f07d445a2d3ea8df0" prot="public" virt="non-virtual"><scope>System::Collections::IGraph</scope><name>Vertices</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

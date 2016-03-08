@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geodatabase::FeatureClassEnumerator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IEnumFeatureClass</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1a818146446347a94a663bf7b080f1d2e7" prot="private" static="no" mutable="no">
+        <type>readonly IEnumerator&lt; IFeatureClass &gt;</type>
+        <definition>readonly IEnumerator&lt;IFeatureClass&gt; ESRI.ArcGIS.Geodatabase.FeatureClassEnumerator._Enumerator</definition>
+        <argsstring></argsstring>
+        <name>_Enumerator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1a18590d5b01cf9521331fd51e56ea9350" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.Geodatabase.FeatureClassEnumerator.FeatureClassEnumerator</definition>
+        <argsstring>(IEnumerable&lt; IFeatureClass &gt; list)</argsstring>
+        <name>FeatureClassEnumerator</name>
+        <param>
+          <type>IEnumerable&lt; IFeatureClass &gt;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator" kindref="compound">FeatureClassEnumerator</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feature classes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1ad363a8d516f64ad0ef086c505d2235e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.Geodatabase.FeatureClassEnumerator.FeatureClassEnumerator</definition>
+        <argsstring>(params IFeatureClass[] list)</argsstring>
+        <name>FeatureClassEnumerator</name>
+        <param>
+          <type>params IFeatureClass[]</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator" kindref="compound">FeatureClassEnumerator</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feature classes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1aee46a01f44e0acc390ea5cde7f27e487" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Geodatabase.FeatureClassEnumerator.Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+<para>Sets the enumerator to its initial position, which is before the first element in the collection. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1a278c250b77ebdbcaa5f063cc9c880d24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IFeatureClass</type>
+        <definition>IFeatureClass ESRI.ArcGIS.Geodatabase.FeatureClassEnumerator.Next</definition>
+        <argsstring>()</argsstring>
+        <name>Next</name>
+        <briefdescription>
+<para>Gets the element in the collection at the next position of the enumerator. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns a IFeatureClass representing the next feature class in the iterator; otherwise <computeroutput>null</computeroutput> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" line="55" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" bodystart="55" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An iterator used to enumerate through a collection of IFeatureClass interfaces. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="341">
+        <label>IEnumFeatureClass</label>
+      </node>
+      <node id="340">
+        <label>ESRI.ArcGIS.Geodatabase.FeatureClassEnumerator</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator"/>
+        <childnode refid="341" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="343">
+        <label>IEnumFeatureClass</label>
+      </node>
+      <node id="342">
+        <label>ESRI.ArcGIS.Geodatabase.FeatureClassEnumerator</label>
+        <link refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator"/>
+        <childnode refid="343" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geodatabase/Collections/FeatureClassEnumerator.cs" bodystart="8" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1a818146446347a94a663bf7b080f1d2e7" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FeatureClassEnumerator</scope><name>_Enumerator</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1a18590d5b01cf9521331fd51e56ea9350" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FeatureClassEnumerator</scope><name>FeatureClassEnumerator</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1ad363a8d516f64ad0ef086c505d2235e3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FeatureClassEnumerator</scope><name>FeatureClassEnumerator</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1a278c250b77ebdbcaa5f063cc9c880d24" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FeatureClassEnumerator</scope><name>Next</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_class_enumerator_1aee46a01f44e0acc390ea5cde7f27e487" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geodatabase::FeatureClassEnumerator</scope><name>Reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

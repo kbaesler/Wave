@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_type_cast" kind="class" language="C#" prot="public">
+    <compoundname>System::TypeCast</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_type_cast_1ae8090c2c00f77d3d572b9ca6ac219236" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>static T System.TypeCast.Cast&lt; T &gt;</definition>
+        <argsstring>(object value, T defaultValue)</argsstring>
+        <name>Cast&lt; T &gt;</name>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>defaultValue</declname>
+        </param>
+        <briefdescription>
+<para>Casts an object to the type of the given default value. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the object is null or DBNull, the default value specified will be returned. If the object is convertible to the type of the default value, the explicit conversion will be performed. </para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target data type of the conversion.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to be cast.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>defaultValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The default fail back value</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the object cast to the type of the default value.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.InvalidCastException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thrown if the type of the object cannot be cast to the type of the default value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" bodystart="29" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_type_cast_1af9e1009edcb7e1457cf3f45c99ccde2e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool System.TypeCast.TryCast&lt; T &gt;</definition>
+        <argsstring>(object value, out T result)</argsstring>
+        <name>TryCast&lt; T &gt;</name>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>out T</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Attempts to casts an object to the type of the given default value. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the object is null or DBNull, the default value specified will be returned. If the object is convertible to the type of the default value, the explicit conversion will be performed. </para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target data type of the conversion.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to be cast.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the object cast to the type of the default value. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.InvalidCastException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thrown if the type of the object cannot be cast to the type of the default value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" line="69" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" bodystart="69" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_type_cast_1afbfa5a39f81cc2f11e8c0cc225e89697" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool System.TypeCast.IsEmpty</definition>
+        <argsstring>(object obj)</argsstring>
+        <name>IsEmpty</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified object is an empty string. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The obj.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified object is an empty string; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" line="96" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" bodystart="96" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides helper methods to translate data between the internal data storage value and the user-display value and vice versa. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" line="12" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/TypeCast.cs" bodystart="11" bodyend="106"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_type_cast_1ae8090c2c00f77d3d572b9ca6ac219236" prot="public" virt="non-virtual"><scope>System::TypeCast</scope><name>Cast&lt; T &gt;</name></member>
+      <member refid="class_system_1_1_type_cast_1afbfa5a39f81cc2f11e8c0cc225e89697" prot="private" virt="non-virtual"><scope>System::TypeCast</scope><name>IsEmpty</name></member>
+      <member refid="class_system_1_1_type_cast_1af9e1009edcb7e1457cf3f45c99ccde2e" prot="public" virt="non-virtual"><scope>System::TypeCast</scope><name>TryCast&lt; T &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

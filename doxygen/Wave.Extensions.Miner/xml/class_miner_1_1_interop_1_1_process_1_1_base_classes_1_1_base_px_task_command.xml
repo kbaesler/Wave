@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::BaseClasses::BasePxTaskCommand</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BaseMxCommand</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1a0036fd0b997736fe74986aacaa3b5184" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Process.BaseClasses.BasePxTaskCommand.Enabled</definition>
+        <argsstring></argsstring>
+        <name>Enabled</name>
+        <briefdescription>
+<para>The enabled state of this command, determines whether the command is usable. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" line="41" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1acc8b12c2db975385e405452210efa8b4" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.BaseClasses.BasePxTaskCommand.TaskName</definition>
+        <argsstring></argsstring>
+        <name>TaskName</name>
+        <briefdescription>
+<para>Gets or sets the name of the task. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the task. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" line="71" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1a1045d1912716545bcf1260baa45b5548" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.BaseClasses.BasePxTaskCommand.BasePxTaskCommand</definition>
+        <argsstring>(string taskName, string name, string caption, string category, string message, string toolTip)</argsstring>
+        <name>BasePxTaskCommand</name>
+        <param>
+          <type>string</type>
+          <declname>taskName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>caption</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>category</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>toolTip</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command" kindref="compound">BasePxTaskCommand</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the task.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>caption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The caption.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The category.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>toolTip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool tip.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" bodystart="28" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1a00c1e6efb4efd2f0fd66822c4fc7e797" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void Miner.Interop.Process.BaseClasses.BasePxTaskCommand.OnClick</definition>
+        <argsstring>()</argsstring>
+        <name>OnClick</name>
+        <briefdescription>
+<para>Called when the user clicks a command. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note to inheritors: override OnClick and use this method to perform the actual work of the custom command. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" line="84" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" bodystart="84" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract ArcMap command that handles executing a <ref refid="namespace_miner_1_1_interop_1_1_process" kindref="compound">Process</ref> <ref refid="namespace_miner_1_1_framework" kindref="compound">Framework</ref> Task when the button is clicked and is enabled or disabled based on the task enabled method. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="194">
+        <label>Miner.Interop.Process.BaseClasses.BasePxTaskCommand</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command"/>
+        <childnode refid="195" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>BaseMxCommand</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="196">
+        <label>Miner.Interop.Process.BaseClasses.BasePxTaskCommand</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command"/>
+        <childnode refid="197" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="197">
+        <label>BaseMxCommand</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxTaskCommand.cs" bodystart="15" bodyend="100"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1a1045d1912716545bcf1260baa45b5548" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BaseClasses::BasePxTaskCommand</scope><name>BasePxTaskCommand</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1a0036fd0b997736fe74986aacaa3b5184" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BaseClasses::BasePxTaskCommand</scope><name>Enabled</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1a00c1e6efb4efd2f0fd66822c4fc7e797" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BaseClasses::BasePxTaskCommand</scope><name>OnClick</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_classes_1_1_base_px_task_command_1acc8b12c2db975385e405452210efa8b4" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BaseClasses::BasePxTaskCommand</scope><name>TaskName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

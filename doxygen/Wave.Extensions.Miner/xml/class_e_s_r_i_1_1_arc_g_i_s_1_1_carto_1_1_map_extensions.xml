@@ -1,0 +1,452 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Carto::MapExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a617f4854c374013f02cfc682ebdde98c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IFeatureClass</type>
+        <definition>static IFeatureClass ESRI.ArcGIS.Carto.MapExtensions.GetFeatureClass</definition>
+        <argsstring>(this IMap source, string modelName, bool throwException=true)</argsstring>
+        <name>GetFeatureClass</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns the feature class that is assigned the <emphasis>modelName</emphasis>  that is in the map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a ESRI.ArcGIS.Geodatabase.IFeatureClass representing the feature class that is assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>MissingClassModelNameException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="32" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="32" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a33d1b6884049d71804b784184f7d7dc5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IFeatureClass &gt;</type>
+        <definition>static IEnumerable&lt;IFeatureClass&gt; ESRI.ArcGIS.Carto.MapExtensions.GetFeatureClasses</definition>
+        <argsstring>(this IMap source, string modelName)</argsstring>
+        <name>GetFeatureClasses</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <briefdescription>
+<para>Returns the feature class that is assigned the <emphasis>modelName</emphasis>  that is in the map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a ESRI.ArcGIS.Geodatabase.IFeatureClass representing the feature class that is assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="56" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1ac31b3657ce5a18a3de143fab25d6ec47" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IFeatureLayer</type>
+        <definition>static IFeatureLayer ESRI.ArcGIS.Carto.MapExtensions.GetFeatureLayer</definition>
+        <argsstring>(this IMap source, string modelName, bool throwException=true)</argsstring>
+        <name>GetFeatureLayer</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns the layer that is assigned the <emphasis>modelName</emphasis>  that resides the map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the ESRI.ArcGIS.Carto.IFeatureLayer representing the layer that is assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>MissingClassModelNameException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="79" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="79" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1aff61f46438869e3aa34564616e336b7b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; IFeatureLayer &gt;</type>
+        <definition>static IEnumerable&lt;IFeatureLayer&gt; ESRI.ArcGIS.Carto.MapExtensions.GetFeatureLayers</definition>
+        <argsstring>(this IMap source, string modelName)</argsstring>
+        <name>GetFeatureLayers</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <briefdescription>
+<para>Returns the layers that are assigned the <emphasis>modelName</emphasis>  that resides the map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The map.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class model name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the IEnumerable&lt;IFeatureLayer&gt; representing the layers that are assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="102" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="102" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a69ab9a74ba41e961828b66e92aabe70e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ITable</type>
+        <definition>static ITable ESRI.ArcGIS.Carto.MapExtensions.GetTable</definition>
+        <argsstring>(this IMap source, string modelName, bool throwException=true)</argsstring>
+        <name>GetTable</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns the table that is assigned the <emphasis>modelName</emphasis>  that resides within map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the class model name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a ESRI.ArcGIS.Geodatabase.ITable representing the table that is assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>MissingClassModelNameException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="125" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="125" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a463355dc20a5475df2478f0d3b4b586d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable&lt; ITable &gt;</type>
+        <definition>static IEnumerable&lt;ITable&gt; ESRI.ArcGIS.Carto.MapExtensions.GetTables</definition>
+        <argsstring>(this IMap source, string modelName)</argsstring>
+        <name>GetTables</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <briefdescription>
+<para>Returns the tables that are assigned the <emphasis>modelName</emphasis>  that resides within map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the class model name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IEnumerable&lt;ITable&gt; representing the tables that are assigned the model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="149" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="149" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a03c6a0a7ff159ff8944a720ce1f2b1c9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IWorkspace</type>
+        <definition>static IWorkspace ESRI.ArcGIS.Carto.MapExtensions.GetWorkspace</definition>
+        <argsstring>(this IMap source, Predicate&lt; IWorkspace &gt; predicate)</argsstring>
+        <name>GetWorkspace</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>Predicate&lt; IWorkspace &gt;</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+<para>Gets the workspace that satisifies the <emphasis>predicate</emphasis>  criteria. </para>        </briefdescription>
+        <detaileddescription>
+<para>map. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>predicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A function to test each element for a condition.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IWorkspace representing the workspace in the map that is being edited. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>predicate</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="178" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="178" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a3116c00776e6c7523ce925f58e64b5ff" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IWorkspace</type>
+        <definition>static IWorkspace ESRI.ArcGIS.Carto.MapExtensions.GetWorkspace</definition>
+        <argsstring>(this IMap source, string modelName, bool throwException=true)</argsstring>
+        <name>GetWorkspace</name>
+        <param>
+          <type>this IMap</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwException</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Gets the workspace that is assigned the <emphasis>modelName</emphasis>  to the database level that resides within the map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the database model.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throwException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if an exception should be thrown when the model name is not assigned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IWorkspace representing the workspace in the map that is assigned the database model name. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>modelName</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>MissingDatabaseModelNameException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="204" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="204" bodyend="215"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the IMap interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Carto/Extensions/MapExtensions.cs" bodystart="14" bodyend="218"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a617f4854c374013f02cfc682ebdde98c" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetFeatureClass</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a33d1b6884049d71804b784184f7d7dc5" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetFeatureClasses</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1ac31b3657ce5a18a3de143fab25d6ec47" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetFeatureLayer</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1aff61f46438869e3aa34564616e336b7b" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetFeatureLayers</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a69ab9a74ba41e961828b66e92aabe70e" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetTable</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a463355dc20a5475df2478f0d3b4b586d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetTables</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a03c6a0a7ff159ff8944a720ce1f2b1c9" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetWorkspace</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_carto_1_1_map_extensions_1a3116c00776e6c7523ce925f58e64b5ff" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Carto::MapExtensions</scope><name>GetWorkspace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

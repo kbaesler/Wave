@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="dir_0b8d5c3cf41a8c957a24580c800b3fc5" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM</compoundname>
+    <innerdir refid="dir_ad40c488caa39d01cce6f6283f3ac3e6">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/BaseClasses</innerdir>
+    <innerdir refid="dir_1890d2c4804109da8cf7d1e4c71e1c74">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Configuration</innerdir>
+    <innerdir refid="dir_3d037dc3cc32cbc17afd6daceb35a6e1">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Deleters</innerdir>
+    <innerdir refid="dir_827e3aed83cf7b19db93bb5bf5f1c877">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/Interfaces</innerdir>
+    <innerfile refid="_e_d_m_8cs">EDM.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/"/>
+  </compounddef>
+</doxygen>

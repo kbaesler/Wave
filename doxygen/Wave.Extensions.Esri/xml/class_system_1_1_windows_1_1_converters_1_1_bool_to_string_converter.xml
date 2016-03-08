@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Converters::BoolToStringConverter</compoundname>
+    <basecompoundref refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter" prot="public" virt="non-virtual">System.Windows.Converters.BoolToValueConverter&lt; string &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter_1a7e8b5ee2c3753be05fc03cdfaf1c644b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.Converters.BoolToStringConverter.BoolToStringConverter</definition>
+        <argsstring>()</argsstring>
+        <name>BoolToStringConverter</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter" kindref="compound">BoolToStringConverter</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToStringConverter.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToStringConverter.cs" bodystart="17" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A converter that converts the boolean value to either bool.TrueString if the value is <computeroutput>true</computeroutput>; otherwise bool.FalseString when the value is <computeroutput>false</computeroutput>. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="169">
+        <label>System.Windows.Converters.BoolToStringConverter</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter"/>
+        <childnode refid="170" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="170">
+        <label>BoolToValueConverter&lt; string &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="171">
+        <label>System.Windows.Converters.BoolToStringConverter</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter"/>
+        <childnode refid="172" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>BoolToValueConverter&lt; string &gt;</label>
+        <link refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToStringConverter.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Converters/BoolToStringConverter.cs" bodystart="10" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_string_converter_1a7e8b5ee2c3753be05fc03cdfaf1c644b" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToStringConverter</scope><name>BoolToStringConverter</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1ab1631873f7e92f407e5d016dd555dea8" prot="protected" virt="non-virtual"><scope>System::Windows::Converters::BoolToStringConverter</scope><name>BoolToValueConverter</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1ab63637f5df4c6c3dacceb1c6768cd1ec" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToStringConverter</scope><name>Convert</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1ac4255ce46ce17e3a9610176c66187c90" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToStringConverter</scope><name>ConvertBack</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1a0e889ae5bec033f2f2c2958031d93abd" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToStringConverter</scope><name>FalseValue</name></member>
+      <member refid="class_system_1_1_windows_1_1_converters_1_1_bool_to_value_converter_1adf8aefb4469c0d0de17a91f4ca374a85" prot="public" virt="non-virtual"><scope>System::Windows::Converters::BoolToStringConverter</scope><name>TrueValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

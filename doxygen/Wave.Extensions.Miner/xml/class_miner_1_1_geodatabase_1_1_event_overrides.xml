@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_geodatabase_1_1_event_overrides" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Geodatabase::EventOverrides</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_geodatabase_1_1_event_overrides_1ad28f0b5beaf35c622ec043d8bf150973" prot="private" static="no" mutable="no">
+        <type>readonly Dictionary&lt; string, EventOverride &gt;</type>
+        <definition>readonly Dictionary&lt;string, EventOverride&gt; Miner.Geodatabase.EventOverrides._EventOverrides</definition>
+        <argsstring></argsstring>
+        <name>_EventOverrides</name>
+        <initializer>= new Dictionary&lt;string, EventOverride&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_geodatabase_1_1_event_overrides_1a1fb0a21e99779d665782c79f51bb37a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Geodatabase.EventOverrides.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_geodatabase_1_1_event_overrides_1a23676ac14e98cda522ebb723b8a93c26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Miner.Geodatabase.EventOverrides.IsOverridden</definition>
+        <argsstring>(string key)</argsstring>
+        <name>IsOverridden</name>
+        <param>
+          <type>string</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified key is overridden. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" bodystart="40" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_geodatabase_1_1_event_overrides_1a54809874e4e7aaf7d06ce9afc95ac16a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Geodatabase.EventOverrides.Set</definition>
+        <argsstring>(string key, params mmEditEvent[] editEvents)</argsstring>
+        <name>Set</name>
+        <param>
+          <type>string</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>params mmEditEvent[]</type>
+          <declname>editEvents</declname>
+        </param>
+        <briefdescription>
+<para>Sets the override for the specified edit event for the specified key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editEvents</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit events.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" line="53" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" bodystart="53" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_miner_1_1_geodatabase_1_1_event_overrides_1a2d32766607284fc94850196ee69ccacd" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Geodatabase.EventOverrides.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" line="83" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" bodystart="83" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides the ability to override the edit event enumeration. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="341">
+        <label>IDisposable</label>
+      </node>
+      <node id="340">
+        <label>Miner.Geodatabase.EventOverrides</label>
+        <link refid="class_miner_1_1_geodatabase_1_1_event_overrides"/>
+        <childnode refid="341" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="343">
+        <label>IDisposable</label>
+      </node>
+      <node id="342">
+        <label>Miner.Geodatabase.EventOverrides</label>
+        <link refid="class_miner_1_1_geodatabase_1_1_event_overrides"/>
+        <childnode refid="343" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Geodatabase/EventOverrides.cs" bodystart="13" bodyend="100"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_geodatabase_1_1_event_overrides_1ad28f0b5beaf35c622ec043d8bf150973" prot="private" virt="non-virtual"><scope>Miner::Geodatabase::EventOverrides</scope><name>_EventOverrides</name></member>
+      <member refid="class_miner_1_1_geodatabase_1_1_event_overrides_1a1fb0a21e99779d665782c79f51bb37a1" prot="public" virt="non-virtual"><scope>Miner::Geodatabase::EventOverrides</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_geodatabase_1_1_event_overrides_1a2d32766607284fc94850196ee69ccacd" prot="private" virt="non-virtual"><scope>Miner::Geodatabase::EventOverrides</scope><name>Dispose</name></member>
+      <member refid="class_miner_1_1_geodatabase_1_1_event_overrides_1a23676ac14e98cda522ebb723b8a93c26" prot="public" virt="non-virtual"><scope>Miner::Geodatabase::EventOverrides</scope><name>IsOverridden</name></member>
+      <member refid="class_miner_1_1_geodatabase_1_1_event_overrides_1a54809874e4e7aaf7d06ce9afc95ac16a" prot="public" virt="non-virtual"><scope>Miner::Geodatabase::EventOverrides</scope><name>Set</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

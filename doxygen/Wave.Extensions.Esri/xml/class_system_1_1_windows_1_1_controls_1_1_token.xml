@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_controls_1_1_token" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Controls::Token</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ContentControl</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_token_1a99630dd8637fc38ed2f1f86b8908801b" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Controls.Token.KeyProperty</definition>
+        <argsstring></argsstring>
+        <name>KeyProperty</name>
+        <initializer>= DependencyProperty.Register(&quot;Key&quot;, typeof (string), typeof (<ref refid="class_system_1_1_windows_1_1_controls_1_1_token" kindref="compound">Token</ref>), new UIPropertyMetadata(null))</initializer>
+        <briefdescription>
+<para>The key property </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_token_1a8b1c11507b71a6a811c1e79f494ef899" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Windows.Controls.Token.Delimiter</definition>
+        <argsstring></argsstring>
+        <name>Delimiter</name>
+        <briefdescription>
+<para>Gets the delimiter. </para>        </briefdescription>
+        <detaileddescription>
+<para>The delimiter. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" line="50" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_token_1a66cb1578666cdd8a95745e3e6f07de26" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Windows.Controls.Token.Key</definition>
+        <argsstring></argsstring>
+        <name>Key</name>
+        <briefdescription>
+<para>Gets or sets the key. </para>        </briefdescription>
+        <detaileddescription>
+<para>The key. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" line="58" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_windows_1_1_controls_1_1_token_1a19f07ba45e4fdcaa645552a1710eab5a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string System.Windows.Controls.Token.Text</definition>
+        <argsstring></argsstring>
+        <name>Text</name>
+        <briefdescription>
+<para>Gets or sets the text. </para>        </briefdescription>
+        <detaileddescription>
+<para>The text. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" line="70" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_token_1ac87aabd4f6d237ee18329fb170dbe9bf" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>static</type>
+        <definition>static System.Windows.Controls.Token.Token</definition>
+        <argsstring>()</argsstring>
+        <name>Token</name>
+        <briefdescription>
+<para>Initializes the <ref refid="class_system_1_1_windows_1_1_controls_1_1_token" kindref="compound">Token</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" bodystart="23" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_token_1abe2f643ace437b33001ce9cbb50dde8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Windows.Controls.Token.Token</definition>
+        <argsstring>(string delimiter, string inputText)</argsstring>
+        <name>Token</name>
+        <param>
+          <type>string</type>
+          <declname>delimiter</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>inputText</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_windows_1_1_controls_1_1_token" kindref="compound">Token</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delimiter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delimiter.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>inputText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input text.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" line="33" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" bodystart="33" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The content control for the token. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="647">
+        <label>System.Windows.Controls.Token</label>
+        <link refid="class_system_1_1_windows_1_1_controls_1_1_token"/>
+        <childnode refid="648" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="648">
+        <label>ContentControl</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="649">
+        <label>System.Windows.Controls.Token</label>
+        <link refid="class_system_1_1_windows_1_1_controls_1_1_token"/>
+        <childnode refid="650" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="650">
+        <label>ContentControl</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" line="7" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/TokenizedTextBox/Token.cs" bodystart="6" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_token_1a8b1c11507b71a6a811c1e79f494ef899" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Token</scope><name>Delimiter</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_token_1a66cb1578666cdd8a95745e3e6f07de26" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Token</scope><name>Key</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_token_1a99630dd8637fc38ed2f1f86b8908801b" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Token</scope><name>KeyProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_token_1a19f07ba45e4fdcaa645552a1710eab5a" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Token</scope><name>Text</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_token_1ac87aabd4f6d237ee18329fb170dbe9bf" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Token</scope><name>Token</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_token_1abe2f643ace437b33001ce9cbb50dde8b" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Token</scope><name>Token</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

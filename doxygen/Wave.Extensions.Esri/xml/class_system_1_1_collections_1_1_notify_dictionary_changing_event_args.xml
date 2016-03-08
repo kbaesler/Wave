@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args" kind="class" language="C#" prot="public">
+    <compoundname>System::Collections::NotifyDictionaryChangingEventArgs</compoundname>
+    <basecompoundref refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args" prot="public" virt="non-virtual">System::Collections::NotifyDictionaryChangedEventArgs&lt; TKey, TValue &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TKey</type>
+      </param>
+      <param>
+        <type>TValue</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a01800dcf56875d0e7611cd4854d8c5bb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;.Cancel</definition>
+        <argsstring></argsstring>
+        <name>Cancel</name>
+        <briefdescription>
+<para>Gets or sets a value indicating whether the event should be canceled. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the event should be canceled; otherwise, falSE. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a6886cae6ffeeb16a7261261ee7acc56f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;.NotifyDictionaryChangingEventArgs</definition>
+        <argsstring>(KeyValuePair&lt; TKey, TValue &gt; newItem, KeyValuePair&lt; TKey, TValue &gt; oldItem, NotifyCollectionChangedAction action)</argsstring>
+        <name>NotifyDictionaryChangingEventArgs</name>
+        <param>
+          <type>KeyValuePair&lt; TKey, TValue &gt;</type>
+          <declname>newItem</declname>
+        </param>
+        <param>
+          <type>KeyValuePair&lt; TKey, TValue &gt;</type>
+          <declname>oldItem</declname>
+        </param>
+        <param>
+          <type>NotifyCollectionChangedAction</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a6886cae6ffeeb16a7261261ee7acc56f" kindref="member">NotifyDictionaryChangingEventArgs&lt;TKey, TValue&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new item.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oldItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The old item.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1aeb07e119f8ef1d0d9f581ee465a075ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;.NotifyDictionaryChangingEventArgs</definition>
+        <argsstring>(IDictionary&lt; TKey, TValue &gt; newItems, IDictionary&lt; TKey, TValue &gt; oldItems, NotifyCollectionChangedAction action)</argsstring>
+        <name>NotifyDictionaryChangingEventArgs</name>
+        <param>
+          <type>IDictionary&lt; TKey, TValue &gt;</type>
+          <declname>newItems</declname>
+        </param>
+        <param>
+          <type>IDictionary&lt; TKey, TValue &gt;</type>
+          <declname>oldItems</declname>
+        </param>
+        <param>
+          <type>NotifyCollectionChangedAction</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a6886cae6ffeeb16a7261261ee7acc56f" kindref="member">NotifyDictionaryChangingEventArgs&lt;TKey, TValue&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newItems</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oldItems</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The old items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a681e75b0d64ac20ced5cd7400c75af22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;.NotifyDictionaryChangingEventArgs</definition>
+        <argsstring>(IDictionary&lt; TKey, TValue &gt; items, NotifyCollectionChangedAction action)</argsstring>
+        <name>NotifyDictionaryChangingEventArgs</name>
+        <param>
+          <type>IDictionary&lt; TKey, TValue &gt;</type>
+          <declname>items</declname>
+        </param>
+        <param>
+          <type>NotifyCollectionChangedAction</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a6886cae6ffeeb16a7261261ee7acc56f" kindref="member">NotifyDictionaryChangingEventArgs&lt;TKey, TValue&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>items</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The items.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" line="45" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1acb2d8d06bfa4429f9c5e1bab0e937bd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;.NotifyDictionaryChangingEventArgs</definition>
+        <argsstring>(KeyValuePair&lt; TKey, TValue &gt; item, NotifyCollectionChangedAction action)</argsstring>
+        <name>NotifyDictionaryChangingEventArgs</name>
+        <param>
+          <type>KeyValuePair&lt; TKey, TValue &gt;</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>NotifyCollectionChangedAction</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a6886cae6ffeeb16a7261261ee7acc56f" kindref="member">NotifyDictionaryChangingEventArgs&lt;TKey, TValue&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" line="55" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1ae3f3455a589b4c430e69271de2169468" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;.NotifyDictionaryChangingEventArgs</definition>
+        <argsstring>(TKey key, TValue value, NotifyCollectionChangedAction action)</argsstring>
+        <name>NotifyDictionaryChangingEventArgs</name>
+        <param>
+          <type>TKey</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>TValue</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>NotifyCollectionChangedAction</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a6886cae6ffeeb16a7261261ee7acc56f" kindref="member">NotifyDictionaryChangingEventArgs&lt;TKey, TValue&gt;</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" line="66" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" bodystart="66" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The event arguments that hold the data for when the dictionary is changing. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the key.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="512">
+        <label>EventArgs</label>
+      </node>
+      <node id="510">
+        <label>System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args"/>
+        <childnode refid="511" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="511">
+        <label>NotifyDictionaryChangedEventArgs&lt; TKey, TValue &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args"/>
+        <childnode refid="512" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="515">
+        <label>EventArgs</label>
+      </node>
+      <node id="513">
+        <label>System.Collections.NotifyDictionaryChangingEventArgs&lt; TKey, TValue &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args"/>
+        <childnode refid="514" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="514">
+        <label>NotifyDictionaryChangedEventArgs&lt; TKey, TValue &gt;</label>
+        <link refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args"/>
+        <childnode refid="515" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Collections/NotifyDictionaryChangingEventArgs.cs" bodystart="14" bodyend="84"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1ab6a7fe5ae39bec6f125e9b5541c85091" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>Action</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a01800dcf56875d0e7611cd4854d8c5bb" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>Cancel</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1a21dcb0800f1aed56aba7fdea91c77f1d" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NewItem</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1aca06b5d4c75981a3f371e00c406cafd7" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NewItems</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1a42a3c2cdc4d2f1c33d47ac9821f68050" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangedEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1aebfc966ec44abf757e2e66ebfc1fa3e5" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangedEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1a4f777575e3c2241c1835d22d7e80884a" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangedEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1a5f2df76052b356006ac9c6a888f6f7dd" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangedEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1abea7cc6a125c89c529a35f3d45203733" prot="protected" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangedEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a6886cae6ffeeb16a7261261ee7acc56f" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangingEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1aeb07e119f8ef1d0d9f581ee465a075ed" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangingEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1a681e75b0d64ac20ced5cd7400c75af22" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangingEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1acb2d8d06bfa4429f9c5e1bab0e937bd5" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangingEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changing_event_args_1ae3f3455a589b4c430e69271de2169468" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>NotifyDictionaryChangingEventArgs</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1a076b2bf6c9970062cdbd55097be1479f" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>OldItem</name></member>
+      <member refid="class_system_1_1_collections_1_1_notify_dictionary_changed_event_args_1a50e09c07b9e8511d7619d80b0c1924fa" prot="public" virt="non-virtual"><scope>System::Collections::NotifyDictionaryChangingEventArgs</scope><name>OldItems</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

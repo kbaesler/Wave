@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation" kind="class" language="C#" prot="package">
+    <compoundname>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+    <derivedcompoundref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_bar_animation" prot="public" virt="non-virtual">ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1a520c9cdeecb83013c3be1bb2246060fd" prot="private" static="no" mutable="no">
+        <type>readonly IApplication</type>
+        <definition>readonly IApplication ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation._Application</definition>
+        <argsstring></argsstring>
+        <name>_Application</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="14" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1acc74f33060a60568bbfd1bb8213c2b46" prot="private" static="no" mutable="no">
+        <type><ref refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_mouse_cursor_reverter" kindref="compound">MouseCursorReverter</ref></type>
+        <definition>MouseCursorReverter ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation._MouseCursorReverter</definition>
+        <argsstring></argsstring>
+        <name>_MouseCursorReverter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1afdf239550d497ee1581e028d276d4f65" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IApplication</type>
+        <definition>IApplication ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation.Application</definition>
+        <argsstring></argsstring>
+        <name>Application</name>
+        <briefdescription>
+<para>Gets the application. </para>        </briefdescription>
+        <detaileddescription>
+<para>The application. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1ab497c1c5fac17bbe68ea23bed903947d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation.ProgressGlobeAnimation</definition>
+        <argsstring>(IApplication application)</argsstring>
+        <name>ProgressGlobeAnimation</name>
+        <param>
+          <type>IApplication</type>
+          <declname>application</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the ProgressGlobeAnimation class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>application</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The application.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1a63756b57bbaf5e606a56c67be5e23764" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <briefdescription>
+<para>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1ad5f9dd4ad954189a160bd6ca51c2f0e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation.Play</definition>
+        <argsstring>(MouseCursorImage cursor, string statusMessage)</argsstring>
+        <name>Play</name>
+        <param>
+          <type><ref refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1af2c85ed9d4b7e4712fb788c2c261623f" kindref="member">MouseCursorImage</ref></type>
+          <declname>cursor</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>statusMessage</declname>
+        </param>
+        <briefdescription>
+<para>Starts the global spinning in ArcMap and updates the message on the status bar. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cursor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cursor.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>statusMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The status message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="67" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1a1fcd5e087002422ac04c92454f9427ec" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation.Dispose</definition>
+        <argsstring>(bool disposing)</argsstring>
+        <name>Dispose</name>
+        <param>
+          <type>bool</type>
+          <declname>disposing</declname>
+        </param>
+        <briefdescription>
+<para>Releases unmanaged and - optionally - managed resources. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>disposing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> to release both managed and unmanaged resources; <computeroutput>false</computeroutput> to release only unmanaged resources. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="92" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="92" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An internal class used to handle starting and stopping the ArcMap progress animation. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="571">
+        <label>IDisposable</label>
+      </node>
+      <node id="572">
+        <label>ESRI.ArcGIS.Framework.Internal.ProgressBarAnimation</label>
+        <childnode refid="570" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="570">
+        <label>ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation</label>
+        <childnode refid="571" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="574">
+        <label>IDisposable</label>
+      </node>
+      <node id="573">
+        <label>ESRI.ArcGIS.Framework.Internal.ProgressGlobeAnimation</label>
+        <childnode refid="574" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/Internal/ProgressGlobeAnimation.cs" bodystart="10" bodyend="110"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1a520c9cdeecb83013c3be1bb2246060fd" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</scope><name>_Application</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1acc74f33060a60568bbfd1bb8213c2b46" prot="private" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</scope><name>_MouseCursorReverter</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1afdf239550d497ee1581e028d276d4f65" prot="protected" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</scope><name>Application</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1a63756b57bbaf5e606a56c67be5e23764" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1a1fcd5e087002422ac04c92454f9427ec" prot="protected" virt="virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</scope><name>Dispose</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1ad5f9dd4ad954189a160bd6ca51c2f0e9" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</scope><name>Play</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_internal_1_1_progress_globe_animation_1ab497c1c5fac17bbe68ea23bed903947d" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::Internal::ProgressGlobeAnimation</scope><name>ProgressGlobeAnimation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

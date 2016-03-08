@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_system_1_1_windows_1_1_behaviors" kind="namespace" language="C#">
+    <compoundname>System::Windows::Behaviors</compoundname>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding" prot="public">System::Windows::Behaviors::BehaviorBinding</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection" prot="public">System::Windows::Behaviors::BehaviorBindingCollection</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_event_handler" prot="public">System::Windows::Behaviors::BehaviorEventHandler</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior" prot="public">System::Windows::Behaviors::CommandBehavior</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_binding" prot="public">System::Windows::Behaviors::CommandBehaviorBinding</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection" prot="public">System::Windows::Behaviors::CommandBehaviorCollection</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_list_view_behavior" prot="public">System::Windows::Behaviors::ListViewBehavior</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_password_box_behavior" prot="public">System::Windows::Behaviors::PasswordBoxBehavior</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_tab_control_behavior" prot="public">System::Windows::Behaviors::TabControlBehavior</innerclass>
+    <innerclass refid="class_system_1_1_windows_1_1_behaviors_1_1_window_behavior" prot="public">System::Windows::Behaviors::WindowBehavior</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/BehaviorBinding.cs" line="4" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_0db714b4cda8bef5d8291d7379346f76" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner</compoundname>
+    <innerdir refid="dir_d3121684510e4a0dbe7ee44660816dde">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI</innerdir>
+    <innerdir refid="dir_e1647320472f4c76129df3c85f7cdd76">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner</innerdir>
+    <innerdir refid="dir_32fd46e88f6d886cf8e8851531347b50">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/obj</innerdir>
+    <innerdir refid="dir_a29d1139fdefca58ec1d0d3e02a43a3b">C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Properties</innerdir>
+    <innerfile refid="_global_suppressions_8cs">GlobalSuppressions.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_646a4b655cc1d4b08aa4f6cf5462b1b7" kind="dir">
+    <compoundname>C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Extensions</compoundname>
+    <innerfile refid="_adorner_extensions_8cs">AdornerExtensions.cs</innerfile>
+    <innerfile refid="_u_i_element_extensions_8cs">UIElementExtensions.cs</innerfile>
+    <innerfile refid="_window_interop_helper_extensions_8cs">WindowInteropHelperExtensions.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Extensions/"/>
+  </compounddef>
+</doxygen>

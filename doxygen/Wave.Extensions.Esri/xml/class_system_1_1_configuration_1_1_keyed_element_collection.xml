@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_configuration_1_1_keyed_element_collection" kind="class" language="C#" prot="public">
+    <compoundname>System::Configuration::KeyedElementCollection</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ConfigurationElementCollection</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TElement</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_configuration_1_1_keyed_element_collection_1a6757e55eb6e32599de2a1d60ddf4d733" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IEnumerable&lt; string &gt;</type>
+        <definition>IEnumerable&lt;string&gt; System.Configuration.KeyedElementCollection&lt; TElement &gt;.AllKeys</definition>
+        <argsstring></argsstring>
+        <name>AllKeys</name>
+        <briefdescription>
+<para>Gets all of the keys in the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para>All keys.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_configuration_1_1_keyed_element_collection_1a40afc838a20e69a153c47af5627e579f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TElement</type>
+        <definition>virtual TElement System.Configuration.KeyedElementCollection&lt; TElement &gt;.this[int index]</definition>
+        <argsstring></argsstring>
+        <name>this[int index]</name>
+        <briefdescription>
+<para>Gets or sets a property, attribute, or child element of this configuration element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The specified property, attribute, or child element </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="41" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_configuration_1_1_keyed_element_collection_1a46fc41107c6804cdc4dd9796f294acdc" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>new TElement</type>
+        <definition>virtual new TElement System.Configuration.KeyedElementCollection&lt; TElement &gt;.this[string key]</definition>
+        <argsstring></argsstring>
+        <name>this[string key]</name>
+        <briefdescription>
+<para>Gets or sets a property, attribute, or child element of this configuration element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The specified property, attribute, or child element </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="61" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_configuration_1_1_keyed_element_collection_1a9cfdd9c5b45b2702b501c5ad8316b8c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Configuration.KeyedElementCollection&lt; TElement &gt;.Add</definition>
+        <argsstring>(TElement element)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>TElement</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+<para>Adds the specified <emphasis>element</emphasis>  to the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_configuration_1_1_keyed_element_collection_1a98fc5c0b3b57dc0323e19512c1b8ee92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Configuration.KeyedElementCollection&lt; TElement &gt;.Add</definition>
+        <argsstring>(int index, TElement element)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>TElement</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+<para>Adds the specified the <emphasis>element</emphasis>  to the collection at the specified <emphasis>index</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="91" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_configuration_1_1_keyed_element_collection_1a31cbad8647e3d3783c1f5a440a084a76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Configuration.KeyedElementCollection&lt; TElement &gt;.Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+<para>Clears the collection. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="99" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_configuration_1_1_keyed_element_collection_1afa90ff1c62351c5d7eafcb199d31c311" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool System.Configuration.KeyedElementCollection&lt; TElement &gt;.ContainsKey</definition>
+        <argsstring>(string key)</argsstring>
+        <name>ContainsKey</name>
+        <param>
+          <type>string</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Determines if the collection contains the specified <emphasis>key</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key in question</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if exists; otherwise falSE.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="109" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_configuration_1_1_keyed_element_collection_1ae9ab68271b7587072042c86f2a22bde1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void System.Configuration.KeyedElementCollection&lt; TElement &gt;.Remove</definition>
+        <argsstring>(string key)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type>string</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Removes the element with the specified <emphasis>key</emphasis>  from the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string key of element to remove</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="118" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="118" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_configuration_1_1_keyed_element_collection_1a0bc7164f8673be1df2d0069e7fbae0b8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override ConfigurationElement</type>
+        <definition>override ConfigurationElement System.Configuration.KeyedElementCollection&lt; TElement &gt;.CreateNewElement</definition>
+        <argsstring>()</argsstring>
+        <name>CreateNewElement</name>
+        <briefdescription>
+<para>When overridden in a derived class, creates a new <ref refid="" kindref="compound">T:System.Configuration.ConfigurationElement</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A new <ref refid="" kindref="compound">T:System.Configuration.ConfigurationElement</ref>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="134" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="134" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_configuration_1_1_keyed_element_collection_1ac424f9d0687b15551cb0d7b6f23e78c4" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override object</type>
+        <definition>override object System.Configuration.KeyedElementCollection&lt; TElement &gt;.GetElementKey</definition>
+        <argsstring>(ConfigurationElement element)</argsstring>
+        <name>GetElementKey</name>
+        <param>
+          <type>ConfigurationElement</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+<para>Gets the element key for a specified configuration element when overridden in a derived class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="" kindref="compound">T:System.Configuration.ConfigurationElement</ref> to return the key for.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An <ref refid="" kindref="compound">T:System.Object</ref> that acts as the key for the specified <ref refid="" kindref="compound">T:System.Configuration.ConfigurationElement</ref>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="147" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="147" bodyend="150"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A collection of T:System.Configuration.KeyedElement configuration elements within a configuration file. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TElement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the configuration element.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="474">
+        <label>ConfigurationElementCollection</label>
+      </node>
+      <node id="473">
+        <label>System.Configuration.KeyedElementCollection&lt; TElement &gt;</label>
+        <link refid="class_system_1_1_configuration_1_1_keyed_element_collection"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="476">
+        <label>ConfigurationElementCollection</label>
+      </node>
+      <node id="475">
+        <label>System.Configuration.KeyedElementCollection&lt; TElement &gt;</label>
+        <link refid="class_system_1_1_configuration_1_1_keyed_element_collection"/>
+        <childnode refid="476" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Configuration/KeyedElementCollection.cs" bodystart="15" bodyend="153"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1a9cfdd9c5b45b2702b501c5ad8316b8c6" prot="public" virt="virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>Add</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1a98fc5c0b3b57dc0323e19512c1b8ee92" prot="public" virt="virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>Add</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1a6757e55eb6e32599de2a1d60ddf4d733" prot="public" virt="non-virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>AllKeys</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1a31cbad8647e3d3783c1f5a440a084a76" prot="public" virt="non-virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>Clear</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1afa90ff1c62351c5d7eafcb199d31c311" prot="public" virt="non-virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>ContainsKey</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1a0bc7164f8673be1df2d0069e7fbae0b8" prot="protected" virt="non-virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>CreateNewElement</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1ac424f9d0687b15551cb0d7b6f23e78c4" prot="protected" virt="non-virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>GetElementKey</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1ae9ab68271b7587072042c86f2a22bde1" prot="public" virt="virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>Remove</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1a40afc838a20e69a153c47af5627e579f" prot="public" virt="non-virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>this[int index]</name></member>
+      <member refid="class_system_1_1_configuration_1_1_keyed_element_collection_1a46fc41107c6804cdc4dd9796f294acdc" prot="public" virt="non-virtual"><scope>System::Configuration::KeyedElementCollection</scope><name>this[string key]</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1_1_xml_node_wrapper_converter" kind="class" language="C#" prot="private">
+    <compoundname>System::Forms::ComponentModel::XmlNodeWrapper::XmlNodeWrapperConverter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ExpandableObjectConverter</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1_1_xml_node_wrapper_converter_1aa9a7b69959fc106c1583f1d9ba18463e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override object</type>
+        <definition>override object System.Forms.ComponentModel.XmlNodeWrapper.XmlNodeWrapperConverter.ConvertTo</definition>
+        <argsstring>(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)</argsstring>
+        <name>ConvertTo</name>
+        <param>
+          <type>ITypeDescriptorContext</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>CultureInfo</type>
+          <declname>culture</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>destinationType</declname>
+        </param>
+        <briefdescription>
+<para>Converts the given value object to the specified type, using the specified context and culture information. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.ComponentModel.ITypeDescriptorContext that provides a format context.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>culture</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A T:System.Globalization.CultureInfo. If null is passed, the current culture is assumed. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The T:System.Object to convert.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destinationType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The T:System.Type to convert the <emphasis>value</emphasis>  parameter to.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An T:System.Object that represents the converted value. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" line="55" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" bodystart="55" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1_1_xml_node_wrapper_converter_1a062f820bb4f89ec9f6e8c569eadb6cd2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override PropertyDescriptorCollection</type>
+        <definition>override PropertyDescriptorCollection System.Forms.ComponentModel.XmlNodeWrapper.XmlNodeWrapperConverter.GetProperties</definition>
+        <argsstring>(ITypeDescriptorContext context, object value, Attribute[] attributes)</argsstring>
+        <name>GetProperties</name>
+        <param>
+          <type>ITypeDescriptorContext</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>Attribute[]</type>
+          <declname>attributes</declname>
+        </param>
+        <briefdescription>
+<para>Gets a collection of properties for the type of object specified by the value parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.ComponentModel.ITypeDescriptorContext that provides a format context.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An T:System.Object that specifies the type of object to get the properties for.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of type T:System.Attribute that will be used as a filter.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A T:System.ComponentModel.PropertyDescriptorCollection with the properties that are exposed for the component, or null if there are no properties. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" line="72" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" bodystart="72" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides a type converter to convert expandable objects to and from various an XmlNode. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="726">
+        <label>ExpandableObjectConverter</label>
+      </node>
+      <node id="725">
+        <label>System.Forms.ComponentModel.XmlNodeWrapper.XmlNodeWrapperConverter</label>
+        <childnode refid="726" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="728">
+        <label>ExpandableObjectConverter</label>
+      </node>
+      <node id="727">
+        <label>System.Forms.ComponentModel.XmlNodeWrapper.XmlNodeWrapperConverter</label>
+        <childnode refid="728" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/ComponentModel/XmlNodeWrapper.cs" bodystart="38" bodyend="98"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1_1_xml_node_wrapper_converter_1aa9a7b69959fc106c1583f1d9ba18463e" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::XmlNodeWrapper::XmlNodeWrapperConverter</scope><name>ConvertTo</name></member>
+      <member refid="class_system_1_1_forms_1_1_component_model_1_1_xml_node_wrapper_1_1_xml_node_wrapper_converter_1a062f820bb4f89ec9f6e8c569eadb6cd2" prot="public" virt="non-virtual"><scope>System::Forms::ComponentModel::XmlNodeWrapper::XmlNodeWrapperConverter</scope><name>GetProperties</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

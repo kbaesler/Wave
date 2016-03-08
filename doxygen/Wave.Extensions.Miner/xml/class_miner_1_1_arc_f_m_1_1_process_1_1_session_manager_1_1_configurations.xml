@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_configurations" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Process::SessionManager::Configurations</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_configurations_1afa1790130c57ca70d47ec255a63f476b" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.SessionManager.Configurations.Enterprise</definition>
+        <argsstring></argsstring>
+        <name>Enterprise</name>
+        <initializer>= &quot;ProcessFrameworkEnterprise&quot;</initializer>
+        <briefdescription>
+<para>The configuration name for the enterprise unc path location for the mobile packets. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="297" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_configurations_1a3464f883e29532b5f20b6affdb275426" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.SessionManager.Configurations.Field</definition>
+        <argsstring></argsstring>
+        <name>Field</name>
+        <initializer>= &quot;ProcessFrameworkField&quot;</initializer>
+        <briefdescription>
+<para>The configuration name for the field path location for the mobile packets. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="302" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Container for the SessionManager.Configurations class used to identify the common properties for Session Manager which may be used for customization. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="291" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="290" bodyend="305"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_configurations_1afa1790130c57ca70d47ec255a63f476b" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::SessionManager::Configurations</scope><name>Enterprise</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_session_manager_1_1_configurations_1a3464f883e29532b5f20b6affdb275426" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::SessionManager::Configurations</scope><name>Field</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

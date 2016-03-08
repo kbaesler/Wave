@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Miner::Framework::BaseClasses::BaseSpecialAU</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IMMSpecialAUStrategy</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IMMSpecialAUStrategyEx</basecompoundref>
+    <derivedcompoundref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_sequence_a_u" prot="public" virt="non-virtual">Miner.Framework.BaseClasses.BaseSequenceAU</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a8e991eab67b3370023f4d789f00dd81e" prot="private" static="no" mutable="no">
+        <type>readonly string</type>
+        <definition>readonly string Miner.Framework.BaseClasses.BaseSpecialAU._Name</definition>
+        <argsstring></argsstring>
+        <name>_Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a38d6f00ffeee76d71ec2857e7c2a0ca1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Framework.BaseClasses.BaseSpecialAU.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets the name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="43" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1ac5b5b02e7bcc49637454392b347150b5" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Framework.BaseClasses.BaseSpecialAU.BaseSpecialAU</definition>
+        <argsstring>(string name)</argsstring>
+        <name>BaseSpecialAU</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u" kindref="compound">BaseSpecialAU</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="30" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1afa28de52a676c533462182f4590cb032" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Framework.BaseClasses.BaseSpecialAU.Abort</definition>
+        <argsstring>(string message)</argsstring>
+        <name>Abort</name>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Aborts the execution by causing an exception to be raised that notifies ArcFM to rollback the edits. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Miner.CancelEditException</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="150" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a05b913a7990eec123901baed1dff56cc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract bool</type>
+        <definition>abstract bool Miner.Framework.BaseClasses.BaseSpecialAU.InternalEnabled</definition>
+        <argsstring>(IObjectClass objectClass, mmEditEvent editEvent)</argsstring>
+        <name>InternalEnabled</name>
+        <reimplementedby refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_sequence_a_u_1ad44777eceb6255ad579da68e181f4ac6">InternalEnabled</reimplementedby>
+        <param>
+          <type>IObjectClass</type>
+          <declname>objectClass</declname>
+        </param>
+        <param>
+          <type>mmEditEvent</type>
+          <declname>editEvent</declname>
+        </param>
+        <briefdescription>
+<para>Implementation of enabled method for derived classes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>objectClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the AutoUpdater should be enabled; otherwise <computeroutput>false</computeroutput> </para></simplesect>
+</para><para>This method will be called from IMMSpecialAUStrategy::get_Enabled and is wrapped within the exception handling for that method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="167" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a6422f82c5f1c2f68ab753f834080bbcf" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Miner.Framework.BaseClasses.BaseSpecialAU.InternalExecute</definition>
+        <argsstring>(IObject obj, mmAutoUpdaterMode mode, mmEditEvent editEvent)</argsstring>
+        <name>InternalExecute</name>
+        <reimplementedby refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_sequence_a_u_1a5fb5746109341029ceb3ad997f0d36e0">InternalExecute</reimplementedby>
+        <param>
+          <type>IObject</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>mmAutoUpdaterMode</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>mmEditEvent</type>
+          <declname>editEvent</declname>
+        </param>
+        <briefdescription>
+<para>Implementation of Auto Updater Execute Ex method for derived classes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object that triggered the Auto Updater.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The auto updater mode.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para>This method will be called from IMMSpecialAUStrategy::ExecuteEx and is wrapped within the exception handling for that method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="179" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1ac9d27ba927971497a586e57e0bc3d7a1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Miner.Framework.BaseClasses.BaseSpecialAU.ShouldExecute</definition>
+        <argsstring>(mmAutoUpdaterMode mode)</argsstring>
+        <name>ShouldExecute</name>
+        <param>
+          <type>mmAutoUpdaterMode</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether this instance can execute using the specified AU mode. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The auto updater mode.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if this instance can execute using the specified AU mode; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="188" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="188" bodyend="191"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1abd5f66dafa2a1f4dc8c5255ded6d1d9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Framework.BaseClasses.BaseSpecialAU.Execute</definition>
+        <argsstring>(IObject pObj)</argsstring>
+        <name>Execute</name>
+        <param>
+          <type>IObject</type>
+          <declname>pObj</declname>
+        </param>
+        <briefdescription>
+<para>Executes the specified special AU for the <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pObj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="52" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1ade43c1278871b881378c97e65554ce57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Framework.BaseClasses.BaseSpecialAU.Execute</definition>
+        <argsstring>(IObject pObject, mmAutoUpdaterMode mode, mmEditEvent eEvent)</argsstring>
+        <name>Execute</name>
+        <param>
+          <type>IObject</type>
+          <declname>pObject</declname>
+        </param>
+        <param>
+          <type>mmAutoUpdaterMode</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>mmEditEvent</type>
+          <declname>eEvent</declname>
+        </param>
+        <briefdescription>
+<para>Executes the specified special AU for the <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> Object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The esri object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The AU mode.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="67" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a9780b2b84f3792ee419cc303f462c42a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Miner.Framework.BaseClasses.BaseSpecialAU.get_Enabled</definition>
+        <argsstring>(IObjectClass pObjectClass, mmEditEvent eEvent)</argsstring>
+        <name>get_Enabled</name>
+        <param>
+          <type>IObjectClass</type>
+          <declname>pObjectClass</declname>
+        </param>
+        <param>
+          <type>mmEditEvent</type>
+          <declname>eEvent</declname>
+        </param>
+        <briefdescription>
+<para>Gets whether the auto updater is enabled given the object class and edit event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pObjectClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if enabled; otherwise <computeroutput>false</computeroutput>.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="100" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="100" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1af7c1db84a5b5cb27d4c415f808cfea41" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Framework.BaseClasses.BaseSpecialAU.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="126" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="126" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1aafd048660dbd892c4f1fff5a64fe4ee3" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Framework.BaseClasses.BaseSpecialAU.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="136" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="136" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a79a1c2ea8f44f71a8213d4b0a95abcb6" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Framework.BaseClasses.BaseSpecialAU.LogException</definition>
+        <argsstring>(Exception e)</argsstring>
+        <name>LogException</name>
+        <param>
+          <type>Exception</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Logs the exception. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exception.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="201" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="201" bodyend="207"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for Special AutoUpdaters. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="242">
+        <label>IMMSpecialAUStrategy</label>
+      </node>
+      <node id="244">
+        <label>Miner.Framework.BaseClasses.BaseSequenceAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_sequence_a_u"/>
+        <childnode refid="241" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="243">
+        <label>IMMSpecialAUStrategyEx</label>
+      </node>
+      <node id="241">
+        <label>Miner.Framework.BaseClasses.BaseSpecialAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u"/>
+        <childnode refid="242" relation="public-inheritance">
+        </childnode>
+        <childnode refid="243" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="246">
+        <label>IMMSpecialAUStrategy</label>
+      </node>
+      <node id="247">
+        <label>IMMSpecialAUStrategyEx</label>
+      </node>
+      <node id="245">
+        <label>Miner.Framework.BaseClasses.BaseSpecialAU</label>
+        <link refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u"/>
+        <childnode refid="246" relation="public-inheritance">
+        </childnode>
+        <childnode refid="247" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Framework/BaseClasses/BaseSpecialAU.cs" bodystart="16" bodyend="210"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a8e991eab67b3370023f4d789f00dd81e" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>_Name</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1afa28de52a676c533462182f4590cb032" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>Abort</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1ac5b5b02e7bcc49637454392b347150b5" prot="protected" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>BaseSpecialAU</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1abd5f66dafa2a1f4dc8c5255ded6d1d9f" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>Execute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1ade43c1278871b881378c97e65554ce57" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>Execute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a9780b2b84f3792ee419cc303f462c42a" prot="public" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>get_Enabled</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a05b913a7990eec123901baed1dff56cc" prot="protected" virt="pure-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>InternalEnabled</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a6422f82c5f1c2f68ab753f834080bbcf" prot="protected" virt="pure-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>InternalExecute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a79a1c2ea8f44f71a8213d4b0a95abcb6" prot="private" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>LogException</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1a38d6f00ffeee76d71ec2857e7c2a0ca1" prot="public" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1af7c1db84a5b5cb27d4c415f808cfea41" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>Register</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1ac9d27ba927971497a586e57e0bc3d7a1" prot="protected" virt="virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>ShouldExecute</name></member>
+      <member refid="class_miner_1_1_framework_1_1_base_classes_1_1_base_special_a_u_1aafd048660dbd892c4f1fff5a64fe4ee3" prot="package" virt="non-virtual"><scope>Miner::Framework::BaseClasses::BaseSpecialAU</scope><name>Unregister</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

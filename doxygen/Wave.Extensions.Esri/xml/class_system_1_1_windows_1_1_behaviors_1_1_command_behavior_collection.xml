@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Behaviors::CommandBehaviorCollection</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1af3f320672cc07e1664c42538329fc731" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Behaviors.CommandBehaviorCollection.BehaviorsProperty</definition>
+        <argsstring></argsstring>
+        <name>BehaviorsProperty</name>
+        <initializer>= BehaviorsPropertyKey.DependencyProperty</initializer>
+        <briefdescription>
+<para>The behaviors dependency property </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1a4e26d3ffc3f9c683525e13c8240817ea" prot="private" static="yes" mutable="no">
+        <type>readonly DependencyPropertyKey</type>
+        <definition>readonly DependencyPropertyKey System.Windows.Behaviors.CommandBehaviorCollection.BehaviorsPropertyKey</definition>
+        <argsstring></argsstring>
+        <name>BehaviorsPropertyKey</name>
+        <initializer>= DependencyProperty.RegisterAttachedReadOnly(&quot;BehaviorsInternal&quot;, typeof (<ref refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection" kindref="compound">BehaviorBindingCollection</ref>), typeof (CommandBehaviorCollection),
+            new FrameworkPropertyMetadata((<ref refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection" kindref="compound">BehaviorBindingCollection</ref>) null))</initializer>
+        <briefdescription>
+<para><ref refid="namespace_system_1_1_windows_1_1_behaviors" kindref="compound">Behaviors</ref> Read-Only Dependency Property As you can see the Attached readonly property has a name registered different (BehaviorsInternal) than the property name, this is a tricks os that we can construct the collection as we want Read more about this here <ulink url="http://wekempf.spaces.live.com/blog/cns!D18C3EC06EA971CF!468.entry">http://wekempf.spaces.live.com/blog/cns!D18C3EC06EA971CF!468.entry</ulink> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1ae636ee4e74345ebb7da61bcac7a9bae4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection" kindref="compound">BehaviorBindingCollection</ref></type>
+        <definition>static BehaviorBindingCollection System.Windows.Behaviors.CommandBehaviorCollection.GetBehaviors</definition>
+        <argsstring>(DependencyObject d)</argsstring>
+        <name>GetBehaviors</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Gets the <ref refid="namespace_system_1_1_windows_1_1_behaviors" kindref="compound">Behaviors</ref> property. </para>        </briefdescription>
+        <detaileddescription>
+<para>Here we initialze the collection and set the Owner property </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dependecy object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The collection of <ref refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding" kindref="compound">BehaviorBinding</ref> objects</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="55" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="55" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1af5c3670316e2d8ace92410ad141ed8ba" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.CommandBehaviorCollection.CollectionChanged</definition>
+        <argsstring>(object sender, NotifyCollectionChangedEventArgs e)</argsstring>
+        <name>CollectionChanged</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>NotifyCollectionChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles the CollectionChanged event of the behavior collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Collections.Specialized.NotifyCollectionChangedEventArgs instance containing the event data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="82" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="82" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1a6ee084291d4dcbd6c3224d4fe18dd187" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Behaviors.CommandBehaviorCollection.SetBehaviors</definition>
+        <argsstring>(DependencyObject d, BehaviorBindingCollection value)</argsstring>
+        <name>SetBehaviors</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type><ref refid="class_system_1_1_windows_1_1_behaviors_1_1_behavior_binding_collection" kindref="compound">BehaviorBindingCollection</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Provides a secure method for setting the <ref refid="namespace_system_1_1_windows_1_1_behaviors" kindref="compound">Behaviors</ref> property. </para>        </briefdescription>
+        <detaileddescription>
+<para>This dependency property indicates .... </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="125" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="125" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A collection of command behaviors. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" line="28" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Behaviors/CommandBehaviorCollection.cs" bodystart="27" bodyend="133"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1af3f320672cc07e1664c42538329fc731" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::CommandBehaviorCollection</scope><name>BehaviorsProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1a4e26d3ffc3f9c683525e13c8240817ea" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::CommandBehaviorCollection</scope><name>BehaviorsPropertyKey</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1af5c3670316e2d8ace92410ad141ed8ba" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::CommandBehaviorCollection</scope><name>CollectionChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1ae636ee4e74345ebb7da61bcac7a9bae4" prot="public" virt="non-virtual"><scope>System::Windows::Behaviors::CommandBehaviorCollection</scope><name>GetBehaviors</name></member>
+      <member refid="class_system_1_1_windows_1_1_behaviors_1_1_command_behavior_collection_1a6ee084291d4dcbd6c3224d4fe18dd187" prot="private" virt="non-virtual"><scope>System::Windows::Behaviors::CommandBehaviorCollection</scope><name>SetBehaviors</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

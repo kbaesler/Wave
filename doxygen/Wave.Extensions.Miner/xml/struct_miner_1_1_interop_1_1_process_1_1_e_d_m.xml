@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kind="struct" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::EDM</compoundname>
+    <innerclass refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1_1_fields" prot="package">Miner::Interop::Process::EDM::Fields</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a72b01c2a011ee6cf22f58d824cbe0b42" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.EDM.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Extended Data property name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a437526f33ad5b348a1fe2062e7027e8e" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.EDM.Type</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+<para>Extended Data property type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1adeba52e5395c8e644a1d7df0e7c71518" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.EDM.Value</definition>
+        <argsstring></argsstring>
+        <name>Value</name>
+        <briefdescription>
+<para>Extended Data property value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a8f30a3bb251a9fb8a1b48861345d1da7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.EDM.EDM</definition>
+        <argsstring>(string name, string value, string type)</argsstring>
+        <name>EDM</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref> struct. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="38" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="38" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a503fd05fe74661c6006f56bb7c167fce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Miner.Interop.Process.EDM.Equals</definition>
+        <argsstring>(object obj)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the specified object is equal to this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to compare with this instance.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified object is equal to this instance; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="67" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a4940f53d61c4dd749379ac63d7635d90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int Miner.Interop.Process.EDM.GetHashCode</definition>
+        <argsstring>()</argsstring>
+        <name>GetHashCode</name>
+        <briefdescription>
+<para>Returns a hash code for this instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="84" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="84" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-func">
+      <memberdef kind="function" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a92ffe612e7f16a0050137be67e069c47" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.EDM.EDM</definition>
+        <argsstring>(DataRow row)</argsstring>
+        <name>EDM</name>
+        <param>
+          <type>DataRow</type>
+          <declname>row</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref> struct. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The row </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="49" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="49" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a7465867dfd8fe1b90eb98f24d71e00b8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Miner.Interop.Process.EDM.operator!=</definition>
+        <argsstring>(EDM x, EDM y)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type><ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>The inequality operator (!=) returns false if its operands are equal, true otherwise. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified <emphasis>x</emphasis>  is not equal to the <emphasis>y</emphasis> ; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="100" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="100" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a4ae149bf4bb03f0290ae06d3119b12b4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Miner.Interop.Process.EDM.operator==</definition>
+        <argsstring>(EDM x, EDM y)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type><ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m" kindref="compound">EDM</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>The equality operator (=) returns true if the values of its operands are equal, false otherwise. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the specified <emphasis>x</emphasis>  is equal to the <emphasis>y</emphasis> ; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="113" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="113" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A light weight structure used to hold extended data management data. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/EDM/EDM.cs" bodystart="9" bodyend="146"/>
+    <listofallmembers>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a8f30a3bb251a9fb8a1b48861345d1da7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>EDM</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a92ffe612e7f16a0050137be67e069c47" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>EDM</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a503fd05fe74661c6006f56bb7c167fce" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>Equals</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a4940f53d61c4dd749379ac63d7635d90" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>GetHashCode</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a72b01c2a011ee6cf22f58d824cbe0b42" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>Name</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a7465867dfd8fe1b90eb98f24d71e00b8" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>operator!=</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a4ae149bf4bb03f0290ae06d3119b12b4" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>operator==</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1a437526f33ad5b348a1fe2062e7027e8e" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>Type</name></member>
+      <member refid="struct_miner_1_1_interop_1_1_process_1_1_e_d_m_1adeba52e5395c8e644a1d7df0e7c71518" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::EDM</scope><name>Value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

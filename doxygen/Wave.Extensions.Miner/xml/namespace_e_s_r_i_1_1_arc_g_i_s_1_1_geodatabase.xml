@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase" kind="namespace" language="C#">
+    <compoundname>ESRI::ArcGIS::Geodatabase</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_base_conflict_filter" prot="public">ESRI::ArcGIS::Geodatabase::BaseConflictFilter</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_base_conflict_workspace_extension" prot="public">ESRI::ArcGIS::Geodatabase::BaseConflictWorkspaceExtension</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_class_extensions" prot="public">ESRI::ArcGIS::Geodatabase::ClassExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_dataset_extensions" prot="public">ESRI::ArcGIS::Geodatabase::DatasetExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_feature_extensions" prot="public">ESRI::ArcGIS::Geodatabase::FeatureExtensions</innerclass>
+    <innerclass refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_filter" prot="public">ESRI::ArcGIS::Geodatabase::IConflictFilter</innerclass>
+    <innerclass refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_row" prot="public">ESRI::ArcGIS::Geodatabase::IConflictRow</innerclass>
+    <innerclass refid="interface_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_i_conflict_workspace_extension" prot="public">ESRI::ArcGIS::Geodatabase::IConflictWorkspaceExtension</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_class_model_name_exception" prot="public">ESRI::ArcGIS::Geodatabase::MissingClassModelNameException</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_database_model_name_exception" prot="public">ESRI::ArcGIS::Geodatabase::MissingDatabaseModelNameException</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_field_model_name_exception" prot="public">ESRI::ArcGIS::Geodatabase::MissingFieldModelNameException</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_missing_model_name_exception" prot="public">ESRI::ArcGIS::Geodatabase::MissingModelNameException</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_relationship_class_extensions" prot="public">ESRI::ArcGIS::Geodatabase::RelationshipClassExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_row_extensions" prot="public">ESRI::ArcGIS::Geodatabase::RowExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_table_extensions" prot="public">ESRI::ArcGIS::Geodatabase::TableExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_version_extensions" prot="public">ESRI::ArcGIS::Geodatabase::VersionExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_workspace_extensions" prot="public">ESRI::ArcGIS::Geodatabase::WorkspaceExtensions</innerclass>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1_1_internal">ESRI::ArcGIS::Geodatabase::Internal</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ac6a2d7b184e6725271419acaa4fd4a22" prot="public" static="no">
+        <name>TableConflictType</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ac6a2d7b184e6725271419acaa4fd4a22ad46b8f905e03328b356d71472b5af49b" prot="public">
+          <name>DeleteUpdates</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Indicates the delete/update conflicts. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ac6a2d7b184e6725271419acaa4fd4a22a3b23eccb81f076b4693feb6357970745" prot="public">
+          <name>UpdateDeletes</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Indicates the update/delete conflicts. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ac6a2d7b184e6725271419acaa4fd4a22a5e100cbb0a7ae93c2440ad5f7d404dbc" prot="public">
+          <name>UpdateUpdates</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Indicates the update/update conflicts. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1ac6a2d7b184e6725271419acaa4fd4a22a88183b946cc5f0e8c96b2e66e1c74a7e" prot="public">
+          <name>Unknown</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>The conflict type is unknown. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration of the type of conflicts. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictFilter.cs" bodystart="9" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fe" prot="public" static="no">
+        <name>ConflictResolution</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fea6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <briefdescription>
+<para>The was no resolution to the conflict. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774fead4e590f932d57d927d3be06965a337a5" prot="public">
+          <name>PreReconcile</name>
+          <briefdescription>
+<para>The conflict was resolved in favor of the pre-reconcile (edit) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a2a600a9bb719fdf8d60c23bb1ed774feafad857d5c329e6b67a007175c80bc7fe" prot="public">
+          <name>Reconcile</name>
+          <briefdescription>
+<para>The conflict was resolved in favor of the reconcile (target) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration indicating the resolution to the conflict. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" line="10" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" bodystart="9" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71c" prot="public" static="no">
+        <name>RowConflictType</name>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca39d37985563580eed4c3437071005ae5" prot="public">
+          <name>DeletePreReconcile</name>
+          <briefdescription>
+<para>Indicates a delete was done in the pre-reconcile (edit) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71caf7815d48120e4f574a647ca080540918" prot="public">
+          <name>InsertPreReconcile</name>
+          <briefdescription>
+<para>Indicates an insert was done in the pre-reconcile (edit) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca0ad0242de2b7ca957e37041a23afab27" prot="public">
+          <name>UpdatePreReconcile</name>
+          <briefdescription>
+<para>Indicates an update was done in the pre-reconcile (edit) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71cafca2cdeba653d6db164e7d712486812d" prot="public">
+          <name>UpdatePreReconcileUpdateReconcile</name>
+          <briefdescription>
+<para>Indicates an update was done in the pre-reconcile (edit) version and an update was done in the reconcile (target) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca17721b72bd13937b98c22e207329cfc6" prot="public">
+          <name>UpdatePreReconcileDeleteReconcile</name>
+          <briefdescription>
+<para>Indicates an update was done in the pre-reconcile (edit) version and a delete was done in the reconcile (target) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71caf1392d9189eeeadb97976c70c5075035" prot="public">
+          <name>DeleteReconcile</name>
+          <briefdescription>
+<para>Indicates a delete was done in the reconcile (target) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca539aa3adbd932207fe82bd45ea0cc683" prot="public">
+          <name>DeletePreReconcileUpdateReconcile</name>
+          <briefdescription>
+<para>Indicates a delete was done in the pre-reconcile (edit) version and an update was done in the reconcile (target) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71cab83f7ced0506ebeebbd9d500e483c915" prot="public">
+          <name>InsertReconcile</name>
+          <briefdescription>
+<para>Indicates an insert was done in the reconcile (target) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71cac3da2cbd82f070240b04efeddde154f8" prot="public">
+          <name>UpdateReconcile</name>
+          <briefdescription>
+<para>Indicates an update was done in the reconcile (target) version. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1_geodatabase_1a4292a5ea0b9d7e50cee5069eb943a71ca2c3cdb9a96b0dfef487e3d66d5c99364" prot="public">
+          <name>DeletePreReconcileDeleteReconcile</name>
+          <briefdescription>
+<para>Indicates the pre-reconcile (edit) version and the reconcile (target) version were deleted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration of the granular row conflict type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Reconcile/Interfaces/IConflictRow.cs" bodystart="30" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/ESRI/ArcGIS/Geodatabase/Extensions/ClassExtensions.cs" line="12" column="1"/>
+  </compounddef>
+</doxygen>

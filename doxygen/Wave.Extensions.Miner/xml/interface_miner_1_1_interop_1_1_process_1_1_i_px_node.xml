@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node" kind="interface" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::IPxNode</compoundname>
+    <derivedcompoundref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node" prot="public" virt="non-virtual">Miner.Interop.Process.BasePxNode</derivedcompoundref>
+    <derivedcompoundref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_design" prot="public" virt="non-virtual">Miner.Interop.Process.IPxDesign</derivedcompoundref>
+    <derivedcompoundref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_session" prot="public" virt="non-virtual">Miner.Interop.Process.IPxSession</derivedcompoundref>
+    <derivedcompoundref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request" prot="public" virt="non-virtual">Miner.Interop.Process.IPxWorkRequest</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a27c70ed0026af35ec3cfb9d8f95db1e2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IMMPxNodeHistory</type>
+        <definition>IMMPxNodeHistory Miner.Interop.Process.IPxNode.History</definition>
+        <argsstring></argsstring>
+        <name>History</name>
+        <briefdescription>
+<para>Gets the history. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a62f198b80396c802a12a996e8d768ff7" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Interop.Process.IPxNode.ID</definition>
+        <argsstring></argsstring>
+        <name>ID</name>
+        <briefdescription>
+<para>Gets the ID. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="18" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a4fa8762f48e94bd229e845adedb3d719" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.IPxNode.IsOpen</definition>
+        <argsstring></argsstring>
+        <name>IsOpen</name>
+        <briefdescription>
+<para>Gets a value indicating whether this <ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node" kindref="compound">IPxNode</ref> is open. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if open; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a28d37aac92ddc0831c57ffd96fda051a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.IPxNode.Locked</definition>
+        <argsstring></argsstring>
+        <name>Locked</name>
+        <briefdescription>
+<para>Gets or sets a value indicating whether this <ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node" kindref="compound">IPxNode</ref> is locked. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if locked; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad68e7377981a98c89f42bfc189ec4e4c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.IPxNode.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets or sets the name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1abd0d826ed0c0d8d8d0c5a77214134115" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IMMPxNode</type>
+        <definition>IMMPxNode Miner.Interop.Process.IPxNode.Node</definition>
+        <argsstring></argsstring>
+        <name>Node</name>
+        <briefdescription>
+<para>Gets the node. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a3cd43d1866882ddef6a1b1e087010acf" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>IMMPxState</type>
+        <definition>IMMPxState Miner.Interop.Process.IPxNode.State</definition>
+        <argsstring></argsstring>
+        <name>State</name>
+        <briefdescription>
+<para>Gets or sets the state. </para>        </briefdescription>
+        <detaileddescription>
+<para>The state. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="55" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a8399acfc277a5a44c76cd8cf81169169" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.IPxNode.Valid</definition>
+        <argsstring></argsstring>
+        <name>Valid</name>
+        <briefdescription>
+<para>Gets a value indicating whether this <ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node" kindref="compound">IPxNode</ref> is valid. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if valid; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="63" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1aab5d28be273b80ff92da3eb71cb108e6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.IPxNode.VersionName</definition>
+        <argsstring></argsstring>
+        <name>VersionName</name>
+        <briefdescription>
+<para>Gets the name of the version. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name of the version. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="71" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad3ba80f580fc50bb3a6aff8c9d691fa7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.IPxNode.AddHistory</definition>
+        <argsstring>(string description, string extraData)</argsstring>
+        <name>AddHistory</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1ae7fbe212c97f8ace9cafe4b91f2ecab7">AddHistory</reimplementedby>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>extraData</declname>
+        </param>
+        <briefdescription>
+<para>Adds a new history record for the node using the specified <emphasis>description</emphasis>  and <emphasis>extraData</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The description.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extraData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The extra data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad6b6f65f03e869bec480d9e845ccf4ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.IPxNode.CreateNew</definition>
+        <argsstring>(IMMPxUser user)</argsstring>
+        <name>CreateNew</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1ac1658937629a8cab25f5fa57c1ab1f8c">CreateNew</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_design_1ad8eaee3bda12b499d6396dfee37b484e">CreateNew</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a1f7663d87a8e4196300578f7a06fc88f">CreateNew</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_session_1ad660d3e6df25b85e24515a2596b1d995">CreateNew</reimplementedby>
+        <param>
+          <type>IMMPxUser</type>
+          <declname>user</declname>
+        </param>
+        <briefdescription>
+<para>Creates the process framework node for the specified the <emphasis>user</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The current user.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns bool representing <computeroutput>true</computeroutput> if the node was successfully created; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a41c3359ff434d447ca6ed66ec083f3e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.IPxNode.Delete</definition>
+        <argsstring>()</argsstring>
+        <name>Delete</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a1298c1d55bc354ab35376b995c835e34">Delete</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_design_1a5b6472126e17ac53108f4af1aa17dd5a">Delete</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_session_1a008326e2b6aec1868d4a3a97ef7f40c7">Delete</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1ab2e971d3d3dad4b6ebbf9e628a713758">Delete</reimplementedby>
+        <briefdescription>
+<para>Deletes the IMMPxNode from the process framework database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="97" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ac871659531e6211a6939b9162a249f86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.IPxNode.Initialize</definition>
+        <argsstring>(int nodeID)</argsstring>
+        <name>Initialize</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a5ad1f3bb88bc87400f5664bc65adccd0">Initialize</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_design_1a2c46906fb6ea834d2225d14333d1da5f">Initialize</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_session_1a442b93dbc3146e3a68a239f18c13e1fd">Initialize</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1a773126808b5e4bc5534300e28abd4b87">Initialize</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>nodeID</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the process framework node using the specified <emphasis>nodeID</emphasis>  for the node. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nodeID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns bool representing <computeroutput>true</computeroutput> if the node was successfully initialized; otherwise <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="107" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1afe58e97e3c711c3565815057e12046e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.IPxNode.Set</definition>
+        <argsstring>()</argsstring>
+        <name>Set</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a307a55d654bcd866c36f2d41c3945d5a">Set</reimplementedby>
+        <briefdescription>
+<para>Sets node as the current node. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="112" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1aebd977423f71a2b23210b9e04796cd18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.IPxNode.Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node_1a9d7e7e90a4910fe1081f1e7492a55b2a">Update</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_design_1a2ed36b660e1d8a334e5306a0c53d1fed">Update</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_session_1a54ca75ada292e923948e1b9f2c20597c">Update</reimplementedby>
+        <reimplementedby refid="class_miner_1_1_interop_1_1_process_1_1_work_request_1ae1085337b574f7da9f33049b50fc89f9">Update</reimplementedby>
+        <briefdescription>
+<para>Updates the entity by flushing the IMMPxNode to the database and reinitializing the IMMPxNode. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="118" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A contract used for constructing a process framework entity object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="387">
+        <label>Miner.Interop.Process.IPxSession</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_session"/>
+        <childnode refid="381" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="388">
+        <label>Miner.Interop.Process.IPxWorkRequest</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_work_request"/>
+        <childnode refid="381" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="386">
+        <label>Miner.Interop.Process.IPxDesign</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_design"/>
+        <childnode refid="381" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="383">
+        <label>Miner.Interop.Process.Design</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_design"/>
+        <childnode refid="382" relation="public-inheritance">
+        </childnode>
+        <childnode refid="386" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="385">
+        <label>Miner.Interop.Process.WorkRequest</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_work_request"/>
+        <childnode refid="382" relation="public-inheritance">
+        </childnode>
+        <childnode refid="388" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="384">
+        <label>Miner.Interop.Process.Session</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_session"/>
+        <childnode refid="382" relation="public-inheritance">
+        </childnode>
+        <childnode refid="387" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="381">
+        <label>Miner.Interop.Process.IPxNode</label>
+        <link refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node"/>
+      </node>
+      <node id="382">
+        <label>Miner.Interop.Process.BasePxNode</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_node"/>
+        <childnode refid="381" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" line="7" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Nodes/Interfaces/IPxNode.cs" bodystart="6" bodyend="121"/>
+    <listofallmembers>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad3ba80f580fc50bb3a6aff8c9d691fa7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>AddHistory</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad6b6f65f03e869bec480d9e845ccf4ed" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>CreateNew</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a41c3359ff434d447ca6ed66ec083f3e4" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Delete</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a27c70ed0026af35ec3cfb9d8f95db1e2" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>History</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a62f198b80396c802a12a996e8d768ff7" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>ID</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ac871659531e6211a6939b9162a249f86" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Initialize</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a4fa8762f48e94bd229e845adedb3d719" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>IsOpen</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a28d37aac92ddc0831c57ffd96fda051a" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Locked</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1ad68e7377981a98c89f42bfc189ec4e4c" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Name</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1abd0d826ed0c0d8d8d0c5a77214134115" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Node</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1afe58e97e3c711c3565815057e12046e5" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Set</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a3cd43d1866882ddef6a1b1e087010acf" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>State</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1aebd977423f71a2b23210b9e04796cd18" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Update</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1a8399acfc277a5a44c76cd8cf81169169" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>Valid</name></member>
+      <member refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_node_1aab5d28be273b80ff92da3eb71cb108e6" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::IPxNode</scope><name>VersionName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

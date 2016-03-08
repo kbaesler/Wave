@@ -1,0 +1,1165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down" kind="class" language="C#" prot="public">
+    <compoundname>System::Forms::Controls::ComboTreeDropDown</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ToolStripDropDown</basecompoundref>
+    <innerclass refid="struct_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1_1_bitmap_info" prot="private">System::Forms::Controls::ComboTreeDropDown::BitmapInfo</innerclass>
+    <innerclass refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1_1_node_info" prot="private">System::Forms::Controls::ComboTreeDropDown::NodeInfo</innerclass>
+    <innerclass refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1_1_scroll_bar_info" prot="private">System::Forms::Controls::ComboTreeDropDown::ScrollBarInfo</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1462ff3fca17a5af3435a9d28ad2a4a0" prot="private" static="no" mutable="no">
+        <type>const TextFormatFlags</type>
+        <definition>const TextFormatFlags System.Forms.Controls.ComboTreeDropDown.FormatFlags</definition>
+        <argsstring></argsstring>
+        <name>FormatFlags</name>
+        <initializer>= <ref refid="namespace_system_1_1_forms_1a9f0b854fd830b46055a1e8061698eddda945d5e233cf7d6240f6b783b36a374ff" kindref="member">TextFormatFlags.Left</ref> | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPadding</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="20" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a0c5740e80aafc44d30c7dea1fabba8ad" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int System.Forms.Controls.ComboTreeDropDown.GlythSize</definition>
+        <argsstring></argsstring>
+        <name>GlythSize</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="21" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a2dfcb668b745ac1822d4409e5cb84f8e" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int System.Forms.Controls.ComboTreeDropDown.IndentWidth</definition>
+        <argsstring></argsstring>
+        <name>IndentWidth</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="22" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a55bf81890ecd1c4fe1957d449d7302b6" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int System.Forms.Controls.ComboTreeDropDown.MinItemHeight</definition>
+        <argsstring></argsstring>
+        <name>MinItemHeight</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="23" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ae22aa9aa90fcca78b71946d95c2c5071" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int System.Forms.Controls.ComboTreeDropDown.MinThumbHeight</definition>
+        <argsstring></argsstring>
+        <name>MinThumbHeight</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="24" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aa2517f24098dc083ac3e95e85c725d18" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int System.Forms.Controls.ComboTreeDropDown.ScrollbarWidth</definition>
+        <argsstring></argsstring>
+        <name>ScrollbarWidth</name>
+        <initializer>= 17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a34fac949e0bcd0b4a68b83268bf051be" prot="private" static="no" mutable="no">
+        <type>readonly Dictionary&lt; BitmapInfo, Image &gt;</type>
+        <definition>readonly Dictionary&lt;BitmapInfo, Image&gt; System.Forms.Controls.ComboTreeDropDown._Bitmaps</definition>
+        <argsstring></argsstring>
+        <name>_Bitmaps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="31" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aed8ba60a979c6daa18859ad254b1bd41" prot="private" static="no" mutable="no">
+        <type>readonly ScrollBarInfo</type>
+        <definition>readonly ScrollBarInfo System.Forms.Controls.ComboTreeDropDown._ScrollBar</definition>
+        <argsstring></argsstring>
+        <name>_ScrollBar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="32" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a90aa5e64593a71f17020078e33fad50a" prot="private" static="no" mutable="no">
+        <type>readonly Size</type>
+        <definition>readonly Size System.Forms.Controls.ComboTreeDropDown._ScrollButtonSize</definition>
+        <argsstring></argsstring>
+        <name>_ScrollButtonSize</name>
+        <initializer>= new Size(ScrollbarWidth, ScrollbarWidth)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="33" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a4ac90c58e20e2be876458217de9a08dc" prot="private" static="no" mutable="no">
+        <type>readonly Timer</type>
+        <definition>readonly Timer System.Forms.Controls.ComboTreeDropDown._ScrollRepeater</definition>
+        <argsstring></argsstring>
+        <name>_ScrollRepeater</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="34" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ac26373ba9624e424f490b26f1b7f4396" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kindref="compound">ComboTreeBox</ref></type>
+        <definition>readonly ComboTreeBox System.Forms.Controls.ComboTreeDropDown._SourceControl</definition>
+        <argsstring></argsstring>
+        <name>_SourceControl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="35" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a2556bb703b8d2ebd513583f93a98ac0e" prot="private" static="no" mutable="no">
+        <type>readonly List&lt; NodeInfo &gt;</type>
+        <definition>readonly List&lt;NodeInfo&gt; System.Forms.Controls.ComboTreeDropDown._VisibleItems</definition>
+        <argsstring></argsstring>
+        <name>_VisibleItems</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a85b0bd1afdcbedffb758d7a8651ba3c5" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeDropDown._DropDownHeight</definition>
+        <argsstring></argsstring>
+        <name>_DropDownHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ae00ab6845265c921cbc7f8f25cb425ce" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeDropDown._HighlightedItemIndex</definition>
+        <argsstring></argsstring>
+        <name>_HighlightedItemIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="41" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a3414e8dbcc577c08edd32ad77bb0750f" prot="private" static="no" mutable="no">
+        <type>Rectangle</type>
+        <definition>Rectangle System.Forms.Controls.ComboTreeDropDown._Interior</definition>
+        <argsstring></argsstring>
+        <name>_Interior</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="42" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ae062bd80d2b85336661a5115d45eb8a4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeDropDown._ItemHeight</definition>
+        <argsstring></argsstring>
+        <name>_ItemHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="43" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1accaf1195d84d345dd0a8938d576f7d95" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeDropDown._NumItemsDisplayed</definition>
+        <argsstring></argsstring>
+        <name>_NumItemsDisplayed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a697b57b310e243d8d95c43323e6802d3" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.ComboTreeDropDown._ScrollBarVisible</definition>
+        <argsstring></argsstring>
+        <name>_ScrollBarVisible</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="45" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a06c3beb639abb33d5df3761a9ba178d2" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool System.Forms.Controls.ComboTreeDropDown._ScrollDragging</definition>
+        <argsstring></argsstring>
+        <name>_ScrollDragging</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="46" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1a9bac59acaf4b1a7f9d614d81210d55" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeDropDown._ScrollOffset</definition>
+        <argsstring></argsstring>
+        <name>_ScrollOffset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a76ab8d086e0fd74b317a9fcb57ece51f" prot="private" static="yes" mutable="no">
+        <type>Bitmap</type>
+        <definition>Bitmap System.Forms.Controls.ComboTreeDropDown._Collapsed</definition>
+        <argsstring></argsstring>
+        <name>_Collapsed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ab4fc14188a23b4c1a89ef27cb2b10c4a" prot="private" static="yes" mutable="no">
+        <type>Bitmap</type>
+        <definition>Bitmap System.Forms.Controls.ComboTreeDropDown._Expanded</definition>
+        <argsstring></argsstring>
+        <name>_Expanded</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="40" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a4bf6fbab1384411e9a5fec0feba4f1c1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeDropDown.DropDownHeight</definition>
+        <argsstring></argsstring>
+        <name>DropDownHeight</name>
+        <briefdescription>
+<para>Gets or sets the maximum height of the dropdown. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a9b5a440698f8ad1faef5a87fff37b29b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node" kindref="compound">ComboTreeNode</ref></type>
+        <definition>ComboTreeNode System.Forms.Controls.ComboTreeDropDown.TopNode</definition>
+        <argsstring></argsstring>
+        <name>TopNode</name>
+        <briefdescription>
+<para>Gets or sets the first visible <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node" kindref="compound">ComboTreeNode</ref> in the drop-down portion of the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="94" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a3dd389ebc0c6d911e0f70ce4003bede7" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int System.Forms.Controls.ComboTreeDropDown.VisibleCount</definition>
+        <argsstring></argsstring>
+        <name>VisibleCount</name>
+        <briefdescription>
+<para>Gets the number of ComboTreeNodes visible in the drop-down portion of the control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="123" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1afd4e98709994f40be9599544df0b7b9f" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>override Padding</type>
+        <definition>override Padding System.Forms.Controls.ComboTreeDropDown.DefaultPadding</definition>
+        <argsstring></argsstring>
+        <name>DefaultPadding</name>
+        <briefdescription>
+<para>Removes extraneous default padding from the dropdown. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="135" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a4843385ea447a635550bf1f61edd13d8" prot="private" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Image</type>
+        <definition>Image System.Forms.Controls.ComboTreeDropDown.Collapsed</definition>
+        <argsstring></argsstring>
+        <name>Collapsed</name>
+        <briefdescription>
+<para>Gets the collapsed (+) glyph to paint on the dropdown. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="147" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a77730110e48dacb12c46a31a3e819316" prot="private" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Image</type>
+        <definition>Image System.Forms.Controls.ComboTreeDropDown.Expanded</definition>
+        <argsstring></argsstring>
+        <name>Expanded</name>
+        <briefdescription>
+<para>Gets the expanded (-) glyph to paint on the dropdown. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="165" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a46d525b860cdc55a6a5f3c1a6d18d168" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>System.Forms.Controls.ComboTreeDropDown.ComboTreeDropDown</definition>
+        <argsstring>(ComboTreeBox sourceControl)</argsstring>
+        <name>ComboTreeDropDown</name>
+        <param>
+          <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kindref="compound">ComboTreeBox</ref></type>
+          <declname>sourceControl</declname>
+        </param>
+        <briefdescription>
+<para>Initialises a new instance of <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down" kindref="compound">ComboTreeDropDown</ref> and associates it with its parent <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kindref="compound">ComboTreeBox</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sourceControl</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="57" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="57" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aa6d64167137945bb2de5102de3004ec0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.ComboTreeDropDown.Open</definition>
+        <argsstring>()</argsstring>
+        <name>Open</name>
+        <briefdescription>
+<para>Displays the dropdown beneath its owning <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kindref="compound">ComboTreeBox</ref> control. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="186" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="186" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ab7cfa6fcf72988922186a52f14fca917" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.ComboTreeDropDown.ScrollDropDown</definition>
+        <argsstring>(int offset)</argsstring>
+        <name>ScrollDropDown</name>
+        <param>
+          <type>int</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+<para>Scrolls the drop-down up or down by the specified number of items. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="224" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="224" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a26280072f3fea942d1f08e70289cb653" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.ComboTreeDropDown.UpdateVisibleItems</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateVisibleItems</name>
+        <briefdescription>
+<para>Regenerates the items on the dropdown. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is called whenever a significant change occurs to the dropdown, such as a change in the tree or changes to the layout of the owning control. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="251" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="251" bodyend="290"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a298c26248180b687398c2609bd53a8a5" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool System.Forms.Controls.ComboTreeDropDown.IsInputKey</definition>
+        <argsstring>(Keys keyData)</argsstring>
+        <name>IsInputKey</name>
+        <param>
+          <type>Keys</type>
+          <declname>keyData</declname>
+        </param>
+        <briefdescription>
+<para>Registers the arrow keys as input keys. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keyData</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="301" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="301" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a785b90202b52b12efd0cb9a1b4fb1370" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnClosed</definition>
+        <argsstring>(ToolStripDropDownClosedEventArgs e)</argsstring>
+        <name>OnClosed</name>
+        <param>
+          <type>ToolStripDropDownClosedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Updates the status of the dropdown on the owning <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kindref="compound">ComboTreeBox</ref> control. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="324" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="324" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ada50aff641c09dc6096401af00c1b4fd" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnClosing</definition>
+        <argsstring>(ToolStripDropDownClosingEventArgs e)</argsstring>
+        <name>OnClosing</name>
+        <param>
+          <type>ToolStripDropDownClosingEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Prevents the clicking of items from closing the dropdown. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="336" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="336" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ac4fe5ee43486d6227a1f639150c46720" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnFontChanged</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnFontChanged</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Updates the font on the items when the drop-down&apos;s font changes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="351" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="351" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a714b6e43237f133ad349fcf9c58352f1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnKeyDown</definition>
+        <argsstring>(KeyEventArgs e)</argsstring>
+        <name>OnKeyDown</name>
+        <param>
+          <type>KeyEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles keyboard shortcuts. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="361" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="361" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a68a5284ab743977e072d91e53b05e16e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnKeyPress</definition>
+        <argsstring>(KeyPressEventArgs e)</argsstring>
+        <name>OnKeyPress</name>
+        <param>
+          <type>KeyPressEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles keyboard shortcuts. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="422" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="422" bodyend="460"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aa72a35b43ddf5481c53a5fa30bf5b383" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnMouseClick</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseClick</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles the expand/collapse of nodes and selection in response to the mouse being clicked. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="467" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="467" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a414c0ad5c60331223674801ea73d9969" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnMouseDown</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseDown</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles scrolling in response to the left mouse button being clicked. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="501" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="501" bodyend="546"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ab9a27500bf2673d8fa687ea3a0b8ba44" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnMouseEnter</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnMouseEnter</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Terminates dragging of the scrollbar in response to the mouse returning to the control. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="553" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="553" bodyend="557"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1786232eb91f47010d33cb9164a3a1d4" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnMouseLeave</definition>
+        <argsstring>(EventArgs e)</argsstring>
+        <name>OnMouseLeave</name>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Terminates dragging of the scrollbar in response to the mouse leaving the control. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="564" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="564" bodyend="568"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1af1313b6d94194627aec3bf158bde9b4e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnMouseMove</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseMove</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles dragging of the scrollbar and hot-tracking in response to movement of the mouSE. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="574" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="574" bodyend="618"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a61267dfa28bafb23d7079ee7558e94e3" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnMouseUp</definition>
+        <argsstring>(MouseEventArgs e)</argsstring>
+        <name>OnMouseUp</name>
+        <param>
+          <type>MouseEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Disengages dragging of the scrollbar and handles hot-tracking in response to the mouse button being released. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="625" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="625" bodyend="636"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1ae35c4b4bbe704f0fa69a3009f4a01f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void System.Forms.Controls.ComboTreeDropDown.OnPaint</definition>
+        <argsstring>(PaintEventArgs e)</argsstring>
+        <name>OnPaint</name>
+        <param>
+          <type>PaintEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Paints the drop-down, including all items within the scrolled region and, if appropriate, the scrollbar. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="643" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="643" bodyend="700"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a7baffdb514ae8c167de0ff9449dc92a2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.ComboTreeDropDown.DrawGlyph</definition>
+        <argsstring>(Bitmap image)</argsstring>
+        <name>DrawGlyph</name>
+        <param>
+          <type>Bitmap</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+<para>Draws the glyph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The image.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="710" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="710" bodyend="718"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1d4e9151b5c9a1cda9ddd41bc59380e3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Image</type>
+        <definition>Image System.Forms.Controls.ComboTreeDropDown.GenerateBitmap</definition>
+        <argsstring>(BitmapInfo bitmapInfo, Image nodeImage)</argsstring>
+        <name>GenerateBitmap</name>
+        <param>
+          <type>BitmapInfo</type>
+          <declname>bitmapInfo</declname>
+        </param>
+        <param>
+          <type>Image</type>
+          <declname>nodeImage</declname>
+        </param>
+        <briefdescription>
+<para>Generates a bitmap to display beside the ToolStripItem representation of the specified node. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bitmapInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nodeImage</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="726" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="726" bodyend="788"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a19ec3cb06cd459ec6f5a1cd3bbce3b56" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ButtonState</type>
+        <definition>ButtonState System.Forms.Controls.ComboTreeDropDown.GetButtonState</definition>
+        <argsstring>(Rectangle bounds)</argsstring>
+        <name>GetButtonState</name>
+        <param>
+          <type>Rectangle</type>
+          <declname>bounds</declname>
+        </param>
+        <briefdescription>
+<para>Determines how to draw a scrollbar button. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bounds</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="795" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="795" bodyend="803"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6629b1da8c175df6445ecb8712b05e08" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node_collection" kindref="compound">ComboTreeNodeCollection</ref></type>
+        <definition>ComboTreeNodeCollection System.Forms.Controls.ComboTreeDropDown.GetCollectionContainingNode</definition>
+        <argsstring>(ComboTreeNode node)</argsstring>
+        <name>GetCollectionContainingNode</name>
+        <param>
+          <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node" kindref="compound">ComboTreeNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node_collection" kindref="compound">ComboTreeNodeCollection</ref> to which the specified node belongs. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="810" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="810" bodyend="813"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a21a624528d36326cc43e8c017e91892b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Image</type>
+        <definition>Image System.Forms.Controls.ComboTreeDropDown.GetItemBitmap</definition>
+        <argsstring>(ComboTreeNode node)</argsstring>
+        <name>GetItemBitmap</name>
+        <param>
+          <type><ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_node" kindref="compound">ComboTreeNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Determines all of the parameters for drawing the bitmap beside the specified node. </para>        </briefdescription>
+        <detaileddescription>
+<para>If they represent a unique combination, the bitmap is generated and returned. Otherwise, the appropriate cached bitmap is returned. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="823" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="823" bodyend="851"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1acbc208f408925bacb154efc082d4ba4e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ScrollBarState</type>
+        <definition>ScrollBarState System.Forms.Controls.ComboTreeDropDown.GetScrollBarState</definition>
+        <argsstring>(Rectangle bounds)</argsstring>
+        <name>GetScrollBarState</name>
+        <param>
+          <type>Rectangle</type>
+          <declname>bounds</declname>
+        </param>
+        <briefdescription>
+<para>Determines how to draw the main part of the scrollbar. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bounds</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="858" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="858" bodyend="874"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6bacf6f38ab2deee9c1ec88242a60173" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ScrollBarArrowButtonState</type>
+        <definition>ScrollBarArrowButtonState System.Forms.Controls.ComboTreeDropDown.GetScrollBarStateDown</definition>
+        <argsstring>()</argsstring>
+        <name>GetScrollBarStateDown</name>
+        <briefdescription>
+<para>Determines how to draw the down arrow on the scrollbar. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="880" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="880" bodyend="891"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6557d466ebecfceea229b68fa8d7f587" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ScrollBarArrowButtonState</type>
+        <definition>ScrollBarArrowButtonState System.Forms.Controls.ComboTreeDropDown.GetScrollBarStateUp</definition>
+        <argsstring>()</argsstring>
+        <name>GetScrollBarStateUp</name>
+        <briefdescription>
+<para>Determines how to draw the up arrow on the scrollbar. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="897" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="897" bodyend="908"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a673366dfc09ac81b38d8aa3364bc83c8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ScrollBarState</type>
+        <definition>ScrollBarState System.Forms.Controls.ComboTreeDropDown.GetScrollBarThumbState</definition>
+        <argsstring>()</argsstring>
+        <name>GetScrollBarThumbState</name>
+        <briefdescription>
+<para>Determines how to draw the &apos;thumb&apos; button on the scrollbar. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="914" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="914" bodyend="925"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a51411c087f2e63f19dc271a314b8deb9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.ComboTreeDropDown.ScrollToHighlighted</definition>
+        <argsstring>(bool highlightedAtTop)</argsstring>
+        <name>ScrollToHighlighted</name>
+        <param>
+          <type>bool</type>
+          <declname>highlightedAtTop</declname>
+        </param>
+        <briefdescription>
+<para>Scrolls the drop-down so as to ensure that the highlighted item is at either the top or bottom of the scrolled region. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>highlightedAtTop</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="932" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="932" bodyend="943"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1af6f3e5cdf7b5555e486b772467502d01" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.ComboTreeDropDown.UpdateScrolling</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateScrolling</name>
+        <briefdescription>
+<para>Updates the items in the scrolled region. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is called whenever the scroll offset is changed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="949" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="949" bodyend="978"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6fa0e07cd4afc2ad288b108ecd292f24" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void System.Forms.Controls.ComboTreeDropDown.scrollRepeater_Tick</definition>
+        <argsstring>(object sender, EventArgs e)</argsstring>
+        <name>scrollRepeater_Tick</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles the Tick event of the scrollRepeater control. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The EventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="985" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="985" bodyend="990"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the dropdown portion of the <ref refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_box" kindref="compound">ComboTreeBox</ref> control. </para>    </briefdescription>
+    <detaileddescription>
+<para>The nodes are displayed in a manner similar to the TreeView control. </para><para><ulink url="http://www.brad-smith.info/blog/archives/193">http://www.brad-smith.info/blog/archives/193</ulink></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="194">
+        <label>ToolStripDropDown</label>
+      </node>
+      <node id="193">
+        <label>System.Forms.Controls.ComboTreeDropDown</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down"/>
+        <childnode refid="194" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="196">
+        <label>ToolStripDropDown</label>
+      </node>
+      <node id="195">
+        <label>System.Forms.Controls.ComboTreeDropDown</label>
+        <link refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down"/>
+        <childnode refid="196" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Forms/Controls/ComboTreeBox/ComboTreeDropDown.cs" bodystart="16" bodyend="1181"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a34fac949e0bcd0b4a68b83268bf051be" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_Bitmaps</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a76ab8d086e0fd74b317a9fcb57ece51f" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_Collapsed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a85b0bd1afdcbedffb758d7a8651ba3c5" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_DropDownHeight</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ab4fc14188a23b4c1a89ef27cb2b10c4a" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_Expanded</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ae00ab6845265c921cbc7f8f25cb425ce" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_HighlightedItemIndex</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a3414e8dbcc577c08edd32ad77bb0750f" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_Interior</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ae062bd80d2b85336661a5115d45eb8a4" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_ItemHeight</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1accaf1195d84d345dd0a8938d576f7d95" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_NumItemsDisplayed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aed8ba60a979c6daa18859ad254b1bd41" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_ScrollBar</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a697b57b310e243d8d95c43323e6802d3" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_ScrollBarVisible</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a90aa5e64593a71f17020078e33fad50a" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_ScrollButtonSize</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a06c3beb639abb33d5df3761a9ba178d2" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_ScrollDragging</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1a9bac59acaf4b1a7f9d614d81210d55" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_ScrollOffset</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a4ac90c58e20e2be876458217de9a08dc" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_ScrollRepeater</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ac26373ba9624e424f490b26f1b7f4396" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_SourceControl</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a2556bb703b8d2ebd513583f93a98ac0e" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>_VisibleItems</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a4843385ea447a635550bf1f61edd13d8" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>Collapsed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a46d525b860cdc55a6a5f3c1a6d18d168" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>ComboTreeDropDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1afd4e98709994f40be9599544df0b7b9f" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>DefaultPadding</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a7baffdb514ae8c167de0ff9449dc92a2" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>DrawGlyph</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a4bf6fbab1384411e9a5fec0feba4f1c1" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>DropDownHeight</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a77730110e48dacb12c46a31a3e819316" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>Expanded</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1462ff3fca17a5af3435a9d28ad2a4a0" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>FormatFlags</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1d4e9151b5c9a1cda9ddd41bc59380e3" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GenerateBitmap</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a19ec3cb06cd459ec6f5a1cd3bbce3b56" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GetButtonState</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6629b1da8c175df6445ecb8712b05e08" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GetCollectionContainingNode</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a21a624528d36326cc43e8c017e91892b" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GetItemBitmap</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1acbc208f408925bacb154efc082d4ba4e" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GetScrollBarState</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6bacf6f38ab2deee9c1ec88242a60173" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GetScrollBarStateDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6557d466ebecfceea229b68fa8d7f587" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GetScrollBarStateUp</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a673366dfc09ac81b38d8aa3364bc83c8" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GetScrollBarThumbState</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a0c5740e80aafc44d30c7dea1fabba8ad" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>GlythSize</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a2dfcb668b745ac1822d4409e5cb84f8e" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>IndentWidth</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a298c26248180b687398c2609bd53a8a5" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>IsInputKey</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a55bf81890ecd1c4fe1957d449d7302b6" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>MinItemHeight</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ae22aa9aa90fcca78b71946d95c2c5071" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>MinThumbHeight</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a785b90202b52b12efd0cb9a1b4fb1370" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnClosed</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ada50aff641c09dc6096401af00c1b4fd" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnClosing</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ac4fe5ee43486d6227a1f639150c46720" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnFontChanged</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a714b6e43237f133ad349fcf9c58352f1" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnKeyDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a68a5284ab743977e072d91e53b05e16e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnKeyPress</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aa72a35b43ddf5481c53a5fa30bf5b383" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnMouseClick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a414c0ad5c60331223674801ea73d9969" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnMouseDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ab9a27500bf2673d8fa687ea3a0b8ba44" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnMouseEnter</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1786232eb91f47010d33cb9164a3a1d4" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnMouseLeave</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1af1313b6d94194627aec3bf158bde9b4e" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnMouseMove</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a61267dfa28bafb23d7079ee7558e94e3" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnMouseUp</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a1ae35c4b4bbe704f0fa69a3009f4a01f" prot="protected" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>OnPaint</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aa6d64167137945bb2de5102de3004ec0" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>Open</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1aa2517f24098dc083ac3e95e85c725d18" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>ScrollbarWidth</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1ab7cfa6fcf72988922186a52f14fca917" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>ScrollDropDown</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a6fa0e07cd4afc2ad288b108ecd292f24" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>scrollRepeater_Tick</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a51411c087f2e63f19dc271a314b8deb9" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>ScrollToHighlighted</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a9b5a440698f8ad1faef5a87fff37b29b" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>TopNode</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1af6f3e5cdf7b5555e486b772467502d01" prot="private" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>UpdateScrolling</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a26280072f3fea942d1f08e70289cb653" prot="package" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>UpdateVisibleItems</name></member>
+      <member refid="class_system_1_1_forms_1_1_controls_1_1_combo_tree_drop_down_1a3dd389ebc0c6d911e0f70ce4003bede7" prot="public" virt="non-virtual"><scope>System::Forms::Controls::ComboTreeDropDown</scope><name>VisibleCount</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_config_top_level_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::ConfigTopLevelExtensions</compoundname>
+      <sectiondef kind="package-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_interop_1_1_config_top_level_extensions_1a2182bd933f21f043836e3b2280607e76" prot="package" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int Miner.Interop.ConfigTopLevelExtensions.ALL_SUBTYPES</definition>
+        <argsstring></argsstring>
+        <name>ALL_SUBTYPES</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>The constant for ALL subtypes in the ArcFM configurations </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" line="19" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_config_top_level_extensions_1a47ff85d8f24df3ef62ab210f02b4f793" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.ConfigTopLevelExtensions.ChangeVisibility</definition>
+        <argsstring>(this IMMConfigTopLevel source, IObjectClass table, bool visible, params string[] fieldNames)</argsstring>
+        <name>ChangeVisibility</name>
+        <param>
+          <type>this IMMConfigTopLevel</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>visible</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>fieldNames</declname>
+        </param>
+        <briefdescription>
+<para>Changes the field visibility to the specified <emphasis>visible</emphasis>  value for all subtypes in the specified <emphasis>table</emphasis>  object class that match the field name. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>visible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if the field is visible.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>fieldNames or table </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" line="39" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" bodystart="39" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_config_top_level_extensions_1affbcac265afc5adc5d12ee4c938523e0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.ConfigTopLevelExtensions.ChangeVisibility</definition>
+        <argsstring>(this IMMConfigTopLevel source, IObjectClass table, int subtypeCode, bool visible, params string[] fieldNames)</argsstring>
+        <name>ChangeVisibility</name>
+        <param>
+          <type>this IMMConfigTopLevel</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subtypeCode</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>visible</declname>
+        </param>
+        <param>
+          <type>params string[]</type>
+          <declname>fieldNames</declname>
+        </param>
+        <briefdescription>
+<para>Changes the field visibility to the specified <emphasis>visible</emphasis>  value for the subtype in the specified <emphasis>table</emphasis>  object class that match the field name. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subtypeCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The subtype code.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>visible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> if the field is visible.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field names.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>fieldNames or table </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" line="73" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" bodystart="73" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_config_top_level_extensions_1a4ed1e86a2f6b0b1b4b0b4dffa0458b39" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Dictionary&lt; int, IEnumerable&lt; IMMAutoValue &gt; &gt;</type>
+        <definition>static Dictionary&lt;int, IEnumerable&lt;IMMAutoValue&gt; &gt; Miner.Interop.ConfigTopLevelExtensions.GetAutoValues</definition>
+        <argsstring>(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)</argsstring>
+        <name>GetAutoValues</name>
+        <param>
+          <type>this IMMConfigTopLevel</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>mmEditEvent</type>
+          <declname>editEvent</declname>
+        </param>
+        <briefdescription>
+<para>Gets all of the automatic values (i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>ArcFM Auto Updaters) that have been configured for the specified <emphasis>editEvent</emphasis>  for all subtypes of the <emphasis>table</emphasis>  object class. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object representing the specific subtype being analyzed.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The edit event.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a Dictionary&lt;Key, Value&gt; representing the automatic values for the specified event and object class. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>table</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" line="101" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" bodystart="101" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_config_top_level_extensions_1aabac4f4061cf6fb2e2a1f66911e44625" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IField</type>
+        <definition>static IField Miner.Interop.ConfigTopLevelExtensions.GetPrimaryDisplayField</definition>
+        <argsstring>(this IMMConfigTopLevel source, IObjectClass table)</argsstring>
+        <name>GetPrimaryDisplayField</name>
+        <param>
+          <type>this IMMConfigTopLevel</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>IObjectClass</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+<para>Get the value of field that has been configured to be the primary display field. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object class.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a IField representing the field for the primary display. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.ArgumentNullException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>table</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" line="138" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" bodystart="138" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the IMMConfigTopLevel interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" line="13" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Extensions/ConfigTopLevelExtensions.cs" bodystart="12" bodyend="154"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_config_top_level_extensions_1a2182bd933f21f043836e3b2280607e76" prot="package" virt="non-virtual"><scope>Miner::Interop::ConfigTopLevelExtensions</scope><name>ALL_SUBTYPES</name></member>
+      <member refid="class_miner_1_1_interop_1_1_config_top_level_extensions_1a47ff85d8f24df3ef62ab210f02b4f793" prot="public" virt="non-virtual"><scope>Miner::Interop::ConfigTopLevelExtensions</scope><name>ChangeVisibility</name></member>
+      <member refid="class_miner_1_1_interop_1_1_config_top_level_extensions_1affbcac265afc5adc5d12ee4c938523e0" prot="public" virt="non-virtual"><scope>Miner::Interop::ConfigTopLevelExtensions</scope><name>ChangeVisibility</name></member>
+      <member refid="class_miner_1_1_interop_1_1_config_top_level_extensions_1a4ed1e86a2f6b0b1b4b0b4dffa0458b39" prot="public" virt="non-virtual"><scope>Miner::Interop::ConfigTopLevelExtensions</scope><name>GetAutoValues</name></member>
+      <member refid="class_miner_1_1_interop_1_1_config_top_level_extensions_1aabac4f4061cf6fb2e2a1f66911e44625" prot="public" virt="non-virtual"><scope>Miner::Interop::ConfigTopLevelExtensions</scope><name>GetPrimaryDisplayField</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables" kind="class" language="C#" prot="public">
+    <compoundname>Miner::ArcFM::Process::WorkflowManager::Tables</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1aef8c91e882298a36c07bdfae607b610a" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.WorkflowManager.Tables.ApprovedDesign</definition>
+        <argsstring></argsstring>
+        <name>ApprovedDesign</name>
+        <initializer>= &quot;MM_WMS_APPROVED_DESIGNS&quot;</initializer>
+        <briefdescription>
+<para>The approved design table name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="563" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="563" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1abed01bcb71fdbeb7c423ff6a9b7689fb" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.WorkflowManager.Tables.CompatibleUnit</definition>
+        <argsstring></argsstring>
+        <name>CompatibleUnit</name>
+        <initializer>= &quot;MM_WMS_COMPATIBLE_UNIT&quot;</initializer>
+        <briefdescription>
+<para>The compatible unit table name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="568" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="568" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1ad9c49a8c94845851f4515cc43d5ee686" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.WorkflowManager.Tables.Design</definition>
+        <argsstring></argsstring>
+        <name>Design</name>
+        <initializer>= &quot;MM_WMS_DESIGN&quot;</initializer>
+        <briefdescription>
+<para>The design table name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="573" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="573" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1a56c2b49d5173c427a844ea38796fe230" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.WorkflowManager.Tables.WorkLocation</definition>
+        <argsstring></argsstring>
+        <name>WorkLocation</name>
+        <initializer>= &quot;MM_WMS_WORK_LOCATION&quot;</initializer>
+        <briefdescription>
+<para>The work location table name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="578" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="578" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1a399c12edfedff848f06fe6f171b57913" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string Miner.ArcFM.Process.WorkflowManager.Tables.WorkRequest</definition>
+        <argsstring></argsstring>
+        <name>WorkRequest</name>
+        <initializer>= &quot;MM_WMS_WORK_REQUEST&quot;</initializer>
+        <briefdescription>
+<para>The work request table name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="583" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="583" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Container for the WorkflowManager.Tables class used to identify the common tables for Workflow Manager. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" line="557" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/ArcFM.cs" bodystart="556" bodyend="586"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1aef8c91e882298a36c07bdfae607b610a" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::WorkflowManager::Tables</scope><name>ApprovedDesign</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1abed01bcb71fdbeb7c423ff6a9b7689fb" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::WorkflowManager::Tables</scope><name>CompatibleUnit</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1ad9c49a8c94845851f4515cc43d5ee686" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::WorkflowManager::Tables</scope><name>Design</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1a56c2b49d5173c427a844ea38796fe230" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::WorkflowManager::Tables</scope><name>WorkLocation</name></member>
+      <member refid="class_miner_1_1_arc_f_m_1_1_process_1_1_workflow_manager_1_1_tables_1a399c12edfedff848f06fe6f171b57913" prot="public" virt="non-virtual"><scope>Miner::ArcFM::Process::WorkflowManager::Tables</scope><name>WorkRequest</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

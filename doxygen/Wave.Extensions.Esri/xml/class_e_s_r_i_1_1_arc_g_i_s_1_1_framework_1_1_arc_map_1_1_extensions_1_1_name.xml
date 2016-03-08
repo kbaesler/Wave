@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions_1_1_name" kind="class" language="C#" prot="package">
+    <compoundname>ESRI::ArcGIS::Framework::ArcMap::Extensions::Name</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions_1_1_name_1a65d5f78a9ff6b72065b5de46bda1c185" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string ESRI.ArcGIS.Framework.ArcMap.Extensions.Name.Editor</definition>
+        <argsstring></argsstring>
+        <name>Editor</name>
+        <initializer>= &quot;ESRI Object Editor&quot;</initializer>
+        <briefdescription>
+<para>The name of the editor extension. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions_1_1_name_1afd18fe1e6036f576d8c6321e7eb65bb3" prot="public" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string ESRI.ArcGIS.Framework.ArcMap.Extensions.Name.NetworkUtilityAnalysis</definition>
+        <argsstring></argsstring>
+        <name>NetworkUtilityAnalysis</name>
+        <initializer>= &quot;Utility Network Analyst&quot;</initializer>
+        <briefdescription>
+<para>The name of the network utility analysis extension. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" line="86" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the extension names for the <ref refid="namespace_e_s_r_i" kindref="compound">ESRI</ref> extensions which may be used for customization. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" line="75" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" bodystart="74" bodyend="89"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions_1_1_name_1a65d5f78a9ff6b72065b5de46bda1c185" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::ArcMap::Extensions::Name</scope><name>Editor</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions_1_1_name_1afd18fe1e6036f576d8c6321e7eb65bb3" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Framework::ArcMap::Extensions::Name</scope><name>NetworkUtilityAnalysis</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

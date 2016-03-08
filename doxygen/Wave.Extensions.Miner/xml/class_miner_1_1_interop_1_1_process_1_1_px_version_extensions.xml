@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_px_version_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Miner::Interop::Process::PxVersionExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_version_extensions_1a3278d3a4975adedb4f175fa80b9f5f52" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string Miner.Interop.Process.PxVersionExtensions.GetVersionName</definition>
+        <argsstring>(this IMMPxSDEVersion source)</argsstring>
+        <name>GetVersionName</name>
+        <param>
+          <type>this IMMPxSDEVersion</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Returns the name of the version. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The version.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a string representing the name of the version.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxVersionExtensions.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxVersionExtensions.cs" bodystart="17" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_px_version_extensions_1a1b2a2020c0e1ab09ced6817b2c57df79" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Miner.Interop.Process.PxVersionExtensions.IsStatus</definition>
+        <argsstring>(this IMMPxSDEVersion source, PxVersionStatus versionStatus)</argsstring>
+        <name>IsStatus</name>
+        <param>
+          <type>this IMMPxSDEVersion</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_miner_1_1_interop_1_1_process_1aca23ca6f16493e97316fa7c16eecedad" kindref="member">PxVersionStatus</ref></type>
+          <declname>versionStatus</declname>
+        </param>
+        <briefdescription>
+<para>Determines whether the version is in the state specified by the version status. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The version.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>versionStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The version status.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the version is in the state specified by the version status; otherwise, <computeroutput>false</computeroutput>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxVersionExtensions.cs" line="36" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxVersionExtensions.cs" bodystart="36" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the Miner.Interop.Process.IMMPxSDEVersion interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxVersionExtensions.cs" line="9" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/Extensions/PxVersionExtensions.cs" bodystart="8" bodyend="44"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_version_extensions_1a3278d3a4975adedb4f175fa80b9f5f52" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxVersionExtensions</scope><name>GetVersionName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_px_version_extensions_1a1b2a2020c0e1ab09ced6817b2c57df79" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::PxVersionExtensions</scope><name>IsStatus</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

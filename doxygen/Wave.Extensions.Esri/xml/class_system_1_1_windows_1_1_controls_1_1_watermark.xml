@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_system_1_1_windows_1_1_controls_1_1_watermark" kind="class" language="C#" prot="public">
+    <compoundname>System::Windows::Controls::Watermark</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1af3e01366d4e312de33d8905f4f64ec02" prot="public" static="yes" mutable="no">
+        <type>readonly DependencyProperty</type>
+        <definition>readonly DependencyProperty System.Windows.Controls.Watermark.ContentProperty</definition>
+        <argsstring></argsstring>
+        <name>ContentProperty</name>
+        <initializer>= DependencyProperty.RegisterAttached(
+            &quot;Content&quot;,
+            typeof (FrameworkElement),
+            typeof (Watermark),
+            new FrameworkPropertyMetadata(null, OnContentChanged))</initializer>
+        <briefdescription>
+<para>The content dependency property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="17" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1adfee6a1561b056068b99639d5976b16c" prot="private" static="yes" mutable="no">
+        <type>readonly Dictionary&lt; object, ItemsControl &gt;</type>
+        <definition>readonly Dictionary&lt;object, ItemsControl&gt; System.Windows.Controls.Watermark.ItemsControls</definition>
+        <argsstring></argsstring>
+        <name>ItemsControls</name>
+        <initializer>= new Dictionary&lt;object, ItemsControl&gt;()</initializer>
+        <briefdescription>
+<para>Dictionary of ItemsControls </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="26" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a9547d7b3f70de946dbfa5803293eba9f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>FrameworkElement</type>
+        <definition>static FrameworkElement System.Windows.Controls.Watermark.GetContent</definition>
+        <argsstring>(DependencyObject d)</argsstring>
+        <name>GetContent</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Gets the content property. </para>        </briefdescription>
+        <detaileddescription>
+<para>This dependency property indicates the watermark for the control. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DependencyObject to get the property from</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the content property</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="37" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a5eda8e39af5f445195d8a511a4cf06b3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.SetContent</definition>
+        <argsstring>(DependencyObject d, FrameworkElement value)</argsstring>
+        <name>SetContent</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>FrameworkElement</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the content property. </para>        </briefdescription>
+        <detaileddescription>
+<para>This dependency property indicates the watermark for the control. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DependencyObject to set the property on</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value of the property</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="47" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="47" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a617bd8643db72227704fa24514739a43" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.Control_GotKeyboardFocus</definition>
+        <argsstring>(object sender, RoutedEventArgs e)</argsstring>
+        <name>Control_GotKeyboardFocus</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>RoutedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handle the GotFocus event on the control </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A RoutedEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="61" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="61" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a80594f3f3b9b5f1cafdb33ca252fa960" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.Control_Loaded</definition>
+        <argsstring>(object sender, RoutedEventArgs e)</argsstring>
+        <name>Control_Loaded</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>RoutedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handle the Loaded and LostFocus event on the control </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A RoutedEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="72" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="72" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a1119a8eb1df9345b21a42a99155d8e89" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.ItemsChanged</definition>
+        <argsstring>(object sender, ItemsChangedEventArgs e)</argsstring>
+        <name>ItemsChanged</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>ItemsChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Event handler for the items changed event </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A ItemsChangedEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="83" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="83" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a6b9e144d3fa98e7378f8b240e6d829bc" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.ItemsSourceChanged</definition>
+        <argsstring>(object sender, EventArgs e)</argsstring>
+        <name>ItemsSourceChanged</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>EventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Event handler for the items source changed event </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A EventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="97" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="97" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1ae13ffb85024ea8f6dfa1904b7e04c876" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.OnContentChanged</definition>
+        <argsstring>(DependencyObject d, DependencyPropertyChangedEventArgs e)</argsstring>
+        <name>OnContentChanged</name>
+        <param>
+          <type>DependencyObject</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>DependencyPropertyChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles changes to the Watermark property. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DependencyObject that fired the event</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A DependencyPropertyChangedEventArgs that contains the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="115" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="115" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a789daf8492c4134180103dd352f5351d" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool System.Windows.Controls.Watermark.ShouldShowWatermark</definition>
+        <argsstring>(Control c)</argsstring>
+        <name>ShouldShowWatermark</name>
+        <param>
+          <type>Control</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Indicates whether or not the watermark should be shown on the specified control </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control to test</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the watermark should be shown; false otherwise</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="150" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="150" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1aa6b833db555d7c3428e43fd528f97641" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.ShowWatermark</definition>
+        <argsstring>(Control control)</argsstring>
+        <name>ShowWatermark</name>
+        <param>
+          <type>Control</type>
+          <declname>control</declname>
+        </param>
+        <briefdescription>
+<para>Show the watermark on the specified control </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control to show the watermark on</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="175" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="175" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a9616cf6f9f2edd89a0a0382655193f08" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.TextBox_TextChanged</definition>
+        <argsstring>(object sender, TextChangedEventArgs e)</argsstring>
+        <name>TextBox_TextChanged</name>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>TextChangedEventArgs</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Handles the TextChanged event of the TextBox control. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the event.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The System.Windows.Controls.TextChangedEventArgs instance containing the event data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="190" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="190" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="class_system_1_1_windows_1_1_controls_1_1_watermark_1a21b51f6cf72de87325db729bfe3e2973" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void System.Windows.Controls.Watermark.UpdateWatermark</definition>
+        <argsstring>(Control control)</argsstring>
+        <name>UpdateWatermark</name>
+        <param>
+          <type>Control</type>
+          <declname>control</declname>
+        </param>
+        <briefdescription>
+<para>Updates the watermark. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The control.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="200" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="200" bodyend="210"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that provides the Watermark attached property. </para>    </briefdescription>
+    <detaileddescription>
+<para>The watermark can be any supported FrameworkElement. </para>    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" line="11" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/System/Windows/Controls/Watermark/Watermark.cs" bodystart="10" bodyend="213"/>
+    <listofallmembers>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1af3e01366d4e312de33d8905f4f64ec02" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>ContentProperty</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a617bd8643db72227704fa24514739a43" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>Control_GotKeyboardFocus</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a80594f3f3b9b5f1cafdb33ca252fa960" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>Control_Loaded</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a9547d7b3f70de946dbfa5803293eba9f" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>GetContent</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a1119a8eb1df9345b21a42a99155d8e89" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>ItemsChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1adfee6a1561b056068b99639d5976b16c" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>ItemsControls</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a6b9e144d3fa98e7378f8b240e6d829bc" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>ItemsSourceChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1ae13ffb85024ea8f6dfa1904b7e04c876" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>OnContentChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a5eda8e39af5f445195d8a511a4cf06b3" prot="public" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>SetContent</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a789daf8492c4134180103dd352f5351d" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>ShouldShowWatermark</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1aa6b833db555d7c3428e43fd528f97641" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>ShowWatermark</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a9616cf6f9f2edd89a0a0382655193f08" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>TextBox_TextChanged</name></member>
+      <member refid="class_system_1_1_windows_1_1_controls_1_1_watermark_1a21b51f6cf72de87325db729bfe3e2973" prot="private" virt="non-virtual"><scope>System::Windows::Controls::Watermark</scope><name>UpdateWatermark</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespace_e_s_r_i_1_1_arc_g_i_s_1_1esri_system" kind="namespace" language="C#">
+    <compoundname>ESRI::ArcGIS::esriSystem</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_esri_runtime_authorization" prot="public">ESRI::ArcGIS::esriSystem::EsriRuntimeAuthorization</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_property_set_extensions" prot="public">ESRI::ArcGIS::esriSystem::PropertySetExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_stream_extensions" prot="public">ESRI::ArcGIS::esriSystem::StreamExtensions</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_u_i_d_equality_comparer" prot="public">ESRI::ArcGIS::esriSystem::UIDEqualityComparer</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_u_i_d_extensions" prot="public">ESRI::ArcGIS::esriSystem::UIDExtensions</innerclass>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_base_classes">ESRI::ArcGIS::esriSystem::BaseClasses</innernamespace>
+    <innernamespace refid="namespace_e_s_r_i_1_1_arc_g_i_s_1_1esri_system_1_1_internal">ESRI::ArcGIS::esriSystem::Internal</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="[generated]" line="1" column="1"/>
+  </compounddef>
+</doxygen>

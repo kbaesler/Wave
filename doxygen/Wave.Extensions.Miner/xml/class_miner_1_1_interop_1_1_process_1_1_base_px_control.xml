@@ -1,0 +1,442 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_miner_1_1_interop_1_1_process_1_1_base_px_control" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Miner::Interop::Process::BasePxControl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IMMPxControl</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IMMPxControl2</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IMMPxDisplayName</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1ae0deb54b7c119e077366b7f9a187fbb2" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type><ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_control_u_i" kindref="compound">IPxControlUI</ref></type>
+        <definition>IPxControlUI Miner.Interop.Process.BasePxControl.Control</definition>
+        <argsstring></argsstring>
+        <name>Control</name>
+        <briefdescription>
+<para>Gets the control. </para>        </briefdescription>
+        <detaileddescription>
+<para>The control. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="43" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a06a1bede1c1103be889e6e79396d7243" prot="protected" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>IMMPxApplication</type>
+        <definition>IMMPxApplication Miner.Interop.Process.BasePxControl.PxApplication</definition>
+        <argsstring></argsstring>
+        <name>PxApplication</name>
+        <briefdescription>
+<para>Gets the process application reference. </para>        </briefdescription>
+        <detaileddescription>
+<para>The process application reference. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="51" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a9f1b223abd314dec485f46afe49a045d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Miner.Interop.Process.BasePxControl.Enabled</definition>
+        <argsstring></argsstring>
+        <name>Enabled</name>
+        <briefdescription>
+<para>Gets or sets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control" kindref="compound">BasePxControl</ref> is enabled. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if enabled; otherwise, <computeroutput>false</computeroutput>.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="61" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1afb21039abd0cf859521a93d597049cde" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Miner.Interop.Process.BasePxControl.hWnd</definition>
+        <argsstring></argsstring>
+        <name>hWnd</name>
+        <briefdescription>
+<para>Gets the handle to the control. </para>        </briefdescription>
+        <detaileddescription>
+<para>The handle to the control.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="67" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a7b375424579cbc052e7ca96dac3c64fd" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.BasePxControl.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Gets the name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="81" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a518388f743264d01710a012496e154e2" prot="public" static="no" readable="no" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>IMMPxNode</type>
+        <definition>IMMPxNode Miner.Interop.Process.BasePxControl.Node</definition>
+        <argsstring></argsstring>
+        <name>Node</name>
+        <briefdescription>
+<para>Sets the node. </para>        </briefdescription>
+        <detaileddescription>
+<para>The node.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="87" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a7a0e417933d093457d59b44a2ec89267" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>virtual bool Miner.Interop.Process.BasePxControl.IsInitialized</definition>
+        <argsstring></argsstring>
+        <name>IsInitialized</name>
+        <briefdescription>
+<para>Gets a value indicating whether this instance is initialized. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if this instance is initialized; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="103" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a00c79f8897ce94fb61bd84669e6549b4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>bool</type>
+        <definition>virtual bool Miner.Interop.Process.BasePxControl.StateComplete</definition>
+        <argsstring></argsstring>
+        <name>StateComplete</name>
+        <briefdescription>
+<para>Gets a value indicating whether the state of the node is completed. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if the state of the node is completed; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="114" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a620f07cfc21f27ca49be70cdda050729" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>virtual bool Miner.Interop.Process.BasePxControl.Visible</definition>
+        <argsstring></argsstring>
+        <name>Visible</name>
+        <briefdescription>
+<para>Gets or sets a value indicating whether this <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control" kindref="compound">BasePxControl</ref> is visible. </para>        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>true</computeroutput> if visible; otherwise, <computeroutput>false</computeroutput>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="122" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a5aad1ca62746910e63e3a9961f09724a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>string</type>
+        <definition>string Miner.Interop.Process.BasePxControl.DisplayName</definition>
+        <argsstring></argsstring>
+        <name>DisplayName</name>
+        <initializer>Do you want to apply the changes?&quot;</initializer>
+        <briefdescription>
+<para>Gets the display name. </para>        </briefdescription>
+        <detaileddescription>
+<para>The display name.</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="176" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aadab0ef602dbc4e172f3584fce969b80" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Miner.Interop.Process.BasePxControl.BasePxControl</definition>
+        <argsstring>(string name, IPxControlUI control, string displayName)</argsstring>
+        <name>BasePxControl</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="interface_miner_1_1_interop_1_1_process_1_1_i_px_control_u_i" kindref="compound">IPxControlUI</ref></type>
+          <declname>control</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>displayName</declname>
+        </param>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control" kindref="compound">BasePxControl</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The control.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>displayName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The display name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="25" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="25" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aec9ec7e94ff30f5231ba81b6a4462e46" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract Hashtable</type>
+        <definition>abstract Hashtable Miner.Interop.Process.BasePxControl.GetControlsInfo</definition>
+        <argsstring>(IMMPxNode pxNode)</argsstring>
+        <name>GetControlsInfo</name>
+        <param>
+          <type>IMMPxNode</type>
+          <declname>pxNode</declname>
+        </param>
+        <briefdescription>
+<para>Gets the controls information. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pxNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The node.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="211" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1ae7fe75aa1a3bba76e9b3ad9596fa8ada" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Miner.Interop.Process.BasePxControl.SetLockIcon</definition>
+        <argsstring>()</argsstring>
+        <name>SetLockIcon</name>
+        <briefdescription>
+<para>Sets the lock icon. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="216" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aa3c41b5274dcc36325805e00655b7e0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Interop.Process.BasePxControl.Initialize</definition>
+        <argsstring>(object vInitData)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>object</type>
+          <declname>vInitData</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the control with the specified <emphasis>vInitData</emphasis> . </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vInitData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initalization data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="144" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aac2d6b2636be63fd5dc599fbb460c842" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Miner.Interop.Process.BasePxControl.Terminate</definition>
+        <argsstring>(ref bool bTerminate)</argsstring>
+        <name>Terminate</name>
+        <param>
+          <type>ref bool</type>
+          <declname>bTerminate</declname>
+        </param>
+        <briefdescription>
+<para>Called when the control is losing focus within the application. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bTerminate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to <computeroutput>true</computeroutput> the control can be closed; otherwise <computeroutput>false</computeroutput> to stop the closing.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="157" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="157" bodyend="166"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aaafdeaa9038e99e47ef50e414460e0ac" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.Process.BasePxControl.Register</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Register</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Registers the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="187" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="187" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aac6c2728d8593306484d7b11850d72e1" prot="package" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Miner.Interop.Process.BasePxControl.Unregister</definition>
+        <argsstring>(string registryKey)</argsstring>
+        <name>Unregister</name>
+        <param>
+          <type>string</type>
+          <declname>registryKey</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters the specified registry key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>registryKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The registry key.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="197" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="197" bodyend="200"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1ad61271e66827606301bdc69dce6aa188" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.BasePxControl.InitControlUI</definition>
+        <argsstring>(IMMPxNode node)</argsstring>
+        <name>InitControlUI</name>
+        <param>
+          <type>IMMPxNode</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="222" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="222" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a5c85446dc25908d3ffe9733cbb4dd0fa" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Miner.Interop.Process.BasePxControl.PopulateControlUI</definition>
+        <argsstring>(Control parentCtrl, Hashtable controlsInfo)</argsstring>
+        <name>PopulateControlUI</name>
+        <param>
+          <type><ref refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1ae0deb54b7c119e077366b7f9a187fbb2" kindref="member">Control</ref></type>
+          <declname>parentCtrl</declname>
+        </param>
+        <param>
+          <type>Hashtable</type>
+          <declname>controlsInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="233" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="233" bodyend="257"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for <ref refid="namespace_miner_1_1_interop_1_1_process" kindref="compound">Process</ref> <ref refid="namespace_miner_1_1_framework" kindref="compound">Framework</ref> node controls. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="98">
+        <label>IMMPxControl</label>
+      </node>
+      <node id="99">
+        <label>IMMPxControl2</label>
+      </node>
+      <node id="100">
+        <label>IMMPxDisplayName</label>
+      </node>
+      <node id="97">
+        <label>Miner.Interop.Process.BasePxControl</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control"/>
+        <childnode refid="98" relation="public-inheritance">
+        </childnode>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+        <childnode refid="100" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="102">
+        <label>IMMPxControl</label>
+      </node>
+      <node id="103">
+        <label>IMMPxControl2</label>
+      </node>
+      <node id="104">
+        <label>IMMPxDisplayName</label>
+      </node>
+      <node id="101">
+        <label>Miner.Interop.Process.BasePxControl</label>
+        <link refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control"/>
+        <childnode refid="102" relation="public-inheritance">
+        </childnode>
+        <childnode refid="103" relation="public-inheritance">
+        </childnode>
+        <childnode refid="104" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" line="16" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Miner/Miner/Interop/Process/BaseClasses/BasePxControl.cs" bodystart="15" bodyend="260"/>
+    <listofallmembers>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aadab0ef602dbc4e172f3584fce969b80" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>BasePxControl</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1ae0deb54b7c119e077366b7f9a187fbb2" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Control</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a5aad1ca62746910e63e3a9961f09724a" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>DisplayName</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a9f1b223abd314dec485f46afe49a045d" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Enabled</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aec9ec7e94ff30f5231ba81b6a4462e46" prot="protected" virt="pure-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>GetControlsInfo</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1afb21039abd0cf859521a93d597049cde" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>hWnd</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1ad61271e66827606301bdc69dce6aa188" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>InitControlUI</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aa3c41b5274dcc36325805e00655b7e0a" prot="public" virt="virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Initialize</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a7a0e417933d093457d59b44a2ec89267" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>IsInitialized</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a7b375424579cbc052e7ca96dac3c64fd" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Name</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a518388f743264d01710a012496e154e2" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Node</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a5c85446dc25908d3ffe9733cbb4dd0fa" prot="private" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>PopulateControlUI</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a06a1bede1c1103be889e6e79396d7243" prot="protected" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>PxApplication</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aaafdeaa9038e99e47ef50e414460e0ac" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Register</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1ae7fe75aa1a3bba76e9b3ad9596fa8ada" prot="protected" virt="pure-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>SetLockIcon</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a00c79f8897ce94fb61bd84669e6549b4" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>StateComplete</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aac2d6b2636be63fd5dc599fbb460c842" prot="public" virt="virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Terminate</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1aac6c2728d8593306484d7b11850d72e1" prot="package" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Unregister</name></member>
+      <member refid="class_miner_1_1_interop_1_1_process_1_1_base_px_control_1a620f07cfc21f27ca49be70cdda050729" prot="public" virt="non-virtual"><scope>Miner::Interop::Process::BasePxControl</scope><name>Visible</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

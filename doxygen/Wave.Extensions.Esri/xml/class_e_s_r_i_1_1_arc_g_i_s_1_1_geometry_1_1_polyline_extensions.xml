@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geometry_1_1_polyline_extensions" kind="class" language="C#" prot="public">
+    <compoundname>ESRI::ArcGIS::Geometry::PolylineExtensions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geometry_1_1_polyline_extensions_1a2074d013aaa469d374547a2f83035871" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double ESRI.ArcGIS.Geometry.PolylineExtensions.GetAngle</definition>
+        <argsstring>(this IPolyline source)</argsstring>
+        <name>GetAngle</name>
+        <param>
+          <type>this IPolyline</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Gets the angle of the line. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a double representing the angle.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" line="15" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" bodystart="15" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geometry_1_1_polyline_extensions_1ab67f0b5c0d20f0ff8455c670f7ceb4a4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double ESRI.ArcGIS.Geometry.PolylineExtensions.GetArithmeticAngle</definition>
+        <argsstring>(this IPolyline source)</argsstring>
+        <name>GetArithmeticAngle</name>
+        <param>
+          <type>this IPolyline</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Converts the angle of the line to Arithmetic Rotation. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a double representing the angle.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" line="29" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" bodystart="29" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_e_s_r_i_1_1_arc_g_i_s_1_1_geometry_1_1_polyline_extensions_1a9133b12621bb7ea578286885fffbc316" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double ESRI.ArcGIS.Geometry.PolylineExtensions.GetGeographicAngle</definition>
+        <argsstring>(this IPolyline source)</argsstring>
+        <name>GetGeographicAngle</name>
+        <param>
+          <type>this IPolyline</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Converts the angle of the line to Geographic Rotation. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns a double representing the angle.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" line="43" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" bodystart="43" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides extension methods for the IPolyline interface. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" line="7" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Geometry/Extensions/PolylineExtensions.cs" bodystart="6" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geometry_1_1_polyline_extensions_1a2074d013aaa469d374547a2f83035871" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geometry::PolylineExtensions</scope><name>GetAngle</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geometry_1_1_polyline_extensions_1ab67f0b5c0d20f0ff8455c670f7ceb4a4" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geometry::PolylineExtensions</scope><name>GetArithmeticAngle</name></member>
+      <member refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_geometry_1_1_polyline_extensions_1a9133b12621bb7ea578286885fffbc316" prot="public" virt="non-virtual"><scope>ESRI::ArcGIS::Geometry::PolylineExtensions</scope><name>GetGeographicAngle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

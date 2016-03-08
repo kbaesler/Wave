@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions" kind="class" language="C#" prot="package">
+    <compoundname>ESRI::ArcGIS::Framework::ArcMap::Extensions</compoundname>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions_1_1_guid" prot="package">ESRI::ArcGIS::Framework::ArcMap::Extensions::Guid</innerclass>
+    <innerclass refid="class_e_s_r_i_1_1_arc_g_i_s_1_1_framework_1_1_arc_map_1_1_extensions_1_1_name" prot="package">ESRI::ArcGIS::Framework::ArcMap::Extensions::Name</innerclass>
+    <briefdescription>
+<para>Container for the ESRI.ArcGIS.Framework.ArcMap.Extensions.Name and ESRI.ArcGIS.Framework.ArcMap.Extensions.Guid classes used to identify the common extensions for the ArcFM extensions which may be used for customization. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" line="44" column="1" bodyfile="C:/Users/ad-kbaesler/Documents/GitHub/Wave/src/Wave.Extensions.Esri/ESRI/ArcGIS/Framework/ArcMap.cs" bodystart="43" bodyend="92"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
