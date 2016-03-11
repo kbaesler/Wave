@@ -209,6 +209,11 @@ namespace Miner
                 public const string Designer = "Designer XML API Extension";
 
                 /// <summary>
+                ///     The name of the object editor
+                /// </summary>
+                public const string Editor = "Miner Object Editor";
+
+                /// <summary>
                 ///     The name of the features tab extension that list of all features on the Features tab that are available for
                 ///     placement.
                 /// </summary>

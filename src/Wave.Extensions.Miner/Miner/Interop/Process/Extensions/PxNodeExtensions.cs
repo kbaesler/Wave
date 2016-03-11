@@ -29,6 +29,26 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
+        ///     Executes the task with the given name, if it exists, on the given node.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="taskName">Name of the task.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when successfully executed the task.
+        /// </returns>
+        public static bool ExecuteTask(this IMMPxNode source, string taskName)
+        {
+            var task = source.GetTask(taskName);
+            if (task == null) return false;
+
+            var transition = ((IMMPxTask2) task).Transition;
+            if (!transition.FromStates.Contains(source.State))
+                return false;
+
+            return task.Execute(source);
+        }
+
+        /// <summary>
         ///     Finds the task using the specified <paramref name="source" /> and <paramref name="taskName" />.
         /// </summary>
         /// <param name="source">The node.</param>

@@ -17,10 +17,10 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof(NotSupportedException))]
         public void IWorkspace_Execute_IsNotNull()
         {
-            var table = base.Workspace.Execute("SELECT COUNT(*) FROM TRANSFORMER");
-            Assert.IsNotNull(table);
+            var cursor = base.Workspace.ExecuteReader("SELECT COUNT(*) FROM TRANSFORMER");
+            Assert.IsNotNull(cursor);
 
-            var row = table.AsEnumerable().FirstOrDefault();
+            var row = cursor.AsEnumerable().FirstOrDefault();
             Assert.IsNotNull(row);
 
             Assert.AreEqual(0, row.Value[0]);

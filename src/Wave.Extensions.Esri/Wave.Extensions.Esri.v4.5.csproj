@@ -176,6 +176,7 @@
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\MapAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Editor\Extensions\EditorExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\ApplicationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseContentsView.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseDockableWindow.cs" />
@@ -187,7 +188,7 @@
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxDockableWindow.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\ArcCatalog.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\ArcMap.cs" />
-    <Compile Include="ESRI\ArcGIS\Framework\Extensions\EditorExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Extensions\CommandBarExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressBarAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />

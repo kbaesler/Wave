@@ -17,7 +17,9 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="State:"/>
         <controls:AutoCompleteTextBox  Grid.Row="2"
+                                       DelayTime="1000"
                                        MaxDropDownHeight="50"
-                                    AutoCompleteSource="{Binding AutoCompleteSource}" />
+                                       Text="{Binding State}"
+                                       AutoCompleteSource="{Binding States}" />
     </Grid>
 </Window>

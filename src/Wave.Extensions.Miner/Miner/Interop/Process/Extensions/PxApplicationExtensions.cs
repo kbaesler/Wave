@@ -103,6 +103,7 @@ namespace Miner.Interop.Process
             };
         }
 
+        
         /// <summary>
         ///     Executes the given statement which is usually an Insert, Update or Delete statement and returns the number of rows
         ///     affected.

@@ -220,6 +220,7 @@
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\MapAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Editor\Extensions\EditorExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\DatasetAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\ClassAsyncExtensions.cs" />
@@ -270,9 +271,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\D8ListItemExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FeatureClassExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FieldExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\MMEditorExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\Internal\EditNotificationQueue.cs" />
@@ -326,6 +331,8 @@
     <Compile Include="Miner\Interop\Process\Nodes\Builders\DesignBuilder.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Builders\SessionBuilder.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Builders\WorkRequestBuilder.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\WorkLocation.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\CompatibleUnit.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Customer.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Design.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Interfaces\IPxDesign.cs" />

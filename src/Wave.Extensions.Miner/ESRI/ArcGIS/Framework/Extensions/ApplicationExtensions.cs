@@ -110,6 +110,18 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
+        ///     Gets the ArcFM object editor.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IMMEditor" /> representing the object editor.</returns>
+        public static IMMEditor GetEditorM(this IApplication source)
+        {
+            if (source == null) return null;
+
+            return source.FindExtensionByName(ArcFM.Extensions.Name.Editor) as IMMEditor;
+        }
+
+        /// <summary>
         ///     Returns the contents of the Feeder Manager information that are used for Electric networks.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -244,6 +256,17 @@ namespace ESRI.ArcGIS.Framework
         {
             var props = source.GetProperties();
             return props as IMMStandardWorkspaces;
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:IMMLoginEvents_Event.LoginChanged" /> event.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="app">The application.</param>
+        public static void RaiseLoginChanged(this IMMLoginObject source, IApplication app)
+        {
+            var editor = app.GetEditorM();
+            editor.RaiseLoginChanged(source);
         }
 
         #endregion
