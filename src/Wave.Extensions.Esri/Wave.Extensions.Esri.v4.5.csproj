@@ -168,6 +168,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseTool.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />

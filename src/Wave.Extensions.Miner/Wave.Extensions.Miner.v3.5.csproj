@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Editor\Extensions\EditorExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\DatasetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingDatabaseModelNameException.cs" />
@@ -253,13 +254,16 @@
     <Compile Include="Miner\Geodatabase\Internal\EventOverride.cs" />
     <Compile Include="Miner\Geodatabase\EventOverrides.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverter.cs" />
+    <Compile Include="Miner\Interop\Extensions\AttributeEditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\D8ListItemExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FeatureClassExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FieldExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\MMEditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\Internal\EditNotificationQueue.cs" />
@@ -313,6 +317,7 @@
     <Compile Include="Miner\Interop\Process\Nodes\Builders\DesignBuilder.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Builders\SessionBuilder.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Builders\WorkRequestBuilder.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\CompatibleUnit.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Customer.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Design.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Interfaces\IPxDesign.cs" />
@@ -321,6 +326,7 @@
     <Compile Include="Miner\Interop\Process\Nodes\Interfaces\IPxWorkRequest.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Location.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\Session.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\WorkLocation.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\WorkRequest.cs" />
     <Compile Include="Miner\Interop\Process\PxIntegrationCache.cs" />
     <Compile Include="Miner\Interop\Process\PxUser.cs" />

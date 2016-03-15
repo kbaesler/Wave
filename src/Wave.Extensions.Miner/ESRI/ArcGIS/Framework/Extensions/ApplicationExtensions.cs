@@ -41,6 +41,19 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
+        ///     Gets the <see cref="ID8List" /> of the active tab on the Attribute Editor.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="ID8List" /> representing the list of the active tab.</returns>
+        public static ID8List GetActiveTab(this IApplication source)
+        {
+            var editor = source.GetAttributeEditor();
+            if(editor == null) return null;
+
+            return editor.GetActiveTab();
+        }
+
+        /// <summary>
         ///     Returns the reference to the ArcFM Attribute Editor.
         /// </summary>
         /// <param name="source">The application reference.</param>
@@ -65,6 +78,8 @@ namespace ESRI.ArcGIS.Framework
         /// <returns>Returns a <see cref="ICuLibrary" /> representing the extension for the library.</returns>
         public static ICuLibrary GetCULibrary(this IApplication source)
         {
+            if (source == null) return null;
+
             CuLibraryExtension extension = source.FindExtensionByName(ArcFM.Extensions.Name.CULibrary) as CuLibraryExtension;
             return (extension == null) ? null : extension.CuLibrary;
         }

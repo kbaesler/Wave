@@ -216,6 +216,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\MapAsyncExtensions.cs" />
@@ -267,6 +268,7 @@
     <Compile Include="Miner\Geodatabase\Internal\EventOverride.cs" />
     <Compile Include="Miner\Geodatabase\EventOverrides.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverter.cs" />
+    <Compile Include="Miner\Interop\Extensions\AttributeEditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
       <SubType>Code</SubType>
     </Compile>

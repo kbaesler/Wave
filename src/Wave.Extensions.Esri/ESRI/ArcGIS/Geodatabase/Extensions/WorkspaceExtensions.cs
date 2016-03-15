@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 
 using ESRI.ArcGIS.ADF;
+using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase.Internal;
 
@@ -575,8 +576,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="System.ArgumentException">
-        ///     The workspace does not support the edit session
-        ///     {D255958A-8513-4226-94B9-080D98F904A1}mode.;multiuserEditSessionMode
+        ///     The workspace does not support the edit session mode.;multiuserEditSessionMode
         /// </exception>
         public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
@@ -595,6 +595,69 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return result;
+        }
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="operation">The delegate that performs the operation.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
+        public static bool PerformOperation(this IWorkspace source, Func<bool> operation)
+        {
+            return ((IWorkspaceEdit) source).PerformOperation(operation);
+        }
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="operation">The delegate that performs the operation.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
+        public static bool PerformOperation(this IWorkspaceEdit source, Func<bool> operation)
+        {
+            if (source == null) return false;
+            if (operation == null) throw new ArgumentNullException("operation");
+
+            var wse = source as IWorkspaceEdit2;
+            if (wse == null) return false;
+
+            if (wse.IsInEditOperation)
+                throw new ArgumentOutOfRangeException("source", "An edit operation is already started.");
+
+            source.StartEditOperation();
+
+            bool flag = false;
+
+            try
+            {
+                flag = operation();
+            }
+            catch (Exception)
+            {
+                if (wse.IsInEditOperation)
+                    source.AbortEditOperation();
+
+                throw;
+            }
+            finally
+            {
+                if (wse.IsInEditOperation)
+                {
+                    if (flag)
+                        source.StopEditOperation();
+                    else
+                        source.AbortEditOperation();
+                }
+            }
+
+            return flag;
         }
 
         /// <summary>
