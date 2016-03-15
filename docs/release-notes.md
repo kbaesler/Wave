@@ -4,6 +4,15 @@ This will serve as a reference to the release notes with regards to the `release
 ## Roadmap
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
+### New
+- Added `PerformOperation` extension methods to the `IEditor`, `IMMEditor`, `IWorkspace` and `IWorkspaceEdit` interfaces that wrap the start / stop operation constructs. [^3]
+- Added `ExecuteTask` extension method on the `IMMPxNode` object to execute tasks based on name. [^2]
+- Added `CompatibleUnit` and `WorkLocation` node objects. [^2]
+- Added `GetActiveTab` extension method to the `IMMAttributeEditor` interface to allow for returning the `ID8List` for the tab that is selected in the ArcFM Attribute Editor. [^2]
+
+### Changed
+- The `GetDataChanges` extension methods on the `IVersion` interface returns a `DeltaRowCollection` instead of a `List{DeltaRow}` as the accessor methods on the `DeltaRow` have been moved to the `DeltaRowCollection` class to allow for better performance. [^1] [^4]
+
 ---
 ## Version 1.0.2 - 2016-03-03
 ### Fixed
@@ -52,4 +61,4 @@ These are the changes, additions, removals that are actively being worked on and
 
  [^3]: A change that is included in both the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
 
- [^4]: A change that *potentially* causes other components to **fail**.
+ [^4]: A change that **potentially** causes other components to **fail**.

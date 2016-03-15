@@ -1,5 +1,6 @@
 # Developer Guide
 This will serve as a reference guide for developer samples, the purpose of the samples is to provide example usages of the extensions that are provided in the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
+
 - Not all of the features in the **Wave** project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub [issue tracker](https://github.com/Jumpercables/Wave/issues).
 
 ## Licenses
