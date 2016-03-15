@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
 using System.Data.OleDb;
 using System.Globalization;
 using System.IO;
@@ -19,9 +18,22 @@ namespace System.Data
         /// </summary>
         /// <param name="source">The table.</param>
         /// <param name="size">The size.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> of the <see cref="DataRow" /> objects in the table in groups.
+        /// </returns>
+        public static IEnumerable<List<DataRow>> Batch(this DataTable source, int size)
+        {
+            return source.Batch(size, false);
+        }
+
+        /// <summary>
+        ///     Batches the specified table into groups of the specified amount.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="size">The size.</param>
         /// <param name="reverse">The table is traversed in reverse order.</param>
         /// <returns>Returns a <see cref="IEnumerable{T}" /> of the <see cref="DataRow" /> objects in the table in groups.</returns>
-        public static IEnumerable<List<DataRow>> Batch(this DataTable source, int size, bool reverse = false)
+        public static IEnumerable<List<DataRow>> Batch(this DataTable source, int size, bool reverse)
         {
             var partition = new List<DataRow>();
 
@@ -71,7 +83,7 @@ namespace System.Data
                 {
                     cmd.CommandText = @"SELECT * FROM " + Path.GetFileName(fileName);
                     cmd.CommandType = CommandType.Text;
-                 
+
                     using (var dr = cmd.ExecuteReader())
                     {
                         if (dr != null)
@@ -81,7 +93,6 @@ namespace System.Data
                         }
                     }
                 }
-
             }
         }
 

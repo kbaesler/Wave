@@ -101,7 +101,7 @@ namespace Wave.Extensions.Esri.Tests
         {
             var testClass = base.GetTestClass();
 
-            Assert.IsFalse(base.Workspace.PerformOperation(() =>
+            Assert.IsFalse(base.Workspace.PerformOperation(true, esriMultiuserEditSessionMode.esriMESMVersioned, () =>
             {
                 var feature = testClass.CreateNew();
                 Assert.IsNotNull(feature);

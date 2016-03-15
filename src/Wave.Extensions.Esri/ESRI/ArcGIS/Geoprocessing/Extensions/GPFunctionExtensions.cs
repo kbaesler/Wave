@@ -166,14 +166,14 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// <returns>
         ///     Returns a <see cref="IGPParameterEdit3" /> representing the parameter.
         /// </returns>
-        public static IGPParameterEdit3 CreateMultiValueParameter(this IGPFunction source, string name, string displayName, string category, esriGPParameterType parameterType, esriGPParameterDirection parameterDirection, IGPDataType dataType, bool checkBoxes = false)
+        public static IGPParameterEdit3 CreateMultiValueParameter(this IGPFunction source, string name, string displayName, string category, esriGPParameterType parameterType, esriGPParameterDirection parameterDirection, IGPDataType dataType, bool checkBoxes)
         {
             var parameter = source.CreateMultiValueParameter(name, displayName, parameterType, parameterDirection, dataType, checkBoxes);
             parameter.Category = category;
 
             return parameter;
         }
-
+      
         /// <summary>
         ///     Creates a parameter that supports multiple inputs of the same data type.
         /// </summary>
@@ -196,7 +196,7 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// <returns>
         ///     Returns a <see cref="IGPParameterEdit3" /> representing the parameter.
         /// </returns>
-        public static IGPParameterEdit3 CreateMultiValueParameter(this IGPFunction source, string name, string displayName, esriGPParameterType parameterType, esriGPParameterDirection parameterDirection, IGPDataType dataType, bool checkBoxes = false)
+        public static IGPParameterEdit3 CreateMultiValueParameter(this IGPFunction source, string name, string displayName, esriGPParameterType parameterType, esriGPParameterDirection parameterDirection, IGPDataType dataType, bool checkBoxes)
         {
             var multiValueType = new GPMultiValueTypeClass();
             multiValueType.MemberDataType = dataType;

@@ -95,11 +95,9 @@ namespace System
         /// </returns>
         private static bool IsEmpty(object obj)
         {
-            if (obj is string)
-                if (string.IsNullOrEmpty(obj.ToString().Trim()))
-                    return true;
+            if (!(obj is string)) return false;
 
-            return false;
+            return string.IsNullOrEmpty(obj.ToString().Trim());
         }
 
         #endregion

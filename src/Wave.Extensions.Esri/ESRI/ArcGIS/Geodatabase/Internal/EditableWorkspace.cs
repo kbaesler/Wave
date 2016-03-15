@@ -63,7 +63,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         ///     The workspace does not support the edit session
         ///     mode.;multiuserEditSessionMode
         /// </exception>
-        public void StartEditing(bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        public void StartEditing(bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode)
         {
             IMultiuserWorkspaceEdit multiuserWorkspaceEdit = _Workspace as IMultiuserWorkspaceEdit;
             if (multiuserWorkspaceEdit != null)

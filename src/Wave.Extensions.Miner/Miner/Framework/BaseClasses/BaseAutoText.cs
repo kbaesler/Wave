@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -20,12 +21,11 @@ namespace Miner.Framework.BaseClasses
         /// <summary>
         ///     Initializes a new instance of the <see cref="BaseAutoText" /> class.
         /// </summary>
-        /// <param name="caption">The caption.</param>
-        /// <param name="progID">The prog ID.</param>
-        protected BaseAutoText(string caption, string progID)
+        /// <param name="caption">This is the autotext element's display name. The name will appear in the ArcFM Autotext menu.</param>
+        protected BaseAutoText(string caption)
         {
             this.Caption = caption;
-            this.ProgID = progID;
+            this.ProgID = this.GetType().GetCustomAttributes(typeof (ProgIdAttribute), true).Cast<ProgIdAttribute>().Select(o => o.Value).FirstOrDefault();
         }
 
         #endregion
@@ -51,7 +51,7 @@ namespace Miner.Framework.BaseClasses
         ///     The program ID links the autotext element with its text source class.
         ///     The program ID is from the class module that implements this interface.
         /// </remarks>
-        public string ProgID { get; private set; }
+        public virtual string ProgID { get; private set; }
 
         /// <summary>
         ///     Returns the text string that will appear on the map layout based on the <paramref name="eTextEvent" /> value
@@ -73,9 +73,40 @@ namespace Miner.Framework.BaseClasses
         /// </remarks>
         public string TextString(mmAutoTextEvents eTextEvent, IMMMapProductionInfo pMapProdInfo)
         {
+            var value = " ";
+
             try
-            {
-                return this.GetText(eTextEvent, pMapProdInfo);
+            {                              
+                switch (eTextEvent)
+                {
+                    case mmAutoTextEvents.mmCreate:
+                        value = this.OnCreate();
+                        break;
+
+                    case mmAutoTextEvents.mmDraw:
+                        value = this.OnDraw();
+                        break;
+
+                    case mmAutoTextEvents.mmFinishPlot:
+                        value = this.OnFinish();
+                        break;
+
+                    case mmAutoTextEvents.mmPlotNewPage:
+                        value = this.GetText(pMapProdInfo);
+                        break;
+
+                    case mmAutoTextEvents.mmPrint:
+                        value = this.OnPrint(pMapProdInfo);
+                        break;
+
+                    case mmAutoTextEvents.mmRefresh:
+                        value = this.OnRefresh();
+                        break;
+
+                    case mmAutoTextEvents.mmStartPlot:
+                        value = this.OnStart(pMapProdInfo);
+                        break;
+                }
             }
             catch (Exception e)
             {
@@ -85,7 +116,8 @@ namespace Miner.Framework.BaseClasses
                 Log.Error(this, "Error Executing Auto Text " + this.Caption, e);
             }
 
-            return string.Empty;
+            // An empty string will remove the auto text element.
+            return string.IsNullOrEmpty(value) ? " " : value;
         }
 
         /// <summary>
@@ -130,21 +162,98 @@ namespace Miner.Framework.BaseClasses
         #region Protected Methods
 
         /// <summary>
-        ///     Returns the text string that will appear on the map layout based on the <paramref name="textEvent" /> value
-        ///     and the status of the <paramref name="mapProdInfo" /> parameter.
-        ///     The <paramref name="mapProdInfo" /> parameter passed in will be "Nothing" for all <paramref name="textEvent" />
-        ///     except mmPlotNewPage and mmFinishPlot.
+        ///     Returns the text string that will appear on the map layout base on
+        ///     the status of the <paramref name="mapProdInfo" /> parameter.
         /// </summary>
-        /// <param name="textEvent">The text event.</param>
         /// <param name="mapProdInfo">The map prod info.</param>
-        /// Returns the text string that will appear on the map layout based on the
-        /// <paramref name="textEvent" />
-        /// value
-        /// and the status of the
+        /// <returns></returns>
+        /// <remarks>
+        ///     This method should always return a non-empty string. 
+        /// </remarks>
+        /// Returns the text string that will appear on the map layout based on the status of the
         /// <paramref name="mapProdInfo" />
         /// parameter.
-        /// <remarks>This method should always return a non-empty string. If nothing is provided, it is automatically set to " ".</remarks>
-        protected abstract string GetText(mmAutoTextEvents textEvent, IMMMapProductionInfo mapProdInfo);
+        protected abstract string GetText(IMMMapProductionInfo mapProdInfo);
+
+        /// <summary>
+        ///     Called when the auto text has been created.
+        /// </summary>
+        /// <returns>Returns the text string that will appear on the map layout</returns>
+        /// <remarks>
+        ///     This method should always return a non-empty string. 
+        /// </remarks>
+        protected virtual string OnCreate()
+        {
+            return this.Caption;
+        }
+
+        /// <summary>
+        ///     Called when the auto text has been drawn.
+        /// </summary>
+        /// <returns>Returns the text string that will appear on the map layout</returns>
+        /// <remarks>
+        ///     This method should always return a non-empty string. 
+        /// </remarks>
+        protected virtual string OnDraw()
+        {
+            return this.Caption;
+        }
+
+        /// <summary>
+        ///     Called when the auto text has finished being plotted.
+        /// </summary>
+        /// <returns>Returns the text string that will appear on the map layout</returns>
+        /// <remarks>
+        ///     This method should always return a non-empty string. 
+        /// </remarks>
+        protected virtual string OnFinish()
+        {
+            return this.Caption;
+        }
+
+        /// <summary>
+        ///     Called when the page layout is being printed.
+        /// </summary>
+        /// <param name="mapProdInfo">The map product information.</param>
+        /// <returns>
+        ///     Returns the text string that will appear on the map layout
+        /// </returns>
+        /// <remarks>
+        ///     This method should always return a non-empty string.
+        /// </remarks>
+        protected virtual string OnPrint(IMMMapProductionInfo mapProdInfo)
+        {
+            return this.GetText(mapProdInfo);
+        }
+
+        /// <summary>
+        ///     Called when the auto text has been refreshed.
+        /// </summary>
+        /// <returns>
+        ///     Returns the text string that will appear on the map layout
+        /// </returns>
+        /// <remarks>
+        ///     This method should always return a non-empty string. 
+        /// </remarks>
+        protected virtual string OnRefresh()
+        {
+            return this.Caption;
+        }
+
+        /// <summary>
+        ///     Called when the page is starting to be plotted.
+        /// </summary>
+        /// <param name="mapProdInfo">The map product information.</param>
+        /// <returns>
+        ///     Returns the text string that will appear on the map layout
+        /// </returns>
+        /// <remarks>
+        ///     This method should always return a non-empty string. 
+        /// </remarks>
+        protected virtual string OnStart(IMMMapProductionInfo mapProdInfo)
+        {
+            return this.GetText(mapProdInfo);
+        }
 
         #endregion
     }

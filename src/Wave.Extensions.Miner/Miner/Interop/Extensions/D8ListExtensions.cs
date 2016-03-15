@@ -39,7 +39,7 @@ namespace Miner.Interop
         {
             if (source == null) return null;
 
-            return source.AsEnumerable(Recursion<ID8ListItem>.Infinite);
+            return source.AsEnumerable(Recursion<ID8ListItem>.Infinity);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Miner.Interop
         {
             if (source == null) return null;
 
-            return source.AsEnumerable(Recursion<ID8ListItem>.Infinite);
+            return source.AsEnumerable(Recursion<ID8ListItem>.Infinity);
         }
 
         /// <summary>
@@ -177,6 +177,31 @@ namespace Miner.Interop
         }
 
         /// <summary>
+        ///     Replaces the source list with the contents of the specified list.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="list">The list that will replace the source.</param>
+        public static void Update(this ID8List source, ID8List list)
+        {
+            source.Clear();
+
+            ((ID8ListItem) source).AllowCoreEvents = false;
+
+            try
+            {
+                list.Reset();
+
+                ID8ListItem item;
+                while ((item = list.Next(false)) != null)
+                    source.Add(item);
+            }
+            finally
+            {
+                ((ID8ListItem) source).AllowCoreEvents = true;
+            }
+        }
+
+        /// <summary>
         ///     Traverses the <paramref name="source" /> tree structure recursively selecting only those
         ///     <see cref="Miner.Interop.ID8ListItem" /> that satisify the <paramref name="selector" />
         ///     and flattens the resulting sequences into one sequence.
@@ -241,7 +266,7 @@ namespace Miner.Interop
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
 
-            return source.Where(selector, Recursion<ID8ListItem>.Infinite);
+            return source.Where(selector, Recursion<ID8ListItem>.Infinity);
         }
 
         /// <summary>
@@ -262,7 +287,7 @@ namespace Miner.Interop
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
 
-            return source.Where(selector, Recursion<ID8ListItem>.Infinite);
+            return source.Where(selector, Recursion<ID8ListItem>.Infinity);
         }
 
         #endregion
@@ -303,7 +328,7 @@ namespace Miner.Interop
                 if (selector(child))
                     yield return new Recursion<ID8ListItem>(depth, child);
 
-                if ((depth <= maximum) || (maximum == Recursion<ID8ListItem>.Infinite))
+                if ((depth <= maximum) || (maximum == Recursion<ID8ListItem>.Infinity))
                 {
                     ID8List list = child as ID8List;
                     if (list != null)
@@ -344,7 +369,7 @@ namespace Miner.Interop
                 if (selector(child))
                     yield return new Recursion<ID8ListItem>(depth, child);
 
-                if ((depth <= maximum) || (maximum == Recursion<ID8ListItem>.Infinite))
+                if ((depth <= maximum) || (maximum == Recursion<ID8ListItem>.Infinity))
                 {
                     ID8List2 list = child as ID8List2;
                     if (list != null)

@@ -1,6 +1,9 @@
 ﻿using System;
-using System.Data.OleDb;
 using System.IO;
+
+#if NET45
+using System.Threading.Tasks;
+#endif
 
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.esriSystem;
@@ -13,7 +16,7 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class WorkspaceFactories
     {
         #region Public Methods
-        
+
         /// <summary>
         ///     Gets the workspace factory.
         /// </summary>
@@ -61,6 +64,58 @@ namespace ESRI.ArcGIS.Geodatabase
             throw new NotSupportedException("The workspace factory for the file is not supported.");
         }
 
+#if NET45
+        /// <summary>
+        ///     Connects to the geodatabase given the specified parameters.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>
+        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">fileName</exception>
+        public static Task<IWorkspace> OpenAsync(string fileName)
+        {
+            return Task.Run(() => Open(fileName));
+        }
+
+        /// <summary>
+        ///     Connects to the remote geodatabase given the specified parameters.
+        /// </summary>
+        /// <param name="server">The server.</param>
+        /// <param name="instance">The instance.</param>
+        /// <param name="version">The version.</param>
+        /// <param name="database">The database.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="username">The username.</param>
+        /// <returns>
+        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
+        /// </returns>
+        public static Task<IWorkspace> OpenAsync(string server, string instance, string version, string database, string password, string username)
+        {
+            return Task.Run(() => Open(server, instance, version, database, password, username, null, "DBMS"));
+        }
+
+        /// <summary>
+        ///     Connects to the remote geodatabase given the specified parameters.
+        /// </summary>
+        /// <param name="server">The server.</param>
+        /// <param name="instance">The instance.</param>
+        /// <param name="version">The version.</param>
+        /// <param name="database">The database.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="username">The username.</param>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <param name="authentication">The authentication (either DBMS or OSA).</param>
+        /// <returns>
+        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
+        /// </returns>
+        public static Task<IWorkspace> OpenAsync(string server, string instance, string version, string database, string password, string username,
+            DateTime? timestamp, string authentication)
+        {
+            return Task.Run(() => Open(server, instance, version, database, password, username, null, "DBMS"));
+        }
+#endif
+
         /// <summary>
         ///     Connects to the geodatabase given the specified parameters.
         /// </summary>
@@ -86,13 +141,30 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="database">The database.</param>
         /// <param name="password">The password.</param>
         /// <param name="username">The username.</param>
+        /// <returns>
+        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
+        /// </returns>
+        public static IWorkspace Open(string server, string instance, string version, string database, string password, string username)
+        {
+            return Open(server, instance, version, database, password, username, null, "DBMS");
+        }
+
+        /// <summary>
+        ///     Connects to the remote geodatabase given the specified parameters.
+        /// </summary>
+        /// <param name="server">The server.</param>
+        /// <param name="instance">The instance.</param>
+        /// <param name="version">The version.</param>
+        /// <param name="database">The database.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="username">The username.</param>
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="authentication">The authentication (either DBMS or OSA).</param>
         /// <returns>
         ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
         /// </returns>
         public static IWorkspace Open(string server, string instance, string version, string database, string password, string username,
-            DateTime? timestamp = null, string authentication = "DBMS")
+            DateTime? timestamp, string authentication)
         {
             IWorkspaceFactory factory;
             DBMS type = GetDBMS(server, instance, database, version);

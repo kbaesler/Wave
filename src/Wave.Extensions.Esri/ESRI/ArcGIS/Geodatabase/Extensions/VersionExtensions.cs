@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
@@ -30,7 +33,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     dataChangeTypes
         /// </exception>
-        public static Dictionary<string, List<DeltaRow>> GetDataChanges(this IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
+        public static Dictionary<string, DeltaRowCollection> GetDataChanges(this IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
         {
             if (source == null) return null;
             if (target == null) throw new ArgumentNullException("target");
@@ -61,14 +64,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     dataChangeTypes
         /// </exception>
-        public static Dictionary<string, List<DeltaRow>> GetDataChanges(this IVersion source, IVersion target, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
+        public static Dictionary<string, DeltaRowCollection> GetDataChanges(this IVersion source, IVersion target, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
         {
             if (source == null) return null;
             if (target == null) throw new ArgumentNullException("target");
             if (predicate == null) throw new ArgumentNullException("predicate");
             if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
 
-            var list = new Dictionary<string, List<DeltaRow>>();
+            var list = new Dictionary<string, DeltaRowCollection>();
 
             IVersionDataChangesInit vdci = new VersionDataChangesClass();
             IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
@@ -85,7 +88,7 @@ namespace ESRI.ArcGIS.Geodatabase
             while ((mci = enumMci.Next()) != null)
             {
                 string tableName = mci.ChildClassName;
-                var rows = new List<DeltaRow>();
+                var rows = new DeltaRowCollection(tableName, source, target, dataChangeTypes);
 
                 using (ComReleaser cr = new ComReleaser())
                 {
@@ -111,7 +114,7 @@ namespace ESRI.ArcGIS.Geodatabase
                             set.Next(out oid);
                             while (oid != -1)
                             {
-                                var row = new DeltaRow(dataChangeType, oid, tableName, isFeatureClass, source, target);
+                                var row = new DeltaRow(dataChangeType, oid, tableName, isFeatureClass);
                                 rows.Add(row);
 
                                 set.Next(out oid);
@@ -120,7 +123,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                         list.Add(tableName, rows);
                     }
-                }                
+                }
             }
 
             return list;
@@ -330,14 +333,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="operation">
-        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
-        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
-        /// </param>
         /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
         /// <param name="multiuserEditSessionMode">
         ///     The edit session mode that can be used to indicate non-versioned or versioned
         ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
         /// </param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing the state of the operation.
@@ -347,39 +350,208 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace does not support the edit session
         ///     mode.;multiuserEditSessionMode
         /// </exception>
-        public static bool PerformOperation(this IVersion source, Func<bool> operation, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        public static bool PerformOperation(this IVersion source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
-            return ((IWorkspace) source).PerformOperation(operation, withUndoRedo, multiuserEditSessionMode);
-        }
-
-        /// <summary>
-        ///     Starts editing the workspace using the specified <paramref name="withUndoRedo" /> and
-        ///     <paramref name="multiuserEditSessionMode" /> parameters.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
-        /// <param name="multiuserEditSessionMode">
-        ///     The edit session mode that can be used to indicate non-versioned or versioned
-        ///     editing for workspaces that support multiuser editing.
-        /// </param>
-        /// <returns>
-        ///     Returns a <see cref="IEditableWorkspace" /> respresenting an editable workspace (that is disposable).
-        /// </returns>
-        /// <exception cref="System.ArgumentException">
-        ///     The workspace does not support the edit session
-        ///     mode.;multiuserEditSessionMode
-        /// </exception>
-        /// <remarks>
-        ///     The <see cref="IEditableWorkspace" /> implements the <see cref="IDisposable" /> interface, meaning it should be
-        ///     used within a using statement.
-        /// </remarks>
-        public static IEditableWorkspace StartEditing(this IVersion source, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
-        {
-            return ((IWorkspace) source).StartEditing(withUndoRedo, multiuserEditSessionMode);
+            return ((IWorkspace) source).PerformOperation(withUndoRedo, multiuserEditSessionMode, operation);
         }
 
         #endregion
     }
+
+    #region Nested Type: DeltaRowCollection
+
+    #region Enumerations
+
+    /// <summary>
+    ///     The state of the row.
+    /// </summary>
+    public enum DeltaRowState
+    {
+        /// <summary>
+        ///     The state of the row in the current (child) version.
+        /// </summary>
+        CurrentVersion,
+
+        /// <summary>
+        ///     The state of the row in the target (parent) version.
+        /// </summary>
+        TargetVersion,
+
+        /// <summary>
+        ///     The state of the row in the common ancestor (prior to edits) version.
+        /// </summary>
+        CommonAncestorVersion
+    }
+
+    #endregion
+
+    /// <summary>
+    ///     Provides a collection of <see cref="DeltaRow" /> objects.
+    /// </summary>
+    public class DeltaRowCollection : KeyedCollection<int, DeltaRow>
+    {
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DeltaRowCollection" /> class.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <param name="source">The source (or child) version.</param>
+        /// <param name="target">The target (or parent) version.</param>
+        /// <param name="dataChangeTypes">The data change types.</param>
+        public DeltaRowCollection(string tableName, IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
+        {
+            this.TableName = tableName;
+            this.DataChangeTypes = dataChangeTypes;
+
+            this.TargetVersion = target;
+            this.CurrentVersion = source;
+            this.CommonAncestorVersion = ((IVersion2) source).GetCommonAncestor(target);
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the data change types.
+        /// </summary>
+        /// <value>
+        ///     The data change types.
+        /// </value>
+        public esriDataChangeType[] DataChangeTypes { get; private set; }
+
+        /// <summary>
+        ///     Indicates if the row represents a feature class.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is feature class; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsFeatureClass
+        {
+            get { return this.All(o => o.IsFeatureClass); }
+        }
+
+        /// <summary>
+        ///     The name of the table.
+        /// </summary>
+        /// <value>
+        ///     The name of the table.
+        /// </value>
+        public string TableName { get; private set; }
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets the common ancestor version.
+        /// </summary>
+        /// <value>
+        ///     The common ancestor version.
+        /// </value>
+        protected IVersion CommonAncestorVersion { get; private set; }
+
+        /// <summary>
+        ///     Gets the current version.
+        /// </summary>
+        /// <value>
+        ///     The current version.
+        /// </value>
+        protected IVersion CurrentVersion { get; private set; }
+
+        /// <summary>
+        ///     Gets the target version.
+        /// </summary>
+        /// <value>
+        ///     The target version.
+        /// </value>
+        protected IVersion TargetVersion { get; private set; }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Gets the rows that reside in the current version.
+        /// </summary>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IRow}" /> representing the rows for the state.
+        /// </returns>
+        /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
+        public IEnumerable<IRow> GetRows()
+        {
+            return this.GetRows(DeltaRowState.CurrentVersion);
+        }
+
+        /// <summary>
+        ///     Gets the rows that reside in the version that corresponds to the state.
+        /// </summary>
+        /// <param name="rowState">The state representing the current or parent or common versions.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IRow}" /> representing the rows for the state.
+        /// </returns>
+        /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
+        public IEnumerable<IRow> GetRows(DeltaRowState rowState)
+        {
+            IFeatureWorkspace workspace;
+
+            switch (rowState)
+            {
+                case DeltaRowState.CurrentVersion:
+                    workspace = this.CurrentVersion as IFeatureWorkspace;
+                    break;
+
+                case DeltaRowState.TargetVersion:
+                    workspace = this.TargetVersion as IFeatureWorkspace;
+                    break;
+
+                case DeltaRowState.CommonAncestorVersion:
+                    workspace = this.CommonAncestorVersion as IFeatureWorkspace;
+                    break;
+
+                default:
+                    throw new NotSupportedException("The row state is not supported.");
+            }
+
+            if (workspace != null)
+            {
+                ITable table = workspace.OpenTable(this.TableName);
+                foreach (var oids in this.Select(o => o.OID).Batch(1000))
+                {
+                    IQueryFilter filter = new QueryFilterClass();
+                    filter.WhereClause = string.Format("{0} IN ({1})", table.OIDFieldName, oids);
+
+                    using (ComReleaser cr = new ComReleaser())
+                    {
+                        var cursor = table.Search(filter, false);
+                        cr.ManageLifetime(cursor);
+
+                        foreach (var row in cursor.AsEnumerable())
+                            yield return row;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        ///     Gets the key for item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
+        protected override int GetKeyForItem(DeltaRow item)
+        {
+            return item.OID;
+        }
+
+        #endregion
+    }
+
+    #endregion
 
     #region Nested Type: DeltaRow
 
@@ -388,47 +560,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public struct DeltaRow
     {
-        #region Enumerations
-
-        /// <summary>
-        ///     The state of the row.
-        /// </summary>
-        public enum RowState
-        {
-            /// <summary>
-            ///     The state of the row in the current (child) version.
-            /// </summary>
-            ChildVersion,
-
-            /// <summary>
-            ///     The state of the row in the target (parent) version.
-            /// </summary>
-            ParentVersion,
-
-            /// <summary>
-            ///     The state of the row in the common ancestor (prior to edits) version.
-            /// </summary>
-            CommonAncestorVersion
-        }
-
-        #endregion
-
         #region Fields
-
-        /// <summary>
-        ///     The common ancestor workspace.
-        /// </summary>
-        private readonly IWorkspace _CommonAncestorWorkspace;
-
-        /// <summary>
-        ///     The source workspace or child workspace.
-        /// </summary>
-        private readonly IWorkspace _SourceWorkspace;
-
-        /// <summary>
-        ///     The target workspace or parent workspace.
-        /// </summary>
-        private readonly IWorkspace _TargetWorkspace;
 
         /// <summary>
         ///     The type of data changes.
@@ -461,57 +593,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="oid">The object id of the row.</param>
         /// <param name="tableName">Name of the table.</param>
         /// <param name="isFeatureClass">if set to <c>true</c> if the row represents a feature class.</param>
-        /// <param name="source">The source (or child) version.</param>
-        /// <param name="target">The target (or parent) version.</param>
-        public DeltaRow(esriDataChangeType dataChangeType, int oid, string tableName, bool isFeatureClass, IVersion source, IVersion target)
+        public DeltaRow(esriDataChangeType dataChangeType, int oid, string tableName, bool isFeatureClass)
         {
             this.DataChangeType = dataChangeType;
             this.OID = oid;
             this.TableName = tableName;
             this.IsFeatureClass = isFeatureClass;
-
-            _TargetWorkspace = (IWorkspace) target;
-            _SourceWorkspace = (IWorkspace) source;
-            _CommonAncestorWorkspace = (IWorkspace) ((IVersion2) source).GetCommonAncestor(target);
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        ///     Gets the row from the specified workspace.
-        /// </summary>
-        /// <param name="rowState">The state representing the child or parent or common, depending on the row state needed.</param>
-        /// <returns>
-        ///     Returns a <see cref="IRow" /> representing the row.
-        /// </returns>
-        /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
-        public IRow GetRow(RowState rowState = RowState.ChildVersion)
-        {
-            IWorkspace workspace;
-
-            switch (rowState)
-            {
-                case RowState.ChildVersion:
-                    workspace = _SourceWorkspace;
-                    break;
-
-                case RowState.ParentVersion:
-                    workspace = _TargetWorkspace;
-                    break;
-
-                case RowState.CommonAncestorVersion:
-                    workspace = _CommonAncestorWorkspace;
-                    break;
-
-                default:
-                    throw new NotSupportedException("The row state is not supported.");
-            }
-
-            IFeatureWorkspace fws = (IFeatureWorkspace) workspace;
-            ITable table = fws.OpenTable(this.TableName);
-            return table.Fetch(this.OID);
         }
 
         #endregion

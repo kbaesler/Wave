@@ -17,10 +17,10 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof(NotSupportedException))]
         public void IWorkspace_Execute_IsNotNull()
         {
-            var table = base.Workspace.Execute("SELECT COUNT(*) FROM TRANSFORMER");
-            Assert.IsNotNull(table);
+            var cursor = base.Workspace.ExecuteReader("SELECT COUNT(*) FROM TRANSFORMER");
+            Assert.IsNotNull(cursor);
 
-            var row = table.AsEnumerable().FirstOrDefault();
+            var row = cursor.AsEnumerable().FirstOrDefault();
             Assert.IsNotNull(row);
 
             Assert.AreEqual(0, row.Value[0]);
@@ -152,24 +152,8 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IWorkspace_PerformOperation_Action_NotNull()
         {
-            base.Workspace.PerformOperation(() => true, true, esriMultiuserEditSessionMode.esriMESMNonVersioned);
-        }
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void IWorkspace_StartEditing_NotNull()
-        {
-            using (var editableWorkspace = base.Workspace.StartEditing(true, esriMultiuserEditSessionMode.esriMESMNonVersioned))
-            {
-                Assert.IsTrue(editableWorkspace.IsBeingEdited);
-                Assert.IsTrue(editableWorkspace.IsInEditOperation);
-
-                editableWorkspace.StopEditing(true);
-
-                Assert.IsFalse(editableWorkspace.IsBeingEdited);
-                Assert.IsFalse(editableWorkspace.IsInEditOperation);
-            }
-        }
+            base.Workspace.PerformOperation(true, esriMultiuserEditSessionMode.esriMESMNonVersioned, () => true);
+        }        
 
         #endregion
     }

@@ -4,8 +4,6 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-using ADODB;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -61,7 +59,7 @@ namespace Miner.Interop.Process
         #endregion
 
         #region Public Properties
-        
+
         /// <summary>
         ///     Gets the process framework application reference.
         /// </summary>
@@ -169,7 +167,7 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the node.
         /// </summary>
-        public IMMPxNode Node { get; set; }
+        public IMMPxNode Node { get; protected set; }
 
         /// <summary>
         ///     Gets the name of the version.
@@ -177,13 +175,10 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The name of the version.
         /// </value>
+        /// <remarks>The version name will not be accurate until the node has been saved to the database.</remarks>
         public virtual string VersionName
         {
-            get
-            {
-                IMMPxSDEVersion version = ((IMMPxApplicationEx2) _PxApp).GetSDEVersion(this.Node.Id, this.Node.NodeType, true);
-                return version.GetVersionName();
-            }
+            get { return _PxApp.GetVersionName(this.Node); }
         }
 
         /// <summary>
@@ -194,36 +189,7 @@ namespace Miner.Interop.Process
         /// <param name="extraData">The extra data.</param>
         public void AddHistory(string description, string extraData)
         {
-            if (this.History == null) return;
-
-            IMMPxHistory history = new PxHistoryClass();
-            history.CurrentUser = _PxApp.User.Id;
-            history.CurrentUserName = _PxApp.User.Name;
-            history.Date = DateTime.Now;
-            history.Description = description;
-            history.NodeId = this.Node.Id;
-            history.nodeTypeId = this.Node.NodeType;
-            history.ExtraData = extraData;
-
-            Property property = _PxApp.Connection.Properties["Data Source Name"];
-            string dataSource = (!Convert.IsDBNull(property.Value)) ? Convert.ToString(property.Value, CultureInfo.InvariantCulture) : string.Empty;
-
-            if (File.Exists(dataSource))
-            {
-                FileSystemInfo fsi = new FileInfo(dataSource);
-                history.Server = fsi.Name;
-            }
-            else if (Directory.Exists(dataSource))
-            {
-                FileSystemInfo fsi = new DirectoryInfo(dataSource);
-                history.Server = fsi.Name;
-            }
-            else
-            {
-                history.Server = dataSource;
-            }
-
-            this.History.Add(history);
+            _PxApp.AddHistory(this.History, this.Node.Id, this.Node.NodeType, description, extraData);
         }
 
         /// <summary>
@@ -236,12 +202,8 @@ namespace Miner.Interop.Process
                 string msg = string.Empty;
                 int status = 0;
 
-                // Delete the node using the deleter.
                 IMMPxNodeDelete delete = (IMMPxNodeDelete) this.Node;
                 delete.Delete(_PxApp, ref msg, ref status);
-
-                // Flush the cache.
-                this.Dispose(false);
             }
 
             this.Dirty = false;
@@ -255,13 +217,9 @@ namespace Miner.Interop.Process
         {
             if (this.Node != null)
             {
-                // Flush the updates to the database.
                 ((IMMPxApplicationEx) _PxApp).UpdateNodeToDB(this.Node);
-
-                // Flush the cache.
-                this.Dispose(false);
             }
-           
+
             this.Dirty = false;
         }
 
@@ -274,7 +232,7 @@ namespace Miner.Interop.Process
         ///     object.
         /// </summary>
         /// <param name="node">The node.</param>
-        protected void CopyHistory(IPxNode node)
+        protected virtual void CopyHistory(IPxNode node)
         {
             if (this.History == null || node == null) return;
 
@@ -283,18 +241,12 @@ namespace Miner.Interop.Process
             IMMPxHistory history;
             while ((history = this.History.Next()) != null)
             {
-                node.History.Add(new PxHistoryClass
-                {
-                    CurrentUser = history.CurrentUser,
-                    CurrentUserName = history.CurrentUserName,
-                    Date = history.Date,
-                    Description = history.Description,
-                    ExtraData = history.ExtraData,
-                    Server = history.Server,
-                    Xml = history.Xml,
-                    NodeId = node.Node.Id,
-                    nodeTypeId = node.Node.NodeType
-                });
+                var copy = history.Copy();
+
+                copy.NodeId = node.Node.Id;
+                copy.nodeTypeId = node.Node.NodeType;
+
+                node.History.Add(copy);
             }
 
             // Add another record for the clone to record the clone operation.
@@ -308,7 +260,7 @@ namespace Miner.Interop.Process
         /// <param name="packetPrefix">The packet ID prefix.</param>
         /// <param name="node">The node.</param>
         /// <exception cref="System.ArgumentNullException">node</exception>
-        protected void CopyPacket(string packetPrefix, IPxNode node)
+        protected virtual void CopyPacket(string packetPrefix, IPxNode node)
         {
             if (node == null) throw new ArgumentNullException("node");
 
@@ -383,8 +335,7 @@ namespace Miner.Interop.Process
                 list.BuildObject = builder;
             }
 
-            this.History = new PxNodeHistoryClass();
-            this.History.Init(_PxApp.Connection, _PxApp.Login.SchemaName, this.Node.Id, this.Node.NodeType, string.Format("NODE_ID = {0} AND NODE_TYPE_ID = {1}", this.Node.Id, this.Node.NodeType));
+            this.History = _PxApp.GetHistory(this.Node);
         }
 
         /// <summary>
@@ -436,6 +387,7 @@ namespace Miner.Interop.Process
 
             if (this.Initialize(frameworkExtension, _PxApp.User))
             {
+                this.Update();
                 this.Hydrate();
             }
         }

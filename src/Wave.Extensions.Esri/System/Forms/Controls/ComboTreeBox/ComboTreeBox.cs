@@ -327,8 +327,12 @@ namespace System.Forms.Controls
         [Browsable(false)]
         public override string Text
         {
-            get { return String.Empty; }
-            set { base.Text = String.Empty; }
+            get { return string.Empty; }
+            set
+            {
+                value = string.Empty;
+                base.Text = value;                 
+            }
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace Miner.Interop.Process
     /// <summary>
     ///     An abstract factory used to make a connection to the process framework instance.
     /// </summary>
-    public abstract class PxApplicationFactory
+    public abstract class PxApplicationFactory : IPxApplicationFactory
     {
         #region Public Methods
 

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace Miner.Interop.Process
 {
     /// <summary>
-    ///     Wraps the product <see cref="Miner.Interop.Process.IMMWMSWorkRequest" /> interface into an workable object.
+    ///     Wraps the product <see cref="IMMWMSWorkRequest" /> interface into an workable object.
     /// </summary>
     [DebuggerDisplay("Name = {Name}, ID = {ID}")]
     public class WorkRequest : BasePxNode<IMMWorkflowManager>, IPxWorkRequest

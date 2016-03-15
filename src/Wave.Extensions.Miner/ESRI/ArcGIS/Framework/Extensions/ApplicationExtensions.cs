@@ -5,6 +5,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner;
+using Miner.Desktop.CuFilter;
 using Miner.Geodatabase;
 using Miner.Interop;
 using Miner.Interop.Process;
@@ -40,6 +41,19 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
+        ///     Gets the <see cref="ID8List" /> of the active tab on the Attribute Editor.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="ID8List" /> representing the list of the active tab.</returns>
+        public static ID8List GetActiveTab(this IApplication source)
+        {
+            var editor = source.GetAttributeEditor();
+            if(editor == null) return null;
+
+            return editor.GetActiveTab();
+        }
+
+        /// <summary>
         ///     Returns the reference to the ArcFM Attribute Editor.
         /// </summary>
         /// <param name="source">The application reference.</param>
@@ -55,6 +69,19 @@ namespace ESRI.ArcGIS.Framework
             if (editor == null) return null;
 
             return editor.FindExtension(uid) as IMMAttributeEditor;
+        }
+
+        /// <summary>
+        ///     Gets the compatibile unit library.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="ICuLibrary" /> representing the extension for the library.</returns>
+        public static ICuLibrary GetCULibrary(this IApplication source)
+        {
+            if (source == null) return null;
+
+            CuLibraryExtension extension = source.FindExtensionByName(ArcFM.Extensions.Name.CULibrary) as CuLibraryExtension;
+            return (extension == null) ? null : extension.CuLibrary;
         }
 
         /// <summary>
@@ -95,6 +122,18 @@ namespace ESRI.ArcGIS.Framework
             if (source == null) return null;
 
             return source.FindExtensionByName(ArcFM.Extensions.Name.Designer) as IMMDesignerImpl;
+        }
+
+        /// <summary>
+        ///     Gets the ArcFM object editor.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IMMEditor" /> representing the object editor.</returns>
+        public static IMMEditor GetEditorM(this IApplication source)
+        {
+            if (source == null) return null;
+
+            return source.FindExtensionByName(ArcFM.Extensions.Name.Editor) as IMMEditor;
         }
 
         /// <summary>
@@ -232,6 +271,17 @@ namespace ESRI.ArcGIS.Framework
         {
             var props = source.GetProperties();
             return props as IMMStandardWorkspaces;
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:IMMLoginEvents_Event.LoginChanged" /> event.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="app">The application.</param>
+        public static void RaiseLoginChanged(this IMMLoginObject source, IApplication app)
+        {
+            var editor = app.GetEditorM();
+            editor.RaiseLoginChanged(source);
         }
 
         #endregion

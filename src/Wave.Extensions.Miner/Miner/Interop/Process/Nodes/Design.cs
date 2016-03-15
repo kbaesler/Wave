@@ -39,10 +39,22 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Initializes a new instance of the <see cref="Design" /> class.
         /// </summary>
-        /// <param name="pxApp">The process framework application reference.</param>
-        public Design(IMMPxApplication pxApp)
+        /// <param name="pxApp">The process application.</param>
+        /// <param name="workRequest">The work request.</param>
+        public Design(IMMPxApplication pxApp, IMMWMSWorkRequest workRequest)
             : base(pxApp, NodeTypeName)
         {
+            this.WorkRequestID = workRequest.ID;           
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Design" /> class.
+        /// </summary>
+        /// <param name="workRequest">The work request.</param>
+        public Design(WorkRequest workRequest)
+            : base(workRequest.PxApplication, NodeTypeName)
+        {
+            this.WorkRequestID = workRequest.ID;
         }
 
         /// <summary>
@@ -359,8 +371,6 @@ namespace Miner.Interop.Process
             _Design = (IMMWMSDesign) extension.CreateWMSNode(ref nodeTypeName);
             _Design.set_OwnerID(ref ownerID);
 
-            this.Update();
-
             return (_Design != null);
         }
 
@@ -387,6 +397,6 @@ namespace Miner.Interop.Process
             return (_Design != null);
         }
 
-        #endregion
+        #endregion        
     }
 }

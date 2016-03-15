@@ -16,10 +16,6 @@ namespace System.Forms.Controls
 
         private readonly ComboTreeNodeCollection _Nodes;
 
-        private string _Name;
-        private ComboTreeNode _Parent;
-        private string _Text;
-
         #endregion
 
         #region Constructors
@@ -30,7 +26,7 @@ namespace System.Forms.Controls
         public ComboTreeNode()
         {
             _Nodes = new ComboTreeNodeCollection(this);
-            _Name = _Text = String.Empty;
+            Name = Text = String.Empty;
             FontStyle = FontStyle.Regular;
             ExpandedImageIndex = ImageIndex = -1;
             ExpandedImageKey = ImageKey = String.Empty;
@@ -44,7 +40,7 @@ namespace System.Forms.Controls
         public ComboTreeNode(string text)
             : this()
         {
-            _Text = text;
+            Text = text;
         }
 
         /// <summary>
@@ -55,8 +51,8 @@ namespace System.Forms.Controls
         public ComboTreeNode(string name, string text)
             : this()
         {
-            _Text = text;
-            _Name = name;
+            Text = text;
+            Name = name;
         }
 
         #endregion
@@ -73,7 +69,7 @@ namespace System.Forms.Controls
             {
                 int depth = 0;
                 ComboTreeNode node = this;
-                while ((node = node._Parent) != null) depth++;
+                while ((node = node.Parent) != null) depth++;
                 return depth;
             }
         }
@@ -132,11 +128,7 @@ namespace System.Forms.Controls
         [Description("The name of the node."),
          DefaultValue(""),
          Category("Design")]
-        public string Name
-        {
-            get { return _Name; }
-            set { _Name = value; }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         ///     Gets a collection of the child nodes for this node.
@@ -153,11 +145,7 @@ namespace System.Forms.Controls
         ///     Gets or sets the node that owns this node, or null for a top-level node.
         /// </summary>
         [Browsable(false)]
-        public ComboTreeNode Parent
-        {
-            get { return _Parent; }
-            internal set { _Parent = value; }
-        }
+        public ComboTreeNode Parent { get; internal set; }
 
         /// <summary>
         ///     Gets or sets a user-defined object associated with this ComboTreeNode.
@@ -173,11 +161,7 @@ namespace System.Forms.Controls
         [DefaultValue("ComboTreeNode"),
          Description("The text displayed on the node."),
          Category("Appearance")]
-        public string Text
-        {
-            get { return _Text; }
-            set { _Text = value; }
-        }
+        public string Text { get; set; }
 
         #endregion
 
@@ -190,7 +174,7 @@ namespace System.Forms.Controls
         /// <returns></returns>
         public int CompareTo(ComboTreeNode other)
         {
-            return StringComparer.InvariantCultureIgnoreCase.Compare(_Text, other._Text);
+            return StringComparer.InvariantCultureIgnoreCase.Compare(Text, other.Text);
         }
 
         #endregion
@@ -229,7 +213,7 @@ namespace System.Forms.Controls
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format(CultureInfo.InvariantCulture, "Name=\"{0}\", Text=\"{1}\"", _Name, _Text);
+            return String.Format(CultureInfo.InvariantCulture, "Name=\"{0}\", Text=\"{1}\"", Name, Text);
         }
 
         #endregion

@@ -223,6 +223,26 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="action">The action to take for each feature in the cursor.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of features affected by the action.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="ArgumentNullException">action</exception>
+        /// <remarks>
+        ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
+        ///     access
+        /// </remarks>
+        public static int Fetch(this IFeatureClass source, Func<IFeature, bool> action)
+        {
+            return source.Fetch(action, true);
+        }
+
+        /// <summary>
+        ///     Queries for the all features and executes the specified <paramref name="action" /> on each feature returned from
+        ///     the query.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="action">The action to take for each feature in the cursor.</param>
         /// <param name="recycling">
         ///     if set to <c>true</c> when the cursor rehydrates a single row object on each fetch and can be
         ///     used to optimize read-only access.
@@ -236,13 +256,31 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
         ///     access
         /// </remarks>
-        public static int Fetch(this IFeatureClass source, Func<IFeature, bool> action, bool recycling = true)
+        public static int Fetch(this IFeatureClass source, Func<IFeature, bool> action, bool recycling)
         {
             if (source == null) return 0;
             if (action == null) throw new ArgumentNullException("action");
 
             IQueryFilter filter = new QueryFilterClass();
             return source.Fetch(filter, action, recycling);
+        }
+
+        /// <summary>
+        ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
+        ///     <paramref name="filter" /> object
+        ///     and executes the specified <paramref name="action" /> on each feature returned from the query.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
+        /// <param name="action">The action to take for each feature in the cursor.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of features affected by the action.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="ArgumentNullException">action</exception>
+        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action)
+        {
+            return source.Fetch(filter, action, true);
         }
 
         /// <summary>
@@ -262,7 +300,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action, bool recycling = true)
+        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action, bool recycling)
         {
             if (source == null) return 0;
             if (action == null) throw new ArgumentNullException("action");
@@ -292,13 +330,31 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
         /// <param name="action">The action to take for each feature in the cursor.</param>
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of features affected by the action.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="ArgumentNullException">action</exception>
+        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action)
+        {
+            return source.Fetch(filter, action, true);
+        }
+
+        /// <summary>
+        ///     Queries for the features that satisfies the attribute and/or spatial query as specified by an
+        ///     <paramref name="filter" /> object
+        ///     and executes the specified <paramref name="action" /> on each feature returned from the query.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute and/or spatial requirement that the features must satisify.</param>
+        /// <param name="action">The action to take for each feature in the cursor.</param>
         /// <param name="recycling">if set to <c>true</c> when a recycling memory for the features is used.</param>
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of features affected by the action.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action, bool recycling = true)
+        public static int Fetch(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action, bool recycling)
         {
             if (source == null) return 0;
             if (action == null) throw new ArgumentNullException("action");
@@ -417,12 +473,30 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
         ///     fields.
         /// </param>
+        /// <returns>
+        ///     Returns a <see cref="XDocument" /> representing the contents of the query.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">predicate</exception>
+        public static XDocument GetXDocument(this IFeatureClass source, IQueryFilter filter, Predicate<IField> predicate)
+        {
+            return source.GetXDocument(filter, predicate, "FeatureClass");
+        }
+
+        /// <summary>
+        ///     Converts the contents returned from the attribute or spatial query into an XML document.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The attribute or spatial query filter.</param>
+        /// <param name="predicate">
+        ///     The predicate to determine if the field should be included; otherwise <c>null</c> for all
+        ///     fields.
+        /// </param>
         /// <param name="elementName">Name of the element.</param>
         /// <returns>
         ///     Returns a <see cref="XDocument" /> representing the contents of the query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">predicate</exception>
-        public static XDocument GetXDocument(this IFeatureClass source, IQueryFilter filter, Predicate<IField> predicate, string elementName = "Table")
+        public static XDocument GetXDocument(this IFeatureClass source, IQueryFilter filter, Predicate<IField> predicate, string elementName)
         {
             if (source == null) return null;
             if (predicate == null) throw new ArgumentNullException("predicate");

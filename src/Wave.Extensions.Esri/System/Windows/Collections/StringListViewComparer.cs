@@ -50,7 +50,7 @@ namespace System.Windows.Collections
             if (yo == null)
                 return 1;
 
-            return string.Compare(xo.ToString(), yo.ToString(), StringComparison.InvariantCultureIgnoreCase);
+            return string.CompareOrdinal(xo.ToString().ToLowerInvariant(), yo.ToString().ToLowerInvariant());
         }
 
         #endregion

@@ -24,12 +24,11 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseConflictWorkspaceExtension" /> class.
+        /// Initializes a new instance of the <see cref="BaseConflictWorkspaceExtension" /> class.
         /// </summary>
         /// <param name="extensionName">Name of the extension.</param>
-        /// <param name="extensionGuid">The extension GUID.</param>
-        protected BaseConflictWorkspaceExtension(string extensionName, string extensionGuid)
-            : base(extensionName, extensionGuid)
+        protected BaseConflictWorkspaceExtension(string extensionName)
+            : base(extensionName)
         {
             this.Rows = new List<IConflictRow>();
             this.AutoUpdaterMode = mmAutoUpdaterMode.mmAUMNoEvents;

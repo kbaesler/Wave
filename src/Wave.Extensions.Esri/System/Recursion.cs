@@ -15,7 +15,7 @@ namespace System
         /// <summary>
         ///     Used to indicate infinite recursion depth.
         /// </summary>
-        public const int Infinite = -1;
+        public const int Infinity = -1;
 
         #endregion
 

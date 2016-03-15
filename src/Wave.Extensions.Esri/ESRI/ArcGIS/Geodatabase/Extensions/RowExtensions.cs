@@ -46,11 +46,23 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Creates a new row by duplicating the contents of the specified row.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRow" /> representings a duplicate copy of the row.
+        /// </returns>
+        public static IRow Clone(this IRow source)
+        {
+            return source.Clone(true);
+        }
+
+        /// <summary>
+        ///     Creates a new row by duplicating the contents of the specified row.
+        /// </summary>
+        /// <param name="source">The source.</param>
         /// <param name="committed">if set to <c>true</c> if created row is committed to the database.</param>
         /// <returns>
         ///     Returns a <see cref="IRow" /> representings a duplicate copy of the row.
         /// </returns>
-        public static IRow Clone(this IRow source, bool committed = true)
+        public static IRow Clone(this IRow source, bool committed)
         {
             ITable table = source.Table;
 
@@ -118,12 +130,9 @@ namespace ESRI.ArcGIS.Geodatabase
                 {
                     if (source.Fields.Field[i].Name.Equals(fieldName, StringComparison.OrdinalIgnoreCase))
                     {
-                        if (rowChanges.ValueChanged[i])
+                        if (rowChanges.ValueChanged[i] && !list.ContainsKey(fieldName))
                         {
-                            if (!list.ContainsKey(fieldName))
-                            {
-                                list.Add(fieldName, rowChanges.OriginalValue[i]);
-                            }
+                            list.Add(fieldName, rowChanges.OriginalValue[i]);
                         }
                     }
                 }
@@ -340,13 +349,30 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="value">The value for the field.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">fieldName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
+        public static bool Update(this IRow source, string fieldName, object value)
+        {
+            return source.Update(fieldName, value, true);
+        }
+
+        /// <summary>
+        ///     Updates the column on the row with the value when the original value and the specified
+        ///     <paramref name="value" /> are different.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="value">The value for the field.</param>
         /// <param name="equalityCompare">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="System.ArgumentNullException">fieldName</exception>
         /// <exception cref="ArgumentOutOfRangeException">fieldName</exception>
-        public static bool Update(this IRow source, string fieldName, object value, bool equalityCompare = true)
+        public static bool Update(this IRow source, string fieldName, object value, bool equalityCompare)
         {
             if (source == null) return false;
             if (fieldName == null) throw new ArgumentNullException("fieldName");
@@ -362,12 +388,28 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="index">The index of the field.</param>
         /// <param name="value">The value for the field.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        /// </returns>
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        public static bool Update(this IRowBuffer source, int index, object value)
+        {
+            return source.Update(index, value, true);
+        }
+
+        /// <summary>
+        ///     Updates the column index on the row with the value when the original value and the specified
+        ///     <paramref name="value" /> are different.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="index">The index of the field.</param>
+        /// <param name="value">The value for the field.</param>
         /// <param name="equalityCompare">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        public static bool Update(this IRowBuffer source, int index, object value, bool equalityCompare = true)
+        public static bool Update(this IRowBuffer source, int index, object value, bool equalityCompare)
         {
             if (source == null) return false;
             if (index < 0 || index > source.Fields.FieldCount - 1)

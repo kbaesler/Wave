@@ -1,4 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Data;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Miner;
 using Miner.Interop;
@@ -22,6 +25,21 @@ namespace Wave.Extensions.Miner.Tests
 
         [TestMethod]
         [TestCategory("Miner")]
+        public void IMMPxApplication_AddHistory_IsNotNull()
+        {
+            var table = base.PxApplication.ExecuteQuery("SELECT session_id FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.SessionManager.Tables.Session));
+            if (table.Rows.Count > 0)
+            {
+                using (var session = new Session(base.PxApplication, table.Rows[0].Field<int>(0)))
+                {
+                    var history = base.PxApplication.AddHistory(session.Node, string.Format("Unit tested on {0}", DateTime.Now.ToShortDateString()), "");
+                    Assert.IsNotNull(history);
+                }             
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
         public void IMMPxApplication_ExecuteScalar()
         {
             int count = base.PxApplication.ExecuteScalar(string.Format("SELECT COUNT(*) FROM {0}", base.PxApplication.GetQualifiedTableName(ArcFM.Process.SessionManager.Tables.Session)), -1);
@@ -42,6 +60,29 @@ namespace Wave.Extensions.Miner.Tests
         {
             IMMPxFilter filter = base.PxApplication.GetFilter(ArcFM.Process.SessionManager.Filters.AllSessions);
             Assert.IsNotNull(filter);
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IMMPxApplication_GetHistory_IsNotNull()
+        {
+            var table = base.PxApplication.ExecuteQuery("SELECT session_id FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.SessionManager.Tables.Session));
+            if (table.Rows.Count > 0)
+            {
+                using (var session = new Session(base.PxApplication, table.Rows[0].Field<int>(0)))
+                {
+                    var history = base.PxApplication.GetHistory(session.Node);
+                    Assert.IsNotNull(history);
+                }
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IMMPxApplication_GetHistory_IsNull()
+        {
+            var history = base.PxApplication.GetHistory(0, 0);
+            Assert.AreEqual("<NODE_HISTORY/>\r\n", history.Xml);
         }
 
         [TestMethod]

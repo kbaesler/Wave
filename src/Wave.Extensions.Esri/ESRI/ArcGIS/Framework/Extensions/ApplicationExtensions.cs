@@ -143,6 +143,20 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
+        /// Initializes the animation of the progress bar.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <returns>
+        /// Returns a <see cref="IProgressBarAnimation" /> representing the object that controls the actions of the progress
+        /// bar.
+        /// </returns>
+        public static IProgressBarAnimation PlayAnimation(this IApplication source, int min, int max)
+        {
+            return source.PlayAnimation(min, max, 0, 1);
+        }
+        /// <summary>
         ///     Initializes the animation of the progress bar.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -154,7 +168,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns a <see cref="IProgressBarAnimation" /> representing the object that controls the actions of the progress
         ///     bar.
         /// </returns>
-        public static IProgressBarAnimation PlayAnimation(this IApplication source, int min, int max, int position = 0, int step = 1)
+        public static IProgressBarAnimation PlayAnimation(this IApplication source, int min, int max, int position, int step)
         {
             if(source == null) return null;
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -14,6 +13,12 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxControl : IMMPxControl, IMMPxControl2, IMMPxDisplayName
     {
+        #region Fields
+
+        private IMMPxNode _Node;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -88,9 +93,12 @@ namespace Miner.Interop.Process
         {
             set
             {
-                InitControlUI(value);
-                SetLockIcon();                
+                if (this.Control != null)
+                    this.Control.LoadControl(this.PxApplication, value);
+
+                _Node = value;
             }
+            protected get { return _Node; }
         }
 
         /// <summary>
@@ -155,7 +163,7 @@ namespace Miner.Interop.Process
         /// <param name="bTerminate">if set to <c>true</c> the control can be closed; otherwise <c>false</c> to stop the closing.</param>
         public virtual void Terminate(ref bool bTerminate)
         {
-            if (this.Control.PendingUpdates)
+            if (this.Control != null && this.Control.PendingUpdates)
             {
                 DialogResult result = MessageBox.Show(@"Do you want to apply the changes?",
                     this.DisplayName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -196,63 +204,6 @@ namespace Miner.Interop.Process
         internal static void Unregister(string registryKey)
         {
             MMProcessMgrControl.Unregister(registryKey);
-        }
-
-        #endregion
-
-        #region Protected Methods
-
-        /// <summary>
-        ///     Gets the controls information.
-        /// </summary>
-        /// <param name="pxNode">The node.</param>
-        /// <returns></returns>
-        protected abstract Hashtable GetControlsInfo(IMMPxNode pxNode);
-
-        /// <summary>
-        ///     Sets the lock icon.
-        /// </summary>
-        protected abstract void SetLockIcon();
-
-        #endregion
-
-        #region Private Methods
-
-        private void InitControlUI(IMMPxNode node)
-        {
-            Hashtable controlsInfo = GetControlsInfo(node);
-            PopulateControlUI(Control as Control, controlsInfo);
-
-
-            IPxControlUI pxCtrlUI = (IPxControlUI) Control;
-            pxCtrlUI.LoadControl(PxApplication, node);
-        }
-
-
-        private void PopulateControlUI(Control parentCtrl, Hashtable controlsInfo)
-        {
-            if (parentCtrl == null || controlsInfo.Count == 0)
-            {
-                return;
-            }
-
-            foreach (Control aCtrl in parentCtrl.Controls)
-            {
-                if (aCtrl is TextBox && aCtrl.Tag != null)
-                {
-                    object aCtrlTag = aCtrl.Tag;
-
-                    if (controlsInfo.ContainsKey(aCtrlTag) && controlsInfo[aCtrlTag] != null)
-                    {
-                        aCtrl.Text = controlsInfo[aCtrlTag].ToString();
-                        controlsInfo.Remove(aCtrlTag);
-                    }
-                }
-                else
-                {
-                    PopulateControlUI(aCtrl, controlsInfo);
-                }
-            }
         }
 
         #endregion

@@ -1,7 +1,17 @@
 site_name: Wave
-theme: cinder
+repo_url: https://github.com/Jumpercables/Wave/
+site_author: Kyle Baesler
+markdown_extensions:
+    - smarty
+    - admonition
+    - footnotes
+theme: readthedocs
 pages:
-- GETTING STARTED: index.md
-- CONTRIBUTING: contribute.md
-- FEATURES: features.md
-- FAQ: faq.md
+- Getting Started:
+  - Overview: index.md
+  - Developer Guide: guide.md
+- Features: features.md
+- Frequently Asked Questions: faq.md
+- About:
+  - Contributing: contribute.md
+  - Release Notes: release-notes.md

@@ -9,9 +9,11 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.AutoCompleteTextBox
 {
     class AutoCompleteTextBoxViewModel : BaseViewModel
     {
+        private string _State;
+
         public AutoCompleteTextBoxViewModel()
         {
-            this.AutoCompleteSource = new[]
+            this.States = new[]
             {
                 "Alabama",
                 "Alaska",
@@ -25,7 +27,8 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.AutoCompleteTextBox
                 "Georgia",
                 "Hawaii",
                 "Idaho",
-                "Illinois", "Indiana",
+                "Illinois", 
+                "Indiana",
                 "Iowa",
                 "Kansas",
                 "Kentucky",
@@ -37,7 +40,8 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.AutoCompleteTextBox
                 "Minnesota",
                 "Mississippi",
                 "Missouri",
-                "Montana", "Nebraska",
+                "Montana", 
+                "Nebraska",
                 "Nevada",
                 "New Hampshire",
                 "New Jersey",
@@ -48,7 +52,8 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.AutoCompleteTextBox
                 "Ohio",
                 "Oklahoma",
                 "Oregon",
-                "Pennsylvania", "Rhode Island",
+                "Pennsylvania", 
+                "Rhode Island",
                 "South Carolina",
                 "South Dakota",
                 "Tennessee",
@@ -64,6 +69,17 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.AutoCompleteTextBox
         }
 
 
-        public IEnumerable<string> AutoCompleteSource { get; set; } 
+        public IEnumerable<string> States { get; set; }
+
+        public string State
+        {
+            get { return _State; }
+            set
+            {
+                _State = value;
+                
+                base.OnPropertyChanged("State");
+            }
+        }
     }
 }

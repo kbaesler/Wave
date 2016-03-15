@@ -38,7 +38,6 @@ namespace System.Windows.Controls
         private readonly TextBox _TextBox;
 
         private bool _SuppressTextChanged;
-        private int _Threshold;
 
         #endregion
 
@@ -50,7 +49,6 @@ namespace System.Windows.Controls
         public AutoCompleteTextBox()
         {
             _Controls = new VisualCollection(this);
-            _Threshold = 1;
 
             // Set up the key press timer
             _KeypressTimer = new Timer();
@@ -134,11 +132,7 @@ namespace System.Windows.Controls
         /// <value>
         ///     The threshold.
         /// </value>
-        public int Threshold
-        {
-            get { return _Threshold; }
-            set { _Threshold = value; }
-        }
+        public int Threshold { get; set; }
 
         #endregion
 
@@ -296,7 +290,7 @@ namespace System.Windows.Controls
         {
             _ComboBox.Items.Clear();
 
-            if (_TextBox.Text.Length >= _Threshold && this.AutoCompleteSource != null)
+            if (_TextBox.Text.Length > this.Threshold && this.AutoCompleteSource != null)
             {
                 foreach (string source in this.AutoCompleteSource)
                 {

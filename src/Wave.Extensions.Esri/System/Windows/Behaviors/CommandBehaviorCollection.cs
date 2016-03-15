@@ -40,7 +40,7 @@ namespace System.Windows.Behaviors
         /// <summary>
         ///     The behaviors dependency property
         /// </summary>
-        public static DependencyProperty BehaviorsProperty;
+        public readonly static DependencyProperty BehaviorsProperty;
 
         #endregion
 
