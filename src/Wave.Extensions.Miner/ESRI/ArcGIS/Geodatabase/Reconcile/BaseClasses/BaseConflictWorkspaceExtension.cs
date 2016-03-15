@@ -555,9 +555,8 @@ namespace ESRI.ArcGIS.Geodatabase
                 Log.Info(this, "Rebuilding the connectivity of {0} feature(s) in the {1} feature class.", dc.Value.Count, dc.Key);
                 this.NotifyCallback(1);
 
-                foreach (var delta in dc.Value)
-                {
-                    IRow row = delta.GetRow();
+                foreach (var row in dc.Value.GetRows())
+                {                    
                     this.RebuildConnectivity(row as INetworkFeature);
                 }
             }
