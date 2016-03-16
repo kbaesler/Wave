@@ -22,7 +22,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="target">The target (or parent) version.</param>
         /// <param name="dataChangeTypes">The data change types.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
+        ///     Returns a <see cref="Dictionary{String, DeltaRowCollection}" /> representing the differences for the table (or
         ///     key).
         /// </returns>
         /// <exception cref="System.ArgumentNullException">
@@ -30,7 +30,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     dataChangeTypes
         /// </exception>
-        public static Task<Dictionary<string, List<DeltaRow>>> GetDataChangesAsync(this IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
+        public static Task<Dictionary<string, DeltaRowCollection>> GetDataChangesAsync(this IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
         {
             return Task.Run(() => source.GetDataChanges(target, dataChangeTypes));
         }
@@ -47,7 +47,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </param>
         /// <param name="dataChangeTypes">The data change types.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
+        ///     Returns a <see cref="Dictionary{String, DeltaRowCollection}" /> representing the differences for the table (or
         ///     key).
         /// </returns>
         /// <exception cref="System.ArgumentNullException">
@@ -57,7 +57,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     dataChangeTypes
         /// </exception>
-        public static Task<Dictionary<string, List<DeltaRow>>> GetDataChangesAsync(this IVersion source, IVersion target, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
+        public static Task<Dictionary<string, DeltaRowCollection>> GetDataChangesAsync(this IVersion source, IVersion target, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
         {
             return Task.Run(() => source.GetDataChanges(target, predicate, dataChangeTypes));
         }
