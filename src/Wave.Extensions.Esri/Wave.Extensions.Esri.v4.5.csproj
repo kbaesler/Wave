@@ -239,6 +239,7 @@
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ExtensionManager.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\PropertySetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\StreamExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\UIDExtensions.cs" />

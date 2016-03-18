@@ -4,8 +4,32 @@ using System.Linq;
 
 using ESRI.ArcGIS.Framework;
 
+using Miner.Desktop;
+using Miner.Desktop.Designer;
+
 namespace Miner.Interop
-{    
+{
+    /// <summary>
+    ///     Provides access to the <see cref="IMMAttributeEditor" />
+    /// </summary>
+    public static class AttributeEditor
+    {
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets the instance.
+        /// </summary>
+        /// <value>
+        ///     The instance.
+        /// </value>
+        public static IMMAttributeEditor Instance
+        {
+            get { return ArcMap.Application.GetAttributeEditor(); }
+        }
+
+        #endregion
+    }
+
     /// <summary>
     ///     Provides extension methods for the <see cref="IMMAttributeEditor" /> interface.
     /// </summary>
@@ -23,29 +47,7 @@ namespace Miner.Interop
             if (source == null) return null;
             if (source.UI == null) return null;
 
-            IMMAttributeEditorUI2 ui = (IMMAttributeEditorUI2) source.UI;
-            for (int i = 0; i < ui.PageCount(); i++)
-            {
-                if (source.UI.ActivePage == i)
-                {
-                    switch (ui.PageCaption(i).ToUpperInvariant())
-                    {
-                        case "DESIGN":
-                            return ArcMap.Application.GetDesignTab();
-
-                        case "SELECTION":
-                            return ArcMap.Application.GetSelectionTab();
-
-                        case "TARGETS":
-                            return ArcMap.Application.GetTargetTab();
-
-                        case "QA/QC":
-                            return ArcMap.Application.GetQAQCTab();
-                    }
-                }
-            }
-
-            return null;
+            return source.GetTabContents((mmAETabIndex) source.UI.ActivePage);
         }
 
         /// <summary>
@@ -75,40 +77,132 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Changes the tab of the attribute editor to that of the provide list.
+        ///     Gets the <see cref="ID8List" /> of the tab.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="list">The list.</param>
-        public static void Show(this IMMAttributeEditor source, ID8List list)
+        /// <param name="tabIndex">Index of the tab.</param>
+        /// <returns>
+        ///     Returns a <see cref="ID8List" /> representing the list of the tab.
+        /// </returns>
+        public static ID8List GetTabContents(this IMMAttributeEditor source, mmAETabIndex tabIndex)
+        {
+            if (source == null) return null;
+
+            switch (tabIndex)
+            {
+                case mmAETabIndex.mmAEDesign:
+                    return DesignerTopLevel.Instance as ID8List;
+
+                case mmAETabIndex.mmAESelection:
+                    return FeSelTopLevel.Instance as ID8List;
+
+                case mmAETabIndex.mmAETarget:
+                    return CuSelTopLevel.Instance as ID8List;
+
+                case mmAETabIndex.mmAEQAQC:
+                    return QAQCTopLevel.Instance as ID8List;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        ///     Hides the attribute editor.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Hide(this IMMAttributeEditor source)
         {
             if (source == null) return;
-            if (source.UI == null) source.Show(0);
 
-            IMMAttributeEditorUI2 ui = (IMMAttributeEditorUI2) source.UI;
-            for (int i = 0; i < ui.PageCount(); i++)
+            var ui = source.UI as IMMAttributeEditorUI;
+            if (ui == null) return;
+
+            ui.Hide();
+        }
+
+        /// <summary>
+        ///     Determines whether the attribute editor is visible.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="bool" /> representing <c>true</c> when the attribute editor is visible.</returns>
+        public static bool IsVisible(this IMMAttributeEditor source)
+        {
+            if (source == null) return false;
+
+            var ui = source.UI as IMMAttributeEditorUI2;
+            if (ui == null) return false;
+
+            return true;
+        }
+
+        /// <summary>
+        ///     Selects the item in the attribute editor when specified tab is visible.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="tabIndex">Index of the tab.</param>
+        /// <param name="item">The item.</param>
+        /// <returns>
+        ///     Returns <see cref="bool" /> representing <c>true</c> when the item was selected.
+        /// </returns>
+        public static bool SelectItem(this IMMAttributeEditor source, mmAETabIndex tabIndex, ID8ListItem item)
+        {
+            if (source == null) return false;
+
+            if (source.Show(tabIndex))
             {
-                switch (ui.PageCaption(i).ToUpperInvariant())
-                {
-                    case "DESIGN":
-                        if (list is ID8TopLevel)
-                            source.UI.ActivePage = i;
-                        break;
+                var ui = source.UI as IMMAttributeEditorUI2;
+                if (ui == null) return false;
 
-                    case "SELECTION":
-                        if (list is ID8FeSelTopLevel)
-                            source.UI.ActivePage = i;
-                        break;
+                ui.SelectItem((int) tabIndex, item);
 
-                    case "TARGETS":
-                        if (list is ID8CuSelTopLevel)
-                            source.UI.ActivePage = i;
-                        break;
+                return true;
+            }
 
-                    case "QA/QC":
-                        if (list is IMMQAQCTopLevel)
-                            source.UI.ActivePage = i;
-                        break;
-                }
+            return false;
+        }
+
+        /// <summary>
+        ///     Shows the specified tab index.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="tabIndex">Index of the tab.</param>
+        /// <returns>
+        ///     Returns <see cref="bool" /> representing <c>true</c> when the tab is shown.
+        /// </returns>
+        public static bool Show(this IMMAttributeEditor source, mmAETabIndex tabIndex)
+        {
+            if (source == null) return false;
+
+            var ui = source.UI as IMMAttributeEditorUI;
+            if (ui == null) return false;
+
+            if (!ui.PageVisible[(int) tabIndex])
+            {
+                return false;
+            }
+
+            ui.ActivePage = (int) tabIndex;
+            ui.Show();
+
+            return true;
+        }
+
+        /// <summary>
+        ///     Updates the tab with the contents of the specified list.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="tabIndex">Index of the tab.</param>
+        /// <param name="list">The list.</param>
+        public static void UpdateTab(this IMMAttributeEditor source, mmAETabIndex tabIndex, ID8List list)
+        {
+            var tab = source.GetTabContents(tabIndex);
+            tab.Clear();
+
+            if (list.HasChildren)
+            {
+                ID8ListItem item;
+                while ((item = list.Next(false)) != null)
+                    tab.Add(item);
             }
         }
 
