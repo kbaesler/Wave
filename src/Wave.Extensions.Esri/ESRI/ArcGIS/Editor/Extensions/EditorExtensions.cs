@@ -45,39 +45,20 @@ namespace ESRI.ArcGIS.Editor
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
         public static bool PerformOperation(this IEditor source, string menuText, Func<bool> operation)
         {
-            bool flag = false;
+            bool flag;
             if (source == null || source.Map == null) return false;
 
             var wse = source.EditWorkspace as IWorkspaceEdit2;
             if (wse == null) return false;
 
-            if (wse.IsInEditOperation)
-                throw new ArgumentOutOfRangeException("source", "An edit operation is already started.");
-
             source.Map.DelayDrawing(true);
-            source.StartOperation();
 
             try
             {
-                flag = operation();
-            }
-            catch (Exception)
-            {
-                if (wse.IsInEditOperation)
-                    source.AbortOperation();
-
-                throw;
+               flag = wse.PerformOperation(operation);
             }
             finally
             {
-                if (wse.IsInEditOperation)
-                {
-                    if (flag)
-                        source.StopOperation(menuText);
-                    else
-                        source.AbortOperation();
-                }
-
                 source.Map.DelayDrawing(false);
             }
 
