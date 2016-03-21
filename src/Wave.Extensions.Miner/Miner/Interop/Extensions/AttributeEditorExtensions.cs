@@ -6,6 +6,7 @@ using ESRI.ArcGIS.Framework;
 
 using Miner.Desktop;
 using Miner.Desktop.Designer;
+using Miner.Desktop.Dockablewindows;
 
 namespace Miner.Interop
 {
@@ -47,7 +48,9 @@ namespace Miner.Interop
             if (source == null) return null;
             if (source.UI == null) return null;
 
-            return source.GetTabContents((mmAETabIndex) source.UI.ActivePage);
+            var list = source.GetTabContents((mmAETabIndex) source.UI.ActivePage);            
+            list.Reset();
+            return list;
         }
 
         /// <summary>
@@ -73,7 +76,7 @@ namespace Miner.Interop
             var list = source.GetActiveTab();
             if (list == null) return null;
 
-            return list.Where(o => o.IsSelected).Select(o => o.Value).Where(predicate);
+            return list.Where(o => o.IsSelected && predicate(o)).Select(o => o.Value);
         }
 
         /// <summary>
@@ -95,15 +98,13 @@ namespace Miner.Interop
 
                 case mmAETabIndex.mmAESelection:
                     return FeSelTopLevel.Instance as ID8List;
-
-                case mmAETabIndex.mmAETarget:
-                    return CuSelTopLevel.Instance as ID8List;
-
+              
                 case mmAETabIndex.mmAEQAQC:
                     return QAQCTopLevel.Instance as ID8List;
-            }
 
-            return null;
+                default:
+                    return CuSelTopLevel.Instance as ID8List;
+            }
         }
 
         /// <summary>
@@ -114,7 +115,7 @@ namespace Miner.Interop
         {
             if (source == null) return;
 
-            var ui = source.UI as IMMAttributeEditorUI;
+            var ui = source.UI;
             if (ui == null) return;
 
             ui.Hide();
@@ -132,7 +133,10 @@ namespace Miner.Interop
             var ui = source.UI as IMMAttributeEditorUI2;
             if (ui == null) return false;
 
-            return true;
+            var dockableWindow = ArcMap.Application.GetDockableWindow(typeof (AttributeEditorDockableWindow));
+            if (dockableWindow == null) return false;
+
+            return dockableWindow.IsVisible();
         }
 
         /// <summary>
@@ -173,7 +177,7 @@ namespace Miner.Interop
         {
             if (source == null) return false;
 
-            var ui = source.UI as IMMAttributeEditorUI;
+            var ui = source.UI;
             if (ui == null) return false;
 
             if (!ui.PageVisible[(int) tabIndex])
