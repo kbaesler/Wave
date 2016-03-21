@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-using ESRI.ArcGIS.esriSystem;
-
-namespace ESRI.ArcGIS.ESRI.ArcGIS.System
+namespace ESRI.ArcGIS.esriSystem
 {
     /// <summary>
     ///     Provides accessor to the <see cref="IExtensionManager" /> interface.
@@ -25,6 +24,23 @@ namespace ESRI.ArcGIS.ESRI.ArcGIS.System
                 object obj = Activator.CreateInstance(type);
                 IExtensionManager extensionManager = (IExtensionManager) obj;
                 return extensionManager;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Creates an enumeration of the <see cref="IExtension" /> objects.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{IExtension}" /> representing the extensions.</returns>
+        public static IEnumerable<IExtension> AsEnumerable(this IExtensionManager source)
+        {
+            for (int i = 0; i < source.ExtensionCount; i++)
+            {
+                yield return source.Extension[i];
             }
         }
 
