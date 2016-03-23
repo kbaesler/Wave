@@ -261,6 +261,7 @@
     </Compile>
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListItemExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\EditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FeatureClassExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FieldExtensions.cs" />
