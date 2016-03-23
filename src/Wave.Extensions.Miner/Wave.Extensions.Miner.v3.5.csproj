@@ -264,7 +264,6 @@
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FeatureClassExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FieldExtensions.cs" />
-    <Compile Include="Miner\Interop\Extensions\MMEditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\Internal\EditNotificationQueue.cs" />
