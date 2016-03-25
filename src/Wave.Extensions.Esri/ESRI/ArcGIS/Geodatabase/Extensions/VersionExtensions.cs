@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 
 using ESRI.ArcGIS.ADF;
@@ -88,7 +89,7 @@ namespace ESRI.ArcGIS.Geodatabase
             while ((mci = enumMci.Next()) != null)
             {
                 string tableName = mci.ChildClassName;
-                var rows = new DeltaRowCollection(tableName, source, target, dataChangeTypes);
+                var rows = new DeltaRowCollection(tableName, source, target);
 
                 using (ComReleaser cr = new ComReleaser())
                 {
@@ -398,12 +399,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="tableName">Name of the table.</param>
         /// <param name="source">The source (or child) version.</param>
         /// <param name="target">The target (or parent) version.</param>
-        /// <param name="dataChangeTypes">The data change types.</param>
-        public DeltaRowCollection(string tableName, IVersion source, IVersion target, params esriDataChangeType[] dataChangeTypes)
+        public DeltaRowCollection(string tableName, IVersion source, IVersion target)
         {
             this.TableName = tableName;
-            this.DataChangeTypes = dataChangeTypes;
-
             this.TargetVersion = target;
             this.CurrentVersion = source;
             this.CommonAncestorVersion = ((IVersion2) source).GetCommonAncestor(target);
@@ -414,12 +412,31 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Properties
 
         /// <summary>
+        ///     Gets the common ancestor version.
+        /// </summary>
+        /// <value>
+        ///     The common ancestor version.
+        /// </value>
+        public IVersion CommonAncestorVersion { get; private set; }
+
+        /// <summary>
+        ///     Gets the current version.
+        /// </summary>
+        /// <value>
+        ///     The current version.
+        /// </value>
+        public IVersion CurrentVersion { get; private set; }
+
+        /// <summary>
         ///     Gets or sets the data change types.
         /// </summary>
         /// <value>
         ///     The data change types.
         /// </value>
-        public esriDataChangeType[] DataChangeTypes { get; private set; }
+        public esriDataChangeType[] DataChangeTypes
+        {
+            get { return this.Select(o => o.DataChangeType).Distinct().ToArray(); }
+        }
 
         /// <summary>
         ///     Indicates if the row represents a feature class.
@@ -440,37 +457,77 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </value>
         public string TableName { get; private set; }
 
-        #endregion
-
-        #region Protected Properties
-
-        /// <summary>
-        ///     Gets the common ancestor version.
-        /// </summary>
-        /// <value>
-        ///     The common ancestor version.
-        /// </value>
-        protected IVersion CommonAncestorVersion { get; private set; }
-
-        /// <summary>
-        ///     Gets the current version.
-        /// </summary>
-        /// <value>
-        ///     The current version.
-        /// </value>
-        protected IVersion CurrentVersion { get; private set; }
-
         /// <summary>
         ///     Gets the target version.
         /// </summary>
         /// <value>
         ///     The target version.
         /// </value>
-        protected IVersion TargetVersion { get; private set; }
+        public IVersion TargetVersion { get; private set; }
 
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        ///     Gets the rows that reside in the version that corresponds to the state.
+        /// </summary>
+        /// <param name="rowState">The state representing the current or parent or common versions.</param>
+        /// <param name="deltaRow">The delta row.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRow" /> representing the row for the state.
+        /// </returns>
+        public IRow GetRow(DeltaRowState rowState, DeltaRow deltaRow)
+        {
+            return this.GetRow(rowState, deltaRow.OID);
+        }
+
+        /// <summary>
+        ///     Gets the rows that reside in the version that corresponds to the state.
+        /// </summary>
+        /// <param name="rowState">The state representing the current or parent or common versions.</param>
+        /// <param name="oid">The oid.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRow" /> representing the row for the state.
+        /// </returns>
+        public IRow GetRow(DeltaRowState rowState, int oid)
+        {
+            IFeatureWorkspace workspace = this.GetWorkspace(rowState);
+            if (workspace == null) return null;
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                ITable table = workspace.OpenTable(this.TableName);
+                cr.ManageLifetime(table);
+
+                IQueryFilter filter = new QueryFilterClass();
+                filter.WhereClause = string.Format("{0} = {1}", table.OIDFieldName, oid);
+
+
+                var cursor = table.Search(filter, false);
+                cr.ManageLifetime(cursor);
+
+                foreach (var row in cursor.AsEnumerable())
+                    return row;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        ///     Gets the rows that pertain to the data change type.
+        /// </summary>
+        /// <param name="dataChangeType">Type of the data change.</param>
+        /// <returns>Retursn a <see cref="DeltaRowCollection" /> representing the delta rows for the data change type.</returns>
+        public DeltaRowCollection GetRows(esriDataChangeType dataChangeType)
+        {
+            var rows = this.Where(deltaRow => deltaRow.DataChangeType == dataChangeType);
+
+            var collection = new DeltaRowCollection(this.TableName, this.CurrentVersion, this.TargetVersion);
+            collection.AddRange(rows);
+
+            return collection;
+        }
 
         /// <summary>
         ///     Gets the rows that reside in the current version.
@@ -494,36 +551,19 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
         public IEnumerable<IRow> GetRows(DeltaRowState rowState)
         {
-            IFeatureWorkspace workspace;
-
-            switch (rowState)
-            {
-                case DeltaRowState.CurrentVersion:
-                    workspace = this.CurrentVersion as IFeatureWorkspace;
-                    break;
-
-                case DeltaRowState.TargetVersion:
-                    workspace = this.TargetVersion as IFeatureWorkspace;
-                    break;
-
-                case DeltaRowState.CommonAncestorVersion:
-                    workspace = this.CommonAncestorVersion as IFeatureWorkspace;
-                    break;
-
-                default:
-                    throw new NotSupportedException("The row state is not supported.");
-            }
-
+            IFeatureWorkspace workspace = this.GetWorkspace(rowState);
             if (workspace != null)
             {
-                ITable table = workspace.OpenTable(this.TableName);
-                foreach (var oids in this.Select(o => o.OID).Batch(1000))
+                using (ComReleaser cr = new ComReleaser())
                 {
-                    IQueryFilter filter = new QueryFilterClass();
-                    filter.WhereClause = string.Format("{0} IN ({1})", table.OIDFieldName, oids);
+                    ITable table = workspace.OpenTable(this.TableName);
+                    cr.ManageLifetime(table);
 
-                    using (ComReleaser cr = new ComReleaser())
+                    foreach (var oids in this.Select(o => o.OID.ToString(CultureInfo.InvariantCulture)).Batch(1000))
                     {
+                        IQueryFilter filter = new QueryFilterClass();
+                        filter.WhereClause = string.Format("{0} IN ({1})", table.OIDFieldName, string.Join(",", oids.ToArray()));
+
                         var cursor = table.Search(filter, false);
                         cr.ManageLifetime(cursor);
 
@@ -546,6 +586,30 @@ namespace ESRI.ArcGIS.Geodatabase
         protected override int GetKeyForItem(DeltaRow item)
         {
             return item.OID;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Gets the workspace for the delta row state enumeration
+        /// </summary>
+        /// <param name="rowState">State of the row.</param>
+        /// <returns>Returns a <see cref="IFeatureWorkspace" /> representing the workspace for that state</returns>
+        private IFeatureWorkspace GetWorkspace(DeltaRowState rowState)
+        {
+            switch (rowState)
+            {
+                case DeltaRowState.CurrentVersion:
+                    return this.CurrentVersion as IFeatureWorkspace;
+
+                case DeltaRowState.TargetVersion:
+                    return this.TargetVersion as IFeatureWorkspace;
+
+                default:
+                    return this.CommonAncestorVersion as IFeatureWorkspace;
+            }
         }
 
         #endregion
