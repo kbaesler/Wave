@@ -369,9 +369,9 @@ namespace ESRI.ArcGIS.Geodatabase
     public enum DeltaRowState
     {
         /// <summary>
-        ///     The state of the row in the current (child) version.
+        ///     The state of the row in the source (child) version.
         /// </summary>
-        CurrentVersion,
+        SourceVersion,
 
         /// <summary>
         ///     The state of the row in the target (parent) version.
@@ -402,9 +402,9 @@ namespace ESRI.ArcGIS.Geodatabase
         public DeltaRowCollection(string tableName, IVersion source, IVersion target)
         {
             this.TableName = tableName;
+            this.SourceVersion = source;
             this.TargetVersion = target;
-            this.CurrentVersion = source;
-            this.CommonAncestorVersion = target == null ? null : ((IVersion2)source).GetCommonAncestor(target);
+            this.CommonAncestorVersion = target == null ? null : ((IVersion2) source).GetCommonAncestor(target);
         }
 
         #endregion
@@ -420,15 +420,7 @@ namespace ESRI.ArcGIS.Geodatabase
         public IVersion CommonAncestorVersion { get; private set; }
 
         /// <summary>
-        ///     Gets the current version.
-        /// </summary>
-        /// <value>
-        ///     The current version.
-        /// </value>
-        public IVersion CurrentVersion { get; private set; }
-
-        /// <summary>
-        ///     Gets or sets the data change types.
+        ///     Gets the data change types.
         /// </summary>
         /// <value>
         ///     The data change types.
@@ -439,7 +431,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Indicates if the row represents a feature class.
+        ///     Gets a value indicating whether this instance is feature class.
         /// </summary>
         /// <value>
         ///     <c>true</c> if this instance is feature class; otherwise, <c>false</c>.
@@ -448,6 +440,14 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             get { return this.All(o => o.IsFeatureClass); }
         }
+
+        /// <summary>
+        ///     Gets the source (or current) version.
+        /// </summary>
+        /// <value>
+        ///     The source (or current) version.
+        /// </value>
+        public IVersion SourceVersion { get; private set; }
 
         /// <summary>
         ///     The name of the table.
@@ -472,7 +472,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Gets the rows that reside in the version that corresponds to the state.
         /// </summary>
-        /// <param name="rowState">The state representing the current or parent or common versions.</param>
+        /// <param name="rowState">The state representing the version.</param>
         /// <param name="deltaRow">The delta row.</param>
         /// <returns>
         ///     Returns a <see cref="IRow" /> representing the row for the state.
@@ -485,7 +485,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Gets the rows that reside in the version that corresponds to the state.
         /// </summary>
-        /// <param name="rowState">The state representing the current or parent or common versions.</param>
+        /// <param name="rowState">The state representing the version.</param>
         /// <param name="oid">The oid.</param>
         /// <returns>
         ///     Returns a <see cref="IRow" /> representing the row for the state.
@@ -523,7 +523,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             var rows = this.Where(deltaRow => deltaRow.DataChangeType == dataChangeType);
 
-            var collection = new DeltaRowCollection(this.TableName, this.CurrentVersion, this.TargetVersion);
+            var collection = new DeltaRowCollection(this.TableName, this.SourceVersion, this.TargetVersion);
             collection.AddRange(rows);
 
             return collection;
@@ -538,7 +538,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
         public IEnumerable<IRow> GetRows()
         {
-            return this.GetRows(DeltaRowState.CurrentVersion);
+            return this.GetRows(DeltaRowState.SourceVersion);
         }
 
         /// <summary>
@@ -601,8 +601,8 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             switch (rowState)
             {
-                case DeltaRowState.CurrentVersion:
-                    return this.CurrentVersion as IFeatureWorkspace;
+                case DeltaRowState.SourceVersion:
+                    return this.SourceVersion as IFeatureWorkspace;
 
                 case DeltaRowState.TargetVersion:
                     return this.TargetVersion as IFeatureWorkspace;
