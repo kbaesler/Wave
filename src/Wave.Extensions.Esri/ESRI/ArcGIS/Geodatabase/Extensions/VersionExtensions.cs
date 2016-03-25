@@ -404,7 +404,7 @@ namespace ESRI.ArcGIS.Geodatabase
             this.TableName = tableName;
             this.TargetVersion = target;
             this.CurrentVersion = source;
-            this.CommonAncestorVersion = ((IVersion2) source).GetCommonAncestor(target);
+            this.CommonAncestorVersion = target == null ? null : ((IVersion2)source).GetCommonAncestor(target);
         }
 
         #endregion
