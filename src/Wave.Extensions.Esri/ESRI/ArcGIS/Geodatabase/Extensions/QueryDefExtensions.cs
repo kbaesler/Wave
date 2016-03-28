@@ -1,6 +1,6 @@
 ﻿using ESRI.ArcGIS.ADF;
 
-namespace ESRI.ArcGIS.Geodatabase.Extensions
+namespace ESRI.ArcGIS.Geodatabase
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="IQueryDef" /> interface.
