@@ -2,12 +2,12 @@
 
 using Miner.Geodatabase.Edit;
 
-namespace Miner.Interop.Internal
+namespace Miner.Interop
 {
     /// <summary>
     ///     A singleton wrapper for the <see cref="IMMEditNotificationQueue" /> for the ESRI Editor extension.
     /// </summary>
-    internal static class EditNotificationQueue
+    public static class EditNotificationQueue
     {
         #region Public Properties
 
@@ -22,7 +22,7 @@ namespace Miner.Interop.Internal
             get
             {
                 UID uid = new UID();
-                uid.Value = "{AEFDC531-431C-4EF3-8CEC-E5BEEB4D3822}";
+                uid.Value = ArcFM.Extensions.Guid.EditNotificationQueue;
 
                 IExtension extension = Editor.FindExtension(uid);
                 IMMEditNotificationQueue notifyQueue = (IMMEditNotificationQueue) extension;

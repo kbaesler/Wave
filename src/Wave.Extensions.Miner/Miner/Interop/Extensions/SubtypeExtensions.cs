@@ -4,8 +4,6 @@ using System.Linq;
 
 using ESRI.ArcGIS.esriSystem;
 
-using Miner.Interop.Extensions;
-
 namespace Miner.Interop
 {
     /// <summary>

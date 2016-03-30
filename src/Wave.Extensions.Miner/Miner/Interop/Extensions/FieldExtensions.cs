@@ -4,7 +4,7 @@ using System.Linq;
 
 using ESRI.ArcGIS.esriSystem;
 
-namespace Miner.Interop.Extensions
+namespace Miner.Interop
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="IMMField" /> interface.
