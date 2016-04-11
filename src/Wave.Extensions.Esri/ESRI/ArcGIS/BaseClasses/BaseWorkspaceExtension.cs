@@ -4,7 +4,7 @@ using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An abstract class used for creating a geodatabase workspace extension.
@@ -25,7 +25,7 @@ namespace ESRI.ArcGIS.BaseClasses
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseWorkspaceExtension" /> class.
+        ///     Initializes a new instance of the <see cref="BaseWorkspaceExtension" /> class.
         /// </summary>
         /// <param name="extensionName">Name of the extension.</param>
         protected BaseWorkspaceExtension(string extensionName)

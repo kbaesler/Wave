@@ -170,7 +170,7 @@
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
-    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseTool.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxTool.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseWorkspaceExtension.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\LayerAsyncExtensions.cs" />

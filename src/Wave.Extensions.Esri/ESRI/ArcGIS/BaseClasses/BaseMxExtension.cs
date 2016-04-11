@@ -1,11 +1,9 @@
-using System;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF.CATIDs;
-using ESRI.ArcGIS.esriSystem;
 
-namespace ESRI.ArcGIS.BaseClasses
-{    
+namespace ESRI.ArcGIS.ADF.BaseClasses
+{
     /// <summary>
     ///     An abstract extension for running within ArcGIS Engine or Desktop.
     /// </summary>
@@ -20,7 +18,7 @@ namespace ESRI.ArcGIS.BaseClasses
         /// <param name="extensionName">Name of the extension.</param>
         protected BaseMxExtensionJIT(string extensionName)
             : base(extensionName)
-        {            
+        {
         }
 
         #endregion

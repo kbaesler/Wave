@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-using ESRI.ArcGIS.BaseClasses;
+using ESRI.ArcGIS.ADF.BaseClasses;
 using ESRI.ArcGIS.Framework;
 
 using Miner.Framework;

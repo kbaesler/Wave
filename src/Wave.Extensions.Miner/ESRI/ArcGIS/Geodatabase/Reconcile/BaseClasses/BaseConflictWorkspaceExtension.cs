@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF;
-using ESRI.ArcGIS.BaseClasses;
+using ESRI.ArcGIS.ADF.BaseClasses;
 using ESRI.ArcGIS.Geodatabase.Internal;
 using ESRI.ArcGIS.GeoDatabaseDistributed;
 
