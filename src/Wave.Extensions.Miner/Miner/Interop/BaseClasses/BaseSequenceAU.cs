@@ -3,9 +3,7 @@
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.Interop;
-
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract class for an Special AU that will query the next value in the specified Oracle Sequence when the AU is

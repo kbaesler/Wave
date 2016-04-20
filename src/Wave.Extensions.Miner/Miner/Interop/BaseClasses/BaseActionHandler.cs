@@ -1,6 +1,6 @@
 ﻿using Miner.Geodatabase.GeodatabaseManager.ActionHandlers;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Geodatabase
 {
     /// <summary>
     ///     An abstract class used for creating an Action Handler

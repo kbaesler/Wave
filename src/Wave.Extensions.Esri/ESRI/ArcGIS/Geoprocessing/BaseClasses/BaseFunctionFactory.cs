@@ -4,7 +4,7 @@ using System.Linq;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
+namespace ESRI.ArcGIS.Geoprocessing
 {
     /// <summary>
     ///     An abstract class that provides access to the collection of <see cref="IGPFunction" /> objects.

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner.ComCategories;
-using Miner.Interop;
+using Miner.Framework;
 
 using stdole;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     Base class for QA/QC validation rules.

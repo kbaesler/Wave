@@ -7,10 +7,10 @@ using ESRI.ArcGIS.esriSystem;
 
 using Miner.Controls;
 using Miner.Controls.XmlLogin;
+using Miner.Framework;
 using Miner.FrameworkUI;
-using Miner.Interop;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract implementation of the ArcFM Viewer for Engine login that avoids displaying the login screen to the

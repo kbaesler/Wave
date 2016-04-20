@@ -8,9 +8,9 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
 using Miner.ComCategories;
-using Miner.Interop;
+using Miner.Framework;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract namer that supports providing the unique name the files for the map production export.

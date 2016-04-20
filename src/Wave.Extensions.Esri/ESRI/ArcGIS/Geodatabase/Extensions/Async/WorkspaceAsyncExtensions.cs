@@ -144,7 +144,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature classes.</returns>
-        public static Task<IEnumerable<KeyValuePair<IFeatureDataset, IFeatureClass>>> GetFeatureClassesAsync(this IWorkspace source)
+        public static Task<IEnumerable<IFeatureClass>> GetFeatureClassesAsync(this IWorkspace source)
         {
             return Task.Run(() => source.GetFeatureClasses());
         }

@@ -8,9 +8,8 @@ using ESRI.ArcGIS.Geodatabase;
 
 using Miner.Framework.Search;
 using Miner.FrameworkUI.Search;
-using Miner.Interop;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract class that is used to display the user interface for the locator strategies.

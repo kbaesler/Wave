@@ -4,7 +4,6 @@ using System.Collections.Generic;
 #endif
 
 using ESRI.ArcGIS.ADF.COMSupport;
-using ESRI.ArcGIS.esriSystem.BaseClasses;
 
 namespace ESRI.ArcGIS.esriSystem
 {

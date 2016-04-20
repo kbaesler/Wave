@@ -8,9 +8,10 @@ using ADODB;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.Interop;
+using Miner.Framework;
 
-namespace Miner.Framework.BaseClasses
+
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract class that can be used to customize the user interface of the ArcFM Login
