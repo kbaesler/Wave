@@ -80,6 +80,8 @@ namespace ESRI.ArcGIS.Editor
                     else
                         source.AbortOperation();
                 }
+
+                source.Map.DelayDrawing(false);
             }
 
             return flag;
