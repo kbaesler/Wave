@@ -27,14 +27,23 @@ namespace Miner.Interop.Process
 
         #region Fields
 
-        /// <summary>
-        ///     The design object.
-        /// </summary>
+        private static readonly MMDesignEvents Events = new MMDesignEventsClass();
         private IMMWMSDesign _Design;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        ///     Initializes the <see cref="Design" /> class.
+        /// </summary>
+        static Design()
+        {
+            Events.OnCloseDesign += CloseDesign;
+            Events.OnClosingDesign += ClosingDesign;
+            Events.OnDeleteDesign += DeleteDesign;
+            Events.OnOpenDesign += OpenDesign;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Design" /> class.
@@ -44,7 +53,7 @@ namespace Miner.Interop.Process
         public Design(IMMPxApplication pxApp, IMMWMSWorkRequest workRequest)
             : base(pxApp, NodeTypeName)
         {
-            this.WorkRequestID = workRequest.ID;           
+            this.WorkRequestID = workRequest.ID;
         }
 
         /// <summary>
@@ -77,6 +86,30 @@ namespace Miner.Interop.Process
         {
             _Design = design;
         }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        ///     Occurs when a design is closed.
+        /// </summary>
+        public static event IMMDesignEvents_OnCloseDesignEventHandler CloseDesign;
+
+        /// <summary>
+        ///     Occurs when a design is closing.
+        /// </summary>
+        public static event IMMDesignEvents_OnClosingDesignEventHandler ClosingDesign;
+
+        /// <summary>
+        ///     Occurs when a design is deleted.
+        /// </summary>
+        public static event IMMDesignEvents_OnDeleteDesignEventHandler DeleteDesign;
+
+        /// <summary>
+        ///     Occurs when a design is opened.
+        /// </summary>
+        public static event IMMDesignEvents_OnOpenDesignEventHandler OpenDesign;
 
         #endregion
 
@@ -282,8 +315,11 @@ namespace Miner.Interop.Process
         /// </summary>
         public override void Delete()
         {
+            // Raise the design deleted event.
+            Events.RaiseDeleteDesign(this.ID);
+
             // Delete the node.
-            base.Delete();
+            base.Delete();           
 
             // Remove the design reference.
             this.Dispose(true);
@@ -397,6 +433,6 @@ namespace Miner.Interop.Process
             return (_Design != null);
         }
 
-        #endregion        
+        #endregion
     }
 }

@@ -2,10 +2,10 @@
 
 using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.ArcMapUI;
-using ESRI.ArcGIS.SystemUI;
 using ESRI.ArcGIS.Framework;
+using ESRI.ArcGIS.SystemUI;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An abstract class used to create a contents view in the Table of Contents in ArcMap.
@@ -21,10 +21,10 @@ namespace ESRI.ArcGIS.BaseClasses
         #region Constructors
 
 #if !V10
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
-        /// </summary>
-        /// <param name="name">The name.</param>
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
+    /// </summary>
+    /// <param name="name">The name.</param>
         protected BaseContentsView(string name)
         {
             this.Name = name;
@@ -183,7 +183,9 @@ namespace ESRI.ArcGIS.BaseClasses
         }
 
         #endregion
+
 #if V10
+
         #region IContentsView3 Members
 
         /// <summary>
@@ -197,6 +199,7 @@ namespace ESRI.ArcGIS.BaseClasses
         public string Tooltip { get; protected set; }
 
         #endregion
+
 #endif
     }
 }

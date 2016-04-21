@@ -7,9 +7,7 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.NetworkAnalysis;
 
-using Miner.Interop;
-
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract tracing strategy that can be used for network tracing.

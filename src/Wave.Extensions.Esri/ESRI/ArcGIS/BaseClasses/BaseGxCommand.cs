@@ -1,10 +1,9 @@
 using System.Runtime.InteropServices;
 
-using ESRI.ArcGIS.ADF.BaseClasses;
 using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.CatalogUI;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An abstract class used to create a buttons in ArcCatalog.

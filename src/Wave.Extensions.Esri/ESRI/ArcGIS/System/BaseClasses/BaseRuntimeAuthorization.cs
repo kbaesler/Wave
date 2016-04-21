@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ESRI.ArcGIS.esriSystem.BaseClasses
+namespace ESRI.ArcGIS.esriSystem
 {
     /// <summary>
     ///     An internal abstract class used to handle initialization the runtime licenses for use of ArcObjects

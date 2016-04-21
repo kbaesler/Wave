@@ -39,6 +39,11 @@ namespace Miner
                 public const string ClearResults = "MMTraceUI.clsClear";
 
                 /// <summary>
+                ///     The name of the button that will convert the tables / feature classes to ArcFM, Designer or ESRI objects.
+                /// </summary>
+                public const string ObjectClassConversion = "MMGXTools.MMObjectClassConversionTool";
+
+                /// <summary>
                 ///     The name of the button that will indicate if the trace results should be a selection or graphic.
                 /// </summary>
                 public const string ResultsAsSelection = "MMTraceUI.clsResultsAsSelection";
@@ -143,6 +148,11 @@ namespace Miner
                 public const string DesignTab = "{F370324A-4AB8-11D3-88FC-00104B9F25F6}";
 
                 /// <summary>
+                ///     The GUID for the edit notification queue
+                /// </summary>
+                public const string EditNotificationQueue = "{AEFDC531-431C-4EF3-8CEC-E5BEEB4D3822}";
+
+                /// <summary>
                 ///     The GUID of the features tab extension that list of all features on the Features tab that are available for
                 ///     placement.
                 /// </summary>
@@ -245,6 +255,11 @@ namespace Miner
                 public const string SelectionTab = "FeSelTopLevel";
 
                 /// <summary>
+                ///     The session manager extension
+                /// </summary>
+                public const string SessionManager = "Session Manager Integration";
+
+                /// <summary>
                 ///     The name of the targets tab extension for the ArcFM Attribute Editor.
                 /// </summary>
                 public const string TargetsTab = "CUSelTopLevel";
@@ -253,6 +268,11 @@ namespace Miner
                 ///     The name of the trace bridge extension used by the <see cref="IMMTraceBridge" /> interface.
                 /// </summary>
                 public const string TraceBridge = "ElectricGasWaterExt";
+
+                /// <summary>
+                ///     The workflow manager extension
+                /// </summary>
+                public const string WorkflowManager = "Workflow Manager Integration";
 
                 #endregion
             }

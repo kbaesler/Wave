@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Framework;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An abstract class that is used for creating dockable windows.
@@ -18,11 +18,11 @@ namespace ESRI.ArcGIS.BaseClasses
         #region Constructors
 
 #if !V10
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseDockableWindow" /> class.
-        /// </summary>
-        /// <param name="name">The name of the window.</param>
-        /// <param name="caption">The caption for the window.</param>
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BaseDockableWindow" /> class.
+    /// </summary>
+    /// <param name="name">The name of the window.</param>
+    /// <param name="caption">The caption for the window.</param>
         protected BaseDockableWindow(string name, string caption)
         {
             this.Name = name;
@@ -54,6 +54,7 @@ namespace ESRI.ArcGIS.BaseClasses
             this.DockPosition = dockPosition;
         }
 #endif
+
         #endregion
 
         #region Protected Properties
@@ -62,7 +63,7 @@ namespace ESRI.ArcGIS.BaseClasses
         ///     Gets or sets the application.
         /// </summary>
         /// <value>The application.</value>
-        protected IApplication Application { get; set; }       
+        protected IApplication Application { get; set; }
 
         #endregion
 
@@ -132,7 +133,7 @@ namespace ESRI.ArcGIS.BaseClasses
         /// </summary>
         protected void Hide()
         {
-            UID uid = new UIDClass { Value = this.GetType().GUID.ToString("B") };
+            UID uid = new UIDClass {Value = this.GetType().GUID.ToString("B")};
             IDockableWindowManager windowManager = (IDockableWindowManager) this.Application;
             IDockableWindow dockableWindow = windowManager.GetDockableWindow(uid);
             dockableWindow.Show(false);
@@ -146,7 +147,7 @@ namespace ESRI.ArcGIS.BaseClasses
         /// </returns>
         protected bool IsVisible()
         {
-            UID uid = new UIDClass { Value = this.GetType().GUID.ToString("B") };
+            UID uid = new UIDClass {Value = this.GetType().GUID.ToString("B")};
             IDockableWindowManager windowManager = (IDockableWindowManager) this.Application;
             IDockableWindow dockableWindow = windowManager.GetDockableWindow(uid);
             return dockableWindow.IsVisible();
@@ -157,7 +158,7 @@ namespace ESRI.ArcGIS.BaseClasses
         /// </summary>
         protected void Show()
         {
-            UID uid = new UIDClass { Value = this.GetType().GUID.ToString("B") };
+            UID uid = new UIDClass {Value = this.GetType().GUID.ToString("B")};
             IDockableWindowManager windowManager = (IDockableWindowManager) this.Application;
             IDockableWindow dockableWindow = windowManager.GetDockableWindow(uid);
             dockableWindow.Show(true);
@@ -166,13 +167,14 @@ namespace ESRI.ArcGIS.BaseClasses
         #endregion
 
 #if V10
+
         #region IDockableWindowImageDef
-        
+
         /// <summary>
         ///     The bitmap for the dockable window.
         /// </summary>
         public abstract int Bitmap { get; }
-        
+
         #endregion
 
         #region IDockableWindowInitialPlacement
@@ -198,6 +200,7 @@ namespace ESRI.ArcGIS.BaseClasses
         public abstract int Width { get; }
 
         #endregion
+
 #endif
     }
 }

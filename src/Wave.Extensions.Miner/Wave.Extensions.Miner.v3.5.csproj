@@ -126,6 +126,7 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Miner.Desktop, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86" />
     <Reference Include="Miner.Desktop.CuFilter, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -224,28 +225,11 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\GeometryExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\Extensions\BaseFunctionExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Miner\ArcFM.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseAbandonAU.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseActionHandler.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseAttributeAU.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseCircumventLogin.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseDisplayNamer.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseLogin.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseMxLogin.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\ApplicationExtensions.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseAutoText.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseNamer.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseRelationshipAU.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseRelationshipCollectionAU.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseSearchStrategy.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseSearchStrategyUI.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseSequenceAU.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseSpecialAU.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseTrace.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseTreeTool.cs" />
-    <Compile Include="Miner\Framework\BaseClasses\BaseValidationRule.cs" />
     <Compile Include="Miner\Framework\Trace\Results\AdjacencyEidResults.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyNode.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyQueue.cs" />
@@ -254,19 +238,39 @@
     <Compile Include="Miner\Geodatabase\Internal\EventOverride.cs" />
     <Compile Include="Miner\Geodatabase\EventOverrides.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverter.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseAbandonAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseActionHandler.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseAttributeAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseAutoText.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseCircumventLogin.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseDisplayNamer.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseFieldProperty.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseLogin.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseMxLogin.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseNamer.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseRelationshipAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseRelationshipCollectionAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSearchStrategy.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSearchStrategyUI.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSequenceAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSpecialAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseTrace.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseTreeTool.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseValidationRule.cs" />
+    <Compile Include="Miner\Interop\EditNotificationQueue.cs" />
     <Compile Include="Miner\Interop\Extensions\AttributeEditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListItemExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\EditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FeatureClassExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\FieldExtensions.cs" />
-    <Compile Include="Miner\Interop\Extensions\MMEditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
-    <Compile Include="Miner\Interop\Internal\EditNotificationQueue.cs" />
+    <Compile Include="Miner\Interop\ObjectClassConversion.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxActionHandler.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxControl.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxCostEngine.cs" />

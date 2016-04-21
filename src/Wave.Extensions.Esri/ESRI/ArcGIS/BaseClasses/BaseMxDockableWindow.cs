@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF.CATIDs;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An abstract class used to create a dockable window in ArcMap.

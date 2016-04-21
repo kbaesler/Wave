@@ -115,11 +115,8 @@ namespace ESRI.ArcGIS.Framework
             if (source == null) return null;
             if (type == null) throw new ArgumentNullException("type");
 
-            object[] attributes = type.GetCustomAttributes(typeof (ProgIdAttribute), false);
-            if (attributes.Length == 0) return null;
-
             UID uid = new UID();
-            uid.Value = ((ProgIdAttribute) attributes[0]).Value;
+            uid.Value = type.GUID.ToString("B");
 
             var windowManager = source as IDockableWindowManager;
             if (windowManager == null) return null;

@@ -2,7 +2,7 @@
 
 using Miner.Interop;
 
-namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
+namespace ESRI.ArcGIS.Geoprocessing
 {
     /// <summary>
     /// Provides extension methods for the <see cref="BaseFunction"/> class.

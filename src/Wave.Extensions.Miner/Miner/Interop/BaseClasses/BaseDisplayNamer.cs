@@ -6,9 +6,9 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner.ComCategories;
-using Miner.Interop;
+using Miner.Framework;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     Abstract base class for Display Namer Objects.

@@ -109,7 +109,7 @@ namespace Miner.Interop
             IMMSubtype subtype = source.GetSubtypeByID(table, ALL_SUBTYPES, false);
             if (subtype != null)
             {
-                list.Add(ALL_SUBTYPES, subtype.GetAutoValues(table, editEvent));
+                list.Add(ALL_SUBTYPES, subtype.GetAutoValues(editEvent));
             }
 
             // Load the individual subtype values.
@@ -120,7 +120,7 @@ namespace Miner.Interop
                 subtype = source.GetSubtypeByID(table, subtypeCode, false);
                 if (subtype == null) continue;
 
-                list.Add(subtypeCode, subtype.GetAutoValues(table, editEvent));
+                list.Add(subtypeCode, subtype.GetAutoValues(editEvent));
             }
 
             return list;

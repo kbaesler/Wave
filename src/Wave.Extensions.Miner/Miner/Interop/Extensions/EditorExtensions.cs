@@ -5,7 +5,7 @@ namespace Miner.Interop
     /// <summary>
     ///     Provides extension methods forthe <see cref="IMMEditor" /> extension.
     /// </summary>
-    public static class MMEditorExtensions
+    public static class EditorExtensions
     {
         #region Public Methods
 

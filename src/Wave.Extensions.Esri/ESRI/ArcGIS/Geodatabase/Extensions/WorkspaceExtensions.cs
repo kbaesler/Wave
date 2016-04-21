@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 
 using ESRI.ArcGIS.ADF;
-using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase.Internal;
 
@@ -344,7 +343,10 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Gets all of the feature classes in the workspace.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature classes.</returns>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature
+        ///     classes.
+        /// </returns>
         public static IEnumerable<IFeatureClass> GetFeatureClasses(this IWorkspace source)
         {
             var datasets = source.Datasets[esriDatasetType.esriDTFeatureDataset];

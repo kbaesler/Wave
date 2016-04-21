@@ -2,6 +2,7 @@
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Editor
 {
@@ -11,7 +12,7 @@ namespace ESRI.ArcGIS.Editor
     public static class EditorExtensions
     {
         #region Public Methods
-
+        
         /// <summary>
         ///     Provides access to the conflict display environment after performing a reconcile in the Editor.
         /// </summary>
@@ -45,17 +46,19 @@ namespace ESRI.ArcGIS.Editor
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
         public static bool PerformOperation(this IEditor source, string menuText, Func<bool> operation)
         {
-            bool flag = false;
             if (source == null || source.Map == null) return false;
 
             var wse = source.EditWorkspace as IWorkspaceEdit2;
             if (wse == null) return false;
 
-            if (wse.IsInEditOperation)
-                throw new ArgumentOutOfRangeException("source", "An edit operation is already started.");
-
             source.Map.DelayDrawing(true);
+
+            if (wse.IsInEditOperation)
+                throw new ArgumentOutOfRangeException("source", @"An edit operation is already started.");
+
             source.StartOperation();
+
+            bool flag = false;
 
             try
             {
@@ -77,8 +80,6 @@ namespace ESRI.ArcGIS.Editor
                     else
                         source.AbortOperation();
                 }
-
-                source.Map.DelayDrawing(false);
             }
 
             return flag;

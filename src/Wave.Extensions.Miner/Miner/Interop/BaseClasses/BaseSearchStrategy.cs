@@ -3,9 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
 
-using Miner.Interop;
-
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract class used to implement custom <see cref="IMMSearchStrategy" /> search strategies.

@@ -4,31 +4,32 @@ using System.Windows.Forms;
 
 using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Framework;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An abstract tool that is used in the engine environment.
     /// </summary>
-    public abstract class BaseTool : ADF.BaseClasses.BaseTool
+    public abstract class BaseMxTool : BaseTool
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseTool" /> class.
+        ///     Initializes a new instance of the <see cref="BaseMxTool" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="category">The category.</param>
         /// <param name="message">The message.</param>
         /// <param name="tooltip">The tooltip.</param>
-        protected BaseTool(string name, string caption, string category, string message, string tooltip)
+        protected BaseMxTool(string name, string caption, string category, string message, string tooltip)
             : base(null, caption, category, Cursors.Arrow, 0, null, message, name, tooltip)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseTool" /> class.
+        ///     Initializes a new instance of the <see cref="BaseMxTool" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="caption">The caption.</param>
@@ -36,13 +37,13 @@ namespace ESRI.ArcGIS.BaseClasses
         /// <param name="message">The message.</param>
         /// <param name="tooltip">The tooltip.</param>
         /// <param name="bitmap">The bitmap.</param>
-        protected BaseTool(string name, string caption, string category, string message, string tooltip, Bitmap bitmap)
+        protected BaseMxTool(string name, string caption, string category, string message, string tooltip, Bitmap bitmap)
             : base(bitmap, caption, category, Cursors.Arrow, 0, null, message, name, tooltip)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseTool" /> class.
+        ///     Initializes a new instance of the <see cref="BaseMxTool" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="caption">The caption.</param>
@@ -51,7 +52,7 @@ namespace ESRI.ArcGIS.BaseClasses
         /// <param name="tooltip">The tooltip.</param>
         /// <param name="bitmap">The bitmap.</param>
         /// <param name="cursor">The cursor.</param>
-        protected BaseTool(string name, string caption, string category, string message, string tooltip, Bitmap bitmap, Cursor cursor)
+        protected BaseMxTool(string name, string caption, string category, string message, string tooltip, Bitmap bitmap, Cursor cursor)
             : base(bitmap, caption, category, cursor, 0, null, message, name, tooltip)
         {
         }
@@ -59,6 +60,14 @@ namespace ESRI.ArcGIS.BaseClasses
         #endregion
 
         #region Protected Properties
+
+        /// <summary>
+        ///     Gets or sets the application.
+        /// </summary>
+        /// <value>
+        ///     The application.
+        /// </value>
+        protected IApplication Application { get; set; }
 
         /// <summary>
         ///     Gets or sets the hook helper.
@@ -89,6 +98,8 @@ namespace ESRI.ArcGIS.BaseClasses
                 this.HookHelper = hook as IHookHelper;
             else
                 this.HookHelper = new HookHelperClass {Hook = hook};
+
+            this.Application = hook as IApplication;
         }
 
         #endregion

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.SystemUI;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
 #if V10
     /// <summary>
