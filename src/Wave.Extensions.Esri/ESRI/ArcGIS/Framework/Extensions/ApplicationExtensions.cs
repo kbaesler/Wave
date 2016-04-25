@@ -218,4 +218,30 @@ namespace ESRI.ArcGIS.Framework
 
         #endregion
     }
+
+    /// <summary>
+    ///     Provides access to the progress bar animation on the status bar.
+    /// </summary>
+    public interface IProgressBarAnimation : IDisposable
+    {
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the percent complete.
+        /// </summary>
+        /// <value>The percent complete.</value>
+        float Percentage { get; }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Increments the progress bar and updates the status bar with specified status message.
+        /// </summary>
+        /// <param name="statusMessage">The status message.</param>
+        void Step(string statusMessage);
+
+        #endregion
+    }
 }
