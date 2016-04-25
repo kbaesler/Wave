@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Framework.Internal;
@@ -49,13 +49,13 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
-        /// Returns the command that has the specified <paramref name="commandName" />.
+        ///     Returns the command that has the specified <paramref name="commandName" />.
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <param name="commandName">Name of the command.</param>
         /// <returns>
-        /// Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
-        /// <c>null</c>.
+        ///     Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
+        ///     <c>null</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">commandName</exception>
         /// <exception cref="System.ArgumentException">The application framework has not been fully initialized.</exception>
@@ -68,21 +68,22 @@ namespace ESRI.ArcGIS.Framework
             if (!status.Initialized)
                 throw new ArgumentException("The application framework has not been fully initialized.");
 
-            ICommandBars commandBars = source.Document.CommandBars;
             UID uid = new UID();
             uid.Value = commandName;
+
+            ICommandBars commandBars = source.Document.CommandBars;
             ICommandItem commandItem = commandBars.Find(uid, false, true);
             return commandItem;
         }
 
         /// <summary>
-        /// Returns the command that has the specified <paramref name="type" />.
+        ///     Returns the command that has the specified <paramref name="type" />.
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <param name="type">Type of the command.</param>
         /// <returns>
-        /// Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
-        /// <c>null</c>.
+        ///     Returns the <see cref="ESRI.ArcGIS.Framework.ICommandItem" /> representing the command item; otherwise
+        ///     <c>null</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">type</exception>
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
@@ -91,22 +92,19 @@ namespace ESRI.ArcGIS.Framework
             if (source == null) return null;
             if (type == null) throw new ArgumentNullException("type");
 
-            object[] attributes = type.GetCustomAttributes(typeof (GuidAttribute), false);
-            if (attributes.Length == 0) return null;
-
-            string value = "{" + ((GuidAttribute) attributes[0]).Value + "}";
+            string value = type.GUID.ToString("B");
             return GetCommandItem(source, value);
         }
 
 
         /// <summary>
-        /// Gets the dockable window for the given type.
+        ///     Gets the dockable window for the given type.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="type">The dockable window type.</param>
         /// <returns>
-        /// Returns the <see cref="ESRI.ArcGIS.Framework.IDockableWindow" /> representing the window; otherwise
-        /// <c>null</c>.
+        ///     Returns the <see cref="ESRI.ArcGIS.Framework.IDockableWindow" /> representing the window; otherwise
+        ///     <c>null</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">type</exception>
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Dockable")]
@@ -140,19 +138,33 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
-        /// Initializes the animation of the progress bar.
+        ///     Gets the snapping environment.
+        /// </summary>
+        /// <param name="source">The application.</param>
+        /// <returns>Returns a <see cref="ISnappingEnvironment" /> representing the snapping environment</returns>
+        public static ISnappingEnvironment GetSnappingEnvironment(this IApplication source)
+        {
+            if (source == null)
+                return null;
+
+            return (ISnappingEnvironment) source.FindExtensionByName(ArcMap.Extensions.Name.SnappingEnvironment);
+        }
+
+        /// <summary>
+        ///     Initializes the animation of the progress bar.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>
-        /// Returns a <see cref="IProgressBarAnimation" /> representing the object that controls the actions of the progress
-        /// bar.
+        ///     Returns a <see cref="IProgressBarAnimation" /> representing the object that controls the actions of the progress
+        ///     bar.
         /// </returns>
         public static IProgressBarAnimation PlayAnimation(this IApplication source, int min, int max)
         {
             return source.PlayAnimation(min, max, 0, 1);
         }
+
         /// <summary>
         ///     Initializes the animation of the progress bar.
         /// </summary>
@@ -167,7 +179,7 @@ namespace ESRI.ArcGIS.Framework
         /// </returns>
         public static IProgressBarAnimation PlayAnimation(this IApplication source, int min, int max, int position, int step)
         {
-            if(source == null) return null;
+            if (source == null) return null;
 
             if (_ProgressBarAnimation != null)
                 _ProgressBarAnimation.Dispose();
@@ -188,8 +200,8 @@ namespace ESRI.ArcGIS.Framework
         /// </returns>
         public static IDisposable PlayAnimation(this IApplication source)
         {
-            if(source == null) return null;
-            
+            if (source == null) return null;
+
             return source.PlayAnimation(null);
         }
 

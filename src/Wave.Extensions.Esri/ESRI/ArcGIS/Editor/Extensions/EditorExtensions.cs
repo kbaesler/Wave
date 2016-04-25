@@ -2,7 +2,6 @@
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Editor
 {
@@ -12,7 +11,7 @@ namespace ESRI.ArcGIS.Editor
     public static class EditorExtensions
     {
         #region Public Methods
-        
+
         /// <summary>
         ///     Provides access to the conflict display environment after performing a reconcile in the Editor.
         /// </summary>
