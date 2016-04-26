@@ -2,6 +2,7 @@
 using Miner.Framework;
 
 using ESRI.ArcGIS.Carto;
+
 #endif
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -42,6 +43,15 @@ namespace ESRI.ArcGIS.Geodatabase
                 return null;
 
             return MapUtilities.HighlightFeature(source);
+        }
+
+        /// <summary>
+        ///     Unhighlights the specified feature using the color specified by the ArcFM Properties.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Unhighlight(this IElement source)
+        {
+            MapUtilities.UnhighlightFeature(source);
         }
 
         /// <summary>

@@ -166,10 +166,10 @@ namespace ESRI.ArcGIS.Geodatabase
             var helper = new HookHelperClass();
             helper.Hook = hook;
 
-            if (!helper.ActionSupported[source, action])
+            if (!helper.ActionSupported[source.Shape, action])
                 return false;
 
-            helper.DoAction(source, action);
+            helper.DoAction(source.Shape, action);
             return true;
         }
 
@@ -185,14 +185,14 @@ namespace ESRI.ArcGIS.Geodatabase
             var helper = new HookHelperClass();
             helper.Hook = hook;
 
-            IArray array = new ArrayClass();
+            IArray shapes = new ArrayClass();
             foreach (var unk in source)
-                array.Add(unk);
+                shapes.Add(unk.Shape);
 
-            if (!helper.ActionSupportedOnMultiple[array, action])
+            if (!helper.ActionSupportedOnMultiple[shapes, action])
                 return false;
 
-            helper.DoActionOnMultiple(array, action);
+            helper.DoActionOnMultiple(shapes, action);
             return true;
         }
 
