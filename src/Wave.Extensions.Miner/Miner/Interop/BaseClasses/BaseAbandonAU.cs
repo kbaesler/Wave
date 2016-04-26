@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner.ComCategories;
-using Miner.Interop;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract class used for creating an Abandon AU.
