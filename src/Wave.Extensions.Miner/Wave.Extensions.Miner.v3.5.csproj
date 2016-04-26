@@ -281,6 +281,7 @@
     <Compile Include="Miner\Interop\BaseClasses\BaseTrace.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseTreeTool.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseValidationRule.cs" />
+    <Compile Include="Miner\Interop\Collections\TreeViewSelection.cs" />
     <Compile Include="Miner\Interop\EditNotificationQueue.cs" />
     <Compile Include="Miner\Interop\Extensions\AttributeEditorExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
@@ -362,7 +363,6 @@
     <Compile Include="Miner\Interop\Internal\MinerRuntimeAuthorization.cs" />
     <Compile Include="Miner\Interop\RuntimeAuthorization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Miner\Interop\Collections\TreeViewSelectionEnumerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

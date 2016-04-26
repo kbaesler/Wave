@@ -11,7 +11,7 @@ namespace Miner.Interop
     /// </summary>
     [ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
-    public class TreeViewSelectionEnumerator : IMMTreeViewSelection, IDisposable
+    public class TreeViewSelection : IMMTreeViewSelection, IDisposable
     {
         #region Fields
 
@@ -23,10 +23,10 @@ namespace Miner.Interop
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TreeViewSelectionEnumerator" /> class.
+        ///     Initializes a new instance of the <see cref="TreeViewSelection" /> class.
         /// </summary>
         /// <param name="features">The features.</param>
-        public TreeViewSelectionEnumerator(IEnumerable<IFeature> features)
+        public TreeViewSelection(IEnumerable<IFeature> features)
         {
             var list = new List<IFeature>(features);
 
@@ -35,10 +35,10 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TreeViewSelectionEnumerator" /> class.
+        ///     Initializes a new instance of the <see cref="TreeViewSelection" /> class.
         /// </summary>
         /// <param name="features">The features.</param>
-        public TreeViewSelectionEnumerator(params IFeature[] features)
+        public TreeViewSelection(params IFeature[] features)
         {
             var list = new List<IFeature>(features);
 
@@ -65,7 +65,7 @@ namespace Miner.Interop
         #region IMMTreeViewSelection Members
 
         /// <summary>
-        ///     Gets a value indicating whether this <see cref="TreeViewSelectionEnumerator" /> is EOF.
+        ///     Gets a value indicating whether this <see cref="TreeViewSelection" /> is EOF.
         /// </summary>
         /// <value>
         ///     <c>true</c> if EOF; otherwise, <c>false</c>.
