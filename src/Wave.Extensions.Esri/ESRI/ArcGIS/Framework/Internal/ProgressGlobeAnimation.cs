@@ -7,7 +7,7 @@ namespace ESRI.ArcGIS.Framework.Internal
     /// <summary>
     ///     An internal class used to handle starting and stopping the ArcMap progress animation.
     /// </summary>
-    internal class ProgressGlobeAnimation : IDisposable
+    internal class ProgressGlobeAnimation : IProgressGlobeAnimation
     {
         #region Fields
 
@@ -44,7 +44,7 @@ namespace ESRI.ArcGIS.Framework.Internal
 
         #endregion
 
-        #region IDisposable Members
+        #region IProgressGlobeAnimation Members
 
         /// <summary>
         ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -54,10 +54,6 @@ namespace ESRI.ArcGIS.Framework.Internal
             this.Dispose(true);
             GC.SuppressFinalize(this);
         }
-
-        #endregion
-
-        #region Public Methods
 
         /// <summary>
         ///     Starts the global spinning in ArcMap and updates the message on the status bar.
@@ -76,6 +72,17 @@ namespace ESRI.ArcGIS.Framework.Internal
 
             _Application.StatusBar.PlayProgressAnimation(true);
             _Application.StatusBar.Message[0] = statusMessage;
+        }
+
+        /// <summary>
+        ///     Sets the message on the status bar
+        /// </summary>
+        /// <value>
+        ///     The message on the status bar.
+        /// </value>
+        public string Message
+        {
+            set { _Application.StatusBar.Message[0] = value; }
         }
 
         #endregion

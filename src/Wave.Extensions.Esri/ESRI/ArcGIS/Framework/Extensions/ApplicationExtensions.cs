@@ -256,4 +256,25 @@ namespace ESRI.ArcGIS.Framework
 
         #endregion
     }
+
+    /// <summary>
+    ///     An interface used to handle starting and stopping the ArcMap progress animation.
+    /// </summary>
+    public interface IProgressGlobeAnimation : IDisposable
+    {
+        /// <summary>
+        /// Sets the message on the status bar.
+        /// </summary>
+        /// <value>
+        /// The message on the status bar.
+        /// </value>
+        string Message { set; }
+
+        /// <summary>
+        ///     Starts the global spinning in ArcMap and updates the message on the status bar.
+        /// </summary>
+        /// <param name="cursor">The cursor.</param>
+        /// <param name="statusMessage">The status message.</param>
+        void Play(MouseCursorImage cursor, string statusMessage);
+    }
 }
