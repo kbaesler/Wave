@@ -42,6 +42,48 @@ namespace Miner.Interop.Process
         #region Protected Properties
 
         /// <summary>
+        ///     Gets the last node identifier created.
+        /// </summary>
+        /// <value>
+        ///     The last node identifier created.
+        /// </value>
+        protected int LastNodeIdCreated
+        {
+            get
+            {
+                object id;
+                var dictionary = ((IMMPxTask2) this.Task).Dictionary.ToDictionary();
+                if (dictionary.TryGetValue("MMLastNodeIdCreated", out id))
+                {
+                    return Convert.ToInt32(id);
+                }
+
+                return -1;
+            }
+        }
+
+        /// <summary>
+        ///     Gets the last node identifier type created.
+        /// </summary>
+        /// <value>
+        ///     The last node identifier type created.
+        /// </value>
+        protected int LastNodeIdTypeCreated
+        {
+            get
+            {
+                object id;
+                var dictionary = ((IMMPxTask2) this.Task).Dictionary.ToDictionary();
+                if (dictionary.TryGetValue("MMLastNodeTypeIdCreated", out id))
+                {
+                    return Convert.ToInt32(id);
+                }
+
+                return -1;
+            }
+        }
+
+        /// <summary>
         ///     Gets the process application reference.
         /// </summary>
         /// <value>
