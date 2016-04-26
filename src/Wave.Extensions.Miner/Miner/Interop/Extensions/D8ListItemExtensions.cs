@@ -15,7 +15,7 @@ namespace Miner.Interop
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>
-        ///     Returns a <see cref="TValue" /> representing the parent.
+        ///     Returns a type of the representing the parent.
         /// </returns>
         public static TValue GetParent<TValue>(this ID8ListItem source)
             where TValue : class
@@ -30,7 +30,7 @@ namespace Miner.Interop
         /// <param name="source">The source.</param>
         /// <param name="predicate">The predicate used to determine if the value should be used.</param>
         /// <returns>
-        ///     Returns a <see cref="TValue" /> representing the parent.
+        ///     Returns a a type of the representing the parent.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">predicate</exception>
         public static TValue GetParent<TValue>(this ID8ListItem source, Predicate<TValue> predicate)

@@ -73,6 +73,11 @@ namespace ESRI.ArcGIS.Framework
                 /// </summary>
                 public const string NetworkUtilityAnalysis = "{98528F9B-B971-11D2-BABD-00C04FA33C20}";
 
+                /// <summary>
+                /// The GUID of the snapping environment.
+                /// </summary>
+                public const string SnappingEnvironment = "{E07B4C52-C894-4558-B8D4-D4050018D1DA}";
+
                 #endregion
             }
 
@@ -97,6 +102,10 @@ namespace ESRI.ArcGIS.Framework
                 /// </summary>
                 public const string NetworkUtilityAnalysis = "Utility Network Analyst";
 
+                /// <summary>
+                /// The name of the snapping environment.
+                /// </summary>
+                public const string SnappingEnvironment = "ESRI Snapping";
                 #endregion
             }
 

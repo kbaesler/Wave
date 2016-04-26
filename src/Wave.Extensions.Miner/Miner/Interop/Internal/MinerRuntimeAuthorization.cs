@@ -1,4 +1,4 @@
-﻿using ESRI.ArcGIS.esriSystem.BaseClasses;
+﻿using ESRI.ArcGIS.esriSystem;
 
 namespace Miner.Interop.Internal
 {

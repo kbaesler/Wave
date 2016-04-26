@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using Miner.ComCategories;
-using Miner.Interop;
+using Miner.Framework;
 
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     Provides autotext elements with access to text strings which are updated in various ways and at various times

@@ -130,6 +130,7 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparerTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Extensions\EnumerationExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -152,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ESRI\ArcGIS\Framework\Extensions\" />
-    <Folder Include="ESRI\ArcGIS\System\" />
     <Folder Include="System\Data\" />
     <Folder Include="System\Diagnostics\" />
   </ItemGroup>

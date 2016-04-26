@@ -83,6 +83,20 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
+        ///     Determines if there are any process framework tasks being executed.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Retuns <see cref="bool" /> representing <c>true</c> when there are tasks executing.
+        /// </returns>
+        public static bool AnyTasksExecuting(this IMMPxApplication source)
+        {
+            if (source == null) return false;
+
+            return ((IMMPxApplicationEx3) source).TasksExecuting > 0;
+        }
+
+        /// <summary>
         ///     Creates a copy of the specified history.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -103,7 +117,7 @@ namespace Miner.Interop.Process
             };
         }
 
-        
+
         /// <summary>
         ///     Executes the given statement which is usually an Insert, Update or Delete statement and returns the number of rows
         ///     affected.

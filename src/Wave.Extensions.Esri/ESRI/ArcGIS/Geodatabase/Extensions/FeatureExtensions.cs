@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Framework;
 using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -12,6 +16,28 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class FeatureExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Flashes to the specified feature.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The application reference.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        public static bool Flash(this IFeature source, IApplication hook)
+        {
+            return source.DoAction(hook, esriHookActions.esriHookActionsFlash);
+        }
+
+        /// <summary>
+        ///     Flashes to the specified features.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The application reference.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        public static bool Flash(this IEnumerable<IFeature> source, IApplication hook)
+        {
+            return source.DoAction(hook, esriHookActions.esriHookActionsFlash);
+        }
 
         /// <summary>
         ///     Gets the difference in shape between the original and existing shape.
@@ -78,6 +104,96 @@ namespace ESRI.ArcGIS.Geodatabase
             invalidArea.Display = display;
             invalidArea.AddFeature(source, symbol);
             invalidArea.Invalidate((short) screenCache);
+        }
+
+        /// <summary>
+        ///     Pans to the specified feature.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The application reference.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        public static bool Pan(this IFeature source, IApplication hook)
+        {
+            return source.DoAction(hook, esriHookActions.esriHookActionsPan);
+        }
+
+        /// <summary>
+        ///     Pans to the specified features.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The application reference.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        public static bool Pan(this IEnumerable<IFeature> source, IApplication hook)
+        {
+            return source.DoAction(hook, esriHookActions.esriHookActionsPan);
+        }
+
+        /// <summary>
+        ///     Zooms to the specified feature.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The application reference.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        public static bool Zoom(this IFeature source, IApplication hook)
+        {
+            return source.DoAction(hook, esriHookActions.esriHookActionsZoom);
+        }
+
+        /// <summary>
+        ///     Zooms to the specified features.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The application reference.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        public static bool Zoom(this IEnumerable<IFeature> source, IApplication hook)
+        {
+            return source.DoAction(hook, esriHookActions.esriHookActionsZoom);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Executes the action on the feature.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The hook.</param>
+        /// <param name="action">The action.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        private static bool DoAction(this IFeature source, IApplication hook, esriHookActions action)
+        {
+            var helper = new HookHelperClass();
+            helper.Hook = hook;
+
+            if (!helper.ActionSupported[source.Shape, action])
+                return false;
+
+            helper.DoAction(source.Shape, action);
+            return true;
+        }
+
+        /// <summary>
+        ///     Executes the action on all of the features in the enumeration.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="hook">The hook.</param>
+        /// <param name="action">The action.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the action was successful.</returns>
+        private static bool DoAction(this IEnumerable<IFeature> source, IApplication hook, esriHookActions action)
+        {
+            var helper = new HookHelperClass();
+            helper.Hook = hook;
+
+            IArray shapes = new ArrayClass();
+            foreach (var unk in source)
+                shapes.Add(unk.Shape);
+
+            if (!helper.ActionSupportedOnMultiple[shapes, action])
+                return false;
+
+            helper.DoActionOnMultiple(shapes, action);
+            return true;
         }
 
         #endregion

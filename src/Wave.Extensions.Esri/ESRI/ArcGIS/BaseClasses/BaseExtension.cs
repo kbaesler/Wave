@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.esriSystem;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An interface that exposes the state changes for the extension enabled states.

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.Interop;
-
-namespace Miner.Framework.BaseClasses
+namespace Miner.Interop
 {
     /// <summary>
     ///     An abstract Relationship Auto Updater (AU) that is used to to execute multiple <see cref="BaseRelationshipAU" />

@@ -95,12 +95,10 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ESRI.ArcGIS.Controls, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <HintPath>C:\Program Files (x86)\ArcGIS\DotNet\ESRI.ArcGIS.Controls.dll</HintPath>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=9.3.0.1770, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <HintPath>C:\Program Files (x86)\ArcGIS\DotNet\ESRI.ArcGIS.DataSourcesGDB.dll</HintPath>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -170,7 +168,7 @@
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
-    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseTool.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxTool.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseWorkspaceExtension.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\LayerAsyncExtensions.cs" />
@@ -240,6 +238,7 @@
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\ExtensionManager.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Extensions\EnumerationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\PropertySetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\StreamExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\UIDExtensions.cs" />

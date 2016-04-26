@@ -255,6 +255,11 @@ namespace Miner
                 public const string SelectionTab = "FeSelTopLevel";
 
                 /// <summary>
+                ///     The session manager extension
+                /// </summary>
+                public const string SessionManager = "Session Manager Integration";
+
+                /// <summary>
                 ///     The name of the targets tab extension for the ArcFM Attribute Editor.
                 /// </summary>
                 public const string TargetsTab = "CUSelTopLevel";
@@ -263,6 +268,11 @@ namespace Miner
                 ///     The name of the trace bridge extension used by the <see cref="IMMTraceBridge" /> interface.
                 /// </summary>
                 public const string TraceBridge = "ElectricGasWaterExt";
+
+                /// <summary>
+                ///     The workflow manager extension
+                /// </summary>
+                public const string WorkflowManager = "Workflow Manager Integration";
 
                 #endregion
             }
