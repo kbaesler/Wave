@@ -245,8 +245,9 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\Extensions\BaseFunctionExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Miner\ArcFM.cs" />
+    <Compile Include="Miner\Geodatabase\Gdbm.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseAbandonAU.cs" />
-    <Compile Include="Miner\Interop\BaseClasses\BaseActionHandler.cs" />
+    <Compile Include="Miner\Geodatabase\BaseClassses\BaseActionHandler.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseAttributeAU.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseCircumventLogin.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseDisplayNamer.cs" />

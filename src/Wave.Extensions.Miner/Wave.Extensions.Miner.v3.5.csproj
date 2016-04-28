@@ -259,11 +259,12 @@
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyQueue.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyTrace.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\ConnectivityTrace.cs" />
+    <Compile Include="Miner\Geodatabase\BaseClassses\BaseActionHandler.cs" />
+    <Compile Include="Miner\Geodatabase\Gdbm.cs" />
     <Compile Include="Miner\Geodatabase\Internal\EventOverride.cs" />
     <Compile Include="Miner\Geodatabase\EventOverrides.cs" />
     <Compile Include="Miner\Interop\AutoUpdaterModeReverter.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseAbandonAU.cs" />
-    <Compile Include="Miner\Interop\BaseClasses\BaseActionHandler.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseAttributeAU.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseAutoText.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseCircumventLogin.cs" />
@@ -393,10 +394,7 @@
   <ItemGroup>
     <Content Include="Miner\Interop\Process\EDM\Resources\DDL\ExtendedDataTables.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Miner\Geodatabase\Collections\" />
-    <Folder Include="Miner\Geodatabase\Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Wave.Extensions.Esri\Wave.Extensions.Esri.v3.5.csproj">
       <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
