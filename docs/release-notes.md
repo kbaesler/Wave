@@ -9,9 +9,14 @@ These are the changes, additions, removals that are actively being worked on and
 - Added `ExecuteTask` extension method on the `IMMPxNode` object to execute tasks based on name. [^2]
 - Added `CompatibleUnit` and `WorkLocation` node objects. [^2]
 - Added `GetActiveTab` extension method to the `IMMAttributeEditor` interface to allow for returning the `ID8List` for the tab that is selected in the ArcFM Attribute Editor. [^2]
+- Added `Pan`, `Zoom`, and `Flash` extension methods to the `IFeature` interface to allow for performing these actions when the proper hook is supplied. [^1]
+- Added `Unhighlight` extension method for unhighlighting features. [^2]
 
 ### Changed
 - The `GetDataChanges` extension methods on the `IVersion` interface returns a `DeltaRowCollection` instead of a `List{DeltaRow}` as the accessor methods on the `DeltaRow` have been moved to the `DeltaRowCollection` class to allow for better performance. [^1] [^4]
+- The `ESRI.ArcGIS.Framework.BaseClasses` namespace was replaced with the `ESRI.ArcGIS.ADF.BaseClasses` namespace. [^1] [^4]
+- The `Miner.Framework.BaseClasses` namespace was replaced with the `Miner.Interop` namespace. [^2] [^4]
+- Moved the `IProgressBarAnimation` interface into the `ESRI.ArcGIS.Framework` namespace [^1]
 
 ---
 ## Version 1.0.2 - 2016-03-03
@@ -35,7 +40,7 @@ These are the changes, additions, removals that are actively being worked on and
 
 ### Removed
 - The `CreateNew` and `Initialize` methods on the `IPxNode` interface have been removed. [^2] [^4]
-- The  `ReferenceDictionary` has been replaced with the `ToDictionary` extension method on the `Miner.Interop.Process.IDictionary` which converts it to `Dictionary{String, Object}`. [^2] [^4]
+- The `ReferenceDictionary` has been replaced with the `ToDictionary` extension method on the `Miner.Interop.Process.IDictionary` which converts it to `Dictionary{String, Object}`. [^2] [^4]
 
 ### Changed
 - Using overloading mechanism instead of the optional parameters. [^3]

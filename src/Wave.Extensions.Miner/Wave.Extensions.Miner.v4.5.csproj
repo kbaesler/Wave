@@ -245,8 +245,9 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\Extensions\BaseFunctionExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Miner\ArcFM.cs" />
+    <Compile Include="Miner\Geodatabase\Gdbm.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseAbandonAU.cs" />
-    <Compile Include="Miner\Interop\BaseClasses\BaseActionHandler.cs" />
+    <Compile Include="Miner\Geodatabase\BaseClassses\BaseActionHandler.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseAttributeAU.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseCircumventLogin.cs" />
     <Compile Include="Miner\Interop\BaseClasses\BaseDisplayNamer.cs" />
@@ -356,7 +357,7 @@
     <Compile Include="Miner\Interop\Internal\MinerRuntimeAuthorization.cs" />
     <Compile Include="Miner\Interop\RuntimeAuthorization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Miner\Interop\Collections\TreeViewSelectionEnumerator.cs" />
+    <Compile Include="Miner\Interop\Collections\TreeViewSelection.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -387,10 +388,7 @@
   <ItemGroup>
     <Content Include="Miner\Interop\Process\EDM\Resources\DDL\ExtendedDataTables.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Miner\Geodatabase\Collections\" />
-    <Folder Include="Miner\Geodatabase\Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Wave.Extensions.Esri\Wave.Extensions.Esri.v4.5.csproj">
       <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
