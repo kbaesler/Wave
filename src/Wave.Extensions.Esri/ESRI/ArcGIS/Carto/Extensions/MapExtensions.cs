@@ -199,6 +199,38 @@ namespace ESRI.ArcGIS.Carto
             return workspace;
         }
 
+        /// <summary>
+        ///     Determines whether the specified layer is visible in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="layer">The layer.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the layer is visible.</returns>
+        /// <remarks>
+        ///     It does this by checking to see if the layer is not drawn due to scale ranges and also by validating whether
+        ///     or not the layer is in a composite layer or group layer that is not visible.
+        /// </remarks>
+        public static bool IsLayerVisible(this IMap source, ILayer layer)
+        {
+            IMapLayers2 layers = (IMapLayers2) source;
+            return layers.IsLayerVisible(layer);
+        }
+
+        /// <summary>
+        ///     Determines whether the specified parent of the layer is visible in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="layer">The layer.</param>
+        /// <returns>Returns <see cref="bool" /> representing <c>true</c> when the parent layer is visible.</returns>
+        public static bool IsParentVisible(this IMap source, ILayer layer)
+        {
+            bool isLayerVisible;
+            bool isParentVisible;
+
+            IMapLayers2 layers = (IMapLayers2) source;
+            layers.IsLayerVisibleEx(layer, out isLayerVisible, out isParentVisible);
+            return isParentVisible;
+        }
+
 
         /// <summary>
         ///     Traverses the <paramref name="source" /> selecting only those layers that satisfy the
