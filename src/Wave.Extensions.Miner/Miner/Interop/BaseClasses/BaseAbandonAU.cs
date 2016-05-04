@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner.ComCategories;
+using Miner.Framework;
 
 namespace Miner.Interop
 {
