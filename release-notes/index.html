@@ -112,6 +112,8 @@
                 
                     <li><a class="toctree-l4" href="#roadmap">Roadmap</a></li>
                 
+                    <li><a class="toctree-l4" href="#version-103-2016-04-04">Version 1.0.3 - 2016-04-04</a></li>
+                
                     <li><a class="toctree-l4" href="#version-102-2016-03-03">Version 1.0.2 - 2016-03-03</a></li>
                 
                     <li><a class="toctree-l4" href="#version-101-2016-03-01">Version 1.0.1 - 2016-03-01</a></li>
@@ -171,16 +173,22 @@
 <p>This will serve as a reference to the release notes with regards to the <code>release</code> version of the NuGet packages that are published.</p>
 <h2 id="roadmap">Roadmap</h2>
 <p>These are the changes, additions, removals that are actively being worked on and will be included in future releases.</p>
+<h2 id="version-103-2016-04-04">Version 1.0.3 - 2016-04-04</h2>
 <h3 id="new">New</h3>
 <ul>
 <li>Added <code>PerformOperation</code> extension methods to the <code>IEditor</code>, <code>IMMEditor</code>, <code>IWorkspace</code> and <code>IWorkspaceEdit</code> interfaces that wrap the start / stop operation constructs. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>Added <code>ExecuteTask</code> extension method on the <code>IMMPxNode</code> object to execute tasks based on name. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 <li>Added <code>CompatibleUnit</code> and <code>WorkLocation</code> node objects. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 <li>Added <code>GetActiveTab</code> extension method to the <code>IMMAttributeEditor</code> interface to allow for returning the <code>ID8List</code> for the tab that is selected in the ArcFM Attribute Editor. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+<li>Added <code>Pan</code>, <code>Zoom</code>, and <code>Flash</code> extension methods to the <code>IFeature</code> interface to allow for performing these actions when the proper hook is supplied. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code>Unhighlight</code> extension method for unhighlighting features. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
 <li>The <code>GetDataChanges</code> extension methods on the <code>IVersion</code> interface returns a <code>DeltaRowCollection</code> instead of a <code>List{DeltaRow}</code> as the accessor methods on the <code>DeltaRow</code> have been moved to the <code>DeltaRowCollection</code> class to allow for better performance. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
+<li>The <code>ESRI.ArcGIS.Framework.BaseClasses</code> namespace was replaced with the <code>ESRI.ArcGIS.ADF.BaseClasses</code> namespace. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
+<li>The <code>Miner.Framework.BaseClasses</code> namespace was replaced with the <code>Miner.Interop</code> namespace. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
+<li>Moved the <code>IProgressBarAnimation</code> interface into the <code>ESRI.ArcGIS.Framework</code> namespace <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 </ul>
 <hr />
 <h2 id="version-102-2016-03-03">Version 1.0.2 - 2016-03-03</h2>
@@ -188,6 +196,7 @@
 <ul>
 <li>Due to an issue with the build server the 4.5 .NET Framework packages were not included.</li>
 </ul>
+<hr />
 <h2 id="version-101-2016-03-01">Version 1.0.1 - 2016-03-01</h2>
 <h3 id="new_1">New</h3>
 <ul>
@@ -206,7 +215,7 @@
 <h3 id="removed">Removed</h3>
 <ul>
 <li>The <code>CreateNew</code> and <code>Initialize</code> methods on the <code>IPxNode</code> interface have been removed. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
-<li>The  <code>ReferenceDictionary</code> has been replaced with the <code>ToDictionary</code> extension method on the <code>Miner.Interop.Process.IDictionary</code> which converts it to <code>Dictionary{String, Object}</code>. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
+<li>The <code>ReferenceDictionary</code> has been replaced with the <code>ToDictionary</code> extension method on the <code>Miner.Interop.Process.IDictionary</code> which converts it to <code>Dictionary{String, Object}</code>. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 <h3 id="changed_1">Changed</h3>
 <ul>
@@ -226,6 +235,7 @@
 <ul>
 <li>Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products</li>
 </ul>
+<hr />
 <div class="footnote">
 <hr />
 <ol>
