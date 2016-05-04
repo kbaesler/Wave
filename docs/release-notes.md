@@ -4,6 +4,7 @@ This will serve as a reference to the release notes with regards to the `release
 ## Roadmap
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
+## Version 1.0.3 - 2016-04-04
 ### New
 - Added `PerformOperation` extension methods to the `IEditor`, `IMMEditor`, `IWorkspace` and `IWorkspaceEdit` interfaces that wrap the start / stop operation constructs. [^3]
 - Added `ExecuteTask` extension method on the `IMMPxNode` object to execute tasks based on name. [^2]
@@ -23,8 +24,8 @@ These are the changes, additions, removals that are actively being worked on and
 ### Fixed
 - Due to an issue with the build server the 4.5 .NET Framework packages were not included.
 
+---
 ## Version 1.0.1 - 2016-03-01
-
 ### New
 - The packages now support the 3.5 and 4.5 .NET Framework. [^3]
 - The 4.5 .NET Framework packages now include supporting `async` methods. [^3]
@@ -59,6 +60,7 @@ These are the changes, additions, removals that are actively being worked on and
 ### New
  - Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products
 
+---
 
  [^1]: A change that is included in the **Wave Extensions for ArcGIS** package.
 
