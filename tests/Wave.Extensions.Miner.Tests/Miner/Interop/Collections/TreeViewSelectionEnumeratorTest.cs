@@ -22,7 +22,7 @@ namespace Wave.Extensions.Miner.Tests
             filter.WhereClause = "OBJECTID < 10";
 
             var list = testClass.Fetch(filter);
-            var enumerator = new TreeViewSelectionEnumerator(list);
+            var enumerator = new TreeViewSelection(list);
 
             while ((enumerator.Next) != null)
             {
@@ -35,7 +35,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_IsEmpty_IsTrue()
         {
-            var enumerator = new TreeViewSelectionEnumerator();
+            var enumerator = new TreeViewSelection();
             Assert.IsTrue(enumerator.EOF);
         }
 
@@ -50,7 +50,7 @@ namespace Wave.Extensions.Miner.Tests
             filter.WhereClause = "OBJECTID < 10";
 
             var list = testClass.Fetch(filter);
-            var enumerator = new TreeViewSelectionEnumerator(list);
+            var enumerator = new TreeViewSelection(list);
 
             ID8ListItem item = enumerator.Next;
             Assert.IsTrue(item is ID8Feature);
@@ -67,7 +67,7 @@ namespace Wave.Extensions.Miner.Tests
             filter.WhereClause = "OBJECTID < 10";
 
             var list = testClass.Fetch(filter);
-            var enumerator = new TreeViewSelectionEnumerator(list);
+            var enumerator = new TreeViewSelection(list);
 
             ID8GeoAssoc x = enumerator.Next as ID8GeoAssoc;
             Assert.IsNotNull(x);
