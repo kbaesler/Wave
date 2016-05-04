@@ -24,7 +24,7 @@ To install **Wave Extensions for ArcFM**, run the following command in the Packa
 	PM> Install-Package Wave.Extensions.Miner
 ```
 
-The **Wave.Extensions.Esri** package features are included in the **Wave.Extensions.Miner** package, as the *ArcFM Solution* product is tightly coupled with the *ArcGIS for Desktop* product.
+* The **Wave.Extensions.Esri** package features are included in the **Wave.Extensions.Miner** package, as the *ArcFM Solution* product is tightly coupled with the *ArcGIS for Desktop* product.
 
 ### Requirements ###
 - ArcGIS for Desktop 10 (or higher)
