@@ -398,8 +398,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="log4net.config" />
     <None Include="packages.config" />
+    <None Include="Wave.log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="System\Forms\Controls\Line\Line.resx">
