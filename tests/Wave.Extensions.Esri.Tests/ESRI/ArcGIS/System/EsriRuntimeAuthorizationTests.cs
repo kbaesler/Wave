@@ -14,7 +14,7 @@ namespace Wave.Extensions.Esri.Tests
     public class EsriRuntimeAuthorizationTests 
     {
         [TestMethod]
-        public void GetInitializationStatus()
+        public void EsriRuntimeAuthorization_GetInitializationStatus()
         {
             using (var lic = new EsriRuntimeAuthorization())
             {

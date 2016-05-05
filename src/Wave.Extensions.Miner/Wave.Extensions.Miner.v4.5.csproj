@@ -290,7 +290,6 @@
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\ObjectClassConversion.cs" />
-    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxActionHandler.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxControl.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxCostEngine.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxDeleter.cs" />
@@ -356,6 +355,7 @@
     <Compile Include="Miner\Interop\Process\PxVersionStatus.cs" />
     <Compile Include="Miner\Interop\Internal\MinerRuntimeAuthorization.cs" />
     <Compile Include="Miner\Interop\RuntimeAuthorization.cs" />
+    <Compile Include="Miner\Process\BaseClasses\BasePxActionHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Miner\Interop\Collections\TreeViewSelection.cs" />
   </ItemGroup>

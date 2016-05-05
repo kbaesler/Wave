@@ -12,6 +12,50 @@ namespace Miner
     /// </summary>
     public static class ArcFM
     {
+        #region Fields
+
+        private static readonly IMMProductData ProductData;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes the <see cref="ArcFM" /> class.
+        /// </summary>
+        static ArcFM()
+        {
+            ProductData = new BrandingResource();
+        }
+
+        #endregion
+
+        #region Public Properties
+       
+        /// <summary>
+        ///     Gets the build number.
+        /// </summary>
+        /// <value>
+        ///     The build number.
+        /// </value>
+        public static int BuildNumber
+        {
+            get { return ProductData.BuildNumber(); }
+        }
+
+        /// <summary>
+        ///     Gets the version.
+        /// </summary>
+        /// <value>
+        ///     The version.
+        /// </value>
+        public static string Version
+        {
+            get { return ProductData.ProductVersion(); }
+        }
+
+        #endregion
+
         #region Nested Type: Commands
 
         /// <summary>

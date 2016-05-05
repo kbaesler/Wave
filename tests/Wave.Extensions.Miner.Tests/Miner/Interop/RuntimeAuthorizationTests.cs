@@ -13,7 +13,7 @@ namespace Wave.Extensions.Miner.Tests.Miner.Interop
     public class RuntimeAuthorizationTests
     {
         [TestMethod]
-        public void GetInitializationStatus()
+        public void RuntimeAuthorization_GetInitializationStatus()
         {
             using (var lic = new RuntimeAuthorization())
             {
