@@ -23,4 +23,31 @@ Wave has been developed with it's dependencies in mind to allow the library to b
 2. When both the **ArcGIS for Desktop** and **ArcFM Solution**, you'll want to install the [Wave Extensions for ArcFM](https://www.nuget.org/packages/Wave.Extensions.Esri/)  package.
 
 ## 6. Do I need a license to use Wave?
-Wave is open-source and doesn't directly require any licenses, however since both **ArcFM** and **ArcGIS** are commercial software packages that require licenses. 
+Wave is open-source and doesn't directly require any licenses, however since both **ArcFM** and **ArcGIS** are commercial software packages that require licenses.
+
+## 8. Where are the packages?
+The packages are published and distributed using [NuGet](https://www.nuget.org) (provided by Microsoft), which is a Visual Studio extension that makes it easy to add, remove and update libraries and tools in Visual Studio projects that use the .NET Framework.
+
+## 9. What's installed with the packages?
+When a package is being “installed” it will be downloaded to the local machine and will modify the project in the following ways.
+
+1.	Three files will be added to the project.
+    -	`LogInfo.cs` – Contains the necessary information for using log4net configurations.
+    -	`Wave.log4net.config` – Contains the default configurations used for logging information.
+    -	`packages.config` – Contains information about the packages that have been installed.
+
+2.	A packages folder will be added to the root of the solution. This folder will contain the contents of the packages that have been installed.
+
+3.	The `*.csproj` file will be modified to include the MSBuild targets (that are included in the packages), that will automate the ESRI and MINER component registration.
+    -	**Must** be using the Attribute declarations on the classes.
+    -	**Must** have the Register for COM option checked within Visual Studios.
+
+4. A reference to the `log4net` assembly will be downloaded and added to the project (as it is a dependency of the Wave packages
+
+## 10. What logging framework is used by Wave?
+We have elected to use `log4net` as the logging framework.
+
+## 11. What `log4net` configuration file is used?
+The `Wave.Extensions.Esri` and `Wave.Extensions.Miner` package have been configured to use the configuration file named `Wave.log4net.config` (which is installed with the packages).
+
+  * The configuration file must reside in the directory of the running application. For example, `%PROGRAMFILES%\ArcGIS\Bin` and `%PROGRAMFILES%\Miner and Miner\ArcFM Solution\Bin` when the assemblies are used for extensions within ArcGIS for Desktop or ArcFM Solution.

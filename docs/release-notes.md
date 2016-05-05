@@ -4,6 +4,12 @@ This will serve as a reference to the release notes with regards to the `release
 ## Roadmap
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
+## Version 1.0.4 - TBA
+### New
+- The `Wave.log4net.config` file is included in the packages. [^3]
+- Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]
+
+---
 ## Version 1.0.3 - 2016-04-04
 ### New
 - Added `PerformOperation` extension methods to the `IEditor`, `IMMEditor`, `IWorkspace` and `IWorkspaceEdit` interfaces that wrap the start / stop operation constructs. [^3]
@@ -60,7 +66,6 @@ These are the changes, additions, removals that are actively being worked on and
 ### New
  - Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products
 
----
 
  [^1]: A change that is included in the **Wave Extensions for ArcGIS** package.
 
