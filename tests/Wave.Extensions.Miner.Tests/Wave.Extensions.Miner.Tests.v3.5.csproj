@@ -127,6 +127,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Miner\Interop\Process\EDM\IPxEdmRepositoryTest.cs" />
+    <Compile Include="Miner\Interop\RuntimeAuthorizationTests.cs" />
     <Compile Include="ProcessTests.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListClassExtensionsTest.cs" />
     <Compile Include="Miner\Interop\Process\Nodes\DesignTest.cs" />

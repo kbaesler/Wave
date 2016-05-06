@@ -19,7 +19,7 @@ namespace System.Diagnostics
         /// <summary>
         ///     The name of the log configuration file.
         /// </summary>
-        public const string FileName = "log4net.config";
+        public const string FileName = "Wave.log4net.config";
       
         #endregion
 

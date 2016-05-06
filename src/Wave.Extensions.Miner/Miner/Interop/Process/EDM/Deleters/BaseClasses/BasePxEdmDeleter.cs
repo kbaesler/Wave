@@ -68,7 +68,7 @@ namespace Miner.Interop.Process
         {
             if (node == null) return;
 
-            IMMPxDeleter deleter = this.GetBaseDeleter(node);
+            IMMPxDeleter deleter = this.GetNodeDeleter(node);
             if (deleter != null)
             {
                 deleter.PxApplication = base.PxApplication;

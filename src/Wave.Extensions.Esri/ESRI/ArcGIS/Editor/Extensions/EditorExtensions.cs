@@ -36,32 +36,38 @@ namespace ESRI.ArcGIS.Editor
         }
 
         /// <summary>
-        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
         /// <param name="menuText">The menu text.</param>
         /// <param name="operation">The delegate that performs the operation.</param>
-        /// <returns>Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.</returns>
+        /// <returns>
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
-        public static bool PerformOperation(this IEditor source, string menuText, Func<bool> operation)
+        public static bool PerformOperation(this IEditor source, bool withUndoRedo, string menuText, Func<bool> operation)
         {
             if (source == null || source.Map == null) return false;
 
             var wse = source.EditWorkspace as IWorkspaceEdit2;
             if (wse == null) return false;
 
-            source.Map.DelayDrawing(true);
+            var ibe = wse.IsBeingEdited();
 
-            if (wse.IsInEditOperation)
-                throw new ArgumentOutOfRangeException("source", @"An edit operation is already started.");
+            if (!ibe)
+                wse.StartEditing(withUndoRedo);            
 
-            source.StartOperation();
+            if (!wse.IsInEditOperation)
+                source.StartOperation();
 
-            bool flag = false;
+            source.Map.DelayDrawing(true);                       
+
+            bool saveEdits = false;
 
             try
             {
-                flag = operation();
+                saveEdits = operation();
             }
             catch (Exception)
             {
@@ -74,16 +80,19 @@ namespace ESRI.ArcGIS.Editor
             {
                 if (wse.IsInEditOperation)
                 {
-                    if (flag)
+                    if (saveEdits)
                         source.StopOperation(menuText);
                     else
                         source.AbortOperation();
                 }
 
+                if (!ibe) 
+                    wse.StopEditing(saveEdits);
+
                 source.Map.DelayDrawing(false);
             }
 
-            return flag;
+            return saveEdits;
         }
 
         #endregion

@@ -1,7 +1,8 @@
-﻿using Miner.Process.GeodatabaseManager;
+﻿using Miner.Interop.Process;
+using Miner.Process.GeodatabaseManager;
 using Miner.Process.GeodatabaseManager.ActionHandlers;
 
-namespace Miner.Interop.Process
+namespace Miner.Process
 {
     /// <summary>
     ///     An abstract class used for creating a Px Action Handler

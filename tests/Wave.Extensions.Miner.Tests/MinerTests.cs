@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
@@ -21,7 +22,7 @@ namespace Wave.Extensions.Miner.Tests
 
         #endregion
 
-        #region Public Methods
+        #region Public Methods       
 
         [TestCleanup]
         public override void Cleanup()

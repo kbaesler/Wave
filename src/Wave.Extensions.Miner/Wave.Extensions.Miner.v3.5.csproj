@@ -297,7 +297,7 @@
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\ObjectClassConversion.cs" />
-    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxActionHandler.cs" />
+    <Compile Include="Miner\Process\BaseClasses\BasePxActionHandler.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxControl.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxCostEngine.cs" />
     <Compile Include="Miner\Interop\Process\BaseClasses\BasePxDeleter.cs" />
