@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wave.Samples.Licenses")]
+[assembly: AssemblyTitle("IEXML")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Wave.Samples.Licenses")]
-[assembly: AssemblyCopyright("Copyright © Metis LLC 2016")]
+[assembly: AssemblyProduct("IEXML")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e972e9b6-bf4a-408b-9c13-9de1686fd840")]
+[assembly: Guid("7240ce1b-dad7-4b97-a8bd-ef68ab25b6a7")]
 
 // Version information for an assembly consists of the following four values:
 //
