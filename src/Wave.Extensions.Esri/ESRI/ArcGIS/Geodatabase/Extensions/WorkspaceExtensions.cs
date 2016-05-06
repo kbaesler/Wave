@@ -606,7 +606,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             try
             {
-                saveEdits = wse.PerformOperation(operation);                
+                saveEdits = wse.PerformOperation(withUndoRedo, operation);                
             }
             finally
             {
@@ -632,15 +632,17 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
         /// <param name="operation">The delegate that performs the operation.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">operation</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
-        public static bool PerformOperation(this IWorkspaceEdit source, Func<bool> operation)
+        public static bool PerformOperation(this IWorkspaceEdit source, bool withUndoRedo, Func<bool> operation)
         {
             if (source == null) return false;
             if (operation == null) throw new ArgumentNullException("operation");
@@ -651,6 +653,9 @@ namespace ESRI.ArcGIS.Geodatabase
             if (wse.IsInEditOperation)
                 throw new ArgumentOutOfRangeException("source", "An edit operation is already started.");
 
+            if(!wse.IsBeingEdited())
+                wse.StartEditing(withUndoRedo);
+            
             source.StartEditOperation();
 
             bool saveEdits = false;
@@ -675,6 +680,9 @@ namespace ESRI.ArcGIS.Geodatabase
                     else
                         source.AbortEditOperation();
                 }
+
+                if (!wse.IsBeingEdited())
+                    wse.StopEditing(saveEdits);
             }
 
             return saveEdits;
