@@ -229,10 +229,8 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Interfaces\IEditableWorkspace.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Interfaces\IIntermediateRelationship.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Interfaces\IIntermediateRow.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\EditableWorkspace.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\IntermediateRelationship.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\IntermediateRow.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\WorkspaceFactories.cs" />

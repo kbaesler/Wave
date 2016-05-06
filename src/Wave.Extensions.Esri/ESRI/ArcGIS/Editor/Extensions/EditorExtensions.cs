@@ -51,17 +51,17 @@ namespace ESRI.ArcGIS.Editor
             if (wse == null) return false;
 
             source.Map.DelayDrawing(true);
-
+            
             if (wse.IsInEditOperation)
                 throw new ArgumentOutOfRangeException("source", @"An edit operation is already started.");
 
             source.StartOperation();
 
-            bool flag = false;
+            bool saveEdits = false;
 
             try
             {
-                flag = operation();
+                saveEdits = operation();
             }
             catch (Exception)
             {
@@ -74,7 +74,7 @@ namespace ESRI.ArcGIS.Editor
             {
                 if (wse.IsInEditOperation)
                 {
-                    if (flag)
+                    if (saveEdits)
                         source.StopOperation(menuText);
                     else
                         source.AbortOperation();
@@ -83,7 +83,7 @@ namespace ESRI.ArcGIS.Editor
                 source.Map.DelayDrawing(false);
             }
 
-            return flag;
+            return saveEdits;
         }
 
         #endregion

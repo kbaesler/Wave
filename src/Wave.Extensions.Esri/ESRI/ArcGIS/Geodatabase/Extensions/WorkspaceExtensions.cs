@@ -564,7 +564,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
         /// <param name="multiuserEditSessionMode">
         ///     The edit session mode that can be used to indicate non-versioned or versioned
         ///     editing for workspaces that support multiuser editing.
@@ -585,32 +585,50 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
             if (operation == null) throw new ArgumentNullException("operation");
 
-            bool result;
+            IWorkspaceEdit wse = source as IWorkspaceEdit;
+            if (wse == null) return false;
 
-            using (var ew = new EditableWorkspace(source))
+            IMultiuserWorkspaceEdit multiuserWorkspaceEdit = source as IMultiuserWorkspaceEdit;
+            if (multiuserWorkspaceEdit != null)
             {
-                ew.StartEditing(withUndoRedo, multiuserEditSessionMode);
+                if (!multiuserWorkspaceEdit.SupportsMultiuserEditSessionMode(multiuserEditSessionMode))
+                    throw new ArgumentException(@"The workspace does not support the edit session mode.", "multiuserEditSessionMode");
 
-                result = operation();
-
-                ew.StopEditing(result);
+                multiuserWorkspaceEdit.StartMultiuserEditing(multiuserEditSessionMode);
+            }
+            else
+            {
+                if (!wse.IsBeingEdited())
+                    wse.StartEditing(withUndoRedo);
             }
 
-            return result;
+            bool saveEdits = false;
+
+            try
+            {
+                saveEdits = wse.PerformOperation(operation);                
+            }
+            finally
+            {
+                wse.StopEditing(saveEdits); 
+            }
+
+            return saveEdits;
         }
 
         /// <summary>
-        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
         /// <param name="operation">The delegate that performs the operation.</param>
         /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
-        public static bool PerformOperation(this IWorkspace source, Func<bool> operation)
+        public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, Func<bool> operation)
         {
-            return ((IWorkspaceEdit) source).PerformOperation(operation);
+            return source.PerformOperation(withUndoRedo, esriMultiuserEditSessionMode.esriMESMVersioned, operation);
         }
 
         /// <summary>
@@ -635,11 +653,11 @@ namespace ESRI.ArcGIS.Geodatabase
 
             source.StartEditOperation();
 
-            bool flag = false;
+            bool saveEdits = false;
 
             try
             {
-                flag = operation();
+                saveEdits = operation();
             }
             catch (Exception)
             {
@@ -652,14 +670,14 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 if (wse.IsInEditOperation)
                 {
-                    if (flag)
+                    if (saveEdits)
                         source.StopEditOperation();
                     else
                         source.AbortEditOperation();
                 }
             }
 
-            return flag;
+            return saveEdits;
         }
 
         /// <summary>
