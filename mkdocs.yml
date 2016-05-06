@@ -5,7 +5,7 @@ markdown_extensions:
     - smarty
     - admonition
     - footnotes
-theme: readthedocs
+theme: material
 pages:
 - Getting Started:
   - Overview: index.md
