@@ -60,7 +60,7 @@ namespace Wave.IEXML
         #region Internal Methods
 
         /// <summary>
-        /// Exports or imports the XML files.
+        ///     Exports or imports the XML files.
         /// </summary>
         /// <param name="args">The arguments.</param>
         internal void Run(ProgramArguments args)
@@ -73,14 +73,14 @@ namespace Wave.IEXML
                     var dbi = (IDataset) workspace;
 
                     string name = dbi.BrowseName;
-                    string directory = Path.Combine(args.Directory, name);
-                    if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
-
                     IMMProductData pi = new BrandingResource();
                     string versionNumber = args.VersionNumber ?? pi.ProductVersion();
 
                     if (args.Task == ProgramTask.Export)
                     {
+                        string directory = Path.Combine(args.Directory, name);
+                        if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
+
                         Log.Info(this, "Exporting ArcFM XML Properties");
                         Log.Info(this, "- Database: \t{0}", name);
                         Log.Info(this, "- Directory: \t{0}", args.Directory);
@@ -111,18 +111,11 @@ namespace Wave.IEXML
                     {
                         Log.Info(this, "Importing ArcFM XML Properties");
                         Log.Info(this, "- Database: \t{0}", name);
-                        Log.Info(this, "- Directory: \t{0}", directory);
+                        Log.Info(this, "- Directory: \t{0}", args.Directory);
                         Log.Info(this, "- Version: \t{0}", versionNumber);
 
-                        var files = Directory.GetFiles(directory, "*.xml", SearchOption.AllDirectories);
-                        Log.Info(this, "- Import File(s): \t{0}", files.Length);
-
-                        var fails = this.Import(workspace, files);
-
-                        Log.Info(this, "- Success: \t{0}", files.Length - fails.Count);
-                        Log.Info(this, "- Failed: \t{0}", fails.Count);
-                            foreach(var file in fails)
-                                Log.Info(this, "\t{0}", Path.GetFileName(file));                        
+                        var files = Directory.GetFiles(Path.GetFullPath(args.Directory), "*.xml", SearchOption.AllDirectories);
+                        this.Import(workspace, files);
                     }
                 }
             }
@@ -234,9 +227,10 @@ namespace Wave.IEXML
         /// </summary>
         /// <param name="workspace">The workspace.</param>
         /// <param name="fileNames">The file names.</param>
-        /// <returns>Returns a <see cref="List{String}" /> representing the files that failed to import.</returns>
-        private List<string> Import(IWorkspace workspace, IEnumerable<string> fileNames)
+        private void Import(IWorkspace workspace, string[] fileNames)
         {
+            Log.Info(this, "- Import File(s): \t{0}", fileNames.Length);
+
             var ies = new Dictionary<string, IMMXMLImportExport4>()
             {
                 {"MMFieldInfoIE", new MMFieldInfoIEClass()},
@@ -245,14 +239,13 @@ namespace Wave.IEXML
             };
 
             var utils = new mmFrameworkUtilitiesClass();
-            var fails = new List<string>();
 
             foreach (var fileName in fileNames)
             {
                 var fileName1 = fileName;
                 var saveEdits = new List<bool>();
 
-                var saved = workspace.PerformOperation(true, esriMultiuserEditSessionMode.esriMESMNonVersioned, () =>
+                workspace.PerformOperation(() =>
                 {
                     IXMLDOMDocument doc = new DOMDocumentClass();
                     if (doc.load(fileName1))
@@ -272,13 +265,9 @@ namespace Wave.IEXML
                         }
                     }
 
-                    return false;
+                    return true;
                 });
-
-                if (!saved) fails.Add(fileName);
             }
-
-            return fails;
         }
 
         /// <summary>
