@@ -4,7 +4,6 @@ This will serve as a reference to the release notes with regards to the `release
 ## Roadmap
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
-## Version 1.0.4 - TBA
 ### New
 - The `Wave.log4net.config` file is included in the packages. [^3]
 - Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]

@@ -19,6 +19,25 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Exports the version differences to the specified export file.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="target">The target.</param>
+        /// <param name="exportFileName">Name of the export file.</param>
+        /// <param name="exportOption">The export option.</param>
+        /// <param name="overwrite">if set to <c>true</c> when the delta file should be overwritten when it exists.</param>
+        public static void ExportDataChanges(this IVersion source, IVersion target, string exportFileName, esriExportDataChangesOption exportOption, bool overwrite)
+        {
+            IVersionDataChangesInit vdci = new VersionDataChangesClass();
+            IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
+            IWorkspaceName wsNameTarget = (IWorkspaceName) ((IDataset) target).FullName;
+            vdci.Init(wsNameSource, wsNameTarget);
+
+            IExportDataChanges2 edc = new DataChangesExporterClass();
+            edc.ExportDataChanges(exportFileName, exportOption, (IDataChanges) vdci, overwrite);
+        }
+
+        /// <summary>
         ///     Gets the differences between the <paramref name="source" /> and <paramref name="target" /> versions that need to be
         ///     checked-in or exported.
         /// </summary>
@@ -290,6 +309,21 @@ namespace ESRI.ArcGIS.Geodatabase
         public static IFeatureClass GetFeatureClass(this IVersion source, string schemaName, string tableName)
         {
             return ((IWorkspace) source).GetFeatureClass(schemaName, tableName);
+        }
+
+        /// <summary>
+        ///     Gets the parent version.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IVersion" /> representing the parent version.</returns>
+        public static IVersion GetParent(this IVersion source)
+        {
+            if (source.HasParent())
+            {
+                return ((IVersionedWorkspace) source).FindVersion(source.VersionInfo.Parent.VersionName);
+            }
+
+            return null;
         }
 
         /// <summary>
