@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Forms;
 
 using log4net;
-using log4net.Appender;
-using log4net.Core;
 
 namespace System.Diagnostics
 {
@@ -20,7 +17,7 @@ namespace System.Diagnostics
         ///     The name of the log configuration file.
         /// </summary>
         public const string FileName = "Wave.log4net.config";
-      
+
         #endregion
 
         #region Fields
@@ -31,35 +28,6 @@ namespace System.Diagnostics
         #endregion
 
         #region Public Methods
-
-        /// <summary>
-        ///     Adds the appender.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="appender">The appender.</param>
-        public static void AddAppender(object source, IAppender appender)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            AddAppender(source.GetType(), appender);
-        }
-
-        /// <summary>
-        ///     Adds the appender.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="appender">The appender.</param>
-        public static void AddAppender(Type source, IAppender appender)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            ILog logger = GetLogger(source);
-            IAppenderAttachable appenderAttachable = logger.Logger as IAppenderAttachable;
-            if (appenderAttachable != null) appenderAttachable.AddAppender(appender);
-        }
-
 
         /// <summary>
         ///     Log a message object with the Debug level.
@@ -303,20 +271,6 @@ namespace System.Diagnostics
         }
 
         /// <summary>
-        ///     Returns the appenders that exist in the repository of the given type.
-        /// </summary>
-        /// <typeparam name="TAppender">The type of the appender.</typeparam>
-        /// <param name="selector">A function used to select the appenders.</param>
-        /// <returns>
-        ///     Returns an enumeration of <see cref="IAppender" /> interfaces.
-        /// </returns>
-        public static IEnumerable<TAppender> GetAppenders<TAppender>(Func<TAppender, bool> selector)
-            where TAppender : IAppender
-        {
-            return LogManager.GetAllRepositories().SelectMany(o => o.GetAppenders()).OfType<TAppender>().Where(selector);
-        }
-
-        /// <summary>
         ///     Log a message object with the Info level.
         /// </summary>
         /// <param name="source">The source of the logger.</param>
@@ -406,34 +360,6 @@ namespace System.Diagnostics
                 throw new ArgumentNullException("source");
 
             Info(source.GetType(), message, exception);
-        }
-
-        /// <summary>
-        ///     Removes the appender.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="appender">The appender.</param>
-        public static void RemoveAppender(object source, IAppender appender)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            RemoveAppender(source.GetType(), appender);
-        }
-
-        /// <summary>
-        ///     Removes the appender.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="appender">The appender.</param>
-        public static void RemoveAppender(Type source, IAppender appender)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            ILog logger = GetLogger(source);
-            IAppenderAttachable appenderAttachable = logger.Logger as IAppenderAttachable;
-            if (appenderAttachable != null) appenderAttachable.RemoveAppender(appender);
         }
 
         /// <summary>

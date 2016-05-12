@@ -6,7 +6,7 @@ using ESRI.ArcGIS.Framework;
 
 using Miner.Framework;
 
-namespace Miner.Interop.Process.BaseClasses
+namespace Miner.Interop.Process
 {
     /// <summary>
     ///     An abstract ArcMap command that handles executing a Process Framework Task when the button is clicked and is
