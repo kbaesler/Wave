@@ -269,6 +269,21 @@
             "location": "/release-notes/#new_3", 
             "text": "Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products       A change that is included in the  Wave Extensions for ArcGIS  package.    A change that is included in the  Wave Extensions for ArcFM  package.    A change that is included in both the  Wave Extensions for ArcGIS  and  Wave Extensions for ArcFM  packages.    A change that  potentially  causes other components to  fail .", 
             "title": "New"
+        }, 
+        {
+            "location": "/credits/", 
+            "text": "Credits\n\n\nIcon\n\n\nThe icon was designed by \nFreepik", 
+            "title": "Credits"
+        }, 
+        {
+            "location": "/credits/#credits", 
+            "text": "", 
+            "title": "Credits"
+        }, 
+        {
+            "location": "/credits/#icon", 
+            "text": "The icon was designed by  Freepik", 
+            "title": "Icon"
         }
     ]
 }

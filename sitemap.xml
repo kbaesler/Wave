@@ -47,6 +47,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>http://jumpercables.github.io/Wave//credits/</loc>
+     <lastmod>2016-05-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>
