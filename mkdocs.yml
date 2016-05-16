@@ -5,6 +5,7 @@ markdown_extensions:
     - smarty
     - admonition
     - footnotes
+    - extra
 theme: material
 pages:
 - Getting Started:
