@@ -13,6 +13,9 @@ extra:
     logo: images\wave-red-64.png
     author:
       github: Jumpercables
+    palette:
+      primary: red
+      accent: teal
 
 markdown_extensions:
     - smarty
