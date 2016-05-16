@@ -9,7 +9,12 @@
 
 [![Wave Extensions for ArcFM](https://buildstats.info/nuget/Wave.Extensions.Miner)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
 
-## Installation ##
+## Documentation
+You can [download](Wave.v4.5.chm) the latest API documentation in CHM format.
+
+* **Note**: On some systems, the contents of the CHM file is blocked. Right click on the CHM file, select **Properties**, and click on the **Unblock** button if it is present in the lower right corner of the **General** tab in the properties dialog.
+
+## Installation
 You can download a release of the library using the Microsoft NuGet Package Manager within Visual Studio.
 
 To install **Wave Extensions for ArcGIS**, run the following command in the Package Manager Console.

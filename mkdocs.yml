@@ -9,7 +9,7 @@ theme: material
 pages:
 - Getting Started:
   - Overview: index.md
-  - Developer Guide: guide.md
+  - Samples: samples.md
 - Features: features.md
 - Frequently Asked Questions: faq.md
 - About:
