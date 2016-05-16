@@ -24,9 +24,8 @@ markdown_extensions:
 theme: material
 
 pages:
-- Getting Started:
-  - Overview: index.md
-  - Samples: samples.md
+- Wave: index.md
+- Samples: samples.md
 - Features: features.md
 - Frequently Asked Questions: faq.md
 - About:
