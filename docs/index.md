@@ -12,7 +12,8 @@
 ## Documentation
 You can [download](Wave.v4.5.chm) the latest API documentation in CHM format.
 
-* **Note**: On some systems, the contents of the CHM file is blocked. Right click on the CHM file, select **Properties**, and click on the **Unblock** button if it is present in the lower right corner of the **General** tab in the properties dialog.
+!!! warning "Download"
+	On some systems, the contents of the CHM file is blocked. Right click on the CHM file, select **Properties**, and click on the **Unblock** button if it is present in the lower right corner of the **General** tab in the properties dialog.
 
 ## Installation
 You can download a release of the library using the Microsoft NuGet Package Manager within Visual Studio.
@@ -29,7 +30,8 @@ To install **Wave Extensions for ArcFM**, run the following command in the Packa
 	PM> Install-Package Wave.Extensions.Miner
 ```
 
-* The **Wave.Extensions.Esri** package features are included in the **Wave.Extensions.Miner** package, as the *ArcFM Solution* product is tightly coupled with the *ArcGIS for Desktop* product.
+!!! info "Dependencies"
+	The **Wave.Extensions.Esri** package features are included in the **Wave.Extensions.Miner** package, as the *ArcFM Solution* product is tightly coupled with the *ArcGIS for Desktop* product.
 
 ### Requirements ###
 - ArcGIS for Desktop 10 (or higher)

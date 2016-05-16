@@ -9,6 +9,9 @@ These are the changes, additions, removals that are actively being worked on and
 - Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]
 - Added `GetVisibleLayers` extension method to the `IMap` interface which will return only those layers that are visible (either by virtue of being enabled or due to scale suppression). [^1]
 
+!!! warning "Unpublished"
+    These changes, additions, removals are actively being worked on or in a completed state but have not yet been published as a nuget package.
+
 ---
 ## Version 1.0.3 - 2016-04-04
 ### New
