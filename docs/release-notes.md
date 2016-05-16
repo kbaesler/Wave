@@ -7,6 +7,7 @@ These are the changes, additions, removals that are actively being worked on and
 ### New
 - The `Wave.log4net.config` file is included in the packages. [^3]
 - Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]
+- Added `GetVisibleLayers` extension method to the `IMap` interface which will return only those layers that are visible (either by virtue of being enabled or due to scale suppression). [^1]
 
 ---
 ## Version 1.0.3 - 2016-04-04
