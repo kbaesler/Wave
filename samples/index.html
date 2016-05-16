@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Developer Guide - Wave</title>
+        <title>Samples - Wave</title>
       
       
       
@@ -98,7 +98,7 @@
             
           </span>
         
-        Developer Guide
+        Samples
       </div>
     </div>
     
@@ -182,8 +182,8 @@
       
         
   <li>
-    <a class="current" title="Developer Guide" href="./">
-      Developer Guide
+    <a class="current" title="Samples" href="./">
+      Samples
     </a>
     
       
@@ -193,38 +193,14 @@
         <ul>
           
             <li class="anchor">
-              <a title="Licenses" href="#licenses">
-                Licenses
+              <a title="ArcFM Import and Export" href="#arcfm-import-and-export">
+                ArcFM Import and Export
               </a>
             </li>
           
             <li class="anchor">
-              <a title="Geodatabase Connections" href="#geodatabase-connections">
-                Geodatabase Connections
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Disabling Auto Updaters" href="#disabling-auto-updaters">
-                Disabling Auto Updaters
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Layers" href="#layers">
-                Layers
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Tables" href="#tables">
-                Tables
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Session / Workflow Manager" href="#session-workflow-manager">
-                Session / Workflow Manager
+              <a title="Suggestions" href="#suggestions">
+                Suggestions
               </a>
             </li>
           
@@ -293,138 +269,12 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="developer-guide">Developer Guide</h1>
-<p>This will serve as a reference guide for developer samples, the purpose of the samples is to provide example usages of the extensions that are provided in the <strong>Wave Extensions for ArcGIS</strong> and <strong>Wave Extensions for ArcFM</strong> packages.</p>
-<ul>
-<li>Not all of the features in the <strong>Wave</strong> project will be included in the samples. If you would like a sample of a feature please add a suggestion in the GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>.</li>
-</ul>
-<h2 id="licenses">Licenses</h2>
-<p>When a stand-alone executable needs to access and use geodatabase objects, a license must be checked out, depending on the product that has been installed.</p>
-<h3 id="arcgis-for-desktop">ArcGIS for Desktop</h3>
-<p>The following snippets shows the proper way to check out licenses when working with the ArcGIS for Desktop product.</p>
-<pre><code class="java">private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode)
-{
-  using (var lic = new EsriRuntimeAuthorization())
-  {
-    if (lic.Initialize(esriLicenseProductCode))
-    {
-      Console.WriteLine(&quot;Successfully checked-out the {0} license.&quot;, esriLicenseProductCode);
-    }
-    else
-    {
-      Console.WriteLine(&quot;Unable to check-out the {0} license.&quot;, esriLicenseProductCode);
-    }
-  }            
-}
-</code></pre>
-
-<h3 id="arcfm-solution">ArcFM Solution</h3>
-<p>The following snippet shows the proper way to check out licenses when working with the ArcFM Solution and ArcGIS for Desktop products.</p>
-<pre><code class="java">private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode, mmLicensedProductCode mmLicensedProductCode)
-{
-  using (var lic = new RuntimeAuthorization(ProductCode.Desktop))
-  {
-    if (lic.Initialize(esriLicenseProductCode, mmLicensedProductCode))
-    {
-      Console.WriteLine(&quot;Successfully checked-out the {0} and {1} licenses.&quot;, esriLicenseProductCode, mmLicensedProductCode);
-    }
-    else
-    {
-      Console.WriteLine(&quot;Unable to check-out the {0} and/or {1} license.&quot;, esriLicenseProductCode, mmLicensedProductCode);
-    }
-  }
-}
-</code></pre>
-
-<ul>
-<li>When the ArcFM Solution has been installed and configured in the geodatabase, a license to both the ArcFM Solution and ArcGIS for Desktop is required.</li>
-</ul>
-<h2 id="geodatabase-connections">Geodatabase Connections</h2>
-<p>The <code>WorkspaceFactories</code> static class will return the proper workspace (<code>sde</code>, <code>gdb</code>, or <code>mdb</code>) based on the connection file parameter.</p>
-<pre><code class="java">var connectionFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), &quot;\\ESRI\\Desktop\\ArCatalog\\Minerville.gdb&quot;);
-var workspace = WorkspaceFactories.Open(connectionFile);
-var dbms = workspace.GetDBMS();
-</code></pre>
-
-<h2 id="disabling-auto-updaters">Disabling Auto Updaters</h2>
-<p>There are cases when a <strong>custom</strong> ArcFM Auto Updater (AU) has been developed needs to temporarily <code>disable</code> subsequent calls.</p>
-<pre><code class="java">using (new AutoUpdaterModeReverter(mmAutoUpdaterMode.mmAUMNoEvents))
-{
-    // All of the ArcFM Auto Updaters are now disabled.
-}
-</code></pre>
-
-<h2 id="layers">Layers</h2>
-<p>The feature layers in the map can be traverse using the <code>Where</code> method extension.</p>
-<pre><code class="java">var layers = ArcMap.Application.GetActiveMap().Where(layer =&gt; layer.Valid);
-var structures = layers.Where(layer =&gt; layer.FeatureClass.IsAssignedClassModelName(&quot;STRUCTURE&quot;));
-</code></pre>
-
-<h2 id="tables">Tables</h2>
-<p>The tables in the map can be traverse using the <code>Where</code> method extension.</p>
-<pre><code class="java">var tables = ArcMap.Application.GetActiveMap().GetTables(table =&gt; table.Valid);
-var arcfm = tables.Where(table=&gt; table.IsAssignedClassModelName(&quot;ARCFMSYSTEMTABLE&quot;));
-</code></pre>
-
-<h2 id="session-workflow-manager">Session / Workflow Manager</h2>
-<p>The Session Manager and Workflow Manager extensions to the ArcFM Solution are tightly coupled with the version management solution provided by the product.</p>
-<h3 id="session-design-additions">Session / Design Additions</h3>
-<p>When using Session Manager or Workflow Manager you often need to extend the ArcFM Solution Session or Design or Work Request to store client specific data, which can now be done by extending the <code>Session</code>, <code>Design</code> or <code>WorkRequest</code> classes.</p>
-<pre><code class="java">public class ClientSession : Session {
-
-  public ClientSession(IMMPxApplication pxApp)
-    : base(pxApp) {
-
-  }
-
-  public ClientSession(IMMPxApplication pxApp, int id)
-    : base(pxApp, id) {
-
-  }
-
-  public string ClientName {get; set;}
-
-  protected override bool Initialize(IMMSessionManager extension, int nodeID){
-
-    if(!base.Initialize(extension, nodeID))
-      return false;
-
-    var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
-    var commandText = string.Format(&quot;SELECT name FROM {0} WHERE session_id = {1}&quot;,
-                                      tableName, nodeID);
-    this.ClientName = base.Application.ExecuteScalar(commandText, &quot;&lt;null&gt;&quot;);
-
-    return true;
-  }
-
-  protected override bool Initialize(IMMSessionManager extension, IMMPxUser user) {
-
-    if(!base.Initialize(extension, user))
-      return;
-
-    var tableName = base.Application.GetQualifiedTableName(&quot;CLIENT_SESSION&quot;);
-    var commandText = string.Format(&quot;INSERT INTO {0} VALUES({1},'{2}')&quot;,
-                                      tableName, base.ID, this.ClientName);
-    int recordsAffected = base.Application.ExecuteNonQuery(commandText);
-    return recordsAffected == 1;
-  }
-}
-</code></pre>
-
-<h3 id="session-design-accessors">Session / Design Accessors</h3>
-<p>When using Session Manager or Workflow Manager you will undoubtedly need to access the currently open session or design. The easiest way to access the data is through the <code>GetSession</code>, <code>GetWorkRequest</code> or <code>GetDesign</code> methods on the <code>IMMPxApplication</code> interface.</p>
-<pre><code class="java">var pxApplication = ArcMap.Application.GetPxApplication();
-var session = pxApplication.GetSession();
-var design = pxApplication.GetDesign();
-var request = pxApplication.GetWorkRequest();
-</code></pre>
-
-<ul>
-<li>If you have extended the <code>Session</code>, <code>WorkRequest</code> or <code>Design</code>, you can access it via the <code>action</code> parameter.</li>
-</ul>
-<pre><code class="java">var pxApplication = ArcMap.Application.GetPxApplication();
-var session = pxApplication.GetSession((id, source) =&gt; new ClientSession(source, id))
-</code></pre>
+          <h1 id="samples">Samples</h1>
+<p>The samples are designed to give <em>&lsquo;real-life&rsquo;</em> example usages of the Wave libraries, and each will be accompanied by a <code>README.md</code> that will explain the usages in the GitHub repository.</p>
+<h2 id="arcfm-import-and-export"><a href="https://github.com/Jumpercables/Wave/blob/master/samples/ArcFM%20Import%20and%20Export/README.md">ArcFM Import and Export</a></h2>
+<p>A command line utility that will export or import the ArcFM Properties XML for all of the feature classes, tables and relationships in the given database that is specified by the connection file.</p>
+<h2 id="suggestions">Suggestions</h2>
+<p>Your feedback is important, make suggestions for samples. If you have a suggestion please submit an issue on our GitHub <a href="https://github.com/Jumpercables/Wave/issues">issue tracker</a>.</p>
           <aside class="copyright" role="note">
             
             Documentation built with
