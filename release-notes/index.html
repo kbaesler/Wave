@@ -13,13 +13,15 @@
       
       
       
+        <link rel="canonical" href="http://jumpercables.github.io/Wave/release-notes/">
+      
       
         <meta name="author" content="Kyle Baesler">
       
     
-    <meta property="og:url" content="None">
+    <meta property="og:url" content="http://jumpercables.github.io/Wave/release-notes/">
     <meta property="og:title" content="Wave">
-    <meta property="og:image" content="None/../">
+    <meta property="og:image" content="http://jumpercables.github.io/Wave/release-notes//../">
     <meta name="apple-mobile-web-app-title" content="Wave">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -103,6 +105,11 @@
     </div>
     
     
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/Jumpercables" title="@Jumpercables on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
     <div class="button button-search" role="button" aria-label="Search">
       <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
     </div>
@@ -134,7 +141,7 @@
         <strong>
           Wave
           <span class="version">
-            
+            1.0.3
           </span>
         </strong>
         
@@ -150,7 +157,7 @@
         <ul class="repo">
           <li class="repo-download">
             
-            <a href="https://github.com/Jumpercables/Wave//archive/master.zip" target="_blank" title="Download" data-action="download">
+            <a href="https://github.com/Jumpercables/Wave//archive/1.0.3.zip" target="_blank" title="Download" data-action="download">
               <i class="icon icon-download"></i> Download
             </a>
           </li>
@@ -279,6 +286,20 @@
           
         </ul>
         
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+            
+              
+              <li>
+                <a href="https://github.com/Jumpercables" target="_blank" title="@Jumpercables on GitHub">
+                  @Jumpercables on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
   </div>
@@ -295,6 +316,7 @@
 <ul>
 <li>The <code>Wave.log4net.config</code> file is included in the packages. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>Added <code>Version</code> and <code>BuildNumber</code> to the <code>ArcFM</code> static class. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+<li>Added <code>GetVisibleLayers</code> extension method to the <code>IMap</code> interface which will return only those layers that are visible (either by virtue of being enabled or due to scale suppression). <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 </ul>
 <hr />
 <h2 id="version-103-2016-04-04">Version 1.0.3 - 2016-04-04</h2>
@@ -377,6 +399,8 @@
 </ol>
 </div>
           <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Kyle Baesler &ndash;
             
             Documentation built with
             <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>

@@ -13,13 +13,15 @@
       
       
       
+        <link rel="canonical" href="http://jumpercables.github.io/Wave/features/">
+      
       
         <meta name="author" content="Kyle Baesler">
       
     
-    <meta property="og:url" content="None">
+    <meta property="og:url" content="http://jumpercables.github.io/Wave/features/">
     <meta property="og:title" content="Wave">
-    <meta property="og:image" content="None/../">
+    <meta property="og:image" content="http://jumpercables.github.io/Wave/features//../">
     <meta name="apple-mobile-web-app-title" content="Wave">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -99,6 +101,11 @@
     </div>
     
     
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/Jumpercables" title="@Jumpercables on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
     <div class="button button-search" role="button" aria-label="Search">
       <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
     </div>
@@ -130,7 +137,7 @@
         <strong>
           Wave
           <span class="version">
-            
+            1.0.3
           </span>
         </strong>
         
@@ -146,7 +153,7 @@
         <ul class="repo">
           <li class="repo-download">
             
-            <a href="https://github.com/Jumpercables/Wave//archive/master.zip" target="_blank" title="Download" data-action="download">
+            <a href="https://github.com/Jumpercables/Wave//archive/1.0.3.zip" target="_blank" title="Download" data-action="download">
               <i class="icon icon-download"></i> Download
             </a>
           </li>
@@ -281,6 +288,20 @@
           
         </ul>
         
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+            
+              
+              <li>
+                <a href="https://github.com/Jumpercables" target="_blank" title="@Jumpercables on GitHub">
+                  @Jumpercables on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
   </div>
@@ -358,46 +379,50 @@
 </tbody>
 </table>
 <p>These new extension methods allow you to write code like this:</p>
-<pre><code class="java">int count = cursor.AsEnumerable().Count();
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">AsEnumerable</span><span class="o">().</span><span class="na">Count</span><span class="o">();</span>
+</pre></div>
+
 
 <p>and:</p>
-<pre><code class="java">var results =
-    from x in cursor1.AsEnumerable()
-    from y in cursor2.AsEnumerable()
-    where x.get_Value(0) = y.get_Value(0)
-    select new { Left = x, Right = y };
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">var</span> <span class="n">results</span> <span class="o">=</span>
+    <span class="n">from</span> <span class="n">x</span> <span class="n">in</span> <span class="n">cursor1</span><span class="o">.</span><span class="na">AsEnumerable</span><span class="o">()</span>
+    <span class="n">from</span> <span class="n">y</span> <span class="n">in</span> <span class="n">cursor2</span><span class="o">.</span><span class="na">AsEnumerable</span><span class="o">()</span>
+    <span class="n">where</span> <span class="n">x</span><span class="o">.</span><span class="na">get_Value</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="na">get_Value</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+    <span class="n">select</span> <span class="k">new</span> <span class="o">{</span> <span class="n">Left</span> <span class="o">=</span> <span class="n">x</span><span class="o">,</span> <span class="n">Right</span> <span class="o">=</span> <span class="n">y</span> <span class="o">};</span>
+</pre></div>
+
 
 <p>There are several objects (i.e. <code>IEnumLayer</code>, <code>IMap</code>, <code>ID8List</code>) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you&rsquo;d have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using <code>LINQ</code>.</p>
 <ul>
 <li>Traversing the contents of the <code>IMap</code>.</li>
 </ul>
-<pre><code class="java">public void ClearDefinitions(IMap map)
-{
-    var layerDefinitions = map.Where(o =&gt; o.Visible).Select(o =&gt; (IFeatureLayerDefinition2) o)
-    foreach (var layerDefinition in layerDefinitions)
-    {
-        layerDefinition.DefinitionExpression = null;
-    }
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">ClearDefinitions</span><span class="o">(</span><span class="n">IMap</span> <span class="n">map</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="n">var</span> <span class="n">layerDefinitions</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">Where</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="n">o</span><span class="o">.</span><span class="na">Visible</span><span class="o">).</span><span class="na">Select</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="o">(</span><span class="n">IFeatureLayerDefinition2</span><span class="o">)</span> <span class="n">o</span><span class="o">)</span>
+    <span class="n">foreach</span> <span class="o">(</span><span class="n">var</span> <span class="n">layerDefinition</span> <span class="n">in</span> <span class="n">layerDefinitions</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">layerDefinition</span><span class="o">.</span><span class="na">DefinitionExpression</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
 
 <ul>
 <li>Traversing the contents of the <code>ID8List</code>.</li>
 </ul>
-<pre><code class="java">public void UpdateTags(ID8List list, string tag)
-{
-    var items = list.Where(o =&gt; o is IMMProposedObject).Select(o =&gt; (IMMProposedObject) o.Value)
-    foreach (var item in items)
-    {
-        IMMFieldManager fieldManager = item.FieldManager;
-        IMMFieldAdapter fieldAdapter = fieldManager.FieldByName(&quot;TAG&quot;);
-        fieldAdapter.Value = tag;
-        item.Update(null);
-    }
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">UpdateTags</span><span class="o">(</span><span class="n">ID8List</span> <span class="n">list</span><span class="o">,</span> <span class="n">string</span> <span class="n">tag</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">Where</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="n">o</span> <span class="n">is</span> <span class="n">IMMProposedObject</span><span class="o">).</span><span class="na">Select</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="o">(</span><span class="n">IMMProposedObject</span><span class="o">)</span> <span class="n">o</span><span class="o">.</span><span class="na">Value</span><span class="o">)</span>
+    <span class="n">foreach</span> <span class="o">(</span><span class="n">var</span> <span class="n">item</span> <span class="n">in</span> <span class="n">items</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">IMMFieldManager</span> <span class="n">fieldManager</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">FieldManager</span><span class="o">;</span>
+        <span class="n">IMMFieldAdapter</span> <span class="n">fieldAdapter</span> <span class="o">=</span> <span class="n">fieldManager</span><span class="o">.</span><span class="na">FieldByName</span><span class="o">(</span><span class="s">&quot;TAG&quot;</span><span class="o">);</span>
+        <span class="n">fieldAdapter</span><span class="o">.</span><span class="na">Value</span> <span class="o">=</span> <span class="n">tag</span><span class="o">;</span>
+        <span class="n">item</span><span class="o">.</span><span class="na">Update</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
 
 <h2 id="data-access">Data Access</h2>
 <p>One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.</p>
@@ -405,47 +430,51 @@
 <ul>
 <li><code>Fetch</code> features or rows with a list of OBJECTIDs.</li>
 </ul>
-<pre><code class="java">    List&lt;IFeature&gt; features = featureClass.Fetch(1,2,3,4,5,6);
-</code></pre>
+<div class="codehilite"><pre><span></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">IFeature</span><span class="o">&gt;</span> <span class="n">features</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">Fetch</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">);</span>
+</pre></div>
+
 
 <ul>
 <li><code>Fetch</code> features or rows that need a spatial and/or attribute dependencies to filter the results.</li>
 </ul>
-<pre><code class="java">ISpatialFilter filter = new SpatialFilterClass();
-filter.WhereClause = featureClass.OIDFieldName + &quot; IN (1,2,3,4,5,6)&quot;;
-filter.Geometry = geometry;
-filter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
-filter.GeometryField = &quot;SHAPE&quot;;
+<div class="codehilite"><pre><span></span><span class="n">ISpatialFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SpatialFilterClass</span><span class="o">();</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">WhereClause</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">OIDFieldName</span> <span class="o">+</span> <span class="s">&quot; IN (1,2,3,4,5,6)&quot;</span><span class="o">;</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">Geometry</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">;</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">SpatialRel</span> <span class="o">=</span> <span class="n">esriSpatialRelEnum</span><span class="o">.</span><span class="na">esriSpatialRelIntersects</span><span class="o">;</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">GeometryField</span> <span class="o">=</span> <span class="s">&quot;SHAPE&quot;</span><span class="o">;</span>
 
-List&lt;IFeature&gt; features = featureClass.Fetch(filter);
-</code></pre>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">IFeature</span><span class="o">&gt;</span> <span class="n">features</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">Fetch</span><span class="o">(</span><span class="n">filter</span><span class="o">);</span>
+</pre></div>
+
 
 <ul>
 <li><code>Fetch</code> features or rows that need actions performed but the memory can be recycled.</li>
 </ul>
-<pre><code class="java">int i = featureClass.FindField(&quot;DATE&quot;);
+<div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">FindField</span><span class="o">(</span><span class="s">&quot;DATE&quot;</span><span class="o">);</span>
 
-IQueryFilter filter = new QueryFilterClass();
-filter.WhereClause = featureClass.OIDFieldName + &quot; IN (1,2,3,4,5,6)&quot;;
+<span class="n">IQueryFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryFilterClass</span><span class="o">();</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">WhereClause</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">OIDFieldName</span> <span class="o">+</span> <span class="s">&quot; IN (1,2,3,4,5,6)&quot;</span><span class="o">;</span>
 
-int rowsAffected = featureClass.Fetch(filter, feature =&gt;
-{
-     feature.set_Value(i, DateTime.Now);
-     feature.Store();
-});
-</code></pre>
+<span class="kt">int</span> <span class="n">rowsAffected</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">Fetch</span><span class="o">(</span><span class="n">filter</span><span class="o">,</span> <span class="n">feature</span> <span class="o">=&gt;</span>
+<span class="o">{</span>
+     <span class="n">feature</span><span class="o">.</span><span class="na">set_Value</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">DateTime</span><span class="o">.</span><span class="na">Now</span><span class="o">);</span>
+     <span class="n">feature</span><span class="o">.</span><span class="na">Store</span><span class="o">();</span>
+<span class="o">});</span>
+</pre></div>
+
 
 <ul>
 <li><code>Fetch</code> features or rows with a projection.</li>
 </ul>
-<pre><code class="java">ISpatialFilter filter = new SpatialFilterClass();
-filter.WhereClause = featureClass.OIDFieldName + &quot; IN (1,2,3,4,5,6)&quot;;
-filter.Geometry = geometry;
-filter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
-filter.GeometryField = &quot;SHAPE&quot;;
+<div class="codehilite"><pre><span></span><span class="n">ISpatialFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SpatialFilterClass</span><span class="o">();</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">WhereClause</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">OIDFieldName</span> <span class="o">+</span> <span class="s">&quot; IN (1,2,3,4,5,6)&quot;</span><span class="o">;</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">Geometry</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">;</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">SpatialRel</span> <span class="o">=</span> <span class="n">esriSpatialRelEnum</span><span class="o">.</span><span class="na">esriSpatialRelIntersects</span><span class="o">;</span>
+<span class="n">filter</span><span class="o">.</span><span class="na">GeometryField</span> <span class="o">=</span> <span class="s">&quot;SHAPE&quot;</span><span class="o">;</span>
 
-List&lt;int&gt; oids = featureClass.Fetch(filter, feature =&gt; feature.OID);
-</code></pre>
+<span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">oids</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">Fetch</span><span class="o">(</span><span class="n">filter</span><span class="o">,</span> <span class="n">feature</span> <span class="o">=&gt;</span> <span class="n">feature</span><span class="o">.</span><span class="na">OID</span><span class="o">);</span>
+</pre></div>
+
 
 <h2 id="repetitive-implementations">Repetitive Implementations</h2>
 <p>The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages.</p>
@@ -597,43 +626,46 @@ List&lt;int&gt; oids = featureClass.Fetch(filter, feature =&gt; feature.OID);
 <ul>
 <li><code>Wave.Extensions.Esri.targets</code></li>
 </ul>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;  
-  &lt;PropertyGroup&gt;
-    &lt;RegisterForComInterop Condition=&quot;'$(RegisterForComInterop)' == ''&quot;&gt;False&lt;/RegisterForComInterop&gt;
-  &lt;/PropertyGroup&gt;
-  &lt;Target Name=&quot;BeforeClean&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;    
-    &lt;Message Text=&quot;Wave.Extensions.Esri.targets: Unregistered&quot;/&gt;    
-    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /u /s&quot; Condition=&quot;Exists('$(TargetPath)')&quot; ContinueOnError=&quot;true&quot;/&gt;          
-  &lt;/Target&gt;
-  &lt;Target Name=&quot;AfterBuild&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;  
-    &lt;Message Text=&quot;Wave.Extensions.Esri.targets Registered&quot;/&gt;  
-    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /s&quot; ContinueOnError=&quot;true&quot; /&gt;        
-  &lt;/Target&gt;
-&lt;/Project&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;Project</span> <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;</span><span class="nt">&gt;</span>  
+  <span class="nt">&lt;PropertyGroup&gt;</span>
+    <span class="nt">&lt;RegisterForComInterop</span> <span class="na">Condition=</span><span class="s">&quot;&#39;$(RegisterForComInterop)&#39; == &#39;&#39;&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/RegisterForComInterop&gt;</span>
+  <span class="nt">&lt;/PropertyGroup&gt;</span>
+  <span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;BeforeClean&quot;</span> <span class="na">Condition=</span><span class="s">&quot;$(RegisterForComInterop) == &#39;True&#39;&quot;</span><span class="nt">&gt;</span>    
+    <span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;Wave.Extensions.Esri.targets: Unregistered&quot;</span><span class="nt">/&gt;</span>    
+    <span class="nt">&lt;Exec</span> <span class="na">WorkingDirectory=</span><span class="s">&quot;$(CommonProgramFiles)\ArcGIS\bin&quot;</span> <span class="na">Command=</span><span class="s">&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /u /s&quot;</span> <span class="na">Condition=</span><span class="s">&quot;Exists(&#39;$(TargetPath)&#39;)&quot;</span> <span class="na">ContinueOnError=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>          
+  <span class="nt">&lt;/Target&gt;</span>
+  <span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;AfterBuild&quot;</span> <span class="na">Condition=</span><span class="s">&quot;$(RegisterForComInterop) == &#39;True&#39;&quot;</span><span class="nt">&gt;</span>  
+    <span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;Wave.Extensions.Esri.targets Registered&quot;</span><span class="nt">/&gt;</span>  
+    <span class="nt">&lt;Exec</span> <span class="na">WorkingDirectory=</span><span class="s">&quot;$(CommonProgramFiles)\ArcGIS\bin&quot;</span> <span class="na">Command=</span><span class="s">&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /s&quot;</span> <span class="na">ContinueOnError=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>        
+  <span class="nt">&lt;/Target&gt;</span>
+<span class="nt">&lt;/Project&gt;</span>
+</pre></div>
+
 
 <ul>
 <li><code>Wave.Extensions.Miner.targets</code></li>
 </ul>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;  
-  &lt;PropertyGroup&gt;
-    &lt;RegisterForComInterop Condition=&quot;'$(RegisterForComInterop)' == ''&quot;&gt;False&lt;/RegisterForComInterop&gt;
-  &lt;/PropertyGroup&gt;
-  &lt;Target Name=&quot;BeforeClean&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;    
-    &lt;Message Text=&quot;Wave.Extensions.Miner.targets: Unregistered&quot;/&gt;    
-    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /u /s&quot; Condition=&quot;Exists('$(TargetPath)')&quot; ContinueOnError=&quot;true&quot;/&gt;      
-    &lt;Exec WorkingDirectory=&quot;$(ProgramFiles)\Miner and Miner\ArcFM Solution\Bin&quot; Command=&quot;RegX.exe &amp;quot;$(TargetPath)&amp;quot; /d /u&quot; Condition=&quot;Exists('$(TargetPath)')&quot; ContinueOnError=&quot;true&quot; /&gt;        
-  &lt;/Target&gt;
-  &lt;Target Name=&quot;AfterBuild&quot; Condition=&quot;$(RegisterForComInterop) == 'True'&quot;&gt;  
-    &lt;Message Text=&quot;Wave.Extensions.Miner.targets Registered&quot;/&gt;  
-    &lt;Exec WorkingDirectory=&quot;$(CommonProgramFiles)\ArcGIS\bin&quot; Command=&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /s&quot; ContinueOnError=&quot;true&quot; /&gt;
-    &lt;Exec WorkingDirectory=&quot;$(ProgramFiles)\Miner and Miner\ArcFM Solution\Bin&quot; Command=&quot;RegX.exe &amp;quot;$(TargetPath)&amp;quot; /d&quot; ContinueOnError=&quot;true&quot; /&gt;       
-  &lt;/Target&gt;
-&lt;/Project&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;Project</span> <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;</span><span class="nt">&gt;</span>  
+  <span class="nt">&lt;PropertyGroup&gt;</span>
+    <span class="nt">&lt;RegisterForComInterop</span> <span class="na">Condition=</span><span class="s">&quot;&#39;$(RegisterForComInterop)&#39; == &#39;&#39;&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/RegisterForComInterop&gt;</span>
+  <span class="nt">&lt;/PropertyGroup&gt;</span>
+  <span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;BeforeClean&quot;</span> <span class="na">Condition=</span><span class="s">&quot;$(RegisterForComInterop) == &#39;True&#39;&quot;</span><span class="nt">&gt;</span>    
+    <span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;Wave.Extensions.Miner.targets: Unregistered&quot;</span><span class="nt">/&gt;</span>    
+    <span class="nt">&lt;Exec</span> <span class="na">WorkingDirectory=</span><span class="s">&quot;$(CommonProgramFiles)\ArcGIS\bin&quot;</span> <span class="na">Command=</span><span class="s">&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /u /s&quot;</span> <span class="na">Condition=</span><span class="s">&quot;Exists(&#39;$(TargetPath)&#39;)&quot;</span> <span class="na">ContinueOnError=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>      
+    <span class="nt">&lt;Exec</span> <span class="na">WorkingDirectory=</span><span class="s">&quot;$(ProgramFiles)\Miner and Miner\ArcFM Solution\Bin&quot;</span> <span class="na">Command=</span><span class="s">&quot;RegX.exe &amp;quot;$(TargetPath)&amp;quot; /d /u&quot;</span> <span class="na">Condition=</span><span class="s">&quot;Exists(&#39;$(TargetPath)&#39;)&quot;</span> <span class="na">ContinueOnError=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>        
+  <span class="nt">&lt;/Target&gt;</span>
+  <span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;AfterBuild&quot;</span> <span class="na">Condition=</span><span class="s">&quot;$(RegisterForComInterop) == &#39;True&#39;&quot;</span><span class="nt">&gt;</span>  
+    <span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;Wave.Extensions.Miner.targets Registered&quot;</span><span class="nt">/&gt;</span>  
+    <span class="nt">&lt;Exec</span> <span class="na">WorkingDirectory=</span><span class="s">&quot;$(CommonProgramFiles)\ArcGIS\bin&quot;</span> <span class="na">Command=</span><span class="s">&quot;ESRIRegAsm.exe &amp;quot;$(TargetPath)&amp;quot; /p:Desktop /s&quot;</span> <span class="na">ContinueOnError=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Exec</span> <span class="na">WorkingDirectory=</span><span class="s">&quot;$(ProgramFiles)\Miner and Miner\ArcFM Solution\Bin&quot;</span> <span class="na">Command=</span><span class="s">&quot;RegX.exe &amp;quot;$(TargetPath)&amp;quot; /d&quot;</span> <span class="na">ContinueOnError=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>       
+  <span class="nt">&lt;/Target&gt;</span>
+<span class="nt">&lt;/Project&gt;</span>
+</pre></div>
           <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Kyle Baesler &ndash;
             
             Documentation built with
             <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
