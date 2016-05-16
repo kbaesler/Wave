@@ -152,6 +152,20 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
+        ///     Returns an enumerable of all of the visible layers in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the visible layers.
+        /// </returns>
+        public static IEnumerable<IFeatureLayer> GetVisibleLayers(this IMap source)
+        {
+            if (source == null) return null;
+
+            return WhereImp<IFeatureLayer>(source, source.IsLayerVisible);
+        }
+
+        /// <summary>
         ///     Returns the workspace for the first occurance of a valid feature layer in the map.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -164,7 +178,7 @@ namespace ESRI.ArcGIS.Carto
             if (source.LayerCount == 0)
                 return null;
 
-            return source.GetLayers<IFeatureLayer>(layer => predicate(layer)).Select(o => ((IDataset) o.FeatureClass).Workspace).First();
+            return WhereImp<IFeatureLayer>(source, layer => predicate(layer)).Select(o => ((IDataset) o.FeatureClass).Workspace).FirstOrDefault();
         }
 
         /// <summary>
