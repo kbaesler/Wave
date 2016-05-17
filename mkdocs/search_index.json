@@ -297,12 +297,12 @@
         }, 
         {
             "location": "/resources/", 
-            "text": "Resources\n#\n\n\n\n\nDownload the Sample Data\n\n\nDownload the API Documentation\n\n\nArcFM Documentation\n\n\nArcGIS for Desktop Documentation", 
+            "text": "Resources\n#\n\n\nHelpful links to online resources used to develop the wave library.\n\n\n\n\n\n\nDownload the ArcFM Sample Data\n\n\n\n\n\n\nArcFM Documentation\n\n\n\n\n\n\nArcGIS for Desktop Documentation", 
             "title": "Resources"
         }, 
         {
             "location": "/resources/#resources", 
-            "text": "Download the Sample Data  Download the API Documentation  ArcFM Documentation  ArcGIS for Desktop Documentation", 
+            "text": "Helpful links to online resources used to develop the wave library.    Download the ArcFM Sample Data    ArcFM Documentation    ArcGIS for Desktop Documentation", 
             "title": "Resources"
         }
     ]
