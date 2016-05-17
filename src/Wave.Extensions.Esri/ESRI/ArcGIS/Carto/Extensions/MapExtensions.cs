@@ -85,7 +85,7 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the layers in the map.</returns>
         public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source)
         {
-            return source.GetLayers<IFeatureLayer>(layer => layer.Valid);
+            return WhereImp<IFeatureLayer>(source, layer => layer.Valid);
         }
 
         /// <summary>
@@ -158,6 +158,10 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>
         ///     Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the visible layers.
         /// </returns>
+        /// <remarks>
+        /// This method determines if a layer is actually visible in a map.  It does this by checking to see if the layer is not drawn due to scale ranges and 
+        /// also by validating whether or not the layer is in a composite layer or group layer that is not visible.
+        /// </remarks>
         public static IEnumerable<IFeatureLayer> GetVisibleLayers(this IMap source)
         {
             if (source == null) return null;
