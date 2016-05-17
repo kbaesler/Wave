@@ -1,4 +1,9 @@
 # Resources
+Helpful links to online resources used to develop the wave library.
 
-1. [Download the Sample Data](https://infrastructurecommunity.schneider-electric.com/groups/gis-downloads)
-2. [Download the API Documentation](chms/Wave.v4.5.chm)
+- [Download the ArcFM Sample Data](https://infrastructurecommunity.schneider-electric.com/groups/gis-downloads)
+
+
+- [ArcFM Documentation](http://resources.arcfmsolution.com/)
+
+- [ArcGIS for Desktop Documentation](https://developers.arcgis.com/extending-the-platform/)
