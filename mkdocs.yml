@@ -1,37 +1,40 @@
-site_name: Wave
-site_description: A library used for ArcFM Solution and ArcGIS for Desktop development.
-site_author: Kyle Baesler
-site_url: http://jumpercables.github.io/Wave/
+site_name: 'Wave'
+site_description: 'C# extensions for ArcFM Solution and ArcGIS for Desktop development.'
+site_author: 'Kyle Baesler'
+site_url: 'http://jumpercables.github.io/Wave/'
 
-repo_name: GitHub
-repo_url: https://github.com/Jumpercables/Wave/
+repo_name: 'GitHub'
+repo_url: 'https://github.com/Jumpercables/Wave/'
 
-copyright: Copyright (c) 2016 Kyle Baesler
+copyright: 'Copyright (c) 2016 Kyle Baesler'
 
 extra:
-    version: 1.0.3
-    logo: images\wave-red-64.png
+    version: '1.0.3'
+    logo: 'images\wave-red-64.png'
     author:
-      github: Jumpercables
+      github: 'Jumpercables'
     palette:
-      primary: red
-      accent: teal
+      primary: 'Red'
+      accent: 'Teal'
 
 markdown_extensions:
     - smarty
-    - admonition
     - footnotes
-    - codehilite
     - sane_lists
+    - codehilite(css_class=code)
+    - admonition
+    - toc:
+        permalink: '#'
 
-theme: material
+theme: 'material'
 
 pages:
-- Wave: index.md
-- Samples: samples.md
-- Features: features.md
-- Frequently Asked Questions: faq.md
+- Home: 'index.md'
+- Samples: 'samples.md'
+- Features: 'features.md'
+- Frequently Asked Questions: 'faq.md'
 - About:
-  - Contributing: contribute.md
-  - Release Notes: release-notes.md
-  - Credits: credits.md
+  - Contributing: 'contribute.md'
+  - Release Notes: 'release-notes.md'
+  - License: 'license.md'
+- Resources: 'resources.md'
