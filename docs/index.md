@@ -12,9 +12,9 @@
 [![Wave Extensions for ArcFM](https://buildstats.info/nuget/Wave.Extensions.Miner)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
 
 ## Documentation
-You can [download](Wave.v4.5.chm) the latest API documentation in CHM format.
+You can [download](chms\Wave.v4.5.chm) the latest API documentation in CHM format.
 
-!!! warning "Download"
+!!! info "Download"
 	On some systems, the contents of the CHM file is blocked. Right click on the CHM file, select **Properties**, and click on the **Unblock** button if it is present in the lower right corner of the **General** tab in the properties dialog.
 
 ## Installation

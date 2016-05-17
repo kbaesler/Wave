@@ -1,7 +1,7 @@
 # Release Notes
 This will serve as a reference to the release notes with regards to the `release` version of the NuGet packages that are published.
 
-## Roadmap
+## Backlog
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
 ### New
@@ -10,7 +10,7 @@ These are the changes, additions, removals that are actively being worked on and
 - Added `GetVisibleLayers` extension method to the `IMap` interface which will return only those layers that are visible (either by virtue of being enabled or due to scale suppression). [^1]
 
 !!! warning "Unpublished"
-    These changes, additions, removals are actively being worked on or in a completed state but have not yet been published as a nuget package.
+    The changes, additions, removals and new features that are part of the backlog have not been published to the public as nuget packages.
 
 ---
 ## Version 1.0.3 - 2016-04-04
@@ -70,10 +70,13 @@ These are the changes, additions, removals that are actively being worked on and
  - Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products
 
 
- [^1]: A change that is included in the **Wave Extensions for ArcGIS** package.
+!!! note "Releases"
+    You can install and use a previous release of the packages by specifying the package version in the Package Manager Console window.
 
- [^2]: A change that is included in the **Wave Extensions for ArcFM** package.
+   [^1]: A change that is included in the **Wave Extensions for ArcGIS** package.
 
- [^3]: A change that is included in both the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
+   [^2]: A change that is included in the **Wave Extensions for ArcFM** package.
 
- [^4]: A change that **potentially** causes other components to **fail**.
+   [^3]: A change that is included in both the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
+
+   [^4]: A change that **potentially** causes other components to **fail**.
