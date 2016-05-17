@@ -396,12 +396,12 @@
 </tbody>
 </table>
 <p>These new extension methods allow you to write code like this:</p>
-<div class="code"><pre><span></span><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">AsEnumerable</span><span class="o">().</span><span class="na">Count</span><span class="o">();</span>
+<div class="code"><pre><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">AsEnumerable</span><span class="o">().</span><span class="na">Count</span><span class="o">();</span>
 </pre></div>
 
 
 <p>and:</p>
-<div class="code"><pre><span></span><span class="n">var</span> <span class="n">results</span> <span class="o">=</span>
+<div class="code"><pre><span class="n">var</span> <span class="n">results</span> <span class="o">=</span>
     <span class="n">from</span> <span class="n">x</span> <span class="n">in</span> <span class="n">cursor1</span><span class="o">.</span><span class="na">AsEnumerable</span><span class="o">()</span>
     <span class="n">from</span> <span class="n">y</span> <span class="n">in</span> <span class="n">cursor2</span><span class="o">.</span><span class="na">AsEnumerable</span><span class="o">()</span>
     <span class="n">where</span> <span class="n">x</span><span class="o">.</span><span class="na">get_Value</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="na">get_Value</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
@@ -413,7 +413,7 @@
 <ul>
 <li>Traversing the contents of the <code>IMap</code>.</li>
 </ul>
-<div class="code"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">ClearDefinitions</span><span class="o">(</span><span class="n">IMap</span> <span class="n">map</span><span class="o">)</span>
+<div class="code"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">ClearDefinitions</span><span class="o">(</span><span class="n">IMap</span> <span class="n">map</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="n">var</span> <span class="n">layerDefinitions</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">Where</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="n">o</span><span class="o">.</span><span class="na">Visible</span><span class="o">).</span><span class="na">Select</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="o">(</span><span class="n">IFeatureLayerDefinition2</span><span class="o">)</span> <span class="n">o</span><span class="o">)</span>
     <span class="n">foreach</span> <span class="o">(</span><span class="n">var</span> <span class="n">layerDefinition</span> <span class="n">in</span> <span class="n">layerDefinitions</span><span class="o">)</span>
@@ -427,7 +427,7 @@
 <ul>
 <li>Traversing the contents of the <code>ID8List</code>.</li>
 </ul>
-<div class="code"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">UpdateTags</span><span class="o">(</span><span class="n">ID8List</span> <span class="n">list</span><span class="o">,</span> <span class="n">string</span> <span class="n">tag</span><span class="o">)</span>
+<div class="code"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">UpdateTags</span><span class="o">(</span><span class="n">ID8List</span> <span class="n">list</span><span class="o">,</span> <span class="n">string</span> <span class="n">tag</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">Where</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="n">o</span> <span class="n">is</span> <span class="n">IMMProposedObject</span><span class="o">).</span><span class="na">Select</span><span class="o">(</span><span class="n">o</span> <span class="o">=&gt;</span> <span class="o">(</span><span class="n">IMMProposedObject</span><span class="o">)</span> <span class="n">o</span><span class="o">.</span><span class="na">Value</span><span class="o">)</span>
     <span class="n">foreach</span> <span class="o">(</span><span class="n">var</span> <span class="n">item</span> <span class="n">in</span> <span class="n">items</span><span class="o">)</span>
@@ -447,14 +447,14 @@
 <ul>
 <li><code>Fetch</code> features or rows with a list of OBJECTIDs.</li>
 </ul>
-<div class="code"><pre><span></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">IFeature</span><span class="o">&gt;</span> <span class="n">features</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">Fetch</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">);</span>
+<div class="code"><pre>    <span class="n">List</span><span class="o">&lt;</span><span class="n">IFeature</span><span class="o">&gt;</span> <span class="n">features</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">Fetch</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">);</span>
 </pre></div>
 
 
 <ul>
 <li><code>Fetch</code> features or rows that need a spatial and/or attribute dependencies to filter the results.</li>
 </ul>
-<div class="code"><pre><span></span><span class="n">ISpatialFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SpatialFilterClass</span><span class="o">();</span>
+<div class="code"><pre><span class="n">ISpatialFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SpatialFilterClass</span><span class="o">();</span>
 <span class="n">filter</span><span class="o">.</span><span class="na">WhereClause</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">OIDFieldName</span> <span class="o">+</span> <span class="s">&quot; IN (1,2,3,4,5,6)&quot;</span><span class="o">;</span>
 <span class="n">filter</span><span class="o">.</span><span class="na">Geometry</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">;</span>
 <span class="n">filter</span><span class="o">.</span><span class="na">SpatialRel</span> <span class="o">=</span> <span class="n">esriSpatialRelEnum</span><span class="o">.</span><span class="na">esriSpatialRelIntersects</span><span class="o">;</span>
@@ -467,7 +467,7 @@
 <ul>
 <li><code>Fetch</code> features or rows that need actions performed but the memory can be recycled.</li>
 </ul>
-<div class="code"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">FindField</span><span class="o">(</span><span class="s">&quot;DATE&quot;</span><span class="o">);</span>
+<div class="code"><pre><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">FindField</span><span class="o">(</span><span class="s">&quot;DATE&quot;</span><span class="o">);</span>
 
 <span class="n">IQueryFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryFilterClass</span><span class="o">();</span>
 <span class="n">filter</span><span class="o">.</span><span class="na">WhereClause</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">OIDFieldName</span> <span class="o">+</span> <span class="s">&quot; IN (1,2,3,4,5,6)&quot;</span><span class="o">;</span>
@@ -483,7 +483,7 @@
 <ul>
 <li><code>Fetch</code> features or rows with a projection.</li>
 </ul>
-<div class="code"><pre><span></span><span class="n">ISpatialFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SpatialFilterClass</span><span class="o">();</span>
+<div class="code"><pre><span class="n">ISpatialFilter</span> <span class="n">filter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SpatialFilterClass</span><span class="o">();</span>
 <span class="n">filter</span><span class="o">.</span><span class="na">WhereClause</span> <span class="o">=</span> <span class="n">featureClass</span><span class="o">.</span><span class="na">OIDFieldName</span> <span class="o">+</span> <span class="s">&quot; IN (1,2,3,4,5,6)&quot;</span><span class="o">;</span>
 <span class="n">filter</span><span class="o">.</span><span class="na">Geometry</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">;</span>
 <span class="n">filter</span><span class="o">.</span><span class="na">SpatialRel</span> <span class="o">=</span> <span class="n">esriSpatialRelEnum</span><span class="o">.</span><span class="na">esriSpatialRelIntersects</span><span class="o">;</span>
@@ -643,7 +643,7 @@
 <ul>
 <li><code>Wave.Extensions.Esri.targets</code></li>
 </ul>
-<div class="code"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="code"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;Project</span> <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;</span><span class="nt">&gt;</span>  
   <span class="nt">&lt;PropertyGroup&gt;</span>
     <span class="nt">&lt;RegisterForComInterop</span> <span class="na">Condition=</span><span class="s">&quot;&#39;$(RegisterForComInterop)&#39; == &#39;&#39;&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/RegisterForComInterop&gt;</span>
@@ -663,7 +663,7 @@
 <ul>
 <li><code>Wave.Extensions.Miner.targets</code></li>
 </ul>
-<div class="code"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="code"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;Project</span> <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;</span><span class="nt">&gt;</span>  
   <span class="nt">&lt;PropertyGroup&gt;</span>
     <span class="nt">&lt;RegisterForComInterop</span> <span class="na">Condition=</span><span class="s">&quot;&#39;$(RegisterForComInterop)&#39; == &#39;&#39;&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/RegisterForComInterop&gt;</span>
