@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Wave - A library used for ArcFM Solution and ArcGIS for Desktop development.</title>
+        <title>Wave - C# extensions for ArcFM Solution and ArcGIS for Desktop development.</title>
       
       
-        <meta name="description" content="A library used for ArcFM Solution and ArcGIS for Desktop development.">
+        <meta name="description" content="C# extensions for ArcFM Solution and ArcGIS for Desktop development.">
       
       
         <link rel="canonical" href="http://jumpercables.github.io/Wave/">
@@ -51,6 +51,8 @@
     </style>
     <link rel="stylesheet" href="./assets/stylesheets/application-54f87043f3.css">
     
+      <link rel="stylesheet" href="./assets/stylesheets/palettes-05ab2406df.css">
+    
     
       
       
@@ -72,7 +74,7 @@
   
   
   
-  <body class=" ">
+  <body class="palette-primary-red palette-accent-teal">
     
       
       
@@ -265,14 +267,23 @@
       
         
   <li>
-    <a class="" title="Credits" href="credits/">
-      Credits
+    <a class="" title="License" href="license/">
+      License
     </a>
     
   </li>
 
       
     </ul>
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Resources" href="resources/">
+      Resources
+    </a>
+    
   </li>
 
           
@@ -300,28 +311,28 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="wave">Wave</h1>
-<h2 id="overview">Overview</h2>
+          <h1 id="wave">Wave<a class="headerlink" href="#wave" title="Permanent link">#</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p><a href="https://github.com/Jumpercables/Wave">Wave</a> is a C# library that extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library.</p>
 <p><strong>Wave Extensions for ArcGIS</strong> - The package for the ArcGIS for Desktop extensions.</p>
 <p><a href="https://www.nuget.org/packages/Wave.Extensions.Esri/"><img alt="Wave Extensions for ArcGIS" src="https://buildstats.info/nuget/Wave.Extensions.Esri" /></a></p>
 <p><strong>Wave Extensions for ArcFM</strong> - The package for the ArcFM Solution extensions.</p>
 <p><a href="https://www.nuget.org/packages/Wave.Extensions.Miner/"><img alt="Wave Extensions for ArcFM" src="https://buildstats.info/nuget/Wave.Extensions.Miner" /></a></p>
-<h2 id="documentation">Documentation</h2>
-<p>You can <a href="./Wave.v4.5.chm">download</a> the latest API documentation in CHM format.</p>
-<div class="admonition warning">
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
+<p>You can <a href="./chms\Wave.v4.5.chm">download</a> the latest API documentation in CHM format.</p>
+<div class="admonition info">
 <p class="admonition-title">Download</p>
 <p>On some systems, the contents of the CHM file is blocked. Right click on the CHM file, select <strong>Properties</strong>, and click on the <strong>Unblock</strong> button if it is present in the lower right corner of the <strong>General</strong> tab in the properties dialog.</p>
 </div>
-<h2 id="installation">Installation</h2>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
 <p>You can download a release of the library using the Microsoft NuGet Package Manager within Visual Studio.</p>
 <p>To install <strong>Wave Extensions for ArcGIS</strong>, run the following command in the Package Manager Console.</p>
-<div class="codehilite"><pre><span></span>    PM&gt; Install-Package Wave.Extensions.Esri
+<div class="code"><pre><span></span>    PM&gt; Install-Package Wave.Extensions.Esri
 </pre></div>
 
 
 <p>To install <strong>Wave Extensions for ArcFM</strong>, run the following command in the Package Manager Console.</p>
-<div class="codehilite"><pre><span></span>    PM&gt; Install-Package Wave.Extensions.Miner
+<div class="code"><pre><span></span>    PM&gt; Install-Package Wave.Extensions.Miner
 </pre></div>
 
 
@@ -329,14 +340,14 @@
 <p class="admonition-title">Dependencies</p>
 <p>The <strong>Wave.Extensions.Esri</strong> package features are included in the <strong>Wave.Extensions.Miner</strong> package, as the <em>ArcFM Solution</em> product is tightly coupled with the <em>ArcGIS for Desktop</em> product.</p>
 </div>
-<h3 id="requirements">Requirements</h3>
+<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
 <ul>
 <li>ArcGIS for Desktop 10 (or higher)</li>
 <li>ArcFM Solution 10 (or higher)</li>
 <li>3.5 SP 1 or 4.5 .NET Framework</li>
 <li>Visual Studio 2010 (or higher)</li>
 </ul>
-<h3 id="third-party-libraries">Third Party Libraries</h3>
+<h3 id="third-party-libraries">Third Party Libraries<a class="headerlink" href="#third-party-libraries" title="Permanent link">#</a></h3>
 <ul>
 <li>log4net 2.0.3</li>
 </ul>

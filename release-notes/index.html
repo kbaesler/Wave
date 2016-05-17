@@ -49,6 +49,8 @@
     </style>
     <link rel="stylesheet" href="../assets/stylesheets/application-54f87043f3.css">
     
+      <link rel="stylesheet" href="../assets/stylesheets/palettes-05ab2406df.css">
+    
     
       
       
@@ -70,7 +72,7 @@
   
   
   
-  <body class=" ">
+  <body class="palette-primary-red palette-accent-teal">
     
       
       
@@ -279,14 +281,23 @@
       
         
   <li>
-    <a class="" title="Credits" href="../credits/">
-      Credits
+    <a class="" title="License" href="../license/">
+      License
     </a>
     
   </li>
 
       
     </ul>
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Resources" href="../resources/">
+      Resources
+    </a>
+    
   </li>
 
           
@@ -314,11 +325,11 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="release-notes">Release Notes</h1>
+          <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">#</a></h1>
 <p>This will serve as a reference to the release notes with regards to the <code>release</code> version of the NuGet packages that are published.</p>
-<h2 id="roadmap">Roadmap</h2>
+<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">#</a></h2>
 <p>These are the changes, additions, removals that are actively being worked on and will be included in future releases.</p>
-<h3 id="new">New</h3>
+<h3 id="new">New<a class="headerlink" href="#new" title="Permanent link">#</a></h3>
 <ul>
 <li>The <code>Wave.log4net.config</code> file is included in the packages. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>Added <code>Version</code> and <code>BuildNumber</code> to the <code>ArcFM</code> static class. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
@@ -329,8 +340,8 @@
 <p>These changes, additions, removals are actively being worked on or in a completed state but have not yet been published as a nuget package.</p>
 </div>
 <hr />
-<h2 id="version-103-2016-04-04">Version 1.0.3 - 2016-04-04</h2>
-<h3 id="new_1">New</h3>
+<h2 id="version-103-2016-04-04">Version 1.0.3 - 2016-04-04<a class="headerlink" href="#version-103-2016-04-04" title="Permanent link">#</a></h2>
+<h3 id="new_1">New<a class="headerlink" href="#new_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Added <code>PerformOperation</code> extension methods to the <code>IEditor</code>, <code>IMMEditor</code>, <code>IWorkspace</code> and <code>IWorkspaceEdit</code> interfaces that wrap the start / stop operation constructs. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>Added <code>ExecuteTask</code> extension method on the <code>IMMPxNode</code> object to execute tasks based on name. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
@@ -339,7 +350,7 @@
 <li>Added <code>Pan</code>, <code>Zoom</code>, and <code>Flash</code> extension methods to the <code>IFeature</code> interface to allow for performing these actions when the proper hook is supplied. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code>Unhighlight</code> extension method for unhighlighting features. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
 <ul>
 <li>The <code>GetDataChanges</code> extension methods on the <code>IVersion</code> interface returns a <code>DeltaRowCollection</code> instead of a <code>List{DeltaRow}</code> as the accessor methods on the <code>DeltaRow</code> have been moved to the <code>DeltaRowCollection</code> class to allow for better performance. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 <li>The <code>ESRI.ArcGIS.Framework.BaseClasses</code> namespace was replaced with the <code>ESRI.ArcGIS.ADF.BaseClasses</code> namespace. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
@@ -347,19 +358,19 @@
 <li>Moved the <code>IProgressBarAnimation</code> interface into the <code>ESRI.ArcGIS.Framework</code> namespace <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 </ul>
 <hr />
-<h2 id="version-102-2016-03-03">Version 1.0.2 - 2016-03-03</h2>
-<h3 id="fixed">Fixed</h3>
+<h2 id="version-102-2016-03-03">Version 1.0.2 - 2016-03-03<a class="headerlink" href="#version-102-2016-03-03" title="Permanent link">#</a></h2>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">#</a></h3>
 <ul>
 <li>Due to an issue with the build server the 4.5 .NET Framework packages were not included.</li>
 </ul>
 <hr />
-<h2 id="version-101-2016-03-01">Version 1.0.1 - 2016-03-01</h2>
-<h3 id="new_2">New</h3>
+<h2 id="version-101-2016-03-01">Version 1.0.1 - 2016-03-01<a class="headerlink" href="#version-101-2016-03-01" title="Permanent link">#</a></h2>
+<h3 id="new_2">New<a class="headerlink" href="#new_2" title="Permanent link">#</a></h3>
 <ul>
 <li>The packages now support the 3.5 and 4.5 .NET Framework. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>The 4.5 .NET Framework packages now include supporting <code>async</code> methods. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 </ul>
-<h3 id="added">Added</h3>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">#</a></h3>
 <ul>
 <li>Added <code>Execute</code> extension method to the <code>ISqlWorkspace</code> interface to support query cursors. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code>GetWorkspaces</code> extension method to the <code>IApplication</code> interface which will return the <code>IMMStandardWorkspace</code> interface that will give the <code>LoginWorkspace</code>, <code>LibraryWorkspace</code>, and <code>EditWorkspace</code>. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
@@ -368,12 +379,12 @@
 <li>Added <code>GetHistory</code> extension methods to the <code>IMMPxApplication</code> for retrieving historical data for nodes. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 <li>Added <code>GetNodeTypeName</code> extension method to the <code>IMMPxApplication</code> to reduce the number of casts necessary to retrieve the information from the node objects. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">#</a></h3>
 <ul>
 <li>The <code>CreateNew</code> and <code>Initialize</code> methods on the <code>IPxNode</code> interface have been removed. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 <li>The <code>ReferenceDictionary</code> has been replaced with the <code>ToDictionary</code> extension method on the <code>Miner.Interop.Process.IDictionary</code> which converts it to <code>Dictionary{String, Object}</code>. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
-<h3 id="changed_1">Changed</h3>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Using overloading mechanism instead of the optional parameters. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>The <code>Session</code>, <code>Design</code> and <code>WorkRequest</code> classes updated to reflect changes to the <code>IPxNode</code> interface and now create and initialize based on the constructor parameters. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
@@ -386,8 +397,8 @@
 <li>A <code>Design</code> can no longer be created as an orphan, it requires a <code>WorkRequest</code> or <code>IMMWMSWorkRequest</code> to be constructed.</li>
 </ul>
 <hr />
-<h2 id="version-100-2016-02-06">Version 1.0.0 - 2016-02-06</h2>
-<h3 id="new_3">New</h3>
+<h2 id="version-100-2016-02-06">Version 1.0.0 - 2016-02-06<a class="headerlink" href="#version-100-2016-02-06" title="Permanent link">#</a></h2>
+<h3 id="new_3">New<a class="headerlink" href="#new_3" title="Permanent link">#</a></h3>
 <ul>
 <li>Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products</li>
 </ul>
@@ -445,14 +456,14 @@
     </div>
     <div class="next">
       
-        <a href="../credits/" title="Credits">
+        <a href="../license/" title="License">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Credits
+                License
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">

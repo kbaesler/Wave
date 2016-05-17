@@ -49,6 +49,8 @@
     </style>
     <link rel="stylesheet" href="../assets/stylesheets/application-54f87043f3.css">
     
+      <link rel="stylesheet" href="../assets/stylesheets/palettes-05ab2406df.css">
+    
     
       
       
@@ -70,7 +72,7 @@
   
   
   
-  <body class=" ">
+  <body class="palette-primary-red palette-accent-teal">
     
       
       
@@ -311,14 +313,23 @@
       
         
   <li>
-    <a class="" title="Credits" href="../credits/">
-      Credits
+    <a class="" title="License" href="../license/">
+      License
     </a>
     
   </li>
 
       
     </ul>
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Resources" href="../resources/">
+      Resources
+    </a>
+    
   </li>
 
           
@@ -346,18 +357,18 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+          <h1 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">#</a></h1>
 <p>This will serve as a list of all of the frequently ask questions.</p>
 <p>If you don&rsquo;t see your question answered here, please submit an issue on the <a href="https://github.com/Jumpercables/Wave/issues">GitHub</a> page with your question.</p>
-<h2 id="1-what-is-wave">1. What is Wave?</h2>
+<h2 id="1-what-is-wave">1. What is Wave?<a class="headerlink" href="#1-what-is-wave" title="Permanent link">#</a></h2>
 <p>Wave is meant to provide a simplistic approach to extending the ArcGIS and ArcFM platforms by providing simplified implementations for complex operations, frequently use call stacks, enforcing the recommended best practices and create a seamless integration.</p>
-<h2 id="2-what-was-the-motivation">2. What was the motivation?</h2>
+<h2 id="2-what-was-the-motivation">2. What was the motivation?<a class="headerlink" href="#2-what-was-the-motivation" title="Permanent link">#</a></h2>
 <p>Over the years as a developer in the Geographic Information System (GIS) for Utilities industry there&rsquo;s been an increasing need for a way to make development easier as the industries needs increase in complexity.</p>
-<h2 id="3-what-is-arcgis">3. What is ArcGIS?</h2>
+<h2 id="3-what-is-arcgis">3. What is ArcGIS?<a class="headerlink" href="#3-what-is-arcgis" title="Permanent link">#</a></h2>
 <p><a href="http://resources.arcgis.com/en/help/getting-started/articles/026n00000014000000.htm">ArcGIS</a> is a comprehensive system that allows people to collect, organize, manage, analyze, communicate, and distribute geographic information. As the world&rsquo;s leading platform for building and using geographic information systems (GIS), ArcGIS is used by people all over the world to put geographic knowledge to work in government, business, science, education, and media. ArcGIS enables geographic information to be published so it can be accessed and used by anyone. The system is available everywhere using web browsers, mobile devices such as smartphones, and desktop computers.</p>
-<h2 id="4-what-is-arcfm">4. What is ArcFM?</h2>
+<h2 id="4-what-is-arcfm">4. What is ArcFM?<a class="headerlink" href="#4-what-is-arcfm" title="Permanent link">#</a></h2>
 <p><a href="http://www.schneider-electric.com/solutions/ww/en/sol/26048721-geospatial-intelligence--arcfm-solution?other=-1">ArcFM</a> is an Enterprise GIS with reliable network intelligence that provides information such as pipe water direction flows, the number of customers attached to a gas meter, and what devices are downstream of a particular fuse.</p>
-<h2 id="5-do-i-need-both-arcfm-and-arcgis-to-use-wave">5. Do I need both ArcFM and ArcGIS to use Wave?</h2>
+<h2 id="5-do-i-need-both-arcfm-and-arcgis-to-use-wave">5. Do I need both ArcFM and ArcGIS to use Wave?<a class="headerlink" href="#5-do-i-need-both-arcfm-and-arcgis-to-use-wave" title="Permanent link">#</a></h2>
 <p>Wave has been developed with it&rsquo;s dependencies in mind to allow the library to be used in two different ways:</p>
 <ol>
 <li>
@@ -367,11 +378,11 @@
 <p>When both the <strong>ArcGIS for Desktop</strong> and <strong>ArcFM Solution</strong>, you&rsquo;ll want to install the <a href="https://www.nuget.org/packages/Wave.Extensions.Miner/">Wave Extensions for ArcFM</a>  package.</p>
 </li>
 </ol>
-<h2 id="6-do-i-need-a-license-to-use-wave">6. Do I need a license to use Wave?</h2>
+<h2 id="6-do-i-need-a-license-to-use-wave">6. Do I need a license to use Wave?<a class="headerlink" href="#6-do-i-need-a-license-to-use-wave" title="Permanent link">#</a></h2>
 <p>Wave is open-source and doesn&rsquo;t directly require any licenses, however since both <strong>ArcFM</strong> and <strong>ArcGIS</strong> are commercial software packages that require licenses.</p>
-<h2 id="8-where-are-the-packages-published">8. Where are the packages published?</h2>
+<h2 id="8-where-are-the-packages-published">8. Where are the packages published?<a class="headerlink" href="#8-where-are-the-packages-published" title="Permanent link">#</a></h2>
 <p>The packages are published to the <a href="https://www.nuget.org">NuGet</a> (provided by Microsoft) service to allow the community to consume the libraries without needing to download and compile the source.</p>
-<h2 id="9-whats-installed-with-the-packages">9. What&rsquo;s installed with the packages?</h2>
+<h2 id="9-whats-installed-with-the-packages">9. What&rsquo;s installed with the packages?<a class="headerlink" href="#9-whats-installed-with-the-packages" title="Permanent link">#</a></h2>
 <p>When a package is being “installed” it will be downloaded to the local machine and will modify the project in the following ways.</p>
 <ol>
 <li>
@@ -396,14 +407,14 @@
 <p>A reference to the <code>log4net</code> assembly will be downloaded and added to the project (as it is a dependency of the Wave packages).</p>
 </li>
 </ol>
-<h2 id="10-what-logging-framework-is-used-by-wave">10. What logging framework is used by Wave?</h2>
+<h2 id="10-what-logging-framework-is-used-by-wave">10. What logging framework is used by Wave?<a class="headerlink" href="#10-what-logging-framework-is-used-by-wave" title="Permanent link">#</a></h2>
 <p>We have elected to use <code>log4net</code> as the logging framework.</p>
-<h2 id="11-what-log4net-configuration-file-is-used">11. What <code>log4net</code> configuration file is used?</h2>
+<h2 id="11-what-log4net-configuration-file-is-used">11. What <code>log4net</code> configuration file is used?<a class="headerlink" href="#11-what-log4net-configuration-file-is-used" title="Permanent link">#</a></h2>
 <p>The <code>Wave.Extensions.Esri</code> and <code>Wave.Extensions.Miner</code> package have been configured to use the configuration file named <code>Wave.log4net.config</code> (which is installed with the packages).</p>
 <ul>
 <li>The configuration file must reside in the directory of the running application. For example, <code>%PROGRAMFILES%\ArcGIS\Bin</code> and <code>%PROGRAMFILES%\Miner and Miner\ArcFM Solution\Bin</code> when the assemblies are used for extensions within ArcGIS for Desktop or ArcFM Solution.</li>
 </ul>
-<h2 id="12-how-are-the-packages-distributed">12. How are the packages distributed?</h2>
+<h2 id="12-how-are-the-packages-distributed">12. How are the packages distributed?<a class="headerlink" href="#12-how-are-the-packages-distributed" title="Permanent link">#</a></h2>
 <p>The packages are distributed using <a href="https://www.nuget.org">NuGet</a> (provided by Microsoft), which is a Visual Studio extension that makes it easy to add, remove and update libraries and tools in Visual Studio projects that use the .NET Framework.</p>
           <aside class="copyright" role="note">
             
