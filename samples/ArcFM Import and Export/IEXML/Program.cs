@@ -243,7 +243,6 @@ namespace Wave.IEXML
             foreach (var fileName in fileNames)
             {
                 var fileName1 = fileName;
-                var saveEdits = new List<bool>();
 
                 workspace.PerformOperation(() =>
                 {
@@ -260,8 +259,7 @@ namespace Wave.IEXML
                         while ((element = nodes.nextNode() as IXMLDOMElement) != null)
                         {
                             var ie = ies.FirstOrDefault(kvp => element.text.EndsWith(kvp.Key, StringComparison.InvariantCultureIgnoreCase));
-                            var saveEdit = this.Import(workspace, ie.Value, (IXMLDOMElement) element.parentNode);
-                            saveEdits.Add(saveEdit);
+                            this.Import(workspace, ie.Value, (IXMLDOMElement) element.parentNode);
                         }
                     }
 
@@ -276,28 +274,23 @@ namespace Wave.IEXML
         /// <param name="workspace">The workspace.</param>
         /// <param name="ie">The importer.</param>
         /// <param name="element">The element.</param>
-        private bool Import(IWorkspace workspace, IMMXMLImportExport4 ie, IXMLDOMElement element)
+        private void Import(IWorkspace workspace, IMMXMLImportExport4 ie, IXMLDOMElement element)
         {
-            if (ie == null) return false;
+            if (ie == null) return;
 
             var node = element.selectSingleNode("FEATURENAME") ?? element.selectSingleNode("NAME");
 
             Log.Info(this, "{0}:", node.text);
 
-            bool success;
-
             try
             {
-                success = ie.Import(workspace, element, mmGxXMLOptions.mmGXOOverwrite, mmGxXMLSubtypeOptions.mmGXOReplace);
+                var success = ie.Import(workspace, element, mmGxXMLOptions.mmGXOOverwrite, mmGxXMLSubtypeOptions.mmGXOReplace);
+                Log.Info(this, "\t{0} => {1}", ie.DisplayName, success ? "SUCCESS" : "FAILED");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                success = false;
+                Log.Error(this, string.Format("\t{0} => {1}", ie.DisplayName, e.Message));
             }
-
-            Log.Info(this, "\t{0} => {1}", ie.DisplayName, success ? "SUCCESS" : "FAILED");
-
-            return success;
         }
 
         #endregion

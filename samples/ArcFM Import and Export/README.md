@@ -10,7 +10,7 @@ The command line utility will create a directory structure that is the same as t
 - `/d:` - The path to the output directory that will contain the XML files.
 - `/t:Export` - A constant used to indicate that the XML files should be exported to the directory (specified by `/d`).
 
-Import (beta)
+Import
 ------
 The command line utility will create a directory structure that is the same as the database and store the exported XML files in the directory location that reflects the location of the object in the database.
 
