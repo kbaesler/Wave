@@ -87,11 +87,39 @@ namespace Miner.Interop
 
         /// <summary>
         ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        ///     <paramref name="editEvent" /> the <paramref name="relationshipClass" /> relationship class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="relationshipClass">The relationship class.</param>
+        /// <param name="editEvent">The edit event.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
+        ///     object class.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMConfigTopLevel source, IRelationshipClass relationshipClass, mmEditEvent editEvent)
+        {
+            if (source == null) return null;
+            if (relationshipClass == null) throw new ArgumentNullException("relationshipClass");
+
+            IEnumerable<IMMAutoValue> list = new List<IMMAutoValue>();
+
+            IMMRelationshipClass relationship = source.GetRelationshipClass(relationshipClass);
+            if (relationship.HasAutoUpdater)
+            {
+                list = relationship.GetAutoValues(editEvent);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
         ///     <paramref name="editEvent" /> for all subtypes
         ///     of the <paramref name="table" /> object class.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="table">The object representing the specific subtype being analyzed.</param>
+        /// <param name="table">The table.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
         ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and

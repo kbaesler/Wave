@@ -111,6 +111,25 @@ namespace Miner.Interop
         ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">table</exception>
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMRelationshipClass source, mmEditEvent editEvent)
+        {
+            if (source == null) return null;
+
+            var list = source as ID8List;
+            if (list == null) return null;
+
+            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+        }
+
+        /// <summary>
+        ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the subtype.
+        /// </summary>
+        /// <param name="source">The object representing the specific subtype being analyzed.</param>
+        /// <param name="editEvent">The edit event.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">table</exception>
         public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, mmEditEvent editEvent)
         {
             if (source == null) return null;
