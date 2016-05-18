@@ -403,6 +403,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Wave.log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Miner\Interop\Process\EDM\Configuration\EdmRepository.xml" />
