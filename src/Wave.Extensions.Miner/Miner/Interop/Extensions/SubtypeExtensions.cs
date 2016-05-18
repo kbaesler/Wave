@@ -118,7 +118,7 @@ namespace Miner.Interop
             var list = source as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            return list.AsEnumerable(1).OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Miner.Interop
             var list = source as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            return list.AsEnumerable(1).OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
