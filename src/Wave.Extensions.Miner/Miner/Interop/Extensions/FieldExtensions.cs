@@ -4,6 +4,8 @@ using System.Linq;
 
 using ESRI.ArcGIS.esriSystem;
 
+using Miner.Geodatabase.Replication;
+
 namespace Miner.Interop
 {
     /// <summary>
@@ -113,13 +115,14 @@ namespace Miner.Interop
             ID8List list = source as ID8List;
             if (list == null) return null;
 
-            foreach (IMMAutoValue autoValue in list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o != null && o.EditEvent == editEvent && o.AutoGenID != null))
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            foreach (var value in values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent))
             {
-                if (autoValue.AutoGenID.Value == null) continue;
+                if (value.AutoGenID.Value == null) continue;
 
-                string autoGenID = autoValue.AutoGenID.Value.ToString();
+                string autoGenID = value.AutoGenID.Value.ToString();
                 if (string.Equals(autoGenID, guid.ToString("B"), StringComparison.InvariantCultureIgnoreCase))
-                    return autoValue;
+                    return value;
             }
 
             return null;
@@ -143,7 +146,8 @@ namespace Miner.Interop
             var list = source as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
