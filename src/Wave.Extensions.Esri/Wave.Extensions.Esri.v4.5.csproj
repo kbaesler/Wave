@@ -34,6 +34,14 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <ProjectGuid>{0FED75AB-83C2-43B0-A540-96646CA9DF47}</ProjectGuid>
     <BaseIntermediateOutputPath>obj\net45\</BaseIntermediateOutputPath>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

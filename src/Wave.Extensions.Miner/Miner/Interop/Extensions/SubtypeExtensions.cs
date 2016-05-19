@@ -90,7 +90,8 @@ namespace Miner.Interop
             ID8List list = source as ID8List;
             if (list == null) return null;
 
-            foreach (IMMAutoValue autoValue in list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o != null && o.EditEvent == editEvent && o.AutoGenID != null))
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);            
+            foreach (IMMAutoValue autoValue in values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent))
             {
                 if (autoValue.AutoGenID.Value == null) continue;
 
@@ -118,7 +119,8 @@ namespace Miner.Interop
             var list = source as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable(1).OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -137,7 +139,8 @@ namespace Miner.Interop
             var list = source as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable(1).OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -163,7 +166,8 @@ namespace Miner.Interop
             var list = field as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>

@@ -132,25 +132,27 @@ namespace Miner.Interop
             if (table == null) throw new ArgumentNullException("table");
 
             Dictionary<int, IEnumerable<IMMAutoValue>> list = new Dictionary<int, IEnumerable<IMMAutoValue>>();
-
-            // Load the values from the hidden -1 value, which represents all.
+            
             IMMSubtype subtype = source.GetSubtypeByID(table, ALL_SUBTYPES, false);
             if (subtype != null)
             {
                 list.Add(ALL_SUBTYPES, subtype.GetAutoValues(editEvent));
             }
-
-            // Load the individual subtype values.
+            
             ISubtypes subtypes = (ISubtypes) table;
-            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new[] {subtypes.DefaultSubtypeCode};
-            foreach (var subtypeCode in subtypeCodes)
+            if (subtypes.HasSubtype)
             {
-                subtype = source.GetSubtypeByID(table, subtypeCode, false);
-                if (subtype == null) continue;
+                IEnumerable<int> subtypeCodes = subtypes.Subtypes.AsEnumerable().Select(o => o.Key).OrderBy(o => o);
+                foreach (var subtypeCode in subtypeCodes)
+                {
+                    subtype = source.GetSubtypeByID(table, subtypeCode, false);
+                    if (subtype == null) continue;
 
-                list.Add(subtypeCode, subtype.GetAutoValues(editEvent));
+                    list.Add(subtypeCode, subtype.GetAutoValues(editEvent));
+                }
+
             }
-
+           
             return list;
         }
 
