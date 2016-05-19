@@ -121,7 +121,7 @@ filter.GeometryField = "SHAPE";
 List<int> oids = featureClass.Fetch(filter, feature => feature.OID);
 ```
 
-## Repetitive Implementations
+## Extensions
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages.
 
 Class                  | Description
