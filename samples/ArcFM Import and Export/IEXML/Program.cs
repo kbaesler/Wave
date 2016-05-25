@@ -20,7 +20,7 @@ using Miner.Interop.msxml2;
 
 using Array = System.Array;
 
-namespace Wave.IEXML
+namespace Utils.IEXML
 {
     internal class ProgramArguments
     {
@@ -137,12 +137,19 @@ namespace Wave.IEXML
                 var l = tables.Last();
 
                 var fileName = Path.Combine(directory, string.Format("{0} vs {1}.csv", f.TableName, l.TableName));
-                Log.Info(this, "Comparison: {0}", Path.GetFileNameWithoutExtension(fileName));
+                Log.Info(this, "{0}", Path.GetFileNameWithoutExtension(fileName));
 
-                DataTable diffs = f.AsEnumerable().Except(l.AsEnumerable(), DataRowComparer.Default).CopyToDataTable();
-                diffs.WriteCsv(fileName);
+                var count = 0;
+                var rows = f.AsEnumerable().Except(l.AsEnumerable(), DataRowComparer.Default).ToArray();
+                if (rows.Any())
+                {
+                    var table = rows.CopyToDataTable();
+                    table.WriteCsv(fileName);
 
-                Log.Info(this, "\t{0}", diffs.Rows.Count);
+                    count = table.Rows.Count;
+                }
+
+                Log.Info(this, "\tDifferences: {0}", count);
 
                 tables.Reverse();
             }

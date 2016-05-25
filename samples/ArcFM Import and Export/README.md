@@ -1,7 +1,10 @@
 # ie-xml.exe
 A command line utility that will export or import the ArcFM Properties XML for all of the feature classes, tables and relationships in the given database that is specified by the connection file.
 
-> You should always run the utility on a machine that has the ArcFM Solution Desktop, ArcGIS for Desktop, and any customizations that have been configured on the database connections. Otherwise, the names of the components will all come out as `UNREGISTERED PROGRAM`.
+> **Tips**
+  1. You should always run the utility on a machine that has the ArcFM Solution Desktop, ArcGIS for Desktop, and any customizations that have been configured on the database connections. Otherwise, the names of the components will all come out as `UNREGISTERED PROGRAM`.
+  2. The user and password should be saved in the `sde` connection files.
+  3. The user that is saved in the `sde` connection files should be either the `sde` or `data owner` user.
 
 ## Export
 The command line utility will create a directory structure that is the same as the database and store the exported `XML` files in the directory location that reflects the location of the object in the database.
@@ -40,3 +43,7 @@ The command line utility will compare the specified `CSV` files output a resulta
 ie-xml.exe /f:"C:\IEXML\Demo\Database1.csv" /f:"C:\IEXML\Demo\Database2.csv" /d:"C:\IEXML\Demo" /t:Compare
 
 ```
+
+> There will be 2 files generated as results of the comparison because the comparison is bi-directional. Meaning, it will compare `Database1.csv` against `Database2.csv` for differences, and `Database2.csv` against `Database1.csv` for differences. The resultant files will be named based on which file that contains the set differences of two files. For example, in the above example the 2 files that will be produced will be named
+ - `Database1 vs Database2.csv`
+ - `Database2 vs Database1.csv`
