@@ -79,6 +79,8 @@ namespace System.Data
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
+                connection.Open();
+
                 using (var cmd = connection.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT * FROM " + Path.GetFileName(fileName);
