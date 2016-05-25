@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ESRI.ArcGIS.ArcMapUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -48,9 +48,7 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Miner.Interop.Desktop, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
+    <Reference Include="Miner.Geodatabase, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL" />
     <Reference Include="Miner.Interop.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -70,15 +68,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wave.Extensions.Esri, Version=10.0.3.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Wave.Extensions.Miner.1.0.3\lib\net45\Wave.Extensions.Esri.dll</HintPath>
+    <Reference Include="Wave.Extensions.Esri, Version=10.0.0.45, Culture=neutral, PublicKeyToken=7d6a9510dde0be43, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.Extensions.Miner.0.1.45-alpha\lib\net45\Wave.Extensions.Esri.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wave.Extensions.Miner, Version=10.0.3.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Wave.Extensions.Miner.1.0.3\lib\net45\Wave.Extensions.Miner.dll</HintPath>
+    <Reference Include="Wave.Extensions.Miner, Version=10.0.0.45, Culture=neutral, PublicKeyToken=7d6a9510dde0be43, processorArchitecture=x86">
+      <HintPath>..\packages\Wave.Extensions.Miner.0.1.45-alpha\lib\net45\Wave.Extensions.Miner.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -100,7 +97,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Wave.Extensions.Miner.1.0.3\build\Wave.Extensions.Miner.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Wave.Extensions.Miner.1.0.3\build\Wave.Extensions.Miner.targets'))" />
+    <Error Condition="!Exists('..\packages\Wave.Extensions.Miner.0.1.45-alpha\build\Wave.Extensions.Miner.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Wave.Extensions.Miner.0.1.45-alpha\build\Wave.Extensions.Miner.targets'))" />
   </Target>
+  <Import Project="..\packages\Wave.Extensions.Miner.0.1.45-alpha\build\Wave.Extensions.Miner.targets" Condition="Exists('..\packages\Wave.Extensions.Miner.0.1.45-alpha\build\Wave.Extensions.Miner.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
