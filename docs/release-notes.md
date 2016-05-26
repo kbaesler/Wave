@@ -9,6 +9,10 @@ These are the changes, additions, removals that are actively being worked on and
 - Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]
 - Added `GetVisibleLayers` extension method to the `IMap` interface which will return only those layers that are visible (either by virtue of being enabled or due to scale suppression). [^1]
 
+## Fixed
+- Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
+- Fixed issue with `ReadCsv` extension method for the `DataTable` that wasn't opening the ADO connection prior to executing the read, which was causing an exception.
+
 !!! warning "Unpublished"
     The changes, additions, removals and new features that are part of the backlog have not been published to the public as nuget packages.
 
