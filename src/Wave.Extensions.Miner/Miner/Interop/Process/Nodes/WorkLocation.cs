@@ -138,40 +138,7 @@ namespace Miner.Interop.Process
             get { return _Worklocation != null; }
         }
 
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        ///     Deletes the node from the process framework database.
-        /// </summary>
-        public override void Delete()
-        {
-            base.Delete();
-
-            if (_Design != null)
-            {
-                _Design.Dispose();
-                _Design = null;
-            }
-        }
-
-        /// <summary>
-        ///     Updates the node by flushing the information to the database and reinitializing the underlying
-        ///     <see cref="Miner.Interop.Process.IMMPxNode" />.
-        /// </summary>
-        public override void Update()
-        {
-            base.Update();
-
-            if (_Design != null)
-            {
-                _Design.Dispose();
-                _Design = null;
-            }
-        }
-
-        #endregion
+        #endregion        
 
         #region Protected Methods
 

@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseFinder.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxTool.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />
@@ -279,6 +280,7 @@
     <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
+    <Compile Include="System\Data\Extensions\DataSetExtensions.cs" />
     <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
     <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
       <SubType>Code</SubType>
@@ -288,7 +290,6 @@
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
-    <Compile Include="System\Extensions\RecursionExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />
