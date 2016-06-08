@@ -35,7 +35,6 @@ namespace System.Forms.ComponentModel
         #region Fields
 
         private Form _Parent;
-        private PersistWindowState _PersistMethod = PersistWindowState.Registry;
         private string _RegistryPath = "";
         private WindowStateInfo _WindowInfo = new WindowStateInfo();
 
@@ -142,11 +141,7 @@ namespace System.Forms.ComponentModel
         [DefaultValue(PersistWindowState.Registry)]
         [Description("Method of persisting window state information."),
          Category("Persist Configuration")]
-        public PersistWindowState PersistMethod
-        {
-            get { return _PersistMethod; }
-            set { _PersistMethod = value; }
-        }
+        public PersistWindowState PersistMethod { get; set; }
 
         /// <summary>
         ///     Gets or sets the registry path for the current user.
@@ -309,7 +304,7 @@ namespace System.Forms.ComponentModel
                     _WindowInfo.WindowState = FormWindowState.Normal;
             }
 
-            switch (_PersistMethod)
+            switch (this.PersistMethod)
             {
                 case PersistWindowState.Registry:
 
@@ -332,7 +327,7 @@ namespace System.Forms.ComponentModel
         /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
         private void OnLoad(object sender, EventArgs e)
         {
-            switch (_PersistMethod)
+            switch (this.PersistMethod)
             {
                 case PersistWindowState.Registry:
 

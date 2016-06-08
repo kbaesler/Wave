@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ESRI.ArcGIS.Framework
 {
@@ -7,22 +8,33 @@ namespace ESRI.ArcGIS.Framework
     /// </summary>
     public static class ArcMap
     {
+        #region Fields
+
+        private static IApplication _Application;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
         ///     This returns the current running instance of application.
         /// </summary>
         /// <value>The application.</value>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public static IApplication Application
         {
             get
             {
                 try
                 {
-                    Type type = Type.GetTypeFromProgID("esriFramework.AppRef");
-                    object obj = Activator.CreateInstance(type);
-                    return (IApplication) obj;
+                    if (_Application == null)
+                    {
+                        Type type = Type.GetTypeFromProgID("esriFramework.AppRef");
+                        object obj = Activator.CreateInstance(type);
+                        _Application = (IApplication) obj;
+                    }
+
+                    return _Application;
                 }
                 catch
                 {
@@ -61,6 +73,11 @@ namespace ESRI.ArcGIS.Framework
                 /// </summary>
                 public const string NetworkUtilityAnalysis = "{98528F9B-B971-11D2-BABD-00C04FA33C20}";
 
+                /// <summary>
+                /// The GUID of the snapping environment.
+                /// </summary>
+                public const string SnappingEnvironment = "{E07B4C52-C894-4558-B8D4-D4050018D1DA}";
+
                 #endregion
             }
 
@@ -85,6 +102,10 @@ namespace ESRI.ArcGIS.Framework
                 /// </summary>
                 public const string NetworkUtilityAnalysis = "Utility Network Analyst";
 
+                /// <summary>
+                /// The name of the snapping environment.
+                /// </summary>
+                public const string SnappingEnvironment = "ESRI Snapping";
                 #endregion
             }
 

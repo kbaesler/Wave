@@ -10,7 +10,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public static class RowExtensions
     {
-        #region Public Methods       
+        #region Public Methods
 
         /// <summary>
         ///     Creates a copy of the row.
@@ -34,6 +34,23 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The row object.</param>
         /// <param name="modelName">Name of the model.</param>
+        /// <returns>
+        ///     Returns a <see cref="IDomain" /> representing the domain.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static IDomain GetDomain(this IRow source, string modelName)
+        {
+            return source.GetDomain(modelName, true);
+        }
+
+        /// <summary>
+        ///     Returns the domain assigned to the <see cref="IField" /> that is assigned the field model name
+        ///     on the specified object.
+        /// </summary>
+        /// <param name="source">The row object.</param>
+        /// <param name="modelName">Name of the model.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -44,7 +61,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static IDomain GetDomain(this IRow source, string modelName, bool throwException = true)
+        public static IDomain GetDomain(this IRow source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -59,11 +76,23 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Gets the field manager for the specified <paramref name="source" />
         /// </summary>
         /// <param name="source">The row.</param>
+        /// <returns>
+        ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the row.
+        /// </returns>
+        public static IMMFieldManager GetFieldManager(this IRow source)
+        {
+            return source.GetFieldManager(null);
+        }
+
+        /// <summary>
+        ///     Gets the field manager for the specified <paramref name="source" />
+        /// </summary>
+        /// <param name="source">The row.</param>
         /// <param name="auxiliaryFieldBuilder">The auxiliary field builder.</param>
         /// <returns>
         ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the row.
         /// </returns>
-        public static IMMFieldManager GetFieldManager(this IRow source, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder = null)
+        public static IMMFieldManager GetFieldManager(this IRow source, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder)
         {
             if (source == null) return null;
 
@@ -84,6 +113,25 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The row.</param>
         /// <param name="modelName">Name of the model.</param>
         /// <param name="fallbackValue">The default value.</param>
+        /// <returns>
+        ///     Returns an <see cref="object" /> representing the converted value to the specified type.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static TValue GetValue<TValue>(this IRow source, string modelName, TValue fallbackValue)
+        {
+            return source.GetValue(modelName, fallbackValue, true);
+        }
+
+        /// <summary>
+        ///     Returns the field value that has been assigned the <paramref name="modelName" /> that is within the specified
+        ///     <paramref name="source" />.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The row.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <param name="fallbackValue">The default value.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -94,7 +142,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static TValue GetValue<TValue>(this IRow source, string modelName, TValue fallbackValue, bool throwException = true)
+        public static TValue GetValue<TValue>(this IRow source, string modelName, TValue fallbackValue, bool throwException)
         {
             if (source == null) return fallbackValue;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -131,6 +179,28 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
         /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static bool Update(this IRow source, string modelName, object value, bool throwException)
+        {
+            return source.Update(modelName, value, throwException, true);
+        }
+
+        /// <summary>
+        ///     Updates the field assigned the <paramref name="modelName" /> with the <paramref name="value" /> for the specified
+        ///     <paramref name="source" /> when the value is different than the original value.
+        /// </summary>
+        /// <param name="source">The row.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="throwException">
+        ///     if set to <c>true</c> if an exception should be thrown when the model name is not
+        ///     assigned.
+        /// </param>
         /// <param name="equalityComparer">if set to <c>true</c> when the changes need to be compared prior to updating.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
@@ -138,7 +208,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="IndexOutOfRangeException"></exception>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static bool Update(this IRow source, string modelName, object value, bool throwException, bool equalityComparer = true)
+        public static bool Update(this IRow source, string modelName, object value, bool throwException, bool equalityComparer)
         {
             if (source == null) return false;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -169,7 +239,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="IndexOutOfRangeException"></exception>
-        private static bool Update(this IRowBuffer source, int index, object value, bool equalityCompare = true, IMMFieldAdapter fieldAdapter = null)
+        private static bool Update(this IRowBuffer source, int index, object value, bool equalityCompare, IMMFieldAdapter fieldAdapter)
         {
             if (index < 0 || index > source.Fields.FieldCount - 1)
                 throw new IndexOutOfRangeException();

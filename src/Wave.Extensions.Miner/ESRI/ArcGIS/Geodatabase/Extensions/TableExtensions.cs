@@ -34,6 +34,21 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The object class to check for model names</param>
         /// <param name="modelName">The field model name.</param>
+        /// <returns>
+        ///     Returns a <see cref="IField" /> representing the field that has been assigned the field model name.
+        /// </returns>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static IField GetField(this ITable source, string modelName)
+        {
+            return source.GetField(modelName, true);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="IField" /> that has been assigned the <paramref name="modelName" /> that is within the
+        ///     specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The object class to check for model names</param>
+        /// <param name="modelName">The field model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -42,13 +57,28 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IField" /> representing the field that has been assigned the field model name.
         /// </returns>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static IField GetField(this ITable source, string modelName, bool throwException = true)
+        public static IField GetField(this ITable source, string modelName, bool throwException)
         {
             if (source == null) return null;
             IObjectClass table = source as IObjectClass;
             if (table == null) return null;
 
             return table.GetField(modelName, throwException);
+        }
+
+        /// <summary>
+        ///     Finds index of the <see cref="IField" /> that has been assigned the <paramref name="modelName" /> that is within
+        ///     the specified <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="modelName">The field modelname.</param>
+        /// <returns>
+        ///     Returns the  <see cref="int" /> representing the index of the field assigned the model name.
+        /// </returns>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static int GetFieldIndex(this ITable source, string modelName)
+        {
+            return source.GetFieldIndex(modelName, true);
         }
 
         /// <summary>
@@ -65,7 +95,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns the  <see cref="int" /> representing the index of the field assigned the model name.
         /// </returns>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static int GetFieldIndex(this ITable source, string modelName, bool throwException = true)
+        public static int GetFieldIndex(this ITable source, string modelName, bool throwException)
         {
             if (source == null) return -1;
             IObjectClass table = source as IObjectClass;
@@ -98,11 +128,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="subtypeCode">The subtype code.</param>
+        /// <returns>
+        ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the class.
+        /// </returns>
+        public static IMMFieldManager GetFieldManager(this ITable source, int subtypeCode)
+        {
+            return source.GetFieldManager(subtypeCode, null);
+        }
+
+        /// <summary>
+        ///     Gets the field manager for the specified <paramref name="source" />
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="subtypeCode">The subtype code.</param>
         /// <param name="auxiliaryFieldBuilder">The auxiliary field builder.</param>
         /// <returns>
         ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the class.
         /// </returns>
-        public static IMMFieldManager GetFieldManager(this ITable source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder = null)
+        public static IMMFieldManager GetFieldManager(this ITable source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder)
         {
             if (source == null) return null;
             IObjectClass table = source as IObjectClass;
@@ -135,6 +178,21 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The table.</param>
         /// <param name="modelName">The field model name.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the name of the field that is assigned the field model name.
+        /// </returns>
+        /// <exception cref="MissingFieldModelNameException"></exception>
+        public static string GetFieldName(this ITable source, string modelName)
+        {
+            return source.GetFieldName(modelName, true);
+        }
+
+        /// <summary>
+        ///     Finds the name of the field that has been assigned the <paramref name="modelName" /> that is within the specified
+        ///     <paramref name="source" />.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="modelName">The field model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -143,7 +201,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="string" /> representing the name of the field that is assigned the field model name.
         /// </returns>
         /// <exception cref="MissingFieldModelNameException"></exception>
-        public static string GetFieldName(this ITable source, string modelName, bool throwException = true)
+        public static string GetFieldName(this ITable source, string modelName, bool throwException)
         {
             if (source == null) return null;
             IObjectClass table = source as IObjectClass;
@@ -232,6 +290,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The table.</param>
         /// <param name="relationshipRole">The relationship role.</param>
         /// <param name="modelName">The class model name.</param>
+        /// <returns>
+        ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.IRelationshipClass" /> representing the relationship assigned any of
+        ///     the class model names.
+        /// </returns>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string modelName)
+        {
+            return source.GetRelationshipClass(relationshipRole, modelName, true);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="IRelationshipClass" /> using the specified <paramref name="source" /> and
+        ///     <paramref name="relationshipRole" /> that has been assigned
+        ///     the <paramref name="modelName" />.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="relationshipRole">The relationship role.</param>
+        /// <param name="modelName">The class model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -241,13 +317,31 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     the class model names.
         /// </returns>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string modelName, bool throwException = true)
+        public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string modelName, bool throwException)
         {
             if (source == null) return null;
             IObjectClass table = source as IObjectClass;
             if (table == null) return null;
 
             return table.GetRelationshipClass(relationshipRole, modelName, throwException);
+        }
+
+        /// <summary>
+        ///     Finds the <see cref="IRelationshipClass" /> using the specified <paramref name="source" /> and
+        ///     <paramref name="relationshipRole" /> that has been assigned
+        ///     any of the <paramref name="modelNames" />.
+        /// </summary>
+        /// <param name="source">The table.</param>
+        /// <param name="relationshipRole">The relationship role.</param>
+        /// <param name="modelNames">The class model names.</param>
+        /// <returns>
+        ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.IRelationshipClass" /> representing the relationship assigned any of
+        ///     the class model names.
+        /// </returns>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string[] modelNames)
+        {
+            return source.GetRelationshipClass(relationshipRole, modelNames, true);
         }
 
         /// <summary>
@@ -267,7 +361,7 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     the class model names.
         /// </returns>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string[] modelNames, bool throwException = true)
+        public static IRelationshipClass GetRelationshipClass(this ITable source, esriRelRole relationshipRole, string[] modelNames, bool throwException)
         {
             if (source == null) return null;
             IObjectClass table = source as IObjectClass;

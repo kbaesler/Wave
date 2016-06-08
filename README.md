@@ -1,28 +1,43 @@
 
+[![Documentation Status](https://readthedocs.org/projects/wave/badge/?version=latest)](http://wave.readthedocs.org/en/latest/?badge=latest)
+
 # Wave #
-[![Documentation Status](https://readthedocs.org/projects/wave/badge/?version=latest)](http://wave.readthedocs.org/en/latest/) [![Stories in Ready](https://badge.waffle.io/Jumpercables/Wave.png?label=ready&title=Ready)](https://waffle.io/Jumpercables/Wave)[![9.3.1](https://img.shields.io/nuget/dt/Wave.9.3.1.svg)]
+Wave is C# library extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library.
 
-Wave is a C# library that extends the ESRI ArcObjects and Schneider Electric ArcFM APIs that are used for developing Geographical Information System (GIS) extensions to the ArcMap and ArcFM software or stand-alone applications. The library uses extension methods to extend the functionality of existing objects and provide workable wrappers around commonly used COM objects.
+**Documentation**
+The documentation is located [readthedocs.org](hhttp://wave.readthedocs.io/en/latest/)
 
-## Documentation ##
-The documentation has been moved to [wave.readthedocs.org](http://wave.readthedocs.org).
 
-## NuGet ##
+**Wave Extensions for ArcGIS**
+The package for the ArcGIS for Desktop extensions.
+- [![Wave Extensions for ArcGIS](https://buildstats.info/nuget/Wave.Extensions.Esri)](https://www.nuget.org/packages/Wave.Extensions.Esri/)
 
-You can now download a pre-release of the library using the Microsoft Nuget Package Manager within Visual Studio IDE.
+**Wave Extensions for ArcFM**
+The package for the ArcFM Solution extensions.
+- [![Wave Extensions for ArcFM](https://buildstats.info/nuget/Wave.Extensions.Miner)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
 
-To install Wave [9.3], run the following command in the Package Manager Console.
+## Installation ##
+You can download a release of the library using the Microsoft NuGet Package Manager within Visual Studio.
+
+To install **Wave Extensions for ArcGIS**, run the following command in the Package Manager Console.
 
 ```
-	PM> Install-Package Wave.9.3 -Version 1.0.1
+	PM> Install-Package Wave.Extensions.Esri
 ```
+
+To install **Wave Extensions for ArcFM**, run the following command in the Package Manager Console.
+
+```
+	PM> Install-Package Wave.Extensions.Miner
+```
+
+> The **Wave.Extensions.Esri** package features are included in the **Wave.Extensions.Miner** package, as the *ArcFM Solution* product is tightly coupled with the *ArcGIS for Desktop* product.
 
 ### Requirements ###
-- ArcGIS 9.3.1 SP2
-- ArcFM 9.3.1 SP2
-- 3.5 SP 1 .NET Framework
-- Visual Studio 2010+
+- ArcGIS for Desktop 10 (or higher)
+- ArcFM Solution 10 (or higher)
+- 3.5 SP 1 or 4.5 .NET Framework
+- Visual Studio 2010 (or higher)
 
 ### Third Party Libraries ###
-
 - log4net 2.0.3

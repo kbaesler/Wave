@@ -12,7 +12,7 @@ namespace Miner.Interop.Process
         #region Public Methods
 
         /// <summary>
-        /// Adds the node as a child to the specified <paramref name="parent" />.
+        ///     Adds the node as a child to the specified <paramref name="parent" />.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="parent">The parent.</param>
@@ -29,17 +29,52 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        /// Finds the task using the specified <paramref name="source" /> and <paramref name="taskName" />.
+        ///     Executes the task with the given name, if it exists, on the given node.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="taskName">Name of the task.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when successfully executed the task.
+        /// </returns>
+        public static bool ExecuteTask(this IMMPxNode source, string taskName)
+        {
+            var task = source.GetTask(taskName);
+            if (task == null) return false;
+
+            var transition = ((IMMPxTask2) task).Transition;
+            if (!transition.FromStates.Contains(source.State))
+                return false;
+
+            return task.Execute(source);
+        }
+
+        /// <summary>
+        ///     Finds the task using the specified <paramref name="source" /> and <paramref name="taskName" />.
+        /// </summary>
+        /// <param name="source">The node.</param>
+        /// <param name="taskName">Name of the task.</param>
+        /// <returns>
+        ///     Returns a <see cref="IMMPxTask" /> representing the tasks that matches specified task name for the given node;
+        ///     otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">taskName</exception>
+        public static IMMPxTask GetTask(this IMMPxNode source, string taskName)
+        {
+            return source.GetTask(taskName, false);
+        }
+
+        /// <summary>
+        ///     Finds the task using the specified <paramref name="source" /> and <paramref name="taskName" />.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="taskName">Name of the task.</param>
         /// <param name="enabledTask">if set to <c>true</c> if the task must be enabled.</param>
         /// <returns>
-        /// Returns a <see cref="IMMPxTask" /> representing the tasks that matches specified task name for the given node;
-        /// otherwise <c>null</c>.
+        ///     Returns a <see cref="IMMPxTask" /> representing the tasks that matches specified task name for the given node;
+        ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="ArgumentNullException">taskName</exception>
-        public static IMMPxTask GetTask(this IMMPxNode source, string taskName, bool enabledTask = false)
+        public static IMMPxTask GetTask(this IMMPxNode source, string taskName, bool enabledTask)
         {
             if (source == null) return null;
             if (taskName == null) throw new ArgumentNullException("taskName");
@@ -99,7 +134,7 @@ namespace Miner.Interop.Process
         public static IMMPxNode GetTopLevelNode(this IMMPxNode source)
         {
             if (source == null) return null;
-            
+
             foreach (var node in source.AsEnumerable())
             {
                 if (((IMMPxNode2) node).IsPxTopLevel) return node;
@@ -109,13 +144,13 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        /// Finds the transition that matches the specified <paramref name="transitionName" /> in the name or display name for
-        /// the available transitions.
+        ///     Finds the transition that matches the specified <paramref name="transitionName" /> in the name or display name for
+        ///     the available transitions.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="transitionName">Name of the transition.</param>
         /// <returns>
-        /// Returns a <see cref="IMMPxTransition" /> representing the state that matches the identifier; otherwise <c>null</c>.
+        ///     Returns a <see cref="IMMPxTransition" /> representing the state that matches the identifier; otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="ArgumentNullException">transitionName</exception>
         public static IMMPxTransition GetTransition(this IMMPxNode source, string transitionName)
@@ -136,16 +171,16 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        /// Finds the transition using the specified <paramref name="transitionID" />.
+        ///     Finds the transition using the specified <paramref name="transitionID" />.
         /// </summary>
         /// <param name="source">The node.</param>
         /// <param name="transitionID">The transition ID.</param>
         /// <returns>
-        /// The <see cref="IMMPxTransition" /> matching the specified transition name; otherwise <c>null</c>.
+        ///     The <see cref="IMMPxTransition" /> matching the specified transition name; otherwise <c>null</c>.
         /// </returns>
         public static IMMPxTransition GetTransition(this IMMPxNode source, int transitionID)
         {
-            if (source == null) return null;            
+            if (source == null) return null;
 
             foreach (var transition in source.Transitions.AsEnumerable())
             {

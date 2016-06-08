@@ -39,8 +39,7 @@ namespace Miner.Interop.Process
         public IMMPxApplication PxApplication { set; protected get; }
 
         /// <summary>
-        ///     Deletes the specified px node from the process framework database table. Any errors the occur will be logged to the
-        ///     event log using <see cref="Log" />.
+        ///     Deletes the specified px node from the process framework database table.
         /// </summary>
         /// <param name="pPxNode">The node.</param>
         /// <param name="sMsg">The message.</param>
@@ -48,12 +47,16 @@ namespace Miner.Interop.Process
         public virtual void Delete(IMMPxNode pPxNode, ref string sMsg, ref int status)
         {
             try
-            {
+            {                
                 this.InternalDelete(pPxNode, ref sMsg, ref status);
+
+                if(string.IsNullOrEmpty(sMsg) && this.PxApplication != null)
+                    sMsg = string.Format("{0} {1} deleted successfully.", this.PxApplication.GetNodeTypeName(pPxNode), pPxNode.Id);
             }
             catch (Exception e)
             {
                 Log.Error(this, "Error Executing Deleter " + this.DisplayName, e);
+                this.Notify(e.Message, mmUserMessageType.mmUMTDataError);
             }
         }
 
@@ -102,7 +105,7 @@ namespace Miner.Interop.Process
         /// <returns>
         ///     Returns the <see cref="Miner.Interop.Process.IMMPxDeleter" /> representing the deleter for the node.
         /// </returns>
-        protected IMMPxDeleter GetBaseDeleter(IMMPxNode node)
+        protected IMMPxDeleter GetNodeDeleter(IMMPxNode node)
         {
             if (this.PxApplication == null || node == null) return null;
 
@@ -133,6 +136,39 @@ namespace Miner.Interop.Process
         /// <param name="message">The message.</param>
         /// <param name="status">The status.</param>
         protected abstract void InternalDelete(IMMPxNode node, ref string message, ref int status);
+
+        /// <summary>
+        ///     Logs the message to callback associated with the current process framework application.
+        /// </summary>
+        /// <param name="message">The message to be logged.</param>
+        protected virtual void Notify(string message)
+        {
+            this.Notify(message, mmUserMessageType.mmUMTUserInfo);
+        }
+
+        /// <summary>
+        ///     Logs the message to callback associated with the current process framework application.
+        /// </summary>
+        /// <param name="message">The message to be logged.</param>
+        /// <param name="messageType">The User message type, if applicable.</param>
+        protected virtual void Notify(string message, mmUserMessageType messageType)
+        {
+            try
+            {
+                var cleanup = this.PxApplication as IMMPxCleanup;
+                if (cleanup != null)
+                {
+                    IMMMessageCallback callback = cleanup.CleanupCallback;
+                    if (callback == null) return;
+
+                    callback.StatusMessage = message;
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error(this, e);
+            }
+        }
 
         #endregion
     }

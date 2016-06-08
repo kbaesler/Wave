@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.Framework.BaseClasses;
 using Miner.Framework.Search;
 using Miner.Interop;
 

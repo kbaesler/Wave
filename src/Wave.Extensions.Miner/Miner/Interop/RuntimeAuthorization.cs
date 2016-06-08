@@ -1,20 +1,21 @@
 using System;
+using System.Text;
 
 using ESRI.ArcGIS.esriSystem;
 
-#if ARC10
-using ESRI.ArcGIS;
-#endif
-
 using Miner.Interop.Internal;
+#if V10
+using ESRI.ArcGIS;
+
+#endif
 
 namespace Miner.Interop
 {
     /// <summary>
-    /// A supporting class used to check out the licenses necessary to run applications outside of Miner and Miner and ESRI
-    /// products.
+    ///     A supporting class used to check out the licenses necessary to run applications outside of Miner and Miner and ESRI
+    ///     products.
     /// </summary>
-    public class RuntimeAuthorization : IDisposable
+    public class RuntimeAuthorization : IDisposable, IRuntimeAuthorizationStatus
     {
         #region Fields
 
@@ -25,10 +26,10 @@ namespace Miner.Interop
 
         #region Constructors
 
-#if !ARC10
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
-        /// </summary>
+#if !V10
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
+    /// </summary>
         public RuntimeAuthorization()
         {
             _EsriRuntime = new EsriRuntimeAuthorization();
@@ -41,11 +42,10 @@ namespace Miner.Interop
         public RuntimeAuthorization()
             : this(ProductCode.EngineOrDesktop)
         {
-            
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
+        ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
         /// </summary>
         /// <param name="productCode">The product code.</param>
         public RuntimeAuthorization(ProductCode productCode)
@@ -55,6 +55,7 @@ namespace Miner.Interop
             _MinerRuntime = new MinerRuntimeAuthorization();
         }
 #endif
+
         #endregion
 
         #region IDisposable Members
@@ -115,7 +116,21 @@ namespace Miner.Interop
         {
             return this.Initialize(esriLicensedProduct) && this.Initialize(mmLicensedProduct);
         }
-        
+
+        /// <summary>
+        ///     A summary of the status of product and extensions initialization.
+        /// </summary>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the status of the initialization.
+        /// </returns>
+        public string GetInitializationStatus()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(_EsriRuntime.GetInitializationStatus());
+            sb.AppendLine(_MinerRuntime.GetInitializationStatus());
+            return sb.ToString();
+        }
+
         /// <summary>
         ///     Checks in all ArcGIS and ArcFM licenses that have been checked out.
         /// </summary>
@@ -124,7 +139,6 @@ namespace Miner.Interop
             this.Dispose(true);
 
             GC.SuppressFinalize(this);
-
         }
 
         #endregion
@@ -150,6 +164,6 @@ namespace Miner.Interop
             }
         }
 
-        #endregion
+        #endregion        
     }
 }

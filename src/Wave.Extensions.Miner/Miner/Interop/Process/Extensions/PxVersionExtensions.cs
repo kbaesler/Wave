@@ -10,20 +10,21 @@ namespace Miner.Interop.Process
         #region Public Methods
 
         /// <summary>
-        ///     Returns the name of the version.
+        ///     Gets the fully qualified name of the version.
         /// </summary>
-        /// <param name="source">The version.</param>
+        /// <param name="source">The source.</param>
+        /// <param name="node">The node.</param>
         /// <returns>Returns a <see cref="string" /> representing the name of the version.</returns>
-        public static string GetVersionName(this IMMPxSDEVersion source)
+        public static string GetVersionName(this IMMPxSDEVersionNamer source, IMMPxNode node)
         {
-            if (source == null) return null;
+            var baseVersion = source.GetBaseVersionName(node.Id);
+            var versionName = source.GetVersionName(node.Id);
 
-            string ownerName = source.get_UserName();
-            if (string.IsNullOrEmpty(ownerName))
-                return source.get_Name();
+            if (string.IsNullOrEmpty(baseVersion))
+                return versionName;
 
-            return string.Format(CultureInfo.InvariantCulture, "{0}.{1}", ownerName, source.get_Name());
-        }
+            return string.Format("{0}{1}", baseVersion, versionName);
+        }        
 
         /// <summary>
         ///     Determines whether the version is in the state specified by the version status.

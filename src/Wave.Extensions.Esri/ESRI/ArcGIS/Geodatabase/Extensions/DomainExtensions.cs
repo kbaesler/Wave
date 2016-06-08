@@ -62,7 +62,7 @@ namespace ESRI.ArcGIS.Geodatabase
             object o = null;
             foreach (KeyValuePair<string, string> entry in source.AsEnumerable())
             {
-                if (entry.Key.Equals(name))
+                if (entry.Key.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 {
                     o = entry.Value;
                     break;

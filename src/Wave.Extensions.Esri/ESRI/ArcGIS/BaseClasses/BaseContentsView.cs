@@ -2,26 +2,46 @@
 
 using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.ArcMapUI;
+using ESRI.ArcGIS.Framework;
 using ESRI.ArcGIS.SystemUI;
 
-namespace ESRI.ArcGIS.BaseClasses
+namespace ESRI.ArcGIS.ADF.BaseClasses
 {
     /// <summary>
     ///     An abstract class used to create a contents view in the Table of Contents in ArcMap.
     /// </summary>
     [ComVisible(true)]
-    public abstract class BaseContentsView : IContentsView, IComPropertySheetEvents
+    public abstract class BaseContentsView : IComPropertySheetEvents
+#if V10
+        , IContentsView3
+#else        
+        , IContentsView2
+#endif
     {
         #region Constructors
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
-        /// </summary>
-        /// <param name="name">The name.</param>
+#if !V10
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
+    /// </summary>
+    /// <param name="name">The name.</param>
         protected BaseContentsView(string name)
         {
             this.Name = name;
         }
+
+#else
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="toolTip">The tool tip.</param>
+        protected BaseContentsView(string name, string toolTip)
+        {
+            this.Name = name;
+            this.Tooltip = toolTip;
+        }
+#endif
 
         #endregion
 
@@ -36,7 +56,7 @@ namespace ESRI.ArcGIS.BaseClasses
 
         #endregion
 
-        #region IContentsView Members
+        #region IContentsView2 Members
 
         /// <summary>
         ///     Gets or sets the context item (could be an enumerator).
@@ -99,6 +119,15 @@ namespace ESRI.ArcGIS.BaseClasses
         }
 
         /// <summary>
+        ///     Activates the contents view.
+        /// </summary>
+        /// <param name="parentHWnd">The parent window handle.</param>
+        /// <param name="document">The document.</param>
+        public virtual void BasicActivate(int parentHWnd, IDocument document)
+        {
+        }
+
+        /// <summary>
         ///     Adds to the selected items.
         /// </summary>
         /// <param name="item">The item.</param>
@@ -154,5 +183,23 @@ namespace ESRI.ArcGIS.BaseClasses
         }
 
         #endregion
+
+#if V10
+
+        #region IContentsView3 Members
+
+        /// <summary>
+        ///     Bitmap shown in Table Of Contents window toolbar.
+        /// </summary>
+        public abstract int Bitmap { get; }
+
+        /// <summary>
+        ///     The tool tip for the table of contents window.
+        /// </summary>
+        public string Tooltip { get; protected set; }
+
+        #endregion
+
+#endif
     }
 }

@@ -1,4 +1,7 @@
-﻿using ESRI.ArcGIS.esriSystem.BaseClasses;
+﻿using System.Linq;
+using System.Text;
+
+using ESRI.ArcGIS.esriSystem;
 
 namespace Miner.Interop.Internal
 {
@@ -74,6 +77,44 @@ namespace Miner.Interop.Internal
             return extensionStatus;
         }
 
+        /// <summary>
+        ///     A summary of the status of product and extensions initialization.
+        /// </summary>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the status of the initialization.
+        /// </returns>
+        public override string GetInitializationStatus()
+        {
+            StringBuilder msg = new StringBuilder();
+
+            if (!base.ProductStatus.Any())
+            {
+                msg.AppendLine(MESSAGE_NO_LICENSES_REQUESTED);
+            }
+            else if (base.ProductStatus.ContainsValue(mmLicenseStatus.mmLicenseAlreadyInitialized)
+                     || base.ProductStatus.ContainsValue(mmLicenseStatus.mmLicenseCheckedOut))
+            {
+                var status = this.GetProductStatus(this.InitializedProduct, mmLicenseStatus.mmLicenseCheckedOut);
+                msg.AppendLine(status);
+            }
+            else
+            {
+                foreach (var item in base.ProductStatus)
+                {
+                    var status = this.GetProductStatus(item.Key, item.Value);
+                    msg.AppendLine(status);
+                }
+            }
+
+            foreach (var item in base.ExtensionStatus)
+            {
+                var status = this.GetExtensionStatus(item.Key, item.Value);
+                msg.AppendLine(status);
+            }
+
+            return msg.ToString();
+        }
+
         #endregion
 
         #region Protected Methods
@@ -105,17 +146,17 @@ namespace Miner.Interop.Internal
         /// </returns>
         protected override mmLicenseStatus InitializeProduct(mmLicensedProductCode licensedProduct)
         {
-            mmLicenseStatus statusCode = this.License.IsProductCodeAvailable(licensedProduct);
-            if (statusCode == mmLicenseStatus.mmLicenseAvailable)
+            mmLicenseStatus status = this.License.IsProductCodeAvailable(licensedProduct);
+            if (status == mmLicenseStatus.mmLicenseAvailable)
             {
-                statusCode = this.License.Initialize(licensedProduct);
-                if (this.IsProductInitialized(statusCode))
+                status = this.License.Initialize(licensedProduct);
+                if (this.IsProductInitialized(status))
                 {
                     this.InitializedProduct = _AppInit.InitializedProduct();
                 }
             }
 
-            return statusCode;
+            return status;
         }
 
         /// <summary>
@@ -142,6 +183,65 @@ namespace Miner.Interop.Internal
         {
             return (licenseStatus == mmLicenseStatus.mmLicenseAlreadyInitialized ||
                     licenseStatus == mmLicenseStatus.mmLicenseCheckedOut);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Gets the product status.
+        /// </summary>
+        /// <param name="licensedExtensionCode">The licensed extension code.</param>
+        /// <param name="licenseStatus">The license status.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the status of the initialization.
+        /// </returns>
+        private string GetExtensionStatus(mmLicensedExtensionCode licensedExtensionCode, mmLicenseStatus licenseStatus)
+        {
+            string extensionName = licensedExtensionCode.ToString();
+
+            switch (licenseStatus)
+            {
+                case mmLicenseStatus.mmLicenseAlreadyInitialized:
+                case mmLicenseStatus.mmLicenseCheckedOut:
+                    return string.Format(MESSAGE_EXTENSION_AVAILABLE, extensionName);
+
+                case mmLicenseStatus.mmLicenseCheckedIn:
+                    return null;
+
+                case mmLicenseStatus.mmLicenseUnavailable:
+                    return string.Format(MESSAGE_EXTENSION_UNAVAILABLE, extensionName);
+
+                case mmLicenseStatus.mmLicenseFailure:
+                    return string.Format(MESSAGE_EXTENSION_FAILED, extensionName);
+
+                default:
+                    return string.Format(MESSAGE_EXTENSION_NOT_LICENSED, extensionName);
+            }
+        }
+
+        /// <summary>
+        ///     Gets the extension status.
+        /// </summary>
+        /// <param name="licensedProductCode">The licensed product code.</param>
+        /// <param name="licenseStatus">The license status.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> representing the status of the initialization.
+        /// </returns>
+        private string GetProductStatus(mmLicensedProductCode licensedProductCode, mmLicenseStatus licenseStatus)
+        {
+            string productName = licensedProductCode.ToString();
+
+            switch (licenseStatus)
+            {
+                case mmLicenseStatus.mmLicenseAlreadyInitialized:
+                case mmLicenseStatus.mmLicenseCheckedOut:
+                    return string.Format(MESSAGE_PRODUCT_AVAILABLE, productName);
+
+                default:
+                    return string.Format(MESSAGE_PRODUCT_NOT_LICENSED, productName);
+            }
         }
 
         #endregion

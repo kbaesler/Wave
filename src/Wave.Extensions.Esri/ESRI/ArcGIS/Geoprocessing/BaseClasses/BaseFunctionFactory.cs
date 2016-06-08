@@ -4,7 +4,7 @@ using System.Linq;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
+namespace ESRI.ArcGIS.Geoprocessing
 {
     /// <summary>
     ///     An abstract class that provides access to the collection of <see cref="IGPFunction" /> objects.
@@ -97,8 +97,9 @@ namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
         public virtual IGPName GetFunctionName(string name)
         {
             IGPFunctionName gpFunctionName = new GPFunctionNameClass();
-            gpFunctionName.MinimumProduct = esriProductCode.esriProductCodeEditor;
-
+#if V10
+            gpFunctionName.MinimumProduct = esriProductCode.esriProductCodeStandard;
+#endif
             IGPFunction2 gpFunction = this.GetFunction(name) as IGPFunction2;
             if (gpFunction == null) return null;
 

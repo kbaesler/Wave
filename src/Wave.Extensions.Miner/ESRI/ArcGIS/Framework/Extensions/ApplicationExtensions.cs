@@ -1,8 +1,11 @@
-﻿using ESRI.ArcGIS.Editor;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
 using Miner;
+using Miner.Desktop.CuFilter;
 using Miner.Geodatabase;
 using Miner.Interop;
 using Miner.Interop.Process;
@@ -38,6 +41,19 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
+        ///     Gets the <see cref="ID8List" /> of the active tab on the Attribute Editor.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="ID8List" /> representing the list of the active tab.</returns>
+        public static ID8List GetActiveTab(this IApplication source)
+        {
+            var editor = source.GetAttributeEditor();
+            if(editor == null) return null;
+
+            return editor.GetActiveTab();
+        }
+
+        /// <summary>
         ///     Returns the reference to the ArcFM Attribute Editor.
         /// </summary>
         /// <param name="source">The application reference.</param>
@@ -53,6 +69,19 @@ namespace ESRI.ArcGIS.Framework
             if (editor == null) return null;
 
             return editor.FindExtension(uid) as IMMAttributeEditor;
+        }
+
+        /// <summary>
+        ///     Gets the compatibile unit library.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="ICuLibrary" /> representing the extension for the library.</returns>
+        public static ICuLibrary GetCULibrary(this IApplication source)
+        {
+            if (source == null) return null;
+
+            CuLibraryExtension extension = source.FindExtensionByName(ArcFM.Extensions.Name.CULibrary) as CuLibraryExtension;
+            return (extension == null) ? null : extension.CuLibrary;
         }
 
         /// <summary>
@@ -96,6 +125,18 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
+        ///     Gets the ArcFM object editor.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IMMEditor" /> representing the object editor.</returns>
+        public static IMMEditor GetEditorM(this IApplication source)
+        {
+            if (source == null) return null;
+
+            return source.FindExtensionByName(ArcFM.Extensions.Name.Editor) as IMMEditor;
+        }
+
+        /// <summary>
         ///     Returns the contents of the Feeder Manager information that are used for Electric networks.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -115,7 +156,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns the <see cref="Miner.Interop.IMMLogin2" /> representing the object that was used to log into ArcFM.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
         public static IMMLogin2 GetLogin(this IApplication source)
         {
             if (source == null) return null;
@@ -129,7 +170,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns the <see cref="IWorkspace" /> representing database that was logged into from the ArcFM Login screen.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
         public static IWorkspace GetLoginWorkspace(this IApplication source)
         {
             if (source == null) return null;
@@ -161,7 +202,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns the <see cref="Miner.Interop.Process.IMMPxApplication" /> representing the process framework
         ///     reference.
         /// </returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Px"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Px")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Px"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Px")]
         public static IMMPxApplication GetPxApplication(this IApplication source)
         {
             if (source == null) return null;
@@ -175,7 +216,7 @@ namespace ESRI.ArcGIS.Framework
         /// </summary>
         /// <param name="source">The application reference.</param>
         /// <returns>Returns a <see cref="Miner.Interop.ID8List" /> representing the contents on the tab.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "QAQC")]
         public static ID8List GetQAQCTab(this IApplication source)
         {
             if (source == null) return null;
@@ -219,6 +260,28 @@ namespace ESRI.ArcGIS.Framework
             if (source == null) return null;
 
             return source.FindExtensionByName(ArcFM.Extensions.Name.TraceBridge) as IMMTraceBridge;
+        }
+
+        /// <summary>
+        ///     Gets the standard workspaces (such as LoginWorkspace, EditWorkspace, and LibraryWorkspace).
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IMMStandardWorkspaces" /> representing the standard workpaces.</returns>
+        public static IMMStandardWorkspaces GetWorkspaces(this IApplication source)
+        {
+            var props = source.GetProperties();
+            return props as IMMStandardWorkspaces;
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:IMMLoginEvents_Event.LoginChanged" /> event.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="app">The application.</param>
+        public static void RaiseLoginChanged(this IMMLoginObject source, IApplication app)
+        {
+            var editor = app.GetEditorM();
+            editor.RaiseLoginChanged(source);
         }
 
         #endregion

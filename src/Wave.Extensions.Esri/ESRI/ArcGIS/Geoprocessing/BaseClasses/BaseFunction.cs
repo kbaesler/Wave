@@ -6,7 +6,7 @@ using System.Linq;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-namespace ESRI.ArcGIS.Geoprocessing.BaseClasses
+namespace ESRI.ArcGIS.Geoprocessing
 {
     /// <summary>
     ///     An abstract class used to create geoprocessing tools for ArcMap or ArcCatalog.

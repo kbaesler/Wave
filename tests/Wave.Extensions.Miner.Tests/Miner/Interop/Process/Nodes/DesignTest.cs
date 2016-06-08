@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Security.Cryptography;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -6,16 +7,14 @@ using Miner;
 using Miner.Interop;
 using Miner.Interop.Process;
 
-using Wave.Extensions.Miner.Tests;
-
-namespace SE.Tests.Process
+namespace Wave.Extensions.Miner.Tests.Process
 {
     public class TestDesign : Design
     {
         #region Constructors
 
-        public TestDesign(IMMPxApplication pxApplication)
-            : base(pxApplication)
+        public TestDesign(IMMPxApplication pxApplication, int nodeId)
+            : base(pxApplication, nodeId)
         {
         }
 
@@ -27,13 +26,37 @@ namespace SE.Tests.Process
 
         #endregion
 
-        #region Public Methods
+        #region Protected Methods
 
-        public override bool Initialize(int nodeID)
+        /// <summary>
+        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="user">The current user.</param>
+        /// <returns>
+        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully created; otherwise <c>false</c>.
+        /// </returns>
+        protected override bool Initialize(IMMWorkflowManager extension, IMMPxUser user)
         {
             this.IsNew = true;
 
-            return base.Initialize(nodeID);
+            return base.Initialize(extension, user);
+        }
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeId" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <returns>
+        ///     Returns <see cref="bool" /> representing <c>true</c> if the node was successfully initialized; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected override bool Initialize(IMMWorkflowManager extension, int nodeId)
+        {
+            this.IsNew = false;
+
+            return base.Initialize(extension, nodeId);
         }
 
         #endregion
@@ -61,8 +84,7 @@ namespace SE.Tests.Process
             {
                 Assert.Fail("The predicate function shouldn't be called.");
 
-                var o = new TestDesign(sender);
-                o.Initialize(nodeID);
+                var o = new TestDesign(sender, nodeID);
                 return o;
             });
 
@@ -73,9 +95,9 @@ namespace SE.Tests.Process
         [TestCategory("Miner")]
         public void IPxDesign_CreateNew_IsTrue()
         {
-            using (Design design = new Design(base.PxApplication))
+            using (Design design = new Design(new WorkRequest(base.PxApplication)))
             {
-                Assert.IsTrue(design.CreateNew(base.PxApplication.User));
+                Assert.IsTrue(design.Valid);
                 Assert.AreEqual(base.PxApplication.User.Name, design.Owner.Name);
 
                 design.Delete();
@@ -87,9 +109,8 @@ namespace SE.Tests.Process
         public void IPxDesign_Dispose_IsNotNull()
         {
             IMMPxNode node;
-            using (Design design = new Design(base.PxApplication))
+            using (Design design = new Design(new WorkRequest(base.PxApplication)))
             {
-                design.CreateNew(base.PxApplication.User);
                 node = design.Node;
                 design.Delete();
             }
@@ -104,10 +125,10 @@ namespace SE.Tests.Process
             DataTable table = base.PxApplication.ExecuteQuery("SELECT ID FROM " + base.PxApplication.GetQualifiedTableName(ArcFM.Process.WorkflowManager.Tables.Design));
             if (table.Rows.Count > 1)
             {
-                int nodeID = table.Rows[1].Field<int>(0);
-                using (Design design = new Design(base.PxApplication))
+                int nodeID = table.Rows[0].Field<int>(0);
+                using (Design design = new Design(base.PxApplication, nodeID))
                 {
-                    Assert.IsTrue(design.Initialize(nodeID));
+                    Assert.IsTrue(design.Valid);
 
                     string xml = design.GetDesignXml();
                     Assert.IsNotNull(xml);
@@ -124,10 +145,9 @@ namespace SE.Tests.Process
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                using (TestDesign design = new TestDesign(base.PxApplication))
+                using (TestDesign design = new TestDesign(base.PxApplication, nodeID))
                 {
-                    Assert.IsTrue(design.Initialize(nodeID));
-                    Assert.IsTrue(design.IsNew);
+                    Assert.IsFalse(design.IsNew);
                 }
             }
         }
@@ -141,10 +161,23 @@ namespace SE.Tests.Process
             if (table.Rows.Count > 0)
             {
                 int nodeID = table.Rows[0].Field<int>(0);
-                using (Design design = new Design(base.PxApplication))
+                using (Design design = new Design(base.PxApplication, nodeID))
                 {
-                    Assert.IsTrue(design.Initialize(nodeID));
+                    Assert.IsTrue(design.Valid);
                 }
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("Miner")]
+        public void IPxDesign_VersionName_IsNull()
+        {
+            using (Design design = new Design(new WorkRequest(base.PxApplication)))
+            {
+                Assert.IsTrue(design.Valid);
+                Assert.IsNotNull(design.VersionName);
+             
+                design.Delete();
             }
         }
 

@@ -110,11 +110,11 @@ namespace System.Data
         /// <param name="mdbTableName">Name of the MDB table.</param>
         /// <param name="tableName">Name of the source table.</param>
         /// <param name="server">The name of the ODBC server.</param>
-        /// <param name="driverName">Name of the ODBC driver.</param>
+        /// <param name="driverName">Name of the ODBC driver (for example Driver={Oracle in OraClient11g_home1}).</param>
         /// <returns>
         ///     Returns a <see cref="int" /> representing the number of records inserted into the table.
         /// </returns>
-        public static int ExportToMdb(this OleDbConnection connection, string mdbTableName, string tableName, string server, string driverName = "Driver={Oracle in OraClient11g_home1}")
+        public static int ExportToMdb(this OleDbConnection connection, string mdbTableName, string tableName, string server, string driverName)
         {
             using (var command = connection.CreateCommand())
             {
@@ -131,14 +131,14 @@ namespace System.Data
         }
 
         /// <summary>
-        /// Exports the table from the database connection to the Excel (XLS) file.
+        ///     Exports the table from the database connection to the Excel (XLS) file.
         /// </summary>
         /// <param name="source">The connection to the access database.</param>
         /// <param name="excelFileName">Name of the excel file.</param>
         /// <param name="tableName">Name of the table.</param>
         /// <param name="sheetName">Name of the sheet.</param>
         /// <returns>
-        /// Returns a <see cref="int" /> representing the number of records inserted into the spreadsheet.
+        ///     Returns a <see cref="int" /> representing the number of records inserted into the spreadsheet.
         /// </returns>
         /// <exception cref="ArgumentNullException">excelFileName</exception>
         /// <exception cref="ArgumentException">The excel file must be created with an '.xls' extension.;excelFileName</exception>

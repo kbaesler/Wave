@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 using ESRI.ArcGIS.ADF;
@@ -86,7 +87,7 @@ namespace Wave.Extensions.Esri.Tests
             }
 
             _Workspace = null;
-        }
+        }        
 
         /// <summary>
         ///     Setups this instance.
@@ -97,8 +98,11 @@ namespace Wave.Extensions.Esri.Tests
             _ComReleaser = new ComReleaser();
             _RuntimeAuthorization = new EsriRuntimeAuthorization();
 
+#if !V10
             Assert.IsTrue(_RuntimeAuthorization.Initialize(esriLicenseProductCode.esriLicenseProductCodeArcEditor));
-
+#else
+            Assert.IsTrue(_RuntimeAuthorization.Initialize(esriLicenseProductCode.esriLicenseProductCodeStandard));
+#endif
             _Workspace = WorkspaceFactories.Open(Path.GetFullPath(Settings.Default.Minerville));
             _ComReleaser.ManageLifetime(_Workspace);
         }

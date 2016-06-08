@@ -244,7 +244,7 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Executes the tree tool within error handling that reports all exceptions to the user via a <see cref="Log" />
+        ///     Executes the tree tool within error handling.
         /// </summary>
         /// <param name="selection">The selection.</param>
         protected virtual void InternalExecute(IMMTreeViewSelection selection)

@@ -1,8 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ESRI.ArcGIS.esriSystem.BaseClasses
+namespace ESRI.ArcGIS.esriSystem
 {
+    /// <summary>
+    ///     An interface that provides status information regarding the authorization
+    /// </summary>
+    public interface IRuntimeAuthorizationStatus
+    {
+        #region Public Methods
+
+        /// <summary>
+        ///     A summary of the status of product and extensions initialization.
+        /// </summary>
+        /// <returns>Returns a <see cref="string" /> representing the status of the initialization.</returns>
+        string GetInitializationStatus();
+
+        #endregion
+    }
+
     /// <summary>
     ///     An internal abstract class used to handle initialization the runtime licenses for use of ArcObjects
     ///     code outside of the ESRI environment.
@@ -10,8 +26,20 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
     /// <typeparam name="TLicenseProduct">The type of the product codes.</typeparam>
     /// <typeparam name="TLicenseExtension">The type of the extension codes.</typeparam>
     /// <typeparam name="TLicenseStatus">The type of the status codes.</typeparam>
-    public abstract class BaseRuntimeAuthorization<TLicenseProduct, TLicenseExtension, TLicenseStatus> : IDisposable
+    public abstract class BaseRuntimeAuthorization<TLicenseProduct, TLicenseExtension, TLicenseStatus> : IDisposable, IRuntimeAuthorizationStatus
     {
+        #region Constants
+
+        protected const string MESSAGE_EXTENSION_AVAILABLE = "Extension: {0}: Available";
+        protected const string MESSAGE_EXTENSION_FAILED = "Extension: {0}: Failed";
+        protected const string MESSAGE_EXTENSION_NOT_LICENSED = "Extension: {0}: Not Licensed";
+        protected const string MESSAGE_EXTENSION_UNAVAILABLE = "Extension: {0}: Unavailable";
+        protected const string MESSAGE_NO_LICENSES_REQUESTED = "Product: No licenses were requested";
+        protected const string MESSAGE_PRODUCT_AVAILABLE = "Product: {0}: Available";
+        protected const string MESSAGE_PRODUCT_NOT_LICENSED = "Product: {0}: Not Licensed";
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -69,6 +97,16 @@ namespace ESRI.ArcGIS.esriSystem.BaseClasses
 
             GC.SuppressFinalize(this);
         }
+
+        #endregion
+
+        #region IRuntimeAuthorizationStatus Members
+
+        /// <summary>
+        ///     A summary of the status of product and extensions initialization.
+        /// </summary>
+        /// <returns>Returns a <see cref="string" /> representing the status of the initialization.</returns>
+        public abstract string GetInitializationStatus();
 
         #endregion
 

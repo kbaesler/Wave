@@ -13,7 +13,7 @@
 [Rr]eleases/
 x64/
 x86/
-build/
+site/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -125,7 +125,7 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# TODO: Comment the next line if you want to checkin your web deploy settings 
+# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -242,3 +242,9 @@ tests/Sample Data/Databases/WorkflowManager.ldb
 /docs/doxygen/Wave.Extensions.Miner/xml
 *.DotSettings
 tests/Wave.Tests.UI.sln.GhostDoc.xml
+/samples/Wave.Searchability/src/Wave.Searchability.sln.GhostDoc.xml
+/samples/Wave.Searchability/tests/Wave.Searchability.Tests.sln.GhostDoc.xml
+/src/Wave.v9.sln.GhostDoc.xml
+/src/Wave.v10.sln.GhostDoc.xml
+/tests/Wave.Tests.v10.sln.GhostDoc.xml
+*.fm

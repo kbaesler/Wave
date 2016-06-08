@@ -20,6 +20,21 @@ namespace ESRI.ArcGIS.Carto
         /// </summary>
         /// <param name="source">The map.</param>
         /// <param name="modelName">The class model name.</param>
+        /// <returns>
+        ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.IFeatureClass" /> representing the feature class that is assigned
+        ///     the model name.
+        /// </returns>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IFeatureClass GetFeatureClass(this IMap source, string modelName)
+        {
+            return source.GetFeatureClass(modelName, true);
+        }
+
+        /// <summary>
+        ///     Returns the feature class that is assigned the <paramref name="modelName" /> that is in the map.
+        /// </summary>
+        /// <param name="source">The map.</param>
+        /// <param name="modelName">The class model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -29,7 +44,7 @@ namespace ESRI.ArcGIS.Carto
         ///     the model name.
         /// </returns>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IFeatureClass GetFeatureClass(this IMap source, string modelName, bool throwException = true)
+        public static IFeatureClass GetFeatureClass(this IMap source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -66,6 +81,22 @@ namespace ESRI.ArcGIS.Carto
         /// </summary>
         /// <param name="source">The map.</param>
         /// <param name="modelName">The class model name.</param>
+        /// <returns>
+        ///     Returns the <see cref="ESRI.ArcGIS.Carto.IFeatureLayer" /> representing the layer that is assigned the model
+        ///     name.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static IFeatureLayer GetFeatureLayer(this IMap source, string modelName)
+        {
+            return source.GetFeatureLayer(modelName, true);
+        }
+
+        /// <summary>
+        ///     Returns the layer that is assigned the <paramref name="modelName" /> that resides the map.
+        /// </summary>
+        /// <param name="source">The map.</param>
+        /// <param name="modelName">The class model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -76,7 +107,7 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static IFeatureLayer GetFeatureLayer(this IMap source, string modelName, bool throwException = true)
+        public static IFeatureLayer GetFeatureLayer(this IMap source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -89,7 +120,7 @@ namespace ESRI.ArcGIS.Carto
 
             return layer;
         }
-      
+
         /// <summary>
         ///     Returns the layers that are assigned the <paramref name="modelName" /> that resides the map.
         /// </summary>
@@ -112,6 +143,22 @@ namespace ESRI.ArcGIS.Carto
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="modelName">The name of the class model name.</param>
+        /// <returns>
+        ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.ITable" /> representing the table that is assigned the model
+        ///     name.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingClassModelNameException"></exception>
+        public static ITable GetTable(this IMap source, string modelName)
+        {
+            return source.GetTable(modelName, true);
+        }
+
+        /// <summary>
+        ///     Returns the table that is assigned the <paramref name="modelName" /> that resides within map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="modelName">The name of the class model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -122,7 +169,7 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static ITable GetTable(this IMap source, string modelName, bool throwException = true)
+        public static ITable GetTable(this IMap source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
@@ -192,6 +239,22 @@ namespace ESRI.ArcGIS.Carto
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="modelName">The name of the database model.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspace" /> representing the workspace in the map that is assigned the database model name.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">modelName</exception>
+        /// <exception cref="MissingDatabaseModelNameException"></exception>
+        public static IWorkspace GetWorkspace(this IMap source, string modelName)
+        {
+            return source.GetWorkspace(modelName, true);
+        }
+
+        /// <summary>
+        ///     Gets the workspace that is assigned the <paramref name="modelName" /> to the database level that resides within the
+        ///     map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="modelName">The name of the database model.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.
@@ -201,7 +264,7 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingDatabaseModelNameException"></exception>
-        public static IWorkspace GetWorkspace(this IMap source, string modelName, bool throwException = true)
+        public static IWorkspace GetWorkspace(this IMap source, string modelName, bool throwException)
         {
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");

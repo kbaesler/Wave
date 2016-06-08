@@ -10,8 +10,22 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Removes the specified oids from the selection set using IGeoDatabaseBridge2.RemoveList instead of the RemoveList
-        ///     method on the ISelectionSet.
+        ///     Adds the specified oids to the selection set.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="oids">The oids.</param>
+        /// <exception cref="System.ArgumentNullException">oids</exception>
+        public static void Add(this ISelectionSet source, params int[] oids)
+        {
+            if (source == null) return;
+            if (oids == null) throw new ArgumentNullException("oids");
+
+            IGeoDatabaseBridge2 bridge = new GeoDatabaseHelperClass();
+            bridge.AddList(source, ref oids);
+        }
+
+        /// <summary>
+        ///     Removes the specified oids from the selection set.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="oids">The oids.</param>

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 
-using ESRI.ArcGIS.BaseClasses;
+using ESRI.ArcGIS.ADF.BaseClasses;
 using ESRI.ArcGIS.Framework;
 
 using Miner.Framework;
 
-namespace Miner.Interop.Process.BaseClasses
+namespace Miner.Interop.Process
 {
     /// <summary>
     ///     An abstract ArcMap command that handles executing a Process Framework Task when the button is clicked and is
@@ -46,11 +46,11 @@ namespace Miner.Interop.Process.BaseClasses
                 if (pxApp == null)
                     return false;
 
-                IMMPxNode node = ((IMMPxApplicationEx) pxApp).CurrentNode;
+                IMMPxNode node = pxApp.GetCurrentNode();
                 if (node == null)
                     return false;
 
-                IMMPxTask task = ((IMMPxNode3) node).GetTaskByName(this.TaskName);
+                IMMPxTask task = node.GetTask(this.TaskName, false);
                 if (task == null)
                     return false;
 
@@ -86,8 +86,8 @@ namespace Miner.Interop.Process.BaseClasses
             try
             {
                 IMMPxApplication pxApp = this.Application.GetPxApplication();
-                IMMPxNode node = ((IMMPxApplicationEx) pxApp).CurrentNode;
-                IMMPxTask task = ((IMMPxNode3) node).GetTaskByName(this.TaskName);
+                IMMPxNode node = pxApp.GetCurrentNode();
+                IMMPxTask task = node.GetTask(this.TaskName, true);
                 task.Execute(node);
             }
             catch (Exception ex)

@@ -16,10 +16,10 @@ namespace Miner.Interop.Process
         /// </summary>
         /// <param name="dbms">The DBMS that corresponds to the type of database.</param>
         /// <returns>
-        ///     Returns a <see cref="PxApplicationFactory" /> that is used to create a connection.
+        ///     Returns a <see cref="IPxApplicationFactory" /> that is used to create a connection.
         /// </returns>
         /// <exception cref="NotSupportedException">The database is not supported.</exception>
-        public static PxApplicationFactory GetFactory(DBMS dbms)
+        public static IPxApplicationFactory GetFactory(DBMS dbms)
         {
             switch (dbms)
             {

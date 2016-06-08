@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF;
-using ESRI.ArcGIS.BaseClasses;
+using ESRI.ArcGIS.ADF.BaseClasses;
 using ESRI.ArcGIS.Geodatabase.Internal;
 using ESRI.ArcGIS.GeoDatabaseDistributed;
 
@@ -24,12 +24,11 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseConflictWorkspaceExtension" /> class.
+        /// Initializes a new instance of the <see cref="BaseConflictWorkspaceExtension" /> class.
         /// </summary>
         /// <param name="extensionName">Name of the extension.</param>
-        /// <param name="extensionGuid">The extension GUID.</param>
-        protected BaseConflictWorkspaceExtension(string extensionName, string extensionGuid)
-            : base(extensionName, extensionGuid)
+        protected BaseConflictWorkspaceExtension(string extensionName)
+            : base(extensionName)
         {
             this.Rows = new List<IConflictRow>();
             this.AutoUpdaterMode = mmAutoUpdaterMode.mmAUMNoEvents;
@@ -556,9 +555,8 @@ namespace ESRI.ArcGIS.Geodatabase
                 Log.Info(this, "Rebuilding the connectivity of {0} feature(s) in the {1} feature class.", dc.Value.Count, dc.Key);
                 this.NotifyCallback(1);
 
-                foreach (var delta in dc.Value)
-                {
-                    IRow row = delta.GetRow();
+                foreach (var row in dc.Value.GetRows())
+                {                    
                     this.RebuildConnectivity(row as INetworkFeature);
                 }
             }
@@ -775,12 +773,10 @@ namespace ESRI.ArcGIS.Geodatabase
 
                             break;
 
-                            // The feature has been deleted.
+                        // SDE Error. (Shape or row not found)
+                        // The feature has been deleted.
+                        case (int)fdoError.FDO_E_SE_ROW_NOEXIST:                            
                         case (int) fdoError.FDO_E_FEATURE_DELETED:
-                            break;
-
-                            // SDE Error. (Shape or row not found)
-                        case (int) fdoError.FDO_E_SE_ROW_NOEXIST:
                             break;
 
                         default:

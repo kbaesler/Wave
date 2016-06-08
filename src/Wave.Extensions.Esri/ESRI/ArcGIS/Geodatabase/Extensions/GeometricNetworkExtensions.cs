@@ -96,12 +96,26 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="eid">The element ID.</param>
         /// <param name="elementType">Type of the element.</param>
+        /// <returns>
+        ///     Returns the <see cref="IEIDInfo" /> interface for the network element.
+        /// </returns>
+        public static IEIDInfo GetEIDInfo(this IGeometricNetwork source, int eid, esriElementType elementType)
+        {
+            return source.GetEIDInfo(eid, elementType, true, true);
+        }
+
+        /// <summary>
+        ///     Returns the <see cref="IEIDInfo" /> for the specified network element.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="eid">The element ID.</param>
+        /// <param name="elementType">Type of the element.</param>
         /// <param name="returnFeatures">if set to <c>true</c> if the created IEIDInfo should contain features.</param>
         /// <param name="returnGeometries">if set to <c>true</c> if the created EIDInfo should contain geometries.</param>
         /// <returns>
         ///     Returns the <see cref="IEIDInfo" /> interface for the network element.
         /// </returns>
-        public static IEIDInfo GetEIDInfo(this IGeometricNetwork source, int eid, esriElementType elementType, bool returnFeatures = true, bool returnGeometries = true)
+        public static IEIDInfo GetEIDInfo(this IGeometricNetwork source, int eid, esriElementType elementType, bool returnFeatures, bool returnGeometries)
         {
             if (source == null) return null;
 
@@ -131,7 +145,7 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
             if (weightName == null) throw new ArgumentNullException("weightName");
 
-            string[] names = {weightName, weightName.ToLower(), weightName.ToUpper()};
+            string[] names = {weightName, weightName.ToLowerInvariant(), weightName.ToUpperInvariant()};
             INetSchema netSchema = (INetSchema) source.Network;
             return names.Select(name => netSchema.WeightByName[name]).Any(netWeight => netWeight != null);
         }

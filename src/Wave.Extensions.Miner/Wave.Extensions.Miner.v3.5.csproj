@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5224C687-F534-4120-8998-FA242556A7CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Miner</RootNamespace>
+    <AssemblyName>Wave.Extensions.Miner</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BaseIntermediateOutputPath>obj\net35\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x86\Debug\net35\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;V10</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>..\bin\x86\Debug\net35\Wave.Extensions.Miner.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\x86\Release\net35\</OutputPath>
+    <DefineConstants>TRACE;V10</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>..\bin\x86\Release\net35\Wave.Extensions.Miner.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Debug\net35\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;V10</DefineConstants>
+    <DocumentationFile>..\bin\Debug\net35\Wave.Extensions.Miner.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\bin\Release\net35\</OutputPath>
+    <DefineConstants>TRACE;V10</DefineConstants>
+    <DocumentationFile>...\bin\Release\net35\Wave.Extensions.Miner.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Connection.Local.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Local.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Editor, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Framework, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoDatabaseDistributed, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.System.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Version, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net35-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Miner.Controls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Controls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Desktop, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Miner.Desktop.CuFilter, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Miner.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Framework.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Framework.Engine, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Miner.Framework.Engine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Miner.FrameworkUI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.FrameworkUI.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.GeoDatabase, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Geodatabase.Engine, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Miner.Interop.Desktop, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Interop.Desktop.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.FrameworkUI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.GeoDatabase, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.msxml2, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Interop.msxml2.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.Process, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.Process.Session, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Interop.Process.Session.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.Process.Workflow, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Interop.Process.Workflow.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Interop.System, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.Process, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=x86">
+      <HintPath>C:\Program Files (x86)\Miner and Miner\ArcFM Solution\DotNet\Assemblies\v9.2.0.0\Miner.Process.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Miner.System, Version=10.1.0.0, Culture=neutral, PublicKeyToken=196beceb052ed5dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Editor\Extensions\EditorExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\DatasetExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingDatabaseModelNameException.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingClassModelNameException.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingFieldModelName.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Exceptions\MissingModelNameException.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\FeatureExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RelationshipClassExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\GeometryExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\Extensions\BaseFunctionExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Miner\ArcFM.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Extensions\ApplicationExtensions.cs" />
+    <Compile Include="Miner\Framework\Trace\Results\AdjacencyEidResults.cs" />
+    <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyNode.cs" />
+    <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyQueue.cs" />
+    <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyTrace.cs" />
+    <Compile Include="Miner\Framework\Trace\Strategies\ConnectivityTrace.cs" />
+    <Compile Include="Miner\Geodatabase\BaseClassses\BaseActionHandler.cs" />
+    <Compile Include="Miner\Geodatabase\Gdbm.cs" />
+    <Compile Include="Miner\Geodatabase\Internal\EventOverride.cs" />
+    <Compile Include="Miner\Geodatabase\EventOverrides.cs" />
+    <Compile Include="Miner\Interop\AutoUpdaterModeReverter.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseAbandonAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseAttributeAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseAutoText.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseCircumventLogin.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseDisplayNamer.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseFieldProperty.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseLogin.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseMxLogin.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseNamer.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseRelationshipAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseRelationshipCollectionAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSearchStrategy.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSearchStrategyUI.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSequenceAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseSpecialAU.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseTrace.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseTreeTool.cs" />
+    <Compile Include="Miner\Interop\BaseClasses\BaseValidationRule.cs" />
+    <Compile Include="Miner\Interop\Collections\TreeViewSelection.cs" />
+    <Compile Include="Miner\Interop\EditNotificationQueue.cs" />
+    <Compile Include="Miner\Interop\Extensions\AttributeEditorExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\D8ListItemExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\EditorExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\FeatureClassExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\FieldExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
+    <Compile Include="Miner\Interop\ObjectClassConversion.cs" />
+    <Compile Include="Miner\Process\BaseClasses\BasePxActionHandler.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxControl.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxCostEngine.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxDeleter.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxFilter.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxInventoryEngine.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxListBuilder.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxReportingEngine.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxSubtask.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxTaskCommand.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\BaseClasses\BaseConflictFilter.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\BaseClasses\BaseConflictWorkspaceExtension.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\Interfaces\IConflictFilter.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\Interfaces\IConflictWorkspaceExtension.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\Interfaces\IConflictRow.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\Internal\ConflictRow.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Reconcile\Internal\ConflictClass.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxTreeTool.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\BasePxVersionNamer.cs" />
+    <Compile Include="Miner\Interop\Process\BaseClasses\Interfaces\IPxControlUI.cs" />
+    <Compile Include="Miner\Interop\Process\Collections\Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Data\Interface\IPxApplicationFactory.cs" />
+    <Compile Include="Miner\Interop\Process\Data\Internal\LocalPxApplicationFactory.cs" />
+    <Compile Include="Miner\Interop\Process\Data\Internal\RemotePxApplicationFactory.cs" />
+    <Compile Include="Miner\Interop\Process\Data\PxApplicationFactories.cs" />
+    <Compile Include="Miner\Interop\Process\Data\PxApplicationFactory.cs" />
+    <Compile Include="Miner\Interop\Process\EDM\BaseClasses\BasePxEdmRepository.cs" />
+    <Compile Include="Miner\Interop\Process\EDM\Configuration\EdmRepository.cs">
+      <DependentUpon>EdmRepository.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Miner\Interop\Process\EDM\Configuration\EdmTable.cs" />
+    <Compile Include="Miner\Interop\Process\EDM\Deleters\BaseClasses\BasePxEdmDeleter.cs" />
+    <Compile Include="Miner\Interop\Process\EDM\EDM.cs" />
+    <Compile Include="Miner\Interop\Process\EDM\Interfaces\IPxEdmRepository.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxApplicationExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxEnumerableExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxHelperExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxNodeExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxPropertySetExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxStateExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxTransitionExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxUserExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Extensions\PxVersionExtensions.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Address.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\BaseClasses\BasePxNode.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\BaseClasses\BaseWMSNode.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Builders\BaseClasses\BasePxNodeBuilder.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Builders\DesignBuilder.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Builders\SessionBuilder.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Builders\WorkRequestBuilder.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\CompatibleUnit.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Customer.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Design.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Interfaces\IPxDesign.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Interfaces\IPxNode.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Interfaces\IPxSession.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Interfaces\IPxWorkRequest.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Location.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\Session.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\WorkLocation.cs" />
+    <Compile Include="Miner\Interop\Process\Nodes\WorkRequest.cs" />
+    <Compile Include="Miner\Interop\Process\PxIntegrationCache.cs" />
+    <Compile Include="Miner\Interop\Process\PxUser.cs" />
+    <Compile Include="Miner\Interop\Process\PxVersionStatus.cs" />
+    <Compile Include="Miner\Interop\Internal\MinerRuntimeAuthorization.cs" />
+    <Compile Include="Miner\Interop\RuntimeAuthorization.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Miner\Interop\Process\EDM\Configuration\EdmRepository.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Miner\Interop\Process\EDM\Configuration\EdmRepository.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Miner\Interop\Process\EDM\Resources\DDL\ExtendedDataTables.sql" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Wave.Extensions.Esri\Wave.Extensions.Esri.v3.5.csproj">
+      <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
+      <Name>Wave.Extensions.Esri</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

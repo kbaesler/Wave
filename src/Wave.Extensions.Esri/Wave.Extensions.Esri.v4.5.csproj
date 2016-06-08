@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ESRI.ArcGIS</RootNamespace>
+    <AssemblyName>Wave.Extensions.Esri</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ProjectGuid>{0FED75AB-83C2-43B0-A540-96646CA9DF47}</ProjectGuid>
+    <BaseIntermediateOutputPath>obj\net45\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x86\Debug\net45\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;V10,NET45</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>..\bin\x86\Debug\net45\Wave.Extensions.Esri.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\x86\Release\net45\</OutputPath>
+    <DefineConstants>TRACE;V10</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>..\bin\x86\Release\net45\Wave.Extensions.Esri.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\net45\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;V10,NET45</DefineConstants>
+    <DocumentationFile>bin\Debug\net45\Wave.Extensions.Esri.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;V10</DefineConstants>
+    <DocumentationFile>..\bin\x86\Release\net45\Wave.Extensions.Esri.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Connection.Local.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Local.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ArcMapUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.Carto.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Catalog, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.CatalogUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.Display.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Editor, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Framework, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoDatabaseDistributed, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Version, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxExtension.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxTool.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseWorkspaceExtension.cs" />
+    <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\LayerAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\MapAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Editor\Extensions\EditorExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Extensions\ApplicationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseContentsView.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseDockableWindow.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseGxCommand.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseGxTabView.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxMenu.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxCommand.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxToolbar.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxDockableWindow.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\ArcCatalog.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\ArcMap.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Extensions\CommandBarExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressBarAnimation.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\ClassAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\VersionAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\WorkspaceAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Collections\GeometryEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\RowEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\ClassExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\CursorExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\DomainExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SystemExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\FeatureExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\FieldExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\GeometricNetworkExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RelationshipClassExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\RowExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\TableExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Interfaces\IIntermediateRelationship.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Interfaces\IIntermediateRow.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\IntermediateRelationship.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\IntermediateRow.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\WorkspaceFactories.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\GeometryExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunction.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunctionFactory.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMessagesExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ExtensionManager.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Extensions\EnumerationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Extensions\PropertySetExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Extensions\StreamExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Extensions\UIDExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\System\Internal\ComStream.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\MouseCursorReverter.cs" />
+    <Compile Include="System\Collections\Extensions\BatchExtensions.cs" />
+    <Compile Include="System\Collections\Extensions\CollectionsExtensions.cs" />
+    <Compile Include="System\Collections\Extensions\DistinctByExtensions.cs" />
+    <Compile Include="System\Collections\Interfaces\INotifyDictionaryChanged.cs" />
+    <Compile Include="System\Collections\Interfaces\INotifyDictionaryChanging.cs" />
+    <Compile Include="System\Collections\NotifyDictionaryChangedEventArgs.cs" />
+    <Compile Include="System\Collections\NotifyDictionaryChangingEventArgs.cs" />
+    <Compile Include="System\Collections\ObservableDictionary.cs" />
+    <Compile Include="System\Collections\ObservableKeyedCollection.cs" />
+    <Compile Include="System\Collections\ReentrancyMonitor.cs" />
+    <Compile Include="System\Collections\Theory\AdjacencyGraph.cs" />
+    <Compile Include="System\Collections\Theory\Edge.cs" />
+    <Compile Include="System\Collections\Theory\Interfaces\IEdge.cs" />
+    <Compile Include="System\Collections\Theory\Interfaces\IEdgeSet.cs" />
+    <Compile Include="System\Collections\Theory\Interfaces\IGraph.cs" />
+    <Compile Include="System\Collections\Theory\Interfaces\IVertexSet.cs" />
+    <Compile Include="System\Collections\Theory\ObjectModel\EdgeCollection.cs" />
+    <Compile Include="System\Collections\Theory\ObjectModel\VertexCollection.cs" />
+    <Compile Include="System\Collections\Theory\ObjectModel\VertexEdgeDictionary.cs" />
+    <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
+    <Compile Include="System\Configuration\KeyedElement.cs" />
+    <Compile Include="System\Configuration\KeyedElementCollection.cs" />
+    <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
+    <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="System\Diagnostics\Appenders\RichTextBoxAppender.cs" />
+    <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
+    <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
+    <Compile Include="System\Diagnostics\Log.cs" />
+    <Compile Include="System\Extensions\HierarchyExtensions.cs" />
+    <Compile Include="System\Extensions\RecursionExtensions.cs" />
+    <Compile Include="System\Hierarchy.cs" />
+    <Compile Include="System\Interfaces\IHierarchy.cs" />
+    <Compile Include="System\Interfaces\IRecursion.cs" />
+    <Compile Include="System\Native\UnsafeWindowMethods.cs" />
+    <Compile Include="System\Recursion.cs" />
+    <Compile Include="System\Reflection\Extensions\AssemblyExtensions.cs" />
+    <Compile Include="System\Reflection\Internal\PropertyBinding.cs" />
+    <Compile Include="System\Security\Cryptography\DataProtection.cs" />
+    <Compile Include="System\Security\Cryptography\SymmetricKeyProtection.cs" />
+    <Compile Include="System\TypeCast.cs" />
+    <Compile Include="System\Forms\ApplicationMutex.cs" />
+    <Compile Include="System\Forms\Collections\ListViewItemComparer.cs" />
+    <Compile Include="System\Forms\Collections\TreeNodeComparer.cs" />
+    <Compile Include="System\Forms\ComponentModel\WindowStateComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System\Forms\ComponentModel\WindowStateComponent.Designer.cs">
+      <DependentUpon>WindowStateComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\Forms\ComponentModel\XmlNodeWrapper.cs" />
+    <Compile Include="System\Forms\Controls\BaseClasses\BaseDropDownControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeDropDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNode.cs" />
+    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNodeCollection.cs" />
+    <Compile Include="System\Forms\Controls\DelayedTextBox\DelayedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System\Forms\Controls\DelayedTextBox\DelayedTextBox.Designer.cs">
+      <DependentUpon>DelayedTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\Forms\Controls\Line\Line.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System\Forms\Controls\Line\Line.designer.cs">
+      <DependentUpon>Line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\Forms\Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="System\Forms\Extensions\ListViewExtensions.cs" />
+    <Compile Include="System\Windows\Behaviors\BehaviorBinding.cs" />
+    <Compile Include="System\Windows\Behaviors\BehaviorEventHandler.cs" />
+    <Compile Include="System\Windows\Behaviors\CommandBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\CommandBehaviorBinding.cs" />
+    <Compile Include="System\Windows\Behaviors\CommandBehaviorCollection.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\Window\WindowBehavior.cs" />
+    <Compile Include="System\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
+    <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
+    <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />
+    <Compile Include="System\Windows\Command.cs" />
+    <Compile Include="System\Windows\CommandReference.cs" />
+    <Compile Include="System\Windows\Controls\AutoCompleteTextBox\AutoCompleteTextBox.cs" />
+    <Compile Include="System\Windows\Controls\DelayTextBox\DelayedTextBox.cs" />
+    <Compile Include="System\Windows\Controls\InteropTextBox\InteropTextBox.cs" />
+    <Compile Include="System\Windows\Controls\Reveal\Reveal.cs" />
+    <Compile Include="System\Windows\Controls\SortAdorner.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\Token.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBox.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBoxCommands.cs" />
+    <Compile Include="System\Windows\Controls\Watermark\Internal\WatermarkAdorner.cs" />
+    <Compile Include="System\Windows\Controls\Watermark\Watermark.cs" />
+    <Compile Include="System\Windows\Converters\BoolToBoolConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToParameterConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToStringConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToValueConverter.cs" />
+    <Compile Include="System\Windows\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="System\Windows\Converters\ValueConverterGroup.cs" />
+    <Compile Include="System\Windows\DataValidation.cs" />
+    <Compile Include="System\Windows\DelegateCommand.cs" />
+    <Compile Include="System\Windows\Events\BackgroundEventSubscription.cs" />
+    <Compile Include="System\Windows\Events\DelegateReference.cs" />
+    <Compile Include="System\Windows\Events\CompositePresentationEvent.cs" />
+    <Compile Include="System\Windows\Events\DataEventArgs.cs" />
+    <Compile Include="System\Windows\Events\DispatcherEventSubscription.cs" />
+    <Compile Include="System\Windows\Events\EventAggregator.cs" />
+    <Compile Include="System\Windows\Events\EventBase.cs" />
+    <Compile Include="System\Windows\Events\EventSubscription.cs" />
+    <Compile Include="System\Windows\Events\IDelegateReference.cs" />
+    <Compile Include="System\Windows\Events\IEventSubscription.cs" />
+    <Compile Include="System\Windows\Events\SubscriptionToken.cs" />
+    <Compile Include="System\Windows\Extensions\AdornerExtensions.cs" />
+    <Compile Include="System\Windows\Extensions\UIElementExtensions.cs" />
+    <Compile Include="System\Windows\Extensions\WindowInteropHelperExtensions.cs" />
+    <Compile Include="System\Windows\Observable.cs" />
+    <Compile Include="System\Windows\ViewModel\BackgroundViewModel.cs" />
+    <Compile Include="System\Windows\ViewModel\BaseClasses\BaseViewModel.cs" />
+    <Compile Include="System\Xml\Extensions\XDocumentExtensions.cs" />
+    <Compile Include="System\Xml\Extensions\XmlDocumentExtensions.cs" />
+    <Compile Include="System\Xml\XmlSerialization.cs" />
+    <Compile Include="System\Xml\XmlTransformation.cs" />
+    <Compile Include="System\Xml\XmlValidation.cs" />
+    <Compile Include="System\Windows\Themes\WaveTheme.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Wave.log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="System\Forms\Controls\Line\Line.resx">
+      <DependentUpon>Line.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="System\Windows\Controls\DelayTextBox\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="System\Windows\Controls\InteropTextBox\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="System\Windows\Controls\TokenizedTextBox\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="System\Windows\Themes\Wave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

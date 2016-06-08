@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Xml;
-
-using ADODB;
 
 namespace Miner.Interop.Process
 {
     /// <summary>
     ///     An abstract class used to handle wrapping process framework nodes into workable objects.
     /// </summary>
-    public abstract class BasePxNode : IDisposable, IPxNode
+    /// <typeparam name="TFrameworkExtension">The type of the framework extension.</typeparam>
+    public abstract class BasePxNode<TFrameworkExtension> : IDisposable, IPxNode
     {
         #region Fields
 
@@ -26,22 +24,27 @@ namespace Miner.Interop.Process
         /// </summary>
         private readonly IMMPxApplication _PxApp;
 
-        /// <summary>
-        ///     The history associated with this node.
-        /// </summary>
-        private IMMPxNodeHistory _History;
-
-        /// <summary>
-        ///     The corresponding process framework node.
-        /// </summary>
-        private IMMPxNode _Node;
-
         #endregion
 
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BasePxNode" /> class.
+        ///     Initializes a new instance of the <see cref="BasePxNode{TFrameworkExtension}" /> class.
+        /// </summary>
+        /// <param name="pxApp">The process framework application reference.</param>
+        /// <param name="nodeTypeName">Name of the node type.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        protected BasePxNode(IMMPxApplication pxApp, string nodeTypeName, int nodeId)
+            : this(pxApp, nodeTypeName)
+        {
+            _PxApp = pxApp;
+            _NodeTypeName = nodeTypeName;
+
+            this.Initialize(nodeId);
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BasePxNode{TFrameworkExtension}" /> class.
         /// </summary>
         /// <param name="pxApp">The process framework application reference.</param>
         /// <param name="nodeTypeName">Name of the node type.</param>
@@ -49,6 +52,8 @@ namespace Miner.Interop.Process
         {
             _PxApp = pxApp;
             _NodeTypeName = nodeTypeName;
+
+            this.Initialize();
         }
 
         #endregion
@@ -68,10 +73,10 @@ namespace Miner.Interop.Process
         #region Protected Properties
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the <see cref="BasePxNode" /> has pending updates.
+        ///     Gets or sets a value indicating whether the <see cref="BasePxNode{TFrameworkExtension}" /> has pending updates.
         /// </summary>
         /// <value>
-        ///     <c>true</c> if the <see cref="BasePxNode" /> has pending updates; otherwise, <c>false</c>.
+        ///     <c>true</c> if the <see cref="BasePxNode{TFrameworkExtension}" /> has pending updates; otherwise, <c>false</c>.
         /// </value>
         protected bool Dirty { get; set; }
 
@@ -104,19 +109,7 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the history for the node.
         /// </summary>
-        public IMMPxNodeHistory History
-        {
-            get
-            {
-                if (_History == null)
-                {
-                    _History = new PxNodeHistoryClass();
-                    _History.Init(_PxApp.Connection, _PxApp.Login.SchemaName, this.Node.Id, this.Node.NodeType, string.Format("NODE_ID = {0} AND NODE_TYPE_ID = {1}", this.Node.Id, this.Node.NodeType));
-                }
-
-                return _History;
-            }
-        }
+        public IMMPxNodeHistory History { get; protected set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this <see cref="IPxNode" /> is locked.
@@ -148,7 +141,7 @@ namespace Miner.Interop.Process
         public abstract int ID { get; }
 
         /// <summary>
-        ///     Gets a value indicating whether this <see cref="BasePxNode" /> is open.
+        ///     Gets a value indicating whether this <see cref="BasePxNode{TFrameworkExtension}" /> is open.
         /// </summary>
         /// <value>
         ///     <c>true</c> if open; otherwise, <c>false</c>.
@@ -164,7 +157,7 @@ namespace Miner.Interop.Process
         public abstract string Name { get; set; }
 
         /// <summary>
-        ///     Gets a value indicating whether this <see cref="BasePxNode" /> is valid.
+        ///     Gets a value indicating whether this <see cref="BasePxNode{TFrameworkExtension}" /> is valid.
         /// </summary>
         /// <value>
         ///     <c>true</c> if valid; otherwise, <c>false</c>.
@@ -174,31 +167,7 @@ namespace Miner.Interop.Process
         /// <summary>
         ///     Gets the node.
         /// </summary>
-        public virtual IMMPxNode Node
-        {
-            get
-            {
-                if (_Node == null)
-                {
-                    int nodeType = _PxApp.Helper.GetNodeTypeID(_NodeTypeName);
-                    IMMPxNodeEdit nodeEdit = new MMPxNodeListClass();
-                    nodeEdit.Initialize(nodeType, _NodeTypeName, this.ID);
-                    nodeEdit.DisplayName = this.Name;
-
-                    _Node = (IMMPxNode) nodeEdit;
-                    ((IMMPxApplicationEx) _PxApp).HydrateNodeFromDB(_Node);
-
-                    IMMDynamicList list = (IMMDynamicList) nodeEdit;
-                    IMMListBuilder builder = this.GetListBuilder();
-                    if (builder != null)
-                    {
-                        list.BuildObject = builder;
-                    }
-                }
-
-                return _Node;
-            }
-        }
+        public IMMPxNode Node { get; protected set; }
 
         /// <summary>
         ///     Gets the name of the version.
@@ -206,13 +175,10 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The name of the version.
         /// </value>
+        /// <remarks>The version name will not be accurate until the node has been saved to the database.</remarks>
         public virtual string VersionName
         {
-            get
-            {
-                IMMPxSDEVersion version = ((IMMPxApplicationEx2) _PxApp).GetSDEVersion(this.Node.Id, this.Node.NodeType, true);
-                return version.GetVersionName();
-            }
+            get { return _PxApp.GetVersionName(this.Node); }
         }
 
         /// <summary>
@@ -223,57 +189,8 @@ namespace Miner.Interop.Process
         /// <param name="extraData">The extra data.</param>
         public void AddHistory(string description, string extraData)
         {
-            if (this.History == null) return;
-
-            IMMPxHistory history = new PxHistoryClass();
-            history.CurrentUser = _PxApp.User.Id;
-            history.CurrentUserName = _PxApp.User.Name;
-            history.Date = DateTime.Now;
-            history.Description = description;
-            history.NodeId = this.Node.Id;
-            history.nodeTypeId = this.Node.NodeType;
-            history.ExtraData = extraData;
-
-            Property property = _PxApp.Connection.Properties["Data Source Name"];
-            string dataSource = (!Convert.IsDBNull(property.Value)) ? Convert.ToString(property.Value, CultureInfo.InvariantCulture) : string.Empty;
-
-            if (File.Exists(dataSource))
-            {
-                FileSystemInfo fsi = new FileInfo(dataSource);
-                history.Server = fsi.Name;
-            }
-            else if (Directory.Exists(dataSource))
-            {
-                FileSystemInfo fsi = new DirectoryInfo(dataSource);
-                history.Server = fsi.Name;
-            }
-            else
-            {
-                history.Server = dataSource;
-            }
-
-            this.History.Add(history);
+            _PxApp.AddHistory(this.History, this.Node.Id, this.Node.NodeType, description, extraData);
         }
-
-        /// <summary>
-        ///     Creates the process framework node wrapper for the specified the <paramref name="user" />.
-        /// </summary>
-        /// <param name="user">The current user.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully created; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public abstract bool CreateNew(IMMPxUser user);
-
-        /// <summary>
-        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeID" /> for the node.
-        /// </summary>
-        /// <param name="nodeID">The node ID.</param>
-        /// <returns>
-        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
-        ///     <c>false</c>.
-        /// </returns>
-        public abstract bool Initialize(int nodeID);
 
         /// <summary>
         ///     Deletes the node from the process framework database.
@@ -285,12 +202,8 @@ namespace Miner.Interop.Process
                 string msg = string.Empty;
                 int status = 0;
 
-                // Delete the node using the deleter.
                 IMMPxNodeDelete delete = (IMMPxNodeDelete) this.Node;
                 delete.Delete(_PxApp, ref msg, ref status);
-
-                // Flush the cache.
-                this.Dispose(false);
             }
 
             this.Dirty = false;
@@ -304,11 +217,7 @@ namespace Miner.Interop.Process
         {
             if (this.Node != null)
             {
-                // Flush the updates to the database.
                 ((IMMPxApplicationEx) _PxApp).UpdateNodeToDB(this.Node);
-
-                // Flush the cache.
-                this.Dispose(false);
             }
 
             this.Dirty = false;
@@ -323,7 +232,7 @@ namespace Miner.Interop.Process
         ///     object.
         /// </summary>
         /// <param name="node">The node.</param>
-        protected void CopyHistory(IPxNode node)
+        protected virtual void CopyHistory(IPxNode node)
         {
             if (this.History == null || node == null) return;
 
@@ -332,18 +241,12 @@ namespace Miner.Interop.Process
             IMMPxHistory history;
             while ((history = this.History.Next()) != null)
             {
-                node.History.Add(new PxHistoryClass
-                {
-                    CurrentUser = history.CurrentUser,
-                    CurrentUserName = history.CurrentUserName,
-                    Date = history.Date,
-                    Description = history.Description,
-                    ExtraData = history.ExtraData,
-                    Server = history.Server,
-                    Xml = history.Xml,
-                    NodeId = node.Node.Id,
-                    nodeTypeId = node.Node.NodeType
-                });
+                var copy = history.Copy();
+
+                copy.NodeId = node.Node.Id;
+                copy.nodeTypeId = node.Node.NodeType;
+
+                node.History.Add(copy);
             }
 
             // Add another record for the clone to record the clone operation.
@@ -351,15 +254,15 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        /// Copies the packet from this <see cref="Miner.Interop.Process.IPxNode" /> to the specified <paramref name="node" />
-        /// object.
+        ///     Copies the packet from this <see cref="Miner.Interop.Process.IPxNode" /> to the specified <paramref name="node" />
+        ///     object.
         /// </summary>
         /// <param name="packetPrefix">The packet ID prefix.</param>
         /// <param name="node">The node.</param>
         /// <exception cref="System.ArgumentNullException">node</exception>
-        protected void CopyPacket(string packetPrefix, IPxNode node)
+        protected virtual void CopyPacket(string packetPrefix, IPxNode node)
         {
-            if(node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new ArgumentNullException("node");
 
             // When the entity is not a mobile node we can stop here.
             IMMPxMobileHelper helper = (IMMPxMobileHelper) _PxApp;
@@ -395,24 +298,14 @@ namespace Miner.Interop.Process
         ///     unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
-        {           
-            if (disposing)
-            {
-                if (_Node != null)
-                    while (Marshal.ReleaseComObject(_Node) > 0)
-                    {
-                    }
-
-                if (_History != null)
-                    while (Marshal.ReleaseComObject(_History) > 0)
-                    {
-                    }
-            }
-
-            _Node = null;
-            _History = null;
-
+        {
         }
+
+        /// <summary>
+        ///     Gets the process framework extension.
+        /// </summary>
+        /// <returns>Returns the <see cref="T:TFrameworkExtension" /> representing the framework extension used for the node.</returns>
+        protected abstract TFrameworkExtension GetFrameworkExtension();
 
         /// <summary>
         ///     Gets the list builder for the node.
@@ -422,6 +315,83 @@ namespace Miner.Interop.Process
         /// </returns>
         protected abstract IMMListBuilder GetListBuilder();
 
-        #endregion        
+        /// <summary>
+        ///     Hydrates the node from the database.
+        /// </summary>
+        protected void Hydrate()
+        {
+            int nodeType = _PxApp.Helper.GetNodeTypeID(_NodeTypeName);
+            IMMPxNodeEdit nodeEdit = new MMPxNodeListClass();
+            nodeEdit.Initialize(nodeType, _NodeTypeName, this.ID);
+            nodeEdit.DisplayName = this.Name;
+
+            this.Node = (IMMPxNode) nodeEdit;
+            ((IMMPxApplicationEx) _PxApp).HydrateNodeFromDB(this.Node);
+
+            IMMDynamicList list = (IMMDynamicList) nodeEdit;
+            IMMListBuilder builder = this.GetListBuilder();
+            if (builder != null)
+            {
+                list.BuildObject = builder;
+            }
+
+            this.History = _PxApp.GetHistory(this.Node);
+        }
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="nodeId" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <returns>
+        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully initialized; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected abstract bool Initialize(TFrameworkExtension extension, int nodeId);
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper using the specified <paramref name="user" /> for the node.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <param name="user">The user.</param>
+        /// <returns>
+        ///     Returns <see cref="Boolean" /> representing <c>true</c> if the node was successfully created; otherwise
+        ///     <c>false</c>.
+        /// </returns>
+        protected abstract bool Initialize(TFrameworkExtension extension, IMMPxUser user);
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Initializes the process framework node wrapper.
+        /// </summary>
+        /// <param name="nodeId">The node identifier.</param>
+        private void Initialize(int nodeId)
+        {
+            var frameworkExtension = this.GetFrameworkExtension();
+
+            if (this.Initialize(frameworkExtension, nodeId))
+            {
+                this.Hydrate();
+            }
+        }
+
+        /// <summary>
+        ///     Creates the process framework node wrapper.
+        /// </summary>
+        private void Initialize()
+        {
+            var frameworkExtension = this.GetFrameworkExtension();
+
+            if (this.Initialize(frameworkExtension, _PxApp.User))
+            {
+                this.Update();
+                this.Hydrate();
+            }
+        }
+
+        #endregion
     }
 }

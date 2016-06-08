@@ -17,7 +17,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void PxApplicationFactories_GetFactory_Access_IsNotNull()
         {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Access);
+            IPxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Access);
             Assert.IsNotNull(factory);
         }
 
@@ -26,7 +26,7 @@ namespace Wave.Extensions.Miner.Tests
         [ExpectedException(typeof (NotSupportedException))]
         public void PxApplicationFactories_GetFactory_NotSupportedException()
         {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Unknown);
+            IPxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Unknown);
             Assert.IsNotNull(factory);
         }
 
@@ -34,7 +34,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void PxApplicationFactories_GetFactory_Oracle_IsNotNull()
         {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Oracle);
+            IPxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.Oracle);
             Assert.IsNotNull(factory);
         }
 
@@ -42,7 +42,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void PxApplicationFactories_GetFactory_SqlServer_IsNotNull()
         {
-            PxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.SqlServer);
+            IPxApplicationFactory factory = PxApplicationFactories.GetFactory(DBMS.SqlServer);
             Assert.IsNotNull(factory);
         }
 

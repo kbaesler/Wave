@@ -81,6 +81,23 @@ namespace ESRI.ArcGIS.Geodatabase
             return value.Replace("'", "''");
         }
 
+#if V10
+        /// <summary>
+        ///     Executes the specified query (SQL) and returns the results as a <see cref="ICursor" />
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="commandText">The command text.</param>
+        /// <returns>Returns a <see cref="ICursor" /> representing the results of the query.</returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public static ICursor ExecuteReader(this IWorkspace source, string commandText)
+        {
+            ISqlWorkspace sw = source as ISqlWorkspace;
+            if (sw == null) throw new NotSupportedException();
+
+            return sw.OpenQueryCursor(commandText);
+        }
+#endif
+
         /// <summary>
         ///     Gets the database management system that is used with conjunction of the <paramref name="source" />.
         /// </summary>
@@ -326,7 +343,10 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Gets all of the feature classes in the workspace.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature classes.</returns>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature
+        ///     classes.
+        /// </returns>
         public static IEnumerable<IFeatureClass> GetFeatureClasses(this IWorkspace source)
         {
             var datasets = source.Datasets[esriDatasetType.esriDTFeatureDataset];
@@ -474,6 +494,19 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IFeatureWorkspace) source).OpenTable(name);
         }
 
+#if V10
+        /// <summary>
+        ///     Gets all of the tables in the workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
+        public static IEnumerable<string> GetTableNames(this IWorkspace source)
+        {
+            var sw = (ISqlWorkspace) source;
+            return sw.GetTables().AsEnumerable();
+        }
+#endif
+
         /// <summary>
         ///     Gets all of the tables in the workspace.
         /// </summary>
@@ -531,37 +564,128 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="operation">
-        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
-        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
-        /// </param>
-        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
         /// <param name="multiuserEditSessionMode">
         ///     The edit session mode that can be used to indicate non-versioned or versioned
         ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
         /// </param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing the state of the operation.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="System.ArgumentException">
-        ///     The workspace does not support the edit session
-        ///     mode.;multiuserEditSessionMode
+        ///     The workspace does not support the edit session mode.;multiuserEditSessionMode
         /// </exception>
-        public static bool PerformOperation(this IWorkspace source, Func<bool> operation, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
+        public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
             if (source == null) return false;
             if (operation == null) throw new ArgumentNullException("operation");
 
-            bool result;
+            IWorkspaceEdit wse = source as IWorkspaceEdit;
+            if (wse == null) return false;
 
-            using (var editableWorkspace = source.StartEditing(withUndoRedo, multiuserEditSessionMode))
+            IMultiuserWorkspaceEdit multiuserWorkspaceEdit = source as IMultiuserWorkspaceEdit;
+            if (multiuserWorkspaceEdit != null)
             {
-                result = operation();
-                editableWorkspace.StopEditing(result);
+                if (!multiuserWorkspaceEdit.SupportsMultiuserEditSessionMode(multiuserEditSessionMode))
+                    throw new ArgumentException(@"The workspace does not support the edit session mode.", "multiuserEditSessionMode");
+
+                multiuserWorkspaceEdit.StartMultiuserEditing(multiuserEditSessionMode);
+            }
+            else
+            {
+                if (!wse.IsBeingEdited())
+                    wse.StartEditing(withUndoRedo);
             }
 
-            return result;
+            bool saveEdits = false;
+
+            try
+            {
+                saveEdits = wse.PerformOperation(withUndoRedo, operation);                
+            }
+            finally
+            {
+                wse.StopEditing(saveEdits); 
+            }
+
+            return saveEdits;
+        }
+
+        /// <summary>
+        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
+        /// <param name="operation">The delegate that performs the operation.</param>
+        /// <returns>
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
+        public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, Func<bool> operation)
+        {
+            return source.PerformOperation(withUndoRedo, esriMultiuserEditSessionMode.esriMESMVersioned, operation);
+        }
+
+        /// <summary>
+        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
+        /// <param name="operation">The delegate that performs the operation.</param>
+        /// <returns>
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">operation</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
+        public static bool PerformOperation(this IWorkspaceEdit source, bool withUndoRedo, Func<bool> operation)
+        {
+            if (source == null) return false;
+            if (operation == null) throw new ArgumentNullException("operation");
+
+            var wse = source as IWorkspaceEdit2;
+            if (wse == null) return false;
+
+            if (wse.IsInEditOperation)
+                throw new ArgumentOutOfRangeException("source", "An edit operation is already started.");
+
+            if(!wse.IsBeingEdited())
+                wse.StartEditing(withUndoRedo);
+            
+            source.StartEditOperation();
+
+            bool saveEdits = false;
+
+            try
+            {
+                saveEdits = operation();
+            }
+            catch (Exception)
+            {
+                if (wse.IsInEditOperation)
+                    source.AbortEditOperation();
+
+                throw;
+            }
+            finally
+            {
+                if (wse.IsInEditOperation)
+                {
+                    if (saveEdits)
+                        source.StopEditOperation();
+                    else
+                        source.AbortEditOperation();
+                }
+
+                if (!wse.IsBeingEdited())
+                    wse.StopEditing(saveEdits);
+            }
+
+            return saveEdits;
         }
 
         /// <summary>
@@ -589,37 +713,6 @@ namespace ESRI.ArcGIS.Geodatabase
                     source.ExecuteSQL(commandText);
                 }
             }
-        }
-
-        /// <summary>
-        ///     Starts editing the workspace using the specified <paramref name="withUndoRedo" /> and
-        ///     <paramref name="multiuserEditSessionMode" /> parameters.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
-        /// <param name="multiuserEditSessionMode">
-        ///     The edit session mode that can be used to indicate non-versioned or versioned
-        ///     editing for workspaces that support multiuser editing.
-        /// </param>
-        /// <returns>
-        ///     Returns a <see cref="IEditableWorkspace" /> respresenting an editable workspace (that is disposable).
-        /// </returns>
-        /// <exception cref="System.ArgumentException">
-        ///     The workspace does not support the edit session
-        ///     mode.;multiuserEditSessionMode
-        /// </exception>
-        /// <remarks>
-        ///     The <see cref="IEditableWorkspace" /> implements the <see cref="IDisposable" /> interface, meaning it should be
-        ///     used within a using statement.
-        /// </remarks>
-        public static IEditableWorkspace StartEditing(this IWorkspace source, bool withUndoRedo = true, esriMultiuserEditSessionMode multiuserEditSessionMode = esriMultiuserEditSessionMode.esriMESMVersioned)
-        {
-            if (source == null) return null;
-
-            IEditableWorkspace editableWorkspace = new EditableWorkspace(source);
-            editableWorkspace.StartEditing(withUndoRedo, multiuserEditSessionMode);
-
-            return editableWorkspace;
         }
 
         #endregion

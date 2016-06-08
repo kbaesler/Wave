@@ -34,10 +34,10 @@ namespace System.Forms.Controls
         private readonly Timer _ScrollRepeater;
         private readonly ComboTreeBox _SourceControl;
         private readonly List<NodeInfo> _VisibleItems;
-        private static Bitmap _Collapsed;
+        private Bitmap _Collapsed;
 
         private int _DropDownHeight;
-        private static Bitmap _Expanded;
+        private Bitmap _Expanded;
         private int _HighlightedItemIndex;
         private Rectangle _Interior;
         private int _ItemHeight;

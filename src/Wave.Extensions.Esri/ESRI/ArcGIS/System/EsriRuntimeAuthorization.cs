@@ -1,17 +1,15 @@
-﻿#if ARC10
-using System;
-using System.Collections.Generic;
-
-using ESRI.ArcGIS;
-#endif
+﻿using System.Linq;
+using System.Text;
 
 using ESRI.ArcGIS.ADF.COMSupport;
-using ESRI.ArcGIS.esriSystem.BaseClasses;
+#if V10
+using System;
+using System.Collections.Generic;
+#endif
 
 namespace ESRI.ArcGIS.esriSystem
 {
-
-#if ARC10
+#if V10
     /// <summary>
     ///     The runtime manager event arguments.
     /// </summary>
@@ -65,7 +63,8 @@ namespace ESRI.ArcGIS.esriSystem
         #endregion
 
         #region Events
-#if ARC10
+
+#if V10
         /// <summary>
         ///     Raised when ArcGIS runtime binding hasn't been established.
         /// </summary>
@@ -76,7 +75,7 @@ namespace ESRI.ArcGIS.esriSystem
 
         #region Constructors
 
-#if ARC10
+#if V10
         /// <summary>
         ///     Initializes a new instance of the <see cref="EsriRuntimeAuthorization" /> class.
         /// </summary>
@@ -99,6 +98,7 @@ namespace ESRI.ArcGIS.esriSystem
         /// </summary>
         public EsriRuntimeAuthorization() { }
 #endif
+
         #endregion
 
         #region Protected Properties
@@ -113,7 +113,7 @@ namespace ESRI.ArcGIS.esriSystem
         {
             get
             {
-#if ARC10
+#if V10
                 if (RuntimeManager.ActiveRuntime == null)
                 {
                     var eventArgs = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
@@ -163,6 +163,42 @@ namespace ESRI.ArcGIS.esriSystem
             return extensionStatus;
         }
 
+        /// <summary>
+        ///     A summary of the status of product and extensions initialization.
+        /// </summary>
+        /// <returns>Returns a <see cref="string" /> representing the status of the initialization.</returns>
+        public override string GetInitializationStatus()
+        {
+            StringBuilder msg = new StringBuilder();
+
+            if (!base.ProductStatus.Any())
+            {
+                msg.AppendLine(MESSAGE_NO_LICENSES_REQUESTED);
+            }
+            else if (base.ProductStatus.ContainsValue(esriLicenseStatus.esriLicenseAlreadyInitialized)
+                     || base.ProductStatus.ContainsValue(esriLicenseStatus.esriLicenseCheckedOut))
+            {
+                var status = this.GetProductStatus(this.License as ILicenseInformation, this.InitializedProduct, esriLicenseStatus.esriLicenseCheckedOut);
+                msg.AppendLine(status);
+            }
+            else
+            {
+                foreach (var item in base.ProductStatus)
+                {
+                    var status = this.GetProductStatus(this.License as ILicenseInformation, item.Key, item.Value);
+                    msg.AppendLine(status);
+                }
+            }
+
+            foreach (var item in base.ExtensionStatus)
+            {
+                var status = this.GetExtensionStatus(this.License as ILicenseInformation, item.Key, item.Value);
+                msg.AppendLine(status);
+            }
+
+            return msg.ToString();
+        }
+
         #endregion
 
         #region Protected Methods
@@ -190,16 +226,16 @@ namespace ESRI.ArcGIS.esriSystem
         /// <summary>
         ///     Initializes or (checks out) the product licenses that correspond to the specified product code.
         /// </summary>
-        /// <param name="productCode">The product code.</param>
+        /// <param name="licensedProduct">The product code.</param>
         /// <returns>
         ///     Returns the <see cref="esriLicenseStatus" /> representing the status of the product.
         /// </returns>
-        protected override esriLicenseStatus InitializeProduct(esriLicenseProductCode productCode)
+        protected override esriLicenseStatus InitializeProduct(esriLicenseProductCode licensedProduct)
         {
-            esriLicenseStatus status = this.License.IsProductCodeAvailable(productCode);
+            esriLicenseStatus status = this.License.IsProductCodeAvailable(licensedProduct);
             if (status == esriLicenseStatus.esriLicenseAvailable)
             {
-                status = this.License.Initialize(productCode);
+                status = this.License.Initialize(licensedProduct);
                 if (this.IsProductInitialized(status))
                 {
                     this.InitializedProduct = this.License.InitializedProduct();
@@ -235,7 +271,7 @@ namespace ESRI.ArcGIS.esriSystem
                     licenseStatus == esriLicenseStatus.esriLicenseCheckedOut);
         }
 
-#if ARC10
+#if V10
         /// <summary>
         ///     Raises the <see cref="E:ResolveRuntimeBinding" /> event.
         /// </summary>
@@ -249,5 +285,80 @@ namespace ESRI.ArcGIS.esriSystem
 #endif
 
         #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Gets the product status.
+        /// </summary>
+        /// <param name="licenseInformation">The license information.</param>
+        /// <param name="licenseProductCode">The license product code.</param>
+        /// <param name="licenseStatus">The license status.</param>
+        /// <returns>Returns a <see cref="string" /> representing the status of the initialization.</returns>
+        private string GetProductStatus(ILicenseInformation licenseInformation, esriLicenseProductCode licenseProductCode, esriLicenseStatus licenseStatus)
+        {
+            string productName;
+
+            try
+            {
+                productName = licenseInformation.GetLicenseProductName(licenseProductCode);
+            }
+            catch
+            {
+                productName = licenseProductCode.ToString();
+            }
+
+            switch (licenseStatus)
+            {
+                case esriLicenseStatus.esriLicenseAlreadyInitialized:
+                case esriLicenseStatus.esriLicenseCheckedOut:
+                    return string.Format(MESSAGE_PRODUCT_AVAILABLE, productName);
+
+                default:
+                    return string.Format(MESSAGE_PRODUCT_NOT_LICENSED, productName);
+            }
+        }
+
+        /// <summary>
+        ///     Gets the extension status.
+        /// </summary>
+        /// <param name="licenseInformation">The license information.</param>
+        /// <param name="licenseExtensionCode">The license extension code.</param>
+        /// <param name="licenseStatus">The license status.</param>
+        /// <returns>Returns a <see cref="string" /> representing the status of the initialization.</returns>
+        private string GetExtensionStatus(ILicenseInformation licenseInformation, esriLicenseExtensionCode licenseExtensionCode, esriLicenseStatus licenseStatus)
+        {
+            string extensionName;
+
+            try
+            {
+                extensionName = licenseInformation.GetLicenseExtensionName(licenseExtensionCode);
+            }
+            catch
+            {
+                extensionName = licenseExtensionCode.ToString();
+            }
+
+            switch (licenseStatus)
+            {
+                case esriLicenseStatus.esriLicenseAlreadyInitialized:
+                case esriLicenseStatus.esriLicenseCheckedOut:
+                    return string.Format(MESSAGE_EXTENSION_AVAILABLE, extensionName);
+
+                case esriLicenseStatus.esriLicenseCheckedIn:
+                    return null;
+
+                case esriLicenseStatus.esriLicenseUnavailable:
+                    return string.Format(MESSAGE_EXTENSION_UNAVAILABLE, extensionName);
+
+                case esriLicenseStatus.esriLicenseFailure:
+                    return string.Format(MESSAGE_EXTENSION_FAILED, extensionName);
+
+                default:
+                    return string.Format(MESSAGE_EXTENSION_NOT_LICENSED, extensionName);
+            }
+        }
+
+        #endregion        
     }
 }

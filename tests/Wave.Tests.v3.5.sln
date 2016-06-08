@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2012
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.Tests.v3.5", "Wave.Extensions.Esri.Tests\Wave.Extensions.Esri.Tests.v3.5.csproj", "{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.Tests.v3.5", "Wave.Extensions.Miner.Tests\Wave.Extensions.Miner.Tests.v3.5.csproj", "{380FE243-F916-4D4A-A4CF-7E326756DEFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F606D2EA-2B6E-4D7E-B6CA-278E0EF82796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.v3.5", "..\src\Wave.Extensions.Esri\Wave.Extensions.Esri.v3.5.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.v3.5", "..\src\Wave.Extensions.Miner\Wave.Extensions.Miner.v3.5.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{056D1A53-FEF4-49C5-B811-6D251CA9E149}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Debug|x86.ActiveCfg = Debug|x86
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Debug|x86.Build.0 = Debug|x86
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Release|x86.ActiveCfg = Release|x86
+		{84A5EF71-2666-4D79-B7DC-DA81B85F6AA6}.Release|x86.Build.0 = Release|x86
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Debug|x86.ActiveCfg = Debug|x86
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Debug|x86.Build.0 = Debug|x86
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Release|x86.ActiveCfg = Release|x86
+		{380FE243-F916-4D4A-A4CF-7E326756DEFB}.Release|x86.Build.0 = Release|x86
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|x86.ActiveCfg = Debug|x86
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|x86.Build.0 = Debug|x86
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|x86.ActiveCfg = Release|x86
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|x86.Build.0 = Release|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|x86.ActiveCfg = Debug|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|x86.Build.0 = Debug|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Release|x86.ActiveCfg = Release|x86
+		{5224C687-F534-4120-8998-FA242556A7CD}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0FED75AB-83C2-43B0-A540-96646CA9DF47} = {F606D2EA-2B6E-4D7E-B6CA-278E0EF82796}
+		{5224C687-F534-4120-8998-FA242556A7CD} = {F606D2EA-2B6E-4D7E-B6CA-278E0EF82796}
+		{056D1A53-FEF4-49C5-B811-6D251CA9E149} = {F606D2EA-2B6E-4D7E-B6CA-278E0EF82796}
+	EndGlobalSection
+EndGlobal

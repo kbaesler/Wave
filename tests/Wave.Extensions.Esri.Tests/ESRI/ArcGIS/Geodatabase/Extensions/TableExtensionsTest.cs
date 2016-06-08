@@ -19,7 +19,7 @@ namespace Wave.Extensions.Esri.Tests
             var expression = testClass.CreateExpression("kellyl", ComparisonOperator.Contains, LogicalOperator.Or);
 
             Assert.IsNotNull(expression);
-            Assert.AreEqual("(UPPER(CREATIONUSER) Like '%KELLYL%') Or (CAST(DATECREATED As CHAR(11)) Like '%kellyl%') Or (CAST(DATEMODIFIED As CHAR(12)) Like '%kellyl%') Or (UPPER(LASTUSER) Like '%KELLYL%') Or (UPPER(FRAMINGTYPE) Like '%KELLYL%') Or (UPPER(WORKREQUESTID) Like '%KELLYL%') Or (UPPER(DESIGNID) Like '%KELLYL%') Or (UPPER(WORKLOCATIONID) Like '%KELLYL%') Or (UPPER(GlobalID) Like '%KELLYL%')", expression);
+            Assert.AreEqual("(UPPER(CREATIONUSER) Like '%KELLYL%') Or (UPPER(LASTUSER) Like '%KELLYL%') Or (UPPER(FRAMINGTYPE) Like '%KELLYL%') Or (UPPER(WORKREQUESTID) Like '%KELLYL%') Or (UPPER(DESIGNID) Like '%KELLYL%') Or (UPPER(WORKLOCATIONID) Like '%KELLYL%') Or (UPPER(GlobalID) Like '%KELLYL%')", expression);
 
             int rowCount = testClass.RowCount(new QueryFilterClass() {WhereClause = expression});
             Assert.IsTrue(rowCount == 0);
@@ -33,7 +33,7 @@ namespace Wave.Extensions.Esri.Tests
             var expression = testClass.CreateExpression("kellyl", ComparisonOperator.EndsWith, LogicalOperator.Or);
 
             Assert.IsNotNull(expression);
-            Assert.AreEqual("(UPPER(CREATIONUSER) Like '%KELLYL') Or (CAST(DATECREATED As CHAR(11)) Like '%kellyl') Or (CAST(DATEMODIFIED As CHAR(12)) Like '%kellyl') Or (UPPER(LASTUSER) Like '%KELLYL') Or (UPPER(FRAMINGTYPE) Like '%KELLYL') Or (UPPER(WORKREQUESTID) Like '%KELLYL') Or (UPPER(DESIGNID) Like '%KELLYL') Or (UPPER(WORKLOCATIONID) Like '%KELLYL') Or (UPPER(GlobalID) Like '%KELLYL')", expression);
+            Assert.AreEqual("(UPPER(CREATIONUSER) Like '%KELLYL') Or (UPPER(LASTUSER) Like '%KELLYL') Or (UPPER(FRAMINGTYPE) Like '%KELLYL') Or (UPPER(WORKREQUESTID) Like '%KELLYL') Or (UPPER(DESIGNID) Like '%KELLYL') Or (UPPER(WORKLOCATIONID) Like '%KELLYL') Or (UPPER(GlobalID) Like '%KELLYL')", expression);
 
             int rowCount = testClass.RowCount(new QueryFilterClass() {WhereClause = expression});
             Assert.IsTrue(rowCount == 0);
@@ -47,7 +47,7 @@ namespace Wave.Extensions.Esri.Tests
             var expression = testClass.CreateExpression("kellyl", ComparisonOperator.StartsWith, LogicalOperator.Or);
 
             Assert.IsNotNull(expression);
-            Assert.AreEqual("(UPPER(CREATIONUSER) Like 'KELLYL%') Or (CAST(DATECREATED As CHAR(11)) Like 'kellyl%') Or (CAST(DATEMODIFIED As CHAR(12)) Like 'kellyl%') Or (UPPER(LASTUSER) Like 'KELLYL%') Or (UPPER(FRAMINGTYPE) Like 'KELLYL%') Or (UPPER(WORKREQUESTID) Like 'KELLYL%') Or (UPPER(DESIGNID) Like 'KELLYL%') Or (UPPER(WORKLOCATIONID) Like 'KELLYL%') Or (UPPER(GlobalID) Like 'KELLYL%')", expression);
+            Assert.AreEqual("(UPPER(CREATIONUSER) Like 'KELLYL%') Or (UPPER(LASTUSER) Like 'KELLYL%') Or (UPPER(FRAMINGTYPE) Like 'KELLYL%') Or (UPPER(WORKREQUESTID) Like 'KELLYL%') Or (UPPER(DESIGNID) Like 'KELLYL%') Or (UPPER(WORKLOCATIONID) Like 'KELLYL%') Or (UPPER(GlobalID) Like 'KELLYL%')", expression);
 
             int rowCount = testClass.RowCount(new QueryFilterClass() {WhereClause = expression});
             Assert.IsTrue(rowCount == 0);

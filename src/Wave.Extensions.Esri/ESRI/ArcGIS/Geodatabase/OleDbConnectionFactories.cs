@@ -17,7 +17,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="OleDbConnection" /> representing the OLE DB connection.
         /// </returns>
-        public static OleDbConnection GetAccessConnection(string fileName, OleDbGeometryType geometryType = OleDbGeometryType.Wkb)
+        public static OleDbConnection GetAccessConnection(string fileName, OleDbGeometryType geometryType)
         {
             string connectionString = string.Format("Provider=ESRI.GeoDB.OleDB.1;Data Source={0};Extended Properties=WorkspaceType=esriDataSourcesGDB.AccessWorkspaceFactory.1;Geometry={1}", fileName, geometryType);
             return new OleDbConnection(connectionString);
@@ -31,7 +31,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="OleDbConnection" /> representing the OLE DB connection.
         /// </returns>
-        public static OleDbConnection GetCoverageConnection(string fileName, OleDbGeometryType geometryType = OleDbGeometryType.Wkb)
+        public static OleDbConnection GetCoverageConnection(string fileName, OleDbGeometryType geometryType)
         {
             string connectionString = string.Format("Provider=ESRI.GeoDB.OleDB.1;Data Source={0};Extended Properties=WorkspaceType=esriDataSourcesFile.ArcInfoWorkspaceFactory.1;Geometry={1}", fileName, geometryType.ToString().ToUpperInvariant());
             return new OleDbConnection(connectionString);
@@ -45,7 +45,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="OleDbConnection" /> representing the OLE DB connection.
         /// </returns>
-        public static OleDbConnection GetFileGdbConnection(string fileName, OleDbGeometryType geometryType = OleDbGeometryType.Wkb)
+        public static OleDbConnection GetFileGdbConnection(string fileName, OleDbGeometryType geometryType)
         {
             string connectionString = string.Format("Provider=ESRI.GeoDB.OleDB.1;Data Source={0};Extended Properties=WorkspaceType=esriDataSourcesGDB.FileGDBWorkspaceFactory.1;Geometry={1}", fileName, geometryType.ToString().ToUpperInvariant());
             return new OleDbConnection(connectionString);
@@ -59,7 +59,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="OleDbConnection" /> representing the OLE DB connection.
         /// </returns>
-        public static OleDbConnection GetSdeConnection(string fileName, OleDbGeometryType geometryType = OleDbGeometryType.Wkb)
+        public static OleDbConnection GetSdeConnection(string fileName, OleDbGeometryType geometryType)
         {
             string connectionString = string.Format("Provider=ESRI.GeoDB.OleDB.1;Data Source={0};Extended Properties=WorkspaceType=esriDataSourcesGDB.SdeWorkspaceFactory.1;Geometry={1}", fileName, geometryType.ToString().ToUpperInvariant());
             return new OleDbConnection(connectionString);
@@ -73,7 +73,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="OleDbConnection" /> representing the OLE DB connection.
         /// </returns>
-        public static OleDbConnection GetShapefileConnection(string fileName, OleDbGeometryType geometryType = OleDbGeometryType.Wkb)
+        public static OleDbConnection GetShapefileConnection(string fileName, OleDbGeometryType geometryType)
         {
             string connectionString = string.Format("Provider=ESRI.GeoDB.OleDB.1;Data Source={0};Extended Properties=WorkspaceType=esriDataSourcesFile.ShapefileWorkspaceFactory.1;Geometry={1}", fileName, geometryType.ToString().ToUpperInvariant());
             return new OleDbConnection(connectionString);
