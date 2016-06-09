@@ -49,7 +49,26 @@ namespace System
             where TValue : class
         {
             return SelectHierarchyImpl(source, default(TValue), primaryKeySelector, foreignKeySelector, rootPrimaryKey, maxDepth, 0);
-        }       
+        }
+
+        /// <summary>
+        ///     Traverses the hierarchical data structure and executes the specified action.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="action">The action.</param>
+        public static void Traverse<TValue>(this IEnumerable<IHierarchy<TValue>> source, Action<IHierarchy<TValue>> action)
+        {
+            foreach (var child in source)
+            {
+                action(child);
+
+                if (child.Children != null && child.Children.Any())
+                {
+                    child.Children.Traverse(action);
+                }
+            }
+        }
 
         #endregion
 

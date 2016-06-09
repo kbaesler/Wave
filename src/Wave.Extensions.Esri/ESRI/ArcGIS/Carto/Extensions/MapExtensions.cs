@@ -85,7 +85,29 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the layers in the map.</returns>
         public static IEnumerable<IFeatureLayer> GetFeatureLayers(this IMap source)
         {
-            return WhereImp<IFeatureLayer>(source, layer => layer.Valid);
+            return WhereImpl(source, layer => layer.Valid && layer is IFeatureLayer).OfType<IFeatureLayer>();
+        }
+
+        /// <summary>
+        ///     Gets the hierarchy of the layers in the table of contents.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IHierarchy{ILayer}" /> representing the hierarchical structure of the layers.</returns>
+        public static IEnumerable<IHierarchy<ILayer>> GetHierarchy(this IMap source)
+        {
+            var layers = source.Layers[null, false].AsEnumerable();
+            return layers.Select(layer => layer.GetHierarchy());
+        }
+
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="ILayer" />
+        /// </summary>
+        /// <param name="source">An <see cref="IEnumLayer" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the layers from the input source.</returns>
+        public static IEnumerable<ILayer> GetLayers(this IEnumLayer source)
+        {
+            var layers = source.AsEnumerable();
+            return WhereImpl(layers, null, 0, -1).Select(o => o.Value);
         }
 
         /// <summary>
@@ -127,7 +149,8 @@ namespace ESRI.ArcGIS.Carto
         public static IEnumerable<TLayer> GetLayers<TLayer>(this IMap source, Func<TLayer, bool> selector)
             where TLayer : ILayer
         {
-            return source.WhereImp(selector);
+            var layers = WhereImpl(source, layer => layer is TLayer).OfType<TLayer>();
+            return layers.Where(selector);
         }
 
         /// <summary>
@@ -159,14 +182,15 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the visible layers.
         /// </returns>
         /// <remarks>
-        /// This method determines if a layer is actually visible in a map.  It does this by checking to see if the layer is not drawn due to scale ranges and 
-        /// also by validating whether or not the layer is in a composite layer or group layer that is not visible.
+        ///     This method determines if a layer is actually visible in a map.  It does this by checking to see if the layer is
+        ///     not drawn due to scale ranges and
+        ///     also by validating whether or not the layer is in a composite layer or group layer that is not visible.
         /// </remarks>
         public static IEnumerable<IFeatureLayer> GetVisibleLayers(this IMap source)
         {
             if (source == null) return null;
 
-            return WhereImp<IFeatureLayer>(source, source.IsLayerVisible);
+            return WhereImpl(source, source.IsLayerVisible).OfType<IFeatureLayer>();
         }
 
         /// <summary>
@@ -182,7 +206,8 @@ namespace ESRI.ArcGIS.Carto
             if (source.LayerCount == 0)
                 return null;
 
-            return WhereImp<IFeatureLayer>(source, layer => predicate(layer)).Select(o => ((IDataset) o.FeatureClass).Workspace).FirstOrDefault();
+            var layers = WhereImpl(source, layer => predicate(layer));
+            return layers.OfType<IFeatureLayer>().Select(o => ((IDataset) o.FeatureClass).Workspace).FirstOrDefault();
         }
 
         /// <summary>
@@ -265,7 +290,7 @@ namespace ESRI.ArcGIS.Carto
         /// <exception cref="System.NotSupportedException">The layer type is not supported.</exception>
         public static IEnumerable<ILayer> Where(this IMap source, Func<ILayer, bool> selector)
         {
-            return source.WhereImp(selector);
+            return WhereImpl(source, selector);
         }
 
         #endregion
@@ -277,7 +302,6 @@ namespace ESRI.ArcGIS.Carto
         ///     <paramref name="selector" />
         ///     and flattens the resulting sequences into one sequence.
         /// </summary>
-        /// <typeparam name="TLayer">The type of the layer.</typeparam>
         /// <param name="source">The map.</param>
         /// <param name="selector">A function to test each element for a condition in each recursion.</param>
         /// <returns>
@@ -285,15 +309,51 @@ namespace ESRI.ArcGIS.Carto
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        /// <exception cref="System.NotSupportedException">The layer type is not supported.</exception>
-        private static IEnumerable<TLayer> WhereImp<TLayer>(this IMap source, Func<TLayer, bool> selector)
-            where TLayer : ILayer
+        private static IEnumerable<ILayer> WhereImpl(IMap source, Func<ILayer, bool> selector)
         {
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
 
-            IEnumLayer layers = source.Layers[null];
-            return layers.AsEnumerable().OfType<TLayer>().Where(selector);
+            var layers = source.Layers[null, true].AsEnumerable();
+            return WhereImpl(layers, selector, 0, -1).Select(o => o.Value);
+        }
+
+        /// <summary>
+        ///     Traverses the <paramref name="source" /> selecting only those layers that satisfy the
+        ///     <paramref name="selector" />
+        ///     and flattens the resulting sequences into one sequence.
+        /// </summary>
+        /// <param name="source">The map.</param>
+        /// <param name="selector">A function to test each element for a condition in each recursion.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="maximum">The maximum.</param>
+        /// <returns>
+        ///     Returns an <see cref="IEnumerable{TLayer}" /> enumeration whose elements
+        ///     who are the result of invoking the recursive transform function on each element of the input sequence.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">selector</exception>
+        private static IEnumerable<IRecursion<ILayer>> WhereImpl(IEnumerable<ILayer> source, Func<ILayer, bool> selector, int depth, int maximum)
+        {
+            if (source == null) throw new ArgumentNullException("source");
+
+            depth++;
+
+            foreach (var child in source)
+            {
+                if (selector(child))
+                    yield return new Recursion<ILayer>(depth, child);
+
+                if ((depth <= maximum) || (maximum == Recursion<ILayer>.Infinity))
+                {
+                    var layer = child as ICompositeLayer;
+                    if (layer != null)
+                    {
+                        var children = layer.AsEnumerable();
+                        foreach (var item in WhereImpl(children, selector, depth, maximum))
+                            yield return item;
+                    }
+                }
+            }
         }
 
         #endregion
