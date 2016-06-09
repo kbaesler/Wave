@@ -144,7 +144,7 @@ namespace ESRI.ArcGIS.Carto
             var node = new Hierarchy<ILayer>();
             node.Value = source;
             node.Children = children;
-            node.Depth = depth;
+            node.Depth = depth++;
 
             var layer = source as ICompositeLayer;
             if (layer != null)
@@ -154,7 +154,7 @@ namespace ESRI.ArcGIS.Carto
                     var child = new Hierarchy<ILayer>();
                     child.Value = layer.Layer[i];
                     child.Parent = source;
-                    child.Depth = depth++;
+                    child.Depth = depth;
 
                     children.Add(child);
 

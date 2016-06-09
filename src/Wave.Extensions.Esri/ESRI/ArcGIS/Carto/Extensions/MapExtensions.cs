@@ -75,7 +75,8 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (table == null) throw new ArgumentNullException("table");
 
-            return source.GetLayers<IFeatureLayer>(o => o.FeatureClass.ObjectClassID == table.ObjectClassID);
+            var layers = source.GetFeatureLayers();
+            return layers.Where(o => o.FeatureClass.ObjectClassID == table.ObjectClassID);
         }
 
         /// <summary>
@@ -95,9 +96,9 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>Returns a <see cref="IHierarchy{ILayer}" /> representing the hierarchical structure of the layers.</returns>
         public static IEnumerable<IHierarchy<ILayer>> GetHierarchy(this IMap source)
         {
-            var layers = source.Layers[null, false].AsEnumerable();
+            var layers = source.Layers.AsEnumerable();
             return layers.Select(layer => layer.GetHierarchy());
-        }
+        }        
 
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="ILayer" />
@@ -149,8 +150,21 @@ namespace ESRI.ArcGIS.Carto
         public static IEnumerable<TLayer> GetLayers<TLayer>(this IMap source, Func<TLayer, bool> selector)
             where TLayer : ILayer
         {
-            var layers = WhereImpl(source, layer => layer is TLayer).OfType<TLayer>();
-            return layers.Where(selector);
+            return WhereImpl(source, layer => layer is TLayer && selector((TLayer) layer)).OfType<TLayer>();
+        }
+
+        /// <summary>
+        ///     Returns an enumerable of all of the selectable layers in the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the selectable layers.
+        /// </returns>
+        public static IEnumerable<IFeatureLayer> GetSelectableLayers(this IMap source)
+        {
+            if (source == null) return null;
+
+            return WhereImpl(source, layer => layer is IFeatureLayer && ((IFeatureLayer) layer).Selectable).OfType<IFeatureLayer>();
         }
 
         /// <summary>
@@ -175,6 +189,27 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
+        ///     Returns an enumerable of all of the visible layers in the map that satisify the predicate.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="selector">A function to test each element for a condition in each visible layer.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the visible layers.
+        /// </returns>
+        /// <remarks>
+        ///     This method determines if a layer is actually visible in a map.  It does this by checking to see if the layer is
+        ///     not drawn due to scale ranges and
+        ///     also by validating whether or not the layer is in a composite layer or group layer that is not visible.
+        /// </remarks>
+        public static IEnumerable<IFeatureLayer> GetVisibleLayers(this IMap source, Func<IFeatureLayer, bool> selector)
+        {
+            if (source == null) return null;
+
+            var layers = WhereImpl(source, layer => source.IsLayerVisible(layer) && layer is IFeatureLayer).OfType<IFeatureLayer>();
+            return layers.Where(selector);
+        }
+
+        /// <summary>
         ///     Returns an enumerable of all of the visible layers in the map.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -190,7 +225,7 @@ namespace ESRI.ArcGIS.Carto
         {
             if (source == null) return null;
 
-            return WhereImpl(source, source.IsLayerVisible).OfType<IFeatureLayer>();
+            return WhereImpl(source, layer => source.IsLayerVisible(layer) && layer is IFeatureLayer).OfType<IFeatureLayer>();
         }
 
         /// <summary>
@@ -206,7 +241,7 @@ namespace ESRI.ArcGIS.Carto
             if (source.LayerCount == 0)
                 return null;
 
-            var layers = WhereImpl(source, layer => predicate(layer));
+            var layers = WhereImpl(source, layer => predicate(layer) && layer is IFeatureLayer);
             return layers.OfType<IFeatureLayer>().Select(o => ((IDataset) o.FeatureClass).Workspace).FirstOrDefault();
         }
 
@@ -314,7 +349,7 @@ namespace ESRI.ArcGIS.Carto
             if (source == null) return null;
             if (selector == null) throw new ArgumentNullException("selector");
 
-            var layers = source.Layers[null, true].AsEnumerable();
+            var layers = source.Layers.AsEnumerable();
             return WhereImpl(layers, selector, 0, -1).Select(o => o.Value);
         }
 
@@ -334,7 +369,7 @@ namespace ESRI.ArcGIS.Carto
         /// <exception cref="System.ArgumentNullException">selector</exception>
         private static IEnumerable<IRecursion<ILayer>> WhereImpl(IEnumerable<ILayer> source, Func<ILayer, bool> selector, int depth, int maximum)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (selector == null) throw new ArgumentNullException("selector");
 
             depth++;
 
