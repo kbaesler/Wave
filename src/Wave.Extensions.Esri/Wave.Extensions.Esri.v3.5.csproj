@@ -310,17 +310,6 @@
       <DependentUpon>WindowStateComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="System\Forms\ComponentModel\XmlNodeWrapper.cs" />
-    <Compile Include="System\Forms\Controls\BaseClasses\BaseDropDownControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeDropDown.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNode.cs" />
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNodeCollection.cs" />
     <Compile Include="System\Forms\Controls\DelayedTextBox\DelayedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

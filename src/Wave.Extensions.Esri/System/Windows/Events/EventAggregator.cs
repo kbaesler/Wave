@@ -7,7 +7,7 @@ namespace System.Windows
     /// <summary>
     ///     Provides access to the static event aggreator.
     /// </summary>
-    public static class EventAggregator
+    public class EventAggregator : IEventAggregator
     {
         #region Fields
 
@@ -16,7 +16,7 @@ namespace System.Windows
 
         #endregion
 
-        #region Public Methods
+        #region IEventAggregator Members
 
         /// <summary>
         ///     Gets the single instance of the event managed by this EventAggregator. Multiple calls to this method with the same
@@ -25,16 +25,19 @@ namespace System.Windows
         /// <typeparam name="TEventType">The type of event to get. This must inherit from <see cref="EventBase" />.</typeparam>
         /// <returns>A singleton instance of an event object of type <typeparamref name="TEventType" />.</returns>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
-        public static TEventType GetEvent<TEventType>() where TEventType : EventBase, new()
+        public TEventType GetEvent<TEventType>() where TEventType : EventBase, new()
         {
             lock (Events)
             {
-                EventBase existingEvent = null;
+                EventBase existingEvent;
 
                 if (!Events.TryGetValue(typeof (TEventType), out existingEvent))
                 {
-                    var newEvent = new TEventType();
-                    newEvent.SynchronizationContext = Context;
+                    var newEvent = new TEventType
+                    {
+                        SynchronizationContext = Context
+                    };
+
                     Events[typeof (TEventType)] = newEvent;
 
                     return newEvent;
