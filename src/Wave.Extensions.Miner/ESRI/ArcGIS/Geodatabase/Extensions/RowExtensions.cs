@@ -148,29 +148,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 source.Store();
             }
         }
-
-        /// <summary>
-        ///     Updates the field assigned the <paramref name="modelName" /> with the <paramref name="value" /> for the specified
-        ///     <paramref name="source" /> when the value is different than the original value.
-        /// </summary>
-        /// <param name="source">The row.</param>
-        /// <param name="modelName">Name of the model.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="throwException">
-        ///     if set to <c>true</c> if an exception should be thrown when the model name is not
-        ///     assigned.
-        /// </param>
-        /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the row updated; otherwise <c>false</c>
-        /// </returns>
-        /// <exception cref="ArgumentNullException">modelName</exception>
-        /// <exception cref="IndexOutOfRangeException"></exception>
-        /// <exception cref="MissingFieldModelNameException"></exception>
-        public static bool Update(this IRow source, string modelName, object value, bool throwException)
-        {
-            return source.Update(modelName, value, throwException, true);
-        }
-
+        
         /// <summary>
         ///     Updates the field assigned the <paramref name="modelName" /> with the <paramref name="value" /> for the specified
         ///     <paramref name="source" /> when the value is different than the original value.
