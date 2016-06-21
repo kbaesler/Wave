@@ -104,26 +104,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             return fieldManager;
         }
-
-        /// <summary>
-        ///     Returns the field value that has been assigned the <paramref name="modelName" /> that is within the specified
-        ///     <paramref name="source" />.
-        /// </summary>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="source">The row.</param>
-        /// <param name="modelName">Name of the model.</param>
-        /// <param name="fallbackValue">The default value.</param>
-        /// <returns>
-        ///     Returns an <see cref="object" /> representing the converted value to the specified type.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">modelName</exception>
-        /// <exception cref="IndexOutOfRangeException"></exception>
-        /// <exception cref="MissingFieldModelNameException"></exception>
-        public static TValue GetValue<TValue>(this IRow source, string modelName, TValue fallbackValue)
-        {
-            return source.GetValue(modelName, fallbackValue, true);
-        }
-
+        
         /// <summary>
         ///     Returns the field value that has been assigned the <paramref name="modelName" /> that is within the specified
         ///     <paramref name="source" />.
