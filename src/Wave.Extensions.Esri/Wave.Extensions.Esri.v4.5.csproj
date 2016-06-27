@@ -265,13 +265,14 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ComStream.cs" />
     <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\ExtensionManager.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\EnumerationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\PropertySetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\StreamExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\UIDExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\System\Internal\ComStream.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -444,6 +445,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ESRI\ArcGIS\System\Internal\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

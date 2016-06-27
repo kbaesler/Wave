@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 
 using STATSTG = System.Runtime.InteropServices.ComTypes.STATSTG;
 
-namespace ESRI.ArcGIS.esriSystem.Internal
+namespace ESRI.ArcGIS.esriSystem
 {
     /// <summary>
     ///     Provides a .NET Stream for the <see cref="ESRI.ArcGIS.esriSystem.IStream" /> COM stream interface.
     /// </summary>
-    internal class ComStream : Stream
+    public class ComStream : Stream
     {
         #region Fields
 

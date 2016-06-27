@@ -26,7 +26,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null)
                 return;
-
+            
             MapUtilities.FlashFeature(source, interval, flashTimes);
         }
 

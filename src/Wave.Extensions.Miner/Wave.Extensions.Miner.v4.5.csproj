@@ -317,6 +317,8 @@
     <Compile Include="Miner\Interop\Extensions\EditorExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Miner\Interop\Extensions\PageTemplateManagerExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\StoredDisplayManagerExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\ObjectClassConversion.cs" />
