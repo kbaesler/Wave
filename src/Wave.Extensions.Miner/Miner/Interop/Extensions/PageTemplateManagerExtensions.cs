@@ -5,9 +5,7 @@ using System.Linq;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.Interop;
-
-namespace Miner.Miner.Interop.Extensions
+namespace Miner.Interop
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="IMMPageTemplateManager" /> interface.
