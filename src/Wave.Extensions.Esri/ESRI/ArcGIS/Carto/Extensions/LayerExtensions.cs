@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
@@ -13,6 +12,25 @@ namespace ESRI.ArcGIS.Carto
     public static class LayerExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="ILayer" />
+        /// </summary>
+        /// <param name="source">An <see cref="IGraphicsContainer" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the layers from the input source.</returns>
+        public static IEnumerable<IElement> AsEnumerable(this IGraphicsContainer source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                IElement element = source.Next();
+                while (element != null)
+                {
+                    yield return element;
+                    element = source.Next();
+                }
+            }
+        }
 
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="ILayer" />
@@ -128,7 +146,7 @@ namespace ESRI.ArcGIS.Carto
         #endregion
 
         #region Private Methods
-       
+
         /// <summary>
         ///     Gets the hierarchy of the layer and sibilings.
         /// </summary>
