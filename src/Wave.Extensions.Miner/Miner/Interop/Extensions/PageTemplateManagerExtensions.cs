@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
@@ -12,6 +13,20 @@ namespace Miner.Interop
     /// </summary>
     public static class PageTemplateManagerExtensions
     {
+        #region Constants
+
+        /// <summary>
+        ///     The system page templates
+        /// </summary>
+        private const string SystemPageTemplates = "MM_SYSTEM_PAGE_TEMPLATES";
+
+        /// <summary>
+        ///     The user page templates
+        /// </summary>
+        private const string UserPageTemplates = "MM_PAGE_TEMPLATES";
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -124,6 +139,19 @@ namespace Miner.Interop
             });
         }
 
+        /// <summary>
+        ///     Gets the user names that are associated with the user page templates.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{String}" /> representing the unique user names.
+        /// </returns>
+        public static IEnumerable<string> GetUserNames(this IMMPageTemplateManager source)
+        {
+            var reader = source.Workspace.ExecuteReader(string.Format("SELECT DISTINCT(USERNAME) FROM {0}", UserPageTemplates));
+            return reader.AsEnumerable().Select(o => o.GetValue(0, string.Empty)).ToArray();
+        }
+
         #endregion
 
         #region Private Methods
@@ -142,11 +170,14 @@ namespace Miner.Interop
         /// </returns>
         private static IEnumerable<KeyValuePair<TKey, TValue>> GetPageTemplatesImpl<TKey, TValue>(IMMPageTemplateManager source, bool system, IQueryFilter filter, Func<IRow, KeyValuePair<TKey, TValue>> func)
         {
-            var table = source.Workspace.GetTable("SDE", system ? "MM_SYSTEM_PAGE_TEMPLATES" : "MM_PAGE_TEMPLATES");
-            foreach (var row in table.Fetch(filter))
-            {
-                yield return func(row);
-            }
+            var table = source.Workspace.GetTable("SDE", system ? SystemPageTemplates : UserPageTemplates);
+
+            var cursor = table.Search(filter, true);
+
+            var cr = new ComReleaser();
+            cr.ManageLifetime(cursor);
+
+            return cursor.AsEnumerable().Select(func);
         }
 
         #endregion
