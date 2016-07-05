@@ -14,7 +14,7 @@ namespace ESRI.ArcGIS.Carto
         #region Public Methods
 
         /// <summary>
-        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="ILayer" />
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IElement" />
         /// </summary>
         /// <param name="source">An <see cref="IGraphicsContainer" /> to create an <see cref="IEnumerable{T}" /> from.</param>
         /// <returns>An <see cref="IEnumerable{T}" /> that contains the layers from the input source.</returns>
