@@ -29,8 +29,13 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            IEnumBSTR names = ModelNameManager.Instance.ClassModelNames(source);
-            return names.AsEnumerable();
+            if (ModelNameManager.Instance.CanReadModelNames(source))
+            {
+                IEnumBSTR names = ModelNameManager.Instance.ClassModelNames(source);
+                return names.AsEnumerable();
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -69,12 +74,17 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            IField field = ModelNameManager.Instance.FieldFromModelName(source, modelName);
+            if (ModelNameManager.Instance.CanReadModelNames(source))
+            {
+                IField field = ModelNameManager.Instance.FieldFromModelName(source, modelName);
 
-            if (field == null && throwException)
-                throw new MissingFieldModelNameException(source, modelName);
+                if (field == null && throwException)
+                    throw new MissingFieldModelNameException(source, modelName);
 
-            return field;
+                return field;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -224,8 +234,13 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
             if (field == null) throw new ArgumentNullException("field");
 
-            IEnumBSTR names = ModelNameManager.Instance.FieldModelNames(source, field);
-            return names.AsEnumerable();
+            if (ModelNameManager.Instance.CanReadModelNames(source))
+            {
+                IEnumBSTR names = ModelNameManager.Instance.FieldModelNames(source, field);
+                return names.AsEnumerable();
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -281,8 +296,13 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            IEnumBSTR names = ModelNameManager.Instance.FieldNamesFromModelName(source, modelName);
-            return names.AsEnumerable();
+            if (ModelNameManager.Instance.CanReadModelNames(source))
+            {
+                IEnumBSTR names = ModelNameManager.Instance.FieldNamesFromModelName(source, modelName);
+                return names.AsEnumerable();
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -299,11 +319,14 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (modelNames == null) throw new ArgumentNullException("modelNames");
 
-            foreach (var modelName in modelNames)
+            if (ModelNameManager.Instance.CanReadModelNames(source))
             {
-                IEnumBSTR names = ModelNameManager.Instance.FieldNamesFromModelName(source, modelName);
-                foreach (var name in names.AsEnumerable())
-                    yield return name;
+                foreach (var modelName in modelNames)
+                {
+                    IEnumBSTR names = ModelNameManager.Instance.FieldNamesFromModelName(source, modelName);
+                    foreach (var name in names.AsEnumerable())
+                        yield return name;
+                }
             }
         }
 
@@ -321,10 +344,13 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (modelNames == null) throw new ArgumentNullException("modelNames");
 
-            foreach (var modelName in modelNames)
+            if (ModelNameManager.Instance.CanReadModelNames(source))
             {
-                var fields = ModelNameManager.Instance.FieldsFromModelName(source, modelName);
-                return fields.AsEnumerable();
+                foreach (var modelName in modelNames)
+                {
+                    var fields = ModelNameManager.Instance.FieldsFromModelName(source, modelName);
+                    return fields.AsEnumerable();
+                }
             }
 
             return new IField[] {};
@@ -499,7 +525,12 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            return ModelNameManager.Instance.ContainsClassModelName(source, modelName);
+            if (ModelNameManager.Instance.CanReadModelNames(source))
+            {
+                return ModelNameManager.Instance.ContainsClassModelName(source, modelName);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -517,7 +548,12 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
             if (modelNames == null) throw new ArgumentNullException("modelNames");
 
-            return modelNames.Any(name => ModelNameManager.Instance.ContainsClassModelName(source, name));
+            if (ModelNameManager.Instance.CanReadModelNames(source))
+            {
+                return modelNames.Any(name => ModelNameManager.Instance.ContainsClassModelName(source, name));
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -535,7 +571,12 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
             if (modelName == null) throw new ArgumentNullException("modelName");
 
-            return ModelNameManager.Instance.FieldFromModelName(source, modelName) != null;
+            if (ModelNameManager.Instance.CanReadModelNames(source))
+            {
+                return ModelNameManager.Instance.FieldFromModelName(source, modelName) != null;
+            }
+
+            return false;
         }
 
         /// <summary>

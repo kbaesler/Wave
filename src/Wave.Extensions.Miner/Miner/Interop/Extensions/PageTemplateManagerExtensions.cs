@@ -52,16 +52,19 @@ namespace Miner.Interop
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="pageTemplateType">Type of the page template.</param>
-        /// <param name="pageTemplateUserNames">The page template user names.</param>
-        /// <returns></returns>
-        public static IEnumerable<KeyValuePair<IMMPageTemplateName, IMemoryBlobStream>> GetBlobPageTemplates(this IMMPageTemplateManager source, mmPageTemplateType pageTemplateType, params string[] pageTemplateUserNames)
+        /// <param name="userName">The page template user names.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{KeyValuePair{TKey, TValue}}" /> representing the page template and blob
+        ///     value.
+        /// </returns>
+        public static IEnumerable<KeyValuePair<IMMPageTemplateName, IMemoryBlobStream>> GetBlobPageTemplates(this IMMPageTemplateManager source, mmPageTemplateType pageTemplateType, params string[] userName)
         {
             var filter = new QueryFilterClass();
             filter.WhereClause = "TEMPLATE IS NOT NULL";
 
-            if (pageTemplateUserNames != null && pageTemplateUserNames.Any())
+            if (userName != null && userName.Any())
             {
-                filter.WhereClause = string.Format("{0} AND USERNAME IN ('{1}')", filter.WhereClause, string.Join("','", pageTemplateUserNames));
+                filter.WhereClause = string.Format("{0} AND USERNAME IN ('{1}')", filter.WhereClause, string.Join("','", userName));
             }
 
             ((IQueryFilterDefinition2) filter).PostfixClause = "ORDER BY USERNAME";
@@ -81,27 +84,46 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets the unopened page template with the specified type nad name.
+        ///     Gets the type of the page template.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns>Returns a <see cref="mmPageTemplateType" /> representing the type for the user.</returns>
+        public static mmPageTemplateType GetPageTemplateType(this IMMPageTemplateManager source, string userName)
+        {
+            switch (userName)
+            {
+                case "__DESIGNER__":
+                    return mmPageTemplateType.mmPTTDesigner;
+
+                case "__MAPSHEET__":
+                    return mmPageTemplateType.mmPTTMapSheet;
+
+                case "SYSTEM":
+                    return mmPageTemplateType.mmPTTSystem;
+
+                default:
+                    return mmPageTemplateType.mmPTTUser;
+            }
+        }
+
+        /// <summary>
+        ///     Gets the unopened page templates with the specified type and name.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="pageTemplateType">Type of the page template.</param>
-        /// <param name="pageTemplateName">Name of the page template.</param>
+        /// <param name="userName">Name of the page template.</param>
         /// <returns>
-        ///     Returns a <see cref="IMMPageTemplate" /> representing the page template; otherwise <c>null</c>
+        ///     Returns a <see cref="IEnumerable{IMMPageTemplate}" /> representing the page templates.
         /// </returns>
-        public static IMMPageTemplate GetUnopenedPageTemplate(this IMMPageTemplateManager source, mmPageTemplateType pageTemplateType, string pageTemplateName)
+        public static IEnumerable<IMMPageTemplate> GetUnopenedPageTemplates(this IMMPageTemplateManager source, mmPageTemplateType pageTemplateType, string userName)
         {
             var items = source.GetPageTemplateNames(pageTemplateType);
 
             foreach (var i in items.AsEnumerable())
             {
-                if (i.Name.Equals(pageTemplateName, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return source.GetUnopenedPageTemplate(i);
-                }
+                yield return source.GetUnopenedPageTemplate(i);
             }
-
-            return null;
         }
 
         /// <summary>
@@ -109,18 +131,18 @@ namespace Miner.Interop
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="pageTemplateType">Type of the page template.</param>
-        /// <param name="pageTemplateUserNames">Names of the page template user.</param>
+        /// <param name="userNames">Names of the page template user.</param>
         /// <returns>
         ///     Returns a <see cref="IMMPageTemplate" /> representing the page template; otherwise <c>null</c>
         /// </returns>
-        public static IEnumerable<KeyValuePair<IMMPageTemplateName, IMMPageTemplate>> GetUnopenedPageTemplates(this IMMPageTemplateManager source, mmPageTemplateType pageTemplateType, params string[] pageTemplateUserNames)
+        public static IEnumerable<KeyValuePair<IMMPageTemplateName, IMMPageTemplate>> GetUnopenedPageTemplates(this IMMPageTemplateManager source, mmPageTemplateType pageTemplateType, params string[] userNames)
         {
             var filter = new QueryFilterClass();
             filter.WhereClause = "TEMPLATE IS NOT NULL";
 
-            if (pageTemplateUserNames != null && pageTemplateUserNames.Any())
+            if (userNames != null && userNames.Any())
             {
-                filter.WhereClause = string.Format("{0} AND USERNAME IN ('{1}')", filter.WhereClause, string.Join("','", pageTemplateUserNames));
+                filter.WhereClause = string.Format("{0} AND USERNAME IN ('{1}')", filter.WhereClause, string.Join("','", userNames));
             }
 
             ((IQueryFilterDefinition2) filter).PostfixClause = "ORDER BY USERNAME";
@@ -137,6 +159,20 @@ namespace Miner.Interop
                 var t = source.GetUnopenedPageTemplate(i);
                 return new KeyValuePair<IMMPageTemplateName, IMMPageTemplate>(i, t);
             });
+        }
+
+        /// <summary>
+        ///     Gets the unopened page templates with the specified type and name.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="userName">Name of the page template.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IMMPageTemplate}" /> representing the page templates.
+        /// </returns>
+        public static IEnumerable<IMMPageTemplate> GetUnopenedPageTemplates(this IMMPageTemplateManager source, string userName)
+        {
+            var pageTemplateType = source.GetPageTemplateType(userName);
+            return source.GetUnopenedPageTemplates(pageTemplateType, userName);
         }
 
         /// <summary>

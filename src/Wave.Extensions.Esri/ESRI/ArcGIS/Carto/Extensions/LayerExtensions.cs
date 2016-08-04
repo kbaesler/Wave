@@ -16,6 +16,22 @@ namespace ESRI.ArcGIS.Carto
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IElement" />
         /// </summary>
+        /// <param name="source">An <see cref="IGroupElement" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the layers from the input source.</returns>
+        public static IEnumerable<IElement> AsEnumerable(this IGroupElement source)
+        {
+            if (source != null)
+            {
+                for (int i = 0; i < source.ElementCount; i++)
+                {
+                    yield return source.Element[i];
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IElement" />
+        /// </summary>
         /// <param name="source">An <see cref="IGraphicsContainer" /> to create an <see cref="IEnumerable{T}" /> from.</param>
         /// <returns>An <see cref="IEnumerable{T}" /> that contains the layers from the input source.</returns>
         public static IEnumerable<IElement> AsEnumerable(this IGraphicsContainer source)
@@ -64,7 +80,29 @@ namespace ESRI.ArcGIS.Carto
             {
                 yield return source.Layer[i];
             }
-        }
+        }      
+
+       
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IElement" />
+        /// </summary>
+        /// <param name="source">An <see cref="IElementCollection" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the layers from the input source.</returns>
+        public static IEnumerable<KeyValuePair<IElement, int>> AsEnumerable(this IElementCollection source)
+        {
+            if (source != null)
+            {
+                for (int i = 0; i < source.Count - 1; i++)
+                {
+                    IElement element;
+                    int linkedFeatureID;
+
+                    source.QueryItem(i, out element, out linkedFeatureID);
+
+                    yield return new KeyValuePair<IElement, int>(element, linkedFeatureID);
+                }
+            }
+        }       
 
         /// <summary>
         ///     Gets the hierarchy of the layer and sibilings.
