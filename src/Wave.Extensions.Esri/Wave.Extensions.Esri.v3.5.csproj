@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseExtension.cs" />
+    <Compile Include="ESRI\ArcGIS\BaseClasses\BaseFinder.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxExtension.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseMxTool.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />
@@ -252,7 +253,8 @@
     <Compile Include="ESRI\ArcGIS\System\Extensions\PropertySetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\StreamExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\UIDExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\System\Internal\ComStream.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ComStream.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,6 +281,7 @@
     <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
+    <Compile Include="System\Data\Extensions\DataSetExtensions.cs" />
     <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
     <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
       <SubType>Code</SubType>
@@ -288,10 +291,10 @@
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
-    <Compile Include="System\Extensions\RecursionExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />
+    <Compile Include="System\IO\Extensions\StreamExtensions.cs" />
     <Compile Include="System\Native\UnsafeWindowMethods.cs" />
     <Compile Include="System\Recursion.cs" />
     <Compile Include="System\Reflection\Extensions\AssemblyExtensions.cs" />
@@ -309,17 +312,6 @@
       <DependentUpon>WindowStateComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="System\Forms\ComponentModel\XmlNodeWrapper.cs" />
-    <Compile Include="System\Forms\Controls\BaseClasses\BaseDropDownControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeDropDown.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNode.cs" />
-    <Compile Include="System\Forms\Controls\ComboTreeBox\ComboTreeNodeCollection.cs" />
     <Compile Include="System\Forms\Controls\DelayedTextBox\DelayedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -374,8 +366,9 @@
     <Compile Include="System\Windows\Events\EventAggregator.cs" />
     <Compile Include="System\Windows\Events\EventBase.cs" />
     <Compile Include="System\Windows\Events\EventSubscription.cs" />
-    <Compile Include="System\Windows\Events\IDelegateReference.cs" />
-    <Compile Include="System\Windows\Events\IEventSubscription.cs" />
+    <Compile Include="System\Windows\Events\Interfaces\IDelegateReference.cs" />
+    <Compile Include="System\Windows\Events\Interfaces\IEventAggregator.cs" />
+    <Compile Include="System\Windows\Events\Interfaces\IEventSubscription.cs" />
     <Compile Include="System\Windows\Events\SubscriptionToken.cs" />
     <Compile Include="System\Windows\Extensions\AdornerExtensions.cs" />
     <Compile Include="System\Windows\Extensions\UIElementExtensions.cs" />
@@ -434,6 +427,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ESRI\ArcGIS\System\Internal\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

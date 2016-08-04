@@ -4,8 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 
-using ESRI.ArcGIS.esriSystem.Internal;
-
 namespace ESRI.ArcGIS.esriSystem
 {
     /// <summary>

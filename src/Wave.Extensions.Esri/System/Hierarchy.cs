@@ -12,6 +12,40 @@ namespace System
     public class Hierarchy<TValue> : IHierarchy<TValue>
         where TValue : class
     {
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Hierarchy{TValue}" /> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        public Hierarchy(TValue parent)
+            : this()
+        {
+            this.Parent = parent;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Hierarchy{TValue}" /> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        /// <param name="value">The value.</param>
+        public Hierarchy(TValue parent, TValue value)
+            : this()
+        {
+            this.Parent = parent;
+            this.Value = value;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Hierarchy{TValue}" /> class.
+        /// </summary>
+        public Hierarchy()
+        {
+            this.Children = new List<IHierarchy<TValue>>();
+        }
+
+        #endregion
+
         #region IHierarchy<TValue> Members
 
         /// <summary>

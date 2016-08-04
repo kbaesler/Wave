@@ -86,12 +86,122 @@ namespace Miner.Interop
         }
 
         /// <summary>
+        ///     Gets all of the field automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        ///     <paramref name="editEvent" /> the <paramref name="table" /> object class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="table">The object class.</param>
+        /// <param name="editEvent">The edit event.</param>
+        /// <param name="fieldNames">The field names.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the subtypes and the
+        ///     individual fields.
+        /// </returns>      
+        /// <exception cref="ArgumentNullException">
+        ///     fieldNames
+        ///     or
+        ///     table
+        /// </exception>
+        public static Dictionary<int, Dictionary<string, IEnumerable<IMMAutoValue>>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent, params string[] fieldNames)
+        {
+            if (source == null) return null;
+            if (fieldNames == null) throw new ArgumentNullException("fieldNames");
+            if (table == null) throw new ArgumentNullException("table");
+
+            Dictionary<int, Dictionary<string, IEnumerable<IMMAutoValue>>> list = new Dictionary<int, Dictionary<string, IEnumerable<IMMAutoValue>>>();
+
+            var values = source.GetAutoValues(table, ALL_SUBTYPES, editEvent, fieldNames);
+            list.Add(ALL_SUBTYPES, values);
+
+            ISubtypes subtypes = (ISubtypes) table;
+            if (subtypes.HasSubtype)
+            {
+                IEnumerable<int> subtypeCodes = subtypes.Subtypes.AsEnumerable().Select(o => o.Key).OrderBy(o => o);
+                foreach (var subtypeCode in subtypeCodes)
+                {
+                    values = source.GetAutoValues(table, subtypeCode, editEvent, fieldNames);
+                    list.Add(subtypeCode, values);
+                }
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        ///     Gets all of the field automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        ///     <paramref name="editEvent" /> the <paramref name="table" /> object class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="table">The object class.</param>
+        /// <param name="subtypeCode">The subtype code.</param>
+        /// <param name="editEvent">The edit event.</param>
+        /// <param name="fieldNames">The field names.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
+        ///     object class.
+        /// </returns>       
+        /// <exception cref="ArgumentNullException">
+        ///     fieldNames
+        ///     or
+        ///     table
+        /// </exception>
+        public static Dictionary<string, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, int subtypeCode, mmEditEvent editEvent, params string[] fieldNames)
+        {
+            if (source == null) return null;
+            if (fieldNames == null) throw new ArgumentNullException("fieldNames");
+            if (table == null) throw new ArgumentNullException("table");
+
+            Dictionary<string, IEnumerable<IMMAutoValue>> list = new Dictionary<string, IEnumerable<IMMAutoValue>>();
+
+            IMMSubtype subtype = source.GetSubtypeByID(table, subtypeCode, false);
+            if (subtype != null)
+            {
+                foreach (var fieldName in fieldNames)
+                {
+                    int index = table.FindField(fieldName);
+                    var values = subtype.GetAutoValues(index, editEvent);
+                    list.Add(fieldName, values);
+                }
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
+        ///     <paramref name="editEvent" /> the <paramref name="relationshipClass" /> relationship class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="relationshipClass">The relationship class.</param>
+        /// <param name="editEvent">The edit event.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IMMAutoValue}" /> representing the automatic values for the specified event and
+        ///     object class.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMConfigTopLevel source, IRelationshipClass relationshipClass, mmEditEvent editEvent)
+        {
+            if (source == null) return null;
+            if (relationshipClass == null) throw new ArgumentNullException("relationshipClass");
+
+            IEnumerable<IMMAutoValue> list = new List<IMMAutoValue>();
+
+            IMMRelationshipClass relationship = source.GetRelationshipClass(relationshipClass);
+            if (relationship.HasAutoUpdater)
+            {
+                list = relationship.GetAutoValues(editEvent);
+            }
+
+            return list;
+        }
+
+        /// <summary>
         ///     Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
         ///     <paramref name="editEvent" /> for all subtypes
         ///     of the <paramref name="table" /> object class.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="table">The object representing the specific subtype being analyzed.</param>
+        /// <param name="table">The table.</param>
         /// <param name="editEvent">The edit event.</param>
         /// <returns>
         ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
@@ -105,22 +215,23 @@ namespace Miner.Interop
 
             Dictionary<int, IEnumerable<IMMAutoValue>> list = new Dictionary<int, IEnumerable<IMMAutoValue>>();
 
-            // Load the values from the hidden -1 value, which represents all.
             IMMSubtype subtype = source.GetSubtypeByID(table, ALL_SUBTYPES, false);
             if (subtype != null)
             {
                 list.Add(ALL_SUBTYPES, subtype.GetAutoValues(editEvent));
             }
 
-            // Load the individual subtype values.
             ISubtypes subtypes = (ISubtypes) table;
-            IEnumerable<int> subtypeCodes = subtypes.HasSubtype ? subtypes.Subtypes.AsEnumerable().Select(o => o.Key) : new[] {subtypes.DefaultSubtypeCode};
-            foreach (var subtypeCode in subtypeCodes)
+            if (subtypes.HasSubtype)
             {
-                subtype = source.GetSubtypeByID(table, subtypeCode, false);
-                if (subtype == null) continue;
+                IEnumerable<int> subtypeCodes = subtypes.Subtypes.AsEnumerable().Select(o => o.Key).OrderBy(o => o);
+                foreach (var subtypeCode in subtypeCodes)
+                {
+                    subtype = source.GetSubtypeByID(table, subtypeCode, false);
+                    if (subtype == null) continue;
 
-                list.Add(subtypeCode, subtype.GetAutoValues(editEvent));
+                    list.Add(subtypeCode, subtype.GetAutoValues(editEvent));
+                }
             }
 
             return list;

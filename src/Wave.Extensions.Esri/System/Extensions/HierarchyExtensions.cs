@@ -23,10 +23,10 @@ namespace System
         /// <returns>
         ///     Returns an enumeration of the collection composed in a hierarchical structure.
         /// </returns>
-        public static IEnumerable<IHierarchy<TValue>> CreateHierarchy<TValue, TProperty>(this IEnumerable<TValue> source, Func<TValue, TProperty> primaryKeySelector, Func<TValue, TProperty> foreignKeySelector)
+        public static IEnumerable<IHierarchy<TValue>> ToHierarchy<TValue, TProperty>(this IEnumerable<TValue> source, Func<TValue, TProperty> primaryKeySelector, Func<TValue, TProperty> foreignKeySelector)
             where TValue : class
         {
-            return CreateHierarchyImpl(source, default(TValue), primaryKeySelector, foreignKeySelector, null, 0, 0);
+            return ToHierarchyImpl(source, default(TValue), primaryKeySelector, foreignKeySelector, null, 0, 0);
         }
 
         /// <summary>
@@ -44,31 +44,25 @@ namespace System
         /// <returns>
         ///     Returns an enumeration of the collection composed in a hierarchical structure.
         /// </returns>
-        public static IEnumerable<IHierarchy<TValue>> CreateHierarchy<TValue, TProperty>(this IEnumerable<TValue> source, Func<TValue, TProperty> primaryKeySelector, Func<TValue, TProperty> foreignKeySelector,
+        public static IEnumerable<IHierarchy<TValue>> ToHierarchy<TValue, TProperty>(this IEnumerable<TValue> source, Func<TValue, TProperty> primaryKeySelector, Func<TValue, TProperty> foreignKeySelector,
             object rootPrimaryKey, int maxDepth)
             where TValue : class
         {
-            return CreateHierarchyImpl(source, default(TValue), primaryKeySelector, foreignKeySelector, rootPrimaryKey, maxDepth, 0);
+            return ToHierarchyImpl(source, default(TValue), primaryKeySelector, foreignKeySelector, rootPrimaryKey, maxDepth, 0);
         }
 
         /// <summary>
-        ///     Recursively traverses the <paramref name="node" /> children nodes executing the <paramref name="action" />
-        ///     for each child node.
+        ///     Traverses the hierarchical data structure and executes the specified action.
         /// </summary>
-        /// <typeparam name="TValue">The type of the entity.</typeparam>
-        /// <param name="node">The root node.</param>
-        /// <param name="action">The function that will be performed on for each element in the tree.</param>
-        public static void ForEach<TValue>(this IHierarchy<TValue> node, Action<IHierarchy<TValue>> action)
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="action">
+        ///     The function that will be executed for each of the nodes encountered in the parent and child
+        ///     hierarchy.
+        /// </param>
+        public static void Traverse<TValue>(this IEnumerable<IHierarchy<TValue>> source, Action<IHierarchy<TValue>, IHierarchy<TValue>> action)
         {
-            if (node == null || node.Children == null)
-                return;
-
-            foreach (IHierarchy<TValue> child in node.Children)
-            {
-                action(child);
-
-                child.ForEach(action);
-            }
+            TraverseImpl(source, null, action);
         }
 
         #endregion
@@ -92,31 +86,33 @@ namespace System
         /// <returns>
         ///     Returns an enumeration of the collection composed in a hierarchical structure.
         /// </returns>
-        private static IEnumerable<IHierarchy<TValue>> CreateHierarchyImpl<TValue, TProperty>(IEnumerable<TValue> source, TValue parentItem, Func<TValue, TProperty> primaryKeySelector, Func<TValue, TProperty> foreignKeySelector,
+        private static IEnumerable<IHierarchy<TValue>> ToHierarchyImpl<TValue, TProperty>(IEnumerable<TValue> source, TValue parentItem, Func<TValue, TProperty> primaryKeySelector, Func<TValue, TProperty> foreignKeySelector,
             object rootPrimaryKey, int maxDepth, int depth)
             where TValue : class
         {
+            var items = new List<TValue>(source);
+
             IEnumerable<TValue> children = null;
             if (source != null)
             {
                 if (rootPrimaryKey != null)
                 {
-                    children = source.Where(i => primaryKeySelector(i).Equals(rootPrimaryKey));
+                    children = items.Where(i => primaryKeySelector(i).Equals(rootPrimaryKey));
                 }
                 else
                 {
                     if (parentItem == null)
                     {
-                        children = source.Where(i => foreignKeySelector(i).Equals(default(TProperty)));
+                        children = items.Where(i => foreignKeySelector(i).Equals(default(TProperty)));
                     }
                     else
                     {
-                        children = source.Where(i => foreignKeySelector(i).Equals(primaryKeySelector(parentItem)));
+                        children = items.Where(i => foreignKeySelector(i).Equals(primaryKeySelector(parentItem)));
                     }
                 }
             }
 
-            if (children != null && children.Any())
+            if (children != null)
             {
                 depth++;
 
@@ -127,10 +123,33 @@ namespace System
                             new Hierarchy<TValue>
                             {
                                 Value = item,
-                                Children = CreateHierarchyImpl(source, item, primaryKeySelector, foreignKeySelector, null, maxDepth, depth),
+                                Children = ToHierarchyImpl(items, item, primaryKeySelector, foreignKeySelector, null, maxDepth, depth),
                                 Depth = depth,
                                 Parent = parentItem
                             };
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Traverses the hierarchical data structure and executes the specified action.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="parent">The parent.</param>
+        /// <param name="action">
+        ///     The function that will be executed for each of the nodes encountered in the parent and child
+        ///     hierarchy.
+        /// </param>
+        private static void TraverseImpl<TValue>(this IEnumerable<IHierarchy<TValue>> source, IHierarchy<TValue> parent, Action<IHierarchy<TValue>, IHierarchy<TValue>> action)
+        {
+            foreach (var child in source)
+            {
+                action(parent, child);
+
+                if (child.Children != null && child.Children.Any())
+                {
+                    TraverseImpl(child.Children, child, action);
                 }
             }
         }

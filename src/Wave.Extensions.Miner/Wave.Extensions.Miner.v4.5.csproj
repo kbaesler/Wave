@@ -33,6 +33,14 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BaseIntermediateOutputPath>obj\net45\</BaseIntermediateOutputPath>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -301,6 +309,7 @@
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Miner\Interop\Extensions\PackageManagerExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListItemExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
@@ -309,6 +318,8 @@
     <Compile Include="Miner\Interop\Extensions\EditorExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Miner\Interop\Extensions\PageTemplateManagerExtensions.cs" />
+    <Compile Include="Miner\Interop\Extensions\StoredDisplayManagerExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\SubtypeExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\RelationshipClassExtensions.cs" />
     <Compile Include="Miner\Interop\ObjectClassConversion.cs" />
@@ -403,6 +414,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Wave.log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Miner\Interop\Process\EDM\Configuration\EdmRepository.xml" />

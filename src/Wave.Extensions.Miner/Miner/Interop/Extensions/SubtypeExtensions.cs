@@ -90,7 +90,8 @@ namespace Miner.Interop
             ID8List list = source as ID8List;
             if (list == null) return null;
 
-            foreach (IMMAutoValue autoValue in list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o != null && o.EditEvent == editEvent && o.AutoGenID != null))
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);            
+            foreach (IMMAutoValue autoValue in values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent))
             {
                 if (autoValue.AutoGenID.Value == null) continue;
 
@@ -100,6 +101,26 @@ namespace Miner.Interop
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Gets all of the automatic values (i.e. ArcFM Auto Updaters) that have been configured for the subtype.
+        /// </summary>
+        /// <param name="source">The relationship class.</param>
+        /// <param name="editEvent">The edit event.</param>
+        /// <returns>
+        /// Returns a <see cref="IEnumerable{IMMAutoValue}" /> objects that have been assigned to the field.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">table</exception>
+        public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMRelationshipClass source, mmEditEvent editEvent)
+        {
+            if (source == null) return null;
+
+            var list = source as ID8List;
+            if (list == null) return null;
+
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -118,7 +139,8 @@ namespace Miner.Interop
             var list = source as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -144,7 +166,8 @@ namespace Miner.Interop
             var list = field as ID8List;
             if (list == null) return null;
 
-            return list.AsEnumerable().OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
         }
 
         /// <summary>
