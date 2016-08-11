@@ -1,4 +1,6 @@
 ﻿using System.Configuration;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
@@ -17,12 +19,14 @@ namespace ESRI.ArcGIS.Location
         ///     Gets or sets the name of from measure field that defines the end of the line event.
         /// </summary>
         /// <value>The name of from measure field.</value>
+        [DataMember]
         string FromMeasureFieldName { get; set; }
 
         /// <summary>
         ///     Gets or sets the name of to measure field that defines the beginning of line event.
         /// </summary>
         /// <value>The name of to measure field.</value>
+        [DataMember]
         string ToMeasureFieldName { get; set; }
 
         #endregion
@@ -30,23 +34,17 @@ namespace ESRI.ArcGIS.Location
 
     /// <summary>
     ///     A configuration use for dynamic segmentation for linear event tables.
-    /// </summary>
-    /// <example>
-    ///     <segmentation routeIDFieldName="PIPELINE_ID" toMeasureFieldName="ENDCUMSTA" fromMeasureFieldName="BEGCUMSTA" />
-    /// </example>
-    public class LinearSegmentation : ConfigurationElement, ILinearSegmentation
+    /// </summary>    
+    [DataContract]
+    public class LinearSegmentation : ILinearSegmentation
     {
         #region Public Properties
 
         /// <summary>
         ///     Gets or sets the route measure units.
         /// </summary>
-        [ConfigurationProperty("routeMeasureUnit", DefaultValue = esriUnits.esriFeet)]
-        public esriUnits RouteMeasureUnit
-        {
-            get { return (esriUnits) this["routeMeasureUnit"]; }
-            set { this["routeMeasureUnit"] = value; }
-        }
+        [DataMember]
+        public esriUnits RouteMeasureUnit { get; set; }
 
         #endregion
 
@@ -56,18 +54,14 @@ namespace ESRI.ArcGIS.Location
         ///     Gets or sets the name of from measure field that defins the end of the line event.
         /// </summary>
         /// <value>The name of from measure field.</value>
-        [ConfigurationProperty("fromMeasureFieldName", IsRequired = true)]
-        public string FromMeasureFieldName
-        {
-            get { return (string) this["fromMeasureFieldName"]; }
-            set { this["fromMeasureFieldName"] = value; }
-        }
-
+        [DataMember]
+        public string FromMeasureFieldName { get; set; }
 
         /// <summary>
         ///     Gets or sets the route event properties.
         /// </summary>
-        /// <value>The route event properties.</value>
+        /// <value>The route event properties.</value>               
+        [XmlIgnore]
         public IRouteEventProperties2 RouteEventProperties
         {
             get
@@ -76,7 +70,7 @@ namespace ESRI.ArcGIS.Location
                 props.FromMeasureFieldName = this.FromMeasureFieldName;
                 props.ToMeasureFieldName = this.ToMeasureFieldName;
 
-                IRouteEventProperties2 eventProps = (IRouteEventProperties2) props;
+                IRouteEventProperties2 eventProps = (IRouteEventProperties2)props;
                 eventProps.EventMeasureUnit = this.RouteMeasureUnit;
                 eventProps.EventRouteIDFieldName = this.RouteIDFieldName;
                 return eventProps;
@@ -87,22 +81,15 @@ namespace ESRI.ArcGIS.Location
         ///     Gets or sets the name of the route ID field that identifies route on which event is located.
         /// </summary>
         /// <value>The name of the route ID field.</value>
-        [ConfigurationProperty("routeIDFieldName", IsRequired = true)]
-        public string RouteIDFieldName
-        {
-            get { return (string) base["routeIDFieldName"]; }
-            set { base["routeIDFieldName"] = value; }
-        }
+        [DataMember]
+        public string RouteIDFieldName { get; set; }
 
         /// <summary>
         ///     Gets or sets the name of to measure field that defines the beginning of line event.
         /// </summary>
         /// <value>The name of to measure field.</value>
-        public string ToMeasureFieldName
-        {
-            get { return (string) this["toMeasureFieldName"]; }
-            set { this["toMeasureFieldName"] = value; }
-        }
+        [DataMember]
+        public string ToMeasureFieldName { get; set; }
 
         #endregion
     }

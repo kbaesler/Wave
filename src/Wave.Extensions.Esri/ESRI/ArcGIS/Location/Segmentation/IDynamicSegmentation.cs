@@ -1,4 +1,7 @@
-﻿using ESRI.ArcGIS.Geodatabase;
+﻿using System.Runtime.Serialization;
+using System.Xml.Serialization;
+
+using ESRI.ArcGIS.Geodatabase;
 
 namespace ESRI.ArcGIS.Location
 {
@@ -15,7 +18,7 @@ namespace ESRI.ArcGIS.Location
     ///             2. Each feature must have a unique identifier and a measurement system stored with it.
     ///         </para>
     ///     </remarks>
-    /// </summary>
+    /// </summary>    
     public interface IDynamicSegmentation
     {
         #region Public Properties
@@ -24,12 +27,14 @@ namespace ESRI.ArcGIS.Location
         ///     Gets the route event properties.
         /// </summary>
         /// <value>The route event properties.</value>
+        [XmlIgnore]
         IRouteEventProperties2 RouteEventProperties { get; }
 
         /// <summary>
         ///     Gets or sets the name of the route ID field that identifies route on which event is located.
         /// </summary>
         /// <value>The name of the route ID field.</value>
+        [DataMember]
         string RouteIDFieldName { get; set; }
 
         #endregion
