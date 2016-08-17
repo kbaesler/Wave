@@ -10,6 +10,7 @@ namespace ESRI.ArcGIS.Location
     /// <summary>
     ///     Overlays two event tables to create an output event table that represents the union or intersection of the input.
     /// </summary>
+    /// <seealso cref="ESRI.ArcGIS.Location.RouteOperation{OverlayRouteEventData}" />
     /// <remarks>
     ///     Line-on-line, line-on-point, point-on-line, and point-on-point event overlays can be performed.
     ///     The input and overlay events should be based on the same route reference.

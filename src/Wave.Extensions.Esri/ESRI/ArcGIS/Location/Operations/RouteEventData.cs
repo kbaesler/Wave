@@ -37,9 +37,21 @@ namespace ESRI.ArcGIS.Location
 
         #region Public Properties
 
+        /// <summary>
+        ///     Gets or sets the route.
+        /// </summary>
+        /// <value>
+        ///     The route.
+        /// </value>
         [DataMember]
         public string Route { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the segmentation.
+        /// </summary>
+        /// <value>
+        ///     The segmentation.
+        /// </value>
         [DataMember]
         public IRouteMeasureLineSegmentation Segmentation { get; set; }
 
@@ -48,7 +60,7 @@ namespace ESRI.ArcGIS.Location
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteEventData{ESRI.ArcGIS.Location.IRouteMeasureSegmentation}" />
+    /// <seealso cref="ESRI.ArcGIS.Location.RouteEventData{IRouteMeasureSegmentation}" />
     [DataContract]
     [KnownType(typeof (RouteMeasureLineSegmentation))]
     [KnownType(typeof (RouteMeasurePointSegmentation))]
@@ -91,7 +103,7 @@ namespace ESRI.ArcGIS.Location
     /// <summary>
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteEventData{ESRI.ArcGIS.Location.IRouteMeasureSegmentation}" />
+    /// <seealso cref="ESRI.ArcGIS.Location.RouteEventData{IRouteMeasureSegmentation}" />
     [DataContract]
     [KnownType(typeof (RouteMeasureLineSegmentation))]
     [KnownType(typeof (RouteMeasurePointSegmentation))]

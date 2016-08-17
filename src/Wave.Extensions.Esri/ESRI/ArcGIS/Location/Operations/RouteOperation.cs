@@ -17,7 +17,9 @@ namespace ESRI.ArcGIS.Location
         /// <param name="eventData">The event data.</param>
         /// <param name="workspace">The workspace.</param>
         /// <param name="trackCancel">The track cancel.</param>
-        /// <returns>Returns a <see cref="ITable" /> representing the results of the operation.</returns>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the results of the operation.
+        /// </returns>
         public abstract ITable Execute(T eventData, IWorkspace workspace, ITrackCancel trackCancel);
 
         #endregion

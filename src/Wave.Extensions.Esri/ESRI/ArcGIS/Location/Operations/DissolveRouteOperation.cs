@@ -7,7 +7,7 @@ namespace ESRI.ArcGIS.Location
     ///     Removes redundant information from event tables or separates event tables having more than one descriptive
     ///     attribute into individual tables
     /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteOperation{ESRI.ArcGIS.Location.DissolveRouteEventData}" />
+    /// <seealso cref="ESRI.ArcGIS.Location.RouteOperation{DissolveRouteEventData}" />
     public class DissolveRouteOperation : RouteOperation<DissolveRouteEventData>
     {
         #region Public Methods
