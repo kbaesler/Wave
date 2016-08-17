@@ -151,6 +151,9 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoDatabaseUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -266,9 +269,19 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\IDynamicSegmentation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\LinearSegmentation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\PointSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteEventtData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Route.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\SegmentationData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Segmentation\IRouteMeasureSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureLineSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasurePointSegmentation.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />

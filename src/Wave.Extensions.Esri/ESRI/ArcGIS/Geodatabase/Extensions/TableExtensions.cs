@@ -5,7 +5,9 @@ using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
+using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.Geodatabase.Internal;
+using ESRI.ArcGIS.GeoDatabaseUI;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -92,6 +94,76 @@ namespace ESRI.ArcGIS.Geodatabase
             if (rowSubtypes != null) rowSubtypes.InitDefaultValues();
 
             return row;
+        }
+
+        /// <summary>
+        ///     Deletes the table. You must have exlusive rights to the table in order to delete it.
+        ///     Otherwise an error will be thrown.
+        /// </summary>
+        public static void Delete(this ITable source)
+        {
+            IDataset ds = (IDataset) source;
+            ISchemaLock schemaLock = (ISchemaLock) ds;
+
+            try
+            {
+                schemaLock.ChangeSchemaLock(esriSchemaLock.esriExclusiveSchemaLock);
+
+                ds.Delete();
+            }
+            finally
+            {
+                schemaLock.ChangeSchemaLock(esriSchemaLock.esriSharedSchemaLock);
+            }
+        }
+
+        /// <summary>
+        ///     Determines if the table exists.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="bool" /> representing <c>true</c> when the table exists otherwise false</returns>
+        public static bool Exists(this ITable source)
+        {
+            IDataset ds = (IDataset) source;
+            IWorkspace2 workspace = (IWorkspace2) ds.Workspace;
+
+            return workspace.NameExists[esriDatasetType.esriDTTable, ds.Name];
+        }
+
+        /// <summary>
+        ///     Exports the source table using the query filter to the table in the output workspace.
+        /// </summary>
+        /// <param name="source">The source table.</param>
+        /// <param name="filter">The filter used to create a subset of the data.</param>
+        /// <param name="outputTableName">The name of the output table.</param>
+        /// <param name="outputWorkspace">The workspace that will contain the table.</param>
+        /// <param name="handle">The handle to the parent application.</param>
+        /// <returns>Returns a <see cref="ITable" /> representing the exported table.</returns>
+        public static ITable Export(this ITable source, IQueryFilter filter, string outputTableName, IWorkspace outputWorkspace, int handle)
+        {
+            var ds = (IDataset) source;
+            var inputDatasetName = (IDatasetName) ds.FullName;
+
+            var outputClassName = new TableNameClass();
+            outputClassName.WorkspaceName = (IWorkspaceName) ((IDataset) outputWorkspace).FullName;
+            outputClassName.Name = outputTableName;
+
+            ISelectionSet selection = null;
+
+            if (source.HasOID)
+            {
+                IScratchWorkspaceFactory2 factory = new ScratchWorkspaceFactoryClass();
+                var selectionContainer = factory.DefaultScratchWorkspace;
+
+                selection = source.Select(filter, esriSelectionType.esriSelectionTypeIDSet, esriSelectionOption.esriSelectionOptionNormal, selectionContainer);
+            }
+
+            outputWorkspace.Delete(outputClassName);
+
+            IExportOperation operation = new ExportOperationClass();
+            operation.ExportTable(inputDatasetName, filter, selection, outputClassName, handle);
+
+            return outputWorkspace.GetTable("", outputTableName);
         }
 
         /// <summary>

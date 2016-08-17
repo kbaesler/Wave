@@ -13,6 +13,25 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IEnumDomain" />
+        /// </summary>
+        /// <param name="source">An <see cref="IEnumInvalidObject" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the fields from the input source.</returns>
+        public static IEnumerable<IInvalidObjectInfo> AsEnumerable(this IEnumInvalidObject source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                var value = source.Next();
+                while (value != null)
+                {
+                    yield return value;
+                    value = source.Next();
+                }
+            }
+        }
+
+        /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IStringArray" />
         /// </summary>
         /// <param name="source">An <see cref="IStringArray" /> to create an <see cref="IEnumerable{T}" /> from.</param>

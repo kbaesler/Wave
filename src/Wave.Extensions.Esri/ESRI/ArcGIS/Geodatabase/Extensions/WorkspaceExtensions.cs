@@ -5,7 +5,6 @@ using System.Linq;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Geodatabase.Internal;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -473,6 +472,20 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Deletes the specified data set, table or feature class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="datasetName">Name of the table.</param>
+        public static void Delete(this IWorkspace source, IDatasetName datasetName)
+        {
+            if (((IWorkspace2) source).NameExists[datasetName.Type, datasetName.Name])
+            {
+                var table = source.GetTable("", datasetName.Name);
+                table.Delete();
+            }
+        }
+
+        /// <summary>
         ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
         ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
@@ -564,7 +577,10 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
+        /// <param name="withUndoRedo">
+        ///     if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such
+        ///     suppression).
+        /// </param>
         /// <param name="multiuserEditSessionMode">
         ///     The edit session mode that can be used to indicate non-versioned or versioned
         ///     editing for workspaces that support multiuser editing.
@@ -606,24 +622,27 @@ namespace ESRI.ArcGIS.Geodatabase
 
             try
             {
-                saveEdits = wse.PerformOperation(withUndoRedo, operation);                
+                saveEdits = wse.PerformOperation(withUndoRedo, operation);
             }
             finally
             {
-                wse.StopEditing(saveEdits); 
+                wse.StopEditing(saveEdits);
             }
 
             return saveEdits;
         }
 
         /// <summary>
-        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
+        /// <param name="withUndoRedo">
+        ///     if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such
+        ///     suppression).
+        /// </param>
         /// <param name="operation">The delegate that performs the operation.</param>
         /// <returns>
-        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
         public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, Func<bool> operation)
@@ -632,13 +651,16 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
+        /// <param name="withUndoRedo">
+        ///     if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such
+        ///     suppression).
+        /// </param>
         /// <param name="operation">The delegate that performs the operation.</param>
         /// <returns>
-        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">operation</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
@@ -653,9 +675,9 @@ namespace ESRI.ArcGIS.Geodatabase
             if (wse.IsInEditOperation)
                 throw new ArgumentOutOfRangeException("source", "An edit operation is already started.");
 
-            if(!wse.IsBeingEdited())
+            if (!wse.IsBeingEdited())
                 wse.StartEditing(withUndoRedo);
-            
+
             source.StartEditOperation();
 
             bool saveEdits = false;

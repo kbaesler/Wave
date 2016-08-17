@@ -18,8 +18,8 @@ namespace ESRI.ArcGIS.Location
     ///             2. Each feature must have a unique identifier and a measurement system stored with it.
     ///         </para>
     ///     </remarks>
-    /// </summary>    
-    public interface IDynamicSegmentation
+    /// </summary>
+    public interface IRouteMeasureSegmentation
     {
         #region Public Properties
 
@@ -38,5 +38,5 @@ namespace ESRI.ArcGIS.Location
         string RouteIDFieldName { get; set; }
 
         #endregion
-    }    
+    }
 }
