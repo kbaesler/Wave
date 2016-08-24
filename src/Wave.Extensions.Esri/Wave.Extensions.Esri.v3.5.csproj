@@ -251,6 +251,10 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\RouteMeasureSegmentationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteEventtData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteEventData.cs" />
@@ -310,6 +314,7 @@
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
+    <Compile Include="System\Extensions\StringExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />

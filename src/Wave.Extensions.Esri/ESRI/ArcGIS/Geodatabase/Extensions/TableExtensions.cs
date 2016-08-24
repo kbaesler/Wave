@@ -33,7 +33,7 @@ namespace ESRI.ArcGIS.Geodatabase
         public static string CreateExpression(this ITable source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
         {
             List<IField> fields = new List<IField>();
-
+            
             foreach (var fieldName in fieldNames)
             {
                 int index = source.FindField(fieldName);

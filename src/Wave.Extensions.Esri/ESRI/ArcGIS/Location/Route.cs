@@ -247,44 +247,43 @@ namespace ESRI.ArcGIS.Location
     }
 
     /// <summary>
-    ///     A route layer is useful for determining the best route between a set of locations based on a specified network
-    ///     cost.
+    ///     Provides the route event source that is created using dynamic segmentation for an event and route feature class.
     /// </summary>
-    public sealed class RouteLayer
+    public sealed class RouteMeasureEventSource
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RouteLayer" /> class.
+        ///     Initializes a new instance of the <see cref="RouteMeasureEventSource" /> class.
         /// </summary>
         /// <param name="eventData">The event data.</param>
         /// <param name="route">The route.</param>
         /// <param name="segmentation">The segmentation.</param>
         /// <param name="workspace">The workspace.</param>
-        public RouteLayer(EventData eventData, Route route, IRouteMeasureLineSegmentation segmentation, IWorkspace workspace)
+        public RouteMeasureEventSource(EventData eventData, Route route, IRouteMeasureLineSegmentation segmentation, IWorkspace workspace)
             : this(eventData, route.FeatureClass, segmentation, workspace)
         {
             this.Route = route;
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RouteLayer" /> class.
+        ///     Initializes a new instance of the <see cref="RouteMeasureEventSource" /> class.
         /// </summary>
         /// <param name="eventData">The event data.</param>
         /// <param name="workspace">The workspace.</param>
-        public RouteLayer(LayerRouteEventData eventData, IWorkspace workspace)
+        public RouteMeasureEventSource(LayerRouteEventData eventData, IWorkspace workspace)
             : this(eventData, workspace.GetFeatureClass("", eventData.Route), eventData.Segmentation, workspace)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RouteLayer" /> class.
+        ///     Initializes a new instance of the <see cref="RouteMeasureEventSource" /> class.
         /// </summary>
         /// <param name="eventData">The event data.</param>
         /// <param name="route">The route.</param>
         /// <param name="segmentation">The segmentation.</param>
         /// <param name="workspace">The workspace.</param>
-        public RouteLayer(EventData eventData, IFeatureClass route, IRouteMeasureLineSegmentation segmentation, IWorkspace workspace)
+        public RouteMeasureEventSource(EventData eventData, IFeatureClass route, IRouteMeasureLineSegmentation segmentation, IWorkspace workspace)
         {
             var eventTable = workspace.GetTable("", eventData.EventTableName);
             var filter = new QueryFilterClass {WhereClause = eventData.WhereClause};
@@ -327,7 +326,7 @@ namespace ESRI.ArcGIS.Location
         #region Private Methods
 
         /// <summary>
-        ///     Creates the route event layer.
+        ///     Creates the route event source.
         /// </summary>
         /// <param name="eventTable">The event table that contains the event data.</param>
         /// <param name="route">The route linear feature class that will be used as the source.</param>
@@ -358,7 +357,7 @@ namespace ESRI.ArcGIS.Location
 
             workspace.Delete(outputClassName);
 
-            IRouteEventSource eventSource = (IRouteEventSource) ((IName) eventSourceName).Open();            
+            IRouteEventSource eventSource = (IRouteEventSource) ((IName) eventSourceName).Open();
             IFeatureClass sourceClass = (IFeatureClass) eventSource;
 
             var i = route.Fields.FindField(route.ShapeFieldName);
