@@ -8,6 +8,9 @@ These are the changes, additions, removals that are actively being worked on and
 - The `Wave.log4net.config` file is included in the packages. [^3]
 - Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]
 - Added `GetVisibleLayers` extension method to the `IMap` interface which will return only those layers that are visible (either by virtue of being enabled or due to scale suppression). [^1]
+- Added *Linear Referencing* support classes in the `ESRI.ArcGIS.Location` namespace. [^1]
+- Added `Export` extension methods to the `IFeatureClass` and `ITable` interface which allows for exporting the data to another data source. [^1]
+- Added `Delete` extension methods to the `IFeatureClass` and `ITable` interface for deleting the object from the database. [^1]
 
 ## Fixed
 - Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
