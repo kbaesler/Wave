@@ -163,7 +163,11 @@ namespace ESRI.ArcGIS.Geodatabase
             IExportOperation operation = new ExportOperationClass();
             operation.ExportTable(inputDatasetName, filter, selection, outputClassName, handle);
 
-            return outputWorkspace.GetTable("", outputTableName);
+            var table = outputWorkspace.GetTable("", outputTableName);
+            foreach (var index in source.Indexes.AsEnumerable())
+                table.AddIndex(index);
+
+            return table;
         }
 
         /// <summary>

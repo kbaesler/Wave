@@ -3,10 +3,11 @@
 namespace ESRI.ArcGIS.Location
 {
     /// <summary>
+    /// 
     /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteEventData" />
+    /// <seealso cref="ESRI.ArcGIS.Location.EventData{RouteMeasureSegmentation}" />
     [DataContract]
-    public class ConcatenateRouteEventData : RouteEventData
+    public class ConcatenateRouteEventData : EventData<RouteMeasureSegmentation>
     {
         #region Public Properties
 

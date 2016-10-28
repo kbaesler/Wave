@@ -1,5 +1,7 @@
 ﻿using System;
 
+using ESRI.ArcGIS.esriSystem;
+
 namespace ESRI.ArcGIS.Framework.Internal
 {
     /// <summary>
@@ -7,6 +9,12 @@ namespace ESRI.ArcGIS.Framework.Internal
     /// </summary>
     internal class ProgressBarAnimation : ProgressGlobeAnimation, IProgressBarAnimation
     {
+        #region Fields
+
+        private IStepProgressor _ProgressBar;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -14,8 +22,35 @@ namespace ESRI.ArcGIS.Framework.Internal
         /// </summary>
         /// <param name="application">The application.</param>
         public ProgressBarAnimation(IApplication application)
+            : this(application, application.StatusBar.ProgressBar)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ProgressBarAnimation" /> class.
+        /// </summary>
+        /// <param name="application">The application.</param>
+        /// <param name="progressBar">The progress bar.</param>
+        public ProgressBarAnimation(IApplication application, IStepProgressor progressBar)
             : base(application)
         {
+            _ProgressBar = progressBar;
+        }
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets or sets the progress bar.
+        /// </summary>
+        /// <value>
+        ///     The progress bar.
+        /// </value>
+        protected IStepProgressor ProgressBar
+        {
+            get { return _ProgressBar; }
+            set { _ProgressBar = value; }
         }
 
         #endregion
@@ -28,18 +63,20 @@ namespace ESRI.ArcGIS.Framework.Internal
         /// <value>The percent complete.</value>
         public float Percentage
         {
-            get { return base.Application.StatusBar.ProgressBar.Position/(float) base.Application.StatusBar.ProgressBar.MaxRange*100; }
+            get { return _ProgressBar.Position/(float) _ProgressBar.MaxRange*100; }
         }
 
         /// <summary>
         ///     Increments the progress bar and updates the status bar with specified status message.
         /// </summary>
         /// <param name="statusMessage">The status message.</param>
-        public void Step(string statusMessage)
+        public virtual bool Step(string statusMessage)
         {
-            base.Application.StatusBar.ProgressBar.Step();
-            base.Application.StatusBar.ProgressBar.Show();
-            base.Application.StatusBar.Message[0] = statusMessage;
+            _ProgressBar.Step();
+            _ProgressBar.Show();
+            _ProgressBar.Message = statusMessage;
+
+            return true;
         }
 
         #endregion
@@ -64,7 +101,7 @@ namespace ESRI.ArcGIS.Framework.Internal
         ///     or
         ///     step;The step cannot be greater than the maximum.
         /// </exception>
-        public void Initialize(int min, int max, int position, int step = 1)
+        public virtual void Initialize(int min, int max, int position, int step = 1)
         {
             if (min > max) throw new ArgumentOutOfRangeException("min", "The minimum cannot be greater than the maximum.");
             if (max < min) throw new ArgumentOutOfRangeException("max", "The maximum cannot be less than the minimum.");
@@ -72,10 +109,11 @@ namespace ESRI.ArcGIS.Framework.Internal
             if (step < 1) throw new ArgumentOutOfRangeException("step", "The step cannot be less than 1.");
             if (step > max) throw new ArgumentOutOfRangeException("step", "The step cannot be greater than the maximum.");
 
-            base.Application.StatusBar.ProgressBar.Position = position;
-            base.Application.StatusBar.ProgressBar.MaxRange = max;
-            base.Application.StatusBar.ProgressBar.MinRange = min;
-            base.Application.StatusBar.ProgressBar.StepValue = step;
+            _ProgressBar.Position = position;
+            _ProgressBar.MaxRange = max;
+            _ProgressBar.MinRange = min;
+            _ProgressBar.StepValue = step;
+
             base.Play(MouseCursorImage.Wait, "");
         }
 
@@ -96,10 +134,10 @@ namespace ESRI.ArcGIS.Framework.Internal
 
             if (disposing)
             {
-                base.Application.StatusBar.ProgressBar.Hide();
+                _ProgressBar.Hide();
             }
         }
 
         #endregion
-    }    
+    }
 }

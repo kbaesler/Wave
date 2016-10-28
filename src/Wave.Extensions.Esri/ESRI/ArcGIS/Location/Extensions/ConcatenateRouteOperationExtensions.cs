@@ -27,7 +27,7 @@ namespace ESRI.ArcGIS.Location
         /// <param name="trackCancel">The object that allows for monitoring the progress.</param>
         /// <param name="concatenateFields">The field(s)used to aggregate rows.</param>
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
-        public static ITable Concatenate(this ITable table, IRouteMeasureLineSegmentation source, IWorkspace outputWorkspace, string outputTableName, IRouteMeasureSegmentation output, ITrackCancel trackCancel, params string[] concatenateFields)
+        public static ITable Concatenate(this ITable table, RouteMeasureLineSegmentation source, IWorkspace outputWorkspace, string outputTableName, IRouteMeasureSegmentation output, ITrackCancel trackCancel, params string[] concatenateFields)
         {
             var outputName = new TableNameClass();
             outputName.WorkspaceName = (IWorkspaceName) ((IDataset) outputWorkspace).FullName;
@@ -36,11 +36,11 @@ namespace ESRI.ArcGIS.Location
             outputWorkspace.Delete(outputName);
 
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.RouteEventProperties;
+            gp.InputEventProperties = source.EventProperties;
             gp.InputTable = table;
             gp.KeepZeroLengthLineEvents = false;
 
-            return gp.Concatenate2(output.RouteEventProperties, concatenateFields, outputName, trackCancel, "");
+            return gp.Concatenate2(output.EventProperties, concatenateFields, outputName, trackCancel, "");
         }
 
         #endregion

@@ -67,6 +67,28 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Creates the output feature class in the specified workspace.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The output workspace.</param>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="definition">The definition.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClassName" /> representing the location of the output table.
+        /// </returns>
+        public static T CreateDefinition<T>(this IWorkspace source, string tableName, T definition)
+            where T : IDatasetName
+        {
+            var ds = (IDataset) source;
+            var workspaceName = (IWorkspaceName) ds.FullName;
+
+            definition.WorkspaceName = workspaceName;
+            definition.Name = tableName;
+
+            return definition;
+        }
+
+        /// <summary>
         ///     Escaping quote characters by use two quotes for every one displayed.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -96,6 +118,20 @@ namespace ESRI.ArcGIS.Geodatabase
             return sw.OpenQueryCursor(commandText);
         }
 #endif
+
+        /// <summary>
+        ///     Determines whether the workspace contains the table name and type combination.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the workspace contains the table name and type.
+        /// </returns>
+        public static bool Contains(this IWorkspace source, esriDatasetType type, string tableName)
+        {
+            return ((IWorkspace2) source).NameExists[type, tableName];
+        }
 
         /// <summary>
         ///     Gets the database management system that is used with conjunction of the <paramref name="source" />.
@@ -478,11 +514,47 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="datasetName">Name of the table.</param>
         public static void Delete(this IWorkspace source, IDatasetName datasetName)
         {
-            if (((IWorkspace2) source).NameExists[datasetName.Type, datasetName.Name])
+            if (source.Contains(datasetName.Type, datasetName.Name))
             {
                 var table = source.GetTable("", datasetName.Name);
                 table.Delete();
             }
+        }
+
+        /// <summary>
+        ///     Creates the output feature class in the specified workspace.
+        /// </summary>
+        /// <param name="source">The output workspace.</param>
+        /// <param name="tableName">The name of the table.</param>
+        /// <returns>Returns a <see cref="IFeatureClassName" /> representing the location of the output table.</returns>
+        public static IFeatureClassName CreateFeatureName(this IWorkspace source, string tableName)
+        {
+            var ds = (IDataset) source;
+            var workspaceName = (IWorkspaceName) ds.FullName;
+
+            var name = new FeatureClassNameClass();
+            name.WorkspaceName = workspaceName;
+            name.Name = tableName;
+
+            return name;
+        }
+
+        /// <summary>
+        ///     Creates the output table in the specified workspace.
+        /// </summary>
+        /// <param name="source">The output workspace.</param>
+        /// <param name="tableName">The name of the table.</param>
+        /// <returns>Returns a <see cref="IDatasetName" /> representing the location of the output table.</returns>
+        public static IDatasetName CreateTableName(this IWorkspace source, string tableName)
+        {
+            var ds = (IDataset) source;
+            var workspaceName = (IWorkspaceName) ds.FullName;
+
+            var name = new TableNameClass();
+            name.WorkspaceName = workspaceName;
+            name.Name = tableName;
+
+            return name;
         }
 
         /// <summary>
@@ -626,7 +698,8 @@ namespace ESRI.ArcGIS.Geodatabase
             }
             finally
             {
-                wse.StopEditing(saveEdits);
+                if (wse.IsBeingEdited())
+                    wse.StopEditing(saveEdits);
             }
 
             return saveEdits;
@@ -703,7 +776,7 @@ namespace ESRI.ArcGIS.Geodatabase
                         source.AbortEditOperation();
                 }
 
-                if (!wse.IsBeingEdited())
+                if (wse.IsBeingEdited())
                     wse.StopEditing(saveEdits);
             }
 

@@ -7,21 +7,13 @@ using ESRI.ArcGIS.Geodatabase;
 namespace ESRI.ArcGIS.Location
 {
     /// <summary>
-    ///     The data requirements for a performing dynamic segmenation on point features or point event tables or point route
-    ///     locations
+    /// The data requirements for a performing dynamic segmenation on point features or point event tables or point route
+    /// locations
     /// </summary>
+    /// <seealso cref="ESRI.ArcGIS.Location.RouteMeasureSegmentation" />
     /// <seealso cref="ESRI.ArcGIS.Location.IRouteMeasurePointProperties" />
-    /// <seealso cref="ESRI.ArcGIS.Location.IRouteMeasureSegmentation" />
-    public interface IRouteMeasurePointSegmentation : IRouteMeasurePointProperties, IRouteMeasureSegmentation
-    {
-    }
-
-    /// <summary>
-    ///     A configuration use for dynamic segmentation for point event tables.
-    /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.IRouteMeasurePointSegmentation" />
     [DataContract]
-    public class RouteMeasurePointSegmentation : IRouteMeasurePointSegmentation
+    public class RouteMeasurePointSegmentation : RouteMeasureSegmentation, IRouteMeasurePointProperties
     {
         #region Constructors
 
@@ -38,9 +30,9 @@ namespace ESRI.ArcGIS.Location
         /// <param name="measureFieldName">The name of the measure field.</param>
         /// <param name="routeIDFieldName">The name of the route field.</param>
         public RouteMeasurePointSegmentation(string measureFieldName, string routeIDFieldName)
+            : base(routeIDFieldName, esriUnits.esriUnknownUnits)
         {
             this.MeasureFieldName = measureFieldName;
-            this.RouteIDFieldName = routeIDFieldName;
         }
 
         #endregion
@@ -48,14 +40,32 @@ namespace ESRI.ArcGIS.Location
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the route measure units.
+        ///     Gets the route event properties.
         /// </summary>
-        [DataMember]
-        public esriUnits RouteMeasureUnit { get; set; }
+        /// <returns>
+        ///     Returns a <see cref="IRouteEventProperties" /> for the segmentation
+        /// </returns>
+        /// <value>
+        ///     The route event properties.
+        /// </value>
+        public override IRouteEventProperties2 EventProperties
+        {
+            get
+            {
+                IRouteMeasurePointProperties points = new RouteMeasurePointPropertiesClass();
+                points.MeasureFieldName = this.MeasureFieldName;
+
+                IRouteEventProperties2 props = (IRouteEventProperties2)points;
+                props.EventMeasureUnit = this.EventMeasureUnit;
+                props.EventRouteIDFieldName = this.EventRouteIDFieldName;
+
+                return props;
+            }
+        }
 
         #endregion
 
-        #region IRouteMeasurePointSegmentation Members
+        #region IRouteMeasurePointProperties Members
 
         /// <summary>
         ///     Gets or sets the name of the measure field that defines the event event’s location on the route
@@ -63,33 +73,6 @@ namespace ESRI.ArcGIS.Location
         /// <value>The name of the measure field.</value>
         [DataMember]
         public string MeasureFieldName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the route event properties.
-        /// </summary>
-        /// <value>The route event properties.</value>
-        [XmlIgnore]
-        public IRouteEventProperties2 RouteEventProperties
-        {
-            get
-            {
-                IRouteMeasurePointProperties point = new RouteMeasurePointPropertiesClass();
-                point.MeasureFieldName = this.MeasureFieldName;
-
-                IRouteEventProperties2 props = (IRouteEventProperties2) point;
-                props.EventMeasureUnit = this.RouteMeasureUnit;
-                props.EventRouteIDFieldName = this.RouteIDFieldName;
-
-                return props;
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the name of the route ID field that identifies route on which event is located.
-        /// </summary>
-        /// <value>The name of the route ID field.</value>
-        [DataMember]
-        public string RouteIDFieldName { get; set; }
 
         #endregion
     }

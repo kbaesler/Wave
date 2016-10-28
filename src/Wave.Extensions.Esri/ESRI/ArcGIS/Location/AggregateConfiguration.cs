@@ -3,18 +3,24 @@ using System.Runtime.Serialization;
 
 namespace ESRI.ArcGIS.Location
 {
+    /// <summary>
+    /// </summary>
     [DataContract]
-    public class SegmentationData
+    public class AggregateConfiguration
     {
         #region Constructors
 
-        public SegmentationData()
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AggregateConfiguration" /> class.
+        /// </summary>
+        public AggregateConfiguration()
         {
             this.Exports = new List<EventData>();
             this.Overlays = new List<OverlayRouteEventData>();
             this.Dissolves = new List<DissolveRouteEventData>();
-            this.Routes = new List<LayerRouteEventData>();
+            this.Routes = new List<RouteEventData<RouteMeasureLineSegmentation>>();
             this.Concatenates = new List<ConcatenateRouteEventData>();
+            this.Joins = new List<JoinEventData>();
         }
 
         #endregion
@@ -40,6 +46,15 @@ namespace ESRI.ArcGIS.Location
         public List<EventData> Exports { get; set; }
 
         /// <summary>
+        ///     Gets the joins.
+        /// </summary>
+        /// <value>
+        ///     The joins.
+        /// </value>
+        [DataMember]
+        public List<JoinEventData> Joins { get; set; }
+
+        /// <summary>
         ///     Gets the route event data that will be overlayed to analyze the data.
         /// </summary>
         [DataMember]
@@ -49,7 +64,7 @@ namespace ESRI.ArcGIS.Location
         ///     Gets the routes that will be created.
         /// </summary>
         [DataMember]
-        public List<LayerRouteEventData> Routes { get; set; }
+        public List<RouteEventData<RouteMeasureLineSegmentation>> Routes { get; set; }
 
         #endregion
     }

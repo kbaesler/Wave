@@ -7,21 +7,13 @@ using ESRI.ArcGIS.Geodatabase;
 namespace ESRI.ArcGIS.Location
 {
     /// <summary>
-    ///     The data requirements for a performing dynamic segmenation on linear features or line event tables or line route
-    ///     locations
+    /// The data requirements for a performing dynamic segmenation on linear features or line event tables or line route
+    /// locations
     /// </summary>
+    /// <seealso cref="ESRI.ArcGIS.Location.RouteMeasureSegmentation" />
     /// <seealso cref="ESRI.ArcGIS.Location.IRouteMeasureLineProperties" />
-    /// <seealso cref="ESRI.ArcGIS.Location.IRouteMeasureSegmentation" />
-    public interface IRouteMeasureLineSegmentation : IRouteMeasureLineProperties, IRouteMeasureSegmentation
-    {
-    }
-
-    /// <summary>
-    ///     A configuration use for dynamic segmentation for linear event tables.
-    /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.IRouteMeasureLineSegmentation" />
     [DataContract]
-    public class RouteMeasureLineSegmentation : IRouteMeasureLineSegmentation
+    public class RouteMeasureLineSegmentation : RouteMeasureSegmentation, IRouteMeasureLineProperties
     {
         #region Constructors
 
@@ -39,10 +31,10 @@ namespace ESRI.ArcGIS.Location
         /// <param name="toMeasureFieldName">The name of the to measure field.</param>
         /// <param name="routeIDFieldName">The name of the route field.</param>
         public RouteMeasureLineSegmentation(string fromMeasureFieldName, string toMeasureFieldName, string routeIDFieldName)
+            : base(routeIDFieldName, esriUnits.esriUnknownUnits)
         {
             this.FromMeasureFieldName = fromMeasureFieldName;
             this.ToMeasureFieldName = toMeasureFieldName;
-            this.RouteIDFieldName = routeIDFieldName;
         }
 
         #endregion
@@ -50,14 +42,33 @@ namespace ESRI.ArcGIS.Location
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the route measure units.
+        ///     Gets the route event properties.
         /// </summary>
-        [DataMember]
-        public esriUnits RouteMeasureUnit { get; set; }
+        /// <returns>
+        ///     Returns a <see cref="IRouteEventProperties" /> for the segmentation
+        /// </returns>
+        /// <value>
+        ///     The route event properties.
+        /// </value>
+        public override IRouteEventProperties2 EventProperties
+        {
+            get
+            {
+                IRouteMeasureLineProperties line = new RouteMeasureLinePropertiesClass();
+                line.FromMeasureFieldName = this.FromMeasureFieldName;
+                line.ToMeasureFieldName = this.ToMeasureFieldName;
+
+                IRouteEventProperties2 props = (IRouteEventProperties2)line;
+                props.EventMeasureUnit = this.EventMeasureUnit;
+                props.EventRouteIDFieldName = this.EventRouteIDFieldName;
+
+                return props;
+            }
+        }
 
         #endregion
 
-        #region IRouteMeasureLineSegmentation Members
+        #region IRouteMeasureLineProperties Members
 
         /// <summary>
         ///     Gets or sets the name of from measure field that defins the end of the line event.
@@ -66,32 +77,6 @@ namespace ESRI.ArcGIS.Location
         [DataMember]
         public string FromMeasureFieldName { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the route event properties.
-        /// </summary>
-        /// <value>The route event properties.</value>
-        [XmlIgnore]
-        public IRouteEventProperties2 RouteEventProperties
-        {
-            get
-            {
-                IRouteMeasureLineProperties line = new RouteMeasureLinePropertiesClass();
-                line.FromMeasureFieldName = this.FromMeasureFieldName;
-                line.ToMeasureFieldName = this.ToMeasureFieldName;
-
-                IRouteEventProperties2 props = (IRouteEventProperties2) line;
-                props.EventMeasureUnit = this.RouteMeasureUnit;
-                props.EventRouteIDFieldName = this.RouteIDFieldName;
-                return props;
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the name of the route ID field that identifies route on which event is located.
-        /// </summary>
-        /// <value>The name of the route ID field.</value>
-        [DataMember]
-        public string RouteIDFieldName { get; set; }
 
         /// <summary>
         ///     Gets or sets the name of to measure field that defines the beginning of line event.

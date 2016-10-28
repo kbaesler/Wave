@@ -35,11 +35,11 @@ namespace ESRI.ArcGIS.Location
             outputWorkspace.Delete(outputName);
 
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.RouteEventProperties;
+            gp.InputEventProperties = source.EventProperties;
             gp.InputTable = table;
             gp.KeepZeroLengthLineEvents = false;
 
-            return gp.Dissolve2(output.RouteEventProperties, dissolveFields, outputName, trackCancel, "");
+            return gp.Dissolve2(output.EventProperties, dissolveFields, outputName, trackCancel, "");
         }
 
         #endregion

@@ -5,11 +5,13 @@ using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
+using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.GeoDatabaseUI;
+using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -159,7 +161,11 @@ namespace ESRI.ArcGIS.Geodatabase
             IExportOperation operation = new ExportOperationClass();
             operation.ExportFeatureClass(datasetName, filter, selection, geometryDef, outputClassName, handle);
 
-            return outputWorkspace.GetFeatureClass("", outputTableName);
+            var table = outputWorkspace.GetFeatureClass("", outputTableName);
+            foreach (var index in source.Indexes.AsEnumerable())
+                table.AddIndex(index);
+
+            return table;
         }
 
         /// <summary>
@@ -485,6 +491,18 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets the geometry definition for the shape of the feature class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IGeometryDef" /> representing the definition of the shape.</returns>
+        public static IGeometryDef GetGeometryDef(this IFeatureClass source)
+        {
+            var i = source.Fields.FindField(source.ShapeFieldName);
+            var field = source.Fields.Field[i];
+            return field.GeometryDef;
+        }
+
+        /// <summary>
         ///     Gets the name of the owner or schema name of the table.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -496,6 +514,17 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
 
             return ((ITable) source).GetSchemaName();
+        }
+
+        /// <summary>
+        ///     Gets the spatial reference.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="ISpatialReference" /> representing the spatial reference of the feature class.</returns>
+        public static ISpatialReference GetSpatialReference(this IFeatureClass source)
+        {
+            var geometryDef = source.GetGeometryDef();
+            return geometryDef.SpatialReference;
         }
 
         /// <summary>
@@ -665,6 +694,67 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             invalidArea.Invalidate((short) screenCache);
+        }
+
+        /// <summary>
+        ///     Joins with the nearest feature in the join feature class. Only features within a distance of maxMapDist will be
+        ///     joined. A searchRadius of -1 means infinity.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="join">The spatial table to append fields from.</param>
+        /// <param name="isLeftOuterJoin">
+        ///     if set to <c>true</c> when a match is required before adding a record from the source
+        ///     feature class to the result. If TRUE, all records in the source feature class are added regardless of whether there
+        ///     is a match.
+        /// </param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="outputName">Name of the output.</param>
+        /// <param name="searchRadius">
+        ///     Determines the search radius for the join operation. Negative values other than -1
+        ///     (infinity) are invalid and will produce an empty output feature class.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the joined feature class.
+        /// </returns>
+        public static IFeatureClass Nearest(this IFeatureClass source, ITable join, bool isLeftOuterJoin, IWorkspace workspace, string outputName, double searchRadius)
+        {
+            ISpatialJoin sj = new SpatialJoinClass();
+            sj.ShowProcess[true] = 0;
+            sj.LeftOuterJoin = isLeftOuterJoin;
+            sj.SourceTable = (ITable) source;
+            sj.JoinTable = join;
+
+            var ds = workspace.CreateFeatureName(outputName);
+            workspace.Delete(ds as IDatasetName);
+
+            return sj.JoinNearest(ds as IName, searchRadius);
+        }
+
+        /// <summary>
+        ///     Identifies those features in the source table that are contained by features in the table being joined.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="join">The spatial table to append fields from.</param>
+        /// <param name="isLeftOuterJoin">
+        ///     if set to <c>true</c> when a match is required before adding a record from the source
+        ///     feature class to the result. If TRUE, all records in the source feature class are added regardless of whether there
+        ///     is a match.
+        /// </param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="outputName">Name of the output.</param>
+        /// <returns>Returns a <see cref="IFeatureClass" /> representing the joined feature class.</returns>
+        public static IFeatureClass Within(this IFeatureClass source, ITable join, bool isLeftOuterJoin, IWorkspace workspace, string outputName)
+        {
+            ISpatialJoin sj = new SpatialJoinClass();
+            sj.ShowProcess[true] = 0;
+            sj.LeftOuterJoin = isLeftOuterJoin;
+            sj.SourceTable = (ITable) source;
+            sj.JoinTable = join;
+
+            var ds = workspace.CreateFeatureName(outputName);
+            workspace.Delete(ds as IDatasetName);
+
+            return sj.JoinWithin(ds as IName);
         }
 
         #endregion

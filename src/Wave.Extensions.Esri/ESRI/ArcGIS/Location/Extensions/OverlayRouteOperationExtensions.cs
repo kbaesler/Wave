@@ -41,10 +41,10 @@ namespace ESRI.ArcGIS.Location
         public static ITable Overlay(this ISelectionSet sourceSelection, IRouteMeasureSegmentation source, ISelectionSet overlaySelection, IRouteMeasureSegmentation overlay, OverlayType type, IRouteMeasureSegmentation output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
         {
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.RouteEventProperties;
+            gp.InputEventProperties = source.EventProperties;
             gp.InputSelection = sourceSelection;
             gp.BuildOutputIndex = true;
-            gp.OverlayEventProperties = overlay.RouteEventProperties;
+            gp.OverlayEventProperties = overlay.EventProperties;
             gp.OverlaySelection = overlaySelection;
             gp.KeepZeroLengthLineEvents = false;
 
@@ -76,10 +76,10 @@ namespace ESRI.ArcGIS.Location
         public static ITable Overlay(this ITable sourceTable, IRouteMeasureSegmentation source, ITable overlayTable, IRouteMeasureSegmentation overlay, OverlayType type, IRouteMeasureSegmentation output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
         {
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.RouteEventProperties;
+            gp.InputEventProperties = source.EventProperties;
             gp.InputTable = sourceTable;
             gp.BuildOutputIndex = true;
-            gp.OverlayEventProperties = overlay.RouteEventProperties;
+            gp.OverlayEventProperties = overlay.EventProperties;
             gp.OverlayTable = overlayTable;
             gp.KeepZeroLengthLineEvents = false;
 
@@ -113,10 +113,10 @@ namespace ESRI.ArcGIS.Location
 
             if (type == OverlayType.Union)
             {
-                return gp.Union2(output.RouteEventProperties, true, outputName, trackCancel, "");
+                return gp.Union2(output.EventProperties, true, outputName, trackCancel, "");
             }
 
-            return gp.Intersect2(output.RouteEventProperties, true, outputName, trackCancel, "");
+            return gp.Intersect2(output.EventProperties, true, outputName, trackCancel, "");
         }
 
         #endregion
