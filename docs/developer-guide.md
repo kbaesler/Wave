@@ -9,9 +9,8 @@ When a stand-alone executable needs to access and use geodatabase objects, a lic
 ### ArcGIS for Desktop
 The following snippets shows the proper way to check out licenses when working with the ArcGIS for Desktop product.
 
-:::c#
-
-    private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode)
+```java
+  private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode)
     {
       using (var lic = new EsriRuntimeAuthorization())
       {
@@ -40,7 +39,7 @@ private void CheckoutLicenses(esriLicenseProductCode esriLicenseProductCode, mmL
     }
     else
     {
-      Console.WriteLine("Unable to check-out the {0} and/or {1} license.", esriLicenseProductCode, mmLicensedProductCode);
+      Console.WriteLine("{0}.", lic.GetInitializationStatus());
     }
   }
 }
