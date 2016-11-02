@@ -11,6 +11,8 @@ These are the changes, additions, removals that are actively being worked on and
 - Added *Linear Referencing* support classes in the `ESRI.ArcGIS.Location` namespace. [^1]
 - Added `Export` extension methods to the `IFeatureClass` and `ITable` interface which allows for exporting the data to another data source. [^1]
 - Added `Delete` extension methods to the `IFeatureClass` and `ITable` interface for deleting the object from the database. [^1]
+- Added support for converting `Dictionary{string, TValue}` into a `dynamic` dictionary using the `ToDynamic` extension method off the `Dictionary{string, TValue}` class. [^1] [^5]
+- Added support for converting `XDocument` into a `dynamic` dictionary using the `ToDynamic` extension method off the `XDocument` class. [^1] [^5]
 
 ## Fixed
 - Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
@@ -87,3 +89,5 @@ These are the changes, additions, removals that are actively being worked on and
    [^3]: A change that is included in both the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
 
    [^4]: A change that **potentially** causes other components to **fail**.
+
+   [^5]: A change that requires the **.NET 4.5** framework.
