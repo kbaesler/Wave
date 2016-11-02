@@ -337,6 +337,8 @@
 <li>Added <em>Linear Referencing</em> support classes in the <code>ESRI.ArcGIS.Location</code> namespace. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code>Export</code> extension methods to the <code>IFeatureClass</code> and <code>ITable</code> interface which allows for exporting the data to another data source. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code>Delete</code> extension methods to the <code>IFeatureClass</code> and <code>ITable</code> interface for deleting the object from the database. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added support for converting <code>Dictionary{string, TValue}</code> into a <code>dynamic</code> dictionary using the <code>ToDynamic</code> extension method off the <code>Dictionary{string, TValue}</code> class. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
+<li>Added support for converting <code>XDocument</code> into a <code>dynamic</code> dictionary using the <code>ToDynamic</code> extension method off the <code>XDocument</code> class. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">#</a></h3>
 <ul>
@@ -428,6 +430,9 @@
 </li>
 <li id="fn:4">
 <p>A change that <strong>potentially</strong> causes other components to <strong>fail</strong>.&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>A change that requires the <strong>.NET 4.5</strong> framework.&#160;<a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
