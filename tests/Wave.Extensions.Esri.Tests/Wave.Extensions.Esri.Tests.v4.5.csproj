@@ -84,6 +84,7 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net35-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -138,6 +139,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="System\Dynamic\Collections\DynamicDictionaryTests.cs" />
+    <Compile Include="System\Dynamic\Xml\DynamicXmlNodeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
