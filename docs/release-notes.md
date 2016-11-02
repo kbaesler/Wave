@@ -14,7 +14,7 @@ These are the changes, additions, removals that are actively being worked on and
 - Added support for converting `Dictionary{string, TValue}` into a `dynamic` dictionary using the `ToDynamic` extension method off the `Dictionary{string, TValue}` class. [^1] [^5]
 - Added support for converting `XDocument` into a `dynamic` dictionary using the `ToDynamic` extension method off the `XDocument` class. [^1] [^5]
 
-## Fixed
+### Fixed
 - Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
 - Fixed issue with `ReadCsv` extension method for the `DataTable` that wasn't opening the ADO connection prior to executing the read, which was causing an exception.
 
