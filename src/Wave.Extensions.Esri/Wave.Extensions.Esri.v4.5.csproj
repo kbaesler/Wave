@@ -332,6 +332,12 @@
     <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
+    <Compile Include="System\Dynamic\Collections\DynamicDictionary.cs" />
+    <Compile Include="System\Dynamic\Collections\DynamicKeyValuePair.cs" />
+    <Compile Include="System\Dynamic\Collections\Extensions\DynamicCollectionsExtensions.cs" />
+    <Compile Include="System\Dynamic\Xml\DynamicXmlNode.cs" />
+    <Compile Include="System\Dynamic\Xml\DynamicXmlNodeList.cs" />
+    <Compile Include="System\Dynamic\Xml\Extensions\DynamicXmlExtensions.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
     <Compile Include="System\Extensions\StringExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
