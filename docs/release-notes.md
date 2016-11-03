@@ -11,15 +11,16 @@ These are the changes, additions, removals that are actively being worked on and
 - Added *Linear Referencing* support classes in the `ESRI.ArcGIS.Location` namespace. [^1]
 - Added `Export` extension methods to the `IFeatureClass` and `ITable` interface which allows for exporting the data to another data source. [^1]
 - Added `Delete` extension methods to the `IFeatureClass` and `ITable` interface for deleting the object from the database. [^1]
-- Added support for converting `Dictionary{string, TValue}` into a `dynamic` dictionary using the `ToDynamic` extension method off the `Dictionary{string, TValue}` class. [^1] [^5]
-- Added support for converting `XDocument` into a `dynamic` dictionary using the `ToDynamic` extension method off the `XDocument` class. [^1] [^5]
+- Added support for converting `Dictionary{string, TValue}` into a `DynamicObject` using the `ToDynamic` extension method off the `Dictionary{string, TValue}` class. [^1] [^5]
+- Added support for converting `XDocument` into a `DynamicObject` using the `ToDynamic` extension method off the `XDocument` class. [^1] [^5]
+- Added support for converting the `IRowBuffer` into a `DynamicObject` using the `ToDynamic` extension method off the `IRowBuffer` interface. [^1] [^5]
 
 ### Fixed
 - Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
 - Fixed issue with `ReadCsv` extension method for the `DataTable` that wasn't opening the ADO connection prior to executing the read, which was causing an exception.
 
 !!! warning "Unpublished"
-    The changes, additions, removals and new features that are part of the backlog have not been published to the public as nuget packages.
+    The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. `master` branch).
 
 ---
 ## Version 1.0.3 - 2016-04-04
