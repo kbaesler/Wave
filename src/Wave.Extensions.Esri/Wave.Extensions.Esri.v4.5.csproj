@@ -230,6 +230,8 @@
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\DynamicRowBuffer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\Extensions\DynamicRowBufferExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\ClassAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\VersionAsyncExtensions.cs" />

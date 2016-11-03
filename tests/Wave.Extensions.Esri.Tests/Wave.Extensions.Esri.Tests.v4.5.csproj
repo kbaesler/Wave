@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensionsTest.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\DynamicRowBufferTests.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\FeatureExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactoriesTest.cs" />

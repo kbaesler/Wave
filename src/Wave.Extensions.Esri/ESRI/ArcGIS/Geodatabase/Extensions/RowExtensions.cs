@@ -287,6 +287,25 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Creates an <see cref="IDictionary{TKey, TValue}" /> from an <see cref="IFields" />
+        /// </summary>
+        /// <param name="source">An <see cref="IRowBuffer" /> to create an <see cref="IDictionary{TKey, Object}" /> from.</param>
+        /// <returns>
+        ///     An <see cref="IDictionary{TKey, Object}" /> that contains the fields from the input source.
+        /// </returns>
+        public static IDictionary<string, object> ToDictionary(this IRowBuffer source)
+        {
+            Dictionary<string, object> dictionary = new Dictionary<string, object>(StringComparer.Create(CultureInfo.CurrentCulture, true));
+
+            for (int i = 0; i < source.Fields.FieldCount; i++)
+            {
+                dictionary.Add(source.Fields.Field[i].Name, source.Value[i]);
+            }
+
+            return dictionary;
+        }
+
+        /// <summary>
         ///     Returns the field value that at the specified <paramref name="fieldName" /> for the <paramref name="source" />.
         /// </summary>
         /// <typeparam name="TValue">The type of the value.</typeparam>

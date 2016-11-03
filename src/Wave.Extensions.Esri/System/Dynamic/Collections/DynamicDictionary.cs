@@ -6,7 +6,7 @@ namespace System.Dynamic
     /// <summary>
     /// </summary>
     /// <typeparam name="TValue">The type of the value.</typeparam>
-    public sealed class DynamicDictionary<TValue> : DynamicObject, IDictionary<string, TValue>
+    public class DynamicDictionary<TValue> : DynamicObject, IDictionary<string, TValue>
     {
         #region Fields
 
