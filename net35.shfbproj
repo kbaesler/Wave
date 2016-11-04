@@ -13,7 +13,7 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 3.5</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
     <OutputPath>docs\help\</OutputPath>
     <HtmlHelpName>Wave.v3.5</HtmlHelpName>
     <Language>en-US</Language>
@@ -30,9 +30,10 @@
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
       <DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Miner.XML" />
-<DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Miner.dll" />
-<DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Esri.XML" />
-<DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Esri.dll" /></DocumentationSources>
+      <DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Miner.dll" />
+      <DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Esri.XML" />
+      <DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Esri.dll" />
+    </DocumentationSources>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
