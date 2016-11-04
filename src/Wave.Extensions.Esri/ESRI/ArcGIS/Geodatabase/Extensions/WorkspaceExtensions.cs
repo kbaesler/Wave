@@ -67,23 +67,23 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Creates the output feature class in the specified workspace.
+        ///     Defines the data set definition in the specified workspace.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type of dataset.</typeparam>
         /// <param name="source">The output workspace.</param>
-        /// <param name="tableName">The name of the table.</param>
+        /// <param name="name">The name of the dataset.</param>
         /// <param name="definition">The definition.</param>
         /// <returns>
-        ///     Returns a <see cref="IFeatureClassName" /> representing the location of the output table.
+        ///     Returns a <see cref="T" /> representing the definition for the dataset.
         /// </returns>
-        public static T CreateDefinition<T>(this IWorkspace source, string tableName, T definition)
+        public static T Define<T>(this IWorkspace source, string name, T definition)
             where T : IDatasetName
         {
             var ds = (IDataset) source;
             var workspaceName = (IWorkspaceName) ds.FullName;
 
             definition.WorkspaceName = workspaceName;
-            definition.Name = tableName;
+            definition.Name = name;
 
             return definition;
         }
@@ -430,12 +430,12 @@ namespace ESRI.ArcGIS.Geodatabase
                 case DBMS.Oracle:
 
                     // Oracle - 01-NOV-2005
-                    return string.Format(CultureInfo.InvariantCulture, "{0}", dateTime.ToString("dd-MMM-yyyy", CultureInfo.InvariantCulture));
+                    return string.Format(CultureInfo.InvariantCulture, "'{0}'", dateTime.ToString("dd-MMM-yyyy", CultureInfo.InvariantCulture));
 
                 case DBMS.SqlServer:
 
                     // SqlServer - '3/11/2005'
-                    return string.Format(CultureInfo.InvariantCulture, "{0}", dateTime.ToShortDateString());
+                    return string.Format(CultureInfo.InvariantCulture, "'{0}'", dateTime.ToShortDateString());
             }
 
             return dateTime.ToShortTimeString();
