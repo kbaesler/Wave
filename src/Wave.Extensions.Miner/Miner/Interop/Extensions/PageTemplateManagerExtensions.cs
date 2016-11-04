@@ -184,8 +184,18 @@ namespace Miner.Interop
         /// </returns>
         public static IEnumerable<string> GetUserNames(this IMMPageTemplateManager source)
         {
-            var reader = source.Workspace.ExecuteReader(string.Format("SELECT DISTINCT(USERNAME) FROM {0}", UserPageTemplates));
-            return reader.AsEnumerable().Select(o => o.GetValue(0, string.Empty)).ToArray();
+            var userNames = new List<string>();
+            var utils = new MMTableUtilsClass();
+
+            string[] tables = { UserPageTemplates, SystemPageTemplates };
+            foreach (var t in tables)
+            {
+                var tableName = utils.GetFullSystemTableName(source.Workspace, t);
+                var reader = source.Workspace.ExecuteReader(string.Format("SELECT DISTINCT(USERNAME) FROM {0}", tableName));
+                userNames.AddRange(reader.AsEnumerable().Select(o => o.GetValue(0, string.Empty)).ToArray());
+            }
+
+            return userNames;
         }
 
         #endregion
@@ -206,7 +216,9 @@ namespace Miner.Interop
         /// </returns>
         private static IEnumerable<KeyValuePair<TKey, TValue>> GetPageTemplatesImpl<TKey, TValue>(IMMPageTemplateManager source, bool system, IQueryFilter filter, Func<IRow, KeyValuePair<TKey, TValue>> func)
         {
-            var table = source.Workspace.GetTable("SDE", system ? SystemPageTemplates : UserPageTemplates);
+            var utils = new MMTableUtilsClass();
+            var tableName = utils.GetFullSystemTableName(source.Workspace, system ? SystemPageTemplates : UserPageTemplates);
+            var table = utils.OpenTable(tableName, (IFeatureWorkspace) source.Workspace);
 
             var cursor = table.Search(filter, true);
 

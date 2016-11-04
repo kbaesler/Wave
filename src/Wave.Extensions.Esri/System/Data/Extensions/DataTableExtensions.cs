@@ -297,15 +297,10 @@ namespace System.Data
         /// <param name="source">The source.</param>
         /// <param name="excelFileName">Name of the excel file.</param>
         /// <exception cref="ArgumentNullException">excelFileName</exception>
-        /// <exception cref="ArgumentException">The excel file must be created with an '.xlsx' extension.;excelFileName</exception>
         public static void WriteXls(this DataTable source, string excelFileName)
         {
             if (excelFileName == null)
                 throw new ArgumentNullException("excelFileName");
-
-            var extension = Path.GetExtension(excelFileName);
-            if (!extension.Equals(".xlsx", StringComparison.InvariantCultureIgnoreCase))
-                throw new ArgumentException("The excel file must be created with an '.xlsx' extension.", "excelFileName");
 
             var connectionString = GetConnectionString(excelFileName);
             using (OleDbConnection connection = new OleDbConnection(connectionString))
@@ -365,12 +360,16 @@ namespace System.Data
         }
 
         /// <summary>
-        ///     Adds a new XLS table.
+        /// Adds a new XLS table.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="connection">The connection.</param>
+        /// <exception cref="ArgumentNullException">source;The TableName must have a value.</exception>
         private static void AddXls(this DataTable source, OleDbConnection connection)
-        {
+        {           
+            if(string.IsNullOrEmpty(source.TableName))
+                throw new ArgumentNullException("source", "The TableName must have a value.");
+
             StringBuilder commandText = new StringBuilder();
             string comma = null;
 

@@ -18,6 +18,7 @@ namespace ESRI.ArcGIS.Framework
         #region Fields
 
         private static ProgressBarAnimation _ProgressBarAnimation;
+        private static ProgressDialogAnimation _ProgressDialogAnimation;
         private static ProgressGlobeAnimation _ProgressGlobeAnimation;
 
         #endregion
@@ -222,10 +223,42 @@ namespace ESRI.ArcGIS.Framework
             if (_ProgressGlobeAnimation != null)
                 _ProgressGlobeAnimation.Dispose();
 
-            _ProgressGlobeAnimation = new ProgressGlobeAnimation(source);
+            _ProgressGlobeAnimation = new ProgressGlobeAnimation(source);            
             _ProgressGlobeAnimation.Play(MouseCursorImage.Wait, statusMessage);
 
             return _ProgressGlobeAnimation;
+        }
+
+        /// <summary>
+        ///     Starts the progress dialog in ArcMap and updates the status message on the dialog.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="animation">The animation.</param>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <param name="position">The position.</param>
+        /// <param name="step">The step.</param>
+        /// <param name="trackCancel">The track cancel.</param>
+        /// <returns>
+        ///     Returns a <see cref="IProgressDialogAnimation" /> representing the object that controls the actions of the progress
+        ///     dialog.
+        /// </returns>
+        public static IProgressDialogAnimation PlayAnimation(this IApplication source, string title, string description, string message, esriProgressAnimationTypes animation, int min, int max, int position, int step = 1, ITrackCancel trackCancel = null)
+        {
+            if (source == null)
+                return null;
+
+            if (_ProgressDialogAnimation != null)
+                _ProgressDialogAnimation.Dispose();
+
+            _ProgressDialogAnimation = new ProgressDialogAnimation(source, animation, trackCancel);
+            _ProgressDialogAnimation.Initialize(min, max, position, step);
+            _ProgressDialogAnimation.Play(MouseCursorImage.Wait, title, description, message);
+
+            return _ProgressDialogAnimation;
         }
 
         #endregion
@@ -234,6 +267,7 @@ namespace ESRI.ArcGIS.Framework
     /// <summary>
     ///     Provides access to the progress bar animation on the status bar.
     /// </summary>
+    /// <seealso cref="System.IDisposable" />
     public interface IProgressBarAnimation : IDisposable
     {
         #region Public Properties
@@ -252,7 +286,8 @@ namespace ESRI.ArcGIS.Framework
         ///     Increments the progress bar and updates the status bar with specified status message.
         /// </summary>
         /// <param name="statusMessage">The status message.</param>
-        void Step(string statusMessage);
+        /// <returns>Returns a <see cref="bool" /> reperesenting <c>true</c> when the progress advanced forward.</returns>
+        bool Step(string statusMessage);
 
         #endregion
     }
@@ -260,15 +295,22 @@ namespace ESRI.ArcGIS.Framework
     /// <summary>
     ///     An interface used to handle starting and stopping the ArcMap progress animation.
     /// </summary>
+    /// <seealso cref="System.IDisposable" />
     public interface IProgressGlobeAnimation : IDisposable
     {
+        #region Public Properties
+
         /// <summary>
-        /// Sets the message on the status bar.
+        ///     Sets the message on the status bar.
         /// </summary>
         /// <value>
-        /// The message on the status bar.
+        ///     The message on the status bar.
         /// </value>
         string Message { set; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Starts the global spinning in ArcMap and updates the message on the status bar.
@@ -276,5 +318,39 @@ namespace ESRI.ArcGIS.Framework
         /// <param name="cursor">The cursor.</param>
         /// <param name="statusMessage">The status message.</param>
         void Play(MouseCursorImage cursor, string statusMessage);
+
+        #endregion
+    }
+
+    /// <summary>
+    /// An interface used to handle starting and stopping the ArcMap dialog for animation of progress.
+    /// </summary>
+    /// <seealso cref="ESRI.ArcGIS.Framework.IProgressBarAnimation" />
+    public interface IProgressDialogAnimation : IProgressBarAnimation
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the type of the animation.
+        /// </summary>
+        /// <value>
+        /// The type of the animation.
+        /// </value>
+        esriProgressAnimationTypes AnimationType { get; set; }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Starts the global spinning in ArcMap and updates the message on the status bar.
+        /// </summary>
+        /// <param name="cursor">The cursor.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="statusMessage">The status message.</param>
+        void Play(MouseCursorImage cursor, string title, string description, string statusMessage);
+
+        #endregion
     }
 }

@@ -23,7 +23,7 @@
     <SyntaxFilters>C#</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceContainer>False</RootNamespaceContainer>
-    <PresentationStyle>Markdown</PresentationStyle>
+    <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>Wave</HelpTitle>
@@ -34,9 +34,9 @@
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
-    <HelpFileFormat>Markdown</HelpFileFormat>
+    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <IndentHtml>True</IndentHtml>
-    <KeepLogFile>True</KeepLogFile>
+    <KeepLogFile>False</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
     <CopyrightHref>https://github.com/Jumpercables/Wave/</CopyrightHref>

@@ -8,13 +8,19 @@ These are the changes, additions, removals that are actively being worked on and
 - The `Wave.log4net.config` file is included in the packages. [^3]
 - Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]
 - Added `GetVisibleLayers` extension method to the `IMap` interface which will return only those layers that are visible (either by virtue of being enabled or due to scale suppression). [^1]
+- Added *Linear Referencing* support classes in the `ESRI.ArcGIS.Location` namespace. [^1]
+- Added `Export` extension methods to the `IFeatureClass` and `ITable` interface which allows for exporting the data to another data source. [^1]
+- Added `Delete` extension methods to the `IFeatureClass` and `ITable` interface for deleting the object from the database. [^1]
+- Added support for converting `Dictionary{string, TValue}` into a `DynamicObject` using the `ToDynamic` extension method off the `Dictionary{string, TValue}` class. [^1] [^5]
+- Added support for converting `XDocument` into a `DynamicObject` using the `ToDynamic` extension method off the `XDocument` class. [^1] [^5]
+- Added support for converting the `IRowBuffer` into a `DynamicObject` using the `ToDynamic` extension method off the `IRowBuffer` interface. [^1] [^5]
 
-## Fixed
+### Fixed
 - Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
 - Fixed issue with `ReadCsv` extension method for the `DataTable` that wasn't opening the ADO connection prior to executing the read, which was causing an exception.
 
 !!! warning "Unpublished"
-    The changes, additions, removals and new features that are part of the backlog have not been published to the public as nuget packages.
+    The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. `master` branch).
 
 ---
 ## Version 1.0.3 - 2016-04-04
@@ -84,3 +90,5 @@ These are the changes, additions, removals that are actively being worked on and
    [^3]: A change that is included in both the **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages.
 
    [^4]: A change that **potentially** causes other components to **fail**.
+
+   [^5]: A change that requires the **.NET 4.5** framework.

@@ -138,12 +138,18 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoDatabaseUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Location, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -206,6 +212,7 @@
     <Compile Include="ESRI\ArcGIS\Framework\ArcMap.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\CommandBarExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressBarAnimation.cs" />
+    <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressDialogAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
@@ -245,6 +252,23 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\AggregateConfiguration.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Extensions\RouteMeasureSegmentationExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteEventtData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteOperation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Route.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureLineSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasurePointSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureSegmentation.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
@@ -291,6 +315,7 @@
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
+    <Compile Include="System\Extensions\StringExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />

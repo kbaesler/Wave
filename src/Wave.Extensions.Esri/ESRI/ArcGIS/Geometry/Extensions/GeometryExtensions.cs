@@ -30,6 +30,22 @@
             return topOp.Buffer(distance);
         }
 
+        /// <summary>
+        ///     Gets the units.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IUnit" /> representing the units.</returns>
+        public static IUnit GetUnits(this ISpatialReference source)
+        {
+            var pcs = source as IProjectedCoordinateSystem;
+            if (pcs != null) return pcs.CoordinateUnit;
+
+            var gcs = source as IGeographicCoordinateSystem;
+            if (gcs != null) return gcs.CoordinateUnit;
+
+            return null;
+        }
+
         #endregion
     }
 }
