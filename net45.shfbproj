@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>docs\help\net45\</OutputPath>
+    <OutputPath>docs\chms\</OutputPath>
     <HtmlHelpName>Wave.v4.5</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileVersion>1.0.3</HelpFileVersion>
@@ -46,6 +46,7 @@
     </ApiFilter>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
     <RootNamespaceTitle>Wave</RootNamespaceTitle>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
