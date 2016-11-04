@@ -29,8 +29,10 @@
     <HelpTitle>Wave</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
-      <DocumentationSource sourceFile="src\Wave.v3.5.sln" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Miner.XML" />
+<DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Miner.dll" />
+<DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Esri.XML" />
+<DocumentationSource sourceFile="src\bin\x86\Debug\net35\Wave.Extensions.Esri.dll" /></DocumentationSources>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
