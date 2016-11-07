@@ -522,42 +522,6 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Creates the output feature class in the specified workspace.
-        /// </summary>
-        /// <param name="source">The output workspace.</param>
-        /// <param name="tableName">The name of the table.</param>
-        /// <returns>Returns a <see cref="IFeatureClassName" /> representing the location of the output table.</returns>
-        public static IFeatureClassName CreateFeatureName(this IWorkspace source, string tableName)
-        {
-            var ds = (IDataset) source;
-            var workspaceName = (IWorkspaceName) ds.FullName;
-
-            var name = new FeatureClassNameClass();
-            name.WorkspaceName = workspaceName;
-            name.Name = tableName;
-
-            return name;
-        }
-
-        /// <summary>
-        ///     Creates the output table in the specified workspace.
-        /// </summary>
-        /// <param name="source">The output workspace.</param>
-        /// <param name="tableName">The name of the table.</param>
-        /// <returns>Returns a <see cref="IDatasetName" /> representing the location of the output table.</returns>
-        public static IDatasetName CreateTableName(this IWorkspace source, string tableName)
-        {
-            var ds = (IDataset) source;
-            var workspaceName = (IWorkspaceName) ds.FullName;
-
-            var name = new TableNameClass();
-            name.WorkspaceName = workspaceName;
-            name.Name = tableName;
-
-            return name;
-        }
-
-        /// <summary>
         ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
         ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.

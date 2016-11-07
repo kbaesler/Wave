@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 3.5</FrameworkVersion>
-    <OutputPath>docs\help\</OutputPath>
+    <OutputPath>docs\chms\</OutputPath>
     <HtmlHelpName>Wave.v3.5</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileVersion>1.0.3</HelpFileVersion>
