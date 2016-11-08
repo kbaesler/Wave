@@ -4,6 +4,10 @@ This will serve as a reference to the release notes with regards to the `release
 ## Backlog
 These are the changes, additions, removals that are actively being worked on and will be included in future releases.
 
+!!! warning "Unpublished"
+    The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. `master` branch).
+
+## Version 1.0.4 - 2016-11-08
 ### New
 - The `Wave.log4net.config` file is included in the packages. [^3]
 - Added `Version` and `BuildNumber` to the `ArcFM` static class. [^2]
@@ -18,9 +22,6 @@ These are the changes, additions, removals that are actively being worked on and
 ### Fixed
 - Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
 - Fixed issue with `ReadCsv` extension method for the `DataTable` that wasn't opening the ADO connection prior to executing the read, which was causing an exception.
-
-!!! warning "Unpublished"
-    The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. `master` branch).
 
 ---
 ## Version 1.0.3 - 2016-04-04
