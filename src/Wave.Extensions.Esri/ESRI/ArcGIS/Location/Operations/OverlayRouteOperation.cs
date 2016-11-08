@@ -208,7 +208,7 @@ namespace ESRI.ArcGIS.Location
         /// </returns>
         private ITable Overlay(IRouteMeasureEventGeoprocessor2 gp, OverlayType type, RouteMeasureSegmentation output, string outputTableName, IWorkspace outputWorkspace, bool keepAllFields, ITrackCancel trackCancel)
         {
-            IDatasetName outputName = outputWorkspace.CreateTableName(outputTableName);
+            IDatasetName outputName = outputWorkspace.Define(outputTableName, new TableNameClass());
             outputWorkspace.Delete(outputName);
 
             if (type == OverlayType.Union)

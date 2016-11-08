@@ -724,10 +724,10 @@ namespace ESRI.ArcGIS.Geodatabase
             sj.SourceTable = (ITable) source;
             sj.JoinTable = join;
 
-            var ds = workspace.CreateFeatureName(outputName);
-            workspace.Delete(ds as IDatasetName);
+            var ds = workspace.Define(outputName, new FeatureClassNameClass());
+            workspace.Delete(ds);
 
-            return sj.JoinNearest(ds as IName, searchRadius);
+            return sj.JoinNearest(ds, searchRadius);
         }
 
         /// <summary>
@@ -751,10 +751,10 @@ namespace ESRI.ArcGIS.Geodatabase
             sj.SourceTable = (ITable) source;
             sj.JoinTable = join;
 
-            var ds = workspace.CreateFeatureName(outputName);
-            workspace.Delete(ds as IDatasetName);
+            var ds = workspace.Define(outputName, new FeatureClassNameClass());
+            workspace.Delete(ds);
 
-            return sj.JoinWithin(ds as IName);
+            return sj.JoinWithin(ds);
         }
 
         #endregion
