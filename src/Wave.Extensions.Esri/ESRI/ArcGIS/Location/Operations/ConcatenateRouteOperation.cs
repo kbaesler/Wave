@@ -51,7 +51,7 @@ namespace ESRI.ArcGIS.Location
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
         public ITable Execute(ITable table, RouteMeasureLineSegmentation source, IWorkspace outputWorkspace, string outputTableName, RouteMeasureSegmentation output, ITrackCancel trackCancel, params string[] concatenateFields)
         {
-            IDatasetName outputName = outputWorkspace.CreateTableName(outputTableName);
+            IDatasetName outputName = outputWorkspace.Define(outputTableName, new TableNameClass());
             outputWorkspace.Delete(outputName);
 
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
