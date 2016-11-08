@@ -250,6 +250,12 @@
             </li>
           
             <li class="anchor">
+              <a title="Version 1.0.4 - 2016-11-08" href="#version-104-2016-11-08">
+                Version 1.0.4 - 2016-11-08
+              </a>
+            </li>
+          
+            <li class="anchor">
               <a title="Version 1.0.3 - 2016-04-04" href="#version-103-2016-04-04">
                 Version 1.0.3 - 2016-04-04
               </a>
@@ -329,6 +335,11 @@
 <p>This will serve as a reference to the release notes with regards to the <code>release</code> version of the NuGet packages that are published.</p>
 <h2 id="backlog">Backlog<a class="headerlink" href="#backlog" title="Permanent link">#</a></h2>
 <p>These are the changes, additions, removals that are actively being worked on and will be included in future releases.</p>
+<div class="admonition warning">
+<p class="admonition-title">Unpublished</p>
+<p>The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. <code>master</code> branch).</p>
+</div>
+<h2 id="version-104-2016-11-08">Version 1.0.4 - 2016-11-08<a class="headerlink" href="#version-104-2016-11-08" title="Permanent link">#</a></h2>
 <h3 id="new">New<a class="headerlink" href="#new" title="Permanent link">#</a></h3>
 <ul>
 <li>The <code>Wave.log4net.config</code> file is included in the packages. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
@@ -337,18 +348,15 @@
 <li>Added <em>Linear Referencing</em> support classes in the <code>ESRI.ArcGIS.Location</code> namespace. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code>Export</code> extension methods to the <code>IFeatureClass</code> and <code>ITable</code> interface which allows for exporting the data to another data source. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code>Delete</code> extension methods to the <code>IFeatureClass</code> and <code>ITable</code> interface for deleting the object from the database. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-<li>Added support for converting <code>Dictionary{string, TValue}</code> into a <code>dynamic</code> dictionary using the <code>ToDynamic</code> extension method off the <code>Dictionary{string, TValue}</code> class. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
-<li>Added support for converting <code>XDocument</code> into a <code>dynamic</code> dictionary using the <code>ToDynamic</code> extension method off the <code>XDocument</code> class. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
+<li>Added support for converting <code>Dictionary{string, TValue}</code> into a <code>DynamicObject</code> using the <code>ToDynamic</code> extension method off the <code>Dictionary{string, TValue}</code> class. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
+<li>Added support for converting <code>XDocument</code> into a <code>DynamicObject</code> using the <code>ToDynamic</code> extension method off the <code>XDocument</code> class. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
+<li>Added support for converting the <code>IRowBuffer</code> into a <code>DynamicObject</code> using the <code>ToDynamic</code> extension method off the <code>IRowBuffer</code> interface. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed issue with <code>GetAutoValue</code> extension methods were recursively searching too deep for the auto values.</li>
 <li>Fixed issue with <code>ReadCsv</code> extension method for the <code>DataTable</code> that wasn&rsquo;t opening the ADO connection prior to executing the read, which was causing an exception.</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Unpublished</p>
-<p>The changes, additions, removals and new features that are part of the backlog have not been published to the public as nuget packages.</p>
-</div>
 <hr />
 <h2 id="version-103-2016-04-04">Version 1.0.3 - 2016-04-04<a class="headerlink" href="#version-103-2016-04-04" title="Permanent link">#</a></h2>
 <h3 id="new_1">New<a class="headerlink" href="#new_1" title="Permanent link">#</a></h3>
