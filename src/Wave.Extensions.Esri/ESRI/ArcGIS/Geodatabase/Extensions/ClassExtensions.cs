@@ -24,6 +24,34 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Transfers the feature class to the specified workspace, while preserving the OBJECTID values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="conflicts">if set to <c>true</c> has conflicts with the export.</param>
+        /// <param name="enumNameMapping">The enum name mapping.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class in the target workspace.
+        /// </returns>
+        public static IFeatureClass Transfer(this IFeatureClass source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
+        {
+            IName sourceName = workspace.Define(name, new FeatureClassNameClass());
+            IEnumName names = new NamesEnumeratorClass();
+            IEnumNameEdit edit = (IEnumNameEdit) names;
+            edit.Add(sourceName);
+
+            IDataset ds = (IDataset) source;
+            ds.Workspace.Transfer(workspace, names, out conflicts, out enumNameMapping);
+
+            if (!conflicts)
+            {
+                return workspace.GetFeatureClass("", name);
+            }
+
+            return null;
+        }
+        /// <summary>
         ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
         /// </summary>
         /// <param name="source">The source.</param>

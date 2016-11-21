@@ -6,6 +6,7 @@ using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.DataSourcesGDB;
+using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase.Internal;
 using ESRI.ArcGIS.GeoDatabaseUI;
 
@@ -33,7 +34,7 @@ namespace ESRI.ArcGIS.Geodatabase
         public static string CreateExpression(this ITable source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
         {
             List<IField> fields = new List<IField>();
-            
+
             foreach (var fieldName in fieldNames)
             {
                 int index = source.FindField(fieldName);
@@ -639,6 +640,55 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 return cursor.GetXDocument(elementName, predicate);
             }
+        }
+
+        /// <summary>
+        /// Transfers the table to the specified workspace, while preserving the OBJECTID values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="conflicts">if set to <c>true</c> has conflicts with the export.</param>
+        /// <param name="enumNameMapping">The enum name mapping.</param>
+        /// <returns>
+        /// Returns a <see cref="ITable" /> representing the feature class in the target workspace.
+        /// </returns>
+        public static ITable Transfer(this ITable source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
+        {
+            IName sourceName = workspace.Define(name, new TableNameClass());
+            IEnumName names = new NamesEnumeratorClass();
+            IEnumNameEdit edit = (IEnumNameEdit)names;
+            edit.Add(sourceName);
+
+            IDataset ds = (IDataset)source;
+            ds.Workspace.Transfer(workspace, names, out conflicts, out enumNameMapping);
+
+            if (!conflicts)
+            {
+                return workspace.GetTable("", name);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        ///     Joins the specified foreign class with the source class to create an in memory relationship.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="foreignClass">The foreign class.</param>
+        /// <param name="primaryKeyField">The primary key field.</param>
+        /// <param name="foreignKeyField">The foreign key field.</param>
+        /// <param name="cardinality">The cardinality.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRelationshipClass" /> representing the relationship between the two classes.
+        /// </returns>
+        public static IRelationshipClass Join(this IObjectClass source, IObjectClass foreignClass, string primaryKeyField, string foreignKeyField, esriRelCardinality cardinality, string name = "")
+        {
+            var joinName = name ?? string.Format("{0}_{1}", ((IDataset) source).Name, ((IDataset) foreignClass).Name);
+
+            var factory = new MemoryRelationshipClassFactory();
+            return factory.Open(joinName, source, primaryKeyField, foreignClass, foreignKeyField, "Forward", "Backward", cardinality);
         }
 
         #endregion

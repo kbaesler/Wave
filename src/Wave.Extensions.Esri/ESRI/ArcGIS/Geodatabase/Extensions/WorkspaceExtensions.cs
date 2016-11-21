@@ -543,6 +543,31 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IFeatureWorkspace) source).OpenTable(name);
         }
 
+        /// <summary>
+        ///     Transfers one or more datasets from one geodatabase to another geodatabase.
+        ///     This includes tables, feature classes, feature datasets, or any other kind of dataset and a set containing
+        ///     different types of datasets
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="names">The names.</param>
+        /// <param name="conflicts">if set to <c>true</c> has conflicts with the transfer.</param>
+        /// <param name="enumNameMapping">The enumeration of the name mappings.</param>
+        public static void Transfer(this IWorkspace source, IWorkspace workspace, IEnumName names, out bool conflicts, out IEnumNameMapping enumNameMapping)
+        {
+            IWorkspaceName targetWorkspaceName = (IWorkspaceName) ((IDataset) workspace).FullName;
+            IName targetName = (IName) targetWorkspaceName;
+
+            IGeoDBDataTransfer transfer = new GeoDBDataTransferClass();
+            conflicts = transfer.GenerateNameMapping(names, targetName, out enumNameMapping);
+            enumNameMapping.Reset();
+
+            if (!conflicts)
+            {
+                transfer.Transfer(enumNameMapping, targetName);
+            }
+        }
+
 #if V10
         /// <summary>
         ///     Gets all of the tables in the workspace.
