@@ -13,7 +13,7 @@ namespace ESRI.ArcGIS.Carto
     public static class LayerExtensions
     {
         #region Public Methods
-
+        
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IElement" />
         /// </summary>
@@ -208,7 +208,7 @@ namespace ESRI.ArcGIS.Carto
         public static void Remove(this IFeatureLayer source, IObjectClass foreignClass)
         {
             IRelationshipClassCollectionEdit edit = (IRelationshipClassCollectionEdit)source;
-            IRelationshipClassCollection collection = (IRelationshipClassCollection) source;
+            IRelationshipClassCollection collection = (IRelationshipClassCollection)edit;
             foreach (var relClass in collection.FindRelationshipClasses(foreignClass, esriRelRole.esriRelRoleAny).AsEnumerable())
             {
                 edit.RemoveRelationshipClass(relClass);

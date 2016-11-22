@@ -9,6 +9,7 @@ using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase.Internal;
 using ESRI.ArcGIS.GeoDatabaseUI;
+using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -18,6 +19,36 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class TableExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Performs the calculation by executing the pre-expression and expression.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter used to access the rows on which the calculation will be performed.</param>
+        /// <param name="fieldName">Field to perform the calculation on.</param>
+        /// <param name="expression">Expression or value applied to a field in each row of the cursor.</param>
+        /// <param name="preExpression">
+        ///     A pre-calculation determination of a value or variable that may be used as the expression
+        ///     (or value) of the calculation.
+        /// </param>
+        /// <param name="showErrorPrompt">if set to <c>true</c> show a message prompt when an error occurs during calculation.</param>
+        /// <param name="callback">The call back routine.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnvelope" /> representing the features that have been modified by the calculation. This
+        ///     envelope can be used to refresh the display for the calculated area only. If the table used in the calculate is
+        ///     non-spatial, a null is returned.
+        /// </returns>
+        public static IEnvelope Calculate(this ITable source, IQueryFilter filter, string fieldName, string expression, string preExpression, bool showErrorPrompt, ICalculatorCallback callback)
+        {
+            ICalculator calculator = new CalculatorClass();
+            calculator.Callback = callback;
+            calculator.Cursor = source.Update(filter, true);
+            calculator.Field = fieldName;
+            calculator.Expression = expression;
+            calculator.PreExpression = preExpression;
+            calculator.ShowErrorPrompt = showErrorPrompt;
+            return calculator.Calculate();
+        }
 
         /// <summary>
         ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
@@ -643,35 +674,6 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Transfers the table to the specified workspace, while preserving the OBJECTID values.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="workspace">The workspace.</param>
-        /// <param name="conflicts">if set to <c>true</c> has conflicts with the export.</param>
-        /// <param name="enumNameMapping">The enum name mapping.</param>
-        /// <returns>
-        /// Returns a <see cref="ITable" /> representing the feature class in the target workspace.
-        /// </returns>
-        public static ITable Transfer(this ITable source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
-        {
-            IName sourceName = workspace.Define(name, new TableNameClass());
-            IEnumName names = new NamesEnumeratorClass();
-            IEnumNameEdit edit = (IEnumNameEdit)names;
-            edit.Add(sourceName);
-
-            IDataset ds = (IDataset)source;
-            ds.Workspace.Transfer(workspace, names, out conflicts, out enumNameMapping);
-
-            if (!conflicts)
-            {
-                return workspace.GetTable("", name);
-            }
-
-            return null;
-        }
-
-        /// <summary>
         ///     Joins the specified foreign class with the source class to create an in memory relationship.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -689,6 +691,36 @@ namespace ESRI.ArcGIS.Geodatabase
 
             var factory = new MemoryRelationshipClassFactory();
             return factory.Open(joinName, source, primaryKeyField, foreignClass, foreignKeyField, "Forward", "Backward", cardinality);
+        }
+
+        /// <summary>
+        ///     Transfers the table (and all relationships) to the specified workspace, while preserving the OBJECTID values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="conflicts">if set to <c>true</c> has conflicts with the export.</param>
+        /// <param name="enumNameMapping">The enum name mapping.</param>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the feature class in the target workspace.
+        /// </returns>
+        public static ITable Transfer(this ITable source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
+        {
+            IDataset ds = (IDataset) source;
+            IName fromName = ds.Workspace.Define(ds.Name, new TableNameClass());
+
+            IEnumName fromNames = new NamesEnumeratorClass();
+            IEnumNameEdit edit = (IEnumNameEdit) fromNames;
+            edit.Add(fromName);
+
+            ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping, mapping => name);
+
+            if (!conflicts)
+            {
+                return workspace.GetTable("", name);
+            }
+
+            return null;
         }
 
         #endregion

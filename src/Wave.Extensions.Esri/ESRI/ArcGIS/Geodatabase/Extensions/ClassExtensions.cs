@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
@@ -14,7 +15,7 @@ using ESRI.ArcGIS.GeoDatabaseUI;
 using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
-{
+{    
     /// <summary>
     ///     Provides extension methods for the <see cref="ESRI.ArcGIS.Geodatabase.IClass" /> and
     ///     <see cref="ESRI.ArcGIS.Geodatabase.IObjectClass" /> interfaces.
@@ -24,33 +25,28 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Transfers the feature class to the specified workspace, while preserving the OBJECTID values.
+        ///     Performs the calculation by executing the pre-expression and expression.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="workspace">The workspace.</param>
-        /// <param name="conflicts">if set to <c>true</c> has conflicts with the export.</param>
-        /// <param name="enumNameMapping">The enum name mapping.</param>
+        /// <param name="filter">The filter used to access the rows on which the calculation will be performed.</param>
+        /// <param name="fieldName">Field to perform the calculation on.</param>
+        /// <param name="expression">Expression or value applied to a field in each row of the cursor.</param>
+        /// <param name="preExpression">
+        ///     A pre-calculation determination of a value or variable that may be used as the expression
+        ///     (or value) of the calculation.
+        /// </param>
+        /// <param name="showErrorPrompt">if set to <c>true</c> show a message prompt when an error occurs during calculation.</param>
+        /// <param name="callback">The call back routine.</param>
         /// <returns>
-        ///     Returns a <see cref="IFeatureClass" /> representing the feature class in the target workspace.
+        ///     Returns a <see cref="IEnvelope" /> representing the features that have been modified by the calculation. This
+        ///     envelope can be used to refresh the display for the calculated area only. If the table used in the calculate is
+        ///     non-spatial, a null is returned.
         /// </returns>
-        public static IFeatureClass Transfer(this IFeatureClass source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
+        public static IEnvelope Calculate(this IFeatureClass source, IQueryFilter filter, string fieldName, string expression, string preExpression, bool showErrorPrompt, ICalculatorCallback callback)
         {
-            IName sourceName = workspace.Define(name, new FeatureClassNameClass());
-            IEnumName names = new NamesEnumeratorClass();
-            IEnumNameEdit edit = (IEnumNameEdit) names;
-            edit.Add(sourceName);
-
-            IDataset ds = (IDataset) source;
-            ds.Workspace.Transfer(workspace, names, out conflicts, out enumNameMapping);
-
-            if (!conflicts)
-            {
-                return workspace.GetFeatureClass("", name);
-            }
-
-            return null;
+            return ((ITable) source).Calculate(filter, fieldName, expression, preExpression, showErrorPrompt, callback);
         }
+
         /// <summary>
         ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
         /// </summary>
@@ -756,6 +752,37 @@ namespace ESRI.ArcGIS.Geodatabase
             workspace.Delete(ds);
 
             return sj.JoinNearest(ds, searchRadius);
+        }
+
+        /// <summary>
+        ///     Transfers the feature class (and all relationships) to the specified workspace, while preserving the OBJECTID
+        ///     values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="name">The name feature class in the transfer.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="conflicts">if set to <c>true</c> has conflicts with the export.</param>
+        /// <param name="enumNameMapping">The enum name mapping.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class in the target workspace.
+        /// </returns>
+        public static IFeatureClass Transfer(this IFeatureClass source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
+        {
+            IDataset ds = (IDataset) source;
+            IName fromName = ds.Workspace.Define(ds.Name, new FeatureClassNameClass());
+
+            IEnumName fromNames = new NamesEnumeratorClass();
+            IEnumNameEdit edit = (IEnumNameEdit) fromNames;
+            edit.Add(fromName);
+
+            ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping, mapping => name);
+
+            if (!conflicts)
+            {
+                return workspace.GetFeatureClass("", name);
+            }
+
+            return null;
         }
 
         /// <summary>
