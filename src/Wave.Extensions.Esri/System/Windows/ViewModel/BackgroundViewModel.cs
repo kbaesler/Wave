@@ -75,6 +75,18 @@ namespace System.Windows
         }
 
         /// <summary>
+        /// Raises the System.ComponentModel.BackgroundWorker.ProgressChanged event.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        protected virtual void ReportProgress(string message)
+        {
+            if (_Worker.IsBusy)
+            {
+                _Worker.ReportProgress(-1, message);
+            }
+        }
+
+        /// <summary>
         ///     Raises the System.ComponentModel.BackgroundWorker.ProgressChanged event.
         /// </summary>
         /// <param name="percentProgress">The percentage, from 0 to 100, of the background operation that is complete.</param>
@@ -82,7 +94,7 @@ namespace System.Windows
         ///     The state object passed to
         ///     System.ComponentModel.BackgroundWorker.RunWorkerAsync(System.Object).
         /// </param>
-        protected void ReportProgress(int percentProgress, object userState)
+        protected virtual void ReportProgress(int percentProgress, object userState)
         {
             if (_Worker.IsBusy)
             {
