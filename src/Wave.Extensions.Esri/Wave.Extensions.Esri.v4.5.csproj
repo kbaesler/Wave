@@ -346,6 +346,7 @@
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />
     <Compile Include="System\IO\Extensions\StreamExtensions.cs" />
+    <Compile Include="System\IO\NetworkDrive.cs" />
     <Compile Include="System\Native\UnsafeWindowMethods.cs" />
     <Compile Include="System\Recursion.cs" />
     <Compile Include="System\Reflection\Extensions\AssemblyExtensions.cs" />
@@ -427,6 +428,7 @@
     <Compile Include="System\Windows\Observable.cs" />
     <Compile Include="System\Windows\ViewModel\BackgroundViewModel.cs" />
     <Compile Include="System\Windows\ViewModel\BaseClasses\BaseViewModel.cs" />
+    <Compile Include="System\Windows\ViewModel\DispatcherViewModel.cs" />
     <Compile Include="System\Xml\Extensions\XDocumentExtensions.cs" />
     <Compile Include="System\Xml\Extensions\XmlDocumentExtensions.cs" />
     <Compile Include="System\Xml\XmlSerialization.cs" />
