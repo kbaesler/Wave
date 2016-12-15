@@ -55,7 +55,7 @@ namespace Miner.Interop
         {
             try
             {
-                if (InoperableAutoUpdaters.Instance.Contains(pRelationship.RelationshipClass.RelationshipClassID, this.GetType()))
+                if (InoperableAutoUpdaters.Instance.Contains(pRelationship.RelationshipClass.RelationshipClassID, -1, this.GetType()))
                     return;
 
                 if (this.CanExecute(mode))

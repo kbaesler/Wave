@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using ESRI.ArcGIS.Geodatabase;
 
@@ -13,7 +14,7 @@ namespace Miner.Framework
     {
         #region Fields
 
-        private readonly Dictionary<int, List<Guid>> _Guids;
+        private readonly Dictionary<int, Dictionary<int, List<Guid>>> _Guids;
         private static InoperableAutoUpdaters _Instance;
 
         #endregion
@@ -25,7 +26,7 @@ namespace Miner.Framework
         /// </summary>
         private InoperableAutoUpdaters()
         {
-            _Guids = new Dictionary<int, List<Guid>>();
+            _Guids = new Dictionary<int, Dictionary<int, List<Guid>>>();
         }
 
         #endregion
@@ -54,7 +55,8 @@ namespace Miner.Framework
         /// <param name="type">The type.</param>
         public void Add(IObjectClass source, Type type)
         {
-            this.Add(source.ObjectClassID, type);
+            foreach (var entry in source.GetSubtypes())
+                this.Add(source.ObjectClassID, entry.Key, type);
         }
 
         /// <summary>
@@ -67,7 +69,11 @@ namespace Miner.Framework
         /// </returns>
         public bool Contains(IObjectClass source, Type type)
         {
-            return this.Contains(source.ObjectClassID, type);
+            var subtypes = source.GetSubtypes();
+            var items = subtypes as KeyValuePair<int, string>[] ?? subtypes.ToArray();
+            var flags = items.Select(entry => this.Contains(source.ObjectClassID, entry.Key, type)).ToList();
+
+            return flags.Count == items.Count();
         }
 
         /// <summary>
@@ -77,65 +83,86 @@ namespace Miner.Framework
         /// <param name="type">The type.</param>
         public void Remove(IObjectClass source, Type type)
         {
-            this.Remove(source.ObjectClassID, type);
-        }
-
-        /// <summary>
-        ///     Adds the specified type.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="type">The type.</param>
-        public void Add(int id, Type type)
-        {
-            var list = new List<Guid>();
-
-            if (_Guids.ContainsKey(id))
-                list = _Guids[id];
-            else
-                _Guids.Add(id, list);
-
-            list.Add(type.GUID);
+            foreach (var entry in source.GetSubtypes())
+                this.Remove(source.ObjectClassID, entry.Key, type);
         }
 
         /// <summary>
         ///     Determines whether the type is inoperable.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <param name="subtype">The subtype.</param>
         /// <param name="type">The type.</param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing <c>true</c> when the type is inoperable for the id.
         /// </returns>
-        public bool Contains(int id, Type type)
+        public bool Contains(int id, int subtype, Type type)
         {
-            var list = new List<Guid>();
+            var subtypes = new Dictionary<int, List<Guid>>();
 
             if (_Guids.ContainsKey(id))
-                list = _Guids[id];
+                subtypes = _Guids[id];
+
+            var list = new List<Guid>();
+
+            if (subtypes.ContainsKey(subtype))
+                list = subtypes[subtype];
 
             return list.Contains(type.GUID);
+        }
+
+        /// <summary>
+        ///     Clears this instance.
+        /// </summary>
+        public void Clear()
+        {
+            _Guids.Clear();
+        }
+
+        /// <summary>
+        ///     Adds the specified type.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="subtype">The subtype.</param>
+        /// <param name="type">The type.</param>
+        public void Add(int id, int subtype, Type type)
+        {
+            var subtypes = new Dictionary<int, List<Guid>>();
+
+            if (_Guids.ContainsKey(id))
+                subtypes = _Guids[id];
+            else
+                _Guids.Add(id, subtypes);
+
+            var list = new List<Guid>();
+
+            if (subtypes.ContainsKey(subtype))
+                list = subtypes[subtype];
+            else
+                subtypes.Add(subtype, list);
+
+            list.Add(type.GUID);
         }
 
         /// <summary>
         ///     Removes the specified type.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <param name="subtype">The subtype.</param>
         /// <param name="type">The type.</param>
-        public void Remove(int id, Type type)
+        public void Remove(int id, int subtype, Type type)
         {
-            var list = new List<Guid>();
+            var subtypes = new Dictionary<int, List<Guid>>();
 
             if (_Guids.ContainsKey(id))
-                list = _Guids[id];
+                subtypes = _Guids[id];
+
+            var list = new List<Guid>();
+
+            if (subtypes.ContainsKey(subtype))
+                list = subtypes[subtype];
 
             list.Remove(type.GUID);
-        }
-
-        /// <summary>
-        /// Clears this instance.
-        /// </summary>
-        public void Clear()
-        {
-            _Guids.Clear();
         }
 
         #endregion

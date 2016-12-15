@@ -68,7 +68,7 @@ namespace Miner.Interop
         {
             try
             {
-                if (InoperableAutoUpdaters.Instance.Contains(pObject.Class, this.GetType()))
+                if (InoperableAutoUpdaters.Instance.Contains(pObject.Class.ObjectClassID, ((IRowSubtypes) pObject).SubtypeCode, this.GetType()))
                     return;
 
                 if (this.CanExecute(mode))
