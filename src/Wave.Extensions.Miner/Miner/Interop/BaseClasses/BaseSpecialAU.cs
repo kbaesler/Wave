@@ -68,7 +68,10 @@ namespace Miner.Interop
         {
             try
             {
-                if (this.ShouldExecute(mode))
+                if (InoperableAutoUpdaters.Instance.Contains(pObject.Class, this.GetType()))
+                    return;
+
+                if (this.CanExecute(mode))
                 {
                     this.InternalExecute(pObject, mode, eEvent);
                 }
@@ -185,7 +188,7 @@ namespace Miner.Interop
         /// <returns>
         ///     <c>true</c> if this instance can execute using the specified AU mode; otherwise, <c>false</c>.
         /// </returns>
-        protected virtual bool ShouldExecute(mmAutoUpdaterMode mode)
+        protected virtual bool CanExecute(mmAutoUpdaterMode mode)
         {
             return (mode != mmAutoUpdaterMode.mmAUMNoEvents);
         }

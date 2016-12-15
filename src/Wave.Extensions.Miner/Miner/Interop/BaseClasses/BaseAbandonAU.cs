@@ -55,6 +55,9 @@ namespace Miner.Interop
         {
             try
             {
+                if (InoperableAutoUpdaters.Instance.Contains(pObj.Class, this.GetType()))
+                    return;
+
                 this.InternalExecute(pObj, pNewObj);
             }
             catch (COMException e)

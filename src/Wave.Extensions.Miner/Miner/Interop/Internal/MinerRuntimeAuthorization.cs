@@ -89,13 +89,13 @@ namespace Miner.Interop.Internal
 
             if (!base.ProductStatus.Any())
             {
-                msg.AppendLine(MESSAGE_NO_LICENSES_REQUESTED);
+                msg.Append(MESSAGE_NO_LICENSES_REQUESTED);
             }
             else if (base.ProductStatus.ContainsValue(mmLicenseStatus.mmLicenseAlreadyInitialized)
                      || base.ProductStatus.ContainsValue(mmLicenseStatus.mmLicenseCheckedOut))
             {
                 var status = this.GetProductStatus(this.InitializedProduct, mmLicenseStatus.mmLicenseCheckedOut);
-                msg.AppendLine(status);
+                msg.Append(status);
             }
             else
             {
