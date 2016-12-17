@@ -543,6 +543,59 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IFeatureWorkspace) source).OpenTable(name);
         }
 
+        /// <summary>
+        /// Transfers one or more datasets from one geodatabase to another geodatabase, which includes tables, feature classes, feature datasets, or any other kind of dataset and a set containing
+        /// different types of datasets.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="fromNames">The names of the source objects.</param>
+        /// <param name="conflicts">if set to <c>true</c> has conflicts with the transfer.</param>
+        /// <param name="enumNameMapping">The enumeration of the name mappings.</param>
+        /// <param name="resolveNameConflictFunc">The resolve name conflict function.</param>
+        public static void Transfer(this IWorkspace source, IWorkspace workspace, IEnumName fromNames, out bool conflicts, out IEnumNameMapping enumNameMapping, Func<INameMapping, string> resolveNameConflictFunc)
+        {
+            IWorkspaceName targetWorkspaceName = (IWorkspaceName) ((IDataset) workspace).FullName;
+            IName targetName = (IName) targetWorkspaceName;
+
+            IGeoDBDataTransfer2 transfer = new GeoDBDataTransferClass();
+            conflicts = transfer.GenerateNameMapping(fromNames, targetName, out enumNameMapping);
+            enumNameMapping.Reset();
+
+            if (!conflicts)
+            {
+                transfer.Transfer(enumNameMapping, targetName);
+            }
+            else
+            {
+                INameMapping nameMapping;
+                while ((nameMapping = enumNameMapping.Next()) != null)
+                {
+                    if (nameMapping.NameConflicts)
+                    {
+                        nameMapping.TargetName = resolveNameConflictFunc != null ? resolveNameConflictFunc(nameMapping) : nameMapping.GetSuggestedName(targetName);
+                    }
+
+                    IEnumNameMapping childEnumNameMapping = nameMapping.Children;
+                    if (childEnumNameMapping != null)
+                    {
+                        childEnumNameMapping.Reset();
+
+                        INameMapping childNameMapping;
+                        while ((childNameMapping = childEnumNameMapping.Next()) != null)
+                        {
+                            if (childNameMapping.NameConflicts)
+                            {
+                                childNameMapping.TargetName = resolveNameConflictFunc != null ? resolveNameConflictFunc(childNameMapping) : childNameMapping.GetSuggestedName(targetName);
+                            }
+                        }
+                    }
+                }
+
+                transfer.Transfer(enumNameMapping, targetName);
+            }
+        }
+
 #if V10
         /// <summary>
         ///     Gets all of the tables in the workspace.

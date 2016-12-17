@@ -10,7 +10,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>The Wave Extensions for ArcFM simplifies extending the ArcFM Solution by providing extensions to the most frequently used APIs.</description>
         <summary>The Wave Extensions for ArcFM is a C# library that is built on top of the Wave Extensions for ArcFM to provide extension methods for the APIs in the ArcFM library in an effort to simplify developing in the ArcFM Solution product.</summary>
-        <releaseNotes>http://wave.readthedocs.org/en/latest/release-notes/</releaseNotes>
+        <releaseNotes>http://jumpercables.github.io/Wave/release-notes/</releaseNotes>
         <copyright>Copyright 2014</copyright>
         <language>en-US</language>
         <tags>esri, arcgis, gis, arcobjects, arcfm, miner</tags>

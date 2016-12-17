@@ -14,6 +14,46 @@ namespace ESRI.ArcGIS.Carto
         #region Public Methods
 
         /// <summary>
+        ///     Adds the feature class as a layer to the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="table">The table.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>Returns a <see cref="IFeatureLayer" /> representing the layer that was added to the map.</returns>
+        public static IFeatureLayer AddLayer(this IMap source, IFeatureClass table, string name)
+        {
+            var layer = new FeatureLayerClass
+            {
+                FeatureClass = table,
+                Name = name ?? table.AliasName
+            };
+
+            source.AddLayer(layer);
+
+            return layer;
+        }
+
+        /// <summary>
+        ///     Adds the table as a standalone table to the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="table">The table.</param>
+        /// <returns>Returns a <see cref="IStandaloneTable" /> representing the table that was added to the map.</returns>
+        public static IStandaloneTable AddTable(this IMap source, ITable table)
+        {
+            var standalone = new StandaloneTableClass
+            {
+                Table = table,
+                Name = ((IDataset) table).Name
+            };
+
+            IStandaloneTableCollection collection = (IStandaloneTableCollection) source;
+            collection.AddStandaloneTable(standalone);
+
+            return standalone;
+        }
+
+        /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from a <see cref="IMapLayerInfos" />
         /// </summary>
         /// <param name="source">Map layer informations</param>
@@ -98,7 +138,7 @@ namespace ESRI.ArcGIS.Carto
         {
             var layers = source.Layers.AsEnumerable();
             return layers.Select(layer => layer.GetHierarchy());
-        }        
+        }
 
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="ILayer" />
@@ -151,6 +191,29 @@ namespace ESRI.ArcGIS.Carto
             where TLayer : ILayer
         {
             return WhereImpl(source, layer => layer is TLayer && selector((TLayer) layer)).OfType<TLayer>();
+        }
+
+        /// <summary>
+        ///     Gets the parent layer that contains the layer given the map.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="layer">The layer.</param>
+        /// <returns>
+        ///     Returns a <see cref="ILayer" /> representing the parent layer, otherwise <c>null</c>
+        /// </returns>
+        public static ILayer GetParentLayer(this IMap source, ILayer layer)
+        {
+            foreach (var parent in source.GetHierarchy())
+            {
+                if (parent.Value == layer)
+                    return parent.Parent;
+
+                foreach (var child in parent.Children)
+                    if (child.Value == layer)
+                        return child.Parent;
+            }
+
+            return null;
         }
 
         /// <summary>

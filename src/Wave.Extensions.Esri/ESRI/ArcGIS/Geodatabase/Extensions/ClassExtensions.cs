@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
@@ -14,7 +15,7 @@ using ESRI.ArcGIS.GeoDatabaseUI;
 using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
-{
+{    
     /// <summary>
     ///     Provides extension methods for the <see cref="ESRI.ArcGIS.Geodatabase.IClass" /> and
     ///     <see cref="ESRI.ArcGIS.Geodatabase.IObjectClass" /> interfaces.
@@ -22,6 +23,29 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class ClassExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Performs the calculation by executing the pre-expression and expression.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter used to access the rows on which the calculation will be performed.</param>
+        /// <param name="fieldName">Field to perform the calculation on.</param>
+        /// <param name="expression">Expression or value applied to a field in each row of the cursor.</param>
+        /// <param name="preExpression">
+        ///     A pre-calculation determination of a value or variable that may be used as the expression
+        ///     (or value) of the calculation.
+        /// </param>
+        /// <param name="showErrorPrompt">if set to <c>true</c> show a message prompt when an error occurs during calculation.</param>
+        /// <param name="callback">The call back routine.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnvelope" /> representing the features that have been modified by the calculation. This
+        ///     envelope can be used to refresh the display for the calculated area only. If the table used in the calculate is
+        ///     non-spatial, a null is returned.
+        /// </returns>
+        public static IEnvelope Calculate(this IFeatureClass source, IQueryFilter filter, string fieldName, string expression, string preExpression, bool showErrorPrompt, ICalculatorCallback callback)
+        {
+            return ((ITable) source).Calculate(filter, fieldName, expression, preExpression, showErrorPrompt, callback);
+        }
 
         /// <summary>
         ///     Creates a "google-like" attribute expression query filter based on the specified keyword.
@@ -126,23 +150,86 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Exports the source table using the query filter to the table in the output workspace.
         /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="tableName">Name of the output table.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="handle">The handle.</param>
+        /// <param name="errors">The errors that occured during the export.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
+        /// </returns>
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, out IEnumInvalidObject errors)
+        {
+            IEnumFieldError fieldError;
+            return source.Export(filter, tableName, workspace, source.Fields, handle, out errors, out fieldError);
+        }
+
+        /// <summary>
+        /// Exports the source table using the query filter to the table in the output workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="tableName">Name of the output table.</param>
+        /// <param name="workspace">The output workspace.</param>
+        /// <param name="requiredFields">The required fields.</param>
+        /// <param name="handle">The handle.</param>
+        /// <param name="invalid">The errors that occured during the export.</param>
+        /// <param name="errors">The field errors.</param>
+        /// <returns>
+        /// Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
+        /// </returns>
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, out IEnumInvalidObject invalid, out IEnumFieldError errors)
+        {
+            var ds = (IDataset)source;
+
+            var input = ds.Workspace.Define(ds.Name, new FeatureClassNameClass());
+            var output = workspace.Define(tableName, new FeatureClassNameClass());
+
+            if (source.FeatureDataset != null)
+                output.FeatureDatasetName = source.FeatureDataset.FullName as IDatasetName;
+
+            var i = source.Fields.FindField(source.ShapeFieldName);
+            var field = source.Fields.Field[i];
+            var clone = (IClone)field.GeometryDef;
+            var geometryDef = (IGeometryDef)clone.Clone();
+
+            workspace.Delete(output);
+
+            IFieldChecker fieldChecker = new FieldCheckerClass();
+            fieldChecker.InputWorkspace = ds.Workspace;
+            fieldChecker.ValidateWorkspace = workspace;
+
+            IFields targetFields;
+            fieldChecker.Validate(requiredFields, out errors, out targetFields);
+
+            IFeatureDataConverter featureDataConverter = new FeatureDataConverterClass();
+            invalid = featureDataConverter.ConvertFeatureClass(input, filter, null, output, geometryDef, requiredFields, "", 1000, handle);
+
+            return ((IName)output).Open() as IFeatureClass;
+        }
+
+        /// <summary>
+        /// Exports the source table using the query filter to the table in the output workspace.
+        /// </summary>
         /// <param name="source">The source table.</param>
         /// <param name="filter">The filter used to create a subset of the data.</param>
-        /// <param name="outputTableName">The name of the output table.</param>
-        /// <param name="outputWorkspace">The workspace that will contain the table.</param>
+        /// <param name="tableName">The name of the output table.</param>
+        /// <param name="workspace">The workspace that will contain the table.</param>
         /// <param name="handle">The handle to the parent application.</param>
-        /// <returns>Returns a <see cref="ITable" /> representing the exported table.</returns>
-        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string outputTableName, IWorkspace outputWorkspace, int handle)
+        /// <returns>
+        /// Returns a <see cref="ITable" /> representing the exported table.
+        /// </returns>
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle)
         {
-            var ds = (IDataset) source;
-            var datasetName = (IDatasetName) ds.FullName;
+            var ds = (IDataset)source;
+            var inputDatasetName = (IDatasetName)ds.FullName;
 
-            var outputClassName = new FeatureClassNameClass();
-            outputClassName.WorkspaceName = (IWorkspaceName) ((IDataset) outputWorkspace).FullName;
-            outputClassName.Name = outputTableName;
+            var outputFeatureClass = workspace.Define(tableName, new FeatureClassNameClass());
+            if (source.FeatureDataset != null)
+                outputFeatureClass.FeatureDatasetName = source.FeatureDataset.FullName as IDatasetName;
 
             ISelectionSet selection = null;
-
             if (source.HasOID)
             {
                 IScratchWorkspaceFactory2 factory = new ScratchWorkspaceFactoryClass();
@@ -153,18 +240,15 @@ namespace ESRI.ArcGIS.Geodatabase
 
             var i = source.Fields.FindField(source.ShapeFieldName);
             var field = source.Fields.Field[i];
-            var clone = (IClone) field.GeometryDef;
-            var geometryDef = (IGeometryDef) clone.Clone();
+            var clone = (IClone)field.GeometryDef;
+            var geometryDef = (IGeometryDef)clone.Clone();
 
-            outputWorkspace.Delete(outputClassName);
+            workspace.Delete(outputFeatureClass);
 
             IExportOperation operation = new ExportOperationClass();
-            operation.ExportFeatureClass(datasetName, filter, selection, geometryDef, outputClassName, handle);
+            operation.ExportFeatureClass(inputDatasetName, filter, selection, geometryDef, outputFeatureClass, handle);
 
-            var table = outputWorkspace.GetFeatureClass("", outputTableName);
-            foreach (var index in source.Indexes.AsEnumerable())
-                table.AddIndex(index);
-
+            var table = workspace.GetFeatureClass("", tableName);
             return table;
         }
 
@@ -728,6 +812,37 @@ namespace ESRI.ArcGIS.Geodatabase
             workspace.Delete(ds);
 
             return sj.JoinNearest(ds, searchRadius);
+        }
+
+        /// <summary>
+        ///     Transfers the feature class (and all relationships) to the specified workspace, while preserving the OBJECTID
+        ///     values.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="name">The name feature class in the transfer.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="conflicts">if set to <c>true</c> has conflicts with the export.</param>
+        /// <param name="enumNameMapping">The enum name mapping.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class in the target workspace.
+        /// </returns>
+        public static IFeatureClass Transfer(this IFeatureClass source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
+        {
+            IDataset ds = (IDataset) source;
+            IName fromName = ds.Workspace.Define(ds.Name, new FeatureClassNameClass());
+
+            IEnumName fromNames = new NamesEnumeratorClass();
+            IEnumNameEdit edit = (IEnumNameEdit) fromNames;
+            edit.Add(fromName);
+
+            ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping, mapping => name);
+
+            if (!conflicts)
+            {
+                return workspace.GetFeatureClass("", name);
+            }
+
+            return null;
         }
 
         /// <summary>
