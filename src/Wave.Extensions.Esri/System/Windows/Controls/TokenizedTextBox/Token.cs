@@ -1,40 +1,24 @@
-﻿namespace System.Windows.Controls
+﻿using System.Collections;
+
+namespace System.Windows.Controls
 {
     /// <summary>
-    ///     The content control for the token.
+    ///     Provides access to the token value and delimiter.
     /// </summary>
-    public class Token : ContentControl
+    public class Token
     {
-        #region Fields
-
-        /// <summary>
-        ///     The key property
-        /// </summary>
-        public static readonly DependencyProperty KeyProperty
-            = DependencyProperty.Register("Key", typeof (string), typeof (Token), new UIPropertyMetadata(null));
-
-        #endregion
-
         #region Constructors
-
-        /// <summary>
-        ///     Initializes the <see cref="Token" /> class.
-        /// </summary>
-        static Token()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof (Token), new FrameworkPropertyMetadata(typeof (Token)));
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Token" /> class.
         /// </summary>
         /// <param name="delimiter">The delimiter.</param>
-        /// <param name="inputText">The input text.</param>
-        public Token(string delimiter, string inputText)
+        /// <param name="value">The input text.</param>
+        public Token(string delimiter, string value)
         {
-            this.Key = Guid.NewGuid().ToString();
-            this.Delimiter = delimiter;
-            this.Text = inputText;
+            Delimiter = delimiter;
+            Value = value;
+            Key = Guid.NewGuid().ToString();
         }
 
         #endregion
@@ -50,24 +34,54 @@
         public string Delimiter { get; private set; }
 
         /// <summary>
-        ///     Gets or sets the key.
+        ///     Gets the key.
         /// </summary>
         /// <value>
         ///     The key.
         /// </value>
-        public string Key
-        {
-            get { return (string) this.GetValue(KeyProperty); }
-            set { this.SetValue(KeyProperty, value); }
-        }
+        public string Key { get; private set; }
 
         /// <summary>
-        ///     Gets or sets the text.
+        ///     Gets or sets the value.
         /// </summary>
         /// <value>
-        ///     The text.
+        ///     The value.
         /// </value>
-        public string Text { get; set; }
+        public string Value { get; set; }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        ///     A string that represents the current object.
+        /// </returns>
+        public override string ToString()
+        {
+            return Value;
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    ///     A collection of tokens.
+    /// </summary>
+    /// <seealso cref="string.Windows.Controls.Token}" />
+    public class TokenCollection : ObservableKeyedCollection<string, Token>
+    {
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TokenCollection" /> class.
+        /// </summary>
+        public TokenCollection()
+            : base(token => token.Key)
+        {
+        }
 
         #endregion
     }

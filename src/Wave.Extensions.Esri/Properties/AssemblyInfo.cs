@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Windows;
 
 using log4net.Config;
 
@@ -40,4 +41,9 @@ using log4net.Config;
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+// Required for log4net
 [assembly: XmlConfigurator(ConfigFile = Log.FileName, Watch = true)]
+
+// Required in order to load the themes from custom controls.
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]

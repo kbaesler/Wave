@@ -398,6 +398,7 @@
     <Compile Include="System\Windows\Controls\Reveal\Reveal.cs" />
     <Compile Include="System\Windows\Controls\SortAdorner.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\Token.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenContainer.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBox.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBoxCommands.cs" />
     <Compile Include="System\Windows\Controls\Watermark\Internal\WatermarkAdorner.cs" />
@@ -434,7 +435,6 @@
     <Compile Include="System\Xml\XmlSerialization.cs" />
     <Compile Include="System\Xml\XmlTransformation.cs" />
     <Compile Include="System\Xml\XmlValidation.cs" />
-    <Compile Include="System\Windows\Themes\WaveTheme.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -474,10 +474,6 @@
     <Page Include="System\Windows\Controls\TokenizedTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="System\Windows\Themes\Wave.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
