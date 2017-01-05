@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox
 {
@@ -25,8 +26,7 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox
 
         #endregion
 
-        #region Public Properties
-
+        #region Public Properties        
         /// <summary>
         ///     Gets or sets the create tags command.
         /// </summary>
