@@ -32,7 +32,7 @@
         /// <param name="key">The key.</param>
         public TokenContainer(string key)
         {
-            Key = key;
+            this.Key = key;
         }
 
         #endregion

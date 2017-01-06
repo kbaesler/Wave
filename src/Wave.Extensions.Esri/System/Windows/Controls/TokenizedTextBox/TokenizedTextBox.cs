@@ -59,11 +59,11 @@ namespace System.Windows.Controls
         /// </summary>
         public TokenizedTextBox()
         {
-            AcceptsReturn = false;
-            IsDocumentEnabled = true;
+            this.AcceptsReturn = false;
+            this.IsDocumentEnabled = true;
 
-            TextChanged += OnTextChanged;
-            CommandBindings.Add(new CommandBinding(TokenizedTextBoxCommands.Delete, DeleteToken));
+            this.TextChanged += OnTextChanged;
+            this.CommandBindings.Add(new CommandBinding(TokenizedTextBoxCommands.Delete, DeleteToken));
         }
 
         #endregion
@@ -145,7 +145,7 @@ namespace System.Windows.Controls
         /// </summary>
         private void Clear()
         {
-            Document.Blocks.Clear();
+            this.Document.Blocks.Clear();
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace System.Windows.Controls
             var presenter = new TokenContainer(token.Key)
             {
                 Content = token,
-                ContentTemplate = TokenTemplate,
+                ContentTemplate = this.TokenTemplate,
             };
 
             if (this.TokenTemplate == null && token.Content != null)
@@ -201,7 +201,7 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="ExecutedRoutedEventArgs" /> instance containing the event data.</param>
         private void DeleteToken(object sender, ExecutedRoutedEventArgs e)
         {
-            Paragraph para = CaretPosition.Paragraph;
+            Paragraph para = this.CaretPosition.Paragraph;
             if (para != null)
             {
                 Inline inlineToRemove = para.Inlines.Where(inline =>
@@ -315,15 +315,15 @@ namespace System.Windows.Controls
             if (_SuppressTextChanged)
                 return;
 
-            string text = CaretPosition.GetTextInRun(LogicalDirection.Backward);
-            Token token = Tokenize(text);
+            string text = this.CaretPosition.GetTextInRun(LogicalDirection.Backward);
+            Token token = this.Tokenize(text);
 
             if (token != null)
             {
-                ReplaceTextWithToken(text, token);
+                this.ReplaceTextWithToken(text, token);
             }
 
-            SetText(text);
+            this.SetText(text);
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace System.Windows.Controls
 
             try
             {
-                Paragraph para = CaretPosition.Paragraph;
+                Paragraph para = this.CaretPosition.Paragraph;
                 if (para != null)
                 {
                     var matchedRun = para.Inlines.FirstOrDefault(inline =>
@@ -382,7 +382,7 @@ namespace System.Windows.Controls
 
                     if (matchedRun != null) // Found a Run that matched the inputText
                     {
-                        InlineUIContainer tokenContainer = CreateTokenContainer(token);
+                        InlineUIContainer tokenContainer = this.CreateTokenContainer(token);
                         para.Inlines.InsertBefore(matchedRun, tokenContainer);
 
                         // Remove only if the Text in the Run is the same as inputText, else split up
@@ -413,26 +413,26 @@ namespace System.Windows.Controls
         {
             // The "Text" property is not linked to the RichTextBox contents, thus we need to clear the RichTextBox
             // and add each token individually to the contents.           
-            Clear();
+            this.Clear();
 
             if (!string.IsNullOrEmpty(Text))
             {
-                Paragraph para = CaretPosition.Paragraph ?? new Paragraph();
+                Paragraph para = this.CaretPosition.Paragraph ?? new Paragraph();
                 if (para != null)
                 {
-                    string[] text = Text.Split(new[] {TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
+                    string[] text = Text.Split(new[] {this.TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string t in text)
                     {
                         var token = this.GetTokenByItemSource(t);
                         token.Content = this.GetContentByToken(token);
 
-                        InlineUIContainer tokenContainer = CreateTokenContainer(token);
+                        InlineUIContainer tokenContainer = this.CreateTokenContainer(token);
                         para.Inlines.Add(tokenContainer);
                     }
                 }
 
-                if (!Document.Blocks.Contains(para))
-                    Document.Blocks.Add(para);
+                if (!this.Document.Blocks.Contains(para))
+                    this.Document.Blocks.Add(para);
             }
         }
 
@@ -464,7 +464,7 @@ namespace System.Windows.Controls
                 var token = this.GetTokenByItemSource(item);
                 if (token == null)
                 {
-                    return new Token(this.TokenDelimiter, item);
+                    token = new Token(this.TokenDelimiter, item);
                 }
 
                 return token;

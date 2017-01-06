@@ -14,9 +14,9 @@
         /// <param name="value">The input text.</param>
         public Token(string delimiter, string value)
         {
-            Delimiter = delimiter;
-            Content = value;
-            Key = Guid.NewGuid().ToString();
+            this.Delimiter = delimiter;
+            this.Content = value;
+            this.Key = Guid.NewGuid().ToString();
         }
 
         #endregion
@@ -59,7 +59,7 @@
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}", Content);
+            return string.Format("{0}", this.Content);
         }
 
         #endregion
