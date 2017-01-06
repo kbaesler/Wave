@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace System.Windows.Controls
+﻿namespace System.Windows.Controls
 {
     /// <summary>
     ///     Provides access to the token value and delimiter.
@@ -17,13 +15,21 @@ namespace System.Windows.Controls
         public Token(string delimiter, string value)
         {
             Delimiter = delimiter;
-            Value = value;
+            Content = value;
             Key = Guid.NewGuid().ToString();
         }
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the content.
+        /// </summary>
+        /// <value>
+        ///     The content.
+        /// </value>
+        public object Content { get; set; }
 
         /// <summary>
         ///     Gets the delimiter.
@@ -34,20 +40,12 @@ namespace System.Windows.Controls
         public string Delimiter { get; private set; }
 
         /// <summary>
-        ///     Gets the key.
+        ///     Gets or sets the key.
         /// </summary>
         /// <value>
         ///     The key.
         /// </value>
-        public string Key { get; private set; }
-
-        /// <summary>
-        ///     Gets or sets the value.
-        /// </summary>
-        /// <value>
-        ///     The value.
-        /// </value>
-        public string Value { get; set; }
+        public string Key { get; set; }
 
         #endregion
 
@@ -61,26 +59,7 @@ namespace System.Windows.Controls
         /// </returns>
         public override string ToString()
         {
-            return Value;
-        }
-
-        #endregion
-    }
-
-    /// <summary>
-    ///     A collection of tokens.
-    /// </summary>
-    /// <seealso cref="string.Windows.Controls.Token}" />
-    public class TokenCollection : ObservableKeyedCollection<string, Token>
-    {
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="TokenCollection" /> class.
-        /// </summary>
-        public TokenCollection()
-            : base(token => token.Key)
-        {
+            return string.Format("{0}", Content);
         }
 
         #endregion

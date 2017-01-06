@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,6 +19,18 @@ namespace System.Windows.Controls
         #region Fields
 
         /// <summary>
+        ///     The items source property
+        /// </summary>
+        public static readonly DependencyProperty ItemsSourceProperty =
+            DependencyProperty.Register("ItemsSource", typeof (IEnumerable<object>), typeof (TokenizedTextBox), new FrameworkPropertyMetadata(OnItemsSourceChanged));
+
+        /// <summary>
+        ///     The member path property
+        /// </summary>
+        public static readonly DependencyProperty MemberPathProperty =
+            DependencyProperty.Register("MemberPath", typeof (string), typeof (TokenizedTextBox), new UIPropertyMetadata(string.Empty));
+
+        /// <summary>
         ///     The text property
         /// </summary>
         public static readonly DependencyProperty TextProperty
@@ -33,14 +47,6 @@ namespace System.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty TokenTemplateProperty =
             DependencyProperty.Register("TokenTemplate", typeof (DataTemplate), typeof (TokenizedTextBox));
-
-
-        /// <summary>
-        ///     The tokens property
-        /// </summary>
-        public static readonly DependencyProperty TokensProperty =
-            DependencyProperty.Register("Tokens", typeof (TokenCollection), typeof (TokenizedTextBox), new FrameworkPropertyMetadata(new TokenCollection(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
 
         private static bool _SuppressTextChanged;
 
@@ -63,6 +69,30 @@ namespace System.Windows.Controls
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the items source.
+        /// </summary>
+        /// <value>
+        ///     The items source.
+        /// </value>
+        public IEnumerable<object> ItemsSource
+        {
+            get { return (IEnumerable<object>) GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        /// <summary>
+        ///     Gets or sets the value member path.
+        /// </summary>
+        /// <value>
+        ///     The value member path.
+        /// </value>
+        public string MemberPath
+        {
+            get { return (string) GetValue(MemberPathProperty); }
+            set { SetValue(MemberPathProperty, value); }
+        }
 
         /// <summary>
         ///     Gets or sets the text.
@@ -100,18 +130,6 @@ namespace System.Windows.Controls
             set { SetValue(TokenTemplateProperty, value); }
         }
 
-        /// <summary>
-        ///     Gets or sets the tokens.
-        /// </summary>
-        /// <value>
-        ///     The tokens.
-        /// </value>
-        public TokenCollection Tokens
-        {
-            get { return (TokenCollection) GetValue(TokensProperty); }
-            set { SetValue(TokensProperty, value); }
-        }
-
         #endregion
 
         #region Private Methods
@@ -128,7 +146,6 @@ namespace System.Windows.Controls
         private void Clear()
         {
             Document.Blocks.Clear();
-            Tokens.Clear();
         }
 
         /// <summary>
@@ -151,13 +168,25 @@ namespace System.Windows.Controls
         /// </returns>
         private InlineUIContainer CreateTokenContainer(Token token)
         {
-            this.Tokens.Add(token);
-
             var presenter = new TokenContainer(token.Key)
             {
                 Content = token,
                 ContentTemplate = TokenTemplate,
             };
+
+            if (this.TokenTemplate == null && token.Content != null)
+            {
+                if (!string.IsNullOrEmpty(this.MemberPath))
+                {
+                    var property = token.Content.GetType().GetProperty(this.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(token.Content, null);
+                        if (value != null)
+                            presenter.Content = value;
+                    }
+                }
+            }
 
             return new InlineUIContainer(presenter)
             {
@@ -175,13 +204,12 @@ namespace System.Windows.Controls
             Paragraph para = CaretPosition.Paragraph;
             if (para != null)
             {
-                TokenContainer tokenContainer = null;
                 Inline inlineToRemove = para.Inlines.Where(inline =>
                 {
                     var inlineUiContainer = inline as InlineUIContainer;
                     if (inlineUiContainer != null)
                     {
-                        tokenContainer = inlineUiContainer.Child as TokenContainer;
+                        TokenContainer tokenContainer = inlineUiContainer.Child as TokenContainer;
                         return tokenContainer != null && (tokenContainer.Key.Equals(e.Parameter));
                     }
 
@@ -192,11 +220,88 @@ namespace System.Windows.Controls
                 {
                     para.Inlines.Remove(inlineToRemove);
                 }
+            }
+        }
 
-                if (tokenContainer != null)
+        /// <summary>
+        ///     Gets the item by token key.
+        /// </summary>
+        /// <param name="token">The key.</param>
+        /// <returns></returns>
+        private object GetContentByToken(Token token)
+        {
+            if (this.ItemsSource != null)
+            {
+                foreach (object item in this.ItemsSource)
                 {
-                    this.Tokens.Remove(tokenContainer.Key);
+                    var property = item.GetType().GetProperty(this.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(item, null);
+                        if (token.Key.Equals(value.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                            return item;
+                    }
                 }
+            }
+
+            return token.Content;
+        }
+
+        /// <summary>
+        ///     Gets the token by item source.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
+        private Token GetTokenByItemSource(string text)
+        {
+            if (this.ItemsSource != null)
+            {
+                foreach (var item in this.ItemsSource)
+                {
+                    var property = item.GetType().GetProperty(this.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(item, null);
+                        if (text.Equals(value.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            Token token = new Token(this.TokenDelimiter, value.ToString());
+                            return token;
+                        }
+                    }
+                }
+            }
+
+            return new Token(this.TokenDelimiter, text);
+        }
+
+        /// <summary>
+        ///     Called when the ItemsSource dependency propery is changed.
+        /// </summary>
+        /// <param name="dependencyObject">The dependency property.</param>
+        /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
+        private static void OnItemsSourceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+        {
+            var tokenizedTextBox = (TokenizedTextBox) dependencyObject;
+
+            if (e.NewValue != null)
+            {
+                var text = new StringBuilder();
+
+                foreach (var item in (IEnumerable<object>) e.NewValue)
+                {
+                    var property = item.GetType().GetProperty(tokenizedTextBox.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(item, null);
+                        text.AppendFormat("{0}{1}", value, tokenizedTextBox.TokenDelimiter);
+                    }
+                    else
+                    {
+                        text.AppendFormat("{0}{1}", item, tokenizedTextBox.TokenDelimiter);
+                    }
+                }
+
+                tokenizedTextBox.Text = text.ToString();
             }
         }
 
@@ -301,7 +406,6 @@ namespace System.Windows.Controls
             }
         }
 
-
         /// <summary>
         ///     Replaces the strings in the Text property with tokens.
         /// </summary>
@@ -319,7 +423,9 @@ namespace System.Windows.Controls
                     string[] text = Text.Split(new[] {TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string t in text)
                     {
-                        var token = new Token(TokenDelimiter, t);
+                        var token = this.GetTokenByItemSource(t);
+                        token.Content = this.GetContentByToken(token);
+
                         InlineUIContainer tokenContainer = CreateTokenContainer(token);
                         para.Inlines.Add(tokenContainer);
                     }
@@ -337,7 +443,7 @@ namespace System.Windows.Controls
         private void SetText(string data)
         {
             _SuppressTextChanged = true;
-            Text = data;
+            this.Text = data;
             _SuppressTextChanged = false;
         }
 
@@ -354,7 +460,14 @@ namespace System.Windows.Controls
             if (text.EndsWith(TokenDelimiter))
             {
                 string item = text.Substring(0, text.Length - 1).Trim();
-                return new Token(TokenDelimiter, item);
+
+                var token = this.GetTokenByItemSource(item);
+                if (token == null)
+                {
+                    return new Token(this.TokenDelimiter, item);
+                }
+
+                return token;
             }
 
             return null;

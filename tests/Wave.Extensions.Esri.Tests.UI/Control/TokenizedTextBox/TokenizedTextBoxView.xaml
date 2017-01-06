@@ -14,10 +14,12 @@
             <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <controls:TokenizedTextBox  Grid.Row="0" 
-                                    Text="{Binding Text}"
-                                    Tokens="{Binding Tokens}"
-                                    TokenDelimiter=","/>
+        <controls:TokenizedTextBox  Grid.Row="0"                                     
+                                    ItemsSource="{Binding Tags}"   
+                                    MemberPath="Id"
+                                    TokenDelimiter=",">
+                       
+        </controls:TokenizedTextBox>
         <Button Grid.Row="2"
                 Content="Next"
                 Command="{Binding CreateTagsCommand}" />

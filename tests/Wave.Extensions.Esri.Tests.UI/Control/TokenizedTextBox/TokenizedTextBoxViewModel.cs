@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
+using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox
 {
@@ -20,13 +19,15 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox
         /// </summary>
         public TokenizedTextBoxViewModel()
         {
+            this.Tags = new List<Tag>();
             this.CreateTagsCommand = new DelegateCommand(this.CreateTags);
             this.CreateTags(null);
         }
 
         #endregion
 
-        #region Public Properties        
+        #region Public Properties
+
         /// <summary>
         ///     Gets or sets the create tags command.
         /// </summary>
@@ -36,43 +37,48 @@ namespace Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox
         public DelegateCommand CreateTagsCommand { get; set; }
 
         /// <summary>
-        ///     Gets or sets the text.
+        ///     Gets or sets the tags.
         /// </summary>
         /// <value>
-        ///     The text.
+        ///     The tags.
         /// </value>
-        public string Text
-        {
-            get { return _Text; }
-            set
-            {
-                _Text = value;
-
-                base.OnPropertyChanged("Text");
-            }
-        }
+        public List<Tag> Tags { get; set; }
 
         #endregion
 
         #region Private Methods
 
         /// <summary>
-        /// Creates the tags.
+        ///     Creates the tags.
         /// </summary>
         /// <param name="data">The data.</param>
         private void CreateTags(object data)
         {
-            StringBuilder sb = new StringBuilder();
-            Random random = new Random();
+            this.Tags.Clear();
 
-            for (int i = 0; i < random.Next(2, 20); i++)
+            char[] chars = "$%#@!*abcdefghijklmnopqrstuvwxyz1234567890?;:ABCDEFGHIJKLMNOPQRSTUVWXYZ^&".ToCharArray();
+            Random r = new Random();
+            for (int i = 0; i < r.Next(2, 20); i++)
             {
-                sb.Append(random.Next(i, i+1*2));
-                sb.Append(",");
+                int c = r.Next(chars.Length);
+                char l = chars[c];
+                this.Tags.Add(new Tag()
+                {
+                    Id = c,
+                    Character = l
+                });
             }
-
-            this.Text = sb.ToString();
         }
+
+        #endregion
+    }
+
+    public class Tag
+    {
+        #region Public Properties
+
+        public char Character { get; set; }
+        public int Id { get; set; }
 
         #endregion
     }
