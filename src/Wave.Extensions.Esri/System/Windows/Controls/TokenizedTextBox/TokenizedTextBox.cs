@@ -262,7 +262,7 @@ namespace System.Windows.Controls
                 var token = this.Tokens[key];
 
                 var tokens = new ObservableKeyedCollection<string, Token>(t => t.Key);
-                tokens.AddRange(this.Tokens.SkipWhile(o => o.Key.Equals(key)));
+                tokens.AddRange(this.Tokens.Where(o => !o.Key.Equals(key)));
 
                 this.Tokens = tokens;
 
