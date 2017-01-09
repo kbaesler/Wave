@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Data;
@@ -48,6 +50,12 @@ namespace System.Windows.Controls
         public static readonly DependencyProperty TokenTemplateProperty =
             DependencyProperty.Register("TokenTemplate", typeof (DataTemplate), typeof (TokenizedTextBox));
 
+        /// <summary>
+        /// The tokens property
+        /// </summary>
+        public static readonly DependencyProperty TokensProperty =
+            DependencyProperty.Register("Tokens", typeof (ObservableKeyedCollection<string, Token>), typeof (TokenizedTextBox), new FrameworkPropertyMetadata(new ObservableKeyedCollection<string, Token>(t => t.Key)));
+
         private static bool _SuppressTextChanged;
 
         #endregion
@@ -63,6 +71,7 @@ namespace System.Windows.Controls
             this.IsDocumentEnabled = true;
 
             this.TextChanged += OnTextChanged;
+            this.PreviewKeyDown += OnPreviewKeyDown;
             this.CommandBindings.Add(new CommandBinding(TokenizedTextBoxCommands.Delete, DeleteToken));
         }
 
@@ -80,6 +89,18 @@ namespace System.Windows.Controls
         {
             get { return (IEnumerable<object>) GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the tokens.
+        /// </summary>
+        /// <value>
+        /// The tokens.
+        /// </value>
+        public ObservableKeyedCollection<string, Token> Tokens
+        {
+            get { return (ObservableKeyedCollection<string, Token>)GetValue(TokensProperty); }
+            set { SetValue(TokensProperty, value); }
         }
 
         /// <summary>
@@ -204,12 +225,13 @@ namespace System.Windows.Controls
             Paragraph para = this.CaretPosition.Paragraph;
             if (para != null)
             {
+                TokenContainer tokenContainer = null;
                 Inline inlineToRemove = para.Inlines.Where(inline =>
                 {
                     var inlineUiContainer = inline as InlineUIContainer;
                     if (inlineUiContainer != null)
                     {
-                        TokenContainer tokenContainer = inlineUiContainer.Child as TokenContainer;
+                        tokenContainer = inlineUiContainer.Child as TokenContainer;
                         return tokenContainer != null && (tokenContainer.Key.Equals(e.Parameter));
                     }
 
@@ -219,8 +241,35 @@ namespace System.Windows.Controls
                 if (inlineToRemove != null)
                 {
                     para.Inlines.Remove(inlineToRemove);
+
+                    if (tokenContainer != null)
+                    {
+                        this.RemoveTokenByKey(tokenContainer.Key);
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// Removes the token by key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        private Token RemoveTokenByKey(string key)
+        {
+            if (this.Tokens.Contains(key))
+            {
+                var token = this.Tokens[key];
+
+                var tokens = new ObservableKeyedCollection<string, Token>(t => t.Key);
+                tokens.AddRange(this.Tokens.SkipWhile(o => o.Key.Equals(key)));
+
+                this.Tokens = tokens;
+
+                return token;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -302,6 +351,42 @@ namespace System.Windows.Controls
                 }
 
                 tokenizedTextBox.Text = text.ToString();
+            }
+        }
+
+        /// <summary>
+        ///     Called when [preview key down].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="KeyEventArgs" /> instance containing the event data.</param>
+        private void OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            InlineUIContainer container = null;
+
+            if (e.Key == Key.Back)
+            {
+                container = this.CaretPosition.GetAdjacentElement(LogicalDirection.Backward) as InlineUIContainer;
+            }
+            else if (e.Key == Key.Delete)
+            {
+                if (this.Selection.Text == " ")
+                {
+                    TextPointer moveTo = this.CaretPosition.GetNextInsertionPosition(LogicalDirection.Backward);
+                    this.CaretPosition = moveTo;
+                }
+
+                if (this.CaretPosition != null)
+                    container = this.CaretPosition.GetAdjacentElement(LogicalDirection.Forward) as InlineUIContainer;
+            }
+
+            if (container != null)
+            {
+                var tokenContainer = container.Child as TokenContainer;
+                if (tokenContainer != null)
+                {
+                    var token = this.RemoveTokenByKey(tokenContainer.Key);
+                    this.SetText(this.Text.Replace(string.Format("{0}{1}", token.Content, token.Delimiter), ""));
+                }
             }
         }
 
@@ -415,6 +500,8 @@ namespace System.Windows.Controls
             // and add each token individually to the contents.           
             this.Clear();
 
+            var tokens = new ObservableKeyedCollection<string, Token>(token => token.Key);
+
             if (!string.IsNullOrEmpty(Text))
             {
                 Paragraph para = this.CaretPosition.Paragraph ?? new Paragraph();
@@ -428,12 +515,16 @@ namespace System.Windows.Controls
 
                         InlineUIContainer tokenContainer = this.CreateTokenContainer(token);
                         para.Inlines.Add(tokenContainer);
+
+                        tokens.Add(token);
                     }
                 }
 
                 if (!this.Document.Blocks.Contains(para))
                     this.Document.Blocks.Add(para);
             }
+
+            this.Tokens = tokens;
         }
 
         /// <summary>
