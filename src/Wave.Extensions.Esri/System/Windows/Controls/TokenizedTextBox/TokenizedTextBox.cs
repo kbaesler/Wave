@@ -54,7 +54,7 @@ namespace System.Windows.Controls
         /// The tokens property
         /// </summary>
         public static readonly DependencyProperty TokensProperty =
-            DependencyProperty.Register("Tokens", typeof (ObservableKeyedCollection<string, Token>), typeof (TokenizedTextBox), new FrameworkPropertyMetadata(new ObservableKeyedCollection<string, Token>(t => t.Key)));
+            DependencyProperty.Register("Tokens", typeof (ObservableKeyedCollection<string, Token>), typeof (TokenizedTextBox), new PropertyMetadata(new ObservableKeyedCollection<string, Token>(t => t.Key)));
 
         private static bool _SuppressTextChanged;
 
@@ -459,30 +459,35 @@ namespace System.Windows.Controls
                 Paragraph para = this.CaretPosition.Paragraph;
                 if (para != null)
                 {
-                    var matchedRun = para.Inlines.FirstOrDefault(inline =>
+                    var run = para.Inlines.FirstOrDefault(inline =>
                     {
-                        var run = inline as Run;
-                        return (run != null && run.Text.EndsWith(inputText));
+                        var r = inline as Run;
+                        return (r != null && r.Text.EndsWith(inputText));
                     }) as Run;
 
-                    if (matchedRun != null) // Found a Run that matched the inputText
+                    if (run != null) 
                     {
                         InlineUIContainer tokenContainer = this.CreateTokenContainer(token);
-                        para.Inlines.InsertBefore(matchedRun, tokenContainer);
+                        para.Inlines.InsertBefore(run, tokenContainer);
 
-                        // Remove only if the Text in the Run is the same as inputText, else split up
-                        if (matchedRun.Text == inputText)
+                        if (run.Text == inputText)
                         {
-                            para.Inlines.Remove(matchedRun);
+                            para.Inlines.Remove(run);
                         }
-                        else // Split up
+                        else 
                         {
-                            int index = matchedRun.Text.IndexOf(inputText, StringComparison.Ordinal) + inputText.Length;
-                            var tailEnd = new Run(matchedRun.Text.Substring(index));
-                            para.Inlines.InsertAfter(matchedRun, tailEnd);
-                            para.Inlines.Remove(matchedRun);
+                            int index = run.Text.IndexOf(inputText, StringComparison.Ordinal) + inputText.Length;
+                            var tailEnd = new Run(run.Text.Substring(index));
+                            para.Inlines.InsertAfter(run, tailEnd);
+                            para.Inlines.Remove(run);
                         }
                     }
+
+                    var tokens = new ObservableKeyedCollection<string, Token>(t => t.Key);
+                    tokens.AddRange(this.Tokens);
+                    tokens.Add(token);
+
+                    this.Tokens = tokens;
                 }
             }
             finally
