@@ -383,6 +383,7 @@
     <Compile Include="System\Windows\Converters\ValueConverterGroup.cs" />
     <Compile Include="System\Windows\DataValidation.cs" />
     <Compile Include="System\Windows\DelegateCommand.cs" />
+    <Compile Include="System\Windows\EditableObservable.cs" />
     <Compile Include="System\Windows\Events\BackgroundEventSubscription.cs" />
     <Compile Include="System\Windows\Events\DelegateReference.cs" />
     <Compile Include="System\Windows\Events\CompositePresentationEvent.cs" />
@@ -406,7 +407,6 @@
     <Compile Include="System\Xml\XmlSerialization.cs" />
     <Compile Include="System\Xml\XmlTransformation.cs" />
     <Compile Include="System\Xml\XmlValidation.cs" />
-    <Compile Include="System\Windows\Themes\WaveTheme.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -446,10 +446,6 @@
     <Page Include="System\Windows\Controls\TokenizedTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="System\Windows\Themes\Wave.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

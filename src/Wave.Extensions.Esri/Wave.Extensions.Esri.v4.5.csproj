@@ -411,6 +411,7 @@
     <Compile Include="System\Windows\Converters\ValueConverterGroup.cs" />
     <Compile Include="System\Windows\DataValidation.cs" />
     <Compile Include="System\Windows\DelegateCommand.cs" />
+    <Compile Include="System\Windows\EditableObservable.cs" />
     <Compile Include="System\Windows\Events\BackgroundEventSubscription.cs" />
     <Compile Include="System\Windows\Events\DelegateReference.cs" />
     <Compile Include="System\Windows\Events\CompositePresentationEvent.cs" />

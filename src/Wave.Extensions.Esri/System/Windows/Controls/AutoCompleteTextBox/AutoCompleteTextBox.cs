@@ -51,7 +51,7 @@ namespace System.Windows.Controls
             _TextBox.VerticalContentAlignment = VerticalAlignment.Center;
             _TextBox.KeyDown += TextBox_OnKeyDown;
             _TextBox.DelayedTextChanged += TextBox_DelayedTextChanged;
-
+            _TextBox.TextChanged += TextBox_OnTextChanged;
             _Controls.Add(_ComboBox);
             _Controls.Add(_TextBox);
         }
@@ -104,8 +104,11 @@ namespace System.Windows.Controls
             get { return (string) this.GetValue(TextProperty); }
             set
             {
+#if NET45
+                this.SetCurrentValue(TextProperty, value);
+#else
                 this.SetValue(TextProperty, value);
-
+#endif
                 _TextBox.Text = value;
             }
         }
@@ -197,7 +200,7 @@ namespace System.Windows.Controls
             if (_ComboBox.SelectedItem != null)
             {
                 var item = (ComboBoxItem) _ComboBox.SelectedItem;
-                this.Text = string.Format("{0}", item.Tag);
+                this.SetValue(TextProperty, string.Format("{0}", item.Tag));
             }
         }
 
@@ -304,6 +307,16 @@ namespace System.Windows.Controls
 
                 _ComboBox.IsDropDownOpen = false;
             }
+        }
+
+        /// <summary>
+        ///     Handles the OnTextChanged event of the TextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TextChangedEventArgs" /> instance containing the event data.</param>
+        private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.Text = ((DelayedTextBox) sender).Text;
         }
 
         #endregion
