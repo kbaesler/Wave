@@ -165,6 +165,59 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Exports the source table using the query filter to the table in the output workspace.
         /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="tableName">Name of the output table.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="handle">The handle.</param>
+        /// <param name="errors">The errors that occured during the export.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
+        /// </returns>
+        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, out IEnumInvalidObject errors)
+        {
+            IEnumFieldError fieldError;
+            return source.Export(filter, tableName, workspace, source.Fields, handle, out errors, out fieldError);
+        }
+
+        /// <summary>
+        ///     Exports the source table using the query filter to the table in the output workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="tableName">Name of the output table.</param>
+        /// <param name="workspace">The output workspace.</param>
+        /// <param name="requiredFields">The required fields.</param>
+        /// <param name="handle">The handle.</param>
+        /// <param name="invalid">The errors that occured during the export.</param>
+        /// <param name="errors">The field errors.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
+        /// </returns>
+        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, out IEnumInvalidObject invalid, out IEnumFieldError errors)
+        {
+            var ds = (IDataset) source;
+
+            var input = ds.Workspace.Define(ds.Name, new TableNameClass());
+            var output = workspace.Define(tableName, new TableNameClass());
+            workspace.Delete(output);
+
+            IFieldChecker fieldChecker = new FieldCheckerClass();
+            fieldChecker.InputWorkspace = ds.Workspace;
+            fieldChecker.ValidateWorkspace = workspace;
+
+            IFields targetFields;
+            fieldChecker.Validate(requiredFields, out errors, out targetFields);
+
+            IFeatureDataConverter featureDataConverter = new FeatureDataConverterClass();
+            invalid = featureDataConverter.ConvertTable(input, filter, output, targetFields, "", 1000, handle);
+
+            return ((IName) output).Open() as ITable;
+        }
+
+        /// <summary>
+        ///     Exports the source table using the query filter to the table in the output workspace.
+        /// </summary>
         /// <param name="source">The source table.</param>
         /// <param name="filter">The filter used to create a subset of the data.</param>
         /// <param name="outputTableName">The name of the output table.</param>

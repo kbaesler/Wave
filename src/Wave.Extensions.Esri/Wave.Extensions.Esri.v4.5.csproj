@@ -397,6 +397,7 @@
     <Compile Include="System\Windows\Controls\InteropTextBox\InteropTextBox.cs" />
     <Compile Include="System\Windows\Controls\Reveal\Reveal.cs" />
     <Compile Include="System\Windows\Controls\SortAdorner.cs" />
+    <Compile Include="System\Windows\Controls\BusyIndicator\BusyIndicator.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\Token.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenContainer.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBox.cs" />
@@ -469,6 +470,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="System\Windows\Controls\InteropTextBox\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="System\Windows\Controls\BusyIndicator\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

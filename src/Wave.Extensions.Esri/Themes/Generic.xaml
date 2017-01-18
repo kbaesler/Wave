@@ -3,6 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Wave.Extensions.Esri;component/System/Windows/Controls/TokenizedTextBox/Themes/Generic.xaml"/>
         <ResourceDictionary Source="/Wave.Extensions.Esri;component/System/Windows/Controls/DelayTextBox/Themes/Generic.xaml" />
-        <ResourceDictionary Source="/Wave.Extensions.Esri;component/System/Windows/Controls/InteropTextBox/Themes/Generic.xaml" />        
+        <ResourceDictionary Source="/Wave.Extensions.Esri;component/System/Windows/Controls/InteropTextBox/Themes/Generic.xaml" />
+        <ResourceDictionary Source="/Wave.Extensions.Esri;component/System/Windows/Controls/BusyIndicator/Themes/Generic.xaml" />        
     </ResourceDictionary.MergedDictionaries>    
 </ResourceDictionary>
