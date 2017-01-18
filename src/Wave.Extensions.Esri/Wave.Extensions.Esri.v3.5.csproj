@@ -366,11 +366,13 @@
     <Compile Include="System\Windows\Command.cs" />
     <Compile Include="System\Windows\CommandReference.cs" />
     <Compile Include="System\Windows\Controls\AutoCompleteTextBox\AutoCompleteTextBox.cs" />
+    <Compile Include="System\Windows\Controls\BusyIndicator\BusyIndicator.cs" />
     <Compile Include="System\Windows\Controls\DelayTextBox\DelayedTextBox.cs" />
     <Compile Include="System\Windows\Controls\InteropTextBox\InteropTextBox.cs" />
     <Compile Include="System\Windows\Controls\Reveal\Reveal.cs" />
     <Compile Include="System\Windows\Controls\SortAdorner.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\Token.cs" />
+    <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenContainer.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBox.cs" />
     <Compile Include="System\Windows\Controls\TokenizedTextBox\TokenizedTextBoxCommands.cs" />
     <Compile Include="System\Windows\Controls\Watermark\Internal\WatermarkAdorner.cs" />
@@ -435,6 +437,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="System\Windows\Controls\BusyIndicator\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="System\Windows\Controls\DelayTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -444,6 +450,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="System\Windows\Controls\TokenizedTextBox\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
