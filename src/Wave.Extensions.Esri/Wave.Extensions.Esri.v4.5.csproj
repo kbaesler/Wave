@@ -325,6 +325,7 @@
     <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
+    <Compile Include="System\Data\ConfigDataSource.cs" />
     <Compile Include="System\Data\Extensions\DataSetExtensions.cs" />
     <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
     <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
@@ -351,6 +352,8 @@
     <Compile Include="System\Recursion.cs" />
     <Compile Include="System\Reflection\Extensions\AssemblyExtensions.cs" />
     <Compile Include="System\Reflection\Internal\PropertyBinding.cs" />
+    <Compile Include="System\Native\SafeTokenHandle.cs" />
+    <Compile Include="System\Security\Impersonation.cs" />
     <Compile Include="System\Security\Cryptography\DataProtection.cs" />
     <Compile Include="System\Security\Cryptography\SymmetricKeyProtection.cs" />
     <Compile Include="System\TypeCast.cs" />
@@ -386,7 +389,6 @@
     <Compile Include="System\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
-    <Compile Include="System\Windows\Behaviors\Controls\Window\WindowBehavior.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />

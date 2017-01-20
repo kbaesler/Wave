@@ -320,12 +320,14 @@
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />
     <Compile Include="System\IO\Extensions\StreamExtensions.cs" />
+    <Compile Include="System\Native\SafeTokenHandle.cs" />
     <Compile Include="System\Native\UnsafeWindowMethods.cs" />
     <Compile Include="System\Recursion.cs" />
     <Compile Include="System\Reflection\Extensions\AssemblyExtensions.cs" />
     <Compile Include="System\Reflection\Internal\PropertyBinding.cs" />
     <Compile Include="System\Security\Cryptography\DataProtection.cs" />
     <Compile Include="System\Security\Cryptography\SymmetricKeyProtection.cs" />
+    <Compile Include="System\Security\Impersonation.cs" />
     <Compile Include="System\TypeCast.cs" />
     <Compile Include="System\Forms\ApplicationMutex.cs" />
     <Compile Include="System\Forms\Collections\ListViewItemComparer.cs" />
@@ -359,7 +361,6 @@
     <Compile Include="System\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
-    <Compile Include="System\Windows\Behaviors\Controls\Window\WindowBehavior.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />
