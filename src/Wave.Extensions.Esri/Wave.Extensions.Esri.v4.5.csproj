@@ -411,6 +411,7 @@
     <Compile Include="System\Windows\Converters\BoolToStringConverter.cs" />
     <Compile Include="System\Windows\Converters\BoolToValueConverter.cs" />
     <Compile Include="System\Windows\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="System\Windows\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="System\Windows\Converters\ValueConverterGroup.cs" />
     <Compile Include="System\Windows\DataValidation.cs" />
     <Compile Include="System\Windows\DelegateCommand.cs" />
@@ -431,6 +432,7 @@
     <Compile Include="System\Windows\Extensions\UIElementExtensions.cs" />
     <Compile Include="System\Windows\Extensions\WindowInteropHelperExtensions.cs" />
     <Compile Include="System\Windows\Observable.cs" />
+    <Compile Include="System\Windows\Validation\RegexValidationRule.cs" />
     <Compile Include="System\Windows\ViewModel\BackgroundViewModel.cs" />
     <Compile Include="System\Windows\ViewModel\BaseClasses\BaseViewModel.cs" />
     <Compile Include="System\Windows\ViewModel\DispatcherViewModel.cs" />

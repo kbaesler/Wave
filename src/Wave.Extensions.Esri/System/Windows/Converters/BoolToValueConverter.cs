@@ -56,7 +56,7 @@ namespace System.Windows.Converters
         /// <returns>
         ///     A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public virtual object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
                 return this.FalseValue;
@@ -74,7 +74,7 @@ namespace System.Windows.Converters
         /// <returns>
         ///     A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return value != null && value.Equals(this.TrueValue);
         }
