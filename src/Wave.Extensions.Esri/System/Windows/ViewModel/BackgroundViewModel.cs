@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace System.Windows
 {
@@ -13,11 +15,20 @@ namespace System.Windows
     {
         #region Fields
 
-        private readonly BackgroundWorker _Worker;
+        private BackgroundWorker _Worker;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BackgroundViewModel"/> class.
+        /// </summary>
+        protected BackgroundViewModel()
+            : this("")
+        {
+
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BackgroundViewModel" /> class.
@@ -26,7 +37,7 @@ namespace System.Windows
         protected BackgroundViewModel(string displayName)
             : base(displayName)
         {
-            _Worker = new BackgroundWorker {WorkerSupportsCancellation = true, WorkerReportsProgress = true};
+
         }
 
         #endregion
@@ -37,9 +48,9 @@ namespace System.Windows
         ///     Gets a value indicating whether this <see cref="BackgroundViewModel" /> is busy.
         /// </summary>
         /// <value><c>true</c> if busy; otherwise, <c>false</c>.</value>
-        public bool IsBusy
+        public virtual bool IsBusy
         {
-            get { return _Worker.IsBusy; }
+            get { return _Worker != null && _Worker.IsBusy; }
         }
 
         #endregion
@@ -56,7 +67,7 @@ namespace System.Windows
         /// </value>
         protected bool CancellationPending
         {
-            get { return (_Worker.IsBusy && _Worker.CancellationPending); }
+            get { return (_Worker != null && _Worker.IsBusy && _Worker.CancellationPending); }
         }
 
         #endregion
@@ -68,7 +79,7 @@ namespace System.Windows
         /// </summary>
         protected void CancelAsync()
         {
-            if (_Worker.IsBusy)
+            if (_Worker != null && _Worker.IsBusy)
             {
                 _Worker.CancelAsync();
             }
@@ -80,10 +91,7 @@ namespace System.Windows
         /// <param name="message">The message.</param>
         protected virtual void ReportProgress(string message)
         {
-            if (_Worker.IsBusy)
-            {
-                _Worker.ReportProgress(-1, message);
-            }
+            this.ReportProgress(-1, message);
         }
 
         /// <summary>
@@ -94,37 +102,73 @@ namespace System.Windows
         ///     The state object passed to
         ///     System.ComponentModel.BackgroundWorker.RunWorkerAsync(System.Object).
         /// </param>
-        protected virtual void ReportProgress(int percentProgress, object userState)
+        protected virtual void ReportProgress<T>(int percentProgress, T userState)
         {
-            if (_Worker.IsBusy)
+            if (_Worker != null && _Worker.IsBusy)
             {
                 _Worker.ReportProgress(percentProgress, userState);
             }
         }
 
         /// <summary>
-        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
-        ///     passed to the methods.
+        /// Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        /// passed to the methods.
         /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="execute">The delegate that handles the execution on the work.</param>
         /// <param name="completion">The delegate that handles when the work has completed.</param>
-        protected void Run(Func<object, object> execute, Action<object, bool, Exception, object> completion)
+        protected void Run<TResult>(Func<object, TResult> execute, Action<TResult, bool, Exception, object> completion)
         {
-            this.Run(null, execute, completion);
+            this.Run(execute, null, completion);
         }
 
         /// <summary>
-        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
-        ///     passed to the methods.
+        /// Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        /// passed to the methods.
         /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="execute">The delegate that handles the execution on the work.</param>
+        /// <param name="progress">The delegate that handles reporting the progress.</param>
+        /// <param name="completion">The delegate that handles when the work has completed.</param>
+        protected void Run<TResult>(Func<object, TResult> execute, Action<int, string> progress, Action<TResult, bool, Exception, object> completion)
+        {
+            this.Run(null, execute, progress, completion);
+        }
+        /// <summary>
+        /// Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        /// passed to the methods.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <typeparam name="TProgress">The type of the progress.</typeparam>
+        /// <param name="execute">The delegate that handles the execution on the work.</param>
+        /// <param name="progress">The delegate that handles reporting the progress.</param>
+        /// <param name="completion">The delegate that handles when the work has completed.</param>
+        protected void Run<TResult, TProgress>(Func<object, TResult> execute, Action<int, TProgress> progress, Action<TResult, bool, Exception, object> completion)
+        {
+            this.Run(null, execute, progress, completion);
+        }
+
+        /// <summary>
+        /// Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        /// passed to the methods.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <typeparam name="TProgress">The type of the progress.</typeparam>
         /// <param name="arguments">The arguments.</param>
         /// <param name="execute">The delegate that handles the execution on the work.</param>
+        /// <param name="progress">The delegate that handles reporting the progress.</param>
         /// <param name="completion">The delegate that handles when the work has completed.</param>
         /// <exception cref="System.ArgumentNullException">execute</exception>
-        protected void Run(object arguments, Func<object, object> execute, Action<object, bool, Exception, object> completion)
+        protected void Run<TResult, TProgress>(object arguments, Func<object, TResult> execute, Action<int, TProgress> progress, Action<TResult, bool, Exception, object> completion)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");
+
+            _Worker = new BackgroundWorker
+            {
+                WorkerSupportsCancellation = true,
+                WorkerReportsProgress = true
+            };
 
             // The work event handler.
             _Worker.DoWork += delegate(object sender, DoWorkEventArgs e)
@@ -137,13 +181,24 @@ namespace System.Windows
             // The complete event handler.
             _Worker.RunWorkerCompleted += delegate(object sender, RunWorkerCompletedEventArgs e)
             {
+                this.OnPropertyChanged("IsBusy");
+
                 if (completion != null)
                 {
-                    object result = (e.Error == null) ? e.Result : null;
+                    TResult result = (e.Error == null) ? (TResult)e.Result : default(TResult);
                     completion(result, e.Cancelled, e.Error, e.UserState);
                 }
 
-                this.OnPropertyChanged("IsBusy");
+                _Worker.Dispose();
+            };
+
+            // The progress event handler.
+            _Worker.ProgressChanged += delegate(object sender, ProgressChangedEventArgs e)
+            {
+                if (progress != null)
+                {
+                    progress(e.ProgressPercentage, (TProgress)e.UserState);
+                }
             };
 
             // Run asynchronously.
