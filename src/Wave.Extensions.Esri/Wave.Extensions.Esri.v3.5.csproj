@@ -302,6 +302,7 @@
     <Compile Include="System\Collections\Theory\ObjectModel\EdgeCollection.cs" />
     <Compile Include="System\Collections\Theory\ObjectModel\VertexCollection.cs" />
     <Compile Include="System\Collections\Theory\ObjectModel\VertexEdgeDictionary.cs" />
+    <Compile Include="System\ComponentModel\Task.cs" />
     <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
