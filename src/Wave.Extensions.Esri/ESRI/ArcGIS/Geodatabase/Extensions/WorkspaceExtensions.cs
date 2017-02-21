@@ -353,6 +353,22 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        /// Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> that resides within the
+        /// specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>
+        /// Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
+        /// otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static IFeatureClass GetFeatureClass(this IWorkspace source, string tableName)
+        {
+            return source.GetFeatureClass("", tableName);
+        }
+
+        /// <summary>
         ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> in the
         ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
@@ -519,6 +535,22 @@ namespace ESRI.ArcGIS.Geodatabase
                 var table = source.GetTable("", datasetName.Name);
                 table.Delete();
             }
+        }
+
+        /// <summary>
+        /// Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> that resides within the
+        /// specified <paramref name="source" /> workspace.
+        /// </summary>
+        /// <param name="source">The workspace</param>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>
+        /// Returns a <see cref="ITable" /> representing the table that has the name,
+        /// otherwise <c>null</c>.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        public static ITable GetTable(this IWorkspace source, string tableName)
+        {
+            return source.GetTable("", tableName);
         }
 
         /// <summary>

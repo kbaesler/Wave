@@ -18,6 +18,30 @@ namespace ESRI.ArcGIS.Location
         #region Constructors
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Route"/> class.
+        /// </summary>
+        /// <param name="routeFeatureClass">The route feature class.</param>
+        /// <param name="routeIDFieldName">Name of the route identifier field.</param>
+        /// <param name="routeIDIsUnique">if set to <c>true</c> when the route identifier is unique.</param>
+        public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, bool routeIDIsUnique)
+            : this(routeFeatureClass, routeIDFieldName, routeIDIsUnique, null)
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Route" /> class.
+        /// </summary>
+        /// <param name="routeFeatureClass">The route feature class.</param>
+        /// <param name="routeIDFieldName">Name of the route identifier field.</param>
+        /// <param name="routeIDIsUnique">if set to <c>true</c> when the route identifier is unique.</param>
+        /// <param name="routeWhereClause">The filter used to query the source feature class for route data.</param>
+        public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, bool routeIDIsUnique, IQueryFilter routeWhereClause)
+            : this(routeFeatureClass, routeIDFieldName, esriUnits.esriUnknownUnits, routeIDIsUnique, routeWhereClause)
+        {
+
+        }
+        /// <summary>
         ///     Initializes a new instance of the <see cref="Route" /> class.
         /// </summary>
         /// <param name="routeFeatureClass">The route feature class.</param>
@@ -324,7 +348,7 @@ namespace ESRI.ArcGIS.Location
         /// <param name="eventData">The event data.</param>
         /// <param name="workspace">The workspace.</param>
         public RouteEventSourceProxy(RouteEventData<RouteMeasureLineSegmentation> eventData, IWorkspace workspace)
-            : this(workspace.GetTable("", eventData.EventTableName), workspace.GetFeatureClass("", eventData.RouteFeatureClassName), eventData.Segmentation.EventProperties, eventData.RouteIdIsUnique)
+            : this(workspace.GetTable(eventData.EventTableName), workspace.GetFeatureClass(eventData.RouteFeatureClassName), eventData.Segmentation.EventProperties, eventData.RouteIdIsUnique)
         {
         }
 
@@ -398,7 +422,7 @@ namespace ESRI.ArcGIS.Location
             var invalidObjects = dataConverter.ConvertFeatureClass((IDatasetName)this.Name, filter, null, null, outputClassName, geometryDef, fields, "", 1000, 0);
             if (invalidObjects.AsEnumerable().Any()) return null;
 
-            var route = workspace.GetFeatureClass("", outputTableName);
+            var route = workspace.GetFeatureClass(outputTableName);
             return route;
         }
 

@@ -215,15 +215,17 @@ namespace System.ComponentModel
             {
                 Run(execute, e => error = e, done, synchronizationContext);
 
-                done.WaitOne(milisecondsTimeout);
-
-                complete();
+                done.WaitOne(milisecondsTimeout);               
             }
 
             if (error != null)
                 throw error;
 
-            return timer.Elapsed;
+            var time = timer.Elapsed;
+            
+            complete();
+
+            return time;
         }
 
 

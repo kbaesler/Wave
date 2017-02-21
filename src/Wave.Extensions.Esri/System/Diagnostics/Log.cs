@@ -3,6 +3,8 @@ using System.Globalization;
 using System.Windows.Forms;
 
 using log4net;
+using log4net.Appender;
+using log4net.Repository.Hierarchy;
 
 namespace System.Diagnostics
 {
@@ -28,6 +30,18 @@ namespace System.Diagnostics
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        ///     Adds the appender to the logger.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="appender">The appender.</param>
+        public static void AddAppender(object source, IAppender appender)
+        {
+            ILog log = GetLogger(typeof(Log));
+            Logger l = (Logger) log.Logger;
+            l.AddAppender(appender);
+        }
 
         /// <summary>
         ///     Log a message object with the Debug level.
@@ -165,32 +179,6 @@ namespace System.Diagnostics
         ///     Log a message object with the Error level.
         /// </summary>
         /// <param name="source">The source of the logger.</param>
-        /// <param name="format">A composite format string.</param>
-        /// <param name="args">An object array that contains zero or more objects to format.</param>
-        /// <exception cref="System.ArgumentNullException">source</exception>
-        public static void Error(object source, string format, params object[] args)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            Error(source.GetType(), string.Format(CultureInfo.CurrentCulture, format, args));
-        }
-
-        /// <summary>
-        ///     Log a message object with the Error level.
-        /// </summary>
-        /// <param name="source">The source of the logger.</param>
-        /// <param name="format">A composite format string.</param>
-        /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Error(Type source, string format, params object[] args)
-        {
-            Error(source, string.Format(CultureInfo.CurrentCulture, format, args));
-        }
-
-        /// <summary>
-        ///     Log a message object with the Error level.
-        /// </summary>
-        /// <param name="source">The source of the logger.</param>
         /// <param name="message">The message.</param>
         /// <exception cref="System.ArgumentNullException">source</exception>
         public static void Error(object source, string message)
@@ -205,34 +193,32 @@ namespace System.Diagnostics
         ///     Log a message object with the Error level including the stack trace of the exception.
         /// </summary>
         /// <param name="source">The source of the logger.</param>
-        /// <param name="message">The message.</param>
+        /// <param name="title">The title of the message box.</param>
         /// <param name="exception">The exception.</param>
         /// <exception cref="System.ArgumentNullException">source</exception>
-        public static void Error(Type source, string message, Exception exception)
+        public static void Error(object source, string title, Exception exception)
         {
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            ILog logger = GetLogger(source);
-            if (logger.IsErrorEnabled)
-            {
-                logger.Error(message, exception);
-            }
+            Error(source.GetType(), title, exception.GetErrorMessage());
         }
 
         /// <summary>
-        ///     Log a message object with the Error level including the stack trace of the exception.
+        ///     Log a message object with the Error level including the stack trace of the exception
+        ///     and displays a message box to the user with the contents of the exception.
         /// </summary>
         /// <param name="source">The source of the logger.</param>
+        /// <param name="title">The title of the message box.</param>
         /// <param name="message">The message.</param>
-        /// <param name="exception">The exception.</param>
         /// <exception cref="System.ArgumentNullException">source</exception>
-        public static void Error(object source, string message, Exception exception)
+        public static void Error(Type source, string title, string message)
         {
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            Error(source.GetType(), message, exception);
+            Error(source, message);
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -249,8 +235,8 @@ namespace System.Diagnostics
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            Error(source, title, exception);
-            MessageBox.Show(owner, exception.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Error(source, exception);
+            MessageBox.Show(owner, exception.GetErrorMessage(), title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -268,6 +254,24 @@ namespace System.Diagnostics
                 throw new ArgumentNullException("source");
 
             Error(source.GetType(), owner, title, exception);
+        }
+
+        /// <summary>
+        ///     Finds the appender that is attached to a logger.
+        /// </summary>
+        /// <param name="appenderName">Name of the appender.</param>
+        /// <returns></returns>
+        public static IAppender FindAppender(string appenderName)
+        {
+            foreach (IAppender appender in
+                LogManager.GetRepository().GetAppenders())
+            {
+                if (appender.Name == appenderName)
+                {
+                    return appender;
+                }
+            }
+            return null;
         }
 
         /// <summary>
