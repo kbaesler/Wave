@@ -142,7 +142,7 @@ namespace ESRI.ArcGIS.Location
         [IgnoreDataMember]
         public bool IsWithin
         {
-            get { return this.SearchRadius == 0.0; }
+            get { return this.SearchRadius > 0.0; }
         }
 
         /// <summary>
