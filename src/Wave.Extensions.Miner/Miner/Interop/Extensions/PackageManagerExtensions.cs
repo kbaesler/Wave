@@ -25,9 +25,10 @@ namespace Miner.Interop
         public static IEnumerable<IMMPackageName> GetPackageNames(this IMMPackageManager source, mmPackageType packageType, mmPackageCategory packageCategory, IWorkspace workspace, string userName)
         {
             var packages = ((IMMPackageByWS) source).GetPackageNamesByWS(packageType, packageCategory, workspace, userName);
-            if (packages != null)
+            IEnumerable enumerable = packages as IEnumerable;
+            if (enumerable != null)
             {
-                IEnumerator enumerator = ((IEnumerable)packages).GetEnumerator();
+                IEnumerator enumerator = enumerable.GetEnumerator();
                 enumerator.Reset();
                 while (enumerator.MoveNext())
                     yield return enumerator.Current as IMMPackageName;
