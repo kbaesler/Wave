@@ -10,7 +10,7 @@ namespace ESRI.ArcGIS.Geometry
     public static class GeometryExtensions
     {
         #region Public Methods
-#if V10
+
         /// <summary>
         ///     Highlights the specified geometry using the color specified by the ArcFM Properties.
         /// </summary>
@@ -22,7 +22,7 @@ namespace ESRI.ArcGIS.Geometry
         {
             return MapUtilities.HighlightFeature(source);
         }
-#endif
+
         #endregion
     }
 }

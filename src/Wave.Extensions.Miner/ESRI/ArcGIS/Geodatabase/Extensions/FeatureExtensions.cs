@@ -1,9 +1,6 @@
-﻿#if V10
-using Miner.Framework;
+﻿using Miner.Framework;
 
 using ESRI.ArcGIS.Carto;
-
-#endif
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -14,7 +11,6 @@ namespace ESRI.ArcGIS.Geodatabase
     {
         #region Public Methods
 
-#if V10
         /// <summary>
         ///     Flashes the feature for the specified interval (in milliseconds) a set number of times using the color specified by
         ///     the ArcFM Properties.
@@ -97,7 +93,6 @@ namespace ESRI.ArcGIS.Geodatabase
 
             MapUtilities.ZoomFeature(source);
         }
-#endif
 
         #endregion
     }

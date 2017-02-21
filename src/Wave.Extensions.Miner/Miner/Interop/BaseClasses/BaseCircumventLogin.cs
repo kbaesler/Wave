@@ -91,11 +91,7 @@ namespace Miner.Interop
         /// </returns>
         protected virtual bool Circumvent()
         {
-#if V10
             IMMRegistry registry = new MMRegistry();
-#else
-            IMMRegistry registry = new MMRegistryClass();
-#endif
             registry.OpenKey(mmHKEY.mmHKEY_LOCAL_MACHINE, mmBaseKey.mmEngineViewer, "Login");
 
             string fileName = (string)registry.Read("DatabaseConnectionsXMLPath", string.Empty);

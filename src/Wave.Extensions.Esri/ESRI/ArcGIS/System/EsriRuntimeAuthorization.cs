@@ -2,14 +2,11 @@
 using System.Text;
 
 using ESRI.ArcGIS.ADF.COMSupport;
-#if V10
 using System;
 using System.Collections.Generic;
-#endif
 
 namespace ESRI.ArcGIS.esriSystem
 {
-#if V10
     /// <summary>
     ///     The runtime manager event arguments.
     /// </summary>
@@ -49,7 +46,6 @@ namespace ESRI.ArcGIS.esriSystem
 
         #endregion
     }
-#endif
 
     /// <summary>
     ///     An helper class used to handle initialization of the ESRI product licenses.
@@ -64,18 +60,15 @@ namespace ESRI.ArcGIS.esriSystem
 
         #region Events
 
-#if V10
         /// <summary>
         ///     Raised when ArcGIS runtime binding hasn't been established.
         /// </summary>
         public event EventHandler<RuntimeManagerEventArgs> ResolveRuntimeBinding;
-#endif
 
         #endregion
 
         #region Constructors
 
-#if V10
         /// <summary>
         ///     Initializes a new instance of the <see cref="EsriRuntimeAuthorization" /> class.
         /// </summary>
@@ -92,12 +85,6 @@ namespace ESRI.ArcGIS.esriSystem
         {
             this.ResolveRuntimeBinding += (sender, args) => args.ProductCode = productCode;
         }
-#else
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EsriRuntimeAuthorization"/> class.
-        /// </summary>
-        public EsriRuntimeAuthorization() { }
-#endif
 
         #endregion
 
@@ -113,7 +100,6 @@ namespace ESRI.ArcGIS.esriSystem
         {
             get
             {
-#if V10
                 if (RuntimeManager.ActiveRuntime == null)
                 {
                     var eventArgs = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
@@ -122,7 +108,7 @@ namespace ESRI.ArcGIS.esriSystem
                     if (!RuntimeManager.Bind(eventArgs.ProductCode))
                         throw new Exception(string.Format("Product: {0}: Unavailable", eventArgs.ProductCode));
                 }
-#endif
+
                 return _AoInit ?? (_AoInit = new AoInitializeClass());
             }
         }
@@ -271,7 +257,6 @@ namespace ESRI.ArcGIS.esriSystem
                     licenseStatus == esriLicenseStatus.esriLicenseCheckedOut);
         }
 
-#if V10
         /// <summary>
         ///     Raises the <see cref="E:ResolveRuntimeBinding" /> event.
         /// </summary>
@@ -282,7 +267,6 @@ namespace ESRI.ArcGIS.esriSystem
             if (eventHandler != null)
                 eventHandler(this, e);
         }
-#endif
 
         #endregion
 

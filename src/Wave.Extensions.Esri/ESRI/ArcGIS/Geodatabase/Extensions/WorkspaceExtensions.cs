@@ -102,7 +102,6 @@ namespace ESRI.ArcGIS.Geodatabase
             return value.Replace("'", "''");
         }
 
-#if V10
         /// <summary>
         ///     Executes the specified query (SQL) and returns the results as a <see cref="ICursor" />
         /// </summary>
@@ -117,7 +116,6 @@ namespace ESRI.ArcGIS.Geodatabase
 
             return sw.OpenQueryCursor(commandText);
         }
-#endif
 
         /// <summary>
         ///     Determines whether the workspace contains the table name and type combination.
@@ -628,7 +626,6 @@ namespace ESRI.ArcGIS.Geodatabase
             }
         }
 
-#if V10
         /// <summary>
         ///     Gets all of the tables in the workspace.
         /// </summary>
@@ -639,7 +636,6 @@ namespace ESRI.ArcGIS.Geodatabase
             var sw = (ISqlWorkspace) source;
             return sw.GetTables().AsEnumerable();
         }
-#endif
 
         /// <summary>
         ///     Gets all of the tables in the workspace.

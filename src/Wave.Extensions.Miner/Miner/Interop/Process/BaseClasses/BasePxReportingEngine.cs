@@ -50,11 +50,7 @@ namespace Miner.Interop.Process
         {
             get
             {
-#if V10
                 IMMRegistry registry = new MMRegistry();
-#else
-                IMMRegistry registry = new MMRegistryClass();
-#endif
                 registry.OpenKey(mmHKEY.mmHKEY_LOCAL_MACHINE, mmBaseKey.mmWMS, "Style Sheets");
                 return TypeCast.Cast(registry.Read(this.StyleSheetName, string.Empty), string.Empty);
             }
