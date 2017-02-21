@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Searchability", "Wave.Searchability\Wave.Searchability.csproj", "{7154A184-E701-4B05-9DA6-6C0A8EC31604}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{8773D443-1D8F-4AA0-A709-D375E4A37395}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DropDownControls", "DropDownControls", "{44DB8E42-10C6-4F0F-A0F4-E7016E1FC363}"
+	ProjectSection(SolutionItems) = preProject
+		libs\DropDownControls\DropDownControls.dll = libs\DropDownControls\DropDownControls.dll
+		libs\DropDownControls\DropDownControls.xml = libs\DropDownControls\DropDownControls.xml
+		libs\DropDownControls\LICENSE.TXT = libs\DropDownControls\LICENSE.TXT
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FE07A100-F460-485D-A213-B217C931A835}"
+	ProjectSection(SolutionItems) = preProject
+		samples\Feeder.json = samples\Feeder.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DEDD277C-ADBE-40AD-AC72-49D2C63E9825}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7154A184-E701-4B05-9DA6-6C0A8EC31604}.Debug|x86.ActiveCfg = Debug|x86
+		{7154A184-E701-4B05-9DA6-6C0A8EC31604}.Debug|x86.Build.0 = Debug|x86
+		{7154A184-E701-4B05-9DA6-6C0A8EC31604}.Release|x86.ActiveCfg = Release|x86
+		{7154A184-E701-4B05-9DA6-6C0A8EC31604}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44DB8E42-10C6-4F0F-A0F4-E7016E1FC363} = {8773D443-1D8F-4AA0-A709-D375E4A37395}
+	EndGlobalSection
+EndGlobal
