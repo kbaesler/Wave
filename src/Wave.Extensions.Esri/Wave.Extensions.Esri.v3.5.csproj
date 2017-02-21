@@ -401,9 +401,11 @@
     <Compile Include="System\Windows\Events\Interfaces\IEventSubscription.cs" />
     <Compile Include="System\Windows\Events\SubscriptionToken.cs" />
     <Compile Include="System\Windows\Extensions\AdornerExtensions.cs" />
+    <Compile Include="System\Windows\Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="System\Windows\Extensions\UIElementExtensions.cs" />
     <Compile Include="System\Windows\Extensions\WindowInteropHelperExtensions.cs" />
     <Compile Include="System\Windows\Observable.cs" />
+    <Compile Include="System\Windows\Validation\RegexValidationRule.cs" />
     <Compile Include="System\Windows\ViewModel\BackgroundViewModel.cs" />
     <Compile Include="System\Windows\ViewModel\BaseClasses\BaseViewModel.cs" />
     <Compile Include="System\Xml\Extensions\XDocumentExtensions.cs" />

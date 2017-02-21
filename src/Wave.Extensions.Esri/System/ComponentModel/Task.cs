@@ -18,9 +18,85 @@ namespace System.ComponentModel
         /// </summary>
         private static readonly SynchronizationContext Context = new STASynchronizationContext();
 
+        /// <summary>
+        ///     The threads
+        /// </summary>
+        private static long _Threads;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets a value indicating whether there are active threads (those that have not been disposed).
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if there are active threads; otherwise, <c>false</c>.
+        /// </value>
+        public static bool IsBusy
+        {
+            get { return Interlocked.Read(ref _Threads) > 0; }
+        }
+
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        ///     passed to the methods.
+        /// </summary>
+        /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        public static void Run(Action task, Action complete)
+        {
+            Run(task, complete, null);
+        }
+
+        /// <summary>
+        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        ///     passed to the methods.
+        /// </summary>
+        /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        /// <param name="error">The delegate that handles any unhandled exceptions that occured during execution.</param>
+        public static void Run(Action task, Action complete, Action<Exception> error)
+        {
+            var thread = Run(task, Context);
+            thread.RunWorkerCompleted += (sender, e) =>
+            {
+                if (e.Error == null)
+                    complete();
+                else
+                    error(e.Error);
+
+                thread.Dispose();
+            };
+        }
+
+        /// <summary>
+        ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
+        ///     passed to the methods.
+        /// </summary>
+        /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        /// <param name="error">The delegate that handles any unhandled exceptions that occured during execution.</param>
+        public static void Run<TResult>(Func<TResult> task, Action<TResult> complete, Action<Exception> error)
+        {
+            var thread = Run(task, Context);
+            thread.RunWorkerCompleted += (sender, e) =>
+            {
+                if (e.Error == null)
+                {
+                    var result = (TResult)e.Result;
+                    complete(result);
+                }
+                else
+                    error(e.Error);
+
+                thread.Dispose();
+            };
+        }
 
         /// <summary>
         ///     Runs the background process on a <see cref="BackgroundWorker" /> thread using the specified arguments that are
@@ -61,20 +137,68 @@ namespace System.ComponentModel
         ///     complete.
         /// </summary>
         /// <param name="task">The delegate that handles the execution on the work.</param>
-        /// <returns>Returns a <see cref="TimeSpan" /> representing the time waited for the task to complete.</returns>
+        /// <returns>
+        ///     Returns a <see cref="TimeSpan" /> representing the time waited for the task to complete.
+        /// </returns>
         public static TimeSpan Wait(Action task)
         {
-            return Wait(task, Context);
+            return Wait(task, () => { });
         }
 
+        /// <summary>
+        /// Waits for the action that is issued as a background process on a <see cref="BackgroundWorker" /> thread to
+        /// complete.
+        /// </summary>
+        /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="milisecondsTimeout">The number of milliseconds to wait, or System.Threading.Timeout.Infinite (-1) to wait indefinitely.</param>
+        /// <returns>
+        /// Returns a <see cref="TimeSpan" /> representing the time waited for the task to complete.
+        /// </returns>
+        public static TimeSpan Wait(Action task, int milisecondsTimeout)
+        {
+            return Wait(task, () => { }, milisecondsTimeout);
+        }
         /// <summary>
         ///     Waits for the action that is issued as a background process on a <see cref="BackgroundWorker" /> thread to
         ///     complete.
         /// </summary>
         /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        /// <returns>
+        ///     Returns a <see cref="TimeSpan" /> representing the time waited for the task to complete.
+        /// </returns>
+        public static TimeSpan Wait(Action task, Action complete)
+        {
+            return Wait(task, complete, Timeout.Infinite, Context);
+        }
+
+        /// <summary>
+        /// Waits for the action that is issued as a background process on a <see cref="BackgroundWorker" /> thread to
+        /// complete.
+        /// </summary>
+        /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        /// <param name="milisecondsTimeout">The number of milliseconds to wait, or System.Threading.Timeout.Infinite (-1) to wait indefinitely.</param>
+        /// <returns>
+        /// Returns a <see cref="TimeSpan" /> representing the time waited for the task to complete.
+        /// </returns>
+        public static TimeSpan Wait(Action task, Action complete, int milisecondsTimeout)
+        {
+            return Wait(task, complete, milisecondsTimeout, Context);
+        }
+
+        /// <summary>
+        /// Waits for the action that is issued as a background process on a <see cref="BackgroundWorker" /> thread to
+        /// complete.
+        /// </summary>
+        /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        /// <param name="milisecondsTimeout">The number of milliseconds to wait, or System.Threading.Timeout.Infinite (-1) to wait indefinitely.</param>
         /// <param name="synchronizationContext">The synchronization context.</param>
-        /// <returns>Returns a <see cref="TimeSpan" /> representing the time waited for the task to complete.</returns>
-        public static TimeSpan Wait(Action task, SynchronizationContext synchronizationContext)
+        /// <returns>
+        /// Returns a <see cref="TimeSpan" /> representing the time waited for the task to complete.
+        /// </returns>
+        public static TimeSpan Wait(Action task, Action complete, int milisecondsTimeout, SynchronizationContext synchronizationContext)
         {
             Func<bool> execute = () =>
             {
@@ -83,14 +207,21 @@ namespace System.ComponentModel
                 return true;
             };
 
+            Exception error = null;
+
             Stopwatch timer = Stopwatch.StartNew();
 
             using (var done = new AutoResetEvent(false))
             {
-                Run(execute, done, synchronizationContext);
+                Run(execute, e => error = e, done, synchronizationContext);
 
-                done.WaitOne();
+                done.WaitOne(milisecondsTimeout);
+
+                complete();
             }
+
+            if (error != null)
+                throw error;
 
             return timer.Elapsed;
         }
@@ -104,7 +235,7 @@ namespace System.ComponentModel
         /// <returns>Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.</returns>
         public static TimeSpan WaitAll(IEnumerable<Action> tasks)
         {
-            return WaitAll(tasks, Context);
+            return WaitAll(tasks, () => { });
         }
 
         /// <summary>
@@ -112,10 +243,27 @@ namespace System.ComponentModel
         ///     to complete.
         /// </summary>
         /// <param name="tasks">The delegates that handles the execution on the work.</param>
-        /// <returns>Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.</returns>
-        public static TimeSpan WaitAll(IEnumerable<BackgroundWorker> tasks)
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        /// <returns>
+        ///     Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.
+        /// </returns>
+        public static TimeSpan WaitAll(IEnumerable<Action> tasks, Action complete)
         {
-            // Calling the WaitHandle.WaitAll() method must be done from a multithreaded apartment (MTA) thread. 
+            return WaitAll(tasks, complete, Context);
+        }
+
+        /// <summary>
+        ///     Waits for all of the actions (that are issued as a background process on a <see cref="BackgroundWorker" /> thread)
+        ///     to complete.
+        /// </summary>
+        /// <param name="tasks">The delegates that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
+        /// <returns>
+        ///     Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.
+        /// </returns>
+        public static TimeSpan WaitAll(IEnumerable<BackgroundWorker> tasks, Action complete)
+        {
+            // Calling the WaitHandle method must be done from a multithreaded apartment (MTA) thread. 
             // To launch multiple synchronized tasks, you first have to launch a worker thread that, in turn, will run the multiple threads.
             return Wait(() =>
             {
@@ -127,8 +275,8 @@ namespace System.ComponentModel
 
                     if (t.IsBusy)
                     {
-                        t.RunWorkerCompleted += null;
-                        t.RunWorkerCompleted += (sender, e) => wait.Set();
+                        t.RunWorkerCompleted -= null;
+                        t.RunWorkerCompleted += (sender, e) => { wait.Set(); };
                     }
                     else
                     {
@@ -140,6 +288,8 @@ namespace System.ComponentModel
 
                 WaitHandle.WaitAll(done.ToArray());
             },
+                complete,
+                Timeout.Infinite,
                 new SynchronizationContext());
         }
 
@@ -148,13 +298,18 @@ namespace System.ComponentModel
         ///     to complete.
         /// </summary>
         /// <param name="tasks">The delegates that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
         /// <param name="synchronizationContext">The synchronization context.</param>
-        /// <returns>Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.</returns>
-        public static TimeSpan WaitAll(IEnumerable<Action> tasks, SynchronizationContext synchronizationContext)
+        /// <returns>
+        ///     Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.
+        /// </returns>
+        public static TimeSpan WaitAll(IEnumerable<Action> tasks, Action complete, SynchronizationContext synchronizationContext)
         {
-            // Calling the WaitHandle.WaitAll() method must be done from a multithreaded apartment (MTA) thread. 
+            List<Exception> errors = new List<Exception>();
+
+            // Calling the WaitHandle method must be done from a multithreaded apartment (MTA) thread. 
             // To launch multiple synchronized tasks, you first have to launch a worker thread that, in turn, will run the multiple threads.
-            return Wait(() =>
+            var timer = Wait(() =>
             {
                 var done = new List<WaitHandle>();
 
@@ -172,12 +327,21 @@ namespace System.ComponentModel
 
                     done.Add(wait);
 
-                    Run(execute, wait, synchronizationContext);
+                    Run(execute, e => errors.Add(e), wait, synchronizationContext);
                 }
 
                 WaitHandle.WaitAll(done.ToArray());
             },
+                complete,
+                Timeout.Infinite,
                 new SynchronizationContext());
+
+            if (errors.Any())
+            {
+                throw errors.Aggregate(errors.First(), (current, e) => new Exception(current.Message, e));
+            }
+
+            return timer;
         }
 
         /// <summary>
@@ -185,13 +349,18 @@ namespace System.ComponentModel
         ///     to complete.
         /// </summary>
         /// <param name="tasks">The delegates that handles the execution on the work.</param>
+        /// <param name="complete">The delegate that is called when the task completes.</param>
         /// <param name="synchronizationContext">The synchronization context.</param>
-        /// <returns>Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.</returns>
-        public static TimeSpan WaitAny(IEnumerable<Action> tasks, SynchronizationContext synchronizationContext)
+        /// <returns>
+        ///     Returns a <see cref="TimeSpan" /> representing the time waited for the tasks to complete.
+        /// </returns>
+        public static TimeSpan WaitAny(IEnumerable<Action> tasks, Action complete, SynchronizationContext synchronizationContext)
         {
-            // Calling the WaitHandle.WaitAll() method must be done from a multithreaded apartment (MTA) thread. 
+            List<Exception> errors = new List<Exception>();
+
+            // Calling the WaitHandle method must be done from a multithreaded apartment (MTA) thread. 
             // To launch multiple synchronized tasks, you first have to launch a worker thread that, in turn, will run the multiple threads.
-            return Wait(() =>
+            var timer = Wait(() =>
             {
                 var done = new List<WaitHandle>();
 
@@ -207,14 +376,25 @@ namespace System.ComponentModel
                         return true;
                     };
 
+                    Action<Exception> error = (e) => { errors.Add(e); };
+
                     done.Add(wait);
 
-                    Run(execute, wait, synchronizationContext);
+                    Run(execute, error, wait, synchronizationContext);
                 }
 
-                WaitHandle.WaitAny(done.ToArray());
+                WaitHandle.WaitAll(done.ToArray());
             },
+                complete,
+                Timeout.Infinite,
                 new SynchronizationContext());
+
+            if (errors.Any())
+            {
+                throw errors.Aggregate(errors.First(), (current, e) => new Exception(current.Message, e));
+            }
+
+            return timer;
         }
 
         #endregion
@@ -234,7 +414,7 @@ namespace System.ComponentModel
         /// <exception cref="ArgumentNullException">task</exception>
         private static BackgroundWorker Run<TResult>(Func<TResult> task, SynchronizationContext synchronizationContext)
         {
-            return Run(task, null, synchronizationContext);
+            return Run(task, null, null, synchronizationContext);
         }
 
         /// <summary>
@@ -243,35 +423,48 @@ namespace System.ComponentModel
         /// </summary>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="task">The delegate that handles the execution on the work.</param>
+        /// <param name="error">The delegate that handles any unhandled exceptions that occured during execution.</param>
         /// <param name="done">The handle that notifies a waiting thread that an event has occurred.</param>
         /// <param name="synchronizationContext">The synchronization context.</param>
         /// <returns>
         ///     Returns a <see cref="BackgroundWorker" /> representing the executing task.
         /// </returns>
         /// <exception cref="ArgumentNullException">task</exception>
-        private static BackgroundWorker Run<TResult>(Func<TResult> task, AutoResetEvent done, SynchronizationContext synchronizationContext)
+        private static BackgroundWorker Run<TResult>(Func<TResult> task, Action<Exception> error, AutoResetEvent done, SynchronizationContext synchronizationContext)
         {
             if (task == null)
                 throw new ArgumentNullException("task");
 
+            Interlocked.Increment(ref _Threads);
+
             AsyncOperationManager.SynchronizationContext = synchronizationContext ?? SynchronizationContext.Current;
 
-            var worker = new BackgroundWorker
+            var thread = new BackgroundWorker
             {
                 WorkerSupportsCancellation = true,
                 WorkerReportsProgress = true
             };
 
-            worker.DoWork += (sender, e) => { e.Result = task(); };
+            thread.DoWork += (sender, e) => { e.Result = task(); };
 
             if (done != null)
             {
-                worker.RunWorkerCompleted += (sender, e) => { done.Set(); };
+                thread.RunWorkerCompleted += (sender, e) =>
+                {
+                    done.Set();
+
+                    if (e.Error != null && error != null)
+                        error(e.Error);
+
+                    thread.Dispose();
+                };
             }
 
-            worker.RunWorkerAsync();
+            thread.Disposed += (sender, args) => { Interlocked.Decrement(ref _Threads); };
 
-            return worker;
+            thread.RunWorkerAsync();
+
+            return thread;
         }
 
         #endregion
