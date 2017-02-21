@@ -19,7 +19,7 @@ namespace Wave.Extensions.Esri.Tests
             using (var lic = new EsriRuntimeAuthorization())
             {
                 var status = lic.GetInitializationStatus();
-                Assert.AreEqual("Product: No licenses were requested\r\n", status);
+                Assert.AreEqual("Product: No licenses were requested", status);
 
                 var extensionCodes = Enum.GetValues(typeof (esriLicenseExtensionCode));
                 lic.Initialize(esriLicenseProductCode.esriLicenseProductCodeStandard, extensionCodes.OfType<esriLicenseExtensionCode>().ToArray());

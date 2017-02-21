@@ -15,7 +15,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_EOF_IsTrue()
         {
-            IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
+            IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER", true);
             Assert.IsNotNull(testClass);
 
             IQueryFilter filter = new QueryFilterClass();
@@ -43,7 +43,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_Next_IsTrue()
         {
-            IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
+            IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER", true);
             Assert.IsNotNull(testClass);
 
             IQueryFilter filter = new QueryFilterClass();
@@ -60,7 +60,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void TreeViewSelectionEnumerator_Reset_Equal()
         {
-            IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
+            IFeatureClass testClass = base.Workspace.GetFeatureClass("TRANSFORMER", true);
             Assert.IsNotNull(testClass);
 
             IQueryFilter filter = new QueryFilterClass();

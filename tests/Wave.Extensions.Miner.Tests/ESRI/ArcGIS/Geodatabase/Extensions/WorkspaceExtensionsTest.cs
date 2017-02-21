@@ -15,7 +15,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void IWorkspace_GetFeatureClass_IsNotNull()
         {
-            var testClass = base.Workspace.GetFeatureClass("TRANSFORMER");
+            var testClass = base.Workspace.GetFeatureClass("TRANSFORMER", true);
             Assert.IsNotNull(testClass);
         }
 
@@ -24,7 +24,7 @@ namespace Wave.Extensions.Miner.Tests
         [ExpectedException(typeof (MissingClassModelNameException))]
         public void IWorkspace_GetFeatureClass_MissingClassModelNameException()
         {
-            var testClass = base.Workspace.GetFeatureClass("");
+            var testClass = base.Workspace.GetFeatureClass("", true);
             Assert.IsNotNull(testClass);
         }
 
@@ -65,7 +65,7 @@ namespace Wave.Extensions.Miner.Tests
         [TestCategory("Miner")]
         public void IWorkspace_GetTable_IsNotNull()
         {
-            var testClass = base.Workspace.GetTable("TRANSFORMERUNIT");
+            var testClass = base.Workspace.GetTable("TRANSFORMERUNIT", true);
             Assert.IsNotNull(testClass);
         }
 
@@ -74,7 +74,7 @@ namespace Wave.Extensions.Miner.Tests
         [ExpectedException(typeof (MissingClassModelNameException))]
         public void IWorkspace_GetTable_MissingClassModelNameException()
         {
-            var testClass = base.Workspace.GetTable("");
+            var testClass = base.Workspace.GetTable("", true);
             Assert.IsNotNull(testClass);
         }
 
