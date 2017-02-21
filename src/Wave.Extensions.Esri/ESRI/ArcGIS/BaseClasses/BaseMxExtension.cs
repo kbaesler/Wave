@@ -8,15 +8,15 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
     ///     An abstract extension for running within ArcGIS Engine or Desktop.
     /// </summary>
     [ComVisible(true)]
-    public abstract class BaseMxExtensionJIT : BaseExtension
+    public abstract class BaseMxExtension : BaseExtension
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="MxExtensionJIT" /> class.
+        ///     Initializes a new instance of the <see cref="BaseMxExtension" /> class.
         /// </summary>
         /// <param name="extensionName">Name of the extension.</param>
-        protected BaseMxExtensionJIT(string extensionName)
+        protected BaseMxExtension(string extensionName)
             : base(extensionName)
         {
         }
@@ -32,7 +32,7 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         [ComRegisterFunction]
         internal static void Register(string registryKey)
         {
-            MxExtensionJIT.Register(registryKey);
+            MxExtension.Register(registryKey);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         [ComUnregisterFunction]
         internal static void Unregister(string registryKey)
         {
-            MxExtensionJIT.Unregister(registryKey);
+            MxExtension.Unregister(registryKey);
         }
 
         #endregion
