@@ -204,7 +204,7 @@ namespace ESRI.ArcGIS.Geodatabase
             fieldChecker.Validate(requiredFields, out errors, out targetFields);
 
             IFeatureDataConverter featureDataConverter = new FeatureDataConverterClass();
-            invalid = featureDataConverter.ConvertFeatureClass(input, filter, null, output, geometryDef, requiredFields, "", 1000, handle);
+            invalid = featureDataConverter.ConvertFeatureClass(input, filter, null, output, geometryDef, targetFields, "", 1000, handle);
 
             return ((IName)output).Open() as IFeatureClass;
         }

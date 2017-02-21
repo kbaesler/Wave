@@ -2,54 +2,66 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:System.Windows.Controls">
 
-    <Style TargetType="{x:Type local:Token}">
-        <Setter Property="Background" Value="#F3F7FD" />
-        <Setter Property="BorderBrush" Value="#BBD8FB" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cursor" Value="Arrow" />
-        <Setter Property="Padding" Value="5,1,5,1" />
-        <Setter Property="Margin" Value="1,0" />
+    <Style TargetType="{x:Type local:TokenContainer}">
+        <Setter Property="Background"
+                Value="#F3F7FD" />
+        <Setter Property="BorderBrush"
+                Value="#BBD8FB" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Cursor"
+                Value="Arrow" />
+        <Setter Property="Padding"
+                Value="5,1,5,1" />
+        <Setter Property="Margin"
+                Value="1,0" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:Token}">
+                <ControlTemplate TargetType="{x:Type local:TokenContainer}">
                     <Border Background="{TemplateBinding Background}"
-                       BorderBrush="{TemplateBinding BorderBrush}"
-                       BorderThickness="{TemplateBinding BorderThickness}"
-                       Padding="{TemplateBinding Padding}"
-                       Margin="{TemplateBinding Margin}">
-                        <StackPanel Orientation="Horizontal" Margin="1">
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Margin="{TemplateBinding Margin}">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="1">
                             <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" />
-                            <Button Margin="3,.5,0,0" Cursor="Hand" Command="local:TokenizedTextBoxCommands.Delete" CommandParameter="{TemplateBinding Key}">
+                            <Button Margin="3,.5,0,0"
+                                    Cursor="Hand"
+                                    Command="local:TokenizedTextBoxCommands.Delete"
+                                    CommandParameter="{TemplateBinding Key}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Grid SnapsToDevicePixels="False">
-                                            <Ellipse x:Name="Ellipse" Width="12" Height="12">
+                                            <Ellipse x:Name="Ellipse"
+                                                     Width="12"
+                                                     Height="12">
                                                 <Ellipse.Fill>
                                                     <RadialGradientBrush GradientOrigin="0.5,0.75">
                                                         <GradientStop Color="#FF6E6E6E"
-                                                  Offset="0.874" />
+                                                                      Offset="0.874" />
                                                         <GradientStop Color="#FF2F2F2F"
-                                                  Offset="0.152" />
+                                                                      Offset="0.152" />
                                                         <GradientStop Color="#FF4E4E4E"
-                                                  Offset="0.628" />
+                                                                      Offset="0.628" />
                                                     </RadialGradientBrush>
                                                 </Ellipse.Fill>
                                                 <Ellipse.Stroke>
                                                     <LinearGradientBrush StartPoint="0,1"
-                                                     EndPoint="0,0">
+                                                                         EndPoint="0,0">
                                                         <GradientStop Offset="0.1"
-                                                  Color="#50FFFFFF" />
+                                                                      Color="#50FFFFFF" />
                                                         <GradientStop Offset="0.4"
-                                                  Color="#39FFFFFF" />
+                                                                      Color="#39FFFFFF" />
                                                         <GradientStop Offset="0.7"
-                                                  Color="#3D000000" />
+                                                                      Color="#3D000000" />
                                                         <GradientStop Offset="0.8"
-                                                  Color="#50000000" />
+                                                                      Color="#50000000" />
                                                     </LinearGradientBrush>
                                                 </Ellipse.Stroke>
                                             </Ellipse>
                                             <Ellipse Stroke="#28FFFFFF"
-                                                    Margin="1" />
+                                                     Margin="1" />
                                             <Path x:Name="Path"
                                                   VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"
@@ -62,51 +74,51 @@
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver"
-                                                        Value="True">
+                                                     Value="True">
                                                 <Setter TargetName="Ellipse"
-                                                         Property="Fill">
+                                                        Property="Fill">
                                                     <Setter.Value>
                                                         <RadialGradientBrush GradientOrigin="0.5,0.766">
                                                             <GradientStop Color="#FFDA4E26"
-                                                      Offset="0.874" />
+                                                                          Offset="0.874" />
                                                             <GradientStop Color="#FF531D0D"
-                                                      Offset="0.013" />
+                                                                          Offset="0.013" />
                                                             <GradientStop Color="#FFAB2F0C"
-                                                      Offset="0.628" />
+                                                                          Offset="0.628" />
                                                             <GradientStop Color="#FF6C220C"
-                                                      Offset="0.296" />
+                                                                          Offset="0.296" />
                                                         </RadialGradientBrush>
                                                     </Setter.Value>
                                                 </Setter>
                                             </Trigger>
                                             <Trigger Property="IsPressed"
-                                                        Value="True">
+                                                     Value="True">
                                                 <Setter TargetName="Ellipse"
-                                                         Property="Stroke">
+                                                        Property="Stroke">
                                                     <Setter.Value>
                                                         <LinearGradientBrush StartPoint="0,0"
-                                                         EndPoint="0,1">
+                                                                             EndPoint="0,1">
                                                             <GradientStop Offset="0.821"
-                                                      Color="#9EFFFFFF" />
+                                                                          Color="#9EFFFFFF" />
                                                             <GradientStop Color="#A81C1C1C"
-                                                      Offset="0.152" />
+                                                                          Offset="0.152" />
                                                             <GradientStop Color="#A03A3A3A"
-                                                      Offset="0.565" />
+                                                                          Offset="0.565" />
                                                             <GradientStop Color="#9E919191"
-                                                      Offset="0.713" />
+                                                                          Offset="0.713" />
                                                             <GradientStop Color="#A6323232"
-                                                      Offset="0.238" />
+                                                                          Offset="0.238" />
                                                         </LinearGradientBrush>
                                                     </Setter.Value>
                                                 </Setter>
                                                 <Setter TargetName="Ellipse"
-                                                            Property="Fill">
+                                                        Property="Fill">
                                                     <Setter.Value>
                                                         <RadialGradientBrush GradientOrigin="0.5,0.25">
                                                             <GradientStop Color="#FFDA4E26"
-                                                      Offset="0.874" />
+                                                                          Offset="0.874" />
                                                             <GradientStop Color="#FF8D280C"
-                                                      Offset="0.471" />
+                                                                          Offset="0.471" />
                                                         </RadialGradientBrush>
                                                     </Setter.Value>
                                                 </Setter>
@@ -118,20 +130,20 @@
                                                 </Setter>
                                             </Trigger>
                                             <Trigger Property="IsEnabled"
-                                                        Value="False">
+                                                     Value="False">
                                                 <Setter Property="Visibility"
                                                         Value="Collapsed" />
                                             </Trigger>
 
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
-                                </Button.Template>                                    
-                            </Button>                            
+                                </Button.Template>
+                            </Button>
                         </StackPanel>
-                    </Border>                    
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
+    </Style>
 
 </ResourceDictionary>

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Timers;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -20,11 +19,12 @@ namespace System.Windows.Controls
         public static readonly DependencyProperty AutoCompleteSourceProperty =
             DependencyProperty.Register("AutoCompleteSource", typeof (IEnumerable<string>), typeof (AutoCompleteTextBox), new FrameworkPropertyMetadata(OnAutoCompleteSourceChanged));
 
+
         /// <summary>
-        ///     The delay time property
+        ///     The ignore case property
         /// </summary>
-        public static readonly DependencyProperty DelayTimeProperty =
-            DependencyProperty.Register("DelayTime", typeof (int), typeof (AutoCompleteTextBox), new UIPropertyMetadata(500, OnDelayTimeChanged));
+        public static readonly DependencyProperty IgnoreCaseProperty =
+            DependencyProperty.Register("IgnoreCase", typeof (bool), typeof (AutoCompleteTextBox), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         /// <summary>
         ///     The text property
@@ -34,10 +34,7 @@ namespace System.Windows.Controls
 
         private readonly ComboBox _ComboBox;
         private readonly VisualCollection _Controls;
-        private readonly Timer _KeypressTimer;
-        private readonly TextBox _TextBox;
-
-        private bool _SuppressTextChanged;
+        private readonly DelayedTextBox _TextBox;
 
         #endregion
 
@@ -50,10 +47,6 @@ namespace System.Windows.Controls
         {
             _Controls = new VisualCollection(this);
 
-            // Set up the key press timer
-            _KeypressTimer = new Timer();
-            _KeypressTimer.Elapsed += OnTimeElapsed;
-
             // Set up the text box and the combo box
             _ComboBox = new ComboBox();
             _ComboBox.IsSynchronizedWithCurrentItem = true;
@@ -61,10 +54,12 @@ namespace System.Windows.Controls
             _ComboBox.MaxDropDownHeight = 150;
             _ComboBox.SelectionChanged += ComboBox_SelectionChanged;
 
-            _TextBox = new TextBox();
+            _TextBox = new DelayedTextBox();
             _TextBox.VerticalContentAlignment = VerticalAlignment.Center;
-            _TextBox.TextChanged += TextBox_TextChanged;
+            _TextBox.TextChanged += TextBox_OnTextChanged;
             _TextBox.KeyDown += TextBox_OnKeyDown;
+            _TextBox.DelayedTextChanged += TextBox_DelayedTextChanged;
+            _TextBox.PreviewKeyDown += TextBox_OnPreviewKeyDown;
 
             _Controls.Add(_ComboBox);
             _Controls.Add(_TextBox);
@@ -91,8 +86,20 @@ namespace System.Windows.Controls
         /// </summary>
         public int DelayTime
         {
-            get { return (int) this.GetValue(DelayTimeProperty); }
-            set { this.SetValue(DelayTimeProperty, value); }
+            get { return _TextBox.DelayTime; }
+            set { _TextBox.DelayTime = value; }
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether this instance is ignore case.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is ignore case; otherwise, <c>false</c>.
+        /// </value>
+        public bool IgnoreCase
+        {
+            get { return (bool) this.GetValue(IgnoreCaseProperty); }
+            set { this.SetValue(IgnoreCaseProperty, value); }
         }
 
         /// <summary>
@@ -119,10 +126,6 @@ namespace System.Windows.Controls
             set
             {
                 this.SetValue(TextProperty, value);
-
-                _SuppressTextChanged = true;
-                _TextBox.Text = value;
-                _SuppressTextChanged = false;
             }
         }
 
@@ -202,7 +205,7 @@ namespace System.Windows.Controls
         #endregion
 
         #region Private Methods
-
+      
         /// <summary>
         ///     Handles the SelectionChanged event of the ComboBox control.
         /// </summary>
@@ -213,7 +216,9 @@ namespace System.Windows.Controls
             if (_ComboBox.SelectedItem != null)
             {
                 var item = (ComboBoxItem) _ComboBox.SelectedItem;
-                this.Text = string.Format("{0}", item.Tag);
+                var text = string.Format("{0}", item.Tag);
+                _TextBox.Text = text;
+                _TextBox.SelectAll();
             }
         }
 
@@ -228,7 +233,7 @@ namespace System.Windows.Controls
         {
             if (dissposing)
             {
-                _KeypressTimer.Dispose();
+                _TextBox.Dispose();
             }
         }
 
@@ -245,21 +250,6 @@ namespace System.Windows.Controls
         }
 
         /// <summary>
-        ///     Called when <see cref="AutoCompleteTextBox.DelayTime" /> property changes.
-        /// </summary>
-        /// <param name="dependencyObject">The dependency object.</param>
-        /// <param name="e">
-        ///     The <see cref="System.Windows.DependencyPropertyChangedEventArgs" /> instance containing the event
-        ///     data.
-        /// </param>
-        private static void OnDelayTimeChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
-        {
-            AutoCompleteTextBox autoCompleteTextBox = dependencyObject as AutoCompleteTextBox;
-            if (autoCompleteTextBox != null)
-                autoCompleteTextBox.DelayTime = (int) e.NewValue;
-        }
-
-        /// <summary>
         ///     Called when <see cref="AutoCompleteTextBox.Text" /> dependency property changes.
         /// </summary>
         /// <param name="dependencyObject">The dependency object.</param>
@@ -268,19 +258,7 @@ namespace System.Windows.Controls
         {
             AutoCompleteTextBox autoCompleteTextBox = dependencyObject as AutoCompleteTextBox;
             if (autoCompleteTextBox != null)
-                autoCompleteTextBox.Text = (string) e.NewValue;
-        }
-
-        /// <summary>
-        ///     Called when the time has elapsed.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="e">The <see cref="ElapsedEventArgs" /> instance containing the event data.</param>
-        private void OnTimeElapsed(object source, ElapsedEventArgs e)
-        {
-            _KeypressTimer.Stop();
-
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action) this.ShowDropDown);
+                autoCompleteTextBox.Text = (string) e.NewValue;            
         }
 
         /// <summary>
@@ -290,11 +268,13 @@ namespace System.Windows.Controls
         {
             _ComboBox.Items.Clear();
 
-            if (_TextBox.Text.Length > this.Threshold && this.AutoCompleteSource != null)
+            if (_TextBox.Text.Length > this.Threshold && this.AutoCompleteSource != null && _TextBox.IsEnabled)
             {
+                StringComparison comparison = (this.IgnoreCase) ? StringComparison.InvariantCultureIgnoreCase : StringComparison.InvariantCulture;
+
                 foreach (string source in this.AutoCompleteSource)
                 {
-                    if (source.StartsWith(_TextBox.Text, StringComparison.CurrentCultureIgnoreCase))
+                    if (source.StartsWith(_TextBox.Text, comparison))
                     {
                         var textBlock = new TextBlock();
                         textBlock.Inlines.Add(new Run
@@ -315,12 +295,25 @@ namespace System.Windows.Controls
                     }
                 }
 
-                _ComboBox.IsDropDownOpen = _ComboBox.HasItems;
+                if (_ComboBox.Items.Count == 1)
+                    _ComboBox.SelectedIndex = 0;
+                else
+                    _ComboBox.IsDropDownOpen = _ComboBox.HasItems;
             }
             else
             {
                 _ComboBox.IsDropDownOpen = false;
             }
+        }
+
+        /// <summary>
+        ///     Handles the DelayedTextChanged event of the TextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="eventArgs">The <see cref="EventArgs" /> instance containing the event data.</param>
+        private void TextBox_DelayedTextChanged(object sender, EventArgs eventArgs)
+        {
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action) this.ShowDropDown);
         }
 
         /// <summary>
@@ -340,26 +333,26 @@ namespace System.Windows.Controls
         }
 
         /// <summary>
-        ///     Handles the TextChanged event of the TextBox control.
+        ///     Handles the OnPreviewKeyDown event of the TextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyEventArgs" /> instance containing the event data.</param>
+        private void TextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (_ComboBox.IsDropDownOpen && e.Key == Key.Down)
+            {
+                _ComboBox.Focus();
+            }
+        }
+
+        /// <summary>
+        ///     Handles the OnTextChanged event of the TextBox control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="TextChangedEventArgs" /> instance containing the event data.</param>
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!_SuppressTextChanged)
-            {
-                if (this.DelayTime > 0)
-                {
-                    _KeypressTimer.Interval = this.DelayTime;
-                    _KeypressTimer.Start();
-                }
-                else
-                {
-                    this.ShowDropDown();
-                }
-            }
-
-            this.Text = _TextBox.Text;
+            this.Text = ((DelayedTextBox) sender).Text;
         }
 
         #endregion

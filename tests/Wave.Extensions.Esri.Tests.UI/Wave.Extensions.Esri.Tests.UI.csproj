@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\BusyIndicator\BusyIndicatorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\TokenizedTextBox\TokenizedTextBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +105,10 @@
       <DependentUpon>AutoCompleteTextBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\AutoCompleteTextBox\AutoCompleteTextBoxViewModel.cs" />
+    <Compile Include="Control\BusyIndicator\BusyIndicatorView.xaml.cs">
+      <DependentUpon>BusyIndicatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\BusyIndicator\BusyIndicatorViewModel.cs" />
     <Compile Include="Control\TokenizedTextBox\TokenizedTextBoxView.xaml.cs">
       <DependentUpon>TokenizedTextBoxView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +159,7 @@
       <Name>Wave.Extensions.Miner.v4.5</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

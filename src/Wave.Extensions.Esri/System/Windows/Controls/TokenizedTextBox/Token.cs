@@ -1,45 +1,35 @@
 ﻿namespace System.Windows.Controls
 {
     /// <summary>
-    ///     The content control for the token.
+    ///     Provides access to the token value and delimiter.
     /// </summary>
-    public class Token : ContentControl
+    public class Token
     {
-        #region Fields
-
-        /// <summary>
-        ///     The key property
-        /// </summary>
-        public static readonly DependencyProperty KeyProperty
-            = DependencyProperty.Register("Key", typeof (string), typeof (Token), new UIPropertyMetadata(null));
-
-        #endregion
-
         #region Constructors
-
-        /// <summary>
-        ///     Initializes the <see cref="Token" /> class.
-        /// </summary>
-        static Token()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof (Token), new FrameworkPropertyMetadata(typeof (Token)));
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Token" /> class.
         /// </summary>
         /// <param name="delimiter">The delimiter.</param>
-        /// <param name="inputText">The input text.</param>
-        public Token(string delimiter, string inputText)
+        /// <param name="value">The input text.</param>
+        public Token(string delimiter, string value)
         {
-            this.Key = Guid.NewGuid().ToString();
             this.Delimiter = delimiter;
-            this.Text = inputText;
+            this.Content = value;
+            this.Key = Guid.NewGuid().ToString();
         }
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the content.
+        /// </summary>
+        /// <value>
+        ///     The content.
+        /// </value>
+        public object Content { get; set; }
 
         /// <summary>
         ///     Gets the delimiter.
@@ -55,19 +45,22 @@
         /// <value>
         ///     The key.
         /// </value>
-        public string Key
-        {
-            get { return (string) this.GetValue(KeyProperty); }
-            set { this.SetValue(KeyProperty, value); }
-        }
+        public string Key { get; set; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
-        ///     Gets or sets the text.
+        ///     Returns a string that represents the current object.
         /// </summary>
-        /// <value>
-        ///     The text.
-        /// </value>
-        public string Text { get; set; }
+        /// <returns>
+        ///     A string that represents the current object.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("{0}", this.Content);
+        }
 
         #endregion
     }

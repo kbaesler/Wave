@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -16,6 +19,18 @@ namespace System.Windows.Controls
     public class TokenizedTextBox : RichTextBox
     {
         #region Fields
+
+        /// <summary>
+        ///     The items source property
+        /// </summary>
+        public static readonly DependencyProperty ItemsSourceProperty =
+            DependencyProperty.Register("ItemsSource", typeof (IEnumerable<object>), typeof (TokenizedTextBox), new FrameworkPropertyMetadata(OnItemsSourceChanged));
+
+        /// <summary>
+        ///     The member path property
+        /// </summary>
+        public static readonly DependencyProperty MemberPathProperty =
+            DependencyProperty.Register("MemberPath", typeof (string), typeof (TokenizedTextBox), new UIPropertyMetadata(string.Empty));
 
         /// <summary>
         ///     The text property
@@ -35,6 +50,11 @@ namespace System.Windows.Controls
         public static readonly DependencyProperty TokenTemplateProperty =
             DependencyProperty.Register("TokenTemplate", typeof (DataTemplate), typeof (TokenizedTextBox));
 
+        /// <summary>
+        /// The tokens property
+        /// </summary>
+        public static readonly DependencyProperty TokensProperty =
+            DependencyProperty.Register("Tokens", typeof (ObservableKeyedCollection<string, Token>), typeof (TokenizedTextBox), new PropertyMetadata(new ObservableKeyedCollection<string, Token>(t => t.Key)));
 
         private static bool _SuppressTextChanged;
 
@@ -51,12 +71,49 @@ namespace System.Windows.Controls
             this.IsDocumentEnabled = true;
 
             this.TextChanged += OnTextChanged;
+            this.PreviewKeyDown += OnPreviewKeyDown;
             this.CommandBindings.Add(new CommandBinding(TokenizedTextBoxCommands.Delete, DeleteToken));
         }
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the items source.
+        /// </summary>
+        /// <value>
+        ///     The items source.
+        /// </value>
+        public IEnumerable<object> ItemsSource
+        {
+            get { return (IEnumerable<object>) GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the tokens.
+        /// </summary>
+        /// <value>
+        /// The tokens.
+        /// </value>
+        public ObservableKeyedCollection<string, Token> Tokens
+        {
+            get { return (ObservableKeyedCollection<string, Token>)GetValue(TokensProperty); }
+            set { SetValue(TokensProperty, value); }
+        }
+
+        /// <summary>
+        ///     Gets or sets the value member path.
+        /// </summary>
+        /// <value>
+        ///     The value member path.
+        /// </value>
+        public string MemberPath
+        {
+            get { return (string) GetValue(MemberPathProperty); }
+            set { SetValue(MemberPathProperty, value); }
+        }
 
         /// <summary>
         ///     Gets or sets the text.
@@ -66,8 +123,8 @@ namespace System.Windows.Controls
         /// </value>
         public string Text
         {
-            get { return (string) this.GetValue(TextProperty); }
-            set { this.SetValue(TextProperty, value); }
+            get { return (string) GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
         }
 
         /// <summary>
@@ -78,8 +135,8 @@ namespace System.Windows.Controls
         /// </value>
         public string TokenDelimiter
         {
-            get { return (string) this.GetValue(TokenDelimiterProperty); }
-            set { this.SetValue(TokenDelimiterProperty, value); }
+            get { return (string) GetValue(TokenDelimiterProperty); }
+            set { SetValue(TokenDelimiterProperty, value); }
         }
 
         /// <summary>
@@ -90,8 +147,8 @@ namespace System.Windows.Controls
         /// </value>
         public DataTemplate TokenTemplate
         {
-            get { return (DataTemplate) this.GetValue(TokenTemplateProperty); }
-            set { this.SetValue(TokenTemplateProperty, value); }
+            get { return (DataTemplate) GetValue(TokenTemplateProperty); }
+            set { SetValue(TokenTemplateProperty, value); }
         }
 
         #endregion
@@ -99,10 +156,10 @@ namespace System.Windows.Controls
         #region Private Methods
 
         /// <summary>
-        /// Gets or sets the tokens.
+        ///     Gets or sets the tokens.
         /// </summary>
         /// <value>
-        /// The tokens.
+        ///     The tokens.
         /// </value>
         /// <summary>
         ///     Clears this instance.
@@ -126,21 +183,36 @@ namespace System.Windows.Controls
         /// <summary>
         ///     Creates the token container.
         /// </summary>
-        /// <param name="inputText">The input text.</param>
         /// <param name="token">The token.</param>
         /// <returns>
         ///     Returns the <see cref="InlineUIContainer" /> representing the container.
         /// </returns>
-        private InlineUIContainer CreateTokenContainer(string inputText, object token)
+        private InlineUIContainer CreateTokenContainer(Token token)
         {
-            var presenter = new Token(this.TokenDelimiter, inputText)
+            var presenter = new TokenContainer(token.Key)
             {
                 Content = token,
-                ContentTemplate = TokenTemplate,
+                ContentTemplate = this.TokenTemplate,
             };
 
-            // BaselineAlignment is needed to align with Run
-            return new InlineUIContainer(presenter) {BaselineAlignment = BaselineAlignment.TextBottom};
+            if (this.TokenTemplate == null && token.Content != null)
+            {
+                if (!string.IsNullOrEmpty(this.MemberPath))
+                {
+                    var property = token.Content.GetType().GetProperty(this.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(token.Content, null);
+                        if (value != null)
+                            presenter.Content = value;
+                    }
+                }
+            }
+
+            return new InlineUIContainer(presenter)
+            {
+                BaselineAlignment = BaselineAlignment.TextBottom
+            };
         }
 
         /// <summary>
@@ -150,23 +222,171 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="ExecutedRoutedEventArgs" /> instance containing the event data.</param>
         private void DeleteToken(object sender, ExecutedRoutedEventArgs e)
         {
-            var para = this.CaretPosition.Paragraph;
+            Paragraph para = this.CaretPosition.Paragraph;
             if (para != null)
             {
+                TokenContainer tokenContainer = null;
                 Inline inlineToRemove = para.Inlines.Where(inline =>
                 {
                     var inlineUiContainer = inline as InlineUIContainer;
                     if (inlineUiContainer != null)
                     {
-                        var tokenContentControl = inlineUiContainer.Child as Token;
-                        return tokenContentControl != null && (tokenContentControl.Key.Equals(e.Parameter));
+                        tokenContainer = inlineUiContainer.Child as TokenContainer;
+                        return tokenContainer != null && (tokenContainer.Key.Equals(e.Parameter));
                     }
 
                     return false;
                 }).FirstOrDefault();
 
                 if (inlineToRemove != null)
+                {
                     para.Inlines.Remove(inlineToRemove);
+
+                    if (tokenContainer != null)
+                    {
+                        this.RemoveTokenByKey(tokenContainer.Key);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes the token by key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        private Token RemoveTokenByKey(string key)
+        {
+            if (this.Tokens.Contains(key))
+            {
+                var token = this.Tokens[key];
+
+                var tokens = new ObservableKeyedCollection<string, Token>(t => t.Key);
+                tokens.AddRange(this.Tokens.Where(o => !o.Key.Equals(key)));
+
+                this.Tokens = tokens;
+
+                return token;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        ///     Gets the item by token key.
+        /// </summary>
+        /// <param name="token">The key.</param>
+        /// <returns></returns>
+        private object GetContentByToken(Token token)
+        {
+            if (this.ItemsSource != null)
+            {
+                foreach (object item in this.ItemsSource)
+                {
+                    var property = item.GetType().GetProperty(this.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(item, null);
+                        if (token.Key.Equals(value.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                            return item;
+                    }
+                }
+            }
+
+            return token.Content;
+        }
+
+        /// <summary>
+        ///     Gets the token by item source.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
+        private Token GetTokenByItemSource(string text)
+        {
+            if (this.ItemsSource != null)
+            {
+                foreach (var item in this.ItemsSource)
+                {
+                    var property = item.GetType().GetProperty(this.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(item, null);
+                        if (text.Equals(value.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            Token token = new Token(this.TokenDelimiter, value.ToString());
+                            return token;
+                        }
+                    }
+                }
+            }
+
+            return new Token(this.TokenDelimiter, text);
+        }
+
+        /// <summary>
+        ///     Called when the ItemsSource dependency propery is changed.
+        /// </summary>
+        /// <param name="dependencyObject">The dependency property.</param>
+        /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
+        private static void OnItemsSourceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+        {
+            var tokenizedTextBox = (TokenizedTextBox) dependencyObject;
+
+            if (e.NewValue != null)
+            {
+                var text = new StringBuilder();
+
+                foreach (var item in (IEnumerable<object>) e.NewValue)
+                {
+                    var property = item.GetType().GetProperty(tokenizedTextBox.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(item, null);
+                        text.AppendFormat("{0}{1}", value, tokenizedTextBox.TokenDelimiter);
+                    }
+                    else
+                    {
+                        text.AppendFormat("{0}{1}", item, tokenizedTextBox.TokenDelimiter);
+                    }
+                }
+
+                tokenizedTextBox.Text = text.ToString();
+            }
+        }
+
+        /// <summary>
+        ///     Called when [preview key down].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="KeyEventArgs" /> instance containing the event data.</param>
+        private void OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            InlineUIContainer container = null;
+
+            if (e.Key == Key.Back)
+            {
+                container = this.CaretPosition.GetAdjacentElement(LogicalDirection.Backward) as InlineUIContainer;
+            }
+            else if (e.Key == Key.Delete)
+            {
+                if (this.Selection.Text == " ")
+                {
+                    TextPointer moveTo = this.CaretPosition.GetNextInsertionPosition(LogicalDirection.Backward);
+                    this.CaretPosition = moveTo;
+                }
+
+                if (this.CaretPosition != null)
+                    container = this.CaretPosition.GetAdjacentElement(LogicalDirection.Forward) as InlineUIContainer;
+            }
+
+            if (container != null)
+            {
+                var tokenContainer = container.Child as TokenContainer;
+                if (tokenContainer != null)
+                {
+                    var token = this.RemoveTokenByKey(tokenContainer.Key);
+                    this.SetText(this.Text.Replace(string.Format("{0}{1}", token.Content, token.Delimiter), ""));
+                }
             }
         }
 
@@ -180,10 +400,10 @@ namespace System.Windows.Controls
             if (_SuppressTextChanged)
                 return;
 
-            var text = this.CaretPosition.GetTextInRun(LogicalDirection.Backward);       
-            var token = this.Tokenize(text);
-            
-            if (!string.IsNullOrEmpty(token))
+            string text = this.CaretPosition.GetTextInRun(LogicalDirection.Backward);
+            Token token = this.Tokenize(text);
+
+            if (token != null)
             {
                 this.ReplaceTextWithToken(text, token);
             }
@@ -201,17 +421,17 @@ namespace System.Windows.Controls
             if (_SuppressTextChanged)
                 return;
 
-            TokenizedTextBox tokenizedTextBox = (TokenizedTextBox) dependencyObject;
+            var tokenizedTextBox = (TokenizedTextBox) dependencyObject;
 
             // To help with performance this is placed on the dispatcher for processing. For some reason when this is done the TextChanged event is fired multiple times
             // forcing the UpdateText method to be called multiple times and the setter of the source property to be set multiple times. 
             // To fix this, we simply set the suppress property
             // member to true before the operation and set it to false when the operation completes. This will prevent the Text property from being set multiple times.
-            DispatcherOperation dop = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(delegate()
+            DispatcherOperation dop = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(delegate
             {
                 _SuppressTextChanged = true;
 
-                string text = e.NewValue as string;
+                var text = e.NewValue as string;
                 if (string.IsNullOrEmpty(text))
                 {
                     tokenizedTextBox.Clear();
@@ -230,39 +450,44 @@ namespace System.Windows.Controls
         /// </summary>
         /// <param name="inputText">The input text.</param>
         /// <param name="token">The token.</param>
-        private void ReplaceTextWithToken(string inputText, string token)
+        private void ReplaceTextWithToken(string inputText, Token token)
         {
             _SuppressTextChanged = true;
 
             try
             {
-                var para = this.CaretPosition.Paragraph;
+                Paragraph para = this.CaretPosition.Paragraph;
                 if (para != null)
                 {
-                    var matchedRun = para.Inlines.FirstOrDefault(inline =>
+                    var run = para.Inlines.FirstOrDefault(inline =>
                     {
-                        var run = inline as Run;
-                        return (run != null && run.Text.EndsWith(inputText));
+                        var r = inline as Run;
+                        return (r != null && r.Text.EndsWith(inputText));
                     }) as Run;
 
-                    if (matchedRun != null) // Found a Run that matched the inputText
+                    if (run != null) 
                     {
-                        var tokenContainer = this.CreateTokenContainer(inputText, token);
-                        para.Inlines.InsertBefore(matchedRun, tokenContainer);
+                        InlineUIContainer tokenContainer = this.CreateTokenContainer(token);
+                        para.Inlines.InsertBefore(run, tokenContainer);
 
-                        // Remove only if the Text in the Run is the same as inputText, else split up
-                        if (matchedRun.Text == inputText)
+                        if (run.Text == inputText)
                         {
-                            para.Inlines.Remove(matchedRun);
+                            para.Inlines.Remove(run);
                         }
-                        else // Split up
+                        else 
                         {
-                            var index = matchedRun.Text.IndexOf(inputText, StringComparison.Ordinal) + inputText.Length;
-                            var tailEnd = new Run(matchedRun.Text.Substring(index));
-                            para.Inlines.InsertAfter(matchedRun, tailEnd);
-                            para.Inlines.Remove(matchedRun);
+                            int index = run.Text.IndexOf(inputText, StringComparison.Ordinal) + inputText.Length;
+                            var tailEnd = new Run(run.Text.Substring(index));
+                            para.Inlines.InsertAfter(run, tailEnd);
+                            para.Inlines.Remove(run);
                         }
                     }
+
+                    var tokens = new ObservableKeyedCollection<string, Token>(t => t.Key);
+                    tokens.AddRange(this.Tokens);
+                    tokens.Add(token);
+
+                    this.Tokens = tokens;
                 }
             }
             finally
@@ -270,7 +495,6 @@ namespace System.Windows.Controls
                 _SuppressTextChanged = false;
             }
         }
-
 
         /// <summary>
         ///     Replaces the strings in the Text property with tokens.
@@ -281,23 +505,31 @@ namespace System.Windows.Controls
             // and add each token individually to the contents.           
             this.Clear();
 
-            if (!string.IsNullOrEmpty(this.Text))
+            var tokens = new ObservableKeyedCollection<string, Token>(token => token.Key);
+
+            if (!string.IsNullOrEmpty(Text))
             {
-                var para = this.CaretPosition.Paragraph ?? new Paragraph();
+                Paragraph para = this.CaretPosition.Paragraph ?? new Paragraph();
                 if (para != null)
                 {
-                    var tokens = this.Text.Split(new[] {this.TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var t in tokens)
+                    string[] text = Text.Split(new[] {this.TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string t in text)
                     {
-                        string textData = t + this.TokenDelimiter;
-                        var tokenContainer = this.CreateTokenContainer(textData, t);
+                        var token = this.GetTokenByItemSource(t);
+                        token.Content = this.GetContentByToken(token);
+
+                        InlineUIContainer tokenContainer = this.CreateTokenContainer(token);
                         para.Inlines.Add(tokenContainer);
+
+                        tokens.Add(token);
                     }
                 }
 
                 if (!this.Document.Blocks.Contains(para))
                     this.Document.Blocks.Add(para);
             }
+
+            this.Tokens = tokens;
         }
 
         /// <summary>
@@ -316,13 +548,23 @@ namespace System.Windows.Controls
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns>Returns the <see cref="string" /> representing the token.</returns>
-        private string Tokenize(string text)
+        private Token Tokenize(string text)
         {
             if (string.IsNullOrEmpty(text))
                 return null;
-            
-            if (text.EndsWith(this.TokenDelimiter))
-                return text.Substring(0, text.Length - 1).Trim();
+
+            if (text.EndsWith(TokenDelimiter))
+            {
+                string item = text.Substring(0, text.Length - 1).Trim();
+
+                var token = this.GetTokenByItemSource(item);
+                if (token == null)
+                {
+                    token = new Token(this.TokenDelimiter, item);
+                }
+
+                return token;
+            }
 
             return null;
         }

@@ -10,13 +10,22 @@ namespace System.Windows.Controls
         #region Constants
 
         private const uint DLGC_HASSETSEL = 0x0008;
+        private const uint DLGC_WANTALLKEYS = 0x0004;
         private const uint DLGC_WANTARROWS = 0x0001;
         private const uint DLGC_WANTCHARS = 0x0080;
         private const uint WM_GETDLGCODE = 0x0087;
-        private const uint DLGC_WANTALLKEYS = 0x0004;
+
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        ///     Initializes the <see cref="InteropTextBox" /> class.
+        /// </summary>
+        static InteropTextBox()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof (InteropTextBox), new FrameworkPropertyMetadata(typeof (InteropTextBox)));
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InteropTextBox" /> class.
