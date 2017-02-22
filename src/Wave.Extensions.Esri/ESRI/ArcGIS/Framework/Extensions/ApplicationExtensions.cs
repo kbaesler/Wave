@@ -332,12 +332,12 @@ namespace ESRI.ArcGIS.Framework
         #region Public Properties
 
         /// <summary>
-        ///     Sets the message on the status bar.
+        ///     Gets or sets the message on the status bar.
         /// </summary>
         /// <value>
         ///     The message on the status bar.
         /// </value>
-        string Message { set; }
+        string Message { get; set; }
 
         #endregion
 
