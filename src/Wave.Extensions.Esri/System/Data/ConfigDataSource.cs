@@ -172,9 +172,21 @@ namespace System.Data
         /// <returns>
         ///     Returns a <see cref="string" /> that is double null terminated.
         /// </returns>
-        public static string ConvertToDoublyNullTerminated(string value, char c = ';')
+        public static string ConvertToDoublyNullTerminated(string value, char c)
         {
             return value.Replace(c, Convert.ToChar(0));
+        }
+
+        /// <summary>
+        ///     Converts to doubly null terminated.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> that is double null terminated.
+        /// </returns>
+        public static string ConvertToDoublyNullTerminated(string value)
+        {
+            return ConvertToDoublyNullTerminated(value, ';');
         }
 
         /// <summary>
