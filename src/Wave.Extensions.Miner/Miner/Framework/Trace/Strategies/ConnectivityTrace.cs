@@ -157,6 +157,8 @@ namespace Miner.Framework.Trace
         /// <param name="feature">The feature.</param>
         protected override void OnAfterTrace(TResults traceResults, IFeature feature)
         {
+            this.Edges.Clear();
+            this.Junctions.Clear();
         }
 
         /// <summary>
