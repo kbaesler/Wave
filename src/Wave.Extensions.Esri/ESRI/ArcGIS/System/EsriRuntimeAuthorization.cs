@@ -102,8 +102,10 @@ namespace ESRI.ArcGIS.esriSystem
             {
                 if (RuntimeManager.ActiveRuntime == null)
                 {
-                    var eventArgs = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
-                    this.OnResolveRuntimeBinding(eventArgs);
+                    var e = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
+                    this.OnResolveRuntimeBinding(e);
+
+                    RuntimeManager.Bind(e.ProductCode);
                 }
 
                 return _AoInit ?? (_AoInit = new AoInitializeClass());
