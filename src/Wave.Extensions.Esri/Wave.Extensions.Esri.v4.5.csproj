@@ -388,7 +388,9 @@
     <Compile Include="System\Windows\Behaviors\CommandBehaviorCollection.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\ScrollViewer\ScrollSynchronizer.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\TextBox\TextBoxBehavior.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />
