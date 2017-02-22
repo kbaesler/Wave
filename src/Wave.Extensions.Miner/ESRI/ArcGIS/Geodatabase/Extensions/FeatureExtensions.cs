@@ -12,13 +12,27 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        /// Flashes the feature for the specified interval (in milliseconds) a set number of times using the color specified by
+        /// the ArcFM Properties.
+        /// </summary>
+        /// <param name="source">The source that will be flashed.</param>
+        public static void Flash(this IFeature source)
+        {
+            if (source == null)
+                return;
+
+            MapUtilities.FlashFeature(source, 500, 1);
+        }
+
+
+        /// <summary>
         ///     Flashes the feature for the specified interval (in milliseconds) a set number of times using the color specified by
         ///     the ArcFM Properties.
         /// </summary>
         /// <param name="source">The source that will be flashed.</param>
         /// <param name="interval">The interval in milliseconds.</param>
         /// <param name="flashTimes">Number of times to flash the feature.</param>
-        public static void Flash(this IFeature source, int interval = 500, int flashTimes = 1)
+        public static void Flash(this IFeature source, int interval, int flashTimes)
         {
             if (source == null)
                 return;
