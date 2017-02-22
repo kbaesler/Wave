@@ -12,7 +12,7 @@ namespace System.Native
         /// <summary>
         ///     Prevents a default instance of the <see cref="SafeTokenHandle" /> class from being created.
         /// </summary>
-        private SafeTokenHandle()
+        public SafeTokenHandle()
             : base(true)
         {
         }
