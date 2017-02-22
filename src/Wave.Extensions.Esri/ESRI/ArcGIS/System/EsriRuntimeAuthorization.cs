@@ -104,9 +104,6 @@ namespace ESRI.ArcGIS.esriSystem
                 {
                     var eventArgs = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
                     this.OnResolveRuntimeBinding(eventArgs);
-
-                    if (!RuntimeManager.Bind(eventArgs.ProductCode))
-                        throw new Exception(string.Format("Product: {0}: Unavailable", eventArgs.ProductCode));
                 }
 
                 return _AoInit ?? (_AoInit = new AoInitializeClass());
