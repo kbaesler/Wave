@@ -195,17 +195,14 @@ namespace System.Windows.Controls
                 ContentTemplate = this.TokenTemplate,
             };
 
-            if (this.TokenTemplate == null && token.Content != null)
+            if (this.TokenTemplate == null && token.Content != null && !string.IsNullOrEmpty(this.MemberPath))
             {
-                if (!string.IsNullOrEmpty(this.MemberPath))
+                var property = token.Content.GetType().GetProperty(this.MemberPath);
+                if (property != null)
                 {
-                    var property = token.Content.GetType().GetProperty(this.MemberPath);
-                    if (property != null)
-                    {
-                        var value = property.GetValue(token.Content, null);
-                        if (value != null)
-                            presenter.Content = value;
-                    }
+                    var value = property.GetValue(token.Content, null);
+                    if (value != null)
+                        presenter.Content = value;
                 }
             }
 
