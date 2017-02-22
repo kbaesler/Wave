@@ -14,12 +14,12 @@ namespace System.Windows
         /// <summary>
         ///     The command parameters property
         /// </summary>
-        public static readonly DependencyProperty CommandParameterProperty = DependencyProperty.Register("CommandParameter", typeof (object), typeof (CommandReference), new UIPropertyMetadata(null));
+        public static readonly DependencyProperty CommandParameterProperty = DependencyProperty.Register("CommandParameter", typeof(object), typeof(CommandReference), new UIPropertyMetadata(null));
 
         /// <summary>
         ///     The command property
         /// </summary>
-        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof (ICommand), typeof (CommandReference), new PropertyMetadata(OnCommandChanged));
+        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof(ICommand), typeof(CommandReference), new PropertyMetadata(OnCommandChanged));
 
         #endregion
 
@@ -31,6 +31,15 @@ namespace System.Windows
         public CommandReference()
         {
         }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        ///     Occurs when changes occur that affect whether or not the command should execute.
+        /// </summary>
+        public event EventHandler CanExecuteChanged;
 
         #endregion
 
@@ -93,11 +102,6 @@ namespace System.Windows
             Command.Execute(parameter);
         }
 
-        /// <summary>
-        ///     Occurs when changes occur that affect whether or not the command should execute.
-        /// </summary>
-        public event EventHandler CanExecuteChanged;
-
         #endregion
 
         #region Protected Methods
@@ -113,6 +117,17 @@ namespace System.Windows
         protected override Freezable CreateInstanceCore()
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:CanExecuteChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        protected virtual void OnCanExecuteChanged(EventArgs e)
+        {
+            var eventHandler = CanExecuteChanged;
+            if (eventHandler != null)
+                eventHandler(this, e);
         }
 
         #endregion
