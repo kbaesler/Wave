@@ -13,7 +13,39 @@ namespace ESRI.ArcGIS.Carto
     public static class LayerExtensions
     {
         #region Public Methods
-        
+
+        /// <summary>
+        ///     Sets a join based on the specified relationship class and join type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="foreignClass">The join.</param>
+        /// <param name="layerKeyField">Name of the layer field.</param>
+        /// <param name="foreignKeyField">Name of the join field.</param>
+        /// <param name="cardinality">The cardinality.</param>
+        /// <param name="joinType">Type of the join.</param>
+        public static void Add(this IFeatureLayer source, ITable foreignClass, string layerKeyField, string foreignKeyField, esriRelCardinality cardinality, esriJoinType joinType)
+        {
+            source.Add(foreignClass, layerKeyField, foreignKeyField, cardinality, joinType, "");
+        }
+
+        /// <summary>
+        ///     Sets a join based on the specified relationship class and join type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="foreignClass">The join.</param>
+        /// <param name="layerKeyField">Name of the layer field.</param>
+        /// <param name="foreignKeyField">Name of the join field.</param>
+        /// <param name="cardinality">The cardinality.</param>
+        /// <param name="joinType">Type of the join.</param>
+        /// <param name="name">The name.</param>
+        public static void Add(this IFeatureLayer source, ITable foreignClass, string layerKeyField, string foreignKeyField, esriRelCardinality cardinality, esriJoinType joinType, string name)
+        {
+            var relClass = source.FeatureClass.Join((IObjectClass) foreignClass, layerKeyField, foreignKeyField, cardinality, name);
+
+            IDisplayRelationshipClass displayRel = (IDisplayRelationshipClass) source;
+            displayRel.DisplayRelationshipClass(relClass, joinType);
+        }
+
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IElement" />
         /// </summary>
@@ -183,32 +215,14 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
-        ///     Sets a join based on the specified relationship class and join type.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="foreignClass">The join.</param>
-        /// <param name="layerKeyField">Name of the layer field.</param>
-        /// <param name="foreignKeyField">Name of the join field.</param>
-        /// <param name="cardinality">The cardinality.</param>
-        /// <param name="joinType">Type of the join.</param>
-        /// <param name="name">The name.</param>
-        public static void Add(this IFeatureLayer source, ITable foreignClass, string layerKeyField, string foreignKeyField, esriRelCardinality cardinality, esriJoinType joinType, string name = "")
-        {
-            var relClass = source.FeatureClass.Join((IObjectClass) foreignClass, layerKeyField, foreignKeyField, cardinality, name);
-
-            IDisplayRelationshipClass displayRel = (IDisplayRelationshipClass) source;
-            displayRel.DisplayRelationshipClass(relClass, joinType);
-        }
-
-        /// <summary>
-        /// Removes the relationship to the specified foreign class.
+        ///     Removes the relationship to the specified foreign class.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="foreignClass">The foreign class.</param>
         public static void Remove(this IFeatureLayer source, IObjectClass foreignClass)
         {
-            IRelationshipClassCollectionEdit edit = (IRelationshipClassCollectionEdit)source;
-            IRelationshipClassCollection collection = (IRelationshipClassCollection)edit;
+            IRelationshipClassCollectionEdit edit = (IRelationshipClassCollectionEdit) source;
+            IRelationshipClassCollection collection = (IRelationshipClassCollection) edit;
             foreach (var relClass in collection.FindRelationshipClasses(foreignClass, esriRelRole.esriRelRoleAny).AsEnumerable())
             {
                 edit.RemoveRelationshipClass(relClass);

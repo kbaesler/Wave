@@ -624,8 +624,8 @@ namespace ESRI.ArcGIS.Geodatabase
 
             foreach (
                 var subtype in
-                    subtypes.Subtypes.AsEnumerable()
-                        .Where(subtype => subtype.Value.Equals(subtypeName, StringComparison.OrdinalIgnoreCase)))
+                subtypes.Subtypes.AsEnumerable()
+                    .Where(subtype => subtype.Value.Equals(subtypeName, StringComparison.OrdinalIgnoreCase)))
             {
                 return subtype.Key;
             }
@@ -812,13 +812,30 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IRelationshipClass" /> representing the relationship between the two classes.
         /// </returns>
         public static IRelationshipClass Join(this IObjectClass source, IObjectClass foreignClass,
-            string primaryKeyField, string foreignKeyField, esriRelCardinality cardinality, string name = "")
+            string primaryKeyField, string foreignKeyField, esriRelCardinality cardinality, string name)
         {
             string joinName = name ?? string.Format("{0}_{1}", ((IDataset) source).Name, ((IDataset) foreignClass).Name);
 
             var factory = new MemoryRelationshipClassFactory();
             return factory.Open(joinName, source, primaryKeyField, foreignClass, foreignKeyField, "Forward", "Backward",
                 cardinality);
+        }
+
+        /// <summary>
+        ///     Joins the specified foreign class with the source class to create an in memory relationship.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="foreignClass">The foreign class.</param>
+        /// <param name="primaryKeyField">The primary key field.</param>
+        /// <param name="foreignKeyField">The foreign key field.</param>
+        /// <param name="cardinality">The cardinality.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRelationshipClass" /> representing the relationship between the two classes.
+        /// </returns>
+        public static IRelationshipClass Join(this IObjectClass source, IObjectClass foreignClass,
+            string primaryKeyField, string foreignKeyField, esriRelCardinality cardinality)
+        {
+            return source.Join(foreignClass, primaryKeyField, foreignKeyField, cardinality, "");
         }
 
         /// <summary>

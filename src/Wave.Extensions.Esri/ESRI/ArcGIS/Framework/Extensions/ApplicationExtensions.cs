@@ -5,8 +5,8 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
-using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.Framework.Internal;
 
 namespace ESRI.ArcGIS.Framework
@@ -257,7 +257,7 @@ namespace ESRI.ArcGIS.Framework
         ///     Returns a <see cref="IProgressDialogAnimation" /> representing the object that controls the actions of the progress
         ///     dialog.
         /// </returns>
-        public static IProgressDialogAnimation PlayAnimation(this IApplication source, string title, string description, string message, esriProgressAnimationTypes animation, int min, int max, int position, int step = 1, ITrackCancel trackCancel = null)
+        public static IProgressDialogAnimation PlayAnimation(this IApplication source, string title, string description, string message, esriProgressAnimationTypes animation, int min, int max, int position, int step, ITrackCancel trackCancel)
         {
             if (source == null)
                 return null;
@@ -270,6 +270,26 @@ namespace ESRI.ArcGIS.Framework
             _ProgressDialogAnimation.Play(MouseCursorImage.Wait, title, description, message);
 
             return _ProgressDialogAnimation;
+        }
+
+        /// <summary>
+        ///     Starts the progress dialog in ArcMap and updates the status message on the dialog.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="animation">The animation.</param>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <param name="position">The position.</param>
+        /// <returns>
+        ///     Returns a <see cref="IProgressDialogAnimation" /> representing the object that controls the actions of the progress
+        ///     dialog.
+        /// </returns>
+        public static IProgressDialogAnimation PlayAnimation(this IApplication source, string title, string description, string message, esriProgressAnimationTypes animation, int min, int max, int position)
+        {
+            return source.PlayAnimation(title, description, message, animation, min, max, position, 1, null);
         }
 
         #endregion
