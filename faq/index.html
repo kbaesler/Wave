@@ -125,7 +125,7 @@
       </div>
     
     <div class="md-source__repository">
-      GitHub
+      Jumpercables/Wave
     </div>
   </a>
 
@@ -170,7 +170,7 @@
       </div>
     
     <div class="md-source__repository">
-      GitHub
+      Jumpercables/Wave
     </div>
   </a>
 
@@ -495,8 +495,6 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
                
-                 <a href="https://github.com/Jumpercables/Wave/edit/master/docs/faq.md" title="Edit this page" class="md-icon md-content__edit">edit</a>
-               
               
                 
                 <h1 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">#</a></h1>
@@ -530,31 +528,31 @@
 <li>
 <p>Three files will be added to the project.</p>
 <ul>
-<li><code>LogInfo.cs</code> – Contains the necessary information for using log4net configurations.</li>
-<li><code>Wave.log4net.config</code> – Contains the default configurations used for logging information.</li>
-<li><code>packages.config</code> – Contains information about the packages that have been installed.</li>
+<li><code class="codehilite">LogInfo.cs</code> – Contains the necessary information for using log4net configurations.</li>
+<li><code class="codehilite">Wave.log4net.config</code> – Contains the default configurations used for logging information.</li>
+<li><code class="codehilite">packages.config</code> – Contains information about the packages that have been installed.</li>
 </ul>
 </li>
 <li>
 <p>A packages folder will be added to the root of the solution. This folder will contain the contents of the packages that have been installed.</p>
 </li>
 <li>
-<p>The <code>*.csproj</code> file will be modified to include the MSBuild targets (that are included in the packages), that will automate the ESRI and MINER component registration.</p>
+<p>The <code class="codehilite">*.csproj</code> file will be modified to include the MSBuild targets (that are included in the packages), that will automate the ESRI and MINER component registration.</p>
 <ul>
 <li><strong>Must</strong> be using the Attribute declarations on the classes.</li>
 <li><strong>Must</strong> have the Register for COM option checked within Visual Studios.</li>
 </ul>
 </li>
 <li>
-<p>A reference to the <code>log4net</code> assembly will be downloaded and added to the project (as it is a dependency of the Wave packages).</p>
+<p>A reference to the <code class="codehilite">log4net</code> assembly will be downloaded and added to the project (as it is a dependency of the Wave packages).</p>
 </li>
 </ol>
 <h2 id="10-what-logging-framework-is-used-by-wave">10. What logging framework is used by Wave?<a class="headerlink" href="#10-what-logging-framework-is-used-by-wave" title="Permanent link">#</a></h2>
-<p>We have elected to use <code>log4net</code> as the logging framework.</p>
-<h2 id="11-what-log4net-configuration-file-is-used">11. What <code>log4net</code> configuration file is used?<a class="headerlink" href="#11-what-log4net-configuration-file-is-used" title="Permanent link">#</a></h2>
-<p>The <code>Wave.Extensions.Esri</code> and <code>Wave.Extensions.Miner</code> package have been configured to use the configuration file named <code>Wave.log4net.config</code> (which is installed with the packages).</p>
+<p>We have elected to use <code class="codehilite">log4net</code> as the logging framework.</p>
+<h2 id="11-what-log4net-configuration-file-is-used">11. What <code class="codehilite">log4net</code> configuration file is used?<a class="headerlink" href="#11-what-log4net-configuration-file-is-used" title="Permanent link">#</a></h2>
+<p>The <code class="codehilite">Wave.Extensions.Esri</code> and <code class="codehilite">Wave.Extensions.Miner</code> package have been configured to use the configuration file named <code class="codehilite">Wave.log4net.config</code> (which is installed with the packages).</p>
 <ul>
-<li>The configuration file must reside in the directory of the running application. For example, <code>%PROGRAMFILES%\ArcGIS\Bin</code> and <code>%PROGRAMFILES%\Miner and Miner\ArcFM Solution\Bin</code> when the assemblies are used for extensions within ArcGIS for Desktop or ArcFM Solution.</li>
+<li>The configuration file must reside in the directory of the running application. For example, <code class="codehilite"><span class="c">%PROGRAMFILES%\ArcGIS\Bin</span></code> and <code class="codehilite"><span class="c">%PROGRAMFILES%\Miner and Miner\ArcFM Solution\Bin</span></code> when the assemblies are used for extensions within ArcGIS for Desktop or ArcFM Solution.</li>
 </ul>
 <h2 id="12-how-are-the-packages-distributed">12. How are the packages distributed?<a class="headerlink" href="#12-how-are-the-packages-distributed" title="Permanent link">#</a></h2>
 <p>The packages are distributed using <a href="https://www.nuget.org">NuGet</a> (provided by Microsoft), which is a Visual Studio extension that makes it easy to add, remove and update libraries and tools in Visual Studio projects that use the .NET Framework.</p>
@@ -618,6 +616,16 @@
       </div>
       
         
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/Jumpercables" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.linkedin.com/in/baesler" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
       
     </div>
   </div>
