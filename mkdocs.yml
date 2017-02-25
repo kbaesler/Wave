@@ -3,26 +3,42 @@ site_description: 'C# extensions for ArcFM Solution and ArcGIS for Desktop devel
 site_author: 'Kyle Baesler'
 site_url: 'http://jumpercables.github.io/Wave/'
 
-repo_name: 'GitHub'
+repo_name: 'Jumpercables/Wave'
 repo_url: 'https://github.com/Jumpercables/Wave/'
 
 copyright: 'Copyright (c) 2016 Kyle Baesler'
 
 extra:
-    version: '1.0.3'
+    version: '1.0.3'    
     logo: 'images\wave-red-64.png'
     author:
       github: 'Jumpercables'
     palette:
       primary: 'Red'
       accent: 'Teal'
+    social:
+      - type: 'github'
+        link: 'https://github.com/Jumpercables'
+      - type: 'linkedin'
+        link: 'https://www.linkedin.com/in/baesler'
 
 markdown_extensions:
     - smarty
     - footnotes
     - sane_lists
-    - codehilite(css_class=code)
+    - codehilite(linenums=true)
     - admonition
+    - pymdownx.arithmatex
+    - pymdownx.betterem(smart_enable=all)
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist(custom_checkbox=true)
+    - pymdownx.tilde
     - toc:
         permalink: '#'
 
@@ -30,11 +46,10 @@ theme: 'material'
 
 pages:
 - Home: 'index.md'
-- Samples: 'samples.md'
 - Features: 'features.md'
-- Frequently Asked Questions: 'faq.md'
-- About:
-  - Contributing: 'contribute.md'
-  - Release Notes: 'release-notes.md'
-  - License: 'license.md'
+- Samples: 'samples.md'
+- Release Notes: 'release-notes.md'  
+- Contributing: 'contribute.md'  
 - Resources: 'resources.md'
+- License: 'license.md'
+- FAQ: 'faq.md'

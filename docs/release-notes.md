@@ -7,6 +7,24 @@ These are the changes, additions, removals that are actively being worked on and
 !!! warning "Unpublished"
     The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. `master` branch).
 
+### Experimental
+- Added `Task` static class that provides the ability to execute delegates on STA threads using `BackgroundWorker` and `STASynchronizationContext` in a simplified manner. [^1]
+
+### New 
+- Added `RegexValidationRule` that is used for validation text input using regular expressions. [^1]
+- Added `IsValid` extension method to the `DependencyObject` that will determine if the object or it's children have a `ValidationError` objects that are returning errors. [^1]
+- Added `SystemConfigDataSource` and `UserConfigDataSource` classes that are used for dynamically adding, removing or changing DNS'. [^1]
+- Added `Impersontation` class that allows for impersontating a user (useful when needing to access network drives or databases as a different user than is executing the code). [^1]
+- Added `ScrollSynchronizer` class that allows for synchronizing `ScrollViewer` controls in XAML. [^1]
+- Added `STASynchronizationContext` class that dispatched the asynchronous message. [^1]
+
+### Fixed 
+- The `AutoCompleteBox` control now supports case-sensitivity and a timed delay (using the `DelayedTextBox`) to delay drop down. [^1]
+
+### Changed
+- The `V10` compilier directive has been removed.
+- The `Error` methods in the `Log` have been simplified to remove confusing overloads. [^1] 
+
 ## Version 1.0.4 - 2016-11-08
 ### New
 - The `Wave.log4net.config` file is included in the packages. [^3]
@@ -23,8 +41,7 @@ These are the changes, additions, removals that are actively being worked on and
 - Fixed issue with `GetAutoValue` extension methods were recursively searching too deep for the auto values.
 - Fixed issue with `ReadCsv` extension method for the `DataTable` that wasn't opening the ADO connection prior to executing the read, which was causing an exception.
 
----
-## Version 1.0.3 - 2016-04-04
+# Version 1.0.3 - 2016-04-04
 ### New
 - Added `PerformOperation` extension methods to the `IEditor`, `IMMEditor`, `IWorkspace` and `IWorkspaceEdit` interfaces that wrap the start / stop operation constructs. [^3]
 - Added `ExecuteTask` extension method on the `IMMPxNode` object to execute tasks based on name. [^2]
