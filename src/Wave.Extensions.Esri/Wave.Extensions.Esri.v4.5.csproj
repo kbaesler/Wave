@@ -265,6 +265,7 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\GeometryExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\SegmentationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunction.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunctionFactory.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
@@ -276,13 +277,13 @@
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\RouteMeasureSegmentationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteEventtData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\ConcatenateRouteEventtData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\DissolveRouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\OverlayRouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\RouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\RouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Route.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureSegmentation.cs" />
