@@ -48,14 +48,14 @@ namespace ESRI.ArcGIS.Geometry
         /// <returns>Returns a <see cref="IEnumerable{T}" /> representing the points of M values.</returns>
         public static IEnumerable<IPoint> GetPointsAtMs(this IMSegmentation3 source)
         {
-            double first, last;
-            source.QueryFirstLastM(out first, out last);
+            double firstM, lastM;
+            source.QueryFirstLastM(out firstM, out lastM);
 
-            var collection = source.GetPointsAtM(first, 0);
+            var collection = source.GetPointsAtM(firstM, 0);
             if (collection.GeometryCount == 1)
                 yield return (IPoint) collection.Geometry[0];
 
-            collection = source.GetPointsAtM(last, 0);
+            collection = source.GetPointsAtM(lastM, 0);
             if (collection.GeometryCount == 1)
                 yield return (IPoint) collection.Geometry[0];
         }
@@ -70,30 +70,46 @@ namespace ESRI.ArcGIS.Geometry
         /// </returns>
         public static IEnumerable<IPoint> GetPointsAtMs(this IPolyline source, IPolyline other)
         {
-            IMAware s = (IMAware) source;
-            IMAware o = (IMAware) other;
+            var points = ((IMSegmentation3)source).GetPointsAtMs();
+            IMSegmentation segmentation = (IMSegmentation)other;
 
-            if (s.MAware && o.MAware)
+            foreach (var point in points)
             {
-                var points = ((IMSegmentation3) source).GetPointsAtMs();
-                IMSegmentation segmentation = (IMSegmentation) other;
-
-                foreach (var point in points)
+                var ms = other.GetMsAtPoint(point);
+                if (ms != null && ms.Any())
                 {
-                    var ms = other.GetMsAtPoint(point);
-                    if (ms != null && ms.Any())
+                    foreach (var m in ms)
                     {
-                        foreach (var m in ms)
+                        var collection = segmentation.GetPointsAtM(m, 0);
+                        foreach (var geometry in collection.AsEnumerable())
                         {
-                            var collection = segmentation.GetPointsAtM(m, 0);
-                            foreach (var geometry in collection.AsEnumerable())
-                            {
-                                yield return geometry as IPoint;
-                            }
+                            yield return geometry as IPoint;
                         }
                     }
                 }
             }
+        }
+
+        /// <summary>
+        ///     Returns the points along the other using the first and last M values of the source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="other">The other.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IPoint}" /> representing the points along the other polyline.
+        /// </returns>
+        public static IEnumerable<IPoint> GetPointsAtMs(this IMSegmentation3 source, IMSegmentation3 other)
+        {
+            double firstM, lastM;
+            source.QueryFirstLastM(out firstM, out lastM);
+
+            var collection = other.GetPointsAtM(firstM, 0);
+            if (collection.GeometryCount == 1)
+                yield return (IPoint)collection.Geometry[0];
+
+            collection = other.GetPointsAtM(lastM, 0);
+            if (collection.GeometryCount == 1)
+                yield return (IPoint)collection.Geometry[0];
         }
 
         /// <summary>

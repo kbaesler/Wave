@@ -12,18 +12,13 @@ namespace System.Windows.Controls
     {
         #region Fields
 
+        private readonly Timer _KeypressTimer;
+
         /// <summary>
         ///     The delay time property
         /// </summary>
         public static readonly DependencyProperty DelayTimeProperty =
-            DependencyProperty.Register("DelayTime", typeof (int), typeof (DelayedTextBox), new UIPropertyMetadata(667, OnDelayTimeChanged));
-
-        /// <summary>
-        ///     The delayed text changed
-        /// </summary>
-        public EventHandler DelayedTextChanged;
-
-        private readonly Timer _KeypressTimer;
+            DependencyProperty.Register("DelayTime", typeof(int), typeof(DelayedTextBox), new UIPropertyMetadata(667, OnDelayTimeChanged));
 
         private Action _KeypressAction;
 
@@ -36,7 +31,7 @@ namespace System.Windows.Controls
         /// </summary>
         static DelayedTextBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof (DelayedTextBox), new FrameworkPropertyMetadata(typeof (DelayedTextBox)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DelayedTextBox), new FrameworkPropertyMetadata(typeof(DelayedTextBox)));
         }
 
         /// <summary>
@@ -50,8 +45,32 @@ namespace System.Windows.Controls
 
         #endregion
 
+        #region Events
+
+        /// <summary>
+        ///     The delayed text changed
+        /// </summary>
+        public event EventHandler DelayedTextChanged;
+
+        /// <summary>
+        ///     The before delayed text changed
+        /// </summary>
+        public event TextChangedEventHandler DelayedTextChanging;
+
+        #endregion
+
         #region Public Properties
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is delayed.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is delayed; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsDelayed
+        {
+            get { return _KeypressTimer.Enabled; }
+        }
         /// <summary>
         ///     Gets and Sets the amount of time (in miliseconds) to wait after the text has changed before updating the binding.
         /// </summary>
@@ -99,6 +118,17 @@ namespace System.Windows.Controls
         protected virtual void OnDelayedTextChanged(EventArgs e)
         {
             var eventHandler = this.DelayedTextChanged;
+            if (eventHandler != null)
+                eventHandler(this, e);
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:DelayedTextChanging" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        protected virtual void OnDelayedTextChanging(TextChangedEventArgs e)
+        {
+            var eventHandler = this.DelayedTextChanging;
             if (eventHandler != null)
                 eventHandler(this, e);
         }
@@ -162,6 +192,8 @@ namespace System.Windows.Controls
             {
                 this.OnTimeElapsed(this, null);
             }
+
+            this.OnDelayedTextChanging(e);
         }
 
         #endregion

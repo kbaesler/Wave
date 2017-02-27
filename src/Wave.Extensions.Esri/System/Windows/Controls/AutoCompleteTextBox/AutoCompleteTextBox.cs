@@ -13,28 +13,28 @@ namespace System.Windows.Controls
     {
         #region Fields
 
+        private readonly ComboBox _ComboBox;
+        private readonly VisualCollection _Controls;
+        private readonly DelayedTextBox _TextBox;
+
         /// <summary>
         ///     The automatic complete source property
         /// </summary>
         public static readonly DependencyProperty AutoCompleteSourceProperty =
-            DependencyProperty.Register("AutoCompleteSource", typeof (IEnumerable<string>), typeof (AutoCompleteTextBox), new FrameworkPropertyMetadata(OnAutoCompleteSourceChanged));
+            DependencyProperty.Register("AutoCompleteSource", typeof(IEnumerable<string>), typeof(AutoCompleteTextBox), new FrameworkPropertyMetadata(OnAutoCompleteSourceChanged));
 
 
         /// <summary>
         ///     The ignore case property
         /// </summary>
         public static readonly DependencyProperty IgnoreCaseProperty =
-            DependencyProperty.Register("IgnoreCase", typeof (bool), typeof (AutoCompleteTextBox), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            DependencyProperty.Register("IgnoreCase", typeof(bool), typeof(AutoCompleteTextBox), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         /// <summary>
         ///     The text property
         /// </summary>
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof (string), typeof (AutoCompleteTextBox), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged));
-
-        private readonly ComboBox _ComboBox;
-        private readonly VisualCollection _Controls;
-        private readonly DelayedTextBox _TextBox;
+            DependencyProperty.Register("Text", typeof(string), typeof(AutoCompleteTextBox), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged));
 
         #endregion
 
@@ -56,6 +56,7 @@ namespace System.Windows.Controls
 
             _TextBox = new DelayedTextBox();
             _TextBox.VerticalContentAlignment = VerticalAlignment.Center;
+            _TextBox.DelayedTextChanging += TextBox_DelayedTextChanging;
             _TextBox.TextChanged += TextBox_OnTextChanged;
             _TextBox.KeyDown += TextBox_OnKeyDown;
             _TextBox.DelayedTextChanged += TextBox_DelayedTextChanged;
@@ -67,7 +68,27 @@ namespace System.Windows.Controls
 
         #endregion
 
+        #region Events
+
+        /// <summary>
+        ///     The text changed
+        /// </summary>
+        public event TextChangedEventHandler TextChanged;
+
+        #endregion
+
         #region Public Properties
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is delayed.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is delayed; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsDelayed
+        {
+            get { return _TextBox.IsDelayed; }
+        }
 
         /// <summary>
         ///     Gets or sets the automatic complete source.
@@ -123,10 +144,7 @@ namespace System.Windows.Controls
         public string Text
         {
             get { return (string) this.GetValue(TextProperty); }
-            set
-            {
-                this.SetValue(TextProperty, value);
-            }
+            set { this.SetValue(TextProperty, value); }
         }
 
         /// <summary>
@@ -202,10 +220,21 @@ namespace System.Windows.Controls
             return _Controls[index];
         }
 
+        /// <summary>
+        ///     Raises the <see cref="E:TextChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="TextChangedEventArgs" /> instance containing the event data.</param>
+        protected void OnTextChanged(TextChangedEventArgs e)
+        {
+            var eventHandler = this.TextChanged;
+            if (eventHandler != null)
+                eventHandler(this, e);
+        }
+
         #endregion
 
         #region Private Methods
-      
+
         /// <summary>
         ///     Handles the SelectionChanged event of the ComboBox control.
         /// </summary>
@@ -258,7 +287,7 @@ namespace System.Windows.Controls
         {
             AutoCompleteTextBox autoCompleteTextBox = dependencyObject as AutoCompleteTextBox;
             if (autoCompleteTextBox != null)
-                autoCompleteTextBox.Text = (string) e.NewValue;            
+                autoCompleteTextBox.Text = (string) e.NewValue;
         }
 
         /// <summary>
@@ -317,6 +346,16 @@ namespace System.Windows.Controls
         }
 
         /// <summary>
+        ///     Handles the DelayedTextChanging event of the TextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TextChangedEventArgs" /> instance containing the event data.</param>
+        private void TextBox_DelayedTextChanging(object sender, TextChangedEventArgs e)
+        {
+            this.OnTextChanged(e);
+        }
+
+        /// <summary>
         ///     Handles the OnKeyDown event of the TextBox control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -353,6 +392,7 @@ namespace System.Windows.Controls
         private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             this.Text = ((DelayedTextBox) sender).Text;
+            this.OnTextChanged(e);
         }
 
         #endregion

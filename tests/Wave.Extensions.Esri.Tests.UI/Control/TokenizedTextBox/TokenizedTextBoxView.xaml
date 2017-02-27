@@ -4,15 +4,14 @@
         xmlns:controls="clr-namespace:System.Windows.Controls;assembly=Wave.Extensions.Esri"
         xmlns:local="clr-namespace:Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox"
         Title="TokenizedTextBoxView"
-        SizeToContent="Height"
-        Width="250">
+        SizeToContent="Height">
     <Window.DataContext>
         <local:TokenizedTextBoxViewModel />
     </Window.DataContext>
     <Grid Margin="5,5,0,5"
           HorizontalAlignment="Left">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="23" />
             <RowDefinition Height="5" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="5" />
@@ -21,12 +20,7 @@
         <controls:TokenizedTextBox  x:Name="TokenizedTextBox"
                                     Grid.Row="0"                                    
                                     Text="{Binding Text}"
-                                    TokenDelimiter=",">
-            <controls:TokenizedTextBox.Style>
-                <Style TargetType="{x:Type controls:TokenizedTextBox}">
-
-                </Style>
-            </controls:TokenizedTextBox.Style>
+                                    TokenDelimiter=",">            
         </controls:TokenizedTextBox>
         <Label Grid.Row="2"
                Content="{Binding ElementName= TokenizedTextBox, Path=Tokens.Count, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"/>
