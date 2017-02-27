@@ -6,7 +6,8 @@ site_url: 'http://jumpercables.github.io/Wave/'
 repo_name: 'Jumpercables/Wave'
 repo_url: 'https://github.com/Jumpercables/Wave/'
 
-copyright: 'Copyright (c) 2016 Kyle Baesler'
+copyright: 'Copyright (c) 2017 Kyle Baesler'
+theme: 'material'
 
 extra:
     version: '1.0.3'    
@@ -41,8 +42,6 @@ markdown_extensions:
     - pymdownx.tilde
     - toc:
         permalink: '#'
-
-theme: 'material'
 
 pages:
 - Home: 'index.md'

@@ -17,6 +17,7 @@ These are the changes, additions, removals that are actively being worked on and
 - Added `Impersontation` class that allows for impersontating a user (useful when needing to access network drives or databases as a different user than is executing the code). [^1]
 - Added `ScrollSynchronizer` class that allows for synchronizing `ScrollViewer` controls in XAML. [^1]
 - Added `STASynchronizationContext` class that dispatched the asynchronous message. [^1]
+- Added `SegmentationExtensions` class that provides extension methods for dealing with *Linear Referencing* and *M-Values*. [^1]
 
 ### Fixed 
 - The `AutoCompleteBox` control now supports case-sensitivity and a timed delay (using the `DelayedTextBox`) to delay drop down. [^1]
