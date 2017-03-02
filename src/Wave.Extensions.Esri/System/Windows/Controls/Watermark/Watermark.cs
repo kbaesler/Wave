@@ -119,22 +119,17 @@ namespace System.Windows.Controls
 
             ComboBox comboBox = d as ComboBox;
             TextBox textBox = d as TextBox;
-          
-            if (comboBox != null || textBox != null)
+            AutoCompleteTextBox autoCompleteTextBox = d as AutoCompleteTextBox;
+
+            if (comboBox != null || textBox != null || autoCompleteTextBox != null)
             {
                 control.GotKeyboardFocus += Control_GotKeyboardFocus;
                 control.LostKeyboardFocus += Control_Loaded;
 
                 if (textBox != null)
                     textBox.TextChanged += TextBox_TextChanged;
-            }
-            else
-            {
-                AutoCompleteTextBox autoCompleteTextBox = d as AutoCompleteTextBox;
-                if (autoCompleteTextBox != null)
-                {
+                else if (autoCompleteTextBox != null)
                     autoCompleteTextBox.TextChanged += TextBox_TextChanged;
-                }
             }
 
             ItemsControl i = d as ItemsControl;
