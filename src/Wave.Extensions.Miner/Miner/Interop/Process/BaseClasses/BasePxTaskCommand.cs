@@ -92,7 +92,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception ex)
             {
-                Log.Error(this, Document.ParentWindow, this.Caption, ex);
+                Log.Error(this, this.Caption, ex);
             }
         }
 

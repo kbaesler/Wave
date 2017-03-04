@@ -2,7 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ui="clr-namespace:Wave.Extensions.Esri.Tests.UI"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:behaviors="clr-namespace:System.Windows.Behaviors;assembly=Wave.Extensions.Esri"
+        Title="MainWindow" Height="350" Width="525"
+        behaviors:WindowStateComponent.RegistryKey="SOFTWARE\Stoner Software\Sempra Energy">
     <Window.DataContext>
         <ui:MainWindowViewModel/>
     </Window.DataContext>

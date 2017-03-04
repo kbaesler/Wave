@@ -37,7 +37,9 @@ namespace System.Windows.Behaviors
 
         private readonly string _Name;
         private readonly string _RegistryKey;
+
         private readonly Window _Window;
+
 
         /// <summary>
         ///     The registry key property
@@ -97,10 +99,11 @@ namespace System.Windows.Behaviors
         /// </summary>
         /// <param name="d">The d.</param>
         /// <returns></returns>
-        public static FrameworkElement GetRegistryKey(DependencyObject d)
+        public static string GetRegistryKey(DependencyObject d)
         {
-            return (FrameworkElement)d.GetValue(RegistryKeyProperty);
+            return (string)d.GetValue(RegistryKeyProperty);
         }
+
 
         /// <summary>
         ///     Loads the info from registry.
@@ -115,8 +118,6 @@ namespace System.Windows.Behaviors
                     {
                         if (key != null)
                         {
-                            _Window.SizeToContent = (SizeToContent)key.GetValue("SizeToContent", (int)_Window.SizeToContent);
-
                             int left = (int)key.GetValue("Left", SystemParameters.PrimaryScreenWidth / 2 - _Window.Width / 2);
                             int top = (int)key.GetValue("Top", SystemParameters.PrimaryScreenHeight / 2 - _Window.Height / 2);
                             int width = (int)key.GetValue("Width", SystemParameters.PrimaryScreenWidth);
@@ -132,17 +133,14 @@ namespace System.Windows.Behaviors
                             }
 
                             _Window.WindowState = (WindowState)key.GetValue("WindowState", (int)_Window.WindowState);
-                            _Window.ResizeMode = (ResizeMode)key.GetValue("ResizeMode", (int)_Window.ResizeMode);
 
                             this.SizeToFit();
                             this.MoveIntoView();
-
                         }
                     }
                 };
 
                 _Window.Dispatcher.Invoke(DispatcherPriority.Normal, action);
-
             }
             catch (Exception e)
             {
@@ -166,8 +164,6 @@ namespace System.Windows.Behaviors
                         key.SetValue("Width", _Window.RestoreBounds.Width, RegistryValueKind.DWord);
                         key.SetValue("Height", _Window.RestoreBounds.Height, RegistryValueKind.DWord);
                         key.SetValue("WindowState", (int)_Window.WindowState, RegistryValueKind.DWord);
-                        key.SetValue("ResizeMode", (int)_Window.ResizeMode, RegistryValueKind.DWord);
-                        key.SetValue("SizeToContent", (int)_Window.SizeToContent, RegistryValueKind.DWord);
                         key.Flush();
                     }
                 }
@@ -184,7 +180,7 @@ namespace System.Windows.Behaviors
         /// </summary>
         /// <param name="d">The d.</param>
         /// <param name="value">The value.</param>
-        public static void SetRegistryKey(DependencyObject d, FrameworkElement value)
+        public static void SetRegistryKey(DependencyObject d, string value)
         {
             d.SetValue(RegistryKeyProperty, value);
         }

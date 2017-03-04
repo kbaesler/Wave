@@ -336,6 +336,8 @@
     <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
+    <Compile Include="System\Diagnostics\LogScope.cs" />
+    <Compile Include="System\Diagnostics\LogScopeManager.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicDictionary.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicKeyValuePair.cs" />
     <Compile Include="System\Dynamic\Collections\Extensions\DynamicCollectionsExtensions.cs" />

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 using log4net;
 using log4net.Appender;
+using log4net.Core;
 using log4net.Repository.Hierarchy;
 
 namespace System.Diagnostics
@@ -18,7 +20,7 @@ namespace System.Diagnostics
         /// <summary>
         ///     The name of the log configuration file.
         /// </summary>
-        public const string FileName = "Wave.log4net.config";
+        public const string FileName = "Sempra.log4net.config";
 
         #endregion
 
@@ -34,13 +36,60 @@ namespace System.Diagnostics
         /// <summary>
         ///     Adds the appender to the logger.
         /// </summary>
+        /// <param name="appender">The appender.</param>
+        public static IAppender AddAppender(IAppender appender)
+        {
+            var skeleton = FindAppender<IAppender>(appender.Name);
+            if (skeleton != null) return skeleton;
+
+            var repository = LogManager.GetRepository();           
+            var hierarchy = (Hierarchy) repository;
+            hierarchy.Root.AddAppender(appender);
+            hierarchy.Configured = true;
+            hierarchy.RaiseConfigurationChanged(EventArgs.Empty);
+
+            return appender;
+        }
+
+        /// <summary>
+        /// Adds the appender.
+        /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="appender">The appender.</param>
-        public static void AddAppender(object source, IAppender appender)
+        public static void AddAppender(this ILogger source, IAppender appender)
         {
-            ILog log = GetLogger(typeof(Log));
-            Logger l = (Logger) log.Logger;
-            l.AddAppender(appender);
+            IAppenderAttachable attachable = source as IAppenderAttachable;
+            if (attachable != null) attachable.AddAppender(appender);
+        }
+
+        /// <summary>
+        /// Removes the appender.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="appender">The appender.</param>
+        public static void RemoveAppender(this ILogger source, IAppender appender)
+        {
+            IAppenderAttachable attachable = source as IAppenderAttachable;
+            if (attachable != null) attachable.RemoveAppender(appender);
+        }
+
+        /// <summary>
+        ///     Changes the appenders in the root repository using the specified action.
+        /// </summary>
+        /// <typeparam name="T">The type of appender</typeparam>
+        /// <param name="action">The action.</param>
+        public static void ChangeAppenders<T>(Action<T> action)
+            where T : AppenderSkeleton
+        {
+            var appenders = from appender in LogManager.GetRepository().GetAppenders()
+                where appender is T
+                select appender as T;
+
+            foreach (var appender in appenders)
+            {
+                action(appender);
+                appender.ActivateOptions();
+            }
         }
 
         /// <summary>
@@ -143,7 +192,7 @@ namespace System.Diagnostics
         /// <exception cref="System.ArgumentNullException">source</exception>
         public static void Error(object source, Exception exception)
         {
-            Error(source, exception.Message, exception);
+            Error(source.GetType(), exception);
         }
 
         /// <summary>
@@ -154,7 +203,14 @@ namespace System.Diagnostics
         /// <exception cref="System.ArgumentNullException">source</exception>
         public static void Error(Type source, Exception exception)
         {
-            Error(source, exception.Message, exception);
+            if (source == null)
+                throw new ArgumentNullException("source");
+
+            ILog logger = GetLogger(source);
+            if (logger.IsErrorEnabled)
+            {
+                logger.Error(exception);
+            }
         }
 
         /// <summary>
@@ -201,7 +257,23 @@ namespace System.Diagnostics
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            Error(source.GetType(), title, exception.GetErrorMessage());
+            Error(source.GetType(), title, exception);
+        }
+
+        /// <summary>
+        ///     Log a message object with the Error level including the stack trace of the exception.
+        /// </summary>
+        /// <param name="source">The source of the logger.</param>
+        /// <param name="title">The title of the message box.</param>
+        /// <param name="exception">The exception.</param>
+        /// <exception cref="System.ArgumentNullException">source</exception>
+        public static void Error(Type source, string title, Exception exception)
+        {
+            if (source == null)
+                throw new ArgumentNullException("source");
+
+            Error(source, exception);
+            MessageBox.Show(exception.GetErrorMessage(), title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -222,56 +294,23 @@ namespace System.Diagnostics
         }
 
         /// <summary>
-        ///     Log a message object with the Error level including the stack trace of the exception
-        ///     and displays a message box to the user with the contents of the exception.
-        /// </summary>
-        /// <param name="source">The source of the logger.</param>
-        /// <param name="owner">The owner of the message box.</param>
-        /// <param name="title">The title of the message box.</param>
-        /// <param name="exception">The exception.</param>
-        /// <exception cref="System.ArgumentNullException">source</exception>
-        public static void Error(Type source, IWin32Window owner, string title, Exception exception)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            Error(source, exception);
-            MessageBox.Show(owner, exception.GetErrorMessage(), title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        /// <summary>
-        ///     Log a message object with the Error level including the stack trace of the exception
-        ///     and displays a message box to the user with the contents of the exception.
-        /// </summary>
-        /// <param name="source">The source of the logger.</param>
-        /// <param name="owner">The owner of the message box.</param>
-        /// <param name="title">The title of the message box.</param>
-        /// <param name="exception">The exception.</param>
-        /// <exception cref="System.ArgumentNullException">source</exception>
-        public static void Error(object source, IWin32Window owner, string title, Exception exception)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            Error(source.GetType(), owner, title, exception);
-        }
-
-        /// <summary>
         ///     Finds the appender that is attached to a logger.
         /// </summary>
         /// <param name="appenderName">Name of the appender.</param>
         /// <returns></returns>
-        public static IAppender FindAppender(string appenderName)
+        public static TAppender FindAppender<TAppender>(string appenderName)
+            where TAppender : IAppender
         {
             foreach (IAppender appender in
                 LogManager.GetRepository().GetAppenders())
             {
                 if (appender.Name == appenderName)
                 {
-                    return appender;
+                    return (TAppender) appender;
                 }
             }
-            return null;
+
+            return default(TAppender);
         }
 
         /// <summary>
@@ -364,6 +403,32 @@ namespace System.Diagnostics
                 throw new ArgumentNullException("source");
 
             Info(source.GetType(), message, exception);
+        }
+
+        /// <summary>
+        ///     Finds the appender that is attached to a logger and removes it.
+        /// </summary>
+        /// <param name="appender">The appender.</param>
+        public static void RemoveAppender(IAppender appender)
+        {
+            var repository = LogManager.GetRepository();         
+            var hierarchy = (Hierarchy)repository;
+            hierarchy.Root.RemoveAppender(appender);
+            hierarchy.Configured = true;
+            hierarchy.RaiseConfigurationChanged(EventArgs.Empty);
+        }
+
+        /// <summary>
+        ///     Finds the appender that is attached to a logger and removes it.
+        /// </summary>
+        /// <param name="appenderName">Name of the appender.</param>
+        public static void RemoveAppender(string appenderName)
+        {
+            var appender = FindAppender<IAppender>(appenderName);
+            if (appender != null)
+            {
+                RemoveAppender(appender);
+            }
         }
 
         /// <summary>

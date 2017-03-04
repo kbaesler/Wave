@@ -4,6 +4,7 @@ using System.Linq;
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Location
 {
@@ -18,7 +19,7 @@ namespace ESRI.ArcGIS.Location
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Route"/> class.
+        ///     Initializes a new instance of the <see cref="Route" /> class.
         /// </summary>
         /// <param name="routeFeatureClass">The route feature class.</param>
         /// <param name="routeIDFieldName">Name of the route identifier field.</param>
@@ -26,21 +27,21 @@ namespace ESRI.ArcGIS.Location
         public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, bool routeIDIsUnique)
             : this(routeFeatureClass, routeIDFieldName, routeIDIsUnique, null)
         {
-
         }
 
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Route" /> class.
+        ///     Initializes a new instance of the <see cref="Route" /> class.
         /// </summary>
         /// <param name="routeFeatureClass">The route feature class.</param>
         /// <param name="routeIDFieldName">Name of the route identifier field.</param>
         /// <param name="routeIDIsUnique">if set to <c>true</c> when the route identifier is unique.</param>
         /// <param name="routeWhereClause">The filter used to query the source feature class for route data.</param>
-        public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, bool routeIDIsUnique, IQueryFilter routeWhereClause)
+        public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, bool routeIDIsUnique, string routeWhereClause)
             : this(routeFeatureClass, routeIDFieldName, esriUnits.esriUnknownUnits, routeIDIsUnique, routeWhereClause)
         {
-
         }
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Route" /> class.
         /// </summary>
@@ -49,7 +50,7 @@ namespace ESRI.ArcGIS.Location
         /// <param name="routeMeasureUnits">The route measure units.</param>
         /// <param name="routeIDIsUnique">if set to <c>true</c> when the route identifier is unique.</param>
         /// <param name="routeWhereClause">The filter used to query the source feature class for route data.</param>
-        public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, esriUnits routeMeasureUnits, bool routeIDIsUnique, IQueryFilter routeWhereClause)
+        public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, esriUnits routeMeasureUnits, bool routeIDIsUnique, string routeWhereClause)
         {
             this.FeatureClass = routeFeatureClass;
             this.Name = this.GetRouteMeasureLocatorName(routeFeatureClass, routeIDFieldName, routeMeasureUnits, routeIDIsUnique, routeWhereClause);
@@ -60,17 +61,17 @@ namespace ESRI.ArcGIS.Location
         #region Public Properties
 
         /// <summary>
-        ///     Gets the route feature class that was created.
-        /// </summary>
-        public IFeatureClass FeatureClass { get; private set; }
-
-        /// <summary>
         ///     Gets the route locator.
         /// </summary>
         public IRouteLocator2 Locator
         {
             get { return (IRouteLocator2)((IName)this.Name).Open(); }
         }
+
+        /// <summary>
+        ///     Gets the route feature class that was created.
+        /// </summary>
+        public IFeatureClass FeatureClass { get; private set; }
 
         /// <summary>
         ///     Gets the name of the locator.
@@ -82,23 +83,124 @@ namespace ESRI.ArcGIS.Location
         #region Public Methods
 
         /// <summary>
-        /// Locate point features along the route and  writes the result to a new point event table.
+        ///     Identify route locations in an envelope.
+        /// </summary>
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="whereClause">The where clause.</param>
+        /// <param name="tolerance">The tolerance.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing the route and location.
+        /// </returns>
+        public List<RouteIdentifyResult> Identify(IGeometry buffer, string whereClause, double tolerance)
+        {
+            ITopologicalOperator topo = buffer as ITopologicalOperator;
+            return topo != null ? Identify(topo.Buffer(tolerance), whereClause) : null;
+        }
+
+        /// <summary>
+        ///     Identify route locations in an envelope.
+        /// </summary>
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="whereClause">The where clause.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing the route and location.
+        /// </returns>
+        public List<RouteIdentifyResult> Identify(IGeometry buffer, string whereClause)
+        {
+            List<RouteIdentifyResult> list = new List<RouteIdentifyResult>();
+
+            var values = this.Locator.Identify(buffer.Envelope, whereClause);
+            values.Reset();
+
+            for (int i = 0; i < values.Count; i++)
+            {
+                IRouteLocation location;
+                IFeature feature;
+                values.Next(out location, out feature);
+
+                IGeometry geometry;
+                esriLocatingError error;
+                this.Locator.Locate(location, out geometry, out error);
+
+                list.Add(new RouteIdentifyResult(location, feature, geometry, error));
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        ///     Locates point route location with the specified route identifier.
+        /// </summary>
+        /// <param name="routeId">The route identifier.</param>
+        /// <param name="point">The point.</param>
+        /// <param name="error">The error that occured during location.</param>
+        /// <returns>
+        ///     Returns a <see cref="IGeometry" /> representing the location.
+        /// </returns>
+        public IGeometry Locate(object routeId, IPoint point, out esriLocatingError error)
+        {
+            IRouteLocation routeLocation = new RouteMeasurePointLocationClass();
+            routeLocation.RouteID = routeId;
+
+            IRouteMeasurePointLocation location = (IRouteMeasurePointLocation)routeLocation;
+            location.Measure = point.M;
+
+            IGeometry result;
+            this.Locator.Locate(routeLocation, out result, out error);
+
+            return result.IsEmpty ? null : result;
+        }
+
+        /// <summary>
+        ///     Locates line route location with the specified route identifier.
+        /// </summary>
+        /// <param name="routeId">The route identifier.</param>
+        /// <param name="polyline">The polyline.</param>
+        /// <param name="error">The error that occured during location.</param>
+        /// <returns>
+        ///     Returns a <see cref="IGeometry" /> representing the location.
+        /// </returns>
+        public IGeometry Locate(object routeId, IPolyline polyline, out esriLocatingError error)
+        {
+            IRouteLocation routeLocation = new RouteMeasureLineLocationClass();
+            routeLocation.RouteID = routeId;
+
+            IMSegmentation segmentation = (IMSegmentation)polyline;
+
+            IRouteMeasureLineLocation lineLocation = (IRouteMeasureLineLocation)routeLocation;
+            lineLocation.FromMeasure = segmentation.MMin;
+            lineLocation.ToMeasure = segmentation.MMax;
+
+            IGeometry result;
+            this.Locator.Locate(routeLocation, out result, out error);
+
+            return result.IsEmpty ? null : result;
+        }
+
+        /// <summary>
+        ///     Locate point features along the route and  writes the result to a new point event table.
         /// </summary>
         /// <param name="locatePointsAlongRouteName">The name of the event table of the located features.</param>
         /// <param name="points">The points to locate.</param>
-        /// <param name="searchRadius">If the input features are points, the search radius is a numeric value defining how far around each point a search
-        /// will be done to find a target route. If the input features are lines, the search tolerance is really a cluster
-        /// tolerance, which is a numeric value
-        /// representing the maximum tolerated distance between the input lines and the target routes. If the input features
-        /// are polygons, this parameter is ignored since no search radius is used.</param>
-        /// <param name="searchMultipleLocations">If the point falls on more than one route for the given search radius, you can
-        /// have the option to create multiple event records that correspond to each route in the search radius vicinity</param>
+        /// <param name="searchRadius">
+        ///     If the input features are points, the search radius is a numeric value defining how far around each point a search
+        ///     will be done to find a target route. If the input features are lines, the search tolerance is really a cluster
+        ///     tolerance, which is a numeric value
+        ///     representing the maximum tolerated distance between the input lines and the target routes. If the input features
+        ///     are polygons, this parameter is ignored since no search radius is used.
+        /// </param>
+        /// <param name="searchMultipleLocations">
+        ///     If the point falls on more than one route for the given search radius, you can
+        ///     have the option to create multiple event records that correspond to each route in the search radius vicinity
+        /// </param>
         /// <param name="filter">An optional filter used to use a subset of the point data.</param>
-        /// <param name="keepAllFields">Allows you to include or disinclude the attributes of the point feature class.  If this is
-        /// set to False, the output event table will only contain the route event properties.</param>
+        /// <param name="keepAllFields">
+        ///     Allows you to include or disinclude the attributes of the point feature class.  If this is
+        ///     set to False, the output event table will only contain the route event properties.
+        /// </param>
         /// <param name="workspace">The workspace that will contain the event data table.</param>
         /// <returns>
-        /// Returns a <see cref="ITable" /> representing the event table of the results.
+        ///     Returns a <see cref="ITable" /> representing the event table of the results.
         /// </returns>
         public ITable Locate(string locatePointsAlongRouteName, IFeatureClass points, double searchRadius, bool searchMultipleLocations, IQueryFilter filter, bool keepAllFields, IWorkspace workspace)
         {
@@ -110,25 +212,33 @@ namespace ESRI.ArcGIS.Location
         }
 
         /// <summary>
-        /// Locate point features along the route and  writes the result to a new point event table.
+        ///     Locate point features along the route and  writes the result to a new point event table.
         /// </summary>
         /// <param name="locatePointsAlongRouteName">The name of the event table of the located features.</param>
         /// <param name="points">The points to locate.</param>
-        /// <param name="searchRadius">If the input features are points, the search radius is a numeric value defining how far around each point a search
-        /// will be done to find a target route. If the input features are lines, the search tolerance is really a cluster
-        /// tolerance, which is a numeric value
-        /// representing the maximum tolerated distance between the input lines and the target routes. If the input features
-        /// are polygons, this parameter is ignored since no search radius is used.</param>
-        /// <param name="searchMultipleLocations">If the point falls on more than one route for the given search radius, you can
-        /// have the option to create multiple event records that correspond to each route in the search radius vicinity</param>
-        /// <param name="properties">Parameter consisting of the route location fields and the type of events that will be written
-        /// to the output event table.</param>
+        /// <param name="searchRadius">
+        ///     If the input features are points, the search radius is a numeric value defining how far around each point a search
+        ///     will be done to find a target route. If the input features are lines, the search tolerance is really a cluster
+        ///     tolerance, which is a numeric value
+        ///     representing the maximum tolerated distance between the input lines and the target routes. If the input features
+        ///     are polygons, this parameter is ignored since no search radius is used.
+        /// </param>
+        /// <param name="searchMultipleLocations">
+        ///     If the point falls on more than one route for the given search radius, you can
+        ///     have the option to create multiple event records that correspond to each route in the search radius vicinity
+        /// </param>
+        /// <param name="properties">
+        ///     Parameter consisting of the route location fields and the type of events that will be written
+        ///     to the output event table.
+        /// </param>
         /// <param name="filter">An optional filter used to use a subset of the point data.</param>
-        /// <param name="keepAllFields">Allows you to include or disinclude the attributes of the point feature class.  If this is
-        /// set to False, the output event table will only contain the route event properties.</param>
+        /// <param name="keepAllFields">
+        ///     Allows you to include or disinclude the attributes of the point feature class.  If this is
+        ///     set to False, the output event table will only contain the route event properties.
+        /// </param>
         /// <param name="workspace">The workspace that will contain the event data table.</param>
         /// <returns>
-        /// Returns a <see cref="ITable" /> representing the event table of the results.
+        ///     Returns a <see cref="ITable" /> representing the event table of the results.
         /// </returns>
         public ITable Locate(string locatePointsAlongRouteName, IFeatureClass points, double searchRadius, bool searchMultipleLocations, IRouteMeasurePointProperties properties, IQueryFilter filter, bool keepAllFields, IWorkspace workspace)
         {
@@ -141,18 +251,22 @@ namespace ESRI.ArcGIS.Location
         }
 
         /// <summary>
-        /// Locate line features along the route and writes the result to a new line event table.
+        ///     Locate line features along the route and writes the result to a new line event table.
         /// </summary>
         /// <param name="locateLinesAlongRouteName">The name of the event table of the located features.</param>
         /// <param name="lines">The lines to locate.</param>
-        /// <param name="clusterTolerance">The cluster tolerance which is a numeric value
-        /// representing the maximum tolerated distance between the input lines and the target routes.</param>
+        /// <param name="clusterTolerance">
+        ///     The cluster tolerance which is a numeric value
+        ///     representing the maximum tolerated distance between the input lines and the target routes.
+        /// </param>
         /// <param name="filter">An optional filter used to use a subset of the line data.</param>
-        /// <param name="keepAllFields">Allows you to include or disinclude the attributes of the point feature class.  If this is
-        /// set to False, the output event table will only contain the route event properties.</param>
+        /// <param name="keepAllFields">
+        ///     Allows you to include or disinclude the attributes of the point feature class.  If this is
+        ///     set to False, the output event table will only contain the route event properties.
+        /// </param>
         /// <param name="workspace">The workspace that will contain the event data table.</param>
         /// <returns>
-        /// Returns a <see cref="ITable" /> representing the event table of the results.
+        ///     Returns a <see cref="ITable" /> representing the event table of the results.
         /// </returns>
         public ITable Locate(string locateLinesAlongRouteName, IFeatureClass lines, double clusterTolerance, IQueryFilter filter, bool keepAllFields, IWorkspace workspace)
         {
@@ -165,20 +279,26 @@ namespace ESRI.ArcGIS.Location
         }
 
         /// <summary>
-        /// Locate line features along the route and writes the result to a new line event table.
+        ///     Locate line features along the route and writes the result to a new line event table.
         /// </summary>
         /// <param name="locateLinesAlongRouteName">The name of the event table of the located features.</param>
         /// <param name="lines">The lines to locate.</param>
-        /// <param name="clusterTolerance">The cluster tolerance which is a numeric value
-        /// representing the maximum tolerated distance between the input lines and the target routes.</param>
-        /// <param name="properties">Parameter consisting of the route location fields and the type of events that will be written
-        /// to the output event table.</param>
+        /// <param name="clusterTolerance">
+        ///     The cluster tolerance which is a numeric value
+        ///     representing the maximum tolerated distance between the input lines and the target routes.
+        /// </param>
+        /// <param name="properties">
+        ///     Parameter consisting of the route location fields and the type of events that will be written
+        ///     to the output event table.
+        /// </param>
         /// <param name="filter">An optional filter used to use a subset of the line data.</param>
-        /// <param name="keepAllFields">Allows you to include or disinclude the attributes of the point feature class.  If this is
-        /// set to False, the output event table will only contain the route event properties.</param>
+        /// <param name="keepAllFields">
+        ///     Allows you to include or disinclude the attributes of the point feature class.  If this is
+        ///     set to False, the output event table will only contain the route event properties.
+        /// </param>
         /// <param name="workspace">The workspace that will contain the event data table.</param>
         /// <returns>
-        /// Returns a <see cref="ITable" /> representing the event table of the results.
+        ///     Returns a <see cref="ITable" /> representing the event table of the results.
         /// </returns>
         public ITable Locate(string locateLinesAlongRouteName, IFeatureClass lines, double clusterTolerance, IRouteMeasureLineProperties properties, IQueryFilter filter, bool keepAllFields, IWorkspace workspace)
         {
@@ -191,19 +311,23 @@ namespace ESRI.ArcGIS.Location
         }
 
         /// <summary>
-        /// Locates the polygon features along the route and writes the result to a new line event table.
+        ///     Locates the polygon features along the route and writes the result to a new line event table.
         /// </summary>
         /// <param name="locatePolygonsAlongRouteName">Name of the locate polygons along route.</param>
         /// <param name="polygons">The polygons to locate.</param>
-        /// <param name="keepZeroLengthEvents">if set to <c>true</c> allows you to keep or not keep the zero length line events in
-        /// the output event table.  The zero length line events result from a case where the geometric intersection of the
-        /// route (line) and the polygon is a point.</param>
+        /// <param name="keepZeroLengthEvents">
+        ///     if set to <c>true</c> allows you to keep or not keep the zero length line events in
+        ///     the output event table.  The zero length line events result from a case where the geometric intersection of the
+        ///     route (line) and the polygon is a point.
+        /// </param>
         /// <param name="filter">An optional filter used to use a subset of the polygon data.</param>
-        /// <param name="keepAllFields">Allows you to include or disinclude the attributes of the point feature class.  If this is
-        /// set to False, the output event table will only contain the route event properties.</param>
+        /// <param name="keepAllFields">
+        ///     Allows you to include or disinclude the attributes of the point feature class.  If this is
+        ///     set to False, the output event table will only contain the route event properties.
+        /// </param>
         /// <param name="workspace">The workspace that will contain the event data table.</param>
         /// <returns>
-        /// Returns a <see cref="ITable" /> representing the event table of the results.
+        ///     Returns a <see cref="ITable" /> representing the event table of the results.
         /// </returns>
         public ITable Locate(string locatePolygonsAlongRouteName, IFeatureClass polygons, bool keepZeroLengthEvents, IQueryFilter filter, bool keepAllFields, IWorkspace workspace)
         {
@@ -216,21 +340,27 @@ namespace ESRI.ArcGIS.Location
         }
 
         /// <summary>
-        /// Locates the polygon features along the route and writes the result to a new line event table.
+        ///     Locates the polygon features along the route and writes the result to a new line event table.
         /// </summary>
         /// <param name="locatePolygonsAlongRouteName">Name of the locate polygons along route.</param>
         /// <param name="polygons">The polygons to locate.</param>
-        /// <param name="keepZeroLengthEvents">if set to <c>true</c> allows you to keep or not keep the zero length line events in
-        /// the output event table.  The zero length line events result from a case where the geometric intersection of the
-        /// route (line) and the polygon is a point.</param>
-        /// <param name="properties">Parameter consisting of the route location fields and the type of events that will be written
-        /// to the output event table.</param>
+        /// <param name="keepZeroLengthEvents">
+        ///     if set to <c>true</c> allows you to keep or not keep the zero length line events in
+        ///     the output event table.  The zero length line events result from a case where the geometric intersection of the
+        ///     route (line) and the polygon is a point.
+        /// </param>
+        /// <param name="properties">
+        ///     Parameter consisting of the route location fields and the type of events that will be written
+        ///     to the output event table.
+        /// </param>
         /// <param name="filter">An optional filter used to use a subset of the polygon data.</param>
-        /// <param name="keepAllFields">Allows you to include or disinclude the attributes of the point feature class.  If this is
-        /// set to False, the output event table will only contain the route event properties.</param>
+        /// <param name="keepAllFields">
+        ///     Allows you to include or disinclude the attributes of the point feature class.  If this is
+        ///     set to False, the output event table will only contain the route event properties.
+        /// </param>
         /// <param name="workspace">The workspace that will contain the event data table.</param>
         /// <returns>
-        /// Returns a <see cref="ITable" /> representing the event table of the results.
+        ///     Returns a <see cref="ITable" /> representing the event table of the results.
         /// </returns>
         public ITable Locate(string locatePolygonsAlongRouteName, IFeatureClass polygons, bool keepZeroLengthEvents, IRouteMeasureLineProperties properties, IQueryFilter filter, bool keepAllFields, IWorkspace workspace)
         {
@@ -284,17 +414,77 @@ namespace ESRI.ArcGIS.Location
         /// <param name="routeIDIsUnique">if set to <c>true</c> the route identifier is unique.</param>
         /// <param name="routeWhereClause">The route where clause.</param>
         /// <returns></returns>
-        private IRouteLocatorName GetRouteMeasureLocatorName(IFeatureClass source, string routeIDFieldName, esriUnits routeMeasureUnit, bool routeIDIsUnique, IQueryFilter routeWhereClause)
+        private IRouteLocatorName GetRouteMeasureLocatorName(IFeatureClass source, string routeIDFieldName, esriUnits routeMeasureUnit, bool routeIDIsUnique, string routeWhereClause)
         {
             IRouteLocatorName locatorName = new RouteMeasureLocatorNameClass();
             locatorName.RouteFeatureClassName = ((IDataset)source).FullName;
             locatorName.RouteMeasureUnit = routeMeasureUnit;
             locatorName.RouteIDFieldName = routeIDFieldName;
             locatorName.RouteIDIsUnique = routeIDIsUnique;
-            locatorName.RouteWhereClause = routeWhereClause == null ? "" : routeWhereClause.WhereClause;
+            locatorName.RouteWhereClause = routeWhereClause ?? "";
 
             return locatorName;
         }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// </summary>
+    public class RouteIdentifyResult
+    {
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RouteIdentifyResult" /> class.
+        /// </summary>
+        /// <param name="location">The location.</param>
+        /// <param name="feature">The feature.</param>
+        /// <param name="geometry">The geometry.</param>
+        /// <param name="error">The error.</param>
+        public RouteIdentifyResult(IRouteLocation location, IFeature feature, IGeometry geometry, esriLocatingError error)
+        {
+            this.Location = location;
+            this.Feature = feature;
+            this.Geometry = geometry;
+            this.Error = error;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets the error.
+        /// </summary>
+        /// <value>
+        ///     The error.
+        /// </value>
+        public esriLocatingError Error { get; private set; }
+
+        /// <summary>
+        ///     Gets the feature.
+        /// </summary>
+        /// <value>
+        ///     The feature.
+        /// </value>
+        public IFeature Feature { get; private set; }
+
+        /// <summary>
+        ///     Gets the geometry.
+        /// </summary>
+        /// <value>
+        ///     The geometry.
+        /// </value>
+        public IGeometry Geometry { get; private set; }
+
+        /// <summary>
+        ///     Gets the location.
+        /// </summary>
+        /// <value>
+        ///     The location.
+        /// </value>
+        public IRouteLocation Location { get; private set; }
 
         #endregion
     }

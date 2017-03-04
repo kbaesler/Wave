@@ -74,7 +74,7 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
             }
             catch (Exception e)
             {
-                Log.Error(this, NativeWindow.FromHandle(new IntPtr(Application.hWnd)), this.Name, e);
+                Log.Error(this, this.Name, e);
             }
         }
 
@@ -95,7 +95,7 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
             }
             catch (Exception e)
             {
-                Log.Error(this, NativeWindow.FromHandle(new IntPtr(Application.hWnd)), this.Name, e);
+                Log.Error(this, this.Name, e);
             }
         }
 

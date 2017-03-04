@@ -98,9 +98,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, Document.ParentWindow, "Error Enabling Relationship AU " + _Name, e);
-                else
                     Log.Error(this, "Error Enabling Relationship AU " + _Name, e);
+                else
+                    Log.Error(this, e);
             }
 
             return false;
@@ -127,9 +127,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, Document.ParentWindow, "Error Enabling Relationship AU " + _Name, e);
-                else
                     Log.Error(this, "Error Enabling Relationship AU " + _Name, e);
+                else
+                    Log.Error(this, e);
             }
 
             return false;
@@ -222,9 +222,9 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, Document.ParentWindow, "Error Executing Relationship AU " + _Name, e);
-            else
                 Log.Error(this, "Error Executing Relationship AU " + _Name, e);
+            else
+                Log.Error(this, e);
         }
 
         #endregion

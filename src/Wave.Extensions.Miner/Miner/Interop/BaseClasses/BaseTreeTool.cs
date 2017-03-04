@@ -134,7 +134,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, Document.ParentWindow, this.Name, e);
+                Log.Error(this, this.Name, e);
             }
         }
 
@@ -152,7 +152,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, Document.ParentWindow, this.Name, e);
+                Log.Error(this, this.Name, e);
             }
 
             return 0;
