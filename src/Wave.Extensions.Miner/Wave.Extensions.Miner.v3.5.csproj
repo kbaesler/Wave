@@ -254,6 +254,8 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Miner\ArcFM.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\ApplicationExtensions.cs" />
+    <Compile Include="Miner\Framework\IInoperableAutoUpdaters.cs" />
+    <Compile Include="Miner\Framework\InoperableAutoUpdaters.cs" />
     <Compile Include="Miner\Framework\Trace\Results\AdjacencyEidResults.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyNode.cs" />
     <Compile Include="Miner\Framework\Trace\Strategies\AdjacencyQueue.cs" />

@@ -1,4 +1,5 @@
-﻿using ESRI.ArcGIS.esriSystem;
+﻿using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Framework.Internal
 {
@@ -15,7 +16,7 @@ namespace ESRI.ArcGIS.Framework.Internal
         #endregion
 
         #region Constructors
-
+       
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProgressBarAnimation" /> class.
         /// </summary>
@@ -72,8 +73,23 @@ namespace ESRI.ArcGIS.Framework.Internal
             _Dialog.CancelEnabled = true;
             _Dialog.Description = description;
             _Dialog.Title = title;
+            _Dialog.ShowDialog();
 
             this.Play(cursor, statusMessage);
+        }
+
+        /// <summary>
+        ///     Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+        ///     unmanaged resources.
+        /// </param>
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            _Dialog.HideDialog();            
         }
 
         #endregion

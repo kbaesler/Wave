@@ -1,3 +1,6 @@
+using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF.CATIDs;
@@ -22,12 +25,27 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// <param name="message">The message</param>
         /// <param name="toolTip">The tool tip</param>
         protected BaseMxCommand(string name, string caption, string category, string message, string toolTip)
+            : this(name, caption, category, message, toolTip, null)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BaseMxCommand" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="category">The category.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="toolTip">The tool tip.</param>
+        /// <param name="bitmap">The bitmap.</param>
+        protected BaseMxCommand(string name, string caption, string category, string message, string toolTip, Bitmap bitmap)
         {
             m_name = name;
             m_caption = caption;
             m_category = category;
             m_message = message;
             m_toolTip = toolTip;
+            m_bitmap = bitmap;
         }
 
         #endregion
@@ -42,6 +60,25 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        ///     Called when the user clicks a command.
+        /// </summary>
+        /// <remarks>
+        ///     Note to inheritors: override OnClick and use this method to
+        ///     perform the actual work of the custom command.
+        /// </remarks>
+        public override void OnClick()
+        {
+            try
+            {
+                this.InternalClick();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(this, ex);
+            }
+        }
 
         /// <summary>
         ///     Called when the command is created inside the application.
@@ -79,6 +116,19 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         {
             MxCommands.Unregister(registryKey);
         }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        ///     Called when the user clicks a command.
+        /// </summary>
+        /// <remarks>
+        ///     Note to inheritors: override OnClick and use this method to
+        ///     perform the actual work of the custom command.
+        /// </remarks>
+        protected abstract void InternalClick();
 
         #endregion
     }

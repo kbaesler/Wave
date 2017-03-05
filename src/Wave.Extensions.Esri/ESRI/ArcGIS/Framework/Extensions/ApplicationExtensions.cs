@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Windows.Forms;
 
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
@@ -139,6 +140,16 @@ namespace ESRI.ArcGIS.Framework
         }
 
         /// <summary>
+        ///     Gets the native window.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IWin32Window" /> representing the window of the application.</returns>
+        public static NativeWindow GetNativeWindow(this IApplication source)
+        {
+            return NativeWindow.FromHandle(new IntPtr(source.hWnd));
+        }
+
+        /// <summary>
         ///     Gets the snapping environment.
         /// </summary>
         /// <param name="source">The application.</param>
@@ -223,7 +234,7 @@ namespace ESRI.ArcGIS.Framework
             if (_ProgressGlobeAnimation != null)
                 _ProgressGlobeAnimation.Dispose();
 
-            _ProgressGlobeAnimation = new ProgressGlobeAnimation(source);            
+            _ProgressGlobeAnimation = new ProgressGlobeAnimation(source);
             _ProgressGlobeAnimation.Play(MouseCursorImage.Wait, statusMessage);
 
             return _ProgressGlobeAnimation;
@@ -323,7 +334,7 @@ namespace ESRI.ArcGIS.Framework
     }
 
     /// <summary>
-    /// An interface used to handle starting and stopping the ArcMap dialog for animation of progress.
+    ///     An interface used to handle starting and stopping the ArcMap dialog for animation of progress.
     /// </summary>
     /// <seealso cref="ESRI.ArcGIS.Framework.IProgressBarAnimation" />
     public interface IProgressDialogAnimation : IProgressBarAnimation
@@ -331,10 +342,10 @@ namespace ESRI.ArcGIS.Framework
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the type of the animation.
+        ///     Gets or sets the type of the animation.
         /// </summary>
         /// <value>
-        /// The type of the animation.
+        ///     The type of the animation.
         /// </value>
         esriProgressAnimationTypes AnimationType { get; set; }
 

@@ -8,7 +8,7 @@ namespace System.Windows.Controls
     /// <summary>
     ///     Represents a TextBox whose Text will get updated after a specified interval when the user stops entering text
     /// </summary>
-    public class DelayedTextBox : TextBox
+    public class DelayedTextBox : TextBox, IDisposable
     {
         #region Fields
 
@@ -18,6 +18,11 @@ namespace System.Windows.Controls
         public static readonly DependencyProperty DelayTimeProperty =
             DependencyProperty.Register("DelayTime", typeof (int), typeof (DelayedTextBox), new UIPropertyMetadata(667, OnDelayTimeChanged));
 
+        /// <summary>
+        ///     The delayed text changed
+        /// </summary>
+        public EventHandler DelayedTextChanged;
+
         private readonly Timer _KeypressTimer;
 
         private Action _KeypressAction;
@@ -25,6 +30,14 @@ namespace System.Windows.Controls
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        ///     Initializes the <see cref="DelayedTextBox" /> class.
+        /// </summary>
+        static DelayedTextBox()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof (DelayedTextBox), new FrameworkPropertyMetadata(typeof (DelayedTextBox)));
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DelayedTextBox" /> class.
@@ -50,7 +63,45 @@ namespace System.Windows.Controls
 
         #endregion
 
+        #region IDisposable Members
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+        }
+
+        #endregion
+
         #region Protected Methods
+
+        /// <summary>
+        ///     Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+        ///     unmanaged resources.
+        /// </param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _KeypressTimer.Dispose();
+            }
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:DelayedTextChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        protected virtual void OnDelayedTextChanged(EventArgs e)
+        {
+            var eventHandler = this.DelayedTextChanged;
+            if (eventHandler != null)
+                eventHandler(this, e);
+        }
 
         /// <summary>
         ///     Invoked whenever an unhandled key attached routed event reaches an element derived from this class in its route.
@@ -94,7 +145,7 @@ namespace System.Windows.Controls
             if (this.CanUpdateSource(bindingExpression))
             {
                 // Create a delegate method to do the binding update.
-                _KeypressAction = bindingExpression.UpdateSource;
+                if (bindingExpression != null) _KeypressAction = bindingExpression.UpdateSource;
             }
             else
             {
@@ -173,7 +224,8 @@ namespace System.Windows.Controls
         {
             _KeypressTimer.Stop();
 
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, _KeypressAction);
+            DispatcherOperation dop = this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, _KeypressAction);
+            dop.Completed += (sender, args) => this.OnDelayedTextChanged(EventArgs.Empty);
         }
 
         #endregion

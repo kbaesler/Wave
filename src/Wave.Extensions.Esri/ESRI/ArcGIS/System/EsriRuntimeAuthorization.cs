@@ -173,13 +173,13 @@ namespace ESRI.ArcGIS.esriSystem
 
             if (!base.ProductStatus.Any())
             {
-                msg.AppendLine(MESSAGE_NO_LICENSES_REQUESTED);
+                msg.Append(MESSAGE_NO_LICENSES_REQUESTED);
             }
             else if (base.ProductStatus.ContainsValue(esriLicenseStatus.esriLicenseAlreadyInitialized)
                      || base.ProductStatus.ContainsValue(esriLicenseStatus.esriLicenseCheckedOut))
             {
                 var status = this.GetProductStatus(this.License as ILicenseInformation, this.InitializedProduct, esriLicenseStatus.esriLicenseCheckedOut);
-                msg.AppendLine(status);
+                msg.Append(status);
             }
             else
             {

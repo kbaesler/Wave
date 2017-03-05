@@ -125,10 +125,7 @@ namespace Miner.Interop
         /// </returns>
         public string GetInitializationStatus()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(_EsriRuntime.GetInitializationStatus());
-            sb.AppendLine(_MinerRuntime.GetInitializationStatus());
-            return sb.ToString();
+            return string.Format("ESRI {0} and ArcFM {1}", _EsriRuntime.GetInitializationStatus(), _MinerRuntime.GetInitializationStatus());
         }
 
         /// <summary>

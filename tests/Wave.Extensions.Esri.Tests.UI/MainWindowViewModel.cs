@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 using Wave.Extensions.Esri.Tests.UI.Control.AutoCompleteTextBox;
+using Wave.Extensions.Esri.Tests.UI.Control.BusyIndicator;
 using Wave.Extensions.Esri.Tests.UI.Control.TokenizedTextBox;
 using Wave.Extensions.Esri.Tests.UI.Control.Watermark;
 
@@ -18,6 +19,7 @@ namespace Wave.Extensions.Esri.Tests.UI
             this.TokenizedTextBoxCommand = new DelegateCommand((o) => this.ShowWindow(new TokenizedTextBoxView()));
             this.WatermarksCommand = new DelegateCommand((o) => this.ShowWindow(new WatermarkView()));
             this.AutoCompleteCommand = new DelegateCommand(o=> this.ShowWindow(new AutoCompleteTextBoxView()));
+            this.BusyIndicatorCommand = new DelegateCommand(o => this.ShowWindow(new BusyIndicatorView()));
         }
 
         #endregion
@@ -47,6 +49,14 @@ namespace Wave.Extensions.Esri.Tests.UI
         /// The automatic complete command.
         /// </value>
         public DelegateCommand AutoCompleteCommand { get; private set; }
+
+        /// <summary>
+        /// Gets the tab control command.
+        /// </summary>
+        /// <value>
+        /// The tab control command.
+        /// </value>
+        public DelegateCommand BusyIndicatorCommand { get; private set; }
         #endregion
 
         #region Private Methods

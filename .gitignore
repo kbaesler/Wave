@@ -248,3 +248,5 @@ tests/Wave.Tests.UI.sln.GhostDoc.xml
 /src/Wave.v10.sln.GhostDoc.xml
 /tests/Wave.Tests.v10.sln.GhostDoc.xml
 *.fm
+/samples/ArcFM Import and Export/packages/log4net.2.0.3/lib
+/samples/ArcFM Import and Export/packages/Wave.Extensions.Miner.1.0.4
