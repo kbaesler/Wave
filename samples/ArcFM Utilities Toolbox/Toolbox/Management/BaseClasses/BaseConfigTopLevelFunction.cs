@@ -204,7 +204,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 list.Add(value);
             }
 
-            return list;
+            return list.OrderBy(o => o.Name).ToList();
         }
 
         /// <summary>
