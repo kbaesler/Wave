@@ -152,6 +152,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 {
                     IGPParameterEdit3 parameter = (IGPParameterEdit3)parameters["in_field"];
                     parameter.Domain = base.GetFields(table);
+                    string fieldName = utilities.UnpackGPValue(parameter).GetAsText();
 
                     parameter = (IGPParameterEdit3)parameters["in_subtype"];
                     parameter.Domain = base.GetSubtypes(table);
@@ -159,7 +160,6 @@ namespace Wave.Geoprocessing.Toolbox.Management
                     IGPValue subtype = utilities.UnpackGPValue(parameter);
                     if (!subtype.IsEmpty())
                     {
-                        string fieldName = utilities.UnpackGPValue(parameter).GetAsText();
                         if (!string.IsNullOrEmpty(fieldName))
                         {
                             IField field = table.Fields.Field[table.FindField(fieldName)];
