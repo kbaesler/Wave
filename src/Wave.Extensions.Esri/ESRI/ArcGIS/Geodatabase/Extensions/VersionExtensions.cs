@@ -387,7 +387,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </exception>
         public static bool PerformOperation(this IVersion source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
-            return ((IWorkspace) source).PerformOperation(withUndoRedo, multiuserEditSessionMode, operation);
+            return ((IWorkspace)source).PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, error => false);
         }
 
         #endregion

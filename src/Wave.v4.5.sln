@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.v4.5", "Wave.Extensions.Esri\Wave.Extensions.Esri.v4.5.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.v4.5", "Wave.Extensions.Miner\Wave.Extensions.Miner.v4.5.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"

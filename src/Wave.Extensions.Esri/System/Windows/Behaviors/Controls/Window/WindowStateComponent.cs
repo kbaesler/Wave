@@ -159,10 +159,14 @@ namespace System.Windows.Behaviors
                 {
                     if (key != null)
                     {
-                        key.SetValue("Left", _Window.RestoreBounds.Left, RegistryValueKind.DWord);
-                        key.SetValue("Top", _Window.RestoreBounds.Top, RegistryValueKind.DWord);
-                        key.SetValue("Width", _Window.RestoreBounds.Width, RegistryValueKind.DWord);
-                        key.SetValue("Height", _Window.RestoreBounds.Height, RegistryValueKind.DWord);
+                        if (_Window.RestoreBounds != Rect.Empty)
+                        {
+                            key.SetValue("Left", _Window.RestoreBounds.Left, RegistryValueKind.DWord);
+                            key.SetValue("Top", _Window.RestoreBounds.Top, RegistryValueKind.DWord);
+                            key.SetValue("Width", _Window.RestoreBounds.Width, RegistryValueKind.DWord);
+                            key.SetValue("Height", _Window.RestoreBounds.Height, RegistryValueKind.DWord);
+                        }
+
                         key.SetValue("WindowState", (int)_Window.WindowState, RegistryValueKind.DWord);
                         key.Flush();
                     }

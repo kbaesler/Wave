@@ -85,31 +85,33 @@ namespace ESRI.ArcGIS.Location
         /// <summary>
         ///     Identify route locations in an envelope.
         /// </summary>
-        /// <param name="buffer">The buffer.</param>
+        /// <param name="geometry">The buffer.</param>
         /// <param name="whereClause">The where clause.</param>
         /// <param name="tolerance">The tolerance.</param>
         /// <returns>
         ///     Returns a <see cref="IEnumerable{T}" /> representing the route and location.
         /// </returns>
-        public List<RouteIdentifyResult> Identify(IGeometry buffer, string whereClause, double tolerance)
+        public List<RouteIdentifyResult> Identify(IGeometry geometry, string whereClause, double tolerance)
         {
-            ITopologicalOperator topo = buffer as ITopologicalOperator;
-            return topo != null ? Identify(topo.Buffer(tolerance), whereClause) : null;
+            var searchEnvelope = geometry.Envelope;
+            searchEnvelope.Expand(tolerance, tolerance, false);
+
+            return Identify(searchEnvelope, whereClause);
         }
 
         /// <summary>
         ///     Identify route locations in an envelope.
         /// </summary>
-        /// <param name="buffer">The buffer.</param>
+        /// <param name="searchEnvelope">The buffer.</param>
         /// <param name="whereClause">The where clause.</param>
         /// <returns>
         ///     Returns a <see cref="IEnumerable{T}" /> representing the route and location.
         /// </returns>
-        public List<RouteIdentifyResult> Identify(IGeometry buffer, string whereClause)
+        public List<RouteIdentifyResult> Identify(IEnvelope searchEnvelope, string whereClause)
         {
             List<RouteIdentifyResult> list = new List<RouteIdentifyResult>();
 
-            var values = this.Locator.Identify(buffer.Envelope, whereClause);
+            var values = this.Locator.Identify(searchEnvelope, whereClause);
             values.Reset();
 
             for (int i = 0; i < values.Count; i++)
@@ -131,7 +133,7 @@ namespace ESRI.ArcGIS.Location
         /// <summary>
         ///     Locates point route location with the specified route identifier.
         /// </summary>
-        /// <param name="routeId">The route identifier.</param>
+        /// <param name="routeId">The route identifier (string, double, or int).</param>
         /// <param name="point">The point.</param>
         /// <param name="error">The error that occured during location.</param>
         /// <returns>
@@ -139,14 +141,12 @@ namespace ESRI.ArcGIS.Location
         /// </returns>
         public IGeometry Locate(object routeId, IPoint point, out esriLocatingError error)
         {
-            IRouteLocation routeLocation = new RouteMeasurePointLocationClass();
-            routeLocation.RouteID = routeId;
-
-            IRouteMeasurePointLocation location = (IRouteMeasurePointLocation)routeLocation;
+            var location = new RouteMeasurePointLocationClass();
+            location.RouteID = routeId;
             location.Measure = point.M;
 
             IGeometry result;
-            this.Locator.Locate(routeLocation, out result, out error);
+            this.Locator.Locate(location, out result, out error);
 
             return result.IsEmpty ? null : result;
         }
@@ -154,7 +154,7 @@ namespace ESRI.ArcGIS.Location
         /// <summary>
         ///     Locates line route location with the specified route identifier.
         /// </summary>
-        /// <param name="routeId">The route identifier.</param>
+        /// <param name="routeId">The route identifier (string, double, or int).</param>
         /// <param name="polyline">The polyline.</param>
         /// <param name="error">The error that occured during location.</param>
         /// <returns>
@@ -162,17 +162,15 @@ namespace ESRI.ArcGIS.Location
         /// </returns>
         public IGeometry Locate(object routeId, IPolyline polyline, out esriLocatingError error)
         {
-            IRouteLocation routeLocation = new RouteMeasureLineLocationClass();
-            routeLocation.RouteID = routeId;
+            var location = new RouteMeasureLineLocationClass();
+            location.RouteID = routeId;
 
             IMSegmentation segmentation = (IMSegmentation)polyline;
-
-            IRouteMeasureLineLocation lineLocation = (IRouteMeasureLineLocation)routeLocation;
-            lineLocation.FromMeasure = segmentation.MMin;
-            lineLocation.ToMeasure = segmentation.MMax;
+            location.FromMeasure = segmentation.MMin;
+            location.ToMeasure = segmentation.MMax;
 
             IGeometry result;
-            this.Locator.Locate(routeLocation, out result, out error);
+            this.Locator.Locate(location, out result, out error);
 
             return result.IsEmpty ? null : result;
         }

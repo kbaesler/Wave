@@ -835,7 +835,7 @@ namespace ESRI.ArcGIS.Geodatabase
             IEnumNameEdit edit = (IEnumNameEdit) fromNames;
             edit.Add(fromName);
 
-            ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping, mapping => name);
+            ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping);
 
             if (!conflicts)
             {
