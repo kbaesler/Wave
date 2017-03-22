@@ -13,15 +13,15 @@ namespace Wave.Geoprocessing.Toolbox.Management
     /// <summary>
     ///     A geoprocessing tool that allows for un-assigning "Attribute" AUs from an object class.
     /// </summary>
-    public class RemoveAttributeAutoUpdaterFunction : BaseConfigTopLevelFunction
+    public class RemoveAttributeAU : BaseConfigTopLevelFunction
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RemoveAttributeAutoUpdaterFunction" /> class.
+        ///     Initializes a new instance of the <see cref="RemoveAttributeAU" /> class.
         /// </summary>
         /// <param name="functionFactory">The function factory.</param>
-        public RemoveAttributeAutoUpdaterFunction(IGPFunctionFactory functionFactory)
+        public RemoveAttributeAU(IGPFunctionFactory functionFactory)
             : base("RemoveAttributeAU", "Remove Attribute AU", functionFactory)
         {
         }
@@ -48,9 +48,9 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 list.Add(this.CreateParameter("in_subtype", "Subtype", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass()));
                 list.Add(this.CreateParameter("in_field", "Field", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass()));
 
-                list.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                list.Add(this.CreateMultiValueParameter("in_update", "Update", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                list.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
+                list.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMAttrAUStrategy>(), true));
+                list.Add(this.CreateMultiValueParameter("in_update", "Update", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMAttrAUStrategy>(), true));
+                list.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMAttrAUStrategy>(), true));
 
                 list.Add(this.CreateParameter("out_results", "Results", esriGPParameterType.esriGPParameterTypeDerived, esriGPParameterDirection.esriGPParameterDirectionOutput, new GPBooleanTypeClass()));
 
@@ -84,11 +84,11 @@ namespace Wave.Geoprocessing.Toolbox.Management
 
                 // Load all of the subtypes when the user specified "All" or "-1".
                 int subtype = parameters["in_subtype"].Cast(-1);
-                var subtypeCodes = new[] {subtype};
+                var subtypeCodes = new List<int>(new[] {subtype});
                 if (subtype == -1)
                 {
                     ISubtypes subtypes = (ISubtypes) table;
-                    subtypeCodes = subtypes.Subtypes.AsEnumerable().Select(o => o.Key).ToArray();
+                    subtypeCodes.AddRange(subtypes.Subtypes.AsEnumerable().Select(o => o.Key));
                 }
 
                 IGPMultiValue onCreate = (IGPMultiValue) parameters["in_create"];
@@ -96,10 +96,10 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IGPMultiValue onDelete = (IGPMultiValue) parameters["in_delete"];
 
                 // Load the "Attribute" AUs.
-                var uids = new Dictionary<mmEditEvent, IEnumerable<string>>();
-                uids.Add(mmEditEvent.mmEventFeatureCreate, onCreate.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventFeatureUpdate, onUpdate.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventFeatureDelete, onDelete.AsEnumerable().Select(o => o.GetAsText()));
+                var uids = new Dictionary<mmEditEvent, IEnumerable<IUID>>();
+                uids.Add(mmEditEvent.mmEventFeatureCreate, onCreate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventFeatureUpdate, onUpdate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventFeatureDelete, onDelete.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
 
                 IGPValue field = parameters["in_field"];
                 int index = table.FindField(field.GetAsText());
@@ -143,63 +143,43 @@ namespace Wave.Geoprocessing.Toolbox.Management
         /// </param>
         protected override void UpdateParameters(Dictionary<string, IGPParameter> parameters, IGPEnvironmentManager environmentManager, IGPUtilities2 utilities)
         {
-            IGPValue table = utilities.UnpackGPValue(parameters["in_table"]);
-            if (!table.IsEmpty())
+            IGPValue value = utilities.UnpackGPValue(parameters["in_table"]);
+            if (!value.IsEmpty())
             {
-                IGPParameterEdit3 fieldParameter = (IGPParameterEdit3) parameters["in_field"];
-                IGPParameterEdit3 subtypeParameter = (IGPParameterEdit3) parameters["in_subtype"];
-                IObjectClass oclass = utilities.OpenTable(table);
-                if (oclass != null)
+                IObjectClass table = utilities.OpenTable(value);
+                if (table != null)
                 {
-                    // Populate the field parameter with the fields from the table.                    
-                    fieldParameter.Domain = this.GetFields(oclass);
+                    IGPParameterEdit3 parameter = (IGPParameterEdit3) parameters["in_field"];
+                    parameter.Domain = base.GetFields(table);
 
-                    // Populate the subtype parameter with the subtypes from the table.
-                    subtypeParameter.Domain = this.GetSubtypes(oclass);
+                    parameter = (IGPParameterEdit3) parameters["in_subtype"];
+                    parameter.Domain = base.GetSubtypes(table);
 
-                    // Populate the auto updater values for the object class for the specific subtype.
-                    IGPValue subtype = utilities.UnpackGPValue(subtypeParameter);
+                    IGPValue subtype = utilities.UnpackGPValue(parameter);
                     if (!subtype.IsEmpty())
                     {
-                        string fieldName = utilities.UnpackGPValue(fieldParameter).GetAsText();
+                        string fieldName = utilities.UnpackGPValue(parameter).GetAsText();
                         if (!string.IsNullOrEmpty(fieldName))
                         {
-                            // Load the "OnCreate" components for the field and subtype.
-                            IGPParameterEdit3 createParameter = (IGPParameterEdit3) parameters["in_create"];
-                            createParameter.Domain = this.GetComponents(oclass, subtype, mmEditEvent.mmEventFeatureCreate, fieldName);
+                            var subtypeCode = subtype.Cast(-1);
+                            IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
+                            configTopLevel.Workspace = utilities.GetWorkspace(value);
 
-                            // Load the "OnUpdate" components for the field and subtype.
-                            IGPParameterEdit3 updateParameter = (IGPParameterEdit3) parameters["in_update"];
-                            updateParameter.Domain = this.GetComponents(oclass, subtype, mmEditEvent.mmEventFeatureUpdate, fieldName);
+                            var values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventFeatureCreate, fieldName);
+                            parameter = (IGPParameterEdit3) parameters["in_create"];
+                            parameter.Domain = base.CreateDomain<IMMAttrAUStrategy>(values[subtypeCode][fieldName]);
 
-                            // Load the "OnDelete" components for the field and subtype.
-                            IGPParameterEdit3 deleteParameter = (IGPParameterEdit3) parameters["in_delete"];
-                            deleteParameter.Domain = this.GetComponents(oclass, subtype, mmEditEvent.mmEventFeatureDelete, fieldName);
+                            values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventFeatureUpdate, fieldName);
+                            parameter = (IGPParameterEdit3) parameters["in_update"];
+                            parameter.Domain = base.CreateDomain<IMMAttrAUStrategy>(values[subtypeCode][fieldName]);
+
+                            values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventFeatureDelete, fieldName);
+                            parameter = (IGPParameterEdit3) parameters["in_delete"];
+                            parameter.Domain = base.CreateDomain<IMMAttrAUStrategy>(values[subtypeCode][fieldName]);
                         }
                     }
                 }
             }
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Gets the coded value domain using fields from the specified <paramref name="table" />
-        /// </summary>
-        /// <param name="table">The table.</param>
-        /// <returns>
-        ///     Returns a <see cref="IGPDomain" /> representing the coded value domain.
-        /// </returns>
-        private IGPDomain GetFields(IObjectClass table)
-        {
-            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
-
-            foreach (var o in table.Fields.AsEnumerable())
-                codedValueDomain.AddStringCode(o.Name, o.Name);
-
-            return codedValueDomain as IGPDomain;
         }
 
         #endregion

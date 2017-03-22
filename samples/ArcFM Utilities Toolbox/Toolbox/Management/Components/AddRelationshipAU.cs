@@ -12,17 +12,17 @@ using Miner.Interop;
 namespace Wave.Geoprocessing.Toolbox.Management
 {
     /// <summary>
-    ///     A geoprocessing tool that allows for un-assigning "Relationship" AUs from a relationship class.
+    ///     A geoprocessing tool that allows for assigning "Relationship" AUs to a relationship class.
     /// </summary>
-    public class AddRelationshipAutoUpdaterFunction : BaseConfigTopLevelFunction
+    public class AddRelationshipAU : BaseConfigTopLevelFunction
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RemoveRelationshipAutoUpdaterFunction" /> class.
+        ///     Initializes a new instance of the <see cref="AddRelationshipAU" /> class.
         /// </summary>
         /// <param name="functionFactory">The function factory.</param>
-        public AddRelationshipAutoUpdaterFunction(IGPFunctionFactory functionFactory)
+        public AddRelationshipAU(IGPFunctionFactory functionFactory)
             : base("AddRelationshipAU", "Add Relationship AU", functionFactory)
         {
         }
@@ -46,8 +46,10 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IArray list = new ArrayClass();
 
                 list.Add(this.CreateCompositeParameter("in_table", "Relationship Class", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new DERelationshipClassTypeClass()));
-                list.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                list.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
+
+                list.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMRelationshipAUStrategy>()));
+                list.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMRelationshipAUStrategy>()));
+
                 list.Add(this.CreateParameter("out_results", "Results", esriGPParameterType.esriGPParameterTypeDerived, esriGPParameterDirection.esriGPParameterDirectionOutput, new GPBooleanTypeClass()));
 
                 return list;
@@ -81,11 +83,11 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IGPMultiValue onCreate = (IGPMultiValue) parameters["in_create"];
                 IGPMultiValue onDelete = (IGPMultiValue) parameters["in_delete"];
 
-                var uids = new Dictionary<mmEditEvent, IEnumerable<string>>();
-                uids.Add(mmEditEvent.mmEventRelationshipCreated, onCreate.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventRelationshipDeleted, onDelete.AsEnumerable().Select(o => o.GetAsText()));
+                var uids = new Dictionary<mmEditEvent, IEnumerable<IUID>>();
+                uids.Add(mmEditEvent.mmEventRelationshipCreated, onCreate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventRelationshipDeleted, onDelete.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
 
-                // Update the list to have these UIDs removed.
+                // Update the list to have these UIDs.
                 ID8List list = (ID8List) configTopLevel.GetRelationshipClass(relClass);
                 base.Add(uids, list, messages);
 
@@ -119,16 +121,13 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IRelationshipClass relClass = utilities.OpenRelationshipClass(value);
                 if (relClass != null)
                 {
-                    // Load the components.
                     var components = this.LoadComponents<IMMRelationshipAUStrategy>(RelationshipAutoupdateStrategy.CatID);
 
-                    // Load the "OnRelationshipCreated" components for the relationship.
-                    IGPParameterEdit3 createParameter = (IGPParameterEdit3) parameters["in_create"];
-                    createParameter.Domain = base.CreateDomain(components, o => o.Enabled[relClass, mmEditEvent.mmEventRelationshipCreated]);
+                    IGPParameterEdit3 parameter = (IGPParameterEdit3) parameters["in_create"];
+                    parameter.Domain = base.CreateDomain(components, o => o.Enabled[relClass, mmEditEvent.mmEventRelationshipCreated]);
 
-                    // Load the "OnRelationshipDeleted" components for the relationship.
-                    IGPParameterEdit3 deleteParameter = (IGPParameterEdit3) parameters["in_delete"];
-                    deleteParameter.Domain = base.CreateDomain(components, o => o.Enabled[relClass, mmEditEvent.mmEventRelationshipDeleted]);
+                    parameter = (IGPParameterEdit3)parameters["in_delete"];
+                    parameter.Domain = base.CreateDomain(components, o => o.Enabled[relClass, mmEditEvent.mmEventRelationshipDeleted]);
                 }
             }
         }

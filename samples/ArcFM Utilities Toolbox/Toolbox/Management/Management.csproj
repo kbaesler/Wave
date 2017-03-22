@@ -99,16 +99,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArcFMToolsFunctionFactory.cs" />
-    <Compile Include="Components\AddRelationshipAutoUpdaterFunction.cs" />
-    <Compile Include="ModelNames\AddClassModelNameFunction.cs" />
-    <Compile Include="ModelNames\AddFieldModelNameFunction.cs" />
+    <Compile Include="Components\AddRelationshipAU.cs" />
+    <Compile Include="Components\AddSpecialAU.cs" />
+    <Compile Include="Components\AddAttributeAU.cs" />
+    <Compile Include="Components\Types\GPAutoValue.cs" />
+    <Compile Include="Components\Types\GPAutoValueDataTypeFactory.cs" />
+    <Compile Include="Components\Types\GPAutoValueType.cs" />
+    <Compile Include="ModelNames\AddClassModelName.cs" />
+    <Compile Include="ModelNames\AddFieldModelName.cs" />
     <Compile Include="BaseClasses\BaseConfigTopLevelFunction.cs" />
     <Compile Include="BaseClasses\BaseLicensedFunction.cs" />
-    <Compile Include="Components\RemoveAttributeAutoUpdaterFunction.cs" />
-    <Compile Include="ModelNames\RemoveClassModelNameFunction.cs" />
-    <Compile Include="ModelNames\RemoveFieldModelNameFunction.cs" />
-    <Compile Include="Components\RemoveRelationshipAutoUpdaterFunction.cs" />
-    <Compile Include="Components\RemoveSpecialAutoUpdaterFunction.cs" />
+    <Compile Include="Components\RemoveAttributeAU.cs" />
+    <Compile Include="ModelNames\RemoveClassModelName.cs" />
+    <Compile Include="ModelNames\RemoveFieldModelName.cs" />
+    <Compile Include="Components\RemoveRelationshipAU.cs" />
+    <Compile Include="Components\RemoveSpeciaAU.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\LogInfo.cs" />
   </ItemGroup>

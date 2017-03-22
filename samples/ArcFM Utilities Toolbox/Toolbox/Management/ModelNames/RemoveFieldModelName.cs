@@ -13,15 +13,15 @@ namespace Wave.Geoprocessing.Toolbox.Management
     /// <summary>
     ///     A geoprocessing tool that allows for assigning field model names to multiple feature or tables at once.
     /// </summary>
-    public class RemoveFieldModelNameFunction : BaseLicensedFunction
+    public class RemoveFieldModelName : BaseLicensedFunction
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RemoveFieldModelNameFunction" /> class.
+        ///     Initializes a new instance of the <see cref="RemoveFieldModelName" /> class.
         /// </summary>
         /// <param name="functionFactory">The function factory.</param>
-        public RemoveFieldModelNameFunction(IGPFunctionFactory functionFactory)
+        public RemoveFieldModelName(IGPFunctionFactory functionFactory)
             : base("RemoveFieldModelName", "Remove Field Model Name", functionFactory, mmProductInstallation.mmPIArcFM)
         {
         }

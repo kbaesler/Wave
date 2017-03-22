@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -9,7 +8,6 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geoprocessing;
 
 using Miner;
-using Miner.Geodatabase;
 using Miner.Interop;
 
 namespace Wave.Geoprocessing.Toolbox.Management
@@ -42,7 +40,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
         /// <param name="uids">The dictionary of events and UIDs.</param>
         /// <param name="list">The list of events and UIDs.</param>
         /// <param name="messages">The messages.</param>
-        protected void Add(Dictionary<mmEditEvent, IEnumerable<string>> uids, ID8List list, IGPMessages messages)
+        protected void Add(Dictionary<mmEditEvent, IEnumerable<IUID>> uids, ID8List list, IGPMessages messages)
         {
             // Enumerate through the dictionary of events and UIDs.
             foreach (var uid in uids)
@@ -56,7 +54,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
                         if (autoValue.AutoGenID != null && autoValue.EditEvent == uid.Key)
                         {
                             // When the UID is not contained within the list.
-                            if (!uid.Value.Contains(autoValue.AutoGenID.Value.ToString()))
+                            if (!uid.Value.Contains(autoValue.AutoGenID))
                             {
                                 // Enumerate through all of the UIDs in the collection and add them to list.
                                 foreach (var id in uid.Value)
@@ -78,113 +76,86 @@ namespace Wave.Geoprocessing.Toolbox.Management
         }
 
         /// <summary>
-        /// Gets the components from the registry that satisfy the predicate and selector.
+        ///     Gets the components from the registry that satisfy the predicate and selector.
         /// </summary>
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="components">The components.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>
-        /// Returns a <see cref="IGPDomain" /> representing the coded value domain.
+        ///     Returns a <see cref="IGPDomain" /> representing the coded value domain.
         /// </returns>
-        protected IGPDomain CreateDomain<TValue>(IEnumerable<KeyValuePair<IUID, TValue>> components, Func<TValue, bool> predicate)
+        protected IGPDomain CreateDomain<TValue>(IEnumerable<GPAutoValue<TValue>> components, Func<TValue, bool> predicate)
         {
-            List<IUID> uids = new List<IUID>();
+            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
 
             foreach (var o in components)
             {
-                if (predicate(o.Value))
-                    uids.Add(o.Key);
+                if (o.Value != null && predicate(o.Value))
+                    codedValueDomain.AddCode(o, o.Name);
             }
 
-            return this.CreateDomain<TValue>(uids);
+            return (IGPDomain) codedValueDomain;
         }
 
         /// <summary>
-        ///     Gets the coded value domain for the components assigned to the edit event for the specified
-        ///     <paramref name="relationshipClass" />.
+        ///     Creates the variant domain by instantiating the objects from the <see cref="IUID" /> an placing them into a
+        ///     <see cref="IGPString" /> value for the domain.
         /// </summary>
-        /// <param name="relationshipClass">The relationship class.</param>
-        /// <param name="editEvent">The edit event.</param>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="uids">The uids that will be created.</param>
         /// <returns>
         ///     Returns a <see cref="IGPDomain" /> representing the coded value domain.
         /// </returns>
-        protected IGPDomain GetComponents(IRelationshipClass relationshipClass, mmEditEvent editEvent)
+        protected IGPDomain CreateDomain<TValue>(IEnumerable<IMMAutoValue> uids)
         {
-            IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
-            var values = configTopLevel.GetAutoValues(relationshipClass, editEvent);
+            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
 
-            IList<IUID> uids = new List<IUID>();
-            foreach (var value in values)
+            foreach (var uid in uids)
             {
-                uids.Add(value.AutoGenID);
+                GPAutoValue<TValue> value = new GPAutoValue<TValue>(uid.AutoGenID);
+                codedValueDomain.AddCode(value, value.Name);
             }
 
-            return this.CreateDomain<IMMRelationshipAUStrategy>(uids);
+            return (IGPDomain) codedValueDomain;
         }
 
         /// <summary>
-        ///     Gets the coded value domain for the components assigned to the edit event for the specified
-        ///     <paramref name="table" /> of the specified <paramref name="subtype" />
+        ///     Creates the variant domain by instantiating the objects from the <see cref="IUID" /> an placing them into a
+        ///     <see cref="IGPString" /> value for the domain.
         /// </summary>
-        /// <param name="table">The table.</param>
-        /// <param name="subtype">The subtype.</param>
-        /// <param name="editEvent">The edit event.</param>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="uids">The uids that will be created.</param>
         /// <returns>
         ///     Returns a <see cref="IGPDomain" /> representing the coded value domain.
         /// </returns>
-        protected IGPDomain GetComponents(IObjectClass table, IGPValue subtype, mmEditEvent editEvent)
+        protected IGPDomain CreateDomain<TValue>(IEnumerable<IUID> uids)
         {
-            IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
-            var values = configTopLevel.GetAutoValues(table, editEvent);
-            int subtypeCode = subtype.Cast(-1);
+            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
 
-            IList<IUID> uids = new List<IUID>();
-
-            if (values.ContainsKey(subtypeCode))
+            foreach (var uid in uids)
             {
-                var ids = values[subtypeCode].Select(o => o.AutoGenID);
-                foreach(var id in ids)
-                    uids.Add(id);
+                GPAutoValue<TValue> value = new GPAutoValue<TValue>(uid);
+                codedValueDomain.AddCode(value, value.Name);
             }
 
-            return this.CreateDomain<IMMSpecialAUStrategyEx>(uids);
+            return (IGPDomain) codedValueDomain;
         }
 
         /// <summary>
-        ///     Gets the coded value domain for the components assigned to the edit event for the field on the specified
-        ///     <paramref name="table" /> of the specified <paramref name="subtype" />
+        ///     Gets the coded value domain using fields from the specified <paramref name="table" />
         /// </summary>
         /// <param name="table">The table.</param>
-        /// <param name="subtype">The subtype.</param>
-        /// <param name="editEvent">The edit event.</param>
-        /// <param name="fieldName">Name of the field.</param>
         /// <returns>
         ///     Returns a <see cref="IGPDomain" /> representing the coded value domain.
         /// </returns>
-        protected IGPDomain GetComponents(IObjectClass table, IGPValue subtype, mmEditEvent editEvent, string fieldName)
+        protected IGPDomain GetFields(IObjectClass table)
         {
-            IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
-            var values = configTopLevel.GetAutoValues(table, editEvent, fieldName);
-            int subtypeCode = subtype.Cast(-1);
+            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
 
-            IEqualityComparer<IUID> equalityComparer = new UIDEqualityComparer();
-            IList<IUID> uids = new List<IUID>();
+            foreach (var o in table.Fields.AsEnumerable())
+                codedValueDomain.AddStringCode(o.Name, o.Name);
 
-            if (values.ContainsKey(subtypeCode))
-            {
-                var list = values[subtypeCode];
-                if (list.ContainsKey(fieldName))
-                {
-                    var field = list[fieldName];
-
-                    foreach (var o in field.Select(o => o.AutoGenID).Where(o => !uids.Contains(o, equalityComparer)))
-                    {
-                        uids.Add(o);
-                    }
-                }
-            }
-
-            return this.CreateDomain<IMMAttrAUStrategy>(uids);
+            return (IGPDomain) codedValueDomain;
         }
 
         /// <summary>
@@ -210,13 +181,39 @@ namespace Wave.Geoprocessing.Toolbox.Management
             return codedValueDomain as IGPDomain;
         }
 
+
+        /// <summary>
+        ///     Loads the components from the registry.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="categoryID">The category identifier.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IUID}" /> representing the UIDs that are enabled.
+        /// </returns>
+        protected List<GPAutoValue<TValue>> LoadComponents<TValue>(string categoryID)
+        {
+            List<GPAutoValue<TValue>> list = new List<GPAutoValue<TValue>>();
+
+            IMMComCategoryLookup categories = new ComCategoryLookup(categoryID);
+            for (int i = 0; i < categories.Count; i++)
+            {
+                IUID uid = new UIDClass();
+                uid.Value = categories.GetClassID(i).ToString("B");
+
+                GPAutoValue<TValue> value = new GPAutoValue<TValue>(uid);
+                list.Add(value);
+            }
+
+            return list;
+        }
+
         /// <summary>
         ///     Removes the <paramref name="uids" /> from the <paramref name="list" /> that match the event and UID.
         /// </summary>
         /// <param name="uids">The dictionary of events and UIDs.</param>
         /// <param name="list">The list of events and UIDs.</param>
         /// <param name="messages">The messages.</param>
-        protected void Remove(Dictionary<mmEditEvent, IEnumerable<string>> uids, ID8List list, IGPMessages messages)
+        protected void Remove(Dictionary<mmEditEvent, IEnumerable<IUID>> uids, ID8List list, IGPMessages messages)
         {
             // Enumerate through the dictionary of events and UIDs.
             foreach (var uid in uids)
@@ -230,7 +227,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
                         if (autoValue.AutoGenID != null && autoValue.EditEvent == uid.Key)
                         {
                             // When the UID is contained within the list it should be removed.
-                            if (uid.Value.Contains(autoValue.AutoGenID.Value.ToString()))
+                            if (uid.Value.Contains(autoValue.AutoGenID))
                             {
                                 list.Remove(item);
                                 messages.Add(esriGPMessageType.esriGPMessageTypeInformative, "Removing the {0} from the {1} event.", autoValue.AutoGenID.Value, autoValue.EditEvent);
@@ -239,120 +236,6 @@ namespace Wave.Geoprocessing.Toolbox.Management
                     }
                 }
             }
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Creates the variant domain by instantiating the objects from the <see cref="IUID" /> an placing them into a
-        ///     <see cref="IGPString" /> value for the domain.
-        /// </summary>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="uids">The uids that will be created.</param>
-        /// <returns>
-        ///     Returns a <see cref="IGPDomain" /> representing the coded value domain.
-        /// </returns>
-        private IGPDomain CreateDomain<TValue>(IEnumerable<IUID> uids)
-        {
-            Dictionary<string, string> list = new Dictionary<string, string>();
-            foreach (var o in this.CreateInstance<TValue>(uids))
-            {
-                string key = o.Key.Value.ToString();
-                if (!list.ContainsKey(key))
-                {
-                    string name = this.GetComponentName(o.Value);
-                    if (!string.IsNullOrEmpty(name))
-                    {
-                        list.Add(key, name);
-                    }
-                }
-            }
-
-            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
-            foreach (var o in list.OrderBy(o => o.Value))
-                codedValueDomain.AddStringCode(o.Key, o.Value);
-
-            return codedValueDomain as IGPDomain;
-        }
-
-        /// <summary>
-        ///     Creates the instances from the <see cref="List{IUID}" />
-        /// </summary>
-        /// <param name="uids">The uids.</param>
-        /// <returns>
-        ///     Returns a <see cref="TValue" /> representing the object instances
-        /// </returns>
-        private IEnumerable<KeyValuePair<IUID, TValue>> CreateInstance<TValue>(IEnumerable<IUID> uids)
-        {
-            foreach (var uid in uids)
-            {
-                TValue value;
-
-                try
-                {
-                    value = uid.Create<TValue>();
-
-                    if (EqualityComparer<TValue>.Default.Equals(value, default(TValue)))
-                        continue;
-                }
-                catch
-                {
-                    value = default(TValue);
-                }
-
-                yield return new KeyValuePair<IUID, TValue>(uid, value);
-            }
-        }
-
-        /// <summary>
-        ///     Gets the name of the component.
-        /// </summary>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        ///     Returns a <see cref="string" /> representing the name of the component or "UNREGISTERED PROGRAM".
-        /// </returns>
-        private string GetComponentName<TValue>(TValue value)
-        {
-            IMMSpecialAUStrategyEx s = value as IMMSpecialAUStrategyEx;
-            if (s != null) return s.Name;
-
-            IMMRelationshipAUStrategy r = value as IMMRelationshipAUStrategy;
-            if (r != null) return r.Name;
-
-            IMMAttrAUStrategy a = value as IMMAttrAUStrategy;
-            if (a != null) return a.Name;
-
-            return "UNREGISTERED PROGRAM";
-        }
-
-        /// <summary>
-        ///     Loads the components from the registry.
-        /// </summary>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="categoryID">The category identifier.</param>
-        /// <returns>
-        ///     Returns a <see cref="IEnumerable{IUID}" /> representing the UIDs that are enabled.
-        /// </returns>
-        protected List<KeyValuePair<IUID, TValue>> LoadComponents<TValue>(string categoryID)
-        {
-            List<KeyValuePair<IUID, TValue>> list = new List<KeyValuePair<IUID, TValue>>();
-
-            IMMComCategoryLookup categories = new ComCategoryLookup(categoryID);
-            for (int i = 0; i < categories.Count; i++)
-            {
-                IUID uid = new UIDClass();
-                uid.Value = categories.GetClassID(i).ToString("B");
-
-                foreach (var o in this.CreateInstance<TValue>(new[] {uid}))
-                {
-                    list.Add(o);
-                }
-            }
-
-            return list;
         }
 
         #endregion

@@ -59,12 +59,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
             return manager.IsInstalledProduct[this.RequiredProduct];
         }
 
-        #endregion
-
-        protected override void UpdateParameters(Dictionary<string, IGPParameter> parameters, IGPEnvironmentManager environmentManager, IGPUtilities2 utilities)
-        {
-            base.UpdateParameters(parameters, environmentManager, utilities);
-        }
+        #endregion      
 
         #region Protected Methods
 

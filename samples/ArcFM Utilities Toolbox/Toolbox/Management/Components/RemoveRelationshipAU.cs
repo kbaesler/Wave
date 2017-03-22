@@ -5,25 +5,24 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geoprocessing;
 
-
 using Miner.Geodatabase;
 using Miner.Interop;
 
 namespace Wave.Geoprocessing.Toolbox.Management
 {
     /// <summary>
-    ///     A geoprocessing tool that allows for assigning class model names to multiple feature or tables at once.
+    ///     A geoprocessing tool that allows for un-assigning "Relationship" AUs from a relationship class.
     /// </summary>
-    public class RemoveClassModelNameFunction : BaseLicensedFunction
+    public class RemoveRelationshipAU : BaseConfigTopLevelFunction
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RemoveClassModelNameFunction" /> class.
+        ///     Initializes a new instance of the <see cref="RemoveRelationshipAU" /> class.
         /// </summary>
         /// <param name="functionFactory">The function factory.</param>
-        public RemoveClassModelNameFunction(IGPFunctionFactory functionFactory)
-            : base("RemoveClassModelName", "Remove Class Model Name", functionFactory, mmProductInstallation.mmPIArcFM)
+        public RemoveRelationshipAU(IGPFunctionFactory functionFactory)
+            : base("RemoveRelationshipAU", "Remove Relationship AU", functionFactory)
         {
         }
 
@@ -37,6 +36,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
         /// <value>
         ///     The ParameterInfo property is the place where a function tool's parameters are defined. It returns an IArray of
         ///     parameter objects (IGPParameter); these objects define the characteristics of the input and output parameters.
+        ///     At the minimum, your function should output a Boolean value containing success or failure.
         /// </value>
         public override IArray ParameterInfo
         {
@@ -44,9 +44,9 @@ namespace Wave.Geoprocessing.Toolbox.Management
             {
                 IArray array = new ArrayClass();
 
-                array.Add(this.CreateCompositeParameter("in_table", "Table", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new DETableTypeClass(), new DEFeatureClassTypeClass()));
-                array.Add(this.CreateMultiValueParameter("in_class_model_names", "Class Model Name(s)", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-
+                array.Add(this.CreateCompositeParameter("in_table", "Relationship Class", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new DERelationshipClassTypeClass()));
+                array.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMRelationshipAUStrategy>(), true));
+                array.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMRelationshipAUStrategy>(), true));
                 array.Add(this.CreateParameter("out_results", "Results", esriGPParameterType.esriGPParameterTypeDerived, esriGPParameterDirection.esriGPParameterDirectionOutput, new GPBooleanTypeClass()));
 
                 return array;
@@ -55,7 +55,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
 
         #endregion
 
-       #region Protected Methods
+        #region Protected Methods
 
         /// <summary>
         ///     Executes the geoprocessing function using the given array of parameter values.
@@ -70,17 +70,26 @@ namespace Wave.Geoprocessing.Toolbox.Management
         /// </param>
         protected override void Execute(Dictionary<string, IGPValue> parameters, ITrackCancel trackCancel, IGPEnvironmentManager environmentManager, IGPMessages messages, IGPUtilities2 utilities)
         {
-            IObjectClass table = utilities.OpenTable(parameters["in_table"]);
-            IGPMultiValue modelNames = (IGPMultiValue) parameters["in_class_model_names"];
-
-            if (modelNames.Count > 0)
+            IGPValue value = parameters["in_table"];
+            IRelationshipClass relClass = utilities.OpenRelationshipClass(value);
+            if (relClass != null)
             {
-                foreach (var modelName in modelNames.AsEnumerable().Select(o => o.GetAsText()))
-                {
-                    messages.Add(esriGPMessageType.esriGPMessageTypeInformative, "Removing the {0} class model name.", modelName);
+                IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
+                configTopLevel.Workspace = utilities.GetWorkspace(value);
 
-                    ModelNameManager.Instance.RemoveClassModelName(table, modelName);
-                }
+                IGPMultiValue onCreate = (IGPMultiValue) parameters["in_create"];
+                IGPMultiValue onDelete = (IGPMultiValue) parameters["in_delete"];
+
+                var uids = new Dictionary<mmEditEvent, IEnumerable<IUID>>();
+                uids.Add(mmEditEvent.mmEventRelationshipCreated, onCreate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventRelationshipDeleted, onDelete.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+
+                // Update the list to have these UIDs removed.
+                ID8List list = (ID8List) configTopLevel.GetRelationshipClass(relClass);
+                this.Remove(uids, list, messages);
+
+                // Commit the changes to the database.
+                configTopLevel.SaveRelationshipClasstoDB(relClass);
 
                 // Success.
                 parameters["out_results"].SetAsText("true");
@@ -103,21 +112,22 @@ namespace Wave.Geoprocessing.Toolbox.Management
         /// </param>
         protected override void UpdateParameters(Dictionary<string, IGPParameter> parameters, IGPEnvironmentManager environmentManager, IGPUtilities2 utilities)
         {
-            // Retrieve the input parameter value.
             IGPValue value = utilities.UnpackGPValue(parameters["in_table"]);
             if (!value.IsEmpty())
             {
-                // Create the domain based on the fields on the table.
-                IObjectClass table = utilities.OpenTable(value);
-                if (table != null)
+                IRelationshipClass relClass = utilities.OpenRelationshipClass(value);
+                if (relClass != null)
                 {
-                    IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
+                    IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
+                    configTopLevel.Workspace = utilities.GetWorkspace(value);
 
-                    foreach (var modelName in table.GetClassModelNames())
-                        codedValueDomain.AddStringCode(modelName, modelName);
+                    var values = configTopLevel.GetAutoValues(relClass, mmEditEvent.mmEventRelationshipCreated);
+                    IGPParameterEdit3 parameter = (IGPParameterEdit3) parameters["in_create"];
+                    parameter.Domain = base.CreateDomain<IMMRelationshipAUStrategy>(values);
 
-                    IGPParameterEdit3 derivedFields = (IGPParameterEdit3) parameters["in_class_model_names"];
-                    derivedFields.Domain = (IGPDomain) codedValueDomain;
+                    values = configTopLevel.GetAutoValues(relClass, mmEditEvent.mmEventRelationshipDeleted);
+                    parameter = (IGPParameterEdit3)parameters["in_delete"];
+                    parameter.Domain = base.CreateDomain<IMMRelationshipAUStrategy>(values);
                 }
             }
         }

@@ -23,21 +23,25 @@ namespace Wave.Geoprocessing.Toolbox.Management
         ///     Initializes a new instance of the <see cref="ArcFMToolsFunctionFactory" /> class.
         /// </summary>
         public ArcFMToolsFunctionFactory()
-            : base("ArcFM Properties Management Tools", "ArcFM Properties Management Tools")
+            : base("ArcFM Properties Tools", "ArcFM Properties Tools")
         {
-            this.Functions.Add(new AddClassModelNameFunction(this), "Feature Class");
-            this.Functions.Add(new RemoveClassModelNameFunction(this), "Feature Class");          
+            this.Functions.Add(new AddClassModelName(this), "Feature Class");
+            this.Functions.Add(new RemoveClassModelName(this), "Feature Class");
+            this.Functions.Add(new AddSpecialAU(this), "Feature Class");
+            this.Functions.Add(new RemoveSpecialAU(this), "Feature Class");
 
-            this.Functions.Add(new AddFieldModelNameFunction(this), "Field");
-            this.Functions.Add(new RemoveFieldModelNameFunction(this), "Field");
+            this.Functions.Add(new AddFieldModelName(this), "Field");
+            this.Functions.Add(new RemoveFieldModelName(this), "Field");
+            this.Functions.Add(new RemoveAttributeAU(this), "Field");
+            this.Functions.Add(new AddAttributeAU(this), "Field");
 
-            this.Functions.Add(new RemoveAttributeAutoUpdaterFunction(this), "Field");
-            this.Functions.Add(new RemoveSpecialAutoUpdaterFunction(this), "Feature Class");
-            this.Functions.Add(new RemoveRelationshipAutoUpdaterFunction(this), "Relationship");
+            this.Functions.Add(new RemoveRelationshipAU(this), "Relationship");
+            this.Functions.Add(new AddRelationshipAU(this), "Relationship");
         }
 
         #endregion
 
+        #region Private Methods
 
         [ComRegisterFunction()]
         static void Reg(string regKey)
@@ -51,5 +55,6 @@ namespace Wave.Geoprocessing.Toolbox.Management
             GPFunctionFactories.Unregister(regKey);
         }
 
+        #endregion
     }
 }

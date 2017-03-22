@@ -5,24 +5,25 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geoprocessing;
 
+
 using Miner.Geodatabase;
 using Miner.Interop;
 
 namespace Wave.Geoprocessing.Toolbox.Management
 {
     /// <summary>
-    ///     A geoprocessing tool that allows for assigning field model names to multiple feature or tables at once.
+    ///     A geoprocessing tool that allows for assigning class model names to multiple feature or tables at once.
     /// </summary>
-    public class AddFieldModelNameFunction : BaseLicensedFunction
+    public class RemoveClassModelName : BaseLicensedFunction
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AddFieldModelNameFunction" /> class.
+        ///     Initializes a new instance of the <see cref="RemoveClassModelName" /> class.
         /// </summary>
         /// <param name="functionFactory">The function factory.</param>
-        public AddFieldModelNameFunction(IGPFunctionFactory functionFactory)
-            : base("AddFieldModelName", "Add Field Model Name", functionFactory, mmProductInstallation.mmPIArcFM)
+        public RemoveClassModelName(IGPFunctionFactory functionFactory)
+            : base("RemoveClassModelName", "Remove Class Model Name", functionFactory, mmProductInstallation.mmPIArcFM)
         {
         }
 
@@ -44,8 +45,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IArray array = new ArrayClass();
 
                 array.Add(this.CreateCompositeParameter("in_table", "Table", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new DETableTypeClass(), new DEFeatureClassTypeClass()));
-                array.Add(this.CreateMultiValueParameter("in_fields", "Field", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                array.Add(this.CreateMultiValueParameter("in_field_model_names", "Field Model Name(s)", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass()));
+                array.Add(this.CreateMultiValueParameter("in_class_model_names", "Class Model Name(s)", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
 
                 array.Add(this.CreateParameter("out_results", "Results", esriGPParameterType.esriGPParameterTypeDerived, esriGPParameterDirection.esriGPParameterDirectionOutput, new GPBooleanTypeClass()));
 
@@ -55,7 +55,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
 
         #endregion
 
-        #region Protected Methods
+       #region Protected Methods
 
         /// <summary>
         ///     Executes the geoprocessing function using the given array of parameter values.
@@ -70,23 +70,16 @@ namespace Wave.Geoprocessing.Toolbox.Management
         /// </param>
         protected override void Execute(Dictionary<string, IGPValue> parameters, ITrackCancel trackCancel, IGPEnvironmentManager environmentManager, IGPMessages messages, IGPUtilities2 utilities)
         {
-            IGPMultiValue fieldNames = (IGPMultiValue) parameters["in_fields"];
-            IGPMultiValue modelNames = (IGPMultiValue) parameters["in_field_model_names"];
-            IObjectClass oclass = utilities.OpenTable(parameters["in_table"]);
+            IObjectClass table = utilities.OpenTable(parameters["in_table"]);
+            IGPMultiValue modelNames = (IGPMultiValue) parameters["in_class_model_names"];
 
-            if (fieldNames.Count > 0 && modelNames.Count > 0)
+            if (modelNames.Count > 0)
             {
-                foreach (var field in fieldNames.AsEnumerable())
+                foreach (var modelName in modelNames.AsEnumerable().Select(o => o.GetAsText()))
                 {
-                    var fieldName = field.GetAsText();
-                    int index = oclass.FindField(fieldName);
+                    messages.Add(esriGPMessageType.esriGPMessageTypeInformative, "Removing the {0} class model name.", modelName);
 
-                    foreach (var modelName in modelNames.AsEnumerable().Select(o => o.GetAsText()))
-                    {
-                        messages.Add(esriGPMessageType.esriGPMessageTypeInformative, "Adding the {0} field model name to the {1} field.", modelName, fieldName);
-
-                        ModelNameManager.Instance.AddFieldModelName(oclass, oclass.Fields.Field[index], modelName);
-                    }
+                    ModelNameManager.Instance.RemoveClassModelName(table, modelName);
                 }
 
                 // Success.
@@ -115,19 +108,16 @@ namespace Wave.Geoprocessing.Toolbox.Management
             if (!value.IsEmpty())
             {
                 // Create the domain based on the fields on the table.
-                IDETable table = value as IDETable;
+                IObjectClass table = utilities.OpenTable(value);
                 if (table != null)
                 {
-                    IFields fields = table.Fields;
-                    if (fields != null)
-                    {
-                        IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
-                        foreach (var field in fields.AsEnumerable())
-                            codedValueDomain.AddStringCode(field.Name, field.Name);
+                    IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
 
-                        IGPParameterEdit3 derivedFields = (IGPParameterEdit3) parameters["in_fields"];
-                        derivedFields.Domain = (IGPDomain) codedValueDomain;
-                    }
+                    foreach (var modelName in table.GetClassModelNames())
+                        codedValueDomain.AddStringCode(modelName, modelName);
+
+                    IGPParameterEdit3 derivedFields = (IGPParameterEdit3) parameters["in_class_model_names"];
+                    derivedFields.Domain = (IGPDomain) codedValueDomain;
                 }
             }
         }

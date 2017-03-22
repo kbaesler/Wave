@@ -13,15 +13,15 @@ namespace Wave.Geoprocessing.Toolbox.Management
     /// <summary>
     ///     A geoprocessing tool that allows for un-assigning "Special" AUs from an object class.
     /// </summary>
-    public class RemoveSpecialAutoUpdaterFunction : BaseConfigTopLevelFunction
+    public class RemoveSpecialAU : BaseConfigTopLevelFunction
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RemoveSpecialAutoUpdaterFunction" /> class.
+        ///     Initializes a new instance of the <see cref="RemoveSpecialAU" /> class.
         /// </summary>
         /// <param name="functionFactory">The function factory.</param>
-        public RemoveSpecialAutoUpdaterFunction(IGPFunctionFactory functionFactory)
+        public RemoveSpecialAU(IGPFunctionFactory functionFactory)
             : base("RemoveSpecialAU", "Remove Special AU", functionFactory)
         {
         }
@@ -45,15 +45,18 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IArray list = new ArrayClass();
 
                 list.Add(this.CreateCompositeParameter("in_table", "Table or Feature Class", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new DETableTypeClass(), new DEFeatureClassTypeClass()));
-                list.Add(this.CreateParameter("in_subtype", "Subtype", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass()));
 
-                list.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                list.Add(this.CreateMultiValueParameter("in_update", "Update", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                list.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
+                var parameter = this.CreateParameter("in_subtype", "Subtype", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass());
+                parameter.AddDependency("in_table");
+                list.Add(parameter);
 
-                list.Add(this.CreateMultiValueParameter("in_before", "Before Split", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                list.Add(this.CreateMultiValueParameter("in_split", "Split", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
-                list.Add(this.CreateMultiValueParameter("in_after", "After Split", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true));
+                list.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMSpecialAUStrategyEx>(), true));
+                list.Add(this.CreateMultiValueParameter("in_update", "Update", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMSpecialAUStrategyEx>(), true));
+                list.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMSpecialAUStrategyEx>(), true));
+
+                list.Add(this.CreateMultiValueParameter("in_before", "Before Split", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMSpecialAUStrategyEx>(), true));
+                list.Add(this.CreateMultiValueParameter("in_split", "Split", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMSpecialAUStrategyEx>(), true));
+                list.Add(this.CreateMultiValueParameter("in_after", "After Split", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMSpecialAUStrategyEx>(), true));
 
                 list.Add(this.CreateParameter("out_results", "Results", esriGPParameterType.esriGPParameterTypeDerived, esriGPParameterDirection.esriGPParameterDirectionOutput, new GPBooleanTypeClass()));
 
@@ -91,24 +94,24 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IGPMultiValue onAfterSplit = (IGPMultiValue) parameters["in_after"];
 
                 // Load "Special" AUs.
-                var uids = new Dictionary<mmEditEvent, IEnumerable<string>>();
-                uids.Add(mmEditEvent.mmEventFeatureCreate, onCreate.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventFeatureUpdate, onUpdate.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventFeatureDelete, onDelete.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventBeforeFeatureSplit, onBeforeSplit.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventFeatureSplit, onSplit.AsEnumerable().Select(o => o.GetAsText()));
-                uids.Add(mmEditEvent.mmEventAfterFeatureSplit, onAfterSplit.AsEnumerable().Select(o => o.GetAsText()));
+                var uids = new Dictionary<mmEditEvent, IEnumerable<IUID>>();
+                uids.Add(mmEditEvent.mmEventFeatureCreate, onCreate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventFeatureUpdate, onUpdate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventFeatureDelete, onDelete.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventBeforeFeatureSplit, onBeforeSplit.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventFeatureSplit, onSplit.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
+                uids.Add(mmEditEvent.mmEventAfterFeatureSplit, onAfterSplit.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
 
                 IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
                 configTopLevel.Workspace = utilities.GetWorkspace(value);
 
                 // Load all of the subtypes when the user specified "All" or "-1".
                 int subtype = parameters["in_subtype"].Cast(-1);
-                var subtypeCodes = new[] {subtype};
+                var subtypeCodes = new List<int>(new[] {subtype});
                 if (subtype == -1)
                 {
                     ISubtypes subtypes = (ISubtypes) table;
-                    subtypeCodes = subtypes.Subtypes.AsEnumerable().Select(o => o.Key).ToArray();
+                    subtypeCodes.AddRange(subtypes.Subtypes.AsEnumerable().Select(o => o.Key));
                 }
 
                 // Enumerate through all of the subtypes making changes.
@@ -159,29 +162,33 @@ namespace Wave.Geoprocessing.Toolbox.Management
                     IGPValue subtype = utilities.UnpackGPValue(subtypeParameter);
                     if (!subtype.IsEmpty())
                     {
-                        // Load the "OnCreate" components for table.
-                        IGPParameterEdit3 createParameter = (IGPParameterEdit3) parameters["in_create"];
-                        createParameter.Domain = base.GetComponents(table, subtype, mmEditEvent.mmEventFeatureCreate);
+                        var subtypeCode = subtype.Cast(-1);
+                        IMMConfigTopLevel configTopLevel = ConfigTopLevel.Instance;
+                        configTopLevel.Workspace = utilities.GetWorkspace(value);
 
-                        // Load the "OnUpdate" components for table.
-                        IGPParameterEdit3 updateParameter = (IGPParameterEdit3) parameters["in_update"];
-                        updateParameter.Domain = base.GetComponents(table, subtype, mmEditEvent.mmEventFeatureUpdate);
+                        var values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventFeatureCreate);
+                        IGPParameterEdit3 parameter = (IGPParameterEdit3) parameters["in_create"];
+                        parameter.Domain = base.CreateDomain<IMMSpecialAUStrategyEx>(values[subtypeCode]);
 
-                        // Load the "OnDelete" components for table.
-                        IGPParameterEdit3 deleteParameter = (IGPParameterEdit3) parameters["in_delete"];
-                        deleteParameter.Domain = base.GetComponents(table, subtype, mmEditEvent.mmEventFeatureDelete);
+                        values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventFeatureUpdate);
+                        parameter = (IGPParameterEdit3)parameters["in_update"];
+                        parameter.Domain = base.CreateDomain<IMMSpecialAUStrategyEx>(values[subtypeCode]);
 
-                        // Load the "OnBeforeSplit" components for table.
-                        IGPParameterEdit3 beforeParameter = (IGPParameterEdit3) parameters["in_before"];
-                        beforeParameter.Domain = base.GetComponents(table, subtype, mmEditEvent.mmEventBeforeFeatureSplit);
+                        values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventFeatureDelete);
+                        parameter = (IGPParameterEdit3)parameters["in_delete"];
+                        parameter.Domain = base.CreateDomain<IMMSpecialAUStrategyEx>(values[subtypeCode]);
 
-                        // Load the "OnSplit" components for table.
-                        IGPParameterEdit3 splitParameter = (IGPParameterEdit3) parameters["in_split"];
-                        splitParameter.Domain = base.GetComponents(table, subtype, mmEditEvent.mmEventFeatureSplit);
+                        values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventBeforeFeatureSplit);
+                        parameter = (IGPParameterEdit3)parameters["in_before"];
+                        parameter.Domain = base.CreateDomain<IMMSpecialAUStrategyEx>(values[subtypeCode]);
 
-                        // Load the "OnAfterSplit" components for table.
-                        IGPParameterEdit3 afterParameter = (IGPParameterEdit3) parameters["in_after"];
-                        afterParameter.Domain = base.GetComponents(table, subtype, mmEditEvent.mmEventAfterFeatureSplit);
+                        values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventFeatureSplit);
+                        parameter = (IGPParameterEdit3)parameters["in_split"];
+                        parameter.Domain = base.CreateDomain<IMMSpecialAUStrategyEx>(values[subtypeCode]);
+
+                        values = configTopLevel.GetAutoValues(table, mmEditEvent.mmEventAfterFeatureSplit);
+                        parameter = (IGPParameterEdit3)parameters["in_after"];
+                        parameter.Domain = base.CreateDomain<IMMSpecialAUStrategyEx>(values[subtypeCode]);
                     }
                 }
             }

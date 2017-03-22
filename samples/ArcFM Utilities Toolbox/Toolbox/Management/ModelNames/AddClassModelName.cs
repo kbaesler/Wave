@@ -13,15 +13,15 @@ namespace Wave.Geoprocessing.Toolbox.Management
     /// <summary>
     ///     A geoprocessing tool that allows for assigning class model names to multiple feature or tables at once.
     /// </summary>
-    public class AddClassModelNameFunction : BaseLicensedFunction
+    public class AddClassModelName : BaseLicensedFunction
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AddClassModelNameFunction" /> class.
+        ///     Initializes a new instance of the <see cref="AddClassModelName" /> class.
         /// </summary>
         /// <param name="functionFactory">The function factory.</param>
-        public AddClassModelNameFunction(IGPFunctionFactory functionFactory)
+        public AddClassModelName(IGPFunctionFactory functionFactory)
             : base("AddClassModelName", "Add Class Model Name", functionFactory, mmProductInstallation.mmPIArcFM)
         {
         }
