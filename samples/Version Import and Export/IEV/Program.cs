@@ -76,7 +76,7 @@ namespace Wave.IEV
 
                     if (source != null && target != null)
                     {
-                        var exportFileName = Path.Combine(args.Directory, args.VersionName + ".xml");
+                        var exportFileName = Path.Combine(args.Directory, args.VersionName + ".xml");                        
                         ExportDataChanges(source, target, exportFileName, esriExportDataChangesOption.esriExportToXML, true);
                     }
                 }
