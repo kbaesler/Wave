@@ -1,6 +1,7 @@
-# ArcFM Utitlities Toolbox
+# ArcFM Properties Tools
 A set of `ArcGIS Geoprocessing Tools` that allow you to perform common tasks within the `ArcFM Properties Manager` which can be added to a modle in `Model Builder` or run individually. 
 
+![ArcFM Properties Toolbox](./docs/images/ArcFM-Properties-Toolbox.png)
 
 ## Model Name Geoprocessing Tools
 These tools are used for adding or removing model names.
