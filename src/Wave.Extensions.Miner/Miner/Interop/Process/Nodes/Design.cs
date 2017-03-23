@@ -39,10 +39,10 @@ namespace Miner.Interop.Process
         /// </summary>
         static Design()
         {
-            Events.OnCloseDesign += CloseDesign;
-            Events.OnClosingDesign += ClosingDesign;
-            Events.OnDeleteDesign += DeleteDesign;
-            Events.OnOpenDesign += OpenDesign;
+            Events.OnCloseDesign += OnOnCloseDesign;
+            Events.OnClosingDesign += OnClosingDesign;
+            Events.OnDeleteDesign += OnDeleteDesign;
+            Events.OnOpenDesign += OnOpenDesign;
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region IPxDesign Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets a value indicating whether this <see cref="Design" /> can post.
@@ -124,6 +124,54 @@ namespace Miner.Interop.Process
         public bool CanPost
         {
             get { return ((IMMWMSDesign4) _Design).CanPost; }
+        }
+
+        /// <summary>
+        ///     Gets the ID.
+        /// </summary>
+        public override int ID
+        {
+            get { return (_Design != null) ? _Design.ID : -1; }
+        }
+
+        /// <summary>
+        ///     Gets a value indicating whether this <see cref="Design" /> is open.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this <see cref="Design" /> is open; otherwise, <c>false</c>.
+        /// </value>
+        public override bool IsOpen
+        {
+            get
+            {
+                Design design = base.PxApplication.GetDesign();
+                if (design == null) return false;
+
+                bool isOpen = (design.ID == this.ID);
+                return isOpen;
+            }
+        }
+
+        /// <summary>
+        ///     Gets a value indicating whether this <see cref="Design" /> is view only.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this <see cref="Design" /> is view only; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsViewOnly
+        {
+            get { return ((IMMWMSDesign3) _Design).ViewOnly; }
+        }
+
+        /// <summary>
+        ///     Gets a value indicating whether this <see cref="Design" /> is valid.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if valid; otherwise, <c>false</c>.
+        /// </value>
+        public override bool Valid
+        {
+            get { return (_Design != null); }
         }
 
         /// <summary>
@@ -150,14 +198,24 @@ namespace Miner.Interop.Process
         }
 
         /// <summary>
-        ///     Gets a value indicating whether this <see cref="Design" /> is view only.
+        ///     Gets or sets the name.
         /// </summary>
-        /// <value>
-        ///     <c>true</c> if this <see cref="Design" /> is view only; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsViewOnly
+        /// <value>The name.</value>
+        /// <exception cref="ArgumentOutOfRangeException">The name cannot be larger then 64 characters.</exception>
+        public override string Name
         {
-            get { return ((IMMWMSDesign3) _Design).ViewOnly; }
+            get { return _Design.get_Name(); }
+            set
+            {
+                if (value != null && value.Length > 64)
+                {
+                    throw new ArgumentOutOfRangeException("value", @"The name cannot be larger then 64 characters.");
+                }
+
+                _Design.set_Name(ref value);
+
+                base.Dirty = true;
+            }
         }
 
         /// <summary>
@@ -220,63 +278,9 @@ namespace Miner.Interop.Process
             set { _Design.set_WorkRequestID(ref value); }
         }
 
-        /// <summary>
-        ///     Gets the ID.
-        /// </summary>
-        public override int ID
-        {
-            get { return (_Design != null) ? _Design.ID : -1; }
-        }
+        #endregion
 
-        /// <summary>
-        ///     Gets a value indicating whether this <see cref="Design" /> is open.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this <see cref="Design" /> is open; otherwise, <c>false</c>.
-        /// </value>
-        public override bool IsOpen
-        {
-            get
-            {
-                Design design = base.PxApplication.GetDesign();
-                if (design == null) return false;
-
-                bool isOpen = (design.ID == this.ID);
-                return isOpen;
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        /// <exception cref="ArgumentOutOfRangeException">The name cannot be larger then 64 characters.</exception>
-        public override string Name
-        {
-            get { return _Design.get_Name(); }
-            set
-            {
-                if (value != null && value.Length > 64)
-                {
-                    throw new ArgumentOutOfRangeException("value", @"The name cannot be larger then 64 characters.");
-                }
-
-                _Design.set_Name(ref value);
-
-                base.Dirty = true;
-            }
-        }
-
-        /// <summary>
-        ///     Gets a value indicating whether this <see cref="Design" /> is valid.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if valid; otherwise, <c>false</c>.
-        /// </value>
-        public override bool Valid
-        {
-            get { return (_Design != null); }
-        }
+        #region IPxDesign Members
 
         /// <summary>
         ///     Loads the package XML from the underlying workspace.
@@ -319,7 +323,7 @@ namespace Miner.Interop.Process
             Events.RaiseDeleteDesign(this.ID);
 
             // Delete the node.
-            base.Delete();           
+            base.Delete();
 
             // Remove the design reference.
             this.Dispose(true);
@@ -431,6 +435,59 @@ namespace Miner.Interop.Process
             _Design = (IMMWMSDesign) extension.GetWMSNode(ref nodeTypeName, ref nodeId, ref ro, ref sm);
 
             return (_Design != null);
+        }
+
+        protected virtual void OnCloseDesign(bool hasEdits)
+        {
+            Events.RaiseCloseDesign(hasEdits);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Raises the <see cref="E:ClosingDesign" /> event.
+        /// </summary>
+        /// <param name="saving">if set to <c>true</c> saving.</param>
+        private static void OnClosingDesign(bool saving)
+        {
+            var eventHandler = ClosingDesign;
+            if (eventHandler != null)
+                eventHandler(saving);
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:DeleteDesign" /> event.
+        /// </summary>
+        /// <param name="designId">The design identifier.</param>
+        private static void OnDeleteDesign(int designId)
+        {
+            var eventHandler = DeleteDesign;
+            if (eventHandler != null)
+                eventHandler(designId);
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:CloseDeisgn" /> event.
+        /// </summary>
+        /// <param name="hasEdits">if set to <c>true</c> [has edits].</param>
+        private static void OnOnCloseDesign(bool hasEdits)
+        {
+            var eventHandler = CloseDesign;
+            if (eventHandler != null)
+                eventHandler(hasEdits);
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="E:OpenDesign" /> event.
+        /// </summary>
+        /// <param name="designId">The design identifier.</param>
+        private static void OnOpenDesign(int designId)
+        {
+            var eventHandler = OpenDesign;
+            if (eventHandler != null)
+                eventHandler(designId);
         }
 
         #endregion

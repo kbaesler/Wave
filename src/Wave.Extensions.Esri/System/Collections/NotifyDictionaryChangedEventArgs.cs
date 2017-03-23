@@ -39,7 +39,7 @@ namespace System.Collections
         public NotifyDictionaryChangedEventArgs(IDictionary<TKey, TValue> items, NotifyCollectionChangedAction action)
         {
             this.Action = action;
-            if (action == NotifyCollectionChangedAction.Reset | action == NotifyCollectionChangedAction.Remove)
+            if (action == NotifyCollectionChangedAction.Reset || action == NotifyCollectionChangedAction.Remove)
                 this.OldItems = items;
             else
                 this.NewItems = items;
@@ -64,7 +64,7 @@ namespace System.Collections
         public NotifyDictionaryChangedEventArgs(TKey key, TValue value, NotifyCollectionChangedAction action)
             : this(new Dictionary<TKey, TValue>(1), action)
         {
-            var dictionary = action == NotifyCollectionChangedAction.Reset | action == NotifyCollectionChangedAction.Remove ? this.OldItems : this.NewItems;
+            var dictionary = action == NotifyCollectionChangedAction.Reset || action == NotifyCollectionChangedAction.Remove ? this.OldItems : this.NewItems;
             dictionary[key] = value;
         }
 

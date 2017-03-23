@@ -1,4 +1,6 @@
-﻿namespace ESRI.ArcGIS.Geometry
+﻿using System.Collections.Generic;
+
+namespace ESRI.ArcGIS.Geometry
 {
     /// <summary>
     ///     Provides extension methods for the <see cref="IGeometry" /> interface.
@@ -6,6 +8,22 @@
     public static class GeometryExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IGeometryCollection" />
+        /// </summary>
+        /// <param name="source">An <see cref="IGeometryCollection" /> to create an <see cref="IEnumerable{T}" /> from.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains the geometries from the input source.</returns>
+        public static IEnumerable<IGeometry> AsEnumerable(this IGeometryCollection source)
+        {
+            if (source != null)
+            {
+                for (int i = 0; i < source.GeometryCount; i++)
+                {
+                    yield return source.Geometry[i];
+                }
+            }
+        }
 
         /// <summary>
         ///     Constructs a polygon that is the locus of points at a distance less than or equal to a specified distance from this
@@ -29,6 +47,7 @@
             ITopologicalOperator topOp = (ITopologicalOperator) source;
             return topOp.Buffer(distance);
         }
+
 
         /// <summary>
         ///     Gets the units.

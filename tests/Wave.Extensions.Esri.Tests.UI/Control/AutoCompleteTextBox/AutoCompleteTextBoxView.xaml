@@ -9,6 +9,9 @@
     <Window.DataContext>
         <local:AutoCompleteTextBoxViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -16,10 +19,16 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="State:"/>
-        <controls:AutoCompleteTextBox  Grid.Row="2"
-                                       DelayTime="1000"
-                                       MaxDropDownHeight="50"
-                                       Text="{Binding State}"
-                                       AutoCompleteSource="{Binding States}" />
+        <Grid Grid.Row="2">
+            <controls:AutoCompleteTextBox  Name="AutoCompleteTextBox"
+                                           DelayTime="1000"
+                                           Text="{Binding State}"
+                                           AutoCompleteSource="{Binding States}">
+                <controls:Watermark.Content>
+                    <TextBlock Text="State..."/>
+                </controls:Watermark.Content>
+            </controls:AutoCompleteTextBox>         
+        </Grid>
+      
     </Grid>
 </Window>

@@ -56,7 +56,7 @@ namespace System.Windows.Controls
         public static readonly DependencyProperty TokensProperty =
             DependencyProperty.Register("Tokens", typeof (ObservableKeyedCollection<string, Token>), typeof (TokenizedTextBox), new PropertyMetadata(new ObservableKeyedCollection<string, Token>(t => t.Key)));
 
-        private static bool _SuppressTextChanged;
+        private bool _SuppressTextChanged;
 
         #endregion
 
@@ -195,17 +195,14 @@ namespace System.Windows.Controls
                 ContentTemplate = this.TokenTemplate,
             };
 
-            if (this.TokenTemplate == null && token.Content != null)
+            if (this.TokenTemplate == null && token.Content != null && !string.IsNullOrEmpty(this.MemberPath))
             {
-                if (!string.IsNullOrEmpty(this.MemberPath))
+                var property = token.Content.GetType().GetProperty(this.MemberPath);
+                if (property != null)
                 {
-                    var property = token.Content.GetType().GetProperty(this.MemberPath);
-                    if (property != null)
-                    {
-                        var value = property.GetValue(token.Content, null);
-                        if (value != null)
-                            presenter.Content = value;
-                    }
+                    var value = property.GetValue(token.Content, null);
+                    if (value != null)
+                        presenter.Content = value;
                 }
             }
 
@@ -418,10 +415,10 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
         private static void OnTextPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            if (_SuppressTextChanged)
-                return;
-
             var tokenizedTextBox = (TokenizedTextBox) dependencyObject;
+
+            if (tokenizedTextBox._SuppressTextChanged)
+                return;
 
             // To help with performance this is placed on the dispatcher for processing. For some reason when this is done the TextChanged event is fired multiple times
             // forcing the UpdateText method to be called multiple times and the setter of the source property to be set multiple times. 
@@ -429,7 +426,7 @@ namespace System.Windows.Controls
             // member to true before the operation and set it to false when the operation completes. This will prevent the Text property from being set multiple times.
             DispatcherOperation dop = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(delegate
             {
-                _SuppressTextChanged = true;
+                tokenizedTextBox._SuppressTextChanged = true;
 
                 var text = e.NewValue as string;
                 if (string.IsNullOrEmpty(text))
@@ -441,7 +438,7 @@ namespace System.Windows.Controls
                     tokenizedTextBox.ReplaceTextWithTokens();
                 }
             }), DispatcherPriority.Background);
-            dop.Completed += (sender, ea) => { _SuppressTextChanged = false; };
+            dop.Completed += (sender, ea) => { tokenizedTextBox._SuppressTextChanged = false; };
         }
 
 

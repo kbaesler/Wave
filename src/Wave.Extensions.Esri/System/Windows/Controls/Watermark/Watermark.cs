@@ -119,14 +119,17 @@ namespace System.Windows.Controls
 
             ComboBox comboBox = d as ComboBox;
             TextBox textBox = d as TextBox;
+            AutoCompleteTextBox autoCompleteTextBox = d as AutoCompleteTextBox;
 
-            if (comboBox != null || textBox != null)
+            if (comboBox != null || textBox != null || autoCompleteTextBox != null)
             {
                 control.GotKeyboardFocus += Control_GotKeyboardFocus;
                 control.LostKeyboardFocus += Control_Loaded;
 
                 if (textBox != null)
                     textBox.TextChanged += TextBox_TextChanged;
+                else if (autoCompleteTextBox != null)
+                    autoCompleteTextBox.TextChanged += TextBox_TextChanged;
             }
 
             ItemsControl i = d as ItemsControl;
@@ -152,7 +155,8 @@ namespace System.Windows.Controls
             ComboBox comboBox = c as ComboBox;
             TextBox textBox = c as TextBox;
             ItemsControl itemsControl = c as ItemsControl;
-
+            AutoCompleteTextBox autoCompleteTextBox = c as AutoCompleteTextBox;
+            
             if (comboBox != null)
             {
                 return string.IsNullOrEmpty(comboBox.Text);
@@ -164,6 +168,13 @@ namespace System.Windows.Controls
             if (itemsControl != null)
             {
                 return itemsControl.Items.Count == 0;
+            }
+            if (autoCompleteTextBox != null)
+            {
+                if (autoCompleteTextBox.IsDelayed)
+                    return false;
+
+                return string.IsNullOrEmpty(autoCompleteTextBox.Text);
             }
             return false;
         }

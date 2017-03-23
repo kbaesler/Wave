@@ -208,17 +208,17 @@ namespace Miner.Interop
         ///     object class.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">table</exception>
-        public static Dictionary<int, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)
+        public static Dictionary<IMMSubtype, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)
         {
             if (source == null) return null;
             if (table == null) throw new ArgumentNullException("table");
 
-            Dictionary<int, IEnumerable<IMMAutoValue>> list = new Dictionary<int, IEnumerable<IMMAutoValue>>();
+            Dictionary<IMMSubtype, IEnumerable<IMMAutoValue>> list = new Dictionary<IMMSubtype, IEnumerable<IMMAutoValue>>();
 
             IMMSubtype subtype = source.GetSubtypeByID(table, ALL_SUBTYPES, false);
             if (subtype != null)
             {
-                list.Add(ALL_SUBTYPES, subtype.GetAutoValues(editEvent));
+                list.Add(subtype, subtype.GetAutoValues(editEvent));
             }
 
             ISubtypes subtypes = (ISubtypes) table;
@@ -230,7 +230,7 @@ namespace Miner.Interop
                     subtype = source.GetSubtypeByID(table, subtypeCode, false);
                     if (subtype == null) continue;
 
-                    list.Add(subtypeCode, subtype.GetAutoValues(editEvent));
+                    list.Add(subtype, subtype.GetAutoValues(editEvent));
                 }
             }
 

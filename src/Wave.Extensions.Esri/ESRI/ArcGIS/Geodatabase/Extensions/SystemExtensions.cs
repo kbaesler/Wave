@@ -460,7 +460,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 source.Reset();
                 int subtypeCode;
                 string subtypeName = source.Next(out subtypeCode);
-                while (string.IsNullOrEmpty(subtypeName) == false)
+                while (!string.IsNullOrEmpty(subtypeName))
                 {
                     yield return new KeyValuePair<int, string>(subtypeCode, subtypeName);
                     subtypeName = source.Next(out subtypeCode);

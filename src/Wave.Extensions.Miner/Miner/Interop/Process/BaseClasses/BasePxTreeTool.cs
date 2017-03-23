@@ -277,9 +277,9 @@ namespace Miner.Interop.Process
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, Document.ParentWindow, "Error Updating Bitmap " + this.Name, e);
-                else
                     Log.Error(this, "Error Updating Bitmap " + this.Name, e);
+                else
+                    Log.Error(this, e);
             }
         }
 
@@ -296,9 +296,9 @@ namespace Miner.Interop.Process
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, Document.ParentWindow, "Error Updating Bitmap " + this.Name, e);
-                else
                     Log.Error(this, "Error Updating Bitmap " + this.Name, e);
+                else
+                    Log.Error(this, e);
             }
         }
 

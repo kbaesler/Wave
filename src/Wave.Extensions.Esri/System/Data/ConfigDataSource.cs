@@ -29,7 +29,7 @@ namespace System.Data
         public override bool Create(string driver, string attributes)
         {
             string value = ConvertToDoublyNullTerminated(attributes);
-            return SQLConfigDataSourceW(IntPtr.Zero, RequestFlags.ODBC_ADD_SYS_DSN, driver, value);
+            return SQLConfigDataSourceW(IntPtr.Zero, RequestType.ODBC_ADD_SYS_DSN, driver, value);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace System.Data
         public override bool Delete(string driver, string attributes)
         {
             string value = ConvertToDoublyNullTerminated(attributes);
-            return SQLConfigDataSourceW(IntPtr.Zero, RequestFlags.ODBC_REMOVE_SYS_DSN, driver, value);
+            return SQLConfigDataSourceW(IntPtr.Zero, RequestType.ODBC_REMOVE_SYS_DSN, driver, value);
         }
 
         #endregion
@@ -84,7 +84,7 @@ namespace System.Data
         public override bool Create(string driver, string attributes)
         {
             string value = ConvertToDoublyNullTerminated(attributes);
-            return SQLConfigDataSourceW(IntPtr.Zero, RequestFlags.ODBC_ADD_DSN, driver, value);
+            return SQLConfigDataSourceW(IntPtr.Zero, RequestType.ODBC_ADD_DSN, driver, value);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace System.Data
         public override bool Delete(string driver, string attributes)
         {
             string value = ConvertToDoublyNullTerminated(attributes);
-            return SQLConfigDataSourceW(IntPtr.Zero, RequestFlags.ODBC_REMOVE_DSN, driver, value);
+            return SQLConfigDataSourceW(IntPtr.Zero, RequestType.ODBC_REMOVE_DSN, driver, value);
         }
 
         #endregion
@@ -122,7 +122,7 @@ namespace System.Data
         /// <summary>
         ///     The requested flags.
         /// </summary>
-        protected enum RequestFlags : ushort
+        protected enum RequestType : ushort
         {
             /// <summary>
             ///     Add a new user data source.
@@ -172,9 +172,21 @@ namespace System.Data
         /// <returns>
         ///     Returns a <see cref="string" /> that is double null terminated.
         /// </returns>
-        public static string ConvertToDoublyNullTerminated(string value, char c = ';')
+        public static string ConvertToDoublyNullTerminated(string value, char c)
         {
             return value.Replace(c, Convert.ToChar(0));
+        }
+
+        /// <summary>
+        ///     Converts to doubly null terminated.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        ///     Returns a <see cref="string" /> that is double null terminated.
+        /// </returns>
+        public static string ConvertToDoublyNullTerminated(string value)
+        {
+            return ConvertToDoublyNullTerminated(value, ';');
         }
 
         /// <summary>
@@ -248,7 +260,7 @@ namespace System.Data
         ///     the function returns FALSE.
         /// </returns>
         [DllImport("ODBCCP32.DLL", CharSet = CharSet.Unicode, SetLastError = true)]
-        protected static extern bool SQLConfigDataSourceW(IntPtr hwndParent, RequestFlags fRequest, string lpszDriver, string lpszAttributes);
+        protected static extern bool SQLConfigDataSourceW(IntPtr hwndParent, RequestType fRequest, string lpszDriver, string lpszAttributes);
 
         #endregion
     }

@@ -29,6 +29,22 @@ namespace ESRI.ArcGIS.Framework.Internal
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the message on the status bar
+        /// </summary>
+        /// <value>
+        ///     The message on the status bar.
+        /// </value>
+        public string Message
+        {
+            get { return _Application.StatusBar.Message[0]; }
+            set { _Application.StatusBar.Message[0] = value; }           
+        }
+
+        #endregion
+
         #region Protected Properties
 
         /// <summary>
@@ -72,17 +88,6 @@ namespace ESRI.ArcGIS.Framework.Internal
 
             _Application.StatusBar.PlayProgressAnimation(true);
             _Application.StatusBar.Message[0] = statusMessage;
-        }
-
-        /// <summary>
-        ///     Sets the message on the status bar
-        /// </summary>
-        /// <value>
-        ///     The message on the status bar.
-        /// </value>
-        public string Message
-        {
-            set { _Application.StatusBar.Message[0] = value; }
         }
 
         #endregion

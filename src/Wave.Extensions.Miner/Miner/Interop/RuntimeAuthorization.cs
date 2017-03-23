@@ -4,10 +4,7 @@ using System.Text;
 using ESRI.ArcGIS.esriSystem;
 
 using Miner.Interop.Internal;
-#if V10
 using ESRI.ArcGIS;
-
-#endif
 
 namespace Miner.Interop
 {
@@ -26,16 +23,6 @@ namespace Miner.Interop
 
         #region Constructors
 
-#if !V10
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
-    /// </summary>
-        public RuntimeAuthorization()
-        {
-            _EsriRuntime = new EsriRuntimeAuthorization();
-            _MinerRuntime = new MinerRuntimeAuthorization();            
-        }
-#else
         /// <summary>
         ///     Initializes a new instance of the <see cref="RuntimeAuthorization" /> class.
         /// </summary>
@@ -54,7 +41,6 @@ namespace Miner.Interop
             _EsriRuntime.ResolveRuntimeBinding += (sender, args) => args.ProductCode = productCode;
             _MinerRuntime = new MinerRuntimeAuthorization();
         }
-#endif
 
         #endregion
 

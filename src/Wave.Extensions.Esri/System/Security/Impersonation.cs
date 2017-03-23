@@ -8,7 +8,7 @@ namespace System.Security
     /// <summary>
     ///     Security impersonation levels govern the degree to which a server process can act on behalf of a client process.
     /// </summary>
-    public enum SecurityImpersonationLevel : int
+    public enum SecurityImpersonationLevel
     {
         /// <summary>
         ///     The server process cannot obtain identification information about the client,
@@ -106,12 +106,9 @@ namespace System.Security
         /// </param>
         private void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && _ImpersonationContext != null)
             {
-                if (_ImpersonationContext != null)
-                {
-                    _ImpersonationContext.Undo();
-                }
+                _ImpersonationContext.Undo();
             }
         }
 

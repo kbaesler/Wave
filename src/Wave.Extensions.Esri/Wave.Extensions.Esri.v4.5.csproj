@@ -152,7 +152,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.GeoDatabaseUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -163,7 +163,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Location, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -192,6 +192,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -239,8 +240,10 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgressSurrogate.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\SqlVersionedEditing.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparer.cs" />
@@ -265,6 +268,7 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\GeometryExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\SegmentationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunction.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunctionFactory.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
@@ -272,18 +276,17 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\AggregateConfiguration.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\RouteMeasureSegmentationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteEventtData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\ConcatenateRouteEventtData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\DissolveRouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\OverlayRouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\RouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\RouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Route.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureSegmentation.cs" />
@@ -336,12 +339,15 @@
     <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Log.cs" />
+    <Compile Include="System\Diagnostics\LogScope.cs" />
+    <Compile Include="System\Diagnostics\LogScopeManager.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicDictionary.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicKeyValuePair.cs" />
     <Compile Include="System\Dynamic\Collections\Extensions\DynamicCollectionsExtensions.cs" />
     <Compile Include="System\Dynamic\Xml\DynamicXmlNode.cs" />
     <Compile Include="System\Dynamic\Xml\DynamicXmlNodeList.cs" />
     <Compile Include="System\Dynamic\Xml\Extensions\DynamicXmlExtensions.cs" />
+    <Compile Include="System\Extensions\EnumExtensions.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
     <Compile Include="System\Extensions\StringExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
@@ -389,7 +395,12 @@
     <Compile Include="System\Windows\Behaviors\CommandBehaviorCollection.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\ScrollViewer\ScrollViewerSynchronization.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="System\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\TextBox\TextBoxBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\Window\WindowStateComponent.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />

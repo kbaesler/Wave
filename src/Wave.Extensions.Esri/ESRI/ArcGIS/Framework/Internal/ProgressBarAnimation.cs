@@ -104,7 +104,6 @@ namespace ESRI.ArcGIS.Framework.Internal
         public virtual void Initialize(int min, int max, int position, int step = 1)
         {
             if (min > max) throw new ArgumentOutOfRangeException("min", "The minimum cannot be greater than the maximum.");
-            if (max < min) throw new ArgumentOutOfRangeException("max", "The maximum cannot be less than the minimum.");
             if (position < 0) throw new ArgumentOutOfRangeException("position", "The value position be less than 0.");
             if (step < 1) throw new ArgumentOutOfRangeException("step", "The step cannot be less than 1.");
             if (step > max) throw new ArgumentOutOfRangeException("step", "The step cannot be greater than the maximum.");

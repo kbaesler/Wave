@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
+using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 
@@ -10,6 +13,7 @@ namespace ESRI.ArcGIS.Geoprocessing
     ///     An abstract class that provides access to the collection of <see cref="IGPFunction" /> objects.
     /// </summary>
     /// <remarks>The FunctionFactory object manages the function tools based on the FunctionName object.</remarks>
+    [ComVisible(true)]
     public abstract class BaseFunctionFactory : IGPFunctionFactory, IGPFunctionFactory2
     {
         #region Constructors
@@ -17,7 +21,10 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// <summary>
         ///     Initializes a new instance of the <see cref="BaseFunctionFactory" /> class.
         /// </summary>
-        /// <param name="name">The name.</param>
+        /// <param name="name">
+        ///     The name of the toolbox. This is used when generating the Toolbox containing the function tools of
+        ///     the factory.
+        /// </param>
         /// <param name="alias">The alias.</param>
         protected BaseFunctionFactory(string name, string alias)
         {
@@ -29,27 +36,6 @@ namespace ESRI.ArcGIS.Geoprocessing
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        ///     Gets the functions for the given factory organized by the key being the <see cref="IGPFunction2" /> and the value
-        ///     being the category for the function (if necessary, otherwise supply null).
-        /// </summary>
-        /// <value>
-        ///     The functions.
-        /// </value>
-        public Dictionary<IGPFunction2, string> Functions { get; private set; }
-
-        #endregion
-
-        #region IGPFunctionFactory Members
-
-        /// <summary>
-        ///     Gets or sets the alias.
-        /// </summary>
-        /// <value>
-        ///     The alias.
-        /// </value>
-        public string Alias { get; protected set; }
 
         /// <summary>
         ///     The class identifier (CLSID) of the geoprocessing function factory.
@@ -68,13 +54,49 @@ namespace ESRI.ArcGIS.Geoprocessing
         }
 
         /// <summary>
+        ///     Gets or sets the alias.
+        /// </summary>
+        /// <value>
+        ///     The alias.
+        /// </value>
+        public string Alias { get; protected set; }
+
+        /// <summary>
+        ///     Name of the geoprocessing function factory.
+        /// </summary>
+        /// <value>
+        ///     The name.
+        /// </value>
+        public string Name { get; protected set; }
+
+        #endregion
+
+        #region Private Properties
+
+        /// <summary>
+        ///     Gets the functions for the given factory organized by the key being the <see cref="IGPFunction2" /> and the value
+        ///     being the category for the function (if necessary, otherwise supply null).
+        /// </summary>
+        /// <value>
+        ///     The functions.
+        /// </value>
+        private Dictionary<IGPFunction2, string> Functions { get; set; }
+
+        #endregion
+
+        #region IGPFunctionFactory Members
+
+        /// <summary>
         ///     Gets the geoprocessing function name object with the given name
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>Returns <see cref="IGPFunction" /> of the geoprocessing function object with the given name.</returns>
         public virtual IGPFunction GetFunction(string name)
         {
-            return this.Functions.Keys.FirstOrDefault(o => o.Name.Equals(name));
+            if (name == null)
+                throw new ArgumentNullException("name");
+
+            return this.Functions.Keys.First(o => o.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
         }
 
         /// <summary>
@@ -96,23 +118,13 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// <returns>Returns <see cref="IGPName" /> of the geoprocessing function name object with the given name.</returns>
         public virtual IGPName GetFunctionName(string name)
         {
-            IGPFunctionName gpFunctionName = new GPFunctionNameClass();
-#if V10
-            gpFunctionName.MinimumProduct = esriProductCode.esriProductCodeStandard;
-#endif
-            IGPFunction2 gpFunction = this.GetFunction(name) as IGPFunction2;
-            if (gpFunction == null) return null;
+            var function = (IGPFunction2) this.GetFunction(name);
+            var functionName = (IGPName) this.GetFunctionName(function);
 
-            var gpName = (IGPName) gpFunctionName;
-            gpName.Name = gpFunction.Name;
-            gpName.Description = gpFunction.DisplayName;
-            gpName.DisplayName = gpFunction.DisplayName;
-            gpName.Factory = this;
+            if (this.Functions.ContainsKey(function))
+                functionName.Category = this.Functions[function];
 
-            if (this.Functions.ContainsKey(gpFunction))
-                gpName.Category = this.Functions[gpFunction];
-
-            return gpName;
+            return functionName;
         }
 
         /// <summary>
@@ -124,24 +136,16 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// </returns>
         public virtual IEnumGPName GetFunctionNames()
         {
-            IArray array = new EnumGPNameClass();
+            IArray list = new EnumGPNameClass();
 
             foreach (IGPFunction function in this.Functions.Keys)
             {
-                IGPName gpName = this.GetFunctionName(function.Name);
-                if (gpName != null) array.Add(gpName);
+                IGPName functionName = this.GetFunctionName(function.Name);
+                list.Add(functionName);
             }
 
-            return (IEnumGPName) array;
+            return (IEnumGPName) list;
         }
-
-        /// <summary>
-        ///     Name of the geoprocessing function factory.
-        /// </summary>
-        /// <value>
-        ///     The name.
-        /// </value>
-        public string Name { get; protected set; }
 
         #endregion
 
@@ -154,6 +158,65 @@ namespace ESRI.ArcGIS.Geoprocessing
         {
         }
 
-        #endregion        
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        ///     Adds the specified function.
+        /// </summary>
+        /// <param name="function">The function.</param>
+        /// <param name="category">The category.</param>
+        protected void Add(IGPFunction2 function, string category)
+        {
+            this.Functions.Add(function, category);
+        }
+
+        /// <summary>
+        ///     Gets the name of the function.
+        /// </summary>
+        /// <param name="function">The function.</param>
+        /// <returns></returns>
+        protected virtual IGPFunctionName GetFunctionName(IGPFunction2 function)
+        {
+            IGPFunctionName functionName = new GPFunctionNameClass();
+            functionName.MinimumProduct = esriProductCode.esriProductCodeBasic;
+            functionName.HelpFile = function.HelpFile;
+            functionName.HelpContext = function.HelpContext;
+
+            IGPName name = (IGPName) functionName;
+            name.Name = function.Name;
+            name.Description = function.DisplayName;
+            name.DisplayName = function.DisplayName;
+            name.Factory = this;
+
+            return functionName;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Registers the specified reg key.
+        /// </summary>
+        /// <param name="regKey">The reg key.</param>
+        [ComRegisterFunction]
+        static void Register(string regKey)
+        {
+            GPFunctionFactories.Register(regKey);
+        }
+
+        /// <summary>
+        ///     Unregisters the specified reg key.
+        /// </summary>
+        /// <param name="regKey">The reg key.</param>
+        [ComUnregisterFunction]
+        static void Unregister(string regKey)
+        {
+            GPFunctionFactories.Unregister(regKey);
+        }
+
+        #endregion
     }
 }

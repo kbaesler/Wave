@@ -160,7 +160,7 @@ namespace System.Xml
             // Set the validation settings.
             settings.Schemas.Add(xss);
             settings.ValidationType = this.ValidationType;
-            settings.ValidationEventHandler += this.EventHandler;
+            settings.ValidationEventHandler += (sender, args) => this.OnValidation(args);
 
             // Load the Xml fragment into the stream.
             using (StringReader sr = new StringReader(xmlFragment))
@@ -168,12 +168,27 @@ namespace System.Xml
                 // Load the XML reader and perform the validation.
                 XmlTextReader xtr = new XmlTextReader(sr);
                 XmlReader xr = XmlReader.Create(xtr, settings);
-                
+
                 while (xr.Read())
                 {
-                   // Read each line which will compare it against the XSD schema.
+                    // Read each line which will compare it against the XSD schema.
                 }
             }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Raises the <see cref="E:Validation" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="ValidationEventArgs" /> instance containing the event data.</param>
+        private void OnValidation(ValidationEventArgs e)
+        {
+            var eventHandler = this.EventHandler;
+            if (eventHandler != null)
+                eventHandler(this, e);
         }
 
         #endregion

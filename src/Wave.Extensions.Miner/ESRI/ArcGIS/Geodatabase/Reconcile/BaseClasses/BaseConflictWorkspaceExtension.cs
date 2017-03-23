@@ -192,11 +192,11 @@ namespace ESRI.ArcGIS.Geodatabase
                             ITable commonAncestorTable = commonAncestorWorkspace.OpenTable(tableName);
                             cr.ManageLifetime(commonAncestorTable);
 
-                            conflictsResolved = conflictsResolved & this.ResolveConflicts(conflictClass, currentTable, preReconcileTable, reconcileTable, commonAncestorTable, TableConflictType.DeleteUpdates, filters);
+                            conflictsResolved = conflictsResolved && this.ResolveConflicts(conflictClass, currentTable, preReconcileTable, reconcileTable, commonAncestorTable, TableConflictType.DeleteUpdates, filters);
 
-                            conflictsResolved = conflictsResolved & this.ResolveConflicts(conflictClass, currentTable, preReconcileTable, reconcileTable, commonAncestorTable, TableConflictType.UpdateDeletes, filters);
+                            conflictsResolved = conflictsResolved && this.ResolveConflicts(conflictClass, currentTable, preReconcileTable, reconcileTable, commonAncestorTable, TableConflictType.UpdateDeletes, filters);
 
-                            conflictsResolved = conflictsResolved & this.ResolveConflicts(conflictClass, currentTable, preReconcileTable, reconcileTable, commonAncestorTable, TableConflictType.UpdateUpdates, filters);
+                            conflictsResolved = conflictsResolved && this.ResolveConflicts(conflictClass, currentTable, preReconcileTable, reconcileTable, commonAncestorTable, TableConflictType.UpdateUpdates, filters);
                         }
                     }
 

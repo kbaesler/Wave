@@ -56,7 +56,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public bool Equals(IRow x, IRow y, Func<IField, bool> action)
         {
-            if ((x == null) & (y == null))
+            if ((x == null) && (y == null))
                 return true;
 
             if ((x == null) ^ (y == null))
@@ -88,7 +88,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public virtual bool Equals(IRow x, IRow y, int index)
         {
-            if ((x == null) & (y == null))
+            if ((x == null) && (y == null))
                 return true;
 
             if ((x == null) ^ (y == null))

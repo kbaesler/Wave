@@ -12,25 +12,19 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
     /// </summary>
     [ComVisible(true)]
     public abstract class BaseContentsView : IComPropertySheetEvents
-#if V10
         , IContentsView3
-#else        
-        , IContentsView2
-#endif
     {
         #region Constructors
 
-#if !V10
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
-    /// </summary>
-    /// <param name="name">The name.</param>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
         protected BaseContentsView(string name)
         {
             this.Name = name;
         }
 
-#else
         /// <summary>
         ///     Initializes a new instance of the <see cref="BaseContentsView" /> class.
         /// </summary>
@@ -41,22 +35,20 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
             this.Name = name;
             this.Tooltip = toolTip;
         }
-#endif
 
         #endregion
 
-        #region IComPropertySheetEvents Members
+        #region Public Properties
 
         /// <summary>
-        ///     Occurs when changes are applied.
+        ///     Bitmap shown in Table Of Contents window toolbar.
         /// </summary>
-        public virtual void OnApply()
-        {
-        }
+        public abstract int Bitmap { get; }
 
-        #endregion
-
-        #region IContentsView2 Members
+        /// <summary>
+        ///     Gets the HWND of the contents view.
+        /// </summary>
+        public abstract int hWnd { get; }
 
         /// <summary>
         ///     Gets or sets the context item (could be an enumerator).
@@ -97,6 +89,11 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         public bool ShowLines { get; set; }
 
         /// <summary>
+        ///     The tool tip for the table of contents window.
+        /// </summary>
+        public string Tooltip { get; protected set; }
+
+        /// <summary>
         ///     Gets or sets a boolean that indicates if the view is visible.
         /// </summary>
         /// <value>
@@ -104,10 +101,20 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// </value>
         public bool Visible { get; set; }
 
+        #endregion
+
+        #region IComPropertySheetEvents Members
+
         /// <summary>
-        ///     Gets the HWND of the contents view.
+        ///     Occurs when changes are applied.
         /// </summary>
-        public abstract int hWnd { get; }
+        public virtual void OnApply()
+        {
+        }
+
+        #endregion
+
+        #region IContentsView3 Members
 
         /// <summary>
         ///     Called when the contents view is selected.
@@ -183,23 +190,5 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         }
 
         #endregion
-
-#if V10
-
-        #region IContentsView3 Members
-
-        /// <summary>
-        ///     Bitmap shown in Table Of Contents window toolbar.
-        /// </summary>
-        public abstract int Bitmap { get; }
-
-        /// <summary>
-        ///     The tool tip for the table of contents window.
-        /// </summary>
-        public string Tooltip { get; protected set; }
-
-        #endregion
-
-#endif
     }
 }

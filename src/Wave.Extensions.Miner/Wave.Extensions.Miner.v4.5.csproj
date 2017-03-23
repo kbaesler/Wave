@@ -311,7 +311,6 @@
     <Compile Include="Miner\Interop\Extensions\ConfigTopLevelExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Miner\Interop\Extensions\PackageManagerExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\D8ListItemExtensions.cs" />
     <Compile Include="Miner\Interop\Extensions\EnumerableExtensions.cs" />
