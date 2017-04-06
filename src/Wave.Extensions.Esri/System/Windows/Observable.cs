@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq.Expressions;
 
 namespace System.Windows
 {
@@ -9,16 +10,12 @@ namespace System.Windows
     /// </summary>
     public abstract class Observable : DataValidation, INotifyPropertyChanged, INotifyPropertyChanging
     {
-        #region INotifyPropertyChanged Members
+        #region Events
 
         /// <summary>
         ///     Occurs when a property value changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-        #region INotifyPropertyChanging Members
 
         /// <summary>
         ///     Occurs when a property value is changing.
@@ -28,6 +25,19 @@ namespace System.Windows
         #endregion
 
         #region Protected Methods
+
+        /// <summary>
+        ///     Called from a property setter to notify the framework that a member has changed.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertySelector">The property selector.</param>
+        protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertySelector)
+        {
+            var memberExpression = propertySelector.Body as MemberExpression;
+
+            if (memberExpression != null)
+                OnPropertyChanged(memberExpression.Member.Name);
+        }
 
         /// <summary>
         ///     Raises the <see cref="PropertyChanged" /> event.

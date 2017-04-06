@@ -292,6 +292,10 @@
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureSegmentation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureLineSegmentation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasurePointSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Entity.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityFieldAttribute.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Extensions\EntityExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\IEntity.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />
@@ -308,6 +312,7 @@
     <Compile Include="ESRI\ArcGIS\Framework\MouseCursorReverter.cs" />
     <Compile Include="System\Collections\Extensions\BatchExtensions.cs" />
     <Compile Include="System\Collections\Extensions\CollectionsExtensions.cs" />
+    <Compile Include="System\Collections\Extensions\DictionaryExtensions.cs" />
     <Compile Include="System\Collections\Extensions\DistinctByExtensions.cs" />
     <Compile Include="System\Collections\Interfaces\INotifyDictionaryChanged.cs" />
     <Compile Include="System\Collections\Interfaces\INotifyDictionaryChanging.cs" />
