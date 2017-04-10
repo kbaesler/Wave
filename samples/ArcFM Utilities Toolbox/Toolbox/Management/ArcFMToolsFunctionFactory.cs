@@ -25,18 +25,18 @@ namespace Wave.Geoprocessing.Toolbox.Management
         public ArcFMToolsFunctionFactory()
             : base("ArcFM Properties Tools", "ArcFM Properties Tools")
         {
-            this.Functions.Add(new AddClassModelName(this), "Feature Class");
-            this.Functions.Add(new RemoveClassModelName(this), "Feature Class");
-            this.Functions.Add(new AddSpecialAU(this), "Feature Class");
-            this.Functions.Add(new RemoveSpecialAU(this), "Feature Class");
+            this.Add(new AddClassModelName(this), "Feature Class");
+            this.Add(new RemoveClassModelName(this), "Feature Class");
+            this.Add(new AddSpecialAU(this), "Feature Class");
+            this.Add(new RemoveSpecialAU(this), "Feature Class");
 
-            this.Functions.Add(new AddFieldModelName(this), "Field");
-            this.Functions.Add(new RemoveFieldModelName(this), "Field");
-            this.Functions.Add(new RemoveAttributeAU(this), "Field");
-            this.Functions.Add(new AddAttributeAU(this), "Field");
+            this.Add(new AddFieldModelName(this), "Field");
+            this.Add(new RemoveFieldModelName(this), "Field");
+            this.Add(new RemoveAttributeAU(this), "Field");
+            this.Add(new AddAttributeAU(this), "Field");
 
-            this.Functions.Add(new RemoveRelationshipAU(this), "Relationship");
-            this.Functions.Add(new AddRelationshipAU(this), "Relationship");
+            this.Add(new RemoveRelationshipAU(this), "Relationship");
+            this.Add(new AddRelationshipAU(this), "Relationship");
         }
 
         #endregion

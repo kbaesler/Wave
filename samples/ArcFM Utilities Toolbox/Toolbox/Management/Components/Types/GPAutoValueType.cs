@@ -10,7 +10,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
     /// 
     /// </summary>
     /// <seealso cref="ESRI.ArcGIS.Geoprocessing.IGPStringType"/>
-    public interface IGPAutoValueType : IGPStringType
+    public interface IGPAutoValueType 
     {
 
     }

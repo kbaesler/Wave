@@ -296,7 +296,7 @@ namespace ESRI.ArcGIS.Geoprocessing
                 throw new ArgumentOutOfRangeException("values", "The values and names arrays must contain the same number of elements.");
 
             IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
-            for (int i = 0; i < values.Length - 1; i++)
+            for (int i = 0; i < values.Length; i++)
                 codedValueDomain.AddStringCode(values[i].ToString(), names[i].ToString());
 
             var parameter = source.CreateParameter(name, displayName, parameterType, parameterDirection, dataType);
