@@ -369,7 +369,6 @@
     <Compile Include="Miner\Interop\Process\PxVersionStatus.cs" />
     <Compile Include="Miner\Interop\Internal\MinerRuntimeAuthorization.cs" />
     <Compile Include="Miner\Interop\RuntimeAuthorization.cs" />
-    <Compile Include="Miner\Geodatabase\SubtypeDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
