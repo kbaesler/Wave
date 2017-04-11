@@ -429,7 +429,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Wave.Extensions.Esri\Wave.Extensions.Esri.v4.5.csproj">
       <Project>{0fed75ab-83c2-43b0-a540-96646ca9df47}</Project>
-      <Name>Wave.Extensions.Esri</Name>
+      <Name>Wave.Extensions.Esri.v4.5</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
