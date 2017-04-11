@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 
 using ESRI.ArcGIS.ADF;
@@ -19,10 +18,24 @@ namespace Wave.Extensions.Esri.Tests
     {
         #region Fields
 
-        private ComReleaser _ComReleaser;
+        private readonly string _PathName;
+
         private IMap _Map;
         private EsriRuntimeAuthorization _RuntimeAuthorization;
-        private IWorkspace _Workspace;
+
+        #endregion
+
+        #region Constructors
+
+        protected EsriTests()
+            : this(Path.GetFullPath(Settings.Default.Minerville))
+        {
+        }
+
+        protected EsriTests(string pathName)
+        {
+            _PathName = pathName;
+        }
 
         #endregion
 
@@ -34,10 +47,7 @@ namespace Wave.Extensions.Esri.Tests
         /// <value>
         ///     The COM releaser.
         /// </value>
-        protected ComReleaser ComReleaser
-        {
-            get { return _ComReleaser; }
-        }
+        protected ComReleaser ComReleaser { get; private set; }
 
         /// <summary>
         ///     Gets the workspace.
@@ -45,10 +55,7 @@ namespace Wave.Extensions.Esri.Tests
         /// <value>
         ///     The workspace.
         /// </value>
-        protected IWorkspace Workspace
-        {
-            get { return _Workspace; }
-        }
+        protected IWorkspace Workspace { get; private set; }
 
         #endregion
 
@@ -80,14 +87,14 @@ namespace Wave.Extensions.Esri.Tests
                 _RuntimeAuthorization = null;
             }
 
-            if (_ComReleaser != null)
+            if (ComReleaser != null)
             {
-                _ComReleaser.Dispose();
-                _ComReleaser = null;
+                ComReleaser.Dispose();
+                ComReleaser = null;
             }
 
-            _Workspace = null;
-        }        
+            Workspace = null;
+        }
 
         /// <summary>
         ///     Setups this instance.
@@ -95,13 +102,13 @@ namespace Wave.Extensions.Esri.Tests
         [TestInitialize]
         public virtual void Setup()
         {
-            _ComReleaser = new ComReleaser();
+            ComReleaser = new ComReleaser();
             _RuntimeAuthorization = new EsriRuntimeAuthorization();
 
             Assert.IsTrue(_RuntimeAuthorization.Initialize(esriLicenseProductCode.esriLicenseProductCodeStandard));
 
-            _Workspace = WorkspaceFactories.Open(Path.GetFullPath(Settings.Default.Minerville));
-            _ComReleaser.ManageLifetime(_Workspace);
+            Workspace = WorkspaceFactories.Open(_PathName);
+            ComReleaser.ManageLifetime(Workspace);
         }
 
         #endregion
@@ -118,7 +125,7 @@ namespace Wave.Extensions.Esri.Tests
                 return _Map;
 
             _Map = new MapClass();
-            _ComReleaser.ManageLifetime(_Map);
+            ComReleaser.ManageLifetime(_Map);
 
             foreach (var o in this.GetTestClasses())
             {
@@ -133,17 +140,27 @@ namespace Wave.Extensions.Esri.Tests
         }
 
         /// <summary>
+        /// Gets the feature class with the name,
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        protected virtual IFeatureClass GetFeatureClass(string tableName)
+        {
+            IFeatureWorkspace fws = (IFeatureWorkspace)this.Workspace;
+            IFeatureClass testClass = fws.OpenFeatureClass(tableName);
+
+            ComReleaser.ManageLifetime(testClass);
+
+            return testClass;
+        }
+
+        /// <summary>
         ///     Gets the test class.
         /// </summary>
         /// <returns></returns>
         protected virtual IFeatureClass GetTestClass()
         {
-            IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
-            IFeatureClass testClass = fws.OpenFeatureClass("TRANSFORMER");
-
-            _ComReleaser.ManageLifetime(testClass);
-
-            return testClass;
+            return this.GetFeatureClass("TRANSFORMER");
         }
 
         /// <summary>
@@ -159,7 +176,7 @@ namespace Wave.Extensions.Esri.Tests
                 IFeatureClass testClass = fws.OpenFeatureClass(name);
                 Assert.IsNotNull(testClass);
 
-                _ComReleaser.ManageLifetime(testClass);
+                ComReleaser.ManageLifetime(testClass);
 
                 yield return testClass;
             }
@@ -174,7 +191,7 @@ namespace Wave.Extensions.Esri.Tests
             IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
             ITable testTable = fws.OpenTable("ASSEMBLY");
 
-            _ComReleaser.ManageLifetime(testTable);
+            ComReleaser.ManageLifetime(testTable);
 
             return testTable;
         }
@@ -194,10 +211,10 @@ namespace Wave.Extensions.Esri.Tests
         {
             if (disposing)
             {
-                if (_ComReleaser != null)
-                    _ComReleaser.Dispose();
+                if (ComReleaser != null)
+                    ComReleaser.Dispose();
 
-                _ComReleaser = null;
+                ComReleaser = null;
 
                 if (_RuntimeAuthorization != null)
                     _RuntimeAuthorization.Dispose();

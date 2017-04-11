@@ -9,7 +9,6 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
-
     #region Enumerations
 
     /// <summary>
@@ -634,6 +633,41 @@ namespace ESRI.ArcGIS.Geodatabase
             int supportedValue = predicateValue & supportedPredicates;
 
             return supportedValue > 0;
+        }
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
+        ///     <paramref name="withUndoRedo" /> and
+        ///     <paramref name="multiuserEditSessionMode" /> parameters.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">
+        ///     if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such
+        ///     suppression).
+        /// </param>
+        /// <param name="multiuserEditSessionMode">
+        ///     The edit session mode that can be used to indicate non-versioned or versioned
+        ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
+        /// </param>
+        /// <param name="error">
+        ///     The error handling action that occurred during commit when true is returned the error has been
+        ///     handled.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing the state of the operation.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="System.ArgumentException">
+        ///     The workspace does not support the edit session
+        ///     mode.;multiuserEditSessionMode
+        /// </exception>
+        public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
+        {
+            return source.PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, exception => true);
         }
 
         /// <summary>

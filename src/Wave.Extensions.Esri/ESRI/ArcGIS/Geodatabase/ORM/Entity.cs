@@ -20,16 +20,6 @@ namespace ESRI.ArcGIS.Geodatabase
 
         private readonly Dictionary<string, PropertyInfo> _EntityFieldAttributes;
 
-        /// <summary>
-        ///     The delete action
-        /// </summary>
-        public Action<IRow> DeleteAction;
-
-        /// <summary>
-        ///     The update action
-        /// </summary>
-        public Action<IRow> UpdateAction;
-
         #endregion
 
         #region Constructors
@@ -39,8 +29,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         protected Entity()
         {
-            _EntityFieldAttributes = this.GetType().GetProperties()
-                .Select(p => new { p, a = Attribute.GetCustomAttributes(p).OfType<EntityFieldAttribute>().SingleOrDefault() })
+            _EntityFieldAttributes = this.GetType()
+                .GetProperties()
+                .Select(p => new {p, a = Attribute.GetCustomAttributes(p).OfType<EntityFieldAttribute>().SingleOrDefault()})
                 .Where(o => o.a != null)
                 .ToDictionary(o => o.a, o => o.p)
                 .ToDictionary(p => p.Key.FieldName, p => p.Value);
@@ -66,6 +57,16 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             get { return this.IsDataBound && this.Row.HasOID ? this.Row.OID : -1; }
         }
+
+        /// <summary>
+        ///     The delete action
+        /// </summary>
+        public Action<IRow> DeleteAction { get; set; }
+
+        /// <summary>
+        ///     The update action
+        /// </summary>
+        public Action<IRow> UpdateAction { get; set; }
 
         #endregion
 
@@ -127,7 +128,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 var buffer = context.CreateRowBuffer();
                 this.CopyTo(buffer);
 
-                return (int)cursor.InsertRow(buffer);
+                return (int) cursor.InsertRow(buffer);
             }
         }
 
@@ -193,7 +194,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="buffer">The buffer.</param>
         public virtual void CopyTo(IRowBuffer buffer)
         {
-            var row = (IRow)buffer;
+            var row = (IRow) buffer;
             var fields = row.Fields.ToDictionary();
 
             foreach (var fieldName in _EntityFieldAttributes.Keys)
@@ -220,7 +221,7 @@ namespace ESRI.ArcGIS.Geodatabase
         public static T Create<T>(IRow row)
             where T : Entity
         {
-            var item = (T)Activator.CreateInstance(typeof(T));
+            var item = (T) Activator.CreateInstance(typeof(T));
             item.Bind(row);
 
             return item;
@@ -332,7 +333,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         public TShape Shape
         {
-            get { return (this.IsDataBound ? ((IFeature)this.Row).Shape : this.TemporaryShape) as TShape; }
+            get { return (this.IsDataBound ? ((IFeature) this.Row).Shape : this.TemporaryShape) as TShape; }
             set
             {
                 if (this.IsDataBound)
@@ -377,10 +378,10 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public int Insert(IFeatureClass context)
         {
-            var oid = this.Insert(((ITable)context));
+            var oid = this.Insert(((ITable) context));
 
             if (this.HasShape)
-                this.TemporaryShape = ((IFeature)this.Row).Shape;
+                this.TemporaryShape = ((IFeature) this.Row).Shape;
 
             return oid;
         }
@@ -395,7 +396,7 @@ namespace ESRI.ArcGIS.Geodatabase
             this.Bind(context.Fetch(oid));
 
             if (this.HasShape)
-                this.TemporaryShape = ((IFeature)this.Row).Shape;
+                this.TemporaryShape = ((IFeature) this.Row).Shape;
         }
 
         #endregion
