@@ -46,12 +46,31 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 IArray list = new ArrayClass();
 
                 list.Add(this.CreateCompositeParameter("in_table", "Table or Feature Class", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new DETableTypeClass(), new DEFeatureClassTypeClass()));
-                list.Add(this.CreateParameter("in_subtype", "Subtype", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass()));
-                list.Add(this.CreateParameter("in_field", "Field", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass()));
 
-                list.Add(this.CreateMultiValueParameter("in_create", "Create", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMAttrAUStrategy>(), true));
-                list.Add(this.CreateMultiValueParameter("in_update", "Update", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMAttrAUStrategy>(), true));
-                list.Add(this.CreateMultiValueParameter("in_delete", "Delete", esriGPParameterType.esriGPParameterTypeOptional, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMAttrAUStrategy>(), true));
+                var parameter = this.CreateParameter("in_subtype", "Subtype", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass());
+                parameter.AddDependency("in_table");
+
+                list.Add(parameter);
+               
+                parameter = this.CreateMultiValueParameter("in_field", "Field", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true);
+                parameter.AddDependency("in_table");
+
+                list.Add(parameter);
+
+                parameter = this.CreateParameter("in_value", "Auto Updater", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPAutoValueType<IMMAttrAUStrategy>());
+                
+                var components = this.LoadComponents<IMMAttrAUStrategy>(AttrAutoUpdateStrategy.CatID);
+                parameter.Domain = base.CreateDomain(components);
+
+                list.Add(parameter);
+
+                string[] values = { "mmEventFeatureCreate", "mmEventFeatureUpdate", "mmEventFeatureDelete" };
+                string[] names = { "On Create", "On Update", "On Delete" };
+
+                parameter = this.CreateMultiValueParameter("in_actions", "Actions", esriGPParameterType.esriGPParameterTypeRequired, esriGPParameterDirection.esriGPParameterDirectionInput, new GPStringTypeClass(), true);
+                parameter.Domain = base.CreateDomain(names, values);
+                
+                list.Add(parameter);              
 
                 list.Add(this.CreateParameter("out_results", "Results", esriGPParameterType.esriGPParameterTypeDerived, esriGPParameterDirection.esriGPParameterDirectionOutput, new GPBooleanTypeClass()));
 
@@ -92,32 +111,29 @@ namespace Wave.Geoprocessing.Toolbox.Management
                     subtypeCodes.AddRange(subtypes.Subtypes.AsEnumerable().Select(o => o.Key));
                 }
 
-                IGPMultiValue onCreate = (IGPMultiValue)parameters["in_create"];
-                IGPMultiValue onUpdate = (IGPMultiValue)parameters["in_update"];
-                IGPMultiValue onDelete = (IGPMultiValue)parameters["in_delete"];
-
-                // Load the "Attribute" AUs.
+                var actions = ((IGPMultiValue) parameters["in_actions"]).AsEnumerable().Select(o => o.GetAsText());
+                var values = ((IGPAutoValue)parameters["in_value"]).UID;
                 var uids = new Dictionary<mmEditEvent, IEnumerable<IUID>>();
-                uids.Add(mmEditEvent.mmEventFeatureCreate, onCreate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
-                uids.Add(mmEditEvent.mmEventFeatureUpdate, onUpdate.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
-                uids.Add(mmEditEvent.mmEventFeatureDelete, onDelete.AsEnumerable().Cast<IGPAutoValue>().Select(o => o.UID));
 
-                IGPValue field = parameters["in_field"];
-                int index = table.FindField(field.GetAsText());
-
-                // Enumerate through all of the subtypes making changes.
-                foreach (var subtypeCode in subtypeCodes)
+                IGPMultiValue fields = (IGPMultiValue)parameters["in_field"];
+                var fieldNames = fields.AsEnumerable().Select(o => o.GetAsText());
+                var indexes = table.Fields.ToDictionary(o => fieldNames.Contains(o.Name)).Select(o => o.Value);
+                foreach (var index in indexes)
                 {
-                    // Load the configurations for the table and subtype.
-                    IMMSubtype mmsubtype = configTopLevel.GetSubtypeByID(table, subtypeCode, false);
+                    // Enumerate through all of the subtypes making changes.
+                    foreach (var subtypeCode in subtypeCodes)
+                    {
+                        // Load the configurations for the table and subtype.
+                        IMMSubtype mmsubtype = configTopLevel.GetSubtypeByID(table, subtypeCode, false);
 
-                    // Load the field configurations.
-                    IMMField mmfield = null;
-                    mmsubtype.GetField(index, ref mmfield);
+                        // Load the field configurations.
+                        IMMField mmfield = null;
+                        mmsubtype.GetField(index, ref mmfield);
 
-                    // Update the list to have these UIDs removed.
-                    ID8List list = (ID8List)mmfield;
-                    base.Add(uids, list, messages);
+                        // Update the list to have these UIDs removed.
+                        ID8List list = (ID8List) mmfield;
+                        base.Add(uids, list, messages);
+                    }
                 }
 
                 // Commit the changes to the database.
@@ -152,29 +168,11 @@ namespace Wave.Geoprocessing.Toolbox.Management
                 {
                     IGPParameterEdit3 parameter = (IGPParameterEdit3)parameters["in_field"];
                     parameter.Domain = base.GetFields(table);
-                    string fieldName = utilities.UnpackGPValue(parameter).GetAsText();
 
-                    parameter = (IGPParameterEdit3)parameters["in_subtype"];
+                    parameter = (IGPParameterEdit3) parameters["in_subtype"];
                     parameter.Domain = base.GetSubtypes(table);
-                    
-                    IGPValue subtype = utilities.UnpackGPValue(parameter);
-                    if (!subtype.IsEmpty())
-                    {
-                        if (!string.IsNullOrEmpty(fieldName))
-                        {
-                            IField field = table.Fields.Field[table.FindField(fieldName)];
-                            var components = this.LoadComponents<IMMAttrAUStrategyEx>(AttrAutoUpdateStrategy.CatID);
 
-                            parameter = (IGPParameterEdit3)parameters["in_create"];
-                            parameter.Domain = base.CreateDomain(components, o => o.Enabled[table, field]);
-
-                            parameter = (IGPParameterEdit3)parameters["in_update"];
-                            parameter.Domain = base.CreateDomain(components, o => o.Enabled[table, field]);
-
-                            parameter = (IGPParameterEdit3)parameters["in_delete"];
-                            parameter.Domain = base.CreateDomain(components, o => o.Enabled[table, field]);
-                        }
-                    }
+                   
                 }
             }
         }

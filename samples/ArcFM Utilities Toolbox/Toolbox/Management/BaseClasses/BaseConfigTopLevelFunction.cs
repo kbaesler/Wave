@@ -76,6 +76,26 @@ namespace Wave.Geoprocessing.Toolbox.Management
         }
 
         /// <summary>
+        /// Gets the components from the registry that satisfy the predicate and selector.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="components">The components.</param>
+        /// <returns>
+        /// Returns a <see cref="IGPDomain" /> representing the coded value domain.
+        /// </returns>
+        protected IGPDomain CreateDomain<TValue>(IEnumerable<GPAutoValue<TValue>> components)
+        {
+            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
+
+            foreach (var o in components)
+            {
+                codedValueDomain.AddCode(o, o.Name);
+            }        
+
+            return (IGPDomain)codedValueDomain;
+        }
+
+        /// <summary>
         ///     Gets the components from the registry that satisfy the predicate and selector.
         /// </summary>
         /// <typeparam name="TValue">The type of the value.</typeparam>
@@ -139,6 +159,23 @@ namespace Wave.Geoprocessing.Toolbox.Management
             }
 
             return (IGPDomain) codedValueDomain;
+        }
+
+        /// <summary>
+        /// Gets the coded value domain.
+        /// </summary>
+        /// <param name="names">The names.</param>
+        /// <param name="values">The values.</param>
+        /// <returns>
+        /// Returns a <see cref="IGPDomain" /> representing the coded value domain.
+        /// </returns>
+        protected IGPDomain CreateDomain(string[] names, string[] values)
+        {
+            IGPCodedValueDomain codedValueDomain = new GPCodedValueDomainClass();
+            for (int i = 0; i < values.Length; i++)
+                codedValueDomain.AddStringCode(values[i], names[i]);
+
+            return (IGPDomain)codedValueDomain;
         }
 
         /// <summary>

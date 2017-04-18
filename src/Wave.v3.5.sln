@@ -1,16 +1,21 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{056D1A53-FEF4-49C5-B811-6D251CA9E149}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.v3.5", "Wave.Extensions.Esri\Wave.Extensions.Esri.v3.5.csproj", "{0FED75AB-83C2-43B0-A540-96646CA9DF47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Esri.v3.5", "Wave.Extensions.Esri\Wave.Extensions.Esri.v3.5.csproj", "{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.v3.5", "Wave.Extensions.Miner\Wave.Extensions.Miner.v3.5.csproj", "{5224C687-F534-4120-8998-FA242556A7CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Extensions.Miner.v3.5", "Wave.Extensions.Miner\Wave.Extensions.Miner.v3.5.csproj", "{8C6DD73A-F999-453C-8E5E-74D8542F5F76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{98D30B05-317B-4948-9AD6-BC8152C91E2B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,22 +25,22 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|x86.ActiveCfg = Debug|x86
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Debug|x86.Build.0 = Debug|x86
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|Any CPU.ActiveCfg = Release|x86
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|Any CPU.Build.0 = Release|x86
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|x86.ActiveCfg = Release|x86
-		{0FED75AB-83C2-43B0-A540-96646CA9DF47}.Release|x86.Build.0 = Release|x86
-		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|x86.ActiveCfg = Debug|x86
-		{5224C687-F534-4120-8998-FA242556A7CD}.Debug|x86.Build.0 = Debug|x86
-		{5224C687-F534-4120-8998-FA242556A7CD}.Release|Any CPU.ActiveCfg = Release|x86
-		{5224C687-F534-4120-8998-FA242556A7CD}.Release|Any CPU.Build.0 = Release|x86
-		{5224C687-F534-4120-8998-FA242556A7CD}.Release|x86.ActiveCfg = Release|x86
-		{5224C687-F534-4120-8998-FA242556A7CD}.Release|x86.Build.0 = Release|x86
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Debug|x86.ActiveCfg = Debug|x86
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Debug|x86.Build.0 = Debug|x86
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Release|Any CPU.ActiveCfg = Release|x86
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Release|Any CPU.Build.0 = Release|x86
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Release|x86.ActiveCfg = Release|x86
+		{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}.Release|x86.Build.0 = Release|x86
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Debug|x86.ActiveCfg = Debug|x86
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Debug|x86.Build.0 = Debug|x86
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Release|Any CPU.ActiveCfg = Release|x86
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Release|Any CPU.Build.0 = Release|x86
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Release|x86.ActiveCfg = Release|x86
+		{8C6DD73A-F999-453C-8E5E-74D8542F5F76}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
