@@ -28,8 +28,8 @@ namespace ESRI.ArcGIS.Location
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
         public override ITable Execute(OverlayRouteEventData eventData, IWorkspace workspace, ITrackCancel trackCancel)
         {
-            var eventTable = workspace.GetTable("", eventData.EventTableName);
-            var overlayTable = workspace.GetTable("", eventData.OverlayTableName);
+            var eventTable = workspace.GetTable(eventData.EventTableName);
+            var overlayTable = workspace.GetTable(eventData.OverlayTableName);
 
             if (eventTable.HasOID && overlayTable.HasOID && !string.IsNullOrEmpty(eventData.WhereClause))
             {

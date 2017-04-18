@@ -27,7 +27,7 @@ namespace ESRI.ArcGIS.Location
         /// <exception cref="System.ArgumentException">This operation is applicable only for line events.</exception>
         public override ITable Execute(ConcatenateRouteEventData eventData, IWorkspace workspace, ITrackCancel trackCancel)
         {
-            var eventTable = workspace.GetTable("", eventData.EventTableName);
+            var eventTable = workspace.GetTable(eventData.EventTableName);
             var linear = eventData.Segmentation as RouteMeasureLineSegmentation;
             if (linear == null) throw new ArgumentException("This operation is applicable only for line events.");
 

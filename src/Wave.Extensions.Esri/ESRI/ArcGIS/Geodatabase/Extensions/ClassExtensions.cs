@@ -248,7 +248,7 @@ namespace ESRI.ArcGIS.Geodatabase
             IExportOperation operation = new ExportOperationClass();
             operation.ExportFeatureClass(inputDatasetName, filter, selection, geometryDef, outputFeatureClass, handle);
 
-            var table = workspace.GetFeatureClass("", tableName);
+            var table = workspace.GetFeatureClass(tableName);
             return table;
         }
 
@@ -839,7 +839,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             if (!conflicts)
             {
-                return workspace.GetFeatureClass("", name);
+                return workspace.GetFeatureClass(name);
             }
 
             return null;

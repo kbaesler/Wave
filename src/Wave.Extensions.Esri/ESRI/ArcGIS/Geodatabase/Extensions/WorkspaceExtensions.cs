@@ -111,7 +111,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source.Contains(datasetName.Type, datasetName.Name))
             {
-                var table = source.GetTable("", datasetName.Name);
+                var table = source.GetTable(datasetName.Name);
                 table.Delete();
             }
         }
@@ -143,6 +143,71 @@ namespace ESRI.ArcGIS.Geodatabase
             if (sw == null) throw new NotSupportedException();
 
             return sw.OpenQueryCursor(commandText);
+        }
+
+        /// <summary>
+        ///     Finds the dataset using the specified dataset type and name
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="datasetType">Type of the dataset.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>Returns a <see cref="IDatasetName" /> representing the dataset name that matches the name specified.</returns>
+        public static IDatasetName Find(this IWorkspace source, esriDatasetType datasetType, string name)
+        {
+            Predicate<IDatasetName> predicate =
+                ds =>
+                {
+                    if (ds.Name == null) return false;
+
+                    return (source.Type == esriWorkspaceType.esriLocalDatabaseWorkspace ||
+                            source.Type == esriWorkspaceType.esriFileSystemWorkspace)
+                        ? string.Equals(ds.Name, name, StringComparison.OrdinalIgnoreCase)
+                        : ds.Name.EndsWith("." + name, StringComparison.OrdinalIgnoreCase);
+                };
+
+            return source.Find(datasetType, predicate);
+        }
+
+        /// <summary>
+        /// Finds the dataset using the specified dataset type and name
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="datasetType">Type of the dataset.</param>
+        /// <param name="predicate">The function delegate that determines it should be returned.</param>
+        /// <returns>
+        /// Returns a <see cref="IDatasetName" /> representing the dataset name that matches the name specified.
+        /// </returns>
+        public static IDatasetName Find(this IWorkspace source, esriDatasetType datasetType, Predicate<IDatasetName> predicate)
+        {
+            return source.DatasetNames[datasetType].Find(predicate);
+        }
+
+        /// <summary>
+        ///     Finds the dataset that satisfies the specified function predicate.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The function delegate that determines it should be returned.</param>
+        /// <returns>
+        ///     Returns a <see cref="IDatasetName" /> representing the dataset that satisfiied the predicate; otherwise <c>null</c>
+        ///     .
+        /// </returns>
+        public static IDatasetName Find(this IEnumDatasetName source, Predicate<IDatasetName> predicate)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                IDatasetName dataset;
+                while ((dataset = source.Next()) != null)
+                {
+                    if (predicate(dataset))
+                        return dataset;
+
+                    var ds = dataset.SubsetNames.Find(predicate);
+                    if (ds != null) return ds;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -364,42 +429,32 @@ namespace ESRI.ArcGIS.Geodatabase
             return source.GetEditChanges(editDataChangesType, func => true, predicate => true, differenceTypes);
         }
 
-        /// <summary>
-        ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns>
-        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IFeatureClass GetFeatureClass(this IWorkspace source, string tableName)
-        {
-            return source.GetFeatureClass("", tableName);
-        }
 
         /// <summary>
         ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
         /// <param name="tableName">Name of the table.</param>
         /// <returns>
         ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">tableName</exception>
         /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IFeatureClass GetFeatureClass(this IWorkspace source, string schemaName, string tableName)
+        public static IFeatureClass GetFeatureClass(this IWorkspace source, string tableName)
         {
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
-            return ((IFeatureWorkspace) source).OpenFeatureClass(name);
+            IDatabaseConnectionInfo2 dci = source as IDatabaseConnectionInfo2;
+            if (dci != null)
+            {
+                var name = ((ISQLSyntax) source).QualifyTableName(dci.ConnectedDatabase, dci.ConnectionServer, tableName);
+                return ((IFeatureWorkspace) source).OpenFeatureClass(name);
+            }
+
+            return ((IFeatureWorkspace) source).OpenFeatureClass(tableName);
         }
 
         /// <summary>
@@ -492,24 +547,29 @@ namespace ESRI.ArcGIS.Geodatabase
 
         /// <summary>
         ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="relationshipName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
         /// <param name="relationshipName">Name of the relationship table.</param>
         /// <returns>
         ///     Returns a <see cref="IRelationshipClass" /> representing the relationship that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">relationshipName</exception>
         /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IRelationshipClass GetRelationshipClass(this IWorkspace source, string schemaName, string relationshipName)
+        public static IRelationshipClass GetRelationshipClass(this IWorkspace source, string relationshipName)
         {
             if (source == null) return null;
             if (relationshipName == null) throw new ArgumentNullException("relationshipName");
 
-            string name = (string.IsNullOrEmpty(schemaName)) ? relationshipName : schemaName + "." + relationshipName;
-            return ((IFeatureWorkspace) source).OpenRelationshipClass(name);
+            IDatabaseConnectionInfo2 dci = source as IDatabaseConnectionInfo2;
+            if (dci != null)
+            {
+                var name = ((ISQLSyntax) source).QualifyTableName(dci.ConnectedDatabase, dci.ConnectionServer, relationshipName);
+                return ((IFeatureWorkspace) source).OpenRelationshipClass(name);
+            }
+
+            return ((IFeatureWorkspace) source).OpenRelationshipClass(relationshipName);
         }
 
         /// <summary>
@@ -536,7 +596,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> that resides within the
+        ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
@@ -545,32 +605,21 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="ITable" /> representing the table that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">tableName</exception>
         /// <exception cref="System.ArgumentNullException">tableName</exception>
         public static ITable GetTable(this IWorkspace source, string tableName)
-        {
-            return source.GetTable("", tableName);
-        }
-
-        /// <summary>
-        ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns>
-        ///     Returns a <see cref="ITable" /> representing the table that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static ITable GetTable(this IWorkspace source, string schemaName, string tableName)
         {
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
-            return ((IFeatureWorkspace) source).OpenTable(name);
+            IDatabaseConnectionInfo2 dci = source as IDatabaseConnectionInfo2;
+            if (dci != null)
+            {
+                var name = ((ISQLSyntax) source).QualifyTableName(dci.ConnectedDatabase, dci.ConnectionServer, tableName);
+                return ((IFeatureWorkspace) source).OpenTable(name);
+            }
+
+            return ((IFeatureWorkspace) source).OpenTable(tableName);
         }
 
         /// <summary>

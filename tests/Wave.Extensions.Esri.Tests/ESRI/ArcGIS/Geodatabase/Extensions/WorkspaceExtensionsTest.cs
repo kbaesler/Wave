@@ -45,6 +45,23 @@ namespace Wave.Extensions.Esri.Tests
             Assert.IsNotNull(table);
         }
 
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IWorkspace_Find_FeatureClass_IsNotNull()
+        {
+            var ds = base.Workspace.Find(esriDatasetType.esriDTFeatureClass, this.LineFeatureClass);            
+            Assert.IsNotNull(ds);
+        }
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IWorkspace_Find_Table_IsNotNull()
+        {
+            var ds = base.Workspace.Find(esriDatasetType.esriDTTable, this.TableName);
+            Assert.IsNotNull(ds);
+        }
+
         [TestMethod]
         [TestCategory("ESRI")]
         public void IWorkspace_GetFormattedDate_IsNotNull()
@@ -96,7 +113,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IWorkspace_GetRelationship_IsNotNull()
         {
-            var table = base.Workspace.GetRelationshipClass("", this.RelationshipClass);
+            var table = base.Workspace.GetRelationshipClass(this.RelationshipClass);
             Assert.IsNotNull(table);
         }
 

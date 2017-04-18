@@ -258,7 +258,7 @@ namespace ESRI.ArcGIS.Geodatabase
             IExportOperation operation = new ExportOperationClass();
             operation.ExportTable(inputDatasetName, filter, selection, outputClassName, handle);
 
-            ITable table = outputWorkspace.GetTable("", outputTableName);
+            ITable table = outputWorkspace.GetTable(outputTableName);
             foreach (IIndex index in source.Indexes.AsEnumerable())
                 table.AddIndex(index);
 
@@ -863,7 +863,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             if (!conflicts)
             {
-                return workspace.GetTable("", name);
+                return workspace.GetTable(name);
             }
 
             return null;

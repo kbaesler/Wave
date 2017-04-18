@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
@@ -19,22 +20,32 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Exports the version differences to the specified export file.
+        ///     Creates the version or returns the version that already exists.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="target">The target.</param>
-        /// <param name="exportFileName">Name of the export file.</param>
-        /// <param name="exportOption">The export option.</param>
-        /// <param name="overwrite">if set to <c>true</c> when the delta file should be overwritten when it exists.</param>
-        public static void ExportDataChanges(this IVersion source, IVersion target, string exportFileName, esriExportDataChangesOption exportOption, bool overwrite)
+        /// <param name="name">The name.</param>
+        /// <param name="access">The access.</param>
+        /// <param name="description">The description.</param>
+        /// <returns>
+        ///     Returns a <see cref="IVersion" /> representing the version.
+        /// </returns>
+        public static IVersion CreateVersion(this IVersionedWorkspace source, string name, esriVersionAccess access, string description)
         {
-            IVersionDataChangesInit vdci = new VersionDataChangesClass();
-            IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
-            IWorkspaceName wsNameTarget = (IWorkspaceName) ((IDataset) target).FullName;
-            vdci.Init(wsNameSource, wsNameTarget);
+            try
+            {
+                var version = source.DefaultVersion.CreateVersion(name);
+                version.Access = access;
+                version.Description = description;
 
-            IExportDataChanges2 edc = new DataChangesExporterClass();
-            edc.ExportDataChanges(exportFileName, exportOption, (IDataChanges) vdci, overwrite);
+                return version;
+            }
+            catch (COMException e)
+            {
+                if (e.ErrorCode == (int) fdoError.FDO_E_VERSION_ALREADY_EXISTS)
+                    return source.GetVersion(name);
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -91,24 +102,54 @@ namespace ESRI.ArcGIS.Geodatabase
             if (predicate == null) throw new ArgumentNullException("predicate");
             if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
 
-            var list = new Dictionary<string, DeltaRowCollection>();
-
             IVersionDataChangesInit vdci = new VersionDataChangesClass();
             IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
             IWorkspaceName wsNameTarget = (IWorkspaceName) ((IDataset) target).FullName;
             vdci.Init(wsNameSource, wsNameTarget);
 
-            VersionDataChanges vdc = (VersionDataChanges) vdci;
             IDataChanges dataChanges = (IDataChanges) vdci;
-            IDataChangesInfo dci = (IDataChangesInfo) vdc;
+            return dataChanges.GetDataChanges((tableName) => new DeltaRowCollection(tableName, source, target),
+                predicate, dataChangeTypes);
+        }
 
-            IEnumModifiedClassInfo enumMci = dataChanges.GetModifiedClassesInfo();
+        /// <summary>
+        ///     Gets the differences between the <paramref name="source" /> and <paramref name="target" /> versions that need to be
+        ///     checked-in or exported.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="init">The initialize function that creates the delta row collection.</param>
+        /// <param name="predicate">
+        ///     The predicate that defines a set of criteria and determines whether the specified differences
+        ///     will be loaded.
+        /// </param>
+        /// <param name="dataChangeTypes">The data change types.</param>
+        /// <returns>
+        ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
+        ///     key).
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///     target
+        ///     or
+        ///     predicate
+        ///     or
+        ///     dataChangeTypes
+        /// </exception>
+        public static Dictionary<string, DeltaRowCollection> GetDataChanges(this IDataChanges source, Func<string, DeltaRowCollection> init, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
+        {
+            if (source == null) return null;
+            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
+
+            var list = new Dictionary<string, DeltaRowCollection>();
+
+            IDataChangesInfo dci = (IDataChangesInfo) source;
+            IEnumModifiedClassInfo enumMci = source.GetModifiedClassesInfo();
             enumMci.Reset();
             IModifiedClassInfo mci;
             while ((mci = enumMci.Next()) != null)
             {
                 string tableName = mci.ChildClassName;
-                var rows = new DeltaRowCollection(tableName, source, target);
+                var rows = init(tableName);
 
                 using (ComReleaser cr = new ComReleaser())
                 {
@@ -295,21 +336,20 @@ namespace ESRI.ArcGIS.Geodatabase
 
         /// <summary>
         ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
         /// <param name="tableName">Name of the table.</param>
         /// <returns>
         ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IFeatureClass GetFeatureClass(this IVersion source, string schemaName, string tableName)
+        public static IFeatureClass GetFeatureClass(this IVersion source, string tableName)
         {
-            return ((IWorkspace) source).GetFeatureClass(schemaName, tableName);
+            return ((IWorkspace) source).GetFeatureClass(tableName);
         }
+
 
         /// <summary>
         ///     Gets the parent version.
@@ -326,40 +366,71 @@ namespace ESRI.ArcGIS.Geodatabase
             return null;
         }
 
-        /// <summary>
-        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="relationshipName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
-        /// <param name="relationshipName">Name of the relationship table.</param>
-        /// <returns>
-        ///     Returns a <see cref="IRelationshipClass" /> representing the relationship that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IRelationshipClass GetRelationshipClass(this IVersion source, string schemaName, string relationshipName)
-        {
-            return ((IWorkspace) source).GetRelationshipClass(schemaName, relationshipName);
-        }
 
         /// <summary>
         ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
         /// <param name="tableName">Name of the table.</param>
         /// <returns>
         ///     Returns a <see cref="ITable" /> representing the table that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static ITable GetTable(this IVersion source, string schemaName, string tableName)
+        public static ITable GetTable(this IVersion source, string tableName)
         {
-            return ((IWorkspace) source).GetTable(schemaName, tableName);
+            return ((IWorkspace) source).GetTable(tableName);
+        }
+
+        /// <summary>
+        ///     Gets the version.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>Returns a <see cref="IVersion" /> representing the version.</returns>
+        public static IVersion GetVersion(this IVersionedWorkspace source, string name)
+        {
+            try
+            {
+                return source.FindVersion(name);
+            }
+            catch (COMException e)
+            {
+                if (e.ErrorCode == (int) fdoError.FDO_E_VERSION_NOT_FOUND)
+                    return null;
+
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        ///     Gets the locks.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{ILockInfo}" /> representing the locks.</returns>
+        public static IEnumerable<ILockInfo> GetVersionLocks(this IVersion source)
+        {
+            IEnumLockInfo enumLockInfo = source.VersionLocks;
+            ILockInfo lockinfo;
+
+            while ((lockinfo = enumLockInfo.Next()) != null)
+            {
+                yield return lockinfo;
+            }
+        }
+
+        /// <summary>
+        ///     Determines whether this instance is locked.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     <c>true</c> if the specified source is locked; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsLocked(this IVersion source)
+        {
+            return source.GetVersionLocks().Any();
         }
 
         /// <summary>
@@ -387,7 +458,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </exception>
         public static bool PerformOperation(this IVersion source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
-            return ((IWorkspace)source).PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, error => false);
+            return ((IWorkspace) source).PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, error => false);
         }
 
         #endregion
@@ -441,17 +512,19 @@ namespace ESRI.ArcGIS.Geodatabase
             this.CommonAncestorVersion = target == null ? null : ((IVersion2) source).GetCommonAncestor(target);
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DeltaRowCollection" /> class.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <param name="source">The source.</param>
+        public DeltaRowCollection(string tableName, IVersion source)
+            : this(tableName, source, null)
+        {
+        }
+
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        ///     Gets the common ancestor version.
-        /// </summary>
-        /// <value>
-        ///     The common ancestor version.
-        /// </value>
-        public IVersion CommonAncestorVersion { get; private set; }
 
         /// <summary>
         ///     Gets the data change types.
@@ -474,6 +547,14 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             get { return this.All(o => o.IsFeatureClass); }
         }
+
+        /// <summary>
+        ///     Gets the common ancestor version.
+        /// </summary>
+        /// <value>
+        ///     The common ancestor version.
+        /// </value>
+        public IVersion CommonAncestorVersion { get; private set; }
 
         /// <summary>
         ///     Gets the source (or current) version.
