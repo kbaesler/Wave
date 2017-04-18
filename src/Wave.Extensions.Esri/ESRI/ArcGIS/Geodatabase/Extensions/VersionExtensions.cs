@@ -102,59 +102,28 @@ namespace ESRI.ArcGIS.Geodatabase
             if (predicate == null) throw new ArgumentNullException("predicate");
             if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
 
-            IVersionDataChangesInit vdci = new VersionDataChangesClass();
-            IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
-            IWorkspaceName wsNameTarget = (IWorkspaceName) ((IDataset) target).FullName;
-            vdci.Init(wsNameSource, wsNameTarget);
-
-            IDataChanges dataChanges = (IDataChanges) vdci;
-            return dataChanges.GetDataChanges((tableName) => new DeltaRowCollection(tableName, source, target),
-                predicate, dataChangeTypes);
-        }
-
-        /// <summary>
-        ///     Gets the differences between the <paramref name="source" /> and <paramref name="target" /> versions that need to be
-        ///     checked-in or exported.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="init">The initialize function that creates the delta row collection.</param>
-        /// <param name="predicate">
-        ///     The predicate that defines a set of criteria and determines whether the specified differences
-        ///     will be loaded.
-        /// </param>
-        /// <param name="dataChangeTypes">The data change types.</param>
-        /// <returns>
-        ///     Returns a <see cref="Dictionary{String, DeltaRow}" /> representing the differences for the table (or
-        ///     key).
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">
-        ///     target
-        ///     or
-        ///     predicate
-        ///     or
-        ///     dataChangeTypes
-        /// </exception>
-        public static Dictionary<string, DeltaRowCollection> GetDataChanges(this IDataChanges source, Func<string, DeltaRowCollection> init, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
-        {
-            if (source == null) return null;
-            if (predicate == null) throw new ArgumentNullException("predicate");
-            if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
-
             var list = new Dictionary<string, DeltaRowCollection>();
 
-            IDataChangesInfo dci = (IDataChangesInfo) source;
-            IEnumModifiedClassInfo enumMci = source.GetModifiedClassesInfo();
+            IVersionDataChangesInit vdci = new VersionDataChangesClass();
+            IWorkspaceName wsNameSource = (IWorkspaceName)((IDataset)source).FullName;
+            IWorkspaceName wsNameTarget = (IWorkspaceName)((IDataset)target).FullName;
+            vdci.Init(wsNameSource, wsNameTarget);
+
+            IDataChanges dataChanges = (IDataChanges)vdci;
+            IDataChangesInfo dci = (IDataChangesInfo)vdci;
+
+            IEnumModifiedClassInfo enumMci = dataChanges.GetModifiedClassesInfo();
             enumMci.Reset();
             IModifiedClassInfo mci;
             while ((mci = enumMci.Next()) != null)
             {
                 string tableName = mci.ChildClassName;
-                var rows = init(tableName);
+                var rows = new DeltaRowCollection(tableName, source, target);
 
                 using (ComReleaser cr = new ComReleaser())
                 {
                     // Load the copy of the table from the source version.
-                    ITable table = ((IFeatureWorkspace) source).OpenTable(tableName);
+                    ITable table = ((IFeatureWorkspace)source).OpenTable(tableName);
                     cr.ManageLifetime(table);
 
                     // Validate that the table needs to be loaded.
@@ -189,7 +158,6 @@ namespace ESRI.ArcGIS.Geodatabase
 
             return list;
         }
-
         /// <summary>
         ///     Gets the changes between the <paramref name="source" /> (or child) and <paramref name="table" /> (or parent)
         ///     version of the table.
