@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class FeatureExtensionsTest : EsriTests
+    public class FeatureExtensionsTest : RoadwaysTests
     {
         #region Public Methods
 
@@ -14,7 +14,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IFeature_GetDifferences_IsNotNull()
         {
-            var testClass = base.GetTestClass();
+            var testClass = base.GetPointFeatureClass();
             Assert.IsNotNull(testClass);
 
             var feature = testClass.Fetch(1);
@@ -36,7 +36,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IFeature_GetDifferences_IsNull()
         {
-            var testClass = base.GetTestClass();
+            var testClass = base.GetPointFeatureClass();
             Assert.IsNotNull(testClass);
 
             var feature = testClass.Fetch(1);

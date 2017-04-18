@@ -58,16 +58,6 @@ namespace ESRI.ArcGIS.Geodatabase
             get { return this.IsDataBound && this.Row.HasOID ? this.Row.OID : -1; }
         }
 
-        /// <summary>
-        ///     The delete action
-        /// </summary>
-        public Action<IRow> DeleteAction { get; set; }
-
-        /// <summary>
-        ///     The update action
-        /// </summary>
-        public Action<IRow> UpdateAction { get; set; }
-
         #endregion
 
         #region Protected Properties
@@ -102,11 +92,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (this.IsDataBound)
             {
-                if (this.DeleteAction == null)
-                    this.Row.Delete();
-                else
-                    this.DeleteAction(this.Row);
-
+                this.Row.Delete();
                 this.Row = null;
             }
         }
@@ -139,20 +125,13 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (this.IsDataBound)
             {
-                if (this.UpdateAction == null)
+                foreach (var attribute in _EntityFieldAttributes)
                 {
-                    foreach (var attribute in _EntityFieldAttributes)
-                    {
-                        var value = attribute.Value.GetValue(this, null);
-                        this.SetValue(attribute.Key, value);
-                    }
+                    var value = attribute.Value.GetValue(this, null);
+                    this.SetValue(attribute.Key, value);
+                }
 
-                    this.Row.Store();
-                }
-                else
-                {
-                    this.UpdateAction(this.Row);
-                }
+                this.Row.Store();
             }
         }
 
@@ -203,9 +182,9 @@ namespace ESRI.ArcGIS.Geodatabase
                     continue;
 
                 var field = row.Table.Fields.Field[fields[fieldName]];
-                if ((field.Type != esriFieldType.esriFieldTypeGeometry &&
-                     field.Type != esriFieldType.esriFieldTypeRaster &&
-                     field.Type != esriFieldType.esriFieldTypeXML) && field.Editable)
+                if (field.Type != esriFieldType.esriFieldTypeGeometry &&
+                    field.Type != esriFieldType.esriFieldTypeRaster &&
+                    field.Type != esriFieldType.esriFieldTypeXML && field.Editable)
                 {
                     row.Update(fields[fieldName], this.GetValue(fieldName));
                 }

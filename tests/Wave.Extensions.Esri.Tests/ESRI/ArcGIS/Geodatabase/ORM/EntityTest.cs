@@ -11,23 +11,14 @@ using Wave.Extensions.Esri.Tests.Properties;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class EntityTest : EsriTests
+    public class EntityTest : RoadwaysTests
     {
-        #region Constructors
-
-        public EntityTest()
-            : base(Settings.Default.Roadways)
-        {
-        }
-
-        #endregion
-
         #region Public Methods
 
         [TestMethod]
         public void Entity_Map_Centerlines_Any()
         {
-            var testClass = this.GetFeatureClass("Centerline");
+            var testClass = this.GetLineFeatureClass();
             var centerlines = testClass.Map<Centerline>(new QueryFilterClass() {WhereClause = "OBJECTID < 10"});
             Assert.IsTrue(centerlines.Any());
         }
@@ -35,11 +26,12 @@ namespace Wave.Extensions.Esri.Tests
         [TestMethod]
         public void Entity_Map_Crashes_Any()
         {
-            var testClass = this.GetFeatureClass("Crashes");
-            var centerlines = testClass.Map<Crash>(new QueryFilterClass() {WhereClause = "OBJECTID < 10"});
-            Assert.IsTrue(centerlines.Any());
+            var testClass = this.GetTable();
+            var crashes = testClass.Map<Crash>(new QueryFilterClass() {WhereClause = "OBJECTID < 10"});
+            Assert.IsTrue(crashes.Any());
         }
 
+      
         #endregion
     }
 

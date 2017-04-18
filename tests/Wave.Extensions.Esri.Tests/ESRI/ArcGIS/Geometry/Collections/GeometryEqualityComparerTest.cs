@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class GeometryEqualityComparerTest : EsriTests
+    public class GeometryEqualityComparerTest : RoadwaysTests
     {
         #region Public Methods
 

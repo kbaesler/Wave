@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class LayerExtensionsTest : EsriTests
+    public class LayerExtensionsTest : RoadwaysTests
     {
         #region Public Methods
 

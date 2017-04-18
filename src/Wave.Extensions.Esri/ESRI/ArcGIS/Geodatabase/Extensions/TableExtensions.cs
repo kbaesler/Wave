@@ -594,15 +594,15 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            string className = ((IDataset) source).Name;
-            int index = className.IndexOf('.');
-            if (index > 0)
-            {
-                string ownerName = className.Substring(0, index);
-                return ownerName;
-            }
+            string name;
+            string owner;
+            string tableName;
 
-            return null;
+            IDataset ds = (IDataset)source;
+            IWorkspace workspace = ds.Workspace;
+            ((ISQLSyntax)workspace).ParseTableName(ds.Name, out name, out owner, out tableName);
+
+            return owner;
         }
 
         /// <summary>
@@ -684,15 +684,15 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            string className = ((IDataset) source).Name;
-            int index = className.IndexOf('.');
-            if (index > 0)
-            {
-                string tableName = className.Substring(index + 1, className.Length - index - 1);
-                return tableName;
-            }
+            string name;
+            string owner;
+            string tableName;
 
-            return className;
+            IDataset ds = (IDataset)source;
+            IWorkspace workspace = ds.Workspace;
+            ((ISQLSyntax)workspace).ParseTableName(ds.Name, out name, out owner, out tableName);
+
+            return tableName;
         }
 
         /// <summary>

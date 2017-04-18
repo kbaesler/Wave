@@ -27,11 +27,18 @@ namespace Wave.Extensions.Esri.Tests
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="EsriTests" /> class.
+        /// </summary>
         protected EsriTests()
-            : this(Path.GetFullPath(Settings.Default.Minerville))
+            : this(Path.GetFullPath(Settings.Default.Roadways))
         {
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="EsriTests" /> class.
+        /// </summary>
+        /// <param name="pathName">Name of the path.</param>
         protected EsriTests(string pathName)
         {
             _PathName = pathName;
@@ -41,20 +48,16 @@ namespace Wave.Extensions.Esri.Tests
 
         #region Protected Properties
 
-        /// <summary>
-        ///     Gets the COM releaser.
-        /// </summary>
-        /// <value>
-        ///     The COM releaser.
-        /// </value>
-        protected ComReleaser ComReleaser { get; private set; }
+        protected virtual string[] FeatureClassNames
+        {
+            get { return new[] {this.LineFeatureClass, this.PointFeatureClass}; }
+        }
 
-        /// <summary>
-        ///     Gets the workspace.
-        /// </summary>
-        /// <value>
-        ///     The workspace.
-        /// </value>
+        protected abstract string LineFeatureClass { get; }
+        protected abstract string PointFeatureClass { get; }
+        protected abstract string RelationshipClass { get; }
+        protected abstract string TableName { get; }
+        protected ComReleaser ComReleaser { get; private set; }
         protected IWorkspace Workspace { get; private set; }
 
         #endregion
@@ -115,10 +118,6 @@ namespace Wave.Extensions.Esri.Tests
 
         #region Protected Methods
 
-        /// <summary>
-        ///     Creates the map.
-        /// </summary>
-        /// <returns></returns>
         protected virtual IMap CreateMap()
         {
             if (_Map != null)
@@ -139,14 +138,9 @@ namespace Wave.Extensions.Esri.Tests
             return _Map;
         }
 
-        /// <summary>
-        /// Gets the feature class with the name,
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <returns></returns>
         protected virtual IFeatureClass GetFeatureClass(string tableName)
         {
-            IFeatureWorkspace fws = (IFeatureWorkspace)this.Workspace;
+            IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
             IFeatureClass testClass = fws.OpenFeatureClass(tableName);
 
             ComReleaser.ManageLifetime(testClass);
@@ -154,24 +148,30 @@ namespace Wave.Extensions.Esri.Tests
             return testClass;
         }
 
-        /// <summary>
-        ///     Gets the test class.
-        /// </summary>
-        /// <returns></returns>
-        protected virtual IFeatureClass GetTestClass()
+        protected IFeatureClass GetLineFeatureClass()
         {
-            return this.GetFeatureClass("TRANSFORMER");
+            return this.GetFeatureClass(this.LineFeatureClass);
         }
 
-        /// <summary>
-        ///     Gets the test classes.
-        /// </summary>
-        /// <returns></returns>
+        protected IFeatureClass GetPointFeatureClass()
+        {
+            return this.GetFeatureClass(this.PointFeatureClass);
+        }
+
+        protected virtual ITable GetTable()
+        {
+            IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
+            ITable testTable = fws.OpenTable(this.TableName);
+
+            ComReleaser.ManageLifetime(testTable);
+
+            return testTable;
+        }
+
         protected virtual IEnumerable<IFeatureClass> GetTestClasses()
         {
             IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
-            var names = new[] {"TRANSFORMER", "ANCHORGUY"};
-            foreach (var name in names)
+            foreach (var name in this.FeatureClassNames)
             {
                 IFeatureClass testClass = fws.OpenFeatureClass(name);
                 Assert.IsNotNull(testClass);
@@ -180,20 +180,6 @@ namespace Wave.Extensions.Esri.Tests
 
                 yield return testClass;
             }
-        }
-
-        /// <summary>
-        ///     Gets the test table.
-        /// </summary>
-        /// <returns></returns>
-        protected virtual ITable GetTestTable()
-        {
-            IFeatureWorkspace fws = (IFeatureWorkspace) this.Workspace;
-            ITable testTable = fws.OpenTable("ASSEMBLY");
-
-            ComReleaser.ManageLifetime(testTable);
-
-            return testTable;
         }
 
         #endregion
@@ -221,6 +207,81 @@ namespace Wave.Extensions.Esri.Tests
 
                 _RuntimeAuthorization = null;
             }
+        }
+
+        #endregion
+    }
+
+    [TestClass]
+    public abstract class MinervilleTests : EsriTests
+    {
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="MinervilleTests" /> class.
+        /// </summary>
+        protected MinervilleTests()
+            : base(Settings.Default.Minerville)
+        {
+        }
+
+        #endregion
+
+        #region Protected Properties
+
+        protected override string LineFeatureClass
+        {
+            get { return "TRANSFORMER"; }
+        }
+
+        protected override string PointFeatureClass
+        {
+            get { return "ANCHORGUY"; }
+        }
+
+        protected override string TableName
+        {
+            get { return "ASSEMBLY"; }
+        }
+
+        #endregion
+    }
+
+    [TestClass]
+    public abstract class RoadwaysTests : EsriTests
+    {
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RoadwaysTests" /> class.
+        /// </summary>
+        protected RoadwaysTests()
+            : base(Settings.Default.Roadways)
+        {
+        }
+
+        #endregion
+
+        #region Protected Properties
+
+        protected override string LineFeatureClass
+        {
+            get { return "CENTERLINE"; }
+        }
+
+        protected override string PointFeatureClass
+        {
+            get { return "CALIBRATION_POINT"; }
+        }
+
+        protected override string RelationshipClass
+        {
+            get { return "Redline__ATTACHREL"; }
+        }
+
+        protected override string TableName
+        {
+            get { return "CRASHES"; }
         }
 
         #endregion
