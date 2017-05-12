@@ -14,6 +14,7 @@ namespace ESRI.ArcGIS.Geodatabase
     ///     An row level entity object.
     /// </summary>
     /// <seealso cref="IEntity{ITable}" />
+    [Serializable]
     public class Entity : IEntity<ITable>, INotifyPropertyChanged
     {
         #region Fields
@@ -31,7 +32,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             _EntityFieldAttributes = this.GetType()
                 .GetProperties()
-                .Select(p => new {p, a = Attribute.GetCustomAttributes(p).OfType<EntityFieldAttribute>().SingleOrDefault()})
+                .Select(p => new { p, a = Attribute.GetCustomAttributes(p).OfType<EntityFieldAttribute>().SingleOrDefault() })
                 .Where(o => o.a != null)
                 .ToDictionary(o => o.a, o => o.p)
                 .ToDictionary(p => p.Key.FieldName, p => p.Value);
@@ -74,6 +75,14 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets or sets the fields.
+        /// </summary>
+        /// <value>
+        ///     The fields.
+        /// </value>
+        protected IDictionary<string, int> Fields { get; set; }
+
+        /// <summary>
         ///     Gets or sets the row.
         /// </summary>
         /// <value>
@@ -114,7 +123,12 @@ namespace ESRI.ArcGIS.Geodatabase
                 var buffer = context.CreateRowBuffer();
                 this.CopyTo(buffer);
 
-                return (int) cursor.InsertRow(buffer);
+                var oid = (int)cursor.InsertRow(buffer);
+                cursor.Flush();
+
+                this.Bind(context, oid);
+
+                return oid;
             }
         }
 
@@ -155,10 +169,12 @@ namespace ESRI.ArcGIS.Geodatabase
 
             if (this.IsDataBound)
             {
-                foreach (var attribute in _EntityFieldAttributes)
+                this.Fields = row.Fields.ToDictionary();
+
+                foreach (var field in _EntityFieldAttributes)
                 {
-                    var value = this.GetValue(attribute.Key);
-                    attribute.Value.SetValue(this, Convert.IsDBNull(value) ? null : value, null);
+                    var value = this.GetValue(field.Key);
+                    field.Value.SetValue(this, Convert.IsDBNull(value) ? null : value, null);
                 }
             }
         }
@@ -168,12 +184,21 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Binds the entity to the underlying bounding object (or row).
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        public void Bind(Entity entity)
+        {
+            entity.Bind(this.Row);
+        }
+
+        /// <summary>
         ///     Copies the contents of the entity into the buffer.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
         public virtual void CopyTo(IRowBuffer buffer)
         {
-            var row = (IRow) buffer;
+            var row = (IRow)buffer;
             var fields = row.Fields.ToDictionary();
 
             foreach (var fieldName in _EntityFieldAttributes.Keys)
@@ -186,7 +211,7 @@ namespace ESRI.ArcGIS.Geodatabase
                     field.Type != esriFieldType.esriFieldTypeRaster &&
                     field.Type != esriFieldType.esriFieldTypeXML && field.Editable)
                 {
-                    row.Update(fields[fieldName], this.GetValue(fieldName));
+                    row.Update(fields[fieldName], this.GetValue(fieldName), false);
                 }
             }
         }
@@ -200,7 +225,7 @@ namespace ESRI.ArcGIS.Geodatabase
         public static T Create<T>(IRow row)
             where T : Entity
         {
-            var item = (T) Activator.CreateInstance(typeof(T));
+            var item = (T)Activator.CreateInstance(typeof(T));
             item.Bind(row);
 
             return item;
@@ -211,15 +236,20 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Protected Methods
 
         /// <summary>
-        ///     Binds the entity to specified object from the context.
+        ///     Gets the value.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        protected void Bind(Entity entity)
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns></returns>
+        /// <exception cref="System.MissingFieldException"></exception>
+        protected object GetValue(string fieldName)
         {
-            if (entity == null)
-                return;
+            if (this.IsDataBound)
+                return this.Row.GetValue<object>(this.Fields[fieldName], null);
 
-            this.Bind(entity.Row);
+            if (!_EntityFieldAttributes.ContainsKey(fieldName))
+                throw new MissingFieldException(string.Format("Field '{0}' has not been defined.", fieldName));
+
+            return _EntityFieldAttributes[fieldName].GetValue(this, null);
         }
 
         /// <summary>
@@ -245,37 +275,16 @@ namespace ESRI.ArcGIS.Geodatabase
                 OnPropertyChanged(expression.Member.Name);
         }
 
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Gets the value.
-        /// </summary>
-        /// <param name="fieldName">Name of the field.</param>
-        /// <returns></returns>
-        /// <exception cref="System.MissingFieldException"></exception>
-        private object GetValue(string fieldName)
-        {
-            if (this.IsDataBound)
-                return this.Row.GetValue<object>(fieldName, null);
-
-            if (!_EntityFieldAttributes.ContainsKey(fieldName))
-                throw new MissingFieldException(string.Format("Field '{0}' has not been defined.", fieldName));
-
-            return _EntityFieldAttributes[fieldName].GetValue(this, null);
-        }
-
         /// <summary>
         ///     Sets the value.
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="value">The value.</param>
-        private void SetValue(string fieldName, object value)
+        protected void SetValue(string fieldName, object value)
         {
             if (this.IsDataBound)
             {
-                this.Row.Update(fieldName, value, true);
+                this.Row.Update(this.Fields[fieldName], value, false);
             }
             else
             {
@@ -312,7 +321,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         public TShape Shape
         {
-            get { return (this.IsDataBound ? ((IFeature) this.Row).Shape : this.TemporaryShape) as TShape; }
+            get { return (this.IsDataBound ? ((IFeature)this.Row).Shape : this.TemporaryShape) as TShape; }
             set
             {
                 if (this.IsDataBound)
@@ -357,10 +366,10 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public int Insert(IFeatureClass context)
         {
-            var oid = this.Insert(((ITable) context));
+            var oid = this.Insert(((ITable)context));
 
             if (this.HasShape)
-                this.TemporaryShape = ((IFeature) this.Row).Shape;
+                this.TemporaryShape = ((IFeature)this.Row).Shape;
 
             return oid;
         }
@@ -375,7 +384,7 @@ namespace ESRI.ArcGIS.Geodatabase
             this.Bind(context.Fetch(oid));
 
             if (this.HasShape)
-                this.TemporaryShape = ((IFeature) this.Row).Shape;
+                this.TemporaryShape = ((IFeature)this.Row).Shape;
         }
 
         #endregion
