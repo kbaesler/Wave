@@ -40,23 +40,20 @@
                     <Label  Grid.Column="4"
                             Content="Owner:" />
                     <ComboBox Grid.Column="6"
-                              ItemsSource="{Binding Owners}" />
+                              ItemsSource="{Binding Owners}"
+                              SelectedItem="{Binding Owner}"/>
                 </Grid>
             </GroupBox>
         </Grid>
         <Grid Row="2">
             <ListView Name="ListView"
                       SelectionMode="Single"
-                      AlternationCount="2"
                       ItemsSource="{Binding Versions}"
                       SelectedItem="{Binding Version}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
-                        <Style.Triggers>
-                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                                <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ControlLightBrushKey}}"></Setter>
-                            </Trigger>
-                        </Style.Triggers>
+                        <Setter Property="BorderBrush" Value="{StaticResource {x:Static SystemColors.ControlLightBrushKey}}" />
+                        <Setter Property="BorderThickness" Value="0,0,0,1" />
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>

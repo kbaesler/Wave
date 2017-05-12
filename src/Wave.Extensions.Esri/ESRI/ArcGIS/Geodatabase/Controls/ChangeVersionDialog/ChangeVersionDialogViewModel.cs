@@ -143,7 +143,11 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 OnPropertyChanged(() => Versions);
 
-                this.Owners = value.SourceCollection.OfType<VersionInfo>().DistinctBy(o => o.Owner).Select(o => o.Owner).ToList();
+                var list = new List<string>();
+                list.Add("");
+                list.AddRange(value.SourceCollection.OfType<VersionInfo>().DistinctBy(o => o.Owner).Select(o => o.Owner));
+
+                this.Owners = list;
             }
         }
 
@@ -172,10 +176,10 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Private Methods
 
         /// <summary>
-        ///     Applies the filter.
+        /// Applies the filter.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="owner">if set to <c>true</c> when the value is the owner.</param>
+        /// <param name="owner">if set to <c>true</c> the owner property initiated the filter.</param>
         private void ApplyFilter(string value, bool owner)
         {
             if (this.Versions == null)
@@ -188,9 +192,35 @@ namespace ESRI.ArcGIS.Geodatabase
                     return true;
 
                 if (owner)
-                    return version.Owner.Equals(value, StringComparison.OrdinalIgnoreCase);
+                {
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        if (string.IsNullOrEmpty(this.Name))
+                            return true;
 
-                return version.Name.StartsWith(value, StringComparison.OrdinalIgnoreCase);
+                        return version.Name.StartsWith(this.Name, StringComparison.OrdinalIgnoreCase);
+                    }
+
+                    if (string.IsNullOrEmpty(this.Name))
+                        return version.Owner.StartsWith(value, StringComparison.OrdinalIgnoreCase);
+
+                    return version.Owner.StartsWith(value, StringComparison.OrdinalIgnoreCase)
+                           && version.Name.StartsWith(this.Name, StringComparison.OrdinalIgnoreCase);
+                }
+                
+                if (string.IsNullOrEmpty(value))
+                {
+                    if (string.IsNullOrEmpty(this.Owner))
+                        return true;
+
+                    return version.Owner.StartsWith(this.Owner, StringComparison.OrdinalIgnoreCase);
+                }
+
+                if (string.IsNullOrEmpty(this.Owner))
+                    return version.Name.StartsWith(value, StringComparison.OrdinalIgnoreCase);
+
+                return version.Owner.StartsWith(this.Owner, StringComparison.OrdinalIgnoreCase)
+                       && version.Name.StartsWith(value, StringComparison.OrdinalIgnoreCase);
             };
         }
 
