@@ -169,13 +169,13 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Finds the dataset using the specified dataset type and name
+        ///     Finds the dataset using the specified dataset type and name
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="datasetType">Type of the dataset.</param>
         /// <param name="predicate">The function delegate that determines it should be returned.</param>
         /// <returns>
-        /// Returns a <see cref="IDatasetName" /> representing the dataset name that matches the name specified.
+        ///     Returns a <see cref="IDatasetName" /> representing the dataset name that matches the name specified.
         /// </returns>
         public static IDatasetName Find(this IWorkspace source, esriDatasetType datasetType, Predicate<IDatasetName> predicate)
         {
@@ -441,21 +441,22 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="ArgumentNullException">tableName</exception>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">tableName</exception>
         public static IFeatureClass GetFeatureClass(this IWorkspace source, string tableName)
         {
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            IDatabaseConnectionInfo2 dci = source as IDatabaseConnectionInfo2;
-            if (dci != null)
-            {
-                var name = ((ISQLSyntax) source).QualifyTableName(dci.ConnectedDatabase, dci.ConnectionServer, tableName);
-                return ((IFeatureWorkspace) source).OpenFeatureClass(name);
-            }
+            if (source.Contains(esriDatasetType.esriDTFeatureClass, tableName))
+                return ((IFeatureWorkspace) source).OpenFeatureClass(tableName);
 
-            return ((IFeatureWorkspace) source).OpenFeatureClass(tableName);
+            var ds = source.Find(esriDatasetType.esriDTFeatureClass, tableName);
+            if (ds != null)
+                return ((IFeatureWorkspace) source).OpenFeatureClass(ds.Name);
+
+            throw new ArgumentOutOfRangeException("tableName");
         }
+
 
         /// <summary>
         ///     Gets all of the feature classes in the workspace.
@@ -546,30 +547,30 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="relationshipName" /> in the
+        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="tableName" /> in the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="relationshipName">Name of the relationship table.</param>
+        /// <param name="tableName">Name of the relationship table.</param>
         /// <returns>
         ///     Returns a <see cref="IRelationshipClass" /> representing the relationship that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="ArgumentNullException">relationshipName</exception>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IRelationshipClass GetRelationshipClass(this IWorkspace source, string relationshipName)
+        /// <exception cref="ArgumentOutOfRangeException">tableName</exception>
+        public static IRelationshipClass GetRelationshipClass(this IWorkspace source, string tableName)
         {
             if (source == null) return null;
-            if (relationshipName == null) throw new ArgumentNullException("relationshipName");
+            if (tableName == null) throw new ArgumentNullException("tableName");
 
-            IDatabaseConnectionInfo2 dci = source as IDatabaseConnectionInfo2;
-            if (dci != null)
-            {
-                var name = ((ISQLSyntax) source).QualifyTableName(dci.ConnectedDatabase, dci.ConnectionServer, relationshipName);
-                return ((IFeatureWorkspace) source).OpenRelationshipClass(name);
-            }
+            if (source.Contains(esriDatasetType.esriDTRelationshipClass, tableName))
+                return ((IFeatureWorkspace) source).OpenRelationshipClass(tableName);
 
-            return ((IFeatureWorkspace) source).OpenRelationshipClass(relationshipName);
+            var ds = source.Find(esriDatasetType.esriDTRelationshipClass, tableName);
+            if (ds != null)
+                return ((IFeatureWorkspace) source).OpenRelationshipClass(ds.Name);
+
+            throw new ArgumentOutOfRangeException("tableName");
         }
 
         /// <summary>
@@ -606,20 +607,20 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="ArgumentNullException">tableName</exception>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">tableName</exception>
         public static ITable GetTable(this IWorkspace source, string tableName)
         {
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            IDatabaseConnectionInfo2 dci = source as IDatabaseConnectionInfo2;
-            if (dci != null)
-            {
-                var name = ((ISQLSyntax) source).QualifyTableName(dci.ConnectedDatabase, dci.ConnectionServer, tableName);
-                return ((IFeatureWorkspace) source).OpenTable(name);
-            }
+            if (source.Contains(esriDatasetType.esriDTTable, tableName))
+                return ((IFeatureWorkspace) source).OpenTable(tableName);
 
-            return ((IFeatureWorkspace) source).OpenTable(tableName);
+            var ds = source.Find(esriDatasetType.esriDTTable, tableName);
+            if (ds != null)
+                return ((IFeatureWorkspace) source).OpenTable(ds.Name);
+
+            throw new ArgumentOutOfRangeException("tableName");
         }
 
         /// <summary>

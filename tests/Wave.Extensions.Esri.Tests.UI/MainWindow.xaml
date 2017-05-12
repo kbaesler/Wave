@@ -15,7 +15,10 @@
                 Content="Auto Complete"
                 Command="{Binding AutoCompleteCommand}" />
         <Button 
-                Content="Busy Indicator"
-                Command="{Binding BusyIndicatorCommand}" />
+            Content="Busy Indicator"
+            Command="{Binding BusyIndicatorCommand}" />
+        <Button 
+            Content="Change Version"
+            Command="{Binding ChangeVersionCommand}" />
     </StackPanel>
 </Window>

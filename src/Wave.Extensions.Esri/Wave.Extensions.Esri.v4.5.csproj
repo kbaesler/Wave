@@ -233,6 +233,11 @@
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialog.xaml.cs">
+      <DependentUpon>ChangeVersionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialogViewModel.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\IChangeVersionDialog2.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\DynamicRowBuffer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\Extensions\DynamicRowBufferExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
@@ -489,6 +494,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="System\Windows\Controls\DelayTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

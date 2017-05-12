@@ -20,6 +20,44 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
+        ///     Creates an <see cref="IEnumerable{ILockInfo}"/>
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{ILockInfo}" /> representing the locks.</returns>
+        public static IEnumerable<ILockInfo> AsEnumerable(this IEnumLockInfo source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+
+                ILockInfo lockInfo;
+                while ((lockInfo = source.Next()) != null)
+                {
+                    yield return lockInfo;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Creates an <see cref="IEnumerable{IVersionInfo}"/>
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{IVersionInfo}" /> representing the locks.</returns>
+        public static IEnumerable<IVersionInfo> AsEnumerable(this IEnumVersionInfo source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+
+                IVersionInfo vesionInfo;
+                while ((vesionInfo = source.Next()) != null)
+                {
+                    yield return vesionInfo;
+                }
+            }
+        }
+
+        /// <summary>
         ///     Creates the version or returns the version that already exists.
         /// </summary>
         /// <param name="source">The source.</param>
