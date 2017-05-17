@@ -81,14 +81,14 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Defines the data set definition in the specified workspace.
+        /// Defines the data set definition in the specified workspace.
         /// </summary>
         /// <typeparam name="T">The type of dataset.</typeparam>
         /// <param name="source">The output workspace.</param>
         /// <param name="name">The name of the dataset.</param>
         /// <param name="definition">The definition.</param>
         /// <returns>
-        ///     Returns a <see cref="T" /> representing the definition for the dataset.
+        /// Returns a <see cref="IDatasetName" /> representing the definition for the dataset.
         /// </returns>
         public static T Define<T>(this IWorkspace source, string name, T definition)
             where T : IDatasetName
@@ -321,8 +321,8 @@ namespace ESRI.ArcGIS.Geodatabase
 
             var list = new Dictionary<string, List<DifferenceRow>>();
 
-            IWorkspaceEdit2 workspaceEdit2 = (IWorkspaceEdit2) source;
-            if (!workspaceEdit2.IsBeingEdited())
+            IWorkspaceEdit2 workspaceEdit2 = source as IWorkspaceEdit2;
+            if (workspaceEdit2 == null || !workspaceEdit2.IsBeingEdited())
                 throw new InvalidOperationException("The workspace must be within an edit session in order to determine the edit changes.");
 
             IDataChangesEx dataChanges = workspaceEdit2.EditDataChanges[editDataChangesType];
@@ -702,10 +702,6 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="operation">
         ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
         ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
-        /// </param>
-        /// <param name="error">
-        ///     The error handling action that occurred during commit when true is returned the error has been
-        ///     handled.
         /// </param>
         /// <returns>
         ///     Returns a <see cref="bool" /> representing the state of the operation.

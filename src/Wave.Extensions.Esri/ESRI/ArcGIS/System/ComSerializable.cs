@@ -136,10 +136,9 @@ namespace ESRI.ArcGIS.esriSystem
         /// <summary>
         /// Deserializes the specified stream from a binary format.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="stream">The stream.</param>
         /// <returns></returns>
-        public static ComSerializable<T> Deserialize<T>(Stream stream)
+        public static ComSerializable<T> Deserialize(Stream stream)
         {
             BinaryFormatter bf = new BinaryFormatter();
             return bf.Deserialize(stream) as ComSerializable<T>;

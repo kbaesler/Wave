@@ -19,7 +19,7 @@ namespace ESRI.ArcGIS.Geodatabase
         private string _Name;
         private string _Owner;
         private List<string> _Owners;
-        private VersionInfo _Version;
+        private ChangeVersionInfo _Version;
         private ICollectionView _Versions;
         private IWorkspace _Workspace;
 
@@ -117,7 +117,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <value>
         ///     The version information.
         /// </value>
-        public VersionInfo Version
+        public ChangeVersionInfo Version
         {
             get { return _Version; }
             set
@@ -145,7 +145,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 var list = new List<string>();
                 list.Add("");
-                list.AddRange(value.SourceCollection.OfType<VersionInfo>().DistinctBy(o => o.Owner).Select(o => o.Owner));
+                list.AddRange(value.SourceCollection.OfType<ChangeVersionInfo>().DistinctBy(o => o.Owner).Select(o => o.Owner));
 
                 this.Owners = list;
             }
@@ -166,7 +166,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 OnPropertyChanged(() => Workspace);
 
-                var source = ((IVersionedWorkspace) value).Versions.AsEnumerable().Select(o => new VersionInfo(o));
+                var source = ((IVersionedWorkspace) value).Versions.AsEnumerable().Select(o => new ChangeVersionInfo(o));
                 this.Versions = CollectionViewSource.GetDefaultView(source);
             }
         }
@@ -187,7 +187,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             this.Versions.Filter += o =>
             {
-                VersionInfo version = o as VersionInfo;
+                ChangeVersionInfo version = o as ChangeVersionInfo;
                 if (version == null)
                     return true;
 
@@ -230,7 +230,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// <summary>
     /// An observable object for the <see cref="IVersionInfo"/>
     /// </summary>
-    class VersionInfo : Observable, IVersionInfo
+    class ChangeVersionInfo : Observable, IVersionInfo
     {
         #region Fields
 
@@ -241,10 +241,10 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="VersionInfo" /> class.
+        ///     Initializes a new instance of the <see cref="ChangeVersionInfo" /> class.
         /// </summary>
         /// <param name="declaringType">Type of the declaring.</param>
-        public VersionInfo(IVersionInfo declaringType)
+        public ChangeVersionInfo(IVersionInfo declaringType)
         {
             _DeclaringType = declaringType;
         }
@@ -346,7 +346,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         public IVersionInfo Parent
         {
-            get { return new VersionInfo(_DeclaringType.Parent); }
+            get { return new ChangeVersionInfo(_DeclaringType.Parent); }
         }
 
         /// <summary>

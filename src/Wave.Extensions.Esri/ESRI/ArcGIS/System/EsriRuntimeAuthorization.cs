@@ -102,10 +102,11 @@ namespace ESRI.ArcGIS.esriSystem
             {
                 if (RuntimeManager.ActiveRuntime == null)
                 {
-                    var e = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
-                    this.OnResolveRuntimeBinding(e);
+                    var eventArgs = new RuntimeManagerEventArgs(RuntimeManager.InstalledRuntimes);
+                    this.OnResolveRuntimeBinding(eventArgs);
 
-                    RuntimeManager.Bind(e.ProductCode);
+                    if (!RuntimeManager.Bind(eventArgs.ProductCode))
+                        throw new Exception(string.Format("Product: {0}: Unavailable", eventArgs.ProductCode));
                 }
 
                 return _AoInit ?? (_AoInit = new AoInitializeClass());
@@ -171,14 +172,14 @@ namespace ESRI.ArcGIS.esriSystem
                 foreach (var item in base.ProductStatus)
                 {
                     var status = this.GetProductStatus(this.License as ILicenseInformation, item.Key, item.Value);
-                    msg.AppendLine(status);
+                    msg.AppendFormat("{0}", status);
                 }
             }
 
             foreach (var item in base.ExtensionStatus)
             {
                 var status = this.GetExtensionStatus(this.License as ILicenseInformation, item.Key, item.Value);
-                msg.AppendLine(status);
+                msg.AppendFormat(" + {0}", status);
             }
 
             return msg.ToString();
