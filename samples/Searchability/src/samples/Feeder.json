@@ -1,0 +1,81 @@
+{
+  "aliasName": "Feeder",
+  "name": "Feeder",
+  "items": [
+    {
+      "__type": "layer",
+      "aliasName": "Transformer",
+      "name": "Transformer",
+      "fields": [        
+        {
+          "aliasName": "Feeder ID",
+          "name": "FEEDERID",
+          "value": null,
+          "visible": false
+        },
+        {
+          "aliasName": "Feeder ID 2",
+          "name": "FEEDERID2",
+          "value": null,
+          "visible": false
+        }
+      ],
+      "itemType": 4,
+      "relationships": [
+        
+      ],
+      "nameAsClassModelName": false,
+      "layerDefinition": false
+    },
+    {
+      "__type": "layer",
+      "aliasName": "Primary Overhead Electric Line Segment",
+      "name": "Overhead Primary Conductor",
+      "fields": [        
+        {
+          "aliasName": "Feeder ID",
+          "name": "FEEDERID",
+          "value": null,
+          "visible": false
+        },
+        {
+          "aliasName": "Feeder ID 2",
+          "name": "FEEDERID2",
+          "value": null,
+          "visible": false
+        }
+      ],
+      "itemType": 3,
+      "relationships": [
+        
+      ],
+      "nameAsClassModelName": false,
+      "layerDefinition": false
+    },
+    {
+      "__type": "layer",
+      "aliasName": "Primary Underground Electric Line Segment",
+      "name": "Underground Primary Conductor",
+      "fields": [        
+        {
+          "aliasName": "Feeder ID",
+          "name": "FEEDERID",
+          "value": null,
+          "visible": false
+        },
+        {
+          "aliasName": "Feeder ID 2",
+          "name": "FEEDERID2",
+          "value": null,
+          "visible": false
+        }        
+      ],
+      "itemType": 3,
+      "relationships": [
+        
+      ],
+      "nameAsClassModelName": false,
+      "layerDefinition": false
+    }
+  ]
+}

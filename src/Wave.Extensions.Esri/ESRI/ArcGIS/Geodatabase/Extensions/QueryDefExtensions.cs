@@ -1,5 +1,4 @@
 ﻿using ESRI.ArcGIS.ADF;
-using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -11,27 +10,35 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Create a table of the results of the query definition.
+        ///     Returns the number of records affected by executing the query definition.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="primaryKeys">The primary key field names.</param>
-        /// <param name="copyLocally">if set to <c>true</c> if the data must be copied locally.</param>
-        /// <param name="workspace">The workspace that contains the tables.</param>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns>Returns a <see cref="ITable" /> representing the results of the query definition.</returns>
-        public static ITable Evaluate(this IQueryDef source, string primaryKeys, bool copyLocally, IWorkspace workspace, string tableName)
+        /// <returns>
+        ///     Returns a <see cref="int" /> representing the number of records affected.
+        /// </returns>
+        public static int Count(this IQueryDef source)
         {
-            IQueryName2 query = new TableQueryNameClass();
-            query.QueryDef = source;
-            query.PrimaryKey = (!copyLocally) ? primaryKeys : "";
-            query.CopyLocally = copyLocally;
+            string subFields = source.SubFields;
 
-            IDatasetName ds = (IDatasetName)query;
-            ds.WorkspaceName = (IWorkspaceName)((IDataset)workspace).FullName;
-            ds.Name = tableName;
+            try
+            {
+                using (ComReleaser cr = new ComReleaser())
+                {
+                    source.SubFields = "COUNT(*)";
 
-            IName name = (IName)query;
-            return (ITable)name.Open();
+                    ICursor cursor = source.Evaluate();
+                    cr.ManageLifetime(cursor);
+
+                    IRow row = cursor.NextRow();
+                    if (row != null) return row.GetValue(0, 0);
+                }
+
+                return 0;
+            }
+            finally
+            {
+                source.SubFields = subFields;
+            }
         }
 
         #endregion
