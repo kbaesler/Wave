@@ -86,8 +86,8 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the field automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="editEvent" /> the <paramref name="table" /> object class.
+        ///     Gets all of the field ArcFM Auto Updaters that have been configured for the specified
+        ///     <paramref name="editEvent" /> on the <paramref name="table" /> object class for specified fields.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="table">The object class.</param>
@@ -128,8 +128,8 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the field automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="editEvent" /> the <paramref name="table" /> object class.
+        /// Gets all of the field ArcFM Auto Updaters that have been configured for the specified
+        /// <paramref name="editEvent" /> on the <paramref name="table" /> object class for specified fields.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="table">The object class.</param>
@@ -137,14 +137,17 @@ namespace Miner.Interop
         /// <param name="editEvent">The edit event.</param>
         /// <param name="fieldNames">The field names.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
-        ///     object class.
-        /// </returns>       
-        /// <exception cref="ArgumentNullException">
-        ///     fieldNames
-        ///     or
-        ///     table
+        /// Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the subtypes and the
+        /// individual fields.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// fieldNames
+        /// or
+        /// table
         /// </exception>
+        /// <exception cref="ArgumentNullException">fieldNames
+        /// or
+        /// table</exception>
         public static Dictionary<string, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, int subtypeCode, mmEditEvent editEvent, params string[] fieldNames)
         {
             if (source == null) return null;

@@ -298,8 +298,8 @@ namespace System.Native
         ///     user.
         /// </param>
         /// <returns>If the function succeeds, the function returns nonzero.</returns>
-        [DllImport("advapi32.dll", SetLastError = true)]
-        public static extern int LogonUser(string lpszUserName, string lpszDomain, string lpszPassword, LogonType dwLogonType, LogonProvider dwLogonProvider, out SafeTokenHandle phToken);
+        [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int LogonUser(string lpszUserName, string lpszDomain, IntPtr lpszPassword, LogonType dwLogonType, LogonProvider dwLogonProvider, out SafeTokenHandle phToken);
 
         /// <summary>
         ///     The RevertToSelf function terminates the impersonation of a client application.

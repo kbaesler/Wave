@@ -114,8 +114,6 @@ namespace Miner.Interop
         /// <exception cref="System.ArgumentNullException">table</exception>
         public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMRelationshipClass source, mmEditEvent editEvent)
         {
-            if (source == null) return null;
-
             var list = source as ID8List;
             if (list == null) return null;
 
@@ -134,13 +132,11 @@ namespace Miner.Interop
         /// <exception cref="System.ArgumentNullException">table</exception>
         public static IEnumerable<IMMAutoValue> GetAutoValues(this IMMSubtype source, mmEditEvent editEvent)
         {
-            if (source == null) return null;
-
             var list = source as ID8List;
             if (list == null) return null;
 
-            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
-            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.EditEvent == editEvent);
         }
 
         /// <summary>
@@ -161,13 +157,12 @@ namespace Miner.Interop
 
             IMMField field = null;
             source.GetField(index, ref field);
-            if (field == null) return null;
 
             var list = field as ID8List;
             if (list == null) return null;
 
-            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue, 0).Select(o => o.Value);
-            return values.OfType<IMMAutoValue>().Where(o => o.AutoGenID != null && o.EditEvent == editEvent);
+            var values = list.Where(i => i.ItemType == mmd8ItemType.mmitAutoValue).Select(o => o.Value);
+            return values.OfType<IMMAutoValue>().Where(o => o.EditEvent == editEvent);
         }
 
         /// <summary>

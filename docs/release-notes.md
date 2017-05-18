@@ -18,6 +18,7 @@ These are the changes, additions, removals that are actively being worked on and
 - Added `ScrollSynchronizer` class that allows for synchronizing `ScrollViewer` controls in XAML. [^1]
 - Added `STASynchronizationContext` class that dispatched the asynchronous message. [^1]
 - Added `SegmentationExtensions` class that provides extension methods for dealing with *Linear Referencing* and *M-Values*. [^1]
+- Added `Entity` and `EntityFieldAttribute` classes that allow for mapping rows or features within a table or feature class to class files (Object Relational Mapping). [^1] 
 
 ### Fixed 
 - The `AutoCompleteBox` control now supports case-sensitivity and a timed delay (using the `DelayedTextBox`) to delay drop down. [^1]

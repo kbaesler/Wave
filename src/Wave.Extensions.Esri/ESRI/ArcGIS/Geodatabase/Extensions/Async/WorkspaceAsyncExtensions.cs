@@ -122,24 +122,6 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns>
-        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static Task<IFeatureClass> GetFeatureClassAsync(this IWorkspace source, string schemaName, string tableName)
-        {
-            return Task.Run(() => source.GetFeatureClass(schemaName, tableName));
-        }
-
-        /// <summary>
         ///     Gets all of the feature classes in the workspace.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -147,25 +129,6 @@ namespace ESRI.ArcGIS.Geodatabase
         public static Task<IEnumerable<IFeatureClass>> GetFeatureClassesAsync(this IWorkspace source)
         {
             return Task.Run(() => source.GetFeatureClasses());
-        }
-
-
-        /// <summary>
-        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="relationshipName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
-        /// <param name="relationshipName">Name of the relationship table.</param>
-        /// <returns>
-        ///     Returns a <see cref="IRelationshipClass" /> representing the relationship that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static Task<IRelationshipClass> GetRelationshipClassAsync(this IWorkspace source, string schemaName, string relationshipName)
-        {
-            return Task.Run(() => source.GetRelationshipClass(schemaName, relationshipName));
         }
 
         /// <summary>
@@ -176,24 +139,6 @@ namespace ESRI.ArcGIS.Geodatabase
         public static Task<IEnumerable<IRelationshipClass>> GetRelationshipClassesAsync(this IWorkspace source)
         {
             return Task.Run(() => source.GetRelationshipClasses());
-        }
-
-        /// <summary>
-        ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns>
-        ///     Returns a <see cref="ITable" /> representing the table that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static Task<ITable> GetTableAsync(this IWorkspace source, string schemaName, string tableName)
-        {
-            return Task.Run(() => source.GetTable(schemaName, tableName));
         }
 
         /// <summary>

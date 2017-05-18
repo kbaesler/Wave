@@ -8,14 +8,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class CursorExtensionsTest : EsriTests
+    public class CursorExtensionsTest : RoadwaysTests
     {
         #region Public Methods
         [TestMethod]
         [TestCategory("ESRI")]
         public void IFeatureCursor_Batch_ToDictionary_IsTrue()
         {
-            var table = base.GetTestClass();
+            var table = base.GetPointFeatureClass();
 
             using (ComReleaser cr = new ComReleaser())
             {
@@ -37,7 +37,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IFeatureCursor_Batch_ToList_IsTrue()
         {
-            var table = base.GetTestClass();
+            var table = base.GetPointFeatureClass();
 
             using (ComReleaser cr = new ComReleaser())
             {
@@ -59,7 +59,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void ICursor_Batch_ToDictionary_IsTrue()
         {
-            var table = base.GetTestTable();
+            var table = base.GetTable();
 
             using (ComReleaser cr = new ComReleaser())
             {
@@ -81,7 +81,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void ICursor_Batch_ToList_IsTrue()
         {
-            var table = base.GetTestTable();
+            var table = base.GetTable();
 
             using (ComReleaser cr = new ComReleaser())
             {
@@ -103,7 +103,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void ICursor_GetXDocument_Any_Rows()
         {
-            var table = base.GetTestTable();
+            var table = base.GetTable();
 
             using (ComReleaser cr = new ComReleaser())
             {
@@ -122,7 +122,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void ICursor_GetXDocument_NotNull()
         {
-            var table = base.GetTestTable();
+            var table = base.GetTable();
 
             using (ComReleaser cr = new ComReleaser())
             {
@@ -141,7 +141,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void ICursor_GetXDocument_Root_Name_Equal_Test()
         {
-            var table = base.GetTestTable();
+            var table = base.GetTable();
 
             using (ComReleaser cr = new ComReleaser())
             {

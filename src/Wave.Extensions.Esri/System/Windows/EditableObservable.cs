@@ -26,17 +26,16 @@ namespace System.Windows
         /// </summary>
         public virtual void BeginEdit()
         {
-            PropertyInfo[] properties = (this.GetType()).GetProperties
+            PropertyInfo[] properties = this.GetType().GetProperties
                 (BindingFlags.Public | BindingFlags.Instance);
 
             _Properties = new Hashtable(properties.Length - 1);
 
-            for (int i = 0; i < properties.Length; i++)
+            foreach (PropertyInfo t in properties)
             {
-                if (null != properties[i].GetSetMethod())
+                if (t.GetSetMethod() != null)
                 {
-                    object value = properties[i].GetValue(this, null);
-                    _Properties.Add(properties[i].Name, value);
+                    _Properties.Add(t.Name, t.GetValue(this, null));
                 }
             }
         }
@@ -48,14 +47,14 @@ namespace System.Windows
         {
             if (_Properties == null) return;
 
-            PropertyInfo[] properties = (this.GetType()).GetProperties
+            PropertyInfo[] properties = this.GetType().GetProperties
                 (BindingFlags.Public | BindingFlags.Instance);
-            for (int i = 0; i < properties.Length; i++)
+
+            foreach (PropertyInfo t in properties)
             {
-                if (null != properties[i].GetSetMethod())
+                if (t.GetSetMethod() != null)
                 {
-                    object value = _Properties[properties[i].Name];
-                    properties[i].SetValue(this, value, null);
+                    t.SetValue(this, _Properties[t.Name], null);
                 }
             }
 

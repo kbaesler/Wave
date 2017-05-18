@@ -5,16 +5,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class MapExtensionsTest : EsriTests
+    public class MapExtensionsTest : RoadwaysTests
     {
         #region Public Methods
-
         public void IMap_GetFeatureLayer_IsNotNull()
         {
             IMap map = this.CreateMap();
             Assert.IsNotNull(map);
 
-            var testClass = base.GetTestClass();
+            var testClass = base.GetLineFeatureClass();
             var layer = map.GetFeatureLayer(testClass);
             Assert.IsNotNull(layer);
         }
@@ -26,7 +25,7 @@ namespace Wave.Extensions.Esri.Tests
             IMap map = this.CreateMap();
             Assert.IsNotNull(map);
 
-            var testClass = base.GetTestClass();
+            var testClass = base.GetLineFeatureClass();
             var layer = map.GetFeatureLayers(testClass);
             Assert.IsNotNull(layer);
         }

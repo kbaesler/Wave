@@ -9,7 +9,6 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
-
     #region Enumerations
 
     /// <summary>
@@ -78,7 +77,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool Contains(this IWorkspace source, esriDatasetType type, string tableName)
         {
-            return ((IWorkspace2) source).NameExists[type, tableName];
+            return ((IWorkspace2)source).NameExists[type, tableName];
         }
 
         /// <summary>
@@ -94,8 +93,8 @@ namespace ESRI.ArcGIS.Geodatabase
         public static T Define<T>(this IWorkspace source, string name, T definition)
             where T : IDatasetName
         {
-            var ds = (IDataset) source;
-            var workspaceName = (IWorkspaceName) ds.FullName;
+            var ds = (IDataset)source;
+            var workspaceName = (IWorkspaceName)ds.FullName;
 
             definition.WorkspaceName = workspaceName;
             definition.Name = name;
@@ -112,7 +111,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source.Contains(datasetName.Type, datasetName.Name))
             {
-                var table = source.GetTable("", datasetName.Name);
+                var table = source.GetTable(datasetName.Name);
                 table.Delete();
             }
         }
@@ -144,6 +143,71 @@ namespace ESRI.ArcGIS.Geodatabase
             if (sw == null) throw new NotSupportedException();
 
             return sw.OpenQueryCursor(commandText);
+        }
+
+        /// <summary>
+        ///     Finds the dataset using the specified dataset type and name
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="datasetType">Type of the dataset.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>Returns a <see cref="IDatasetName" /> representing the dataset name that matches the name specified.</returns>
+        public static IDatasetName Find(this IWorkspace source, esriDatasetType datasetType, string name)
+        {
+            Predicate<IDatasetName> predicate =
+                ds =>
+                {
+                    if (ds.Name == null) return false;
+
+                    return (source.Type == esriWorkspaceType.esriLocalDatabaseWorkspace ||
+                            source.Type == esriWorkspaceType.esriFileSystemWorkspace)
+                        ? string.Equals(ds.Name, name, StringComparison.OrdinalIgnoreCase)
+                        : ds.Name.EndsWith("." + name, StringComparison.OrdinalIgnoreCase);
+                };
+
+            return source.Find(datasetType, predicate);
+        }
+
+        /// <summary>
+        ///     Finds the dataset using the specified dataset type and name
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="datasetType">Type of the dataset.</param>
+        /// <param name="predicate">The function delegate that determines it should be returned.</param>
+        /// <returns>
+        ///     Returns a <see cref="IDatasetName" /> representing the dataset name that matches the name specified.
+        /// </returns>
+        public static IDatasetName Find(this IWorkspace source, esriDatasetType datasetType, Predicate<IDatasetName> predicate)
+        {
+            return source.DatasetNames[datasetType].Find(predicate);
+        }
+
+        /// <summary>
+        ///     Finds the dataset that satisfies the specified function predicate.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The function delegate that determines it should be returned.</param>
+        /// <returns>
+        ///     Returns a <see cref="IDatasetName" /> representing the dataset that satisfiied the predicate; otherwise <c>null</c>
+        ///     .
+        /// </returns>
+        public static IDatasetName Find(this IEnumDatasetName source, Predicate<IDatasetName> predicate)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                IDatasetName dataset;
+                while ((dataset = source.Next()) != null)
+                {
+                    if (predicate(dataset))
+                        return dataset;
+
+                    var ds = dataset.SubsetNames.Find(predicate);
+                    if (ds != null) return ds;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -226,7 +290,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            IWorkspaceDomains wd = (IWorkspaceDomains) source;
+            IWorkspaceDomains wd = (IWorkspaceDomains)source;
             IEnumDomain domains = wd.Domains;
             return domains.AsEnumerable();
         }
@@ -257,7 +321,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             var list = new Dictionary<string, List<DifferenceRow>>();
 
-            IWorkspaceEdit2 workspaceEdit2 = (IWorkspaceEdit2) source;
+            IWorkspaceEdit2 workspaceEdit2 = (IWorkspaceEdit2)source;
             if (!workspaceEdit2.IsBeingEdited())
                 throw new InvalidOperationException("The workspace must be within an edit session in order to determine the edit changes.");
 
@@ -365,42 +429,32 @@ namespace ESRI.ArcGIS.Geodatabase
             return source.GetEditChanges(editDataChangesType, func => true, predicate => true, differenceTypes);
         }
 
-        /// <summary>
-        ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns>
-        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IFeatureClass GetFeatureClass(this IWorkspace source, string tableName)
-        {
-            return source.GetFeatureClass("", tableName);
-        }
 
         /// <summary>
         ///     Finds the <see cref="IFeatureClass" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
         /// <param name="tableName">Name of the table.</param>
         /// <returns>
         ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IFeatureClass GetFeatureClass(this IWorkspace source, string schemaName, string tableName)
+        /// <exception cref="ArgumentNullException">tableName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">tableName</exception>
+        public static IFeatureClass GetFeatureClass(this IWorkspace source, string tableName)
         {
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
-            return ((IFeatureWorkspace) source).OpenFeatureClass(name);
+            if (source.Contains(esriDatasetType.esriDTFeatureClass, tableName))
+                return ((IFeatureWorkspace)source).OpenFeatureClass(tableName);
+
+            var ds = source.Find(esriDatasetType.esriDTFeatureClass, tableName);
+            if (ds != null)
+                return ((IFeatureWorkspace)source).OpenFeatureClass(ds.Name);
+
+            throw new ArgumentOutOfRangeException("tableName");
         }
 
         /// <summary>
@@ -483,7 +537,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            ISQLSyntax sqlSyntax = (ISQLSyntax) source;
+            ISQLSyntax sqlSyntax = (ISQLSyntax)source;
             string functionName = sqlSyntax.GetFunctionName(sqlFunctionName);
             if (!string.IsNullOrEmpty(functionName))
                 return functionName;
@@ -492,25 +546,30 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="relationshipName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
+        ///     Finds the <see cref="IRelationshipClass" /> with the specified <paramref name="tableName" /> in the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
-        /// <param name="relationshipName">Name of the relationship table.</param>
+        /// <param name="tableName">Name of the relationship table.</param>
         /// <returns>
         ///     Returns a <see cref="IRelationshipClass" /> representing the relationship that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static IRelationshipClass GetRelationshipClass(this IWorkspace source, string schemaName, string relationshipName)
+        /// <exception cref="ArgumentNullException">relationshipName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">tableName</exception>
+        public static IRelationshipClass GetRelationshipClass(this IWorkspace source, string tableName)
         {
             if (source == null) return null;
-            if (relationshipName == null) throw new ArgumentNullException("relationshipName");
+            if (tableName == null) throw new ArgumentNullException("tableName");
 
-            string name = (string.IsNullOrEmpty(schemaName)) ? relationshipName : schemaName + "." + relationshipName;
-            return ((IFeatureWorkspace) source).OpenRelationshipClass(name);
+            if (source.Contains(esriDatasetType.esriDTRelationshipClass, tableName))
+                return ((IFeatureWorkspace)source).OpenRelationshipClass(tableName);
+
+            var ds = source.Find(esriDatasetType.esriDTRelationshipClass, tableName);
+            if (ds != null)
+                return ((IFeatureWorkspace)source).OpenRelationshipClass(ds.Name);
+
+            throw new ArgumentOutOfRangeException("tableName");
         }
 
         /// <summary>
@@ -532,46 +591,35 @@ namespace ESRI.ArcGIS.Geodatabase
             datasets = source.Datasets[esriDatasetType.esriDTRelationshipClass];
             foreach (var dataset in datasets.AsEnumerable())
             {
-                yield return (IRelationshipClass) dataset;
+                yield return (IRelationshipClass)dataset;
             }
         }
 
         /// <summary>
-        ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> that resides within the
-        ///     specified <paramref name="source" /> workspace.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns>
-        ///     Returns a <see cref="ITable" /> representing the table that has the name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static ITable GetTable(this IWorkspace source, string tableName)
-        {
-            return source.GetTable("", tableName);
-        }
-
-        /// <summary>
         ///     Finds the <see cref="ITable" /> with the specified <paramref name="tableName" /> in the
-        ///     <paramref name="schemaName" /> that resides within the
         ///     specified <paramref name="source" /> workspace.
         /// </summary>
         /// <param name="source">The workspace</param>
-        /// <param name="schemaName">Name of the schema (optional).</param>
         /// <param name="tableName">Name of the table.</param>
         /// <returns>
         ///     Returns a <see cref="ITable" /> representing the table that has the name,
         ///     otherwise <c>null</c>.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">tableName</exception>
-        public static ITable GetTable(this IWorkspace source, string schemaName, string tableName)
+        /// <exception cref="ArgumentNullException">tableName</exception>
+        /// <exception cref="ArgumentOutOfRangeException">tableName</exception>
+        public static ITable GetTable(this IWorkspace source, string tableName)
         {
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            string name = (string.IsNullOrEmpty(schemaName)) ? tableName : schemaName + "." + tableName;
-            return ((IFeatureWorkspace) source).OpenTable(name);
+            if (source.Contains(esriDatasetType.esriDTTable, tableName))
+                return ((IFeatureWorkspace)source).OpenTable(tableName);
+
+            var ds = source.Find(esriDatasetType.esriDTTable, tableName);
+            if (ds != null)
+                return ((IFeatureWorkspace)source).OpenTable(ds.Name);
+
+            throw new ArgumentOutOfRangeException("tableName");
         }
 
         /// <summary>
@@ -581,7 +629,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
         public static IEnumerable<string> GetTableNames(this IWorkspace source)
         {
-            var sw = (ISqlWorkspace) source;
+            var sw = (ISqlWorkspace)source;
             return sw.GetTables().AsEnumerable();
         }
 
@@ -626,14 +674,45 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
 
             // Cast to the ISQLSyntax interface and get the supportedPredicates value.
-            ISQLSyntax sqlSyntax = (ISQLSyntax) source;
+            ISQLSyntax sqlSyntax = (ISQLSyntax)source;
             int supportedPredicates = sqlSyntax.GetSupportedPredicates();
 
             // Cast the predicate value to an integer and use bitwise arithmetic to check for support.
-            int predicateValue = (int) predicate;
+            int predicateValue = (int)predicate;
             int supportedValue = predicateValue & supportedPredicates;
 
             return supportedValue > 0;
+        }
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
+        ///     <paramref name="withUndoRedo" /> and
+        ///     <paramref name="multiuserEditSessionMode" /> parameters.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">
+        ///     if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such
+        ///     suppression).
+        /// </param>
+        /// <param name="multiuserEditSessionMode">
+        ///     The edit session mode that can be used to indicate non-versioned or versioned
+        ///     editing for workspaces that support multiuser editing.
+        /// </param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing the state of the operation.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        /// <exception cref="System.ArgumentException">
+        ///     The workspace does not support the edit session
+        ///     mode.;multiuserEditSessionMode
+        /// </exception>
+        public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
+        {
+            return source.PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, handled => false);
         }
 
         /// <summary>
@@ -830,8 +909,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="resolveNameConflict">The resolve name conflict function.</param>
         public static void Transfer(this IWorkspace source, IWorkspace workspace, IEnumName fromNames, out bool conflicts, out IEnumNameMapping enumNameMapping, Func<INameMapping, IName, string> resolveNameConflict)
         {
-            IWorkspaceName targetWorkspaceName = (IWorkspaceName) ((IDataset) workspace).FullName;
-            IName targetName = (IName) targetWorkspaceName;
+            IWorkspaceName targetWorkspaceName = (IWorkspaceName)((IDataset)workspace).FullName;
+            IName targetName = (IName)targetWorkspaceName;
 
             IGeoDBDataTransfer2 transfer = new GeoDBDataTransferClass();
             conflicts = transfer.GenerateNameMapping(fromNames, targetName, out enumNameMapping);

@@ -12,7 +12,7 @@
         ///     The key property
         /// </summary>
         public static readonly DependencyProperty KeyProperty
-            = DependencyProperty.Register("Key", typeof (string), typeof (TokenContainer), new UIPropertyMetadata(null));
+            = DependencyProperty.Register("Key", typeof(string), typeof(TokenContainer), new UIPropertyMetadata(null));
 
         #endregion
 
@@ -23,9 +23,9 @@
         /// </summary>
         static TokenContainer()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof (TokenContainer), new FrameworkPropertyMetadata(typeof (TokenContainer)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TokenContainer), new FrameworkPropertyMetadata(typeof(TokenContainer)));
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="TokenContainer" /> class.
         /// </summary>
@@ -47,7 +47,7 @@
         /// </value>
         public string Key
         {
-            get { return (string) GetValue(KeyProperty); }
+            get { return (string)GetValue(KeyProperty); }
             set { SetValue(KeyProperty, value); }
         }
 

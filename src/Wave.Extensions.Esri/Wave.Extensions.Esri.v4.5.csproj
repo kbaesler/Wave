@@ -42,6 +42,8 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\samples\ArcFM Utilities Toolbox\Toolbox\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -104,6 +106,7 @@
     <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Connection.Local.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Local.dll</HintPath>
@@ -181,8 +184,8 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\..\tests\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -231,6 +234,11 @@
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialog.xaml.cs">
+      <DependentUpon>ChangeVersionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialogViewModel.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\IChangeVersionDialog2.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\DynamicRowBuffer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\Extensions\DynamicRowBufferExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
@@ -279,7 +287,6 @@
     <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Extensions\RouteMeasureSegmentationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\ConcatenateRouteEventtData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\DissolveRouteEventData.cs" />
@@ -292,6 +299,10 @@
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureSegmentation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureLineSegmentation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasurePointSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Entity.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityFieldAttribute.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Extensions\EntityExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\IEntity.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />
@@ -308,6 +319,7 @@
     <Compile Include="ESRI\ArcGIS\Framework\MouseCursorReverter.cs" />
     <Compile Include="System\Collections\Extensions\BatchExtensions.cs" />
     <Compile Include="System\Collections\Extensions\CollectionsExtensions.cs" />
+    <Compile Include="System\Collections\Extensions\DictionaryExtensions.cs" />
     <Compile Include="System\Collections\Extensions\DistinctByExtensions.cs" />
     <Compile Include="System\Collections\Interfaces\INotifyDictionaryChanged.cs" />
     <Compile Include="System\Collections\Interfaces\INotifyDictionaryChanging.cs" />
@@ -424,6 +436,7 @@
     <Compile Include="System\Windows\Converters\BoolToValueConverter.cs" />
     <Compile Include="System\Windows\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="System\Windows\Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="System\Windows\Converters\RatioConverter.cs" />
     <Compile Include="System\Windows\Converters\ValueConverterGroup.cs" />
     <Compile Include="System\Windows\DataValidation.cs" />
     <Compile Include="System\Windows\DelegateCommand.cs" />
@@ -445,6 +458,7 @@
     <Compile Include="System\Windows\Extensions\UIElementExtensions.cs" />
     <Compile Include="System\Windows\Extensions\WindowInteropHelperExtensions.cs" />
     <Compile Include="System\Windows\Observable.cs" />
+    <Compile Include="System\Windows\Validation\RangeValidationRule.cs" />
     <Compile Include="System\Windows\Validation\RegexValidationRule.cs" />
     <Compile Include="System\Windows\ViewModel\BackgroundViewModel.cs" />
     <Compile Include="System\Windows\ViewModel\BaseClasses\BaseViewModel.cs" />
@@ -482,6 +496,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="System\Windows\Controls\DelayTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -499,12 +517,19 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ESRI\ArcGIS\System\Internal\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

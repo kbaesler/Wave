@@ -12,7 +12,7 @@ using Wave.Extensions.Esri.Tests.Properties;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class WorkspaceFactoriesTests : EsriTests
+    public class WorkspaceFactoriesTests : RoadwaysTests
     {
         #region Public Methods        
 

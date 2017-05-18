@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class ObjectEqualityComparerTest : EsriTests
+    public class ObjectEqualityComparerTest : RoadwaysTests
     {
         #region Public Methods
 
@@ -17,7 +17,7 @@ namespace Wave.Extensions.Esri.Tests
         {
             ObjectEqualityComparer comparer = new ObjectEqualityComparer();
 
-            var testClass = base.GetTestClass();
+            var testClass = base.GetPointFeatureClass();
             var rows = testClass.Fetch(1, 2);
 
             Assert.AreEqual(2, rows.Count);
@@ -32,7 +32,7 @@ namespace Wave.Extensions.Esri.Tests
         {
             ObjectEqualityComparer comparer = new ObjectEqualityComparer();
 
-            var testClass = base.GetTestClass();
+            var testClass = base.GetPointFeatureClass();
             var row = testClass.Fetch(1);
 
             var equals = comparer.Equals(row, row);

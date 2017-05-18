@@ -10,6 +10,7 @@ namespace ESRI.ArcGIS.Geodatabase
     {
         #region Public Methods
 
+
         /// <summary>
         ///     Create a table of the results of the query definition.
         /// </summary>

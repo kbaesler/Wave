@@ -9,7 +9,7 @@ namespace ESRI.ArcGIS.Location
     /// Removes redundant information from event tables or separates event tables having more than one descriptive
     /// attribute into individual tables
     /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteOperation{ESRI.ArcGIS.Location.ConcatenateRouteEventData}" />
+    /// <seealso cref="RouteOperation{ConcatenateRouteEventData}" />
     public class ConcatenateRouteOperation : RouteOperation<ConcatenateRouteEventData>
     {
         #region Public Methods
@@ -27,7 +27,7 @@ namespace ESRI.ArcGIS.Location
         /// <exception cref="System.ArgumentException">This operation is applicable only for line events.</exception>
         public override ITable Execute(ConcatenateRouteEventData eventData, IWorkspace workspace, ITrackCancel trackCancel)
         {
-            var eventTable = workspace.GetTable("", eventData.EventTableName);
+            var eventTable = workspace.GetTable(eventData.EventTableName);
             var linear = eventData.Segmentation as RouteMeasureLineSegmentation;
             if (linear == null) throw new ArgumentException("This operation is applicable only for line events.");
 

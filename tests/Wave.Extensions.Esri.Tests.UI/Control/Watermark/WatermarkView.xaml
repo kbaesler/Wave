@@ -6,7 +6,7 @@
     <Grid Margin="5" Width="250">
         <TextBox Height="25">
             <controls:Watermark.Content>
-                <TextBlock Text="Enter text here" Style="{DynamicResource WatermarkTextBlockStyle}"/>
+                <TextBlock Text="Enter text here" />
             </controls:Watermark.Content>
         </TextBox>
     </Grid>

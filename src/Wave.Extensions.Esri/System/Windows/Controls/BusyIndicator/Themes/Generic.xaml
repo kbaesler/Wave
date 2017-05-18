@@ -5,11 +5,12 @@
     <Style TargetType="{x:Type local:BusyIndicator}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:BusyIndicator}">                  
-                    <Canvas         
-                        x:Name="PART_Container"    
-                        HorizontalAlignment="Center" VerticalAlignment="Center"
-                        Background="Transparent" Margin="0" >
+                <ControlTemplate TargetType="{x:Type local:BusyIndicator}">
+                    <Canvas x:Name="PART_Container"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            Margin="0">
                         <Canvas.RenderTransform>
                             <RotateTransform Angle="0" />
                         </Canvas.RenderTransform>

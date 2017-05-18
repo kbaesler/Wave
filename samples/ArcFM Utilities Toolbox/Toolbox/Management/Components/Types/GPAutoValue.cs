@@ -2,6 +2,7 @@
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geoprocessing;
 
 using Miner.Interop;
 
@@ -34,7 +35,7 @@ namespace Wave.Geoprocessing.Toolbox.Management
     /// </summary>
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <seealso cref="ESRI.ArcGIS.Geodatabase.IGPValue" />
-    public class GPAutoValue<TValue> : IGPValue, IGPAutoValue
+    public class GPAutoValue<TValue> : IGPValue, IGPAutoValue, IGPString
     {
         #region Constructors
 
@@ -86,11 +87,17 @@ namespace Wave.Geoprocessing.Toolbox.Management
         /// </value>
         public IUID UID { get; private set; }
 
+        
+
+        #endregion
+        
+        #region Private Properties
+
         /// <summary>
-        ///     Gets or sets the value.
+        ///     Gets or sets the type of the target.
         /// </summary>
         /// <value>
-        ///     The value.
+        ///     The type of the target.
         /// </value>
         public TValue Value { get; set; }
 
@@ -167,5 +174,11 @@ namespace Wave.Geoprocessing.Toolbox.Management
         }
 
         #endregion
+
+        string IGPString.Value
+        {
+            get { return this.GetAsText(); }
+            set { this.SetAsText(value); }
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace System.Windows.Controls
     /// <summary>
     /// </summary>
     /// <seealso cref="System.Windows.Controls.Control" />
-    [TemplatePart(Name = "PART_Container", Type = typeof(Canvas))]
+    [TemplatePart(Name = "PART_Container", Type = typeof (Canvas))]
     public class BusyIndicator : Control
     {
         #region Fields
@@ -34,7 +34,7 @@ namespace System.Windows.Controls
         ///     The circle color property
         /// </summary>
         public static readonly DependencyProperty CircleColorProperty =
-            DependencyProperty.Register("CircleColor", typeof(Brush), typeof(BusyIndicator),
+            DependencyProperty.Register("CircleColor", typeof (Brush), typeof (BusyIndicator),
                 new FrameworkPropertyMetadata(new SolidColorBrush(Color.FromRgb(27, 161, 226)),
                     FrameworkPropertyMetadataOptions.AffectsRender)); // windows 7 blue
 
@@ -42,14 +42,14 @@ namespace System.Windows.Controls
         ///     The circle count property
         /// </summary>
         public static readonly DependencyProperty CircleCountProperty =
-            DependencyProperty.Register("CircleCount", typeof(int), typeof(BusyIndicator),
+            DependencyProperty.Register("CircleCount", typeof (int), typeof (BusyIndicator),
                 new FrameworkPropertyMetadata(12, FrameworkPropertyMetadataOptions.AffectsMeasure, OnCircleCountChanged));
 
         /// <summary>
         ///     The circle radius property
         /// </summary>
         public static readonly DependencyProperty CircleRadiusProperty =
-            DependencyProperty.Register("CircleRadius", typeof(double), typeof(BusyIndicator),
+            DependencyProperty.Register("CircleRadius", typeof (double), typeof (BusyIndicator),
                 new FrameworkPropertyMetadata(3.0, FrameworkPropertyMetadataOptions.AffectsArrange,
                     OnCircleRadiusChanged));
 
@@ -57,35 +57,35 @@ namespace System.Windows.Controls
         ///     The direction property
         /// </summary>
         public static readonly DependencyProperty DirectionProperty =
-            DependencyProperty.Register("Direction", typeof(RotateDirection), typeof(BusyIndicator),
+            DependencyProperty.Register("Direction", typeof (RotateDirection), typeof (BusyIndicator),
                 new UIPropertyMetadata(RotateDirection.Clockwise, OnDirectionChanged));
 
         /// <summary>
         ///     The is spinning property
         /// </summary>
         public static readonly DependencyProperty IsSpinningProperty =
-            DependencyProperty.Register("IsSpinning", typeof(bool), typeof(BusyIndicator),
+            DependencyProperty.Register("IsSpinning", typeof (bool), typeof (BusyIndicator),
                 new UIPropertyMetadata(true, OnIsSpinningChanged));
 
         /// <summary>
         ///     The radius property
         /// </summary>
         public static readonly DependencyProperty RadiusProperty =
-            DependencyProperty.Register("Radius", typeof(double), typeof(BusyIndicator),
+            DependencyProperty.Register("Radius", typeof (double), typeof (BusyIndicator),
                 new FrameworkPropertyMetadata(14.0, FrameworkPropertyMetadataOptions.AffectsMeasure, OnRadiusChanged));
 
         /// <summary>
         ///     The speed property
         /// </summary>
         public static readonly DependencyProperty SpeedProperty =
-            DependencyProperty.Register("Speed", typeof(double), typeof(BusyIndicator),
+            DependencyProperty.Register("Speed", typeof (double), typeof (BusyIndicator),
                 new UIPropertyMetadata(1.0, OnSpeedChanged));
 
         /// <summary>
         ///     The symmetrical arrange property
         /// </summary>
         public static readonly DependencyProperty SymmetricalArrangeProperty =
-            DependencyProperty.Register("SymmetricalArrange", typeof(bool), typeof(BusyIndicator),
+            DependencyProperty.Register("SymmetricalArrange", typeof (bool), typeof (BusyIndicator),
                 new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.AffectsArrange, OnRadiusChanged));
 
         private readonly DoubleAnimation _RotateAnimation = new DoubleAnimation(0, 360,
@@ -103,8 +103,8 @@ namespace System.Windows.Controls
         /// </summary>
         static BusyIndicator()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(BusyIndicator),
-                new FrameworkPropertyMetadata(typeof(BusyIndicator)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof (BusyIndicator),
+                new FrameworkPropertyMetadata(typeof (BusyIndicator)));
         }
 
         #endregion
@@ -119,7 +119,7 @@ namespace System.Windows.Controls
         /// </value>
         public Brush CircleColor
         {
-            get { return (Brush)GetValue(CircleColorProperty); }
+            get { return (Brush) GetValue(CircleColorProperty); }
             set { SetValue(CircleColorProperty, value); }
         }
 
@@ -131,7 +131,7 @@ namespace System.Windows.Controls
         /// </value>
         public int CircleCount
         {
-            get { return (int)GetValue(CircleCountProperty); }
+            get { return (int) GetValue(CircleCountProperty); }
             set { SetValue(CircleCountProperty, value); }
         }
 
@@ -143,7 +143,7 @@ namespace System.Windows.Controls
         /// </value>
         public double CircleRadius
         {
-            get { return (double)GetValue(CircleRadiusProperty); }
+            get { return (double) GetValue(CircleRadiusProperty); }
             set { SetValue(CircleRadiusProperty, value); }
         }
 
@@ -155,7 +155,7 @@ namespace System.Windows.Controls
         /// </value>
         public RotateDirection Direction
         {
-            get { return (RotateDirection)GetValue(DirectionProperty); }
+            get { return (RotateDirection) GetValue(DirectionProperty); }
             set { SetValue(DirectionProperty, value); }
         }
 
@@ -168,7 +168,7 @@ namespace System.Windows.Controls
         /// </value>
         public bool IsSpinning
         {
-            get { return (bool)GetValue(IsSpinningProperty); }
+            get { return (bool) GetValue(IsSpinningProperty); }
             set { SetValue(IsSpinningProperty, value); }
         }
 
@@ -180,7 +180,7 @@ namespace System.Windows.Controls
         /// </value>
         public double Radius
         {
-            get { return (double)GetValue(RadiusProperty); }
+            get { return (double) GetValue(RadiusProperty); }
             set { SetValue(RadiusProperty, value); }
         }
 
@@ -192,7 +192,7 @@ namespace System.Windows.Controls
         /// </value>
         public double Speed
         {
-            get { return (double)GetValue(SpeedProperty); }
+            get { return (double) GetValue(SpeedProperty); }
             set { SetValue(SpeedProperty, value); }
         }
 
@@ -205,7 +205,7 @@ namespace System.Windows.Controls
         /// </value>
         public bool SymmetricalArrange
         {
-            get { return (bool)GetValue(SymmetricalArrangeProperty); }
+            get { return (bool) GetValue(SymmetricalArrangeProperty); }
             set { SetValue(SymmetricalArrangeProperty, value); }
         }
 
@@ -237,8 +237,8 @@ namespace System.Windows.Controls
         /// <returns></returns>
         private Point CalculatePosition(double radian)
         {
-            double x = 0 + Radius * Math.Cos(radian);
-            double y = 0 + Radius * Math.Sin(radian);
+            double x = 0 + Radius*Math.Cos(radian);
+            double y = 0 + Radius*Math.Sin(radian);
 
             return new Point(x - CircleRadius, y - CircleRadius);
         }
@@ -272,9 +272,9 @@ namespace System.Windows.Controls
         {
             var ellipse = new Ellipse();
             ellipse.Fill = CircleColor;
-            ellipse.Width = CircleRadius * 2;
-            ellipse.Height = CircleRadius * 2;
-            ellipse.Opacity = counter / (double)CircleCount;
+            ellipse.Width = CircleRadius*2;
+            ellipse.Height = CircleRadius*2;
+            ellipse.Opacity = counter/(double) CircleCount;
 
             SetEllipsePosition(ellipse, counter);
 
@@ -310,7 +310,7 @@ namespace System.Windows.Controls
             var wheel = obj as BusyIndicator;
             if (wheel != null && wheel._Canvas != null && e.NewValue != null)
             {
-                wheel._Canvas.Children.RemoveRange(0, (int)e.OldValue);
+                wheel._Canvas.Children.RemoveRange(0, (int) e.OldValue);
 
                 wheel.GenerateCircles();
             }
@@ -321,11 +321,11 @@ namespace System.Windows.Controls
             var wheel = obj as BusyIndicator;
             if (wheel != null && wheel._Canvas != null && e.NewValue != null)
             {
-                var newRadius = (double)e.NewValue;
+                var newRadius = (double) e.NewValue;
                 UpdateEllipses(wheel._Canvas.Children, (c, ellipse) =>
                 {
-                    ellipse.Width = newRadius * 2;
-                    ellipse.Height = newRadius * 2;
+                    ellipse.Width = newRadius*2;
+                    ellipse.Height = newRadius*2;
 
                     wheel.SetEllipsePosition(ellipse, c);
                 });
@@ -350,7 +350,7 @@ namespace System.Windows.Controls
             var wheel = obj as BusyIndicator;
             if (wheel != null && e.NewValue != null && wheel._StoryBoard != null)
             {
-                wheel.ToggleSpinning((bool)e.NewValue);
+                wheel.ToggleSpinning((bool) e.NewValue);
             }
         }
 
@@ -369,27 +369,27 @@ namespace System.Windows.Controls
             if (wheel != null && wheel._StoryBoard != null)
             {
                 // don't ask
-                wheel._StoryBoard.SetSpeedRatio((double)e.NewValue);
-                wheel._RotateAnimation.SpeedRatio = (double)e.NewValue;
+                wheel._StoryBoard.SetSpeedRatio((double) e.NewValue);
+                wheel._RotateAnimation.SpeedRatio = (double) e.NewValue;
             }
         }
 
         /// <summary>
-        /// Sets the ellipse position.
+        ///     Sets the ellipse position.
         /// </summary>
         /// <param name="ellipse">The ellipse.</param>
         /// <param name="ellipseCounter">The ellipse counter.</param>
         private void SetEllipsePosition(Ellipse ellipse, int ellipseCounter)
         {
-            double maxCount = SymmetricalArrange ? CircleCount : (2 * Radius * Math.PI) / (2 * CircleRadius + 2);
+            double maxCount = SymmetricalArrange ? CircleCount : (2*Radius*Math.PI)/(2*CircleRadius + 2);
 
-            Point position = CalculatePosition(ellipseCounter * 2 * Math.PI / maxCount);
+            Point position = CalculatePosition(ellipseCounter*2*Math.PI/maxCount);
             Canvas.SetLeft(ellipse, position.X);
             Canvas.SetTop(ellipse, position.Y);
         }
 
         /// <summary>
-        /// Toggles the spinning.
+        ///     Toggles the spinning.
         /// </summary>
         /// <param name="value">if set to <c>true</c> [value].</param>
         private void ToggleSpinning(bool value)
@@ -405,7 +405,7 @@ namespace System.Windows.Controls
         }
 
         /// <summary>
-        /// Updates the ellipses.
+        ///     Updates the ellipses.
         /// </summary>
         /// <param name="ellipses">The ellipses.</param>
         /// <param name="updateMethod">The update method.</param>
