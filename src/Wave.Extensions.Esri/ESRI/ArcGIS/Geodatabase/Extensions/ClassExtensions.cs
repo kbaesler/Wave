@@ -15,7 +15,7 @@ using ESRI.ArcGIS.GeoDatabaseUI;
 using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
-{    
+{
     /// <summary>
     ///     Provides extension methods for the <see cref="ESRI.ArcGIS.Geodatabase.IClass" /> and
     ///     <see cref="ESRI.ArcGIS.Geodatabase.IObjectClass" /> interfaces.
@@ -44,7 +44,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IEnvelope Calculate(this IFeatureClass source, IQueryFilter filter, string fieldName, string expression, string preExpression, bool showErrorPrompt, ICalculatorCallback callback)
         {
-            return ((ITable) source).Calculate(filter, fieldName, expression, preExpression, showErrorPrompt, callback);
+            return ((ITable)source).Calculate(filter, fieldName, expression, preExpression, showErrorPrompt, callback);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.IndexOutOfRangeException"></exception>
         public static string CreateExpression(this IFeatureClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params string[] fieldNames)
         {
-            return ((ITable) source).CreateExpression(keyword, comparisonOperator, logicalOperator, fieldNames);
+            return ((ITable)source).CreateExpression(keyword, comparisonOperator, logicalOperator, fieldNames);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string CreateExpression(this IFeatureClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator)
         {
-            return ((ITable) source).CreateExpression(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
+            return ((ITable)source).CreateExpression(keyword, comparisonOperator, logicalOperator, source.Fields.AsEnumerable().ToArray());
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string CreateExpression(this IFeatureClass source, string keyword, ComparisonOperator comparisonOperator, LogicalOperator logicalOperator, params IField[] fields)
         {
-            return ((ITable) source).CreateExpression(keyword, comparisonOperator, logicalOperator, fields);
+            return ((ITable)source).CreateExpression(keyword, comparisonOperator, logicalOperator, fields);
         }
 
         /// <summary>
@@ -119,8 +119,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         public static void Delete(this IFeatureClass source)
         {
-            IDataset ds = (IDataset) source;
-            ISchemaLock schemaLock = (ISchemaLock) ds;
+            IDataset ds = (IDataset)source;
+            ISchemaLock schemaLock = (ISchemaLock)ds;
 
             try
             {
@@ -141,8 +141,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns a <see cref="bool" /> representing <c>true</c> when the feature class exists otherwise false</returns>
         public static bool Exists(this IFeatureClass source)
         {
-            IDataset ds = (IDataset) source;
-            IWorkspace2 workspace = (IWorkspace2) ds.Workspace;
+            IDataset ds = (IDataset)source;
+            IWorkspace2 workspace = (IWorkspace2)ds.Workspace;
 
             return workspace.NameExists[esriDatasetType.esriDTFeatureClass, ds.Name];
         }
@@ -204,7 +204,7 @@ namespace ESRI.ArcGIS.Geodatabase
             fieldChecker.Validate(requiredFields, out errors, out targetFields);
 
             IFeatureDataConverter featureDataConverter = new FeatureDataConverterClass();
-            invalid = featureDataConverter.ConvertFeatureClass(input, filter, null, output, geometryDef, requiredFields, "", 1000, handle);
+            invalid = featureDataConverter.ConvertFeatureClass(input, filter, null, output, geometryDef, targetFields, "", 1000, handle);
 
             return ((IName)output).Open() as IFeatureClass;
         }
@@ -302,7 +302,7 @@ namespace ESRI.ArcGIS.Geodatabase
             }
             catch (COMException ex)
             {
-                if (ex.ErrorCode == (int) fdoError.FDO_E_FEATURE_NOT_FOUND)
+                if (ex.ErrorCode == (int)fdoError.FDO_E_FEATURE_NOT_FOUND)
                     return null;
 
                 throw;
@@ -571,7 +571,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            return ((ITable) source).GetDeltaTableName(delta);
+            return ((ITable)source).GetDeltaTableName(delta);
         }
 
         /// <summary>
@@ -597,7 +597,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            return ((ITable) source).GetSchemaName();
+            return ((ITable)source).GetSchemaName();
         }
 
         /// <summary>
@@ -622,7 +622,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            return ((ITable) source).GetSubtypes();
+            return ((ITable)source).GetSubtypes();
         }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            return ((ITable) source).GetSubtypeName(subtypeCode);
+            return ((ITable)source).GetSubtypeName(subtypeCode);
         }
 
         /// <summary>
@@ -651,7 +651,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            return ((ITable) source).GetSubtypes();
+            return ((ITable)source).GetSubtypes();
         }
 
 
@@ -697,7 +697,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 IFeatureCursor cursor = source.Search(filter, true);
                 cr.ManageLifetime(cursor);
 
-                return ((ICursor) cursor).GetXDocument(elementName, predicate);
+                return ((ICursor)cursor).GetXDocument(elementName, predicate);
             }
         }
 
@@ -718,7 +718,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             if (sqlPrivilege == null) return false;
 
-            int supportedPrivileges = (int) privilege & sqlPrivilege.SQLPrivileges;
+            int supportedPrivileges = (int)privilege & sqlPrivilege.SQLPrivileges;
             return supportedPrivileges > 0;
         }
 
@@ -777,7 +777,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 invalidArea.AddFeature(feature, symbol);
             }
 
-            invalidArea.Invalidate((short) screenCache);
+            invalidArea.Invalidate((short)screenCache);
         }
 
         /// <summary>
@@ -805,7 +805,7 @@ namespace ESRI.ArcGIS.Geodatabase
             ISpatialJoin sj = new SpatialJoinClass();
             sj.ShowProcess[true] = 0;
             sj.LeftOuterJoin = isLeftOuterJoin;
-            sj.SourceTable = (ITable) source;
+            sj.SourceTable = (ITable)source;
             sj.JoinTable = join;
 
             var ds = workspace.Define(outputName, new FeatureClassNameClass());
@@ -828,11 +828,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IFeatureClass Transfer(this IFeatureClass source, string name, IWorkspace workspace, out bool conflicts, out IEnumNameMapping enumNameMapping)
         {
-            IDataset ds = (IDataset) source;
+            IDataset ds = (IDataset)source;
             IName fromName = ds.Workspace.Define(ds.Name, new FeatureClassNameClass());
 
             IEnumName fromNames = new NamesEnumeratorClass();
-            IEnumNameEdit edit = (IEnumNameEdit) fromNames;
+            IEnumNameEdit edit = (IEnumNameEdit)fromNames;
             edit.Add(fromName);
 
             ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping);
@@ -863,7 +863,7 @@ namespace ESRI.ArcGIS.Geodatabase
             ISpatialJoin sj = new SpatialJoinClass();
             sj.ShowProcess[true] = 0;
             sj.LeftOuterJoin = isLeftOuterJoin;
-            sj.SourceTable = (ITable) source;
+            sj.SourceTable = (ITable)source;
             sj.JoinTable = join;
 
             var ds = workspace.Define(outputName, new FeatureClassNameClass());

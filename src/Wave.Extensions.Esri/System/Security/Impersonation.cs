@@ -5,10 +5,14 @@ using System.Security.Principal;
 
 namespace System.Security
 {
+    
+
+    #region Enumerations
+
     /// <summary>
     ///     Security impersonation levels govern the degree to which a server process can act on behalf of a client process.
     /// </summary>
-    public enum SecurityImpersonationLevel
+    public enum SecurityImpersonationLevel : int
     {
         /// <summary>
         ///     The server process cannot obtain identification information about the client,
@@ -39,6 +43,8 @@ namespace System.Security
         SecurityDelegation = 3,
     }
 
+    #endregion
+
     /// <summary>
     ///     Impersonation of a user. Allows to execute code under another
     ///     user context.
@@ -47,7 +53,7 @@ namespace System.Security
     ///     Please note that the account that instantiates the Impersonator class
     ///     needs to have the 'Act as part of operating system' privilege set.
     /// </remarks>
-    public class Impersonation : IDisposable
+    public sealed class Impersonation : IDisposable
     {
         #region Fields
 
@@ -63,7 +69,7 @@ namespace System.Security
         /// <param name="userName">The name of the user to act as.</param>
         /// <param name="domainName">The domain name of the user to act as.</param>
         /// <param name="password">The password of the user to act as.</param>
-        public Impersonation(string userName, string domainName, string password)
+        public Impersonation(string userName, string domainName, SecureString password)
         {
             Impersonate(userName, domainName, password, SecurityImpersonationLevel.SecurityImpersonation);
         }
@@ -75,7 +81,7 @@ namespace System.Security
         /// <param name="domainName">Name of the domain.</param>
         /// <param name="password">The password.</param>
         /// <param name="impersonationLevel">The impersonation level.</param>
-        public Impersonation(string userName, string domainName, string password, SecurityImpersonationLevel impersonationLevel)
+        public Impersonation(string userName, string domainName, SecureString password, SecurityImpersonationLevel impersonationLevel)
         {
             Impersonate(userName, domainName, password, impersonationLevel);
         }
@@ -90,7 +96,6 @@ namespace System.Security
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         #endregion
@@ -106,9 +111,12 @@ namespace System.Security
         /// </param>
         private void Dispose(bool disposing)
         {
-            if (disposing && _ImpersonationContext != null)
+            if (disposing)
             {
-                _ImpersonationContext.Undo();
+                if (_ImpersonationContext != null)
+                {
+                    _ImpersonationContext.Undo();
+                }
             }
         }
 
@@ -121,33 +129,44 @@ namespace System.Security
         /// <param name="impersonationLevel">The impersonation level.</param>
         /// <exception cref="Win32Exception">
         /// </exception>
-        private void Impersonate(string userName, string domain, string password, SecurityImpersonationLevel impersonationLevel)
+        private void Impersonate(string userName, string domain, SecureString password, SecurityImpersonationLevel impersonationLevel)
         {
             if (UnsafeWindowMethods.RevertToSelf())
             {
-                SafeTokenHandle safeTokenHandle;
-                if (UnsafeWindowMethods.LogonUser(userName, domain, password, UnsafeWindowMethods.LogonType.Interactive, UnsafeWindowMethods.LogonProvider.Default, out safeTokenHandle) != 0)
+                var token = Marshal.SecureStringToGlobalAllocUnicode(password);
+
+                try
                 {
-                    using (safeTokenHandle)
+                    SafeTokenHandle safeTokenHandle;
+                    if (UnsafeWindowMethods.LogonUser(userName, domain, token, UnsafeWindowMethods.LogonType.Interactive, UnsafeWindowMethods.LogonProvider.Default, out safeTokenHandle) != 0)
                     {
-                        SafeTokenHandle safeDuplicateTokenHandle;
-                        if (UnsafeWindowMethods.DuplicateToken(safeTokenHandle.DangerousGetHandle(), (int) impersonationLevel, out safeDuplicateTokenHandle) != 0)
+                        using (safeTokenHandle)
                         {
-                            using (safeDuplicateTokenHandle)
+                            SafeTokenHandle safeDuplicateTokenHandle;
+                            if (UnsafeWindowMethods.DuplicateToken(safeTokenHandle.DangerousGetHandle(), (int) impersonationLevel, out safeDuplicateTokenHandle) != 0)
                             {
-                                var windowsIdentity = new WindowsIdentity(safeDuplicateTokenHandle.DangerousGetHandle());
-                                _ImpersonationContext = windowsIdentity.Impersonate();
+                                using (safeDuplicateTokenHandle)
+                                {
+                                    var windowsIdentity = new WindowsIdentity(safeDuplicateTokenHandle.DangerousGetHandle());
+                                    _ImpersonationContext = windowsIdentity.Impersonate();
+                                }
+                            }
+                            else
+                            {
+                                throw new Win32Exception(Marshal.GetLastWin32Error());
                             }
                         }
-                        else
-                        {
-                            throw new Win32Exception(Marshal.GetLastWin32Error());
-                        }
+                    }
+                    else
+                    {
+                        throw new Win32Exception(Marshal.GetLastWin32Error());
                     }
                 }
-                else
+                finally
                 {
-                    throw new Win32Exception(Marshal.GetLastWin32Error());
+                    // Perform cleanup whether or not the call succeeded.
+                    // Zero-out and free the unmanaged string reference.
+                    Marshal.ZeroFreeGlobalAllocUnicode(token);
                 }
             }
             else

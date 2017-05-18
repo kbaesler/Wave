@@ -77,24 +77,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool Contains(this IWorkspace source, esriDatasetType type, string tableName)
         {
-            return ((IWorkspace2) source).NameExists[type, tableName];
+            return ((IWorkspace2)source).NameExists[type, tableName];
         }
 
         /// <summary>
-        /// Defines the data set definition in the specified workspace.
+        ///     Defines the data set definition in the specified workspace.
         /// </summary>
         /// <typeparam name="T">The type of dataset.</typeparam>
         /// <param name="source">The output workspace.</param>
         /// <param name="name">The name of the dataset.</param>
         /// <param name="definition">The definition.</param>
         /// <returns>
-        /// Returns a <see cref="IDatasetName" /> representing the definition for the dataset.
+        ///     Returns a <see cref="T" /> representing the definition for the dataset.
         /// </returns>
         public static T Define<T>(this IWorkspace source, string name, T definition)
             where T : IDatasetName
         {
-            var ds = (IDataset) source;
-            var workspaceName = (IWorkspaceName) ds.FullName;
+            var ds = (IDataset)source;
+            var workspaceName = (IWorkspaceName)ds.FullName;
 
             definition.WorkspaceName = workspaceName;
             definition.Name = name;
@@ -290,7 +290,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            IWorkspaceDomains wd = (IWorkspaceDomains) source;
+            IWorkspaceDomains wd = (IWorkspaceDomains)source;
             IEnumDomain domains = wd.Domains;
             return domains.AsEnumerable();
         }
@@ -321,8 +321,8 @@ namespace ESRI.ArcGIS.Geodatabase
 
             var list = new Dictionary<string, List<DifferenceRow>>();
 
-            IWorkspaceEdit2 workspaceEdit2 = source as IWorkspaceEdit2;
-            if (workspaceEdit2 == null || !workspaceEdit2.IsBeingEdited())
+            IWorkspaceEdit2 workspaceEdit2 = (IWorkspaceEdit2)source;
+            if (!workspaceEdit2.IsBeingEdited())
                 throw new InvalidOperationException("The workspace must be within an edit session in order to determine the edit changes.");
 
             IDataChangesEx dataChanges = workspaceEdit2.EditDataChanges[editDataChangesType];
@@ -448,15 +448,14 @@ namespace ESRI.ArcGIS.Geodatabase
             if (tableName == null) throw new ArgumentNullException("tableName");
 
             if (source.Contains(esriDatasetType.esriDTFeatureClass, tableName))
-                return ((IFeatureWorkspace) source).OpenFeatureClass(tableName);
+                return ((IFeatureWorkspace)source).OpenFeatureClass(tableName);
 
             var ds = source.Find(esriDatasetType.esriDTFeatureClass, tableName);
             if (ds != null)
-                return ((IFeatureWorkspace) source).OpenFeatureClass(ds.Name);
+                return ((IFeatureWorkspace)source).OpenFeatureClass(ds.Name);
 
             throw new ArgumentOutOfRangeException("tableName");
         }
-
 
         /// <summary>
         ///     Gets all of the feature classes in the workspace.
@@ -538,7 +537,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            ISQLSyntax sqlSyntax = (ISQLSyntax) source;
+            ISQLSyntax sqlSyntax = (ISQLSyntax)source;
             string functionName = sqlSyntax.GetFunctionName(sqlFunctionName);
             if (!string.IsNullOrEmpty(functionName))
                 return functionName;
@@ -564,11 +563,11 @@ namespace ESRI.ArcGIS.Geodatabase
             if (tableName == null) throw new ArgumentNullException("tableName");
 
             if (source.Contains(esriDatasetType.esriDTRelationshipClass, tableName))
-                return ((IFeatureWorkspace) source).OpenRelationshipClass(tableName);
+                return ((IFeatureWorkspace)source).OpenRelationshipClass(tableName);
 
             var ds = source.Find(esriDatasetType.esriDTRelationshipClass, tableName);
             if (ds != null)
-                return ((IFeatureWorkspace) source).OpenRelationshipClass(ds.Name);
+                return ((IFeatureWorkspace)source).OpenRelationshipClass(ds.Name);
 
             throw new ArgumentOutOfRangeException("tableName");
         }
@@ -592,7 +591,7 @@ namespace ESRI.ArcGIS.Geodatabase
             datasets = source.Datasets[esriDatasetType.esriDTRelationshipClass];
             foreach (var dataset in datasets.AsEnumerable())
             {
-                yield return (IRelationshipClass) dataset;
+                yield return (IRelationshipClass)dataset;
             }
         }
 
@@ -614,11 +613,11 @@ namespace ESRI.ArcGIS.Geodatabase
             if (tableName == null) throw new ArgumentNullException("tableName");
 
             if (source.Contains(esriDatasetType.esriDTTable, tableName))
-                return ((IFeatureWorkspace) source).OpenTable(tableName);
+                return ((IFeatureWorkspace)source).OpenTable(tableName);
 
             var ds = source.Find(esriDatasetType.esriDTTable, tableName);
             if (ds != null)
-                return ((IFeatureWorkspace) source).OpenTable(ds.Name);
+                return ((IFeatureWorkspace)source).OpenTable(ds.Name);
 
             throw new ArgumentOutOfRangeException("tableName");
         }
@@ -630,7 +629,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
         public static IEnumerable<string> GetTableNames(this IWorkspace source)
         {
-            var sw = (ISqlWorkspace) source;
+            var sw = (ISqlWorkspace)source;
             return sw.GetTables().AsEnumerable();
         }
 
@@ -675,11 +674,11 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
 
             // Cast to the ISQLSyntax interface and get the supportedPredicates value.
-            ISQLSyntax sqlSyntax = (ISQLSyntax) source;
+            ISQLSyntax sqlSyntax = (ISQLSyntax)source;
             int supportedPredicates = sqlSyntax.GetSupportedPredicates();
 
             // Cast the predicate value to an integer and use bitwise arithmetic to check for support.
-            int predicateValue = (int) predicate;
+            int predicateValue = (int)predicate;
             int supportedValue = predicateValue & supportedPredicates;
 
             return supportedValue > 0;
@@ -713,7 +712,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </exception>
         public static bool PerformOperation(this IWorkspace source, bool withUndoRedo, esriMultiuserEditSessionMode multiuserEditSessionMode, Func<bool> operation)
         {
-            return source.PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, exception => true);
+            return source.PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, handled => false);
         }
 
         /// <summary>
@@ -910,8 +909,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="resolveNameConflict">The resolve name conflict function.</param>
         public static void Transfer(this IWorkspace source, IWorkspace workspace, IEnumName fromNames, out bool conflicts, out IEnumNameMapping enumNameMapping, Func<INameMapping, IName, string> resolveNameConflict)
         {
-            IWorkspaceName targetWorkspaceName = (IWorkspaceName) ((IDataset) workspace).FullName;
-            IName targetName = (IName) targetWorkspaceName;
+            IWorkspaceName targetWorkspaceName = (IWorkspaceName)((IDataset)workspace).FullName;
+            IName targetName = (IName)targetWorkspaceName;
 
             IGeoDBDataTransfer2 transfer = new GeoDBDataTransferClass();
             conflicts = transfer.GenerateNameMapping(fromNames, targetName, out enumNameMapping);

@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.GeoDatabaseDistributed;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -20,40 +21,20 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Creates an <see cref="IEnumerable{ILockInfo}"/>
+        ///     Creates a <see cref="IEnumerable{IVersionInfo}" /> from the enumeration.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>Returns a <see cref="IEnumerable{ILockInfo}" /> representing the locks.</returns>
-        public static IEnumerable<ILockInfo> AsEnumerable(this IEnumLockInfo source)
-        {
-            if (source != null)
-            {
-                source.Reset();
-
-                ILockInfo lockInfo;
-                while ((lockInfo = source.Next()) != null)
-                {
-                    yield return lockInfo;
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Creates an <see cref="IEnumerable{IVersionInfo}"/>
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns>Returns a <see cref="IEnumerable{IVersionInfo}" /> representing the locks.</returns>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing the enumeration of version information.
+        /// </returns>
         public static IEnumerable<IVersionInfo> AsEnumerable(this IEnumVersionInfo source)
         {
             if (source != null)
             {
                 source.Reset();
-
-                IVersionInfo vesionInfo;
-                while ((vesionInfo = source.Next()) != null)
-                {
-                    yield return vesionInfo;
-                }
+                IVersionInfo vi;
+                while ((vi = source.Next()) != null)
+                    yield return vi;
             }
         }
 
@@ -84,6 +65,25 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 throw;
             }
+        }
+
+        /// <summary>
+        ///     Exports the version differences to the specified export file.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="target">The target.</param>
+        /// <param name="exportFileName">Name of the export file.</param>
+        /// <param name="exportOption">The export option.</param>
+        /// <param name="overwrite">if set to <c>true</c> when the delta file should be overwritten when it exists.</param>
+        public static void ExportDataChanges(this IVersion source, IVersion target, string exportFileName, esriExportDataChangesOption exportOption, bool overwrite)
+        {
+            IVersionDataChangesInit vdci = new VersionDataChangesClass();
+            IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
+            IWorkspaceName wsNameTarget = (IWorkspaceName) ((IDataset) target).FullName;
+            vdci.Init(wsNameSource, wsNameTarget);
+
+            IExportDataChanges2 edc = new DataChangesExporterClass();
+            edc.ExportDataChanges(exportFileName, exportOption, (IDataChanges) vdci, overwrite);
         }
 
         /// <summary>
@@ -143,12 +143,12 @@ namespace ESRI.ArcGIS.Geodatabase
             var list = new Dictionary<string, DeltaRowCollection>();
 
             IVersionDataChangesInit vdci = new VersionDataChangesClass();
-            IWorkspaceName wsNameSource = (IWorkspaceName)((IDataset)source).FullName;
-            IWorkspaceName wsNameTarget = (IWorkspaceName)((IDataset)target).FullName;
+            IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
+            IWorkspaceName wsNameTarget = (IWorkspaceName) ((IDataset) target).FullName;
             vdci.Init(wsNameSource, wsNameTarget);
 
-            IDataChanges dataChanges = (IDataChanges)vdci;
-            IDataChangesInfo dci = (IDataChangesInfo)vdci;
+            IDataChanges dataChanges = (IDataChanges) vdci;
+            IDataChangesInfo dci = (IDataChangesInfo) vdci;
 
             IEnumModifiedClassInfo enumMci = dataChanges.GetModifiedClassesInfo();
             enumMci.Reset();
@@ -161,14 +161,14 @@ namespace ESRI.ArcGIS.Geodatabase
                 using (ComReleaser cr = new ComReleaser())
                 {
                     // Load the copy of the table from the source version.
-                    ITable table = ((IFeatureWorkspace)source).OpenTable(tableName);
+                    ITable table = ((IFeatureWorkspace) source).OpenTable(tableName);
                     cr.ManageLifetime(table);
 
                     // Validate that the table needs to be loaded.
                     if (predicate(tableName, table))
                     {
                         // Determines if the table represents a feature class.
-                        bool isFeatureClass = (table is IFeatureClass);
+                        bool isFeatureClass = (mci.DatasetType == esriDatasetType.esriDTFeatureClass);
 
                         // Iterate through all of the data change types.
                         foreach (var dataChangeType in dataChangeTypes)
@@ -196,6 +196,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             return list;
         }
+
         /// <summary>
         ///     Gets the changes between the <paramref name="source" /> (or child) and <paramref name="table" /> (or parent)
         ///     version of the table.
@@ -389,6 +390,7 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IWorkspace) source).GetTable(tableName);
         }
 
+
         /// <summary>
         ///     Gets the version.
         /// </summary>
@@ -403,7 +405,8 @@ namespace ESRI.ArcGIS.Geodatabase
             }
             catch (COMException e)
             {
-                if (e.ErrorCode == (int) fdoError.FDO_E_VERSION_NOT_FOUND)
+                if (e.ErrorCode == (int) fdoError.FDO_E_VERSION_NOT_FOUND
+                    || e.ErrorCode == (int) fdoError.FDO_E_SE_VERSION_NOEXIST)
                     return null;
 
                 throw;
@@ -471,31 +474,6 @@ namespace ESRI.ArcGIS.Geodatabase
     }
 
     #region Nested Type: DeltaRowCollection
-
-    #region Enumerations
-
-    /// <summary>
-    ///     The state of the row.
-    /// </summary>
-    public enum DeltaRowState
-    {
-        /// <summary>
-        ///     The state of the row in the source (child) version.
-        /// </summary>
-        SourceVersion,
-
-        /// <summary>
-        ///     The state of the row in the target (parent) version.
-        /// </summary>
-        TargetVersion,
-
-        /// <summary>
-        ///     The state of the row in the common ancestor (prior to edits) version.
-        /// </summary>
-        CommonAncestorVersion
-    }
-
-    #endregion
 
     /// <summary>
     ///     Provides a collection of <see cref="DeltaRow" /> objects.
@@ -593,27 +571,27 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Gets the rows that reside in the version that corresponds to the state.
         /// </summary>
-        /// <param name="rowState">The state representing the version.</param>
+        /// <param name="changeVersion">The change version.</param>
         /// <param name="deltaRow">The delta row.</param>
         /// <returns>
         ///     Returns a <see cref="IRow" /> representing the row for the state.
         /// </returns>
-        public IRow GetRow(DeltaRowState rowState, DeltaRow deltaRow)
+        public IRow GetRow(esriChangeVersion changeVersion, DeltaRow deltaRow)
         {
-            return this.GetRow(rowState, deltaRow.OID);
+            return this.GetRow(changeVersion, deltaRow.OID);
         }
 
         /// <summary>
         ///     Gets the rows that reside in the version that corresponds to the state.
         /// </summary>
-        /// <param name="rowState">The state representing the version.</param>
+        /// <param name="changeVersion">The change version.</param>
         /// <param name="oid">The oid.</param>
         /// <returns>
         ///     Returns a <see cref="IRow" /> representing the row for the state.
         /// </returns>
-        public IRow GetRow(DeltaRowState rowState, int oid)
+        public IRow GetRow(esriChangeVersion changeVersion, int oid)
         {
-            IFeatureWorkspace workspace = this.GetWorkspace(rowState);
+            IFeatureWorkspace workspace = this.GetWorkspace(changeVersion);
             if (workspace == null) return null;
 
             using (ComReleaser cr = new ComReleaser())
@@ -638,11 +616,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Gets the rows that pertain to the data change type.
         /// </summary>
-        /// <param name="dataChangeType">Type of the data change.</param>
+        /// <param name="dataChangeTypes">Type of the data changes.</param>
         /// <returns>Retursn a <see cref="DeltaRowCollection" /> representing the delta rows for the data change type.</returns>
-        public DeltaRowCollection GetRows(esriDataChangeType dataChangeType)
+        public DeltaRowCollection GetRows(params esriDataChangeType[] dataChangeTypes)
         {
-            var rows = this.Where(deltaRow => deltaRow.DataChangeType == dataChangeType);
+            var rows = this.Where(deltaRow => dataChangeTypes.Contains(deltaRow.DataChangeType));
 
             var collection = new DeltaRowCollection(this.TableName, this.SourceVersion, this.TargetVersion);
             collection.AddRange(rows);
@@ -659,20 +637,20 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
         public IEnumerable<IRow> GetRows()
         {
-            return this.GetRows(DeltaRowState.SourceVersion);
+            return this.GetRows(esriChangeVersion.esriChangeSourceVersion);
         }
 
         /// <summary>
         ///     Gets the rows that reside in the version that corresponds to the state.
         /// </summary>
-        /// <param name="rowState">The state representing the current or parent or common versions.</param>
+        /// <param name="changeVersion">The change version.</param>
         /// <returns>
         ///     Returns a <see cref="IEnumerable{IRow}" /> representing the rows for the state.
         /// </returns>
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
-        public IEnumerable<IRow> GetRows(DeltaRowState rowState)
+        public IEnumerable<IRow> GetRows(esriChangeVersion changeVersion)
         {
-            IFeatureWorkspace workspace = this.GetWorkspace(rowState);
+            IFeatureWorkspace workspace = this.GetWorkspace(changeVersion);
             if (workspace != null)
             {
                 using (ComReleaser cr = new ComReleaser())
@@ -716,16 +694,18 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Gets the workspace for the delta row state enumeration
         /// </summary>
-        /// <param name="rowState">State of the row.</param>
-        /// <returns>Returns a <see cref="IFeatureWorkspace" /> representing the workspace for that state</returns>
-        private IFeatureWorkspace GetWorkspace(DeltaRowState rowState)
+        /// <param name="changeVersion">The change version.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureWorkspace" /> representing the workspace for that state
+        /// </returns>
+        private IFeatureWorkspace GetWorkspace(esriChangeVersion changeVersion)
         {
-            switch (rowState)
+            switch (changeVersion)
             {
-                case DeltaRowState.SourceVersion:
+                case esriChangeVersion.esriChangeSourceVersion:
                     return this.SourceVersion as IFeatureWorkspace;
 
-                case DeltaRowState.TargetVersion:
+                case esriChangeVersion.esriChangeTargetVersion:
                     return this.TargetVersion as IFeatureWorkspace;
 
                 default:
