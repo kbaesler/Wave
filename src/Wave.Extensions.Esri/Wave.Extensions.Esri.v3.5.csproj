@@ -32,8 +32,10 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <ProjectGuid>{0FED75AB-83C2-43B0-A540-96646CA9DF47}</ProjectGuid>
+    <ProjectGuid>{E20F2F4A-7902-4A9F-907F-E8D42CDF2F36}</ProjectGuid>
     <BaseIntermediateOutputPath>obj\net35\</BaseIntermediateOutputPath>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\samples\ArcFM Utilities Toolbox\Toolbox\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -219,8 +221,14 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgressSurrogate.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Entity.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityFieldAttribute.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Extensions\EntityExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\IEntity.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\SqlVersionedEditing.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\ObjectEqualityComparer.cs" />
@@ -245,6 +253,7 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\GeometryExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geometry\Extensions\SegmentationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunction.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunctionFactory.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
@@ -252,18 +261,17 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\AggregateConfiguration.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\RouteMeasureSegmentationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteEventtData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\ConcatenateRouteEventtData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\DissolveRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\OverlayRouteEventData.cs" />
+    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\RouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteEventData.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\RouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Route.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureLineSegmentation.cs" />
@@ -361,7 +369,10 @@
     <Compile Include="System\Windows\Behaviors\CommandBehaviorCollection.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\ListView\ListViewBehavior.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\PasswordBox\PasswordBoxBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\ScrollViewer\ScrollViewerSynchronization.cs" />
     <Compile Include="System\Windows\Behaviors\Controls\TabControl\TabControlBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\TextBox\TextBoxBehavior.cs" />
+    <Compile Include="System\Windows\Behaviors\Controls\Window\WindowStateComponent.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\BaseListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\BaseClasses\Interfaces\IListViewComparer.cs" />
     <Compile Include="System\Windows\Collections\StringListViewComparer.cs" />
@@ -466,4 +477,11 @@
     <Folder Include="ESRI\ArcGIS\System\Internal\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

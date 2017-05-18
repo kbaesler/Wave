@@ -21,7 +21,7 @@ namespace ESRI.ArcGIS.Location
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
         public override ITable Execute(DissolveRouteEventData eventData, IWorkspace workspace, ITrackCancel trackCancel)
         {
-            var eventTable = workspace.GetTable("", eventData.EventTableName);
+            var eventTable = workspace.GetTable(eventData.EventTableName);
 
             return this.Execute(eventTable, eventData.Segmentation, workspace, eventData.OutputTableName, eventData.Segmentation, trackCancel, eventData.Fields);
         }

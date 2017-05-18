@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
@@ -39,31 +40,41 @@ namespace ESRI.ArcGIS.Editor
         /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="withUndoRedo">if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such suppression).</param>
+        /// <param name="workspace">The workspace you wish to edit and this workspace must be represented in the focus map.</param>
         /// <param name="menuText">The menu text.</param>
         /// <param name="operation">The delegate that performs the operation.</param>
         /// <returns>
         /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
-        public static bool PerformOperation(this IEditor source, bool withUndoRedo, string menuText, Func<bool> operation)
+        public static bool PerformOperation(this IEditor source, IWorkspace workspace, string menuText, Func<bool> operation)
+        {
+            return source.PerformOperation(menuText, workspace, operation, error => false);
+        }
+
+        /// <summary>
+        /// Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="menuText">The menu text.</param>
+        /// <param name="workspace">The workspace you wish to edit and this workspace must be represented in the focus map.</param>
+        /// <param name="operation">The delegate that performs the operation.</param>
+        /// <param name="error">The error handling action that occurred during commit when true is returned the error has been
+        /// handled.</param>
+        /// <returns>
+        /// Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
+        public static bool PerformOperation(this IEditor source, string menuText, IWorkspace workspace, Func<bool> operation, Func<COMException, bool> error)
         {
             if (source == null || source.Map == null) return false;
 
-            var wse = source.EditWorkspace as IWorkspaceEdit2;
-            if (wse == null) return false;
-
-            var ibe = wse.IsBeingEdited();
-
-            if (!ibe)
-                wse.StartEditing(withUndoRedo);            
-
-            if (!wse.IsInEditOperation)
-                source.StartOperation();
-
-            source.Map.DelayDrawing(true);                       
+            source.StartEditing(workspace);
+            source.StartOperation();
+            source.Map.DelayDrawing(true);
 
             bool saveEdits = false;
+            bool editOperation = true;
 
             try
             {
@@ -71,14 +82,14 @@ namespace ESRI.ArcGIS.Editor
             }
             catch (Exception)
             {
-                if (wse.IsInEditOperation)
-                    source.AbortOperation();
+                source.AbortOperation();
+                editOperation = false;
 
                 throw;
             }
             finally
             {
-                if (wse.IsInEditOperation)
+                if (editOperation)
                 {
                     if (saveEdits)
                         source.StopOperation(menuText);
@@ -86,10 +97,21 @@ namespace ESRI.ArcGIS.Editor
                         source.AbortOperation();
                 }
 
-                if (!ibe) 
-                    wse.StopEditing(saveEdits);
+                try
+                {
+                    source.StopEditing(saveEdits);
+                }
+                catch (COMException com)
+                {
+                    if (!error(com))
+                        throw;
 
-                source.Map.DelayDrawing(false);
+                    source.StopEditing(saveEdits);
+                }
+                finally
+                {
+                    source.Map.DelayDrawing(false);
+                }
             }
 
             return saveEdits;

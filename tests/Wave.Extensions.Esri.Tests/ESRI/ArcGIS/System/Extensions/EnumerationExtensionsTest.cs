@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class EnumerationExtensionsTest : EsriTests
+    public class EnumerationExtensionsTest : RoadwaysTests
     {
         #region Public Methods
 

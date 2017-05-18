@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class FieldExtensionsTest : EsriTests
+    public class FieldExtensionsTest : RoadwaysTests
     {
         #region Public Methods
 
@@ -15,7 +15,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IFields_AsEnumerable_Count_Equals()
         {
-            var testClass = base.GetTestClass();
+            var testClass = base.GetLineFeatureClass();
             var count = testClass.Fields.AsEnumerable().Count();
             Assert.AreEqual(testClass.Fields.FieldCount, count);
         }
@@ -24,7 +24,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IFields_ToDictionary_Count_Equals()
         {
-            var testClass = base.GetTestClass();
+            var testClass = base.GetLineFeatureClass();
             var dictionary = testClass.Fields.ToDictionary();
 
             Assert.AreEqual(testClass.Fields.FieldCount, dictionary.Count);
@@ -34,7 +34,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IFields_ToDictionary_IgnoreCase_True()
         {
-            var testClass = base.GetTestClass();
+            var testClass = base.GetLineFeatureClass();
             var dictionary = testClass.Fields.ToDictionary();
 
             Assert.IsTrue(dictionary.ContainsKey(testClass.Fields.Field[0].Name.ToLower()));

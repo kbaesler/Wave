@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class WorkspaceExtensionsTest : EsriTests
+    public class WorkspaceExtensionsTest : RoadwaysTests
     {
         #region Public Methods
 
@@ -41,19 +41,25 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IWorkspace_GetFeatureClass_IsNotNull()
         {
-            var table = base.Workspace.GetFeatureClass("", "TRANSFORMER");
+            var table = base.Workspace.GetFeatureClass(this.LineFeatureClass);
             Assert.IsNotNull(table);
+        }
+
+
+        [TestMethod]
+        [TestCategory("ESRI")]
+        public void IWorkspace_Find_FeatureClass_IsNotNull()
+        {
+            var ds = base.Workspace.Find(esriDatasetType.esriDTFeatureClass, this.LineFeatureClass);            
+            Assert.IsNotNull(ds);
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IWorkspace_GetFeatureClasses_Equals_193()
+        public void IWorkspace_Find_Table_IsNotNull()
         {
-            var list = base.Workspace.GetFeatureClasses();
-            Assert.IsNotNull(list);
-
-            var o = list.ToList();
-            Assert.AreEqual(193, o.Count);
+            var ds = base.Workspace.Find(esriDatasetType.esriDTTable, this.TableName);
+            Assert.IsNotNull(ds);
         }
 
         [TestMethod]
@@ -94,20 +100,20 @@ namespace Wave.Extensions.Esri.Tests
 
         [TestMethod]
         [TestCategory("ESRI")]
-        public void IWorkspace_GetRelationshipClasses_Equals_153()
+        public void IWorkspace_GetRelationshipClasses_Equals_1()
         {
             var list = base.Workspace.GetRelationshipClasses();
             Assert.IsNotNull(list);
 
             var o = list.ToList();
-            Assert.AreEqual(153, o.Count);
+            Assert.AreEqual(1, o.Count);
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
         public void IWorkspace_GetRelationship_IsNotNull()
         {
-            var table = base.Workspace.GetRelationshipClass("", "DynamicProtDev_RecloserUnit");
+            var table = base.Workspace.GetRelationshipClass(this.RelationshipClass);
             Assert.IsNotNull(table);
         }
 
@@ -115,20 +121,11 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IWorkspace_GetTable_IsNotNull()
         {
-            var table = base.Workspace.GetTable("", "ASSEMBLY");
+            var table = base.Workspace.GetTable(this.TableName);
             Assert.IsNotNull(table);
         }
 
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void IWorkspace_GetTables_Equals_149()
-        {
-            var list = base.Workspace.GetTables();
-            Assert.IsNotNull(list);
-
-            var o = list.ToList();
-            Assert.AreEqual(149, o.Count);
-        }
+      
 
         [TestMethod]
         [TestCategory("ESRI")]

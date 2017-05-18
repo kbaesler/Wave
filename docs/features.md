@@ -46,7 +46,7 @@ There are several objects (i.e. `IEnumLayer`, `IMap`, `ID8List`) in ArcFM and Ar
 
 - Traversing the contents of the `IMap`.
 
-```java
+```c#
 public void ClearDefinitions(IMap map)
 {
     var layerDefinitions = map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o)
@@ -58,7 +58,7 @@ public void ClearDefinitions(IMap map)
 ```
 - Traversing the contents of the `ID8List`.
 
-```java
+```c#
 public void UpdateTags(ID8List list, string tag)
 {
     var items = list.Where(o => o is IMMProposedObject).Select(o => (IMMProposedObject) o.Value)
@@ -79,13 +79,13 @@ The `ITable` and `IFeatureClass` interfaces have been extended to include `Fetch
 
 - `Fetch` features or rows with a list of OBJECTIDs.
 
-```java
+```c#
     List<IFeature> features = featureClass.Fetch(1,2,3,4,5,6);
 ```
 
 - `Fetch` features or rows that need a spatial and/or attribute dependencies to filter the results.
 
-```java  
+```c#  
 ISpatialFilter filter = new SpatialFilterClass();
 filter.WhereClause = featureClass.OIDFieldName + " IN (1,2,3,4,5,6)";
 filter.Geometry = geometry;
@@ -97,7 +97,7 @@ List<IFeature> features = featureClass.Fetch(filter);
 
 - `Fetch` features or rows that need actions performed but the memory can be recycled.
 
-```java
+```c#
 int i = featureClass.FindField("DATE");
 
 IQueryFilter filter = new QueryFilterClass();
@@ -111,7 +111,7 @@ int rowsAffected = featureClass.Fetch(filter, feature =>
 ```
 - `Fetch` features or rows with a projection.
 
-```java
+```c#
 ISpatialFilter filter = new SpatialFilterClass();
 filter.WhereClause = featureClass.OIDFieldName + " IN (1,2,3,4,5,6)";
 filter.Geometry = geometry;

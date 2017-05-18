@@ -167,9 +167,9 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, Document.ParentWindow, "Error Executing Attribute AU " + _Name, e);
-            else
                 Log.Error(this, "Error Executing Attribute AU " + _Name, e);
+            else
+                Log.Error(this, e);
         }
 
         #endregion

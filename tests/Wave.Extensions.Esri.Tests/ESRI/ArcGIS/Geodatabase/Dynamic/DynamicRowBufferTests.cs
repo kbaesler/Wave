@@ -8,14 +8,14 @@ using Wave.Extensions.Esri.Tests;
 namespace ESRI.ArcGIS.Geodatabase.Dynamic.Tests
 {
     [TestClass]
-    public class DynamicRowBufferTests : EsriTests
+    public class DynamicRowBufferTests : RoadwaysTests
     {
         #region Public Methods
 
         [TestMethod]
         public void DynamicRowBuffer_Get_Field_Exposed_As_Member()
         {
-            var table = base.GetTestClass();
+            var table = base.GetLineFeatureClass();
             dynamic d = null;
             var oid = 0;
 
@@ -32,27 +32,27 @@ namespace ESRI.ArcGIS.Geodatabase.Dynamic.Tests
         [TestMethod]
         public void DynamicRowBuffer_Set_Field_Exposed_As_Member()
         {
-            var table = base.GetTestClass();
+            var table = base.GetLineFeatureClass();
             dynamic d = null;
             object user = null;
 
             table.Fetch(null, row =>
             {
-                user = row.Value[row.Fields.FindField("LASTUSER")];
+                user = row.Value[row.Fields.FindField("FROMDATE")];
                 d = row.ToDynamic();
                 return false;
             });
 
-            d.LastUser = "SCOTT";
+            d.FromDate = null;
 
-            Assert.AreNotEqual(d.LastUser, user);
+            Assert.AreNotEqual(d.FromDate, user);
         }
 
         [TestMethod]
         [ExpectedException(typeof (KeyNotFoundException))]
         public void DynamicRowBuffer_Update_A_Field_That_Is_Not_Defined_Exposed_As_Member()
         {
-            var table = base.GetTestClass();
+            var table = base.GetLineFeatureClass();
             dynamic d = null;
 
             table.Fetch(null, row =>
@@ -68,7 +68,7 @@ namespace ESRI.ArcGIS.Geodatabase.Dynamic.Tests
         [ExpectedException(typeof (InvalidOperationException))]
         public void DynamicRowBuffer_Update_Non_Editable_Field_Exposed_As_Member()
         {
-            var table = base.GetTestClass();
+            var table = base.GetLineFeatureClass();
             dynamic d = null;
 
             table.Fetch(null, row =>

@@ -109,9 +109,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, Document.ParentWindow, "Error Enabling Special AU " + _Name, e);
-                else
                     Log.Error(this, "Error Enabling Special AU " + _Name, e);
+                else
+                    Log.Error(this, e);
             }
 
             return false;
@@ -204,9 +204,9 @@ namespace Miner.Interop
         private void LogException(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, Document.ParentWindow, "Error Executing Special AU " + _Name, e);
-            else
                 Log.Error(this, "Error Executing Special AU " + _Name, e);
+            else
+                Log.Error(this, e);
         }
 
         #endregion

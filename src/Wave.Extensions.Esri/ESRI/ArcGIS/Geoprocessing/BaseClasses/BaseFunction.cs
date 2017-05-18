@@ -256,11 +256,21 @@ namespace ESRI.ArcGIS.Geoprocessing
         ///     At ArcGIS 9.3, this method has been replaced by UpdateParameters() and UpdateMessages() and no longer needs to be
         ///     implemented.
         /// </remarks>
-        public IGPMessages Validate(IArray parameters, bool updateValues, IGPEnvironmentManager environmentManager)
+        public virtual IGPMessages Validate(IArray parameters, bool updateValues, IGPEnvironmentManager environmentManager)
         {
+            // Only Call if updatevalues is true.
+            if (updateValues)
+            {
+                UpdateParameters(parameters, environmentManager);
+            }
+
             // Call InternalValidate (Basic Validation). Are all the required parameters supplied?
             // Are the Values to the parameters the correct data type?
             IGPMessages validateMessages = this.Utilities.InternalValidate(this.ParameterInfo, parameters, false, false, environmentManager);
+
+            // Call UpdateMessages();
+            UpdateMessages(parameters, environmentManager, validateMessages);
+
             return validateMessages;
         }
 

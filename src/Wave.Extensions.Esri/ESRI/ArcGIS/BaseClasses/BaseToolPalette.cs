@@ -6,7 +6,6 @@ using ESRI.ArcGIS.SystemUI;
 
 namespace ESRI.ArcGIS.ADF.BaseClasses
 {
-#if V10
     /// <summary>
     ///     An abstract implementation of a tool palette.
     /// </summary>
@@ -58,7 +57,15 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
 
         #endregion
 
-        #region IToolPalette Members
+        #region Public Properties
+
+        /// <summary>
+        ///     The number of items in this menu.
+        /// </summary>
+        public int PaletteItemCount
+        {
+            get { return _Items.Count; }
+        }
 
         /// <summary>
         ///     The menu style
@@ -71,14 +78,6 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         public int PaletteColumns { get; protected set; }
 
         /// <summary>
-        ///     The number of items in this menu.
-        /// </summary>
-        public int PaletteItemCount
-        {
-            get { return _Items.Count; }
-        }
-
-        /// <summary>
         ///     The tearoff style
         /// </summary>
         /// <remarks>
@@ -86,6 +85,10 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         ///     and drag the palette, and the tool palette becomes a seperate toolbar.
         /// </remarks>
         public bool TearOff { get; protected set; }
+
+        #endregion
+
+        #region IToolPalette Members
 
         /// <summary>
         ///     Gets the CLSID for the item on this menu at the specified index.
@@ -151,5 +154,4 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
 
         #endregion
     }
-#endif
 }

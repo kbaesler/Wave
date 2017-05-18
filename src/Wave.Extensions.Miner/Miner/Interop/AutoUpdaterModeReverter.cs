@@ -1,8 +1,6 @@
 ﻿using System;
 
-#if V10
 using Miner.Geodatabase;
-#endif
 
 namespace Miner.Interop
 {
@@ -55,14 +53,7 @@ namespace Miner.Interop
         {
             get
             {
-#if V10
                 return AutoUpdater.Instance;
-#else
-                Type type = Type.GetTypeFromProgID("mmGeodatabase.MMAutoUpdater");
-                object obj = Activator.CreateInstance(type);
-                IMMAutoUpdater autoupdater = obj as IMMAutoUpdater;
-                return autoupdater;
-#endif
             }
         }
 

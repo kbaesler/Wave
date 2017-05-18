@@ -30,12 +30,39 @@ namespace ESRI.ArcGIS.esriSystem
     {
         #region Constants
 
+        /// <summary>
+        ///     The message extension available
+        /// </summary>
         protected const string MESSAGE_EXTENSION_AVAILABLE = "Extension: {0}: Available";
+
+        /// <summary>
+        ///     The message extension failed
+        /// </summary>
         protected const string MESSAGE_EXTENSION_FAILED = "Extension: {0}: Failed";
+
+        /// <summary>
+        ///     The message extension not licensed
+        /// </summary>
         protected const string MESSAGE_EXTENSION_NOT_LICENSED = "Extension: {0}: Not Licensed";
+
+        /// <summary>
+        ///     The message extension unavailable
+        /// </summary>
         protected const string MESSAGE_EXTENSION_UNAVAILABLE = "Extension: {0}: Unavailable";
+
+        /// <summary>
+        ///     The message no licenses requested
+        /// </summary>
         protected const string MESSAGE_NO_LICENSES_REQUESTED = "Product: No licenses were requested";
+
+        /// <summary>
+        ///     The message product available
+        /// </summary>
         protected const string MESSAGE_PRODUCT_AVAILABLE = "Product: {0}: Available";
+
+        /// <summary>
+        ///     The message product not licensed
+        /// </summary>
         protected const string MESSAGE_PRODUCT_NOT_LICENSED = "Product: {0}: Not Licensed";
 
         #endregion
@@ -66,15 +93,15 @@ namespace ESRI.ArcGIS.esriSystem
         public Dictionary<TLicenseExtension, TLicenseStatus> ExtensionStatus { get; protected set; }
 
         /// <summary>
+        ///     Gets the product code that has been initialized.
+        /// </summary>
+        public virtual TLicenseProduct InitializedProduct { get; protected set; }
+
+        /// <summary>
         ///     Get/Set the ordering of product code checking. If true, check from lowest to
         ///     highest license. True by default.
         /// </summary>
         public bool InitializeLowerProductFirst { get; set; }
-
-        /// <summary>
-        ///     Gets the product code that has been initialized.
-        /// </summary>
-        public virtual TLicenseProduct InitializedProduct { get; protected set; }
 
         /// <summary>
         ///     Gets or sets the product status.
@@ -148,7 +175,7 @@ namespace ESRI.ArcGIS.esriSystem
         /// </remarks>
         public bool Initialize(TLicenseProduct licenseProduct)
         {
-            return this.Initialize(new[] {licenseProduct}, new TLicenseExtension[] {});
+            return this.Initialize(new[] {licenseProduct}, new TLicenseExtension[] { });
         }
 
         /// <summary>

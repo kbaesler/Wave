@@ -108,9 +108,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, Document.ParentWindow, "Error Enabling Validation Rule " + _Name, e);
-                else
                     Log.Error(this, "Error Enabling Validation Rule " + _Name, e);
+                else
+                    Log.Error(this, e);
             }
 
             return false;
@@ -137,9 +137,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, Document.ParentWindow, "Error Executing Validation Rule " + _Name, e);
-                else
                     Log.Error(this, "Error Executing Validation Rule " + _Name, e);
+                else
+                    Log.Error(this, e);
             }
 
             // Return the error list.

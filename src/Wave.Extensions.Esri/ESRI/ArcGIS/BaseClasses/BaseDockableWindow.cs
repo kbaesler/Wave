@@ -10,25 +10,11 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
     /// </summary>
     [ComVisible(true)]
     public abstract class BaseDockableWindow : IDockableWindowDef
-#if V10
         , IDockableWindowImageDef
         , IDockableWindowInitialPlacement
-#endif
     {
         #region Constructors
 
-#if !V10
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="BaseDockableWindow" /> class.
-    /// </summary>
-    /// <param name="name">The name of the window.</param>
-    /// <param name="caption">The caption for the window.</param>
-        protected BaseDockableWindow(string name, string caption)
-        {
-            this.Name = name;
-            this.Caption = caption;
-        }
-#else
         /// <summary>
         ///     Initializes a new instance of the <see cref="BaseDockableWindow" /> class.
         /// </summary>
@@ -37,8 +23,8 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         protected BaseDockableWindow(string name, string caption)
             : this(name, caption, esriDockFlags.esriDockFloat)
         {
-            this.Name = name;
-            this.Caption = caption;
+            Name = name;
+            Caption = caption;
         }
 
         /// <summary>
@@ -49,37 +35,23 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// <param name="dockPosition">The dock position.</param>
         protected BaseDockableWindow(string name, string caption, esriDockFlags dockPosition)
         {
-            this.Name = name;
-            this.Caption = caption;
-            this.DockPosition = dockPosition;
+            Name = name;
+            Caption = caption;
+            DockPosition = dockPosition;
         }
-#endif
 
         #endregion
 
-        #region Protected Properties
+        #region Public Properties
+
+        #region IDockableWindowImageDef
 
         /// <summary>
-        ///     Gets or sets the application.
+        ///     The bitmap for the dockable window.
         /// </summary>
-        /// <value>The application.</value>
-        protected IApplication Application { get; set; }
+        public abstract int Bitmap { get; }
 
-        #endregion
-
-        #region IDockableWindowDef Members
-
-        /// <summary>
-        ///     Gets the caption.
-        /// </summary>
-        /// <value>The caption.</value>
-        public string Caption { get; protected set; }
-
-        /// <summary>
-        ///     Gets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; protected set; }
+        #endregion IDockableWindowImageDef
 
         /// <summary>
         ///     Gets the child window handle
@@ -97,12 +69,38 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         }
 
         /// <summary>
+        ///     Gets the caption.
+        /// </summary>
+        /// <value>The caption.</value>
+        public string Caption { get; protected set; }
+
+        /// <summary>
+        ///     Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
+        public string Name { get; protected set; }
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets or sets the application.
+        /// </summary>
+        /// <value>The application.</value>
+        protected IApplication Application { get; set; }
+
+        #endregion
+
+        #region IDockableWindowDef Members
+
+        /// <summary>
         ///     Called when the <see cref="BaseDockableWindow" /> is created.
         /// </summary>
         /// <param name="hook">The hook </param>
         public virtual void OnCreate(object hook)
         {
-            this.Application = hook as IApplication;
+            Application = hook as IApplication;
         }
 
         /// <summary>
@@ -122,10 +120,13 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// <param name="dockFlag">The dock flag.</param>
         protected void Dock(esriDockFlags dockFlag)
         {
-            UID uid = new UIDClass {Value = this.GetType().GUID.ToString("B")};
-            IDockableWindowManager windowManager = (IDockableWindowManager) this.Application;
-            IDockableWindow dockableWindow = windowManager.GetDockableWindow(uid);
-            dockableWindow.Dock(dockFlag);
+            UID uid = new UIDClass {Value = GetType().GUID.ToString("B")};
+            var windowManager = Application as IDockableWindowManager;
+            if (windowManager != null)
+            {
+                var dockableWindow = windowManager.GetDockableWindow(uid);
+                dockableWindow.Dock(dockFlag);
+            }
         }
 
         /// <summary>
@@ -133,10 +134,13 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// </summary>
         protected void Hide()
         {
-            UID uid = new UIDClass {Value = this.GetType().GUID.ToString("B")};
-            IDockableWindowManager windowManager = (IDockableWindowManager) this.Application;
-            IDockableWindow dockableWindow = windowManager.GetDockableWindow(uid);
-            dockableWindow.Show(false);
+            UID uid = new UIDClass {Value = GetType().GUID.ToString("B")};
+            var windowManager = Application as IDockableWindowManager;
+            if (windowManager != null)
+            {
+                var dockableWindow = windowManager.GetDockableWindow(uid);
+                dockableWindow.Show(false);
+            }
         }
 
         /// <summary>
@@ -147,10 +151,15 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// </returns>
         protected bool IsVisible()
         {
-            UID uid = new UIDClass {Value = this.GetType().GUID.ToString("B")};
-            IDockableWindowManager windowManager = (IDockableWindowManager) this.Application;
-            IDockableWindow dockableWindow = windowManager.GetDockableWindow(uid);
-            return dockableWindow.IsVisible();
+            UID uid = new UIDClass {Value = GetType().GUID.ToString("B")};
+            var windowManager = Application as IDockableWindowManager;
+            if (windowManager != null)
+            {
+                var dockableWindow = windowManager.GetDockableWindow(uid);
+                return dockableWindow.IsVisible();
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -158,22 +167,14 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// </summary>
         protected void Show()
         {
-            UID uid = new UIDClass {Value = this.GetType().GUID.ToString("B")};
-            IDockableWindowManager windowManager = (IDockableWindowManager) this.Application;
-            IDockableWindow dockableWindow = windowManager.GetDockableWindow(uid);
-            dockableWindow.Show(true);
+            UID uid = new UIDClass {Value = GetType().GUID.ToString("B")};
+            var windowManager = Application as IDockableWindowManager;
+            if (windowManager != null)
+            {
+                var dockableWindow = windowManager.GetDockableWindow(uid);
+                dockableWindow.Show(true);
+            }
         }
-
-        #endregion
-
-#if V10
-
-        #region IDockableWindowImageDef
-
-        /// <summary>
-        ///     The bitmap for the dockable window.
-        /// </summary>
-        public abstract int Bitmap { get; }
 
         #endregion
 
@@ -199,8 +200,6 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// </summary>
         public abstract int Width { get; }
 
-        #endregion
-
-#endif
+        #endregion IDockableWindowInitialPlacement
     }
 }

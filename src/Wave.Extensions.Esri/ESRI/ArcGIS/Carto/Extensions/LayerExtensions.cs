@@ -13,7 +13,74 @@ namespace ESRI.ArcGIS.Carto
     public static class LayerExtensions
     {
         #region Public Methods
-        
+
+        /// <summary>
+        ///     Sets a join based on the specified relationship class and join type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="table">The table.</param>
+        /// <param name="foreignClass">The join.</param>
+        /// <param name="layerKeyField">Name of the layer field.</param>
+        /// <param name="foreignKeyField">Name of the join field.</param>
+        /// <param name="cardinality">The cardinality.</param>
+        /// <param name="joinType">Type of the join.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>Returns a <see cref="IRelQueryTable" /> represents the table and feature join.</returns>
+        public static IRelQueryTable Add(this IFeatureLayer source, IRelQueryTable table, IObjectClass foreignClass, string layerKeyField, string foreignKeyField, esriRelCardinality cardinality, esriJoinType joinType, string name = null)
+        {
+            if (source != null)
+            {
+                var factory = new RelQueryTableFactoryClass();
+                var origin = factory.Open(table.RelationshipClass, true, null, null, "", true, ((IRelQueryTableInfo)table).JoinType == esriJoinType.esriLeftInnerJoin);
+
+                var join = ((IObjectClass)origin).Join(foreignClass, string.Format("{0}.{1}", ((IDataset)table.SourceTable).Name, layerKeyField), foreignKeyField, cardinality);
+                var result = factory.Open(join, true, null, null, "", true, joinType == esriJoinType.esriLeftInnerJoin);
+
+                IDisplayRelationshipClass display = (IDisplayRelationshipClass)source;
+                display.DisplayRelationshipClass(result.RelationshipClass, joinType);
+
+                return result;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        ///     Sets a join based on the specified relationship class and join type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="foreignClass">The join.</param>
+        /// <param name="layerKeyField">Name of the layer field.</param>
+        /// <param name="foreignKeyField">Name of the join field.</param>
+        /// <param name="cardinality">The cardinality.</param>
+        /// <param name="joinType">Type of the join.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>Returns a <see cref="IRelQueryTable" /> represents the table and feature join.</returns>
+        public static IRelQueryTable Add(this IFeatureLayer source, IObjectClass foreignClass, string layerKeyField, string foreignKeyField, esriRelCardinality cardinality, esriJoinType joinType, string name = null)
+        {
+            IRelQueryTable result;
+            IRelationshipClass relClass;
+            var table = ((IDisplayTable)source).DisplayTable as IRelQueryTable;
+            if (table != null)
+            {
+                result = source.Add(table, foreignClass, string.Format("{0}.{1}", ((IDataset)source.FeatureClass).Name, layerKeyField), foreignKeyField, cardinality, joinType, name);
+                relClass = result.RelationshipClass;
+            }
+            else
+            {
+                var layer = (IFeatureClass)((IDisplayTable)source).DisplayTable;
+                relClass = layer.Join(foreignClass, layerKeyField, foreignKeyField, cardinality, name);
+
+                var factory = new RelQueryTableFactoryClass();
+                result = factory.Open(relClass, true, null, null, "", true, joinType == esriJoinType.esriLeftInnerJoin);
+            }
+
+            IDisplayRelationshipClass display = (IDisplayRelationshipClass)source;
+            display.DisplayRelationshipClass(relClass, joinType);
+
+            return result;
+        }
+
         /// <summary>
         ///     Creates an <see cref="IEnumerable{T}" /> from an <see cref="IElement" />
         /// </summary>
@@ -106,6 +173,22 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
+        ///     Creates an enumeration of the <see cref="IRelQueryTable" />.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{IRelQueryTable}" /> representing the collection of tables.</returns>
+        public static IEnumerable<IRelQueryTable> AsEnumerable(this IRelQueryTable source)
+        {
+            IRelQueryTable table = source;
+            while (table != null)
+            {
+                yield return table;
+
+                table = table.SourceTable as IRelQueryTable;
+            }
+        }
+
+        /// <summary>
         ///     Gets the hierarchy of the layer and sibilings.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -166,7 +249,7 @@ namespace ESRI.ArcGIS.Carto
 
             if (source != null)
             {
-                IIdentify2 identify = (IIdentify2) source;
+                IIdentify2 identify = (IIdentify2)source;
                 IArray array = identify.Identify(geometry, trackCancel);
                 if (array != null)
                 {
@@ -183,36 +266,29 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
-        ///     Sets a join based on the specified relationship class and join type.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="foreignClass">The join.</param>
-        /// <param name="layerKeyField">Name of the layer field.</param>
-        /// <param name="foreignKeyField">Name of the join field.</param>
-        /// <param name="cardinality">The cardinality.</param>
-        /// <param name="joinType">Type of the join.</param>
-        /// <param name="name">The name.</param>
-        public static void Add(this IFeatureLayer source, ITable foreignClass, string layerKeyField, string foreignKeyField, esriRelCardinality cardinality, esriJoinType joinType, string name = "")
-        {
-            var relClass = source.FeatureClass.Join((IObjectClass) foreignClass, layerKeyField, foreignKeyField, cardinality, name);
-
-            IDisplayRelationshipClass displayRel = (IDisplayRelationshipClass) source;
-            displayRel.DisplayRelationshipClass(relClass, joinType);
-        }
-
-        /// <summary>
-        /// Removes the relationship to the specified foreign class.
+        ///     Removes the relate to the specified foreign class.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="foreignClass">The foreign class.</param>
-        public static void Remove(this IFeatureLayer source, IObjectClass foreignClass)
+        /// <param name="role">The role.</param>
+        public static void Remove(this IFeatureLayer source, IObjectClass foreignClass, esriRelRole role)
         {
             IRelationshipClassCollectionEdit edit = (IRelationshipClassCollectionEdit)source;
             IRelationshipClassCollection collection = (IRelationshipClassCollection)edit;
-            foreach (var relClass in collection.FindRelationshipClasses(foreignClass, esriRelRole.esriRelRoleAny).AsEnumerable())
+            foreach (var relClass in collection.FindRelationshipClasses(foreignClass, role).AsEnumerable())
             {
                 edit.RemoveRelationshipClass(relClass);
             }
+        }
+
+        /// <summary>
+        ///     Removes all of the joins on the feature layer.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void RemoveAll(this IFeatureLayer source)
+        {
+            IDisplayRelationshipClass display = (IDisplayRelationshipClass)source;
+            display.DisplayRelationshipClass(null, esriJoinType.esriLeftInnerJoin);
         }
 
         #endregion

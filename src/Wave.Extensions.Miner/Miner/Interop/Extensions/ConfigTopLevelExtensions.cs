@@ -86,8 +86,8 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the field automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="editEvent" /> the <paramref name="table" /> object class.
+        ///     Gets all of the field ArcFM Auto Updaters that have been configured for the specified
+        ///     <paramref name="editEvent" /> on the <paramref name="table" /> object class for specified fields.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="table">The object class.</param>
@@ -128,8 +128,8 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets all of the field automatic values (i.e. ArcFM Auto Updaters) that have been configured for the specified
-        ///     <paramref name="editEvent" /> the <paramref name="table" /> object class.
+        /// Gets all of the field ArcFM Auto Updaters that have been configured for the specified
+        /// <paramref name="editEvent" /> on the <paramref name="table" /> object class for specified fields.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="table">The object class.</param>
@@ -137,14 +137,17 @@ namespace Miner.Interop
         /// <param name="editEvent">The edit event.</param>
         /// <param name="fieldNames">The field names.</param>
         /// <returns>
-        ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the specified event and
-        ///     object class.
-        /// </returns>       
-        /// <exception cref="ArgumentNullException">
-        ///     fieldNames
-        ///     or
-        ///     table
+        /// Returns a <see cref="Dictionary{Key, Value}" /> representing the automatic values for the subtypes and the
+        /// individual fields.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// fieldNames
+        /// or
+        /// table
         /// </exception>
+        /// <exception cref="ArgumentNullException">fieldNames
+        /// or
+        /// table</exception>
         public static Dictionary<string, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, int subtypeCode, mmEditEvent editEvent, params string[] fieldNames)
         {
             if (source == null) return null;
@@ -208,17 +211,17 @@ namespace Miner.Interop
         ///     object class.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">table</exception>
-        public static Dictionary<int, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)
+        public static Dictionary<IMMSubtype, IEnumerable<IMMAutoValue>> GetAutoValues(this IMMConfigTopLevel source, IObjectClass table, mmEditEvent editEvent)
         {
             if (source == null) return null;
             if (table == null) throw new ArgumentNullException("table");
 
-            Dictionary<int, IEnumerable<IMMAutoValue>> list = new Dictionary<int, IEnumerable<IMMAutoValue>>();
+            Dictionary<IMMSubtype, IEnumerable<IMMAutoValue>> list = new Dictionary<IMMSubtype, IEnumerable<IMMAutoValue>>();
 
             IMMSubtype subtype = source.GetSubtypeByID(table, ALL_SUBTYPES, false);
             if (subtype != null)
             {
-                list.Add(ALL_SUBTYPES, subtype.GetAutoValues(editEvent));
+                list.Add(subtype, subtype.GetAutoValues(editEvent));
             }
 
             ISubtypes subtypes = (ISubtypes) table;
@@ -230,7 +233,7 @@ namespace Miner.Interop
                     subtype = source.GetSubtypeByID(table, subtypeCode, false);
                     if (subtype == null) continue;
 
-                    list.Add(subtypeCode, subtype.GetAutoValues(editEvent));
+                    list.Add(subtype, subtype.GetAutoValues(editEvent));
                 }
             }
 

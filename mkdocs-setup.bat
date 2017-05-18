@@ -14,6 +14,6 @@
 :main
 pip install mkdocs --upgrade | more
 pip install mkdocs-material --upgrade | more
-pip install pygments --upgrade
-
+pip install pygments --upgrade | more
+pip install pymdown-extensions --upgrade
 :end

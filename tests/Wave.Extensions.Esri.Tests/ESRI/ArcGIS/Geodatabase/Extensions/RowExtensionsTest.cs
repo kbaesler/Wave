@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
-    public class RowExtensionTest : EsriTests
+    public class RowExtensionTest : RoadwaysTests
     {
         #region Public Methods
 
@@ -18,7 +18,7 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof (InvalidOperationException))]
         public void IRow_BlockReentrancy_InvalidOperationException()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -30,30 +30,29 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IRow_GetChanges_Dictionary_Contains_2()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
-            row.Update("DATEMODIFIED", DateTime.Now);
-            row.Update("LASTUSER", Environment.UserName);
+            row.Update("MEASURE", 1);
+            row.Update("DISTANCE", 1000);
 
             var list = row.GetChanges();
-            Assert.IsTrue(list.Values.Contains("DATEMODIFIED"));
-            Assert.IsTrue(list.Values.Contains("LASTUSER"));
+            Assert.IsTrue(list.Values.Contains("MEASURE"));
+            Assert.IsTrue(list.Values.Contains("DISTANCE"));
         }
 
         [TestMethod]
         [TestCategory("ESRI")]
         public void IRow_GetChanges_FieldName_Equals_1()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
-            row.Update("DATEMODIFIED", DateTime.Now);
-            row.Update("LASTUSER", Environment.UserName);
+            row.Update("MEASURE", 1);
 
-            var list = row.GetChanges("DATEMODIFIED", "OBJECTID");
+            var list = row.GetChanges("MEASURE");
             Assert.IsTrue(list.Count() == 1);
         }
 
@@ -61,7 +60,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IRow_TryGetValue_FieldName_Equals_False()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
 
             bool value;
@@ -74,7 +73,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IRow_TryGetValue_FieldName_Equals_True()
         {
-            var testClass = base.GetTestTable();
+            var testClass = base.GetTable();
             var row = testClass.Fetch(1);
 
             int value;
@@ -88,7 +87,7 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof (IndexOutOfRangeException))]
         public void IRow_Update_FieldIndex_IndexOutOfRangeException_False_Lower()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -100,7 +99,7 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof (IndexOutOfRangeException))]
         public void IRow_Update_FieldIndex_IndexOutOfRangeException_False_Upper()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -111,7 +110,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IRow_Update_FieldIndex_IsTrue()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -126,7 +125,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IRow_Update_FieldName_DateTime()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -142,7 +141,7 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof (InvalidCastException))]
         public void IRow_Update_FieldName_InvalidCastException()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -157,7 +156,7 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof (InvalidCastException))]
         public void IRow_Update_FieldName_InvalidCastException_String()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -171,7 +170,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IRow_Update_FieldName_IsFalse()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 
@@ -186,7 +185,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestCategory("ESRI")]
         public void IRow_Update_FieldName_IsTrue()
         {
-            var testTable = base.GetTestTable();
+            var testTable = base.GetTable();
             var row = testTable.Fetch(1);
             Assert.IsNotNull(row);
 

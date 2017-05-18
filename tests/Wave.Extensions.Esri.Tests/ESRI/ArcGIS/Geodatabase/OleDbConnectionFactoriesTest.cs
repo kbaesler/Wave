@@ -12,7 +12,7 @@ namespace Wave.Extensions.Esri.Tests
     [TestClass]
     public class OleDbConnectionFactoriesTest
 #if V10
-        : EsriTests
+        : RoadwaysTests
 #endif
     {
         [TestMethod]

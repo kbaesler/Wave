@@ -248,7 +248,7 @@ namespace ESRI.ArcGIS.Geodatabase
             IExportOperation operation = new ExportOperationClass();
             operation.ExportFeatureClass(inputDatasetName, filter, selection, geometryDef, outputFeatureClass, handle);
 
-            var table = workspace.GetFeatureClass("", tableName);
+            var table = workspace.GetFeatureClass(tableName);
             return table;
         }
 
@@ -835,11 +835,11 @@ namespace ESRI.ArcGIS.Geodatabase
             IEnumNameEdit edit = (IEnumNameEdit) fromNames;
             edit.Add(fromName);
 
-            ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping, mapping => name);
+            ds.Workspace.Transfer(workspace, fromNames, out conflicts, out enumNameMapping);
 
             if (!conflicts)
             {
-                return workspace.GetFeatureClass("", name);
+                return workspace.GetFeatureClass(name);
             }
 
             return null;
