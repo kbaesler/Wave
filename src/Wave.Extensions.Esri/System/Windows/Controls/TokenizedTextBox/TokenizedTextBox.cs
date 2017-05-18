@@ -24,39 +24,39 @@ namespace System.Windows.Controls
         ///     The items source property
         /// </summary>
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof (IEnumerable<object>), typeof (TokenizedTextBox), new FrameworkPropertyMetadata(OnItemsSourceChanged));
+            DependencyProperty.Register("ItemsSource", typeof(IEnumerable<object>), typeof(TokenizedTextBox), new FrameworkPropertyMetadata(OnItemsSourceChanged));
 
         /// <summary>
         ///     The member path property
         /// </summary>
         public static readonly DependencyProperty MemberPathProperty =
-            DependencyProperty.Register("MemberPath", typeof (string), typeof (TokenizedTextBox), new UIPropertyMetadata(string.Empty));
+            DependencyProperty.Register("MemberPath", typeof(string), typeof(TokenizedTextBox), new UIPropertyMetadata(string.Empty));
 
         /// <summary>
         ///     The text property
         /// </summary>
         public static readonly DependencyProperty TextProperty
-            = DependencyProperty.Register("Text", typeof (string), typeof (TokenizedTextBox), new FrameworkPropertyMetadata(String.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextPropertyChanged, CoerceTextProperty, true, UpdateSourceTrigger.LostFocus));
+            = DependencyProperty.Register("Text", typeof(string), typeof(TokenizedTextBox), new FrameworkPropertyMetadata(String.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextPropertyChanged, CoerceTextProperty, true, UpdateSourceTrigger.LostFocus));
 
         /// <summary>
         ///     The token delimiter property
         /// </summary>
         public static readonly DependencyProperty TokenDelimiterProperty =
-            DependencyProperty.Register("TokenDelimiter", typeof (string), typeof (TokenizedTextBox));
+            DependencyProperty.Register("TokenDelimiter", typeof(string), typeof(TokenizedTextBox));
 
         /// <summary>
         ///     The token template property
         /// </summary>
         public static readonly DependencyProperty TokenTemplateProperty =
-            DependencyProperty.Register("TokenTemplate", typeof (DataTemplate), typeof (TokenizedTextBox));
+            DependencyProperty.Register("TokenTemplate", typeof(DataTemplate), typeof(TokenizedTextBox));
 
         /// <summary>
         /// The tokens property
         /// </summary>
         public static readonly DependencyProperty TokensProperty =
-            DependencyProperty.Register("Tokens", typeof (ObservableKeyedCollection<string, Token>), typeof (TokenizedTextBox), new PropertyMetadata(new ObservableKeyedCollection<string, Token>(t => t.Key)));
+            DependencyProperty.Register("Tokens", typeof(ObservableKeyedCollection<string, Token>), typeof(TokenizedTextBox), new FrameworkPropertyMetadata(new ObservableKeyedCollection<string, Token>(t => t.Key)));
 
-        private bool _SuppressTextChanged;
+        private static bool _SuppressTextChanged;
 
         #endregion
 
@@ -87,7 +87,7 @@ namespace System.Windows.Controls
         /// </value>
         public IEnumerable<object> ItemsSource
         {
-            get { return (IEnumerable<object>) GetValue(ItemsSourceProperty); }
+            get { return (IEnumerable<object>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
@@ -111,7 +111,7 @@ namespace System.Windows.Controls
         /// </value>
         public string MemberPath
         {
-            get { return (string) GetValue(MemberPathProperty); }
+            get { return (string)GetValue(MemberPathProperty); }
             set { SetValue(MemberPathProperty, value); }
         }
 
@@ -123,7 +123,7 @@ namespace System.Windows.Controls
         /// </value>
         public string Text
         {
-            get { return (string) GetValue(TextProperty); }
+            get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
 
@@ -135,7 +135,7 @@ namespace System.Windows.Controls
         /// </value>
         public string TokenDelimiter
         {
-            get { return (string) GetValue(TokenDelimiterProperty); }
+            get { return (string)GetValue(TokenDelimiterProperty); }
             set { SetValue(TokenDelimiterProperty, value); }
         }
 
@@ -147,7 +147,7 @@ namespace System.Windows.Controls
         /// </value>
         public DataTemplate TokenTemplate
         {
-            get { return (DataTemplate) GetValue(TokenTemplateProperty); }
+            get { return (DataTemplate)GetValue(TokenTemplateProperty); }
             set { SetValue(TokenTemplateProperty, value); }
         }
 
@@ -195,14 +195,17 @@ namespace System.Windows.Controls
                 ContentTemplate = this.TokenTemplate,
             };
 
-            if (this.TokenTemplate == null && token.Content != null && !string.IsNullOrEmpty(this.MemberPath))
+            if (this.TokenTemplate == null && token.Content != null)
             {
-                var property = token.Content.GetType().GetProperty(this.MemberPath);
-                if (property != null)
+                if (!string.IsNullOrEmpty(this.MemberPath))
                 {
-                    var value = property.GetValue(token.Content, null);
-                    if (value != null)
-                        presenter.Content = value;
+                    var property = token.Content.GetType().GetProperty(this.MemberPath);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(token.Content, null);
+                        if (value != null)
+                            presenter.Content = value;
+                    }
                 }
             }
 
@@ -327,13 +330,13 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
         private static void OnItemsSourceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var tokenizedTextBox = (TokenizedTextBox) dependencyObject;
+            var tokenizedTextBox = (TokenizedTextBox)dependencyObject;
 
             if (e.NewValue != null)
             {
                 var text = new StringBuilder();
 
-                foreach (var item in (IEnumerable<object>) e.NewValue)
+                foreach (var item in (IEnumerable<object>)e.NewValue)
                 {
                     var property = item.GetType().GetProperty(tokenizedTextBox.MemberPath);
                     if (property != null)
@@ -415,10 +418,10 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
         private static void OnTextPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var tokenizedTextBox = (TokenizedTextBox) dependencyObject;
-
-            if (tokenizedTextBox._SuppressTextChanged)
+            if (_SuppressTextChanged)
                 return;
+
+            var tokenizedTextBox = (TokenizedTextBox)dependencyObject;
 
             // To help with performance this is placed on the dispatcher for processing. For some reason when this is done the TextChanged event is fired multiple times
             // forcing the UpdateText method to be called multiple times and the setter of the source property to be set multiple times. 
@@ -426,7 +429,7 @@ namespace System.Windows.Controls
             // member to true before the operation and set it to false when the operation completes. This will prevent the Text property from being set multiple times.
             DispatcherOperation dop = Dispatcher.CurrentDispatcher.BeginInvoke(new Action(delegate
             {
-                tokenizedTextBox._SuppressTextChanged = true;
+                _SuppressTextChanged = true;
 
                 var text = e.NewValue as string;
                 if (string.IsNullOrEmpty(text))
@@ -438,7 +441,7 @@ namespace System.Windows.Controls
                     tokenizedTextBox.ReplaceTextWithTokens();
                 }
             }), DispatcherPriority.Background);
-            dop.Completed += (sender, ea) => { tokenizedTextBox._SuppressTextChanged = false; };
+            dop.Completed += (sender, ea) => { _SuppressTextChanged = false; };
         }
 
 
@@ -456,35 +459,30 @@ namespace System.Windows.Controls
                 Paragraph para = this.CaretPosition.Paragraph;
                 if (para != null)
                 {
-                    var run = para.Inlines.FirstOrDefault(inline =>
+                    var matchedRun = para.Inlines.FirstOrDefault(inline =>
                     {
-                        var r = inline as Run;
-                        return (r != null && r.Text.EndsWith(inputText));
+                        var run = inline as Run;
+                        return (run != null && run.Text.EndsWith(inputText));
                     }) as Run;
 
-                    if (run != null) 
+                    if (matchedRun != null) // Found a Run that matched the inputText
                     {
                         InlineUIContainer tokenContainer = this.CreateTokenContainer(token);
-                        para.Inlines.InsertBefore(run, tokenContainer);
+                        para.Inlines.InsertBefore(matchedRun, tokenContainer);
 
-                        if (run.Text == inputText)
+                        // Remove only if the Text in the Run is the same as inputText, else split up
+                        if (matchedRun.Text == inputText)
                         {
-                            para.Inlines.Remove(run);
+                            para.Inlines.Remove(matchedRun);
                         }
-                        else 
+                        else // Split up
                         {
-                            int index = run.Text.IndexOf(inputText, StringComparison.Ordinal) + inputText.Length;
-                            var tailEnd = new Run(run.Text.Substring(index));
-                            para.Inlines.InsertAfter(run, tailEnd);
-                            para.Inlines.Remove(run);
+                            int index = matchedRun.Text.IndexOf(inputText, StringComparison.Ordinal) + inputText.Length;
+                            var tailEnd = new Run(matchedRun.Text.Substring(index));
+                            para.Inlines.InsertAfter(matchedRun, tailEnd);
+                            para.Inlines.Remove(matchedRun);
                         }
                     }
-
-                    var tokens = new ObservableKeyedCollection<string, Token>(t => t.Key);
-                    tokens.AddRange(this.Tokens);
-                    tokens.Add(token);
-
-                    this.Tokens = tokens;
                 }
             }
             finally
@@ -509,7 +507,7 @@ namespace System.Windows.Controls
                 Paragraph para = this.CaretPosition.Paragraph ?? new Paragraph();
                 if (para != null)
                 {
-                    string[] text = Text.Split(new[] {this.TokenDelimiter}, StringSplitOptions.RemoveEmptyEntries);
+                    string[] text = Text.Split(new[] { this.TokenDelimiter }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string t in text)
                     {
                         var token = this.GetTokenByItemSource(t);
