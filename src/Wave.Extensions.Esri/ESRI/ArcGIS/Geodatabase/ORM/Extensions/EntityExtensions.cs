@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -9,6 +11,38 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class EntityExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Gets the feature class based on the entity type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        public static IFeatureClass GetFeatureClass(this IWorkspace source, Type type)
+        {
+            return source.GetTable(type) as IFeatureClass;
+        }
+
+        /// <summary>
+        ///     Gets the table based on the entity type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="entity">The entity type (which must inherit from <see cref="Entity"/>).</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        public static ITable GetTable(this IWorkspace source, Type entity)
+        {
+            if (!typeof(Entity).IsAssignableFrom(entity))
+                throw new ArgumentOutOfRangeException("entity", @"The object must be assignable from the Entity class");
+
+            EntityTableAttribute attribute = entity.GetCustomAttribute(typeof(EntityTableAttribute)) as EntityTableAttribute;
+            if (attribute == null)
+                throw new ArgumentNullException("type", @"The object must be assigned the EntityTableAttribute attribute.");
+
+            return source.GetTable(attribute.TableName);
+        }
 
         /// <summary>
         ///     Inserts multiple items into a table using an insert cursor.
@@ -60,13 +94,13 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Reads database rows as a (lazily-evaluated) sequence of objects of the specified type.
+        ///     Reads database rows as a (lazily-evaluated) sequence of objects that are converted into the entity type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
         /// <param name="filter">The filter.</param>
         /// <returns>
-        /// Returns a <see cref="IEnumerable{T}" /> representing the entity object.
+        ///     Returns a <see cref="IEnumerable{T}" /> representing the entity object.
         /// </returns>
         public static IEnumerable<T> Map<T>(this ITable source, IQueryFilter filter) where T : Entity
         {
@@ -88,12 +122,14 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Reads database rows as a (lazily-evaluated) sequence of objects of the specified type.
+        ///     Reads database feature as a (lazily-evaluated) sequence of objects that are converted into the entity type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
         /// <param name="filter">The filter.</param>
-        /// <returns></returns>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing the entity object.
+        /// </returns>
         public static IEnumerable<T> Map<T>(this IFeatureClass source, IQueryFilter filter) where T : Entity
         {
             return ((ITable)source).Map<T>(filter);

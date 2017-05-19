@@ -6,8 +6,6 @@ using ESRI.ArcGIS.Geometry;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Wave.Extensions.Esri.Tests.Properties;
-
 namespace Wave.Extensions.Esri.Tests
 {
     [TestClass]
@@ -31,10 +29,17 @@ namespace Wave.Extensions.Esri.Tests
             Assert.IsTrue(crashes.Any());
         }
 
-      
+        [TestMethod]
+        public void Entity_GetTable_From_Type()
+        {
+            var table = this.Workspace.GetTable(typeof(Crash));
+            Assert.IsNotNull(table);
+        }
+
         #endregion
     }
 
+    [EntityTable("CRASHES")]
     public class Crash : Entity
     {
         #region Public Properties
