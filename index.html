@@ -502,15 +502,14 @@
                 
                 <h1 id="wave">Wave<a class="headerlink" href="#wave" title="Permanent link">#</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p><a href="https://github.com/Jumpercables/Wave">Wave</a> is a C# library that extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library.</p>
+<p><a href="https://github.com/Jumpercables/Wave">Wave</a> is a C# library that extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library and is built using <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">.NET Extension Methods</a> which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave&rsquo;s features to be available without adding new namespace delcarations.</p>
+<ul>
+<li>For instance, the <code class="codehilite">RowExtensions.cs</code> that contains extension methods for the <code class="codehilite">IRow</code> interface uses the <code class="codehilite">ESRI.ArcGIS.Geodatabase</code> namespace because that is the namespace that contains the <code class="codehilite">IRow</code> interface.</li>
+</ul>
 <p><strong>Wave Extensions for ArcGIS</strong> - The package for the ArcGIS for Desktop extensions.</p>
 <p><a href="https://www.nuget.org/packages/Wave.Extensions.Esri/"><img alt="Wave Extensions for ArcGIS" src="https://buildstats.info/nuget/Wave.Extensions.Esri" /></a></p>
 <p><strong>Wave Extensions for ArcFM</strong> - The package for the ArcFM Solution extensions.</p>
 <p><a href="https://www.nuget.org/packages/Wave.Extensions.Miner/"><img alt="Wave Extensions for ArcFM" src="https://buildstats.info/nuget/Wave.Extensions.Miner" /></a></p>
-<p>Wave is built using <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">.NET Extension Methods</a> which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave&rsquo;s features to be available without adding new namespace delcarations.</p>
-<ul>
-<li>For instance, the <code class="codehilite">RowExtensions.cs</code> that contains extension methods for the <code class="codehilite">IRow</code> interface uses the <code class="codehilite">ESRI.ArcGIS.Geodatabase</code> namespace because that is the namespace that contains the <code class="codehilite">IRow</code> interface.</li>
-</ul>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
 <p>You can <a href="./chms\Wave.v4.5.chm">download</a> the latest API documentation in CHM format.</p>
 <div class="admonition info">
