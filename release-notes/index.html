@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -15,9 +15,9 @@
         <meta name="author" content="Kyle Baesler">
       
       
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
+        <link rel="shortcut icon" href="../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.1, mkdocs-material-1.0.5">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.6.3">
     
     
       
@@ -28,9 +28,9 @@
       <script src="../assets/javascripts/modernizr-56ade86843.js"></script>
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application-9c62e3c932.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application-e2807e330f.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-02ce7adcc2.palette.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-f78e5cb881.palette.css">
       
     
     
@@ -64,15 +64,15 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <header class="md-header">
+      <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="Wave" class=" md-logo  md-header-nav__button">
-          
+        
+          <a href="http://jumpercables.github.io/Wave/" title="Wave" class="md-logo md-header-nav__button">
             <img src="../images\wave-red-64.png" width="24" height="24">
-          
-        </a>
+          </a>
+        
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
@@ -92,15 +92,21 @@
           <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
 <div class="md-search" data-md-component="search">
-  <div class="md-search__overlay"></div>
+  <label class="md-search__overlay" for="search"></label>
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
       <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result"></div>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
       </div>
     </div>
   </div>
@@ -108,9 +114,9 @@
         
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
+        <div class="md-header-nav__source">
+          
             
-              
 
 
   
@@ -129,14 +135,16 @@
     </div>
   </a>
 
-            
-          </div>
+          
+        </div>
       </div>
     </div>
   </nav>
 </header>
     
     <div class="md-container">
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -144,13 +152,13 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    <i class=" md-logo  md-nav__button">
-      
+    
+      <i class="md-logo md-nav__button">
         <img src="../images\wave-red-64.png">
-      
-    </i>
+      </i>
+    
     Wave
   </label>
   
@@ -180,40 +188,120 @@
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href=".." title="Home" class="md-nav__link">
-        Home
-      </a>
-    
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
   </li>
 
     
       
       
-  <li class="md-nav__item">
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
     
-      <a href="../features/" title="Features" class="md-nav__link">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Features
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
         Features
-      </a>
-    
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/linq/" title="LINQ" class="md-nav__link">
+      LINQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/orm/" title="Object Relational Mapping" class="md-nav__link">
+      Object Relational Mapping
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/data-access/" title="Data Query" class="md-nav__link">
+      Data Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/extensions/" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/component-registration/" title="Component Registration'" class="md-nav__link">
+      Component Registration'
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../samples/" title="Samples" class="md-nav__link">
-        Samples
-      </a>
-    
+    <a href="../samples/" title="Samples" class="md-nav__link">
+      Samples
+    </a>
   </li>
 
     
       
       
-  <li class="md-nav__item">
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
@@ -247,13 +335,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#experimental" title="Experimental" class="md-nav__link">
-    Experimental
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#new" title="New" class="md-nav__link">
     New
   </a>
@@ -306,6 +387,8 @@
   
 </li>
       
+      
+      
     </ul>
   
 </nav>
@@ -315,45 +398,49 @@
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../contribute/" title="Contributing" class="md-nav__link">
-        Contributing
-      </a>
-    
+    <a href="../contribute/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../resources/" title="Resources" class="md-nav__link">
-        Resources
-      </a>
-    
+    <a href="../resources/" title="Resources" class="md-nav__link">
+      Resources
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../license/" title="License" class="md-nav__link">
-        License
-      </a>
-    
+    <a href="../license/" title="License" class="md-nav__link">
+      License
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="../faq/" title="FAQ" class="md-nav__link">
-        FAQ
-      </a>
-    
+    <a href="../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
   </li>
 
     
@@ -386,13 +473,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#experimental" title="Experimental" class="md-nav__link">
-    Experimental
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#new" title="New" class="md-nav__link">
     New
   </a>
@@ -445,6 +525,8 @@
   
 </li>
       
+      
+      
     </ul>
   
 </nav>
@@ -455,8 +537,8 @@
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-               
               
+                
                 
                 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">#</a></h1>
 <p>This will serve as a reference to the release notes with regards to the <code class="codehilite">release</code> version of the NuGet packages that are published.</p>
@@ -466,19 +548,17 @@
 <p class="admonition-title">Unpublished</p>
 <p>The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. <code class="codehilite">master</code> branch).</p>
 </div>
-<h3 id="experimental">Experimental<a class="headerlink" href="#experimental" title="Permanent link">#</a></h3>
-<ul>
-<li>Added <code class="codehilite">Task</code> static class that provides the ability to execute delegates on STA threads using <code class="codehilite">BackgroundWorker</code> and <code class="codehilite">STASynchronizationContext</code> in a simplified manner. <sup id="fnref26:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-</ul>
 <h3 id="new">New<a class="headerlink" href="#new" title="Permanent link">#</a></h3>
 <ul>
-<li>Added <code class="codehilite">RegexValidationRule</code> that is used for validation text input using regular expressions. <sup id="fnref19:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-<li>Added <code class="codehilite">IsValid</code> extension method to the <code class="codehilite">DependencyObject</code> that will determine if the object or it&rsquo;s children have a <code class="codehilite">ValidationError</code> objects that are returning errors. <sup id="fnref20:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-<li>Added <code class="codehilite">SystemConfigDataSource</code> and <code class="codehilite">UserConfigDataSource</code> classes that are used for dynamically adding, removing or changing DNS&rsquo;. <sup id="fnref21:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-<li>Added <code class="codehilite">Impersontation</code> class that allows for impersontating a user (useful when needing to access network drives or databases as a different user than is executing the code). <sup id="fnref22:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-<li>Added <code class="codehilite">ScrollSynchronizer</code> class that allows for synchronizing <code class="codehilite">ScrollViewer</code> controls in XAML. <sup id="fnref23:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-<li>Added <code class="codehilite">STASynchronizationContext</code> class that dispatched the asynchronous message. <sup id="fnref24:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
-<li>Added <code class="codehilite">SegmentationExtensions</code> class that provides extension methods for dealing with <em>Linear Referencing</em> and <em>M-Values</em>. <sup id="fnref25:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">Task</code> static class that provides the ability to execute delegates on STA threads using <code class="codehilite">BackgroundWorker</code> and <code class="codehilite">STASynchronizationContext</code> in a simplified manner. <sup id="fnref19:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">RegexValidationRule</code> that is used for validation text input using regular expressions. <sup id="fnref20:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">IsValid</code> extension method to the <code class="codehilite">DependencyObject</code> that will determine if the object or it&rsquo;s children have a <code class="codehilite">ValidationError</code> objects that are returning errors. <sup id="fnref21:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">SystemConfigDataSource</code> and <code class="codehilite">UserConfigDataSource</code> classes that are used for dynamically adding, removing or changing DNS&rsquo;. <sup id="fnref22:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">Impersontation</code> class that allows for impersontating a user (useful when needing to access network drives or databases as a different user than is executing the code). <sup id="fnref23:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">ScrollSynchronizer</code> class that allows for synchronizing <code class="codehilite">ScrollViewer</code> controls in XAML. <sup id="fnref24:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">STASynchronizationContext</code> class that dispatched the asynchronous message. <sup id="fnref25:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">SegmentationExtensions</code> class that provides extension methods for dealing with <em>Linear Referencing</em> and <em>M-Values</em>. <sup id="fnref26:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
+<li>Added <code class="codehilite">Entity</code> and <code class="codehilite">EntityFieldAttribute</code> and <code class="codehilite">EntityTableAttribute</code> classes that allow for mapping rows or features within a table or feature class to class files (Object Relational Mapping). <sup id="fnref27:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> </li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">#</a></h3>
 <ul>
@@ -577,7 +657,7 @@
 <hr />
 <ol>
 <li id="fn:1">
-<p>A change that is included in the <strong>Wave Extensions for ArcGIS</strong> package.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref11:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref12:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref13:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref14:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref15:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref16:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref17:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref18:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref19:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref20:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref21:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref22:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref23:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref24:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref25:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref26:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>A change that is included in the <strong>Wave Extensions for ArcGIS</strong> package.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref11:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref12:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref13:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref14:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref15:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref16:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref17:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref18:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref19:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref20:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref21:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref22:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref23:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref24:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref25:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref26:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref27:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
 <p>A change that is included in the <strong>Wave Extensions for ArcFM</strong> package.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref11:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref12:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref13:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref14:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref15:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
@@ -593,6 +673,12 @@
 </li>
 </ol>
 </div>
+                
+                  
+                
+              
+              
+                
               
             </article>
           </div>
@@ -670,7 +756,7 @@
       
     </div>
     
-      <script src="../assets/javascripts/application-f7ac33b6fb.js"></script>
+      <script src="../assets/javascripts/application-6b4ff16fa7.js"></script>
       <script>app.initialize({url:{base:".."}})</script>
       
     

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -15,22 +15,22 @@
         <meta name="author" content="Kyle Baesler">
       
       
-        <link rel="shortcut icon" href="./assets/images/favicon.ico">
+        <link rel="shortcut icon" href="./assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.1, mkdocs-material-1.0.5">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.6.3">
     
     
       
-        <title>Home - Wave</title>
+        <title>Wave</title>
       
     
     
       <script src="./assets/javascripts/modernizr-56ade86843.js"></script>
     
     
-      <link rel="stylesheet" href="./assets/stylesheets/application-9c62e3c932.css">
+      <link rel="stylesheet" href="./assets/stylesheets/application-e2807e330f.css">
       
-        <link rel="stylesheet" href="./assets/stylesheets/application-02ce7adcc2.palette.css">
+        <link rel="stylesheet" href="./assets/stylesheets/application-f78e5cb881.palette.css">
       
     
     
@@ -64,15 +64,15 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <header class="md-header">
+      <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="." title="Wave" class=" md-logo  md-header-nav__button">
-          
+        
+          <a href="http://jumpercables.github.io/Wave/" title="Wave" class="md-logo md-header-nav__button">
             <img src="./images\wave-red-64.png" width="24" height="24">
-          
-        </a>
+          </a>
+        
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
@@ -92,15 +92,21 @@
           <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
 <div class="md-search" data-md-component="search">
-  <div class="md-search__overlay"></div>
+  <label class="md-search__overlay" for="search"></label>
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
       <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result"></div>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
       </div>
     </div>
   </div>
@@ -108,9 +114,9 @@
         
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
+        <div class="md-header-nav__source">
+          
             
-              
 
 
   
@@ -129,14 +135,16 @@
     </div>
   </a>
 
-            
-          </div>
+          
+        </div>
       </div>
     </div>
   </nav>
 </header>
     
     <div class="md-container">
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -144,13 +152,13 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    <i class=" md-logo  md-nav__button">
-      
+    
+      <i class="md-logo md-nav__button">
         <img src="./images\wave-red-64.png">
-      
-    </i>
+      </i>
+    
     Wave
   </label>
   
@@ -180,7 +188,12 @@
     
       
       
-  <li class="md-nav__item">
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
@@ -246,6 +259,8 @@
   
 </li>
       
+      
+      
     </ul>
   
 </nav>
@@ -255,78 +270,157 @@
     
       
       
-  <li class="md-nav__item">
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
     
-      <a href="features/" title="Features" class="md-nav__link">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Features
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
         Features
-      </a>
-    
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="features/linq/" title="LINQ" class="md-nav__link">
+      LINQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="features/orm/" title="Object Relational Mapping" class="md-nav__link">
+      Object Relational Mapping
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="features/data-access/" title="Data Query" class="md-nav__link">
+      Data Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="features/extensions/" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="features/component-registration/" title="Component Registration'" class="md-nav__link">
+      Component Registration'
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="samples/" title="Samples" class="md-nav__link">
-        Samples
-      </a>
-    
+    <a href="samples/" title="Samples" class="md-nav__link">
+      Samples
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="release-notes/" title="Release Notes" class="md-nav__link">
-        Release Notes
-      </a>
-    
+    <a href="release-notes/" title="Release Notes" class="md-nav__link">
+      Release Notes
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="contribute/" title="Contributing" class="md-nav__link">
-        Contributing
-      </a>
-    
+    <a href="contribute/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="resources/" title="Resources" class="md-nav__link">
-        Resources
-      </a>
-    
+    <a href="resources/" title="Resources" class="md-nav__link">
+      Resources
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="license/" title="License" class="md-nav__link">
-        License
-      </a>
-    
+    <a href="license/" title="License" class="md-nav__link">
+      License
+    </a>
   </li>
 
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href="faq/" title="FAQ" class="md-nav__link">
-        FAQ
-      </a>
-    
+    <a href="faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
   </li>
 
     
@@ -391,6 +485,8 @@
   
 </li>
       
+      
+      
     </ul>
   
 </nav>
@@ -401,8 +497,8 @@
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-               
               
+                
                 
                 <h1 id="wave">Wave<a class="headerlink" href="#wave" title="Permanent link">#</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
@@ -411,6 +507,10 @@
 <p><a href="https://www.nuget.org/packages/Wave.Extensions.Esri/"><img alt="Wave Extensions for ArcGIS" src="https://buildstats.info/nuget/Wave.Extensions.Esri" /></a></p>
 <p><strong>Wave Extensions for ArcFM</strong> - The package for the ArcFM Solution extensions.</p>
 <p><a href="https://www.nuget.org/packages/Wave.Extensions.Miner/"><img alt="Wave Extensions for ArcFM" src="https://buildstats.info/nuget/Wave.Extensions.Miner" /></a></p>
+<p>Wave is built using <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">.NET Extension Methods</a> which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave&rsquo;s features to be available without adding new namespace delcarations.</p>
+<ul>
+<li>For instance, the <code class="codehilite">RowExtensions.cs</code> that contains extension methods for the <code class="codehilite">IRow</code> interface uses the <code class="codehilite">ESRI.ArcGIS.Geodatabase</code> namespace because that is the namespace that contains the <code class="codehilite">IRow</code> interface.</li>
+</ul>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
 <p>You can <a href="./chms\Wave.v4.5.chm">download</a> the latest API documentation in CHM format.</p>
 <div class="admonition info">
@@ -444,6 +544,12 @@
 <ul>
 <li>log4net 2.0.3</li>
 </ul>
+                
+                  
+                
+              
+              
+                
               
             </article>
           </div>
@@ -457,13 +563,13 @@
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="features/" title="Features" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="features/linq/" title="LINQ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Features
+                LINQ
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -507,7 +613,7 @@
       
     </div>
     
-      <script src="./assets/javascripts/application-f7ac33b6fb.js"></script>
+      <script src="./assets/javascripts/application-6b4ff16fa7.js"></script>
       <script>app.initialize({url:{base:"."}})</script>
       
     
