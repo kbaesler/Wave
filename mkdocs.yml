@@ -45,7 +45,12 @@ markdown_extensions:
 
 pages:
 - Home: 'index.md'
-- Features: 'features.md'
+- Features:
+  - LINQ: 'features/linq.md'
+  - Object Relational Mapping: 'features/orm.md'
+  - Data Query: 'features/data-access.md'
+  - Extensions: 'features/extensions.md'
+  - Component Registration': 'features/component-registration.md'
 - Samples: 'samples.md'
 - Release Notes: 'release-notes.md'  
 - Contributing: 'contribute.md'  

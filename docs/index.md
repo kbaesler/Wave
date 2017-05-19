@@ -11,6 +11,10 @@
 
 [![Wave Extensions for ArcFM](https://buildstats.info/nuget/Wave.Extensions.Miner)](https://www.nuget.org/packages/Wave.Extensions.Miner/)
 
+Wave is built using [.NET Extension Methods](http://msdn.microsoft.com/en-us/library/bb383977.aspx) which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave's features to be available without adding new namespace delcarations.
+
+- For instance, the `RowExtensions.cs` that contains extension methods for the `IRow` interface uses the `ESRI.ArcGIS.Geodatabase` namespace because that is the namespace that contains the `IRow` interface.
+
 ## Documentation
 You can [download](chms\Wave.v4.5.chm) the latest API documentation in CHM format.
 
