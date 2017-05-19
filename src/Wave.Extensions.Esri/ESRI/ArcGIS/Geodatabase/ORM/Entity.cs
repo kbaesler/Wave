@@ -95,7 +95,7 @@ namespace ESRI.ArcGIS.Geodatabase
         #region IEntity<ITable> Members
 
         /// <summary>
-        ///     Deletes this item from the context.
+        ///     Deletes the underlying backing object (either IRow or IFeature)
         /// </summary>
         public virtual void Delete()
         {
@@ -107,7 +107,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Inserts the entity into specified context.
+        ///     Inserts the entity object into the table using an insert cursor.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>
@@ -133,7 +133,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Commits changes to the underlying context.
+        ///    Updates the underlying backing object (either IRow or IFeature)
         /// </summary>
         public virtual void Update()
         {
@@ -358,7 +358,7 @@ namespace ESRI.ArcGIS.Geodatabase
         #region IEntity<IFeatureClass,TShape> Members
 
         /// <summary>
-        ///     Inserts the entity into specified context.
+        ///     Inserts the entity object into the table using an insert cursor.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>

@@ -264,7 +264,6 @@
     <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Extensions\RouteMeasureSegmentationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\ConcatenateRouteEventtData.cs" />
