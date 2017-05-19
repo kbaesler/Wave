@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -17,8 +16,8 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Gets the feature class based on the entity type.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="type">The entity type (which must inherit from <see cref="Entity" />).</param>
-        /// <returns>Returns a <see cref="IFeatureClass" /> representing the table for the entity type.</returns>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
         public static IFeatureClass GetFeatureClass(this IWorkspace source, Type type)
         {
@@ -29,16 +28,16 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Gets the table based on the entity type.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="type">The entity type (which must inherit from <see cref="Entity" />).</param>
-        /// <returns>Returns a <see cref="ITable" /> representing the table for the entity type.</returns>
+        /// <param name="entity">The entity type (which must inherit from <see cref="Entity"/>).</param>
+        /// <returns></returns>
         /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
         /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
-        public static ITable GetTable(this IWorkspace source, Type type)
+        public static ITable GetTable(this IWorkspace source, Type entity)
         {
-            if (!typeof(Entity).IsAssignableFrom(type))
-                throw new ArgumentOutOfRangeException("type", @"The object must be assignable from the Entity class");
+            if (!typeof(Entity).IsAssignableFrom(entity))
+                throw new ArgumentOutOfRangeException("entity", @"The object must be assignable from the Entity class");
 
-            var attribute = type.GetCustomAttributes(typeof(EntityTableAttribute)).OfType<EntityTableAttribute>().SingleOrDefault();
+            EntityTableAttribute attribute = entity.GetCustomAttribute(typeof(EntityTableAttribute)) as EntityTableAttribute;
             if (attribute == null)
                 throw new ArgumentNullException("type", @"The object must be assigned the EntityTableAttribute attribute.");
 
@@ -69,7 +68,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     item.CopyTo(buffer);
 
-                    oids.Add((int) cursor.InsertRow(buffer));
+                    oids.Add((int)cursor.InsertRow(buffer));
                 }
 
                 return oids.ToArray();
@@ -91,7 +90,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns></returns>
         public static int[] Insert<T>(this IFeatureClass source, IEnumerable<T> items) where T : Entity
         {
-            return ((ITable) source).Insert(items);
+            return ((ITable)source).Insert(items);
         }
 
         /// <summary>
@@ -133,7 +132,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IEnumerable<T> Map<T>(this IFeatureClass source, IQueryFilter filter) where T : Entity
         {
-            return ((ITable) source).Map<T>(filter);
+            return ((ITable)source).Map<T>(filter);
         }
 
         #endregion
