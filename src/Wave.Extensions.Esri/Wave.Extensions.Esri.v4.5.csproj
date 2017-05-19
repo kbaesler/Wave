@@ -251,6 +251,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgressSurrogate.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityTableAttribute.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\SqlVersionedEditing.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
