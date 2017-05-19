@@ -529,14 +529,14 @@
 7
 8
 9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">cities</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetTable</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">City</span><span class="p">));</span>
-<span class="kt">var</span> <span class="n">idahoSprings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">City</span>
+<span class="kt">var</span> <span class="n">denver</span> <span class="p">=</span> <span class="k">new</span> <span class="n">City</span>
 <span class="p">{</span>
-    <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Idaho Springs&quot;</span><span class="p">,</span>
-    <span class="n">Population</span> <span class="p">=</span> <span class="m">1740</span><span class="p">,</span>
+    <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Denver&quot;</span><span class="p">,</span>
+    <span class="n">Population</span> <span class="p">=</span> <span class="m">663862</span><span class="p">,</span>
     <span class="n">State</span> <span class="p">=</span> <span class="s">&quot;Colorado&quot;</span>
 <span class="p">};</span>
 
-<span class="n">idahoSprings</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">cities</span><span class="p">);</span>
+<span class="n">denver</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">cities</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 2. Read: <em>Load data from a table into entity objects.</em></p>
@@ -616,17 +616,17 @@
 10
 11
 12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">cities</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetTable</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">City</span><span class="p">));</span>
-<span class="kt">var</span> <span class="n">idahoSprings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">City</span>
+<span class="kt">var</span> <span class="n">denver</span> <span class="p">=</span> <span class="k">new</span> <span class="n">City</span>
 <span class="p">{</span>
-    <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Idaho Springs&quot;</span><span class="p">,</span>
-    <span class="n">Population</span> <span class="p">=</span> <span class="m">1740</span><span class="p">,</span>
+    <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Denver&quot;</span><span class="p">,</span>
+    <span class="n">Population</span> <span class="p">=</span> <span class="m">663862</span><span class="p">,</span>
     <span class="n">State</span> <span class="p">=</span> <span class="s">&quot;Colorado&quot;</span>
 <span class="p">};</span>
 
-<span class="n">idahoSprings</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">cities</span><span class="p">);</span>
+<span class="n">denver</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">cities</span><span class="p">);</span>
 
-<span class="n">idahoSprings</span><span class="p">.</span><span class="n">Population</span> <span class="p">=</span> <span class="m">2500</span><span class="p">;</span>
-<span class="n">idahoSprings</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+<span class="n">denver</span><span class="p">.</span><span class="n">Population</span> <span class="p">=</span> <span class="m">2500</span><span class="p">;</span>
+<span class="n">denver</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
 </pre></div>
 </td></tr></table>
 
@@ -663,17 +663,17 @@
 10
 11
 12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">cities</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetTable</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">City</span><span class="p">));</span>
-<span class="kt">var</span> <span class="n">idahoSprings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">City</span>
+<span class="kt">var</span> <span class="n">denver</span> <span class="p">=</span> <span class="k">new</span> <span class="n">City</span>
 <span class="p">{</span>
-    <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Idaho Springs&quot;</span><span class="p">,</span>
-    <span class="n">Population</span> <span class="p">=</span> <span class="m">1740</span><span class="p">,</span>
+    <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Denver&quot;</span><span class="p">,</span>
+    <span class="n">Population</span> <span class="p">=</span> <span class="m">663862</span><span class="p">,</span>
     <span class="n">State</span> <span class="p">=</span> <span class="s">&quot;Colorado&quot;</span>
 <span class="p">};</span>
 
-<span class="n">idahoSprings</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">cities</span><span class="p">);</span>
+<span class="n">denver</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">cities</span><span class="p">);</span>
 
-<span class="n">idahoSprings</span><span class="p">.</span><span class="n">Delete</span><span class="p">();</span>
-<span class="n">idahoSprings</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="n">denver</span><span class="p">.</span><span class="n">Delete</span><span class="p">();</span>
+<span class="n">denver</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 
