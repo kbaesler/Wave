@@ -273,9 +273,36 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Reading Data
+      </label>
+    
     <a href="./" title="Reading Data" class="md-nav__link md-nav__link--active">
       Reading Data
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fetch" title="Fetch" class="md-nav__link">
+    Fetch
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -398,6 +425,20 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fetch" title="Fetch" class="md-nav__link">
+    Fetch
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -411,6 +452,7 @@
                 
                 <h1 id="reading-data">Reading Data<a class="headerlink" href="#reading-data" title="Permanent link">#</a></h1>
 <p>One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.</p>
+<h2 id="fetch">Fetch<a class="headerlink" href="#fetch" title="Permanent link">#</a></h2>
 <p>The <code class="codehilite">ITable</code> and <code class="codehilite">IFeatureClass</code> interfaces have been extended to include <code class="codehilite">Fetch</code> methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.</p>
 <ul>
 <li><code class="codehilite">Fetch</code> features or rows with a list of OBJECTIDs.</li>
