@@ -1,4 +1,4 @@
-# Data Access
+# Reading Data
 One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.
 
 The `ITable` and `IFeatureClass` interfaces have been extended to include `Fetch` methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.
@@ -35,6 +35,7 @@ int rowsAffected = featureClass.Fetch(filter, feature =>
      feature.Store();
 });
 ```
+
 - `Fetch` features or rows with a projection.
 
 ```c#

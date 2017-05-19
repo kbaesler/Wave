@@ -1,4 +1,6 @@
-# Component Registration
+# Packages
+
+## Component Registration
 The **Wave Extensions for ArcGIS** and **Wave Extensions for ArcFM** packages will automatically import the `Wave.Extensions.Esri.targets` and `Wave.Extensions.Miner.targets` into the Visual Studio Project File when the packages are installed. These `MS Build` target files are used to register the `ESRI` and `ArcFM` components when the project is compiled.
 
 - `Wave.Extensions.Esri.targets`

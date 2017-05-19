@@ -20,13 +20,13 @@ The following is a short list of the interfaces that support enumerable types:
 
 These new extension methods allow you to write code like this:
 
-```java
+```c#
 int count = cursor.AsEnumerable().Count();
 ```
 
 and:
 
-```java
+```c#
 var results =
     from x in cursor1.AsEnumerable()
     from y in cursor2.AsEnumerable()
@@ -48,6 +48,7 @@ public void ClearDefinitions(IMap map)
     }
 }
 ```
+
 - Traversing the contents of the `ID8List`.
 
 ```c#

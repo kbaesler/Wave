@@ -1,4 +1,4 @@
-# Extensions
+# General
 The ArcFM and ArcGIS platform provides multiple extension points and while we cannot address them all we have included abstract implementations for the most common extensions made while working with these software packages.
 
 Class                  | Description
