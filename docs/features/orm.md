@@ -5,8 +5,8 @@ Simple object-relational mapping abstraction layer for geodatabase feature class
 You can begin using the object-relational mappping in 2 easy steps.
 
 1. Create a `class` that inherits from the `Entity` class.
-    * Decorate each property on the `class` with the `EntityField` attribute that you want to map to column on a table.
-    * Decorate the `class` with the `EntityTable` attribute in order to map the entity to a table.
+    * Decorate each property in the `class` with the `EntityField` attribute that you want to have mapped to column on a table.
+    * Decorate the `class` with the `EntityTable` attribute that you want to have mapped to a table.
 
     ```c#
     [EntityTable("CITY")]
@@ -36,14 +36,14 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
 
     ```c#
     var cities = workspace.GetTable(typeof(City));
-    var idahoSprings = new City
+    var denver = new City
     {
-        Name = "Idaho Springs",
-        Population = 1740,
+        Name = "Denver",
+        Population = 663862,
         State = "Colorado"
     };
 
-    idahoSprings.Insert(cities);
+    denver.Insert(cities);
     ```
 2. Read: *Load data from a table into entity objects.*
 
@@ -72,17 +72,17 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
 
     ```c#
     var cities = workspace.GetTable(typeof(City));
-    var idahoSprings = new City
+    var denver = new City
     {
-        Name = "Idaho Springs",
-        Population = 1740,
+        Name = "Denver",
+        Population = 663862,
         State = "Colorado"
     };
 
-    idahoSprings.Insert(cities);
+    denver.Insert(cities);
 
-    idahoSprings.Population = 250s0;
-    idahoSprings.Update();
+    denver.Population = 2500;
+    denver.Update();
 
     ```
 
@@ -94,15 +94,15 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
 
     ```c#
     var cities = workspace.GetTable(typeof(City));
-    var idahoSprings = new City
+    var denver = new City
     {
-        Name = "Idaho Springs",
-        Population = 1740,
+        Name = "Denver",
+        Population = 663862,
         State = "Colorado"
     };
 
-    idahoSprings.Insert(cities);
-
-    idahoSprings.Delete();
-    idahoSprings = null;
+    denver.Insert(cities);
+    
+    denver.Delete();
+    denver = null;
     ```
