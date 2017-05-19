@@ -12,7 +12,7 @@
     
         
     <url>
-     <loc>http://jumpercables.github.io/Wave//features/linq/</loc>
+     <loc>http://jumpercables.github.io/Wave//features/extensions/</loc>
      <lastmod>2017-05-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -24,19 +24,19 @@
     </url>
         
     <url>
-     <loc>http://jumpercables.github.io/Wave//features/data-access/</loc>
+     <loc>http://jumpercables.github.io/Wave//features/linq/</loc>
      <lastmod>2017-05-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>http://jumpercables.github.io/Wave//features/extensions/</loc>
+     <loc>http://jumpercables.github.io/Wave//features/data-reading/</loc>
      <lastmod>2017-05-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>http://jumpercables.github.io/Wave//features/component-registration/</loc>
+     <loc>http://jumpercables.github.io/Wave//features/data-editing/</loc>
      <lastmod>2017-05-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -70,6 +70,14 @@
     
     <url>
      <loc>http://jumpercables.github.io/Wave//resources/</loc>
+     <lastmod>2017-05-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://jumpercables.github.io/Wave//packages/</loc>
      <lastmod>2017-05-19</lastmod>
      <changefreq>daily</changefreq>
     </url>

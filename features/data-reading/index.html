@@ -9,7 +9,7 @@
         <meta name="description" content="C# extensions for ArcFM Solution and ArcGIS for Desktop development.">
       
       
-        <link rel="canonical" href="http://jumpercables.github.io/Wave/features/data-access/">
+        <link rel="canonical" href="http://jumpercables.github.io/Wave/features/data-reading/">
       
       
         <meta name="author" content="Kyle Baesler">
@@ -21,7 +21,7 @@
     
     
       
-        <title>Data Query - Wave</title>
+        <title>Reading Data - Wave</title>
       
     
     
@@ -87,7 +87,7 @@
                 </span>
               
             
-            Data Query
+            Reading Data
           
         </span>
       </div>
@@ -229,8 +229,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../linq/" title="LINQ" class="md-nav__link">
-      LINQ
+    <a href="../extensions/" title="General" class="md-nav__link">
+      General
     </a>
   </li>
 
@@ -251,6 +251,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../linq/" title="LINQ" class="md-nav__link">
+      LINQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -261,8 +273,8 @@
       
     
     
-    <a href="./" title="Data Query" class="md-nav__link md-nav__link--active">
-      Data Query
+    <a href="./" title="Reading Data" class="md-nav__link md-nav__link--active">
+      Reading Data
     </a>
     
   </li>
@@ -274,20 +286,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../extensions/" title="Extensions" class="md-nav__link">
-      Extensions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../component-registration/" title="Component Registration'" class="md-nav__link">
-      Component Registration'
+    <a href="../data-editing/" title="Editing Data" class="md-nav__link">
+      Editing Data
     </a>
   </li>
 
@@ -351,6 +351,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../packages/" title="Packages" class="md-nav__link">
+      Packages
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../../license/" title="License" class="md-nav__link">
       License
     </a>
@@ -397,7 +409,7 @@
               
                 
                 
-                <h1 id="data-access">Data Access<a class="headerlink" href="#data-access" title="Permanent link">#</a></h1>
+                <h1 id="reading-data">Reading Data<a class="headerlink" href="#reading-data" title="Permanent link">#</a></h1>
 <p>One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.</p>
 <p>The <code class="codehilite">ITable</code> and <code class="codehilite">IFeatureClass</code> interfaces have been extended to include <code class="codehilite">Fetch</code> methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.</p>
 <ul>
@@ -429,7 +441,7 @@
 <ul>
 <li><code class="codehilite">Fetch</code> features or rows that need actions performed but the memory can be recycled.</li>
 </ul>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -450,7 +462,10 @@
 <span class="p">});</span>
 </pre></div>
 </td></tr></table>
-- <code class="codehilite">Fetch</code> features or rows with a projection.</p>
+
+<ul>
+<li><code class="codehilite">Fetch</code> features or rows with a projection.</li>
+</ul>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -484,7 +499,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../orm/" title="Object Relational Mapping" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../linq/" title="LINQ" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -493,19 +508,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Object Relational Mapping
+                LINQ
               </span>
             </div>
           </a>
         
         
-          <a href="../extensions/" title="Extensions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../data-editing/" title="Editing Data" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Extensions
+                Editing Data
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

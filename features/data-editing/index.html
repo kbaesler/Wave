@@ -9,7 +9,7 @@
         <meta name="description" content="C# extensions for ArcFM Solution and ArcGIS for Desktop development.">
       
       
-        <link rel="canonical" href="http://jumpercables.github.io/Wave/features/linq/">
+        <link rel="canonical" href="http://jumpercables.github.io/Wave/features/data-editing/">
       
       
         <meta name="author" content="Kyle Baesler">
@@ -21,7 +21,7 @@
     
     
       
-        <title>LINQ - Wave</title>
+        <title>Editing Data - Wave</title>
       
     
     
@@ -87,7 +87,7 @@
                 </span>
               
             
-            LINQ
+            Editing Data
           
         </span>
       </div>
@@ -251,20 +251,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-    <a href="./" title="LINQ" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../linq/" title="LINQ" class="md-nav__link">
       LINQ
     </a>
-    
   </li>
 
         
@@ -284,11 +275,54 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../data-editing/" title="Editing Data" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Editing Data
+      </label>
+    
+    <a href="./" title="Editing Data" class="md-nav__link md-nav__link--active">
       Editing Data
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nonversioned-edits" title="Nonversioned Edits" class="md-nav__link">
+    Nonversioned Edits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioned-edits" title="Versioned Edits" class="md-nav__link">
+    Versioned Edits
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -398,6 +432,27 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nonversioned-edits" title="Nonversioned Edits" class="md-nav__link">
+    Nonversioned Edits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioned-edits" title="Versioned Edits" class="md-nav__link">
+    Versioned Edits
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -409,110 +464,10 @@
               
                 
                 
-                <h1 id="linq">LINQ<a class="headerlink" href="#linq" title="Permanent link">#</a></h1>
-<p>The <code class="codehilite">while</code> statement is used in conjunction with the ArcFM and ArcGIS APIs to iterate through collections using the <code class="codehilite">Reset()</code> and <code class="codehilite">Next()</code> method combinations. However, in most cases the <code class="codehilite">foreach</code> statement is the preferred method, thus the most frequently used iterators can be converted to an enumerable type using the <code class="codehilite">AsEnumerable()</code> extension method, which allows these collections to now take advantage of <code class="codehilite">LINQ</code>.</p>
-<p>The following is a short list of the interfaces that support enumerable types:</p>
-<table>
-<thead>
-<tr>
-<th align="left">ESRI</th>
-<th align="left">ArcFM</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code class="codehilite">ILongArray</code></td>
-<td align="left"><code class="codehilite">IMMEnumField</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IArray</code></td>
-<td align="left"><code class="codehilite">IMMEnumTable</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IEnumDomain</code></td>
-<td align="left"><code class="codehilite">IMMEnumObjectClass</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IEnumBSTR</code></td>
-<td align="left"><code class="codehilite">IMMEnumFeederSource</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IEnumIDs</code></td>
-<td align="left"><code class="codehilite">IMMPxNodeHistory</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IFields</code></td>
-<td align="left"><code class="codehilite">IMMEnumPxTransition</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IEnumRelationshipClass</code></td>
-<td align="left"><code class="codehilite">IMMPxNode</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IEnumFeatureClass</code></td>
-<td align="left"><code class="codehilite">IMMEnumPxState</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">ICursor</code></td>
-<td align="left"><code class="codehilite">IMMEnumPxTasks</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">IFeatureCursor</code></td>
-<td align="left"><code class="codehilite">IMMEnumPxUser</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">ISet</code></td>
-<td align="left"><code class="codehilite">IMMEnumPxFilter</code></td>
-</tr>
-<tr>
-<td align="left"><code class="codehilite">...</code></td>
-<td align="left"><em>There are many more that haven&rsquo;t been listed for the sake of brevity.</em></td>
-</tr>
-</tbody>
-</table>
-<p>These new extension methods allow you to write code like this:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="n">cursor</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">Count</span><span class="p">();</span>
-</pre></div>
-</td></tr></table>
-
-<p>and:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">results</span> <span class="p">=</span>
-    <span class="k">from</span> <span class="n">x</span> <span class="k">in</span> <span class="n">cursor1</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">()</span>
-    <span class="k">from</span> <span class="n">y</span> <span class="k">in</span> <span class="n">cursor2</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">()</span>
-    <span class="k">where</span> <span class="n">x</span><span class="p">.</span><span class="n">get_Value</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">=</span> <span class="n">y</span><span class="p">.</span><span class="n">get_Value</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
-    <span class="k">select</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Left</span> <span class="p">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">Right</span> <span class="p">=</span> <span class="n">y</span> <span class="p">};</span>
-</pre></div>
-</td></tr></table>
-
-<p>There are several objects (i.e. <code class="codehilite">IEnumLayer</code>, <code class="codehilite">IMap</code>, <code class="codehilite">ID8List</code>) in ArcFM and ArcGIS APIs that require recursion to obtain all of the data. In the past, you&rsquo;d have to create a recursive method for iterating the contents of these hierarchical structures. These structures can now be traversed recursively using <code class="codehilite">LINQ</code>.</p>
-<ul>
-<li>Traversing the contents of the <code class="codehilite">IMap</code>.</li>
-</ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ClearDefinitions</span><span class="p">(</span><span class="n">IMap</span> <span class="n">map</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">layerDefinitions</span> <span class="p">=</span> <span class="n">map</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span><span class="p">.</span><span class="n">Visible</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">IFeatureLayerDefinition2</span><span class="p">)</span> <span class="n">o</span><span class="p">)</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">layerDefinition</span> <span class="k">in</span> <span class="n">layerDefinitions</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">layerDefinition</span><span class="p">.</span><span class="n">DefinitionExpression</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-
-<ul>
-<li>Traversing the contents of the <code class="codehilite">ID8List</code>.</li>
-</ul>
+                <h1 id="editing-data">Editing Data<a class="headerlink" href="#editing-data" title="Permanent link">#</a></h1>
+<p>There is a lot of editing that takes place within the ESRI platform. You can easily wrap up the necessary stop / start operations using the different flavors of the <code class="codehilite">PerformOperation</code> extension method on the <code class="codehilite">IWorkspace</code>, <code class="codehilite">IWorkspaceEdit</code>, <code class="codehilite">IVersion</code>, and <code class="codehilite">IEditor</code> interfaces.</p>
+<h2 id="nonversioned-edits">Nonversioned Edits<a class="headerlink" href="#nonversioned-edits" title="Permanent link">#</a></h2>
+<p>There are situations when you need to update only non-versioned tables inside the GIS. You can use the following method, and specific the proper enumeration to ensure that you are only editing the non-versioned tables inside the workspace.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -523,17 +478,57 @@
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">UpdateTags</span><span class="p">(</span><span class="n">ID8List</span> <span class="n">list</span><span class="p">,</span> <span class="kt">string</span> <span class="n">tag</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">items</span> <span class="p">=</span> <span class="n">list</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span> <span class="k">is</span> <span class="n">IMMProposedObject</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">IMMProposedObject</span><span class="p">)</span> <span class="n">o</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">IMMFieldManager</span> <span class="n">fieldManager</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">FieldManager</span><span class="p">;</span>
-        <span class="n">IMMFieldAdapter</span> <span class="n">fieldAdapter</span> <span class="p">=</span> <span class="n">fieldManager</span><span class="p">.</span><span class="n">FieldByName</span><span class="p">(</span><span class="s">&quot;TAG&quot;</span><span class="p">);</span>
-        <span class="n">fieldAdapter</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">tag</span><span class="p">;</span>
-        <span class="n">item</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+11
+12
+13
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// Update the description of Denver, in the City table that is a non-versioned table.</span>
+<span class="n">workspace</span><span class="p">.</span><span class="n">PerformOperation</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="n">esriMultiuserEditSessionMode</span><span class="p">.</span><span class="n">esriMESMNonVersioned</span><span class="p">,</span>
+   <span class="p">()=&gt;</span>
+   <span class="p">{</span>
+       <span class="kt">var</span> <span class="n">cities</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetTable</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">City</span><span class="p">));</span>
+       <span class="kt">var</span> <span class="n">filter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">QueryFilter</span><span class="p">();</span>
+       <span class="n">filter</span><span class="p">.</span><span class="n">Where</span> <span class="p">=</span> <span class="s">&quot;City = &#39;Denver&#39;&quot;</span><span class="p">;</span>
+
+        <span class="kt">var</span> <span class="n">denver</span> <span class="p">=</span> <span class="n">cities</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">City</span><span class="p">&gt;(</span><span class="n">filter</span><span class="p">).</span><span class="n">SingleOrDefault</span><span class="p">();</span>
+        <span class="n">denver</span><span class="p">.</span><span class="n">Description</span> <span class="p">=</span> <span class="s">&quot;The capital of Colorado.&quot;</span><span class="p">;</span>
+        <span class="n">denver</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// Commit the operation.</span>
+    <span class="p">});</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="versioned-edits">Versioned Edits<a class="headerlink" href="#versioned-edits" title="Permanent link">#</a></h2>
+<p>When editing a version table or feature class, you can take the same actions as above, except specify the versioned enumeration.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// Update the Begin and End stationing values for the Route with the ID. </span>
+<span class="n">workspace</span><span class="p">.</span><span class="n">PerformOperation</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="n">esriMultiuserEditSessionMode</span><span class="p">.</span><span class="n">esriMESMVersioned</span><span class="p">,</span>
+   <span class="p">()=&gt;</span>
+   <span class="p">{</span>
+       <span class="kt">var</span> <span class="n">route</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetFeatureClass</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">RouteCenterline</span><span class="p">));</span>
+       <span class="kt">var</span> <span class="n">filter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">QueryFilter</span><span class="p">();</span>
+       <span class="n">filter</span><span class="p">.</span><span class="n">Where</span> <span class="p">=</span> <span class="s">&quot;ROUTEID = 10423&quot;</span><span class="p">;</span>
+
+        <span class="kt">var</span> <span class="n">centerline</span> <span class="p">=</span> <span class="n">route</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">RouteCenterline</span><span class="p">&gt;(</span><span class="n">filter</span><span class="p">).</span><span class="n">SingleOrDefault</span><span class="p">();</span>
+        <span class="n">centerline</span><span class="p">.</span><span class="n">Begin</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+        <span class="n">centerline</span><span class="p">.</span><span class="n">End</span> <span class="p">=</span> <span class="m">100</span><span class="p">;</span>
+        <span class="n">centerline</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// Commit the operation.</span>
+    <span class="p">});</span>
 </pre></div>
 </td></tr></table>
                 
@@ -554,7 +549,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../orm/" title="Object Relational Mapping" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../data-reading/" title="Reading Data" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -563,19 +558,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Object Relational Mapping
+                Reading Data
               </span>
             </div>
           </a>
         
         
-          <a href="../data-reading/" title="Reading Data" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../samples/" title="Samples" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Reading Data
+                Samples
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
