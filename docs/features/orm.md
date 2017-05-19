@@ -20,6 +20,9 @@ You can begin using the object-relational mappping in 2 easy steps.
 
         [EntityField("STATE")]
         public string State {get;set;}
+
+        [EntityField("DESCRIPTION")]
+        public string Description {get;set}
     }
     ```
 2. Use the **CRUD** extension methods that have been exposed on the `ITable` and `IFeatureClass` interfaces and `Entity` class.
@@ -40,7 +43,8 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
     {
         Name = "Denver",
         Population = 663862,
-        State = "Colorado"
+        State = "Colorado",
+        Description = "The capital of Colorado."
     };
 
     denver.Insert(cities);
@@ -62,6 +66,7 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
         Console.WriteLine("Name: {0}" , city.Name);
         Console.WriteLine("POP: {0}" , city.Population);
         Console.WriteLine("State: {0}" , city.State);
+        Console.WriteLine("Description : {0}", city.Description);
     }
     ```
 3. Update: *Flush property changes to the underlying row in the database.*
@@ -72,16 +77,11 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
 
     ```c#
     var cities = workspace.GetTable(typeof(City));
-    var denver = new City
-    {
-        Name = "Denver",
-        Population = 663862,
-        State = "Colorado"
-    };
+    var filter = new QueryFilter();
+    filter.Where = "City = 'Denver'";
 
-    denver.Insert(cities);
-
-    denver.Population = 2500;
+    var denver = cities.Map<City>(filter).SingleOrDefault();
+    denver.Description = "Denver, the capital of Colorado, is an American metropolis dating to the Old West era. Larimer Square, the city’s oldest block, features landmark 19th-century buildings.";
     denver.Update();
 
     ```
@@ -94,15 +94,10 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
 
     ```c#
     var cities = workspace.GetTable(typeof(City));
-    var denver = new City
-    {
-        Name = "Denver",
-        Population = 663862,
-        State = "Colorado"
-    };
+    var filter = new QueryFilter();
+    filter.Where = "City = 'Denver'";
 
-    denver.Insert(cities);
-    
+    var denver = cities.Map<City>(filter).SingleOrDefault();
     denver.Delete();
     denver = null;
     ```
