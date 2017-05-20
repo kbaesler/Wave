@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -38,7 +37,7 @@ namespace ESRI.ArcGIS.Geodatabase
             if (!typeof(Entity).IsAssignableFrom(type))
                 throw new ArgumentOutOfRangeException("type", @"The object must be assignable from the Entity class");
 
-            var attribute = type.GetCustomAttributes(typeof(EntityTableAttribute)).OfType<EntityTableAttribute>().SingleOrDefault();
+            var attribute = type.GetCustomAttributes(typeof(EntityTableAttribute), true).OfType<EntityTableAttribute>().SingleOrDefault();
             if (attribute == null)
                 throw new ArgumentNullException("type", @"The object must be assigned the EntityTableAttribute attribute.");
 
@@ -48,11 +47,13 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Inserts multiple items into a table using an insert cursor.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="items">The items.</param>
-        /// <returns></returns>
-        public static int[] Insert<T>(this ITable source, IEnumerable<T> items) where T : Entity
+        /// <returns>
+        ///     Returns a <see cref="int" /> array representing the object ids of the inserted records.
+        /// </returns>
+        public static int[] Insert<TEntity>(this ITable source, IEnumerable<TEntity> items) where TEntity : Entity
         {
             var cursor = source.Insert(true);
 
@@ -69,7 +70,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     item.CopyTo(buffer);
 
-                    oids.Add((int) cursor.InsertRow(buffer));
+                    oids.Add((int)cursor.InsertRow(buffer));
                 }
 
                 return oids.ToArray();
@@ -85,25 +86,25 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Inserts multiple items into a table using an insert cursor.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="items">The items.</param>
-        /// <returns></returns>
-        public static int[] Insert<T>(this IFeatureClass source, IEnumerable<T> items) where T : Entity
+        /// <returns>Returns a <see cref="int" /> array representing the object ids of the inserted records.</returns>
+        public static int[] Insert<TEntity>(this IFeatureClass source, IEnumerable<TEntity> items) where TEntity : Entity
         {
-            return ((ITable) source).Insert(items);
+            return ((ITable)source).Insert(items);
         }
 
         /// <summary>
         ///     Reads database rows as a (lazily-evaluated) sequence of objects that are converted into the entity type.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="filter">The filter.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{T}" /> representing the entity object.
+        ///     Returns a <see cref="IEnumerable{TEntity}" /> representing the entity object.
         /// </returns>
-        public static IEnumerable<T> Map<T>(this ITable source, IQueryFilter filter) where T : Entity
+        public static IEnumerable<TEntity> Map<TEntity>(this ITable source, IQueryFilter filter) where TEntity : Entity
         {
             var cursor = source.Search(filter, false);
 
@@ -111,7 +112,7 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 foreach (var row in cursor.AsEnumerable())
                 {
-                    yield return Entity.Create<T>(row);
+                    yield return row.ToEntity<TEntity>();
                 }
             }
             finally
@@ -125,15 +126,28 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Reads database feature as a (lazily-evaluated) sequence of objects that are converted into the entity type.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="filter">The filter.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{T}" /> representing the entity object.
+        ///     Returns a <see cref="IEnumerable{TEntity}" /> representing the entity object.
         /// </returns>
-        public static IEnumerable<T> Map<T>(this IFeatureClass source, IQueryFilter filter) where T : Entity
+        public static IEnumerable<TEntity> Map<TEntity>(this IFeatureClass source, IQueryFilter filter) where TEntity : Entity
         {
-            return ((ITable) source).Map<T>(filter);
+            return ((ITable)source).Map<TEntity>(filter);
+        }
+
+        /// <summary>
+        ///     Converts the row into the entity object equivalent.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="TEntity" /> representing the entity object
+        /// </returns>
+        public static TEntity ToEntity<TEntity>(this IRow source) where TEntity : Entity
+        {
+            return Entity.Create<TEntity>(source);
         }
 
         #endregion
