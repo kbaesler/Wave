@@ -226,6 +226,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Entity.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityFieldAttribute.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityTableAttribute.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Extensions\EntityExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\IEntity.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\SqlVersionedEditing.cs" />

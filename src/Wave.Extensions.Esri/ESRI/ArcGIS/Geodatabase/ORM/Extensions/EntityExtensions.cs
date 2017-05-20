@@ -38,7 +38,7 @@ namespace ESRI.ArcGIS.Geodatabase
             if (!typeof(Entity).IsAssignableFrom(type))
                 throw new ArgumentOutOfRangeException("type", @"The object must be assignable from the Entity class");
 
-            var attribute = type.GetCustomAttributes(typeof(EntityTableAttribute)).OfType<EntityTableAttribute>().SingleOrDefault();
+            var attribute = type.GetCustomAttributes(typeof(EntityTableAttribute), true).OfType<EntityTableAttribute>().SingleOrDefault();
             if (attribute == null)
                 throw new ArgumentNullException("type", @"The object must be assigned the EntityTableAttribute attribute.");
 
