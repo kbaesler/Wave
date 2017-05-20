@@ -634,7 +634,7 @@
 6
 7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">cities</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetTable</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">City</span><span class="p">));</span>
 <span class="kt">var</span> <span class="n">filter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">QueryFilter</span><span class="p">();</span>
-<span class="n">filter</span><span class="p">.</span><span class="n">Where</span> <span class="p">=</span> <span class="s">&quot;City = &#39;Denver&#39;&quot;</span><span class="p">;</span>
+<span class="n">filter</span><span class="p">.</span><span class="n">Where</span> <span class="p">=</span> <span class="s">&quot;Name = &#39;Denver&#39;&quot;</span><span class="p">;</span>
 
 <span class="kt">var</span> <span class="n">denver</span> <span class="p">=</span> <span class="n">cities</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">City</span><span class="p">&gt;(</span><span class="n">filter</span><span class="p">).</span><span class="n">SingleOrDefault</span><span class="p">();</span>
 <span class="n">denver</span><span class="p">.</span><span class="n">Description</span> <span class="p">=</span> <span class="s">&quot;Denver, the capital of Colorado, is an American metropolis dating to the Old West era. Larimer Square, the city’s oldest block, features landmark 19th-century buildings.&quot;</span><span class="p">;</span>
@@ -671,7 +671,7 @@
 6
 7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">cities</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetTable</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">City</span><span class="p">));</span>
 <span class="kt">var</span> <span class="n">filter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">QueryFilter</span><span class="p">();</span>
-<span class="n">filter</span><span class="p">.</span><span class="n">Where</span> <span class="p">=</span> <span class="s">&quot;City = &#39;Denver&#39;&quot;</span><span class="p">;</span>
+<span class="n">filter</span><span class="p">.</span><span class="n">Where</span> <span class="p">=</span> <span class="s">&quot;Name = &#39;Denver&#39;&quot;</span><span class="p">;</span>
 
 <span class="kt">var</span> <span class="n">denver</span> <span class="p">=</span> <span class="n">cities</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">City</span><span class="p">&gt;(</span><span class="n">filter</span><span class="p">).</span><span class="n">SingleOrDefault</span><span class="p">();</span>
 <span class="n">denver</span><span class="p">.</span><span class="n">Delete</span><span class="p">();</span>
