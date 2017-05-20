@@ -498,14 +498,12 @@
 4
 5
 6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ClearDefinitions</span><span class="p">(</span><span class="n">IMap</span> <span class="n">map</span><span class="p">)</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">map</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetActiveMap</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">layerDefinitions</span> <span class="p">=</span> <span class="n">map</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span><span class="p">.</span><span class="n">Visible</span><span class="p">)</span>
+                        <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">IFeatureLayerDefinition2</span><span class="p">)</span> <span class="n">o</span><span class="p">)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">layerDefinition</span> <span class="k">in</span> <span class="n">layerDefinitions</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kt">var</span> <span class="n">layerDefinitions</span> <span class="p">=</span> <span class="n">map</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span><span class="p">.</span><span class="n">Visible</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">IFeatureLayerDefinition2</span><span class="p">)</span> <span class="n">o</span><span class="p">)</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">layerDefinition</span> <span class="k">in</span> <span class="n">layerDefinitions</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">layerDefinition</span><span class="p">.</span><span class="n">DefinitionExpression</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="n">layerDefinition</span><span class="p">.</span><span class="n">DefinitionExpression</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
@@ -522,17 +520,15 @@
  7
  8
  9
-10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">UpdateTags</span><span class="p">(</span><span class="n">ID8List</span> <span class="n">list</span><span class="p">,</span> <span class="kt">string</span> <span class="n">tag</span><span class="p">)</span>
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">map</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetTargetTab</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">items</span> <span class="p">=</span> <span class="n">list</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span> <span class="k">is</span> <span class="n">IMMProposedObject</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">IMMProposedObject</span><span class="p">)</span> <span class="n">o</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kt">var</span> <span class="n">items</span> <span class="p">=</span> <span class="n">list</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span> <span class="k">is</span> <span class="n">IMMProposedObject</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">IMMProposedObject</span><span class="p">)</span> <span class="n">o</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">IMMFieldManager</span> <span class="n">fieldManager</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">FieldManager</span><span class="p">;</span>
-        <span class="n">IMMFieldAdapter</span> <span class="n">fieldAdapter</span> <span class="p">=</span> <span class="n">fieldManager</span><span class="p">.</span><span class="n">FieldByName</span><span class="p">(</span><span class="s">&quot;TAG&quot;</span><span class="p">);</span>
-        <span class="n">fieldAdapter</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">tag</span><span class="p">;</span>
-        <span class="n">item</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="n">IMMFieldManager</span> <span class="n">fieldManager</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">FieldManager</span><span class="p">;</span>
+    <span class="n">IMMFieldAdapter</span> <span class="n">fieldAdapter</span> <span class="p">=</span> <span class="n">fieldManager</span><span class="p">.</span><span class="n">FieldByName</span><span class="p">(</span><span class="s">&quot;TAG&quot;</span><span class="p">);</span>
+    <span class="n">fieldAdapter</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">tag</span><span class="p">;</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
