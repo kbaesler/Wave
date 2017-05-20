@@ -39,28 +39,26 @@ There are several objects (i.e. `IEnumLayer`, `IMap`, `ID8List`) in ArcFM and Ar
 - Traversing the contents of the `IMap`.
 
 ```c#
-public void ClearDefinitions(IMap map)
+var map = ArcMap.Application.GetActiveMap();
+var layerDefinitions = map.Where(o => o.Visible)
+                        .Select(o => (IFeatureLayerDefinition2) o)
+foreach (var layerDefinition in layerDefinitions)
 {
-    var layerDefinitions = map.Where(o => o.Visible).Select(o => (IFeatureLayerDefinition2) o)
-    foreach (var layerDefinition in layerDefinitions)
-    {
-        layerDefinition.DefinitionExpression = null;
-    }
+    layerDefinition.DefinitionExpression = null;
 }
 ```
 
 - Traversing the contents of the `ID8List`.
 
 ```c#
-public void UpdateTags(ID8List list, string tag)
+var map = ArcMap.Application.GetTargetTab();
+var items = list.Where(o => o is IMMProposedObject)
+                .Select(o => (IMMProposedObject) o.Value)
+foreach (var item in items)
 {
-    var items = list.Where(o => o is IMMProposedObject).Select(o => (IMMProposedObject) o.Value)
-    foreach (var item in items)
-    {
-        IMMFieldManager fieldManager = item.FieldManager;
-        IMMFieldAdapter fieldAdapter = fieldManager.FieldByName("TAG");
-        fieldAdapter.Value = tag;
-        item.Update(null);
-    }
+    IMMFieldManager fieldManager = item.FieldManager;
+    IMMFieldAdapter fieldAdapter = fieldManager.FieldByName("TAG");
+    fieldAdapter.Value = tag;
+    item.Update(null);
 }
 ```
