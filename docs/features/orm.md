@@ -78,7 +78,7 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
     ```c#
     var cities = workspace.GetTable(typeof(City));
     var filter = new QueryFilter();
-    filter.Where = "City = 'Denver'";
+    filter.Where = "Name = 'Denver'";
 
     var denver = cities.Map<City>(filter).SingleOrDefault();
     denver.Description = "Denver, the capital of Colorado, is an American metropolis dating to the Old West era. Larimer Square, the city’s oldest block, features landmark 19th-century buildings.";
@@ -95,7 +95,7 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
     ```c#
     var cities = workspace.GetTable(typeof(City));
     var filter = new QueryFilter();
-    filter.Where = "City = 'Denver'";
+    filter.Where = "Name = 'Denver'";
 
     var denver = cities.Map<City>(filter).SingleOrDefault();
     denver.Delete();
