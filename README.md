@@ -8,6 +8,7 @@ The documentation is located on the [Wave GitHub Page](http://jumpercables.githu
 
 **Wave Extensions for ArcGIS**
 The package for the ArcGIS for Desktop extensions.
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e96cb13cfd345e4b4758550b3ebe5f1)](https://www.codacy.com/app/Jumpercables/Wave?utm_source=github.com&utm_medium=referral&utm_content=Jumpercables/Wave&utm_campaign=badger)
 - [![Wave Extensions for ArcGIS](https://buildstats.info/nuget/Wave.Extensions.Esri)](https://www.nuget.org/packages/Wave.Extensions.Esri/)
 
 **Wave Extensions for ArcFM**
