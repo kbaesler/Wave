@@ -454,9 +454,6 @@
 <p>One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.</p>
 <h2 id="fetch">Fetch<a class="headerlink" href="#fetch" title="Permanent link">#</a></h2>
 <p>The <code class="codehilite">ITable</code> and <code class="codehilite">IFeatureClass</code> interfaces have been extended to include <code class="codehilite">Fetch</code> methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.</p>
-<ul>
-<li>
-<p><code class="codehilite">Fetch</code> features or rows with a list of OBJECTIDs.</p>
 <table>
 <thead>
 <tr>
@@ -469,26 +466,51 @@
 <tbody>
 <tr>
 <td align="left"><code class="codehilite">IFeatureClass</code></td>
+<td align="left">Fetch(params int[])</td>
+<td align="left">Fetch the features that have the specified object identifiers using a non-recycling cursor.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code class="codehilite">ITable</code></td>
+<td align="left">Fetch(params int[])</td>
+<td align="left">Fetch the rows tthat have the specified object identifiers using a non-recycling cursor.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code class="codehilite">IFeatureClass</code></td>
 <td align="left">Fetch(IQueryFilter)</td>
-<td align="left">Fetch the features that statisfy the spatial or attribute query using a non-recycling cursor.</td>
+<td align="left">Fetch the features that statisfy the query using a non-recycling cursor.</td>
 <td></td>
 </tr>
 <tr>
 <td align="left"><code class="codehilite">ITable</code></td>
 <td align="left">Fetch(IFeatureClass)</td>
-<td align="left">Fetch the rows that statisfy the spatial or attribute query using a non-recycling cursor.</td>
+<td align="left">Fetch the rows that statisfy the query using a non-recycling cursor.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code class="codehilite">IFeatureClass</code></td>
+<td align="left">Fetch(IQueryFilter, Action<IFeature>, bool)</td>
+<td align="left">Fetch the features that statisfy the query and execute the action each feature.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code class="codehilite">ITable</code></td>
+<td align="left">Fetch(IFeatureClass, Action<IRow>, bool)</td>
+<td align="left">Fetch the rows that statisfy the query and execute the action on each row.</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">List</span><span class="p">&lt;</span><span class="n">IFeature</span><span class="p">&gt;</span> <span class="n">features</span> <span class="p">=</span> <span class="n">featureClass</span><span class="p">.</span><span class="n">Fetch</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">);</span>
+<ul>
+<li><code class="codehilite">Fetch</code> features or rows with a list of OBJECTIDs.</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>   <span class="n">List</span><span class="p">&lt;</span><span class="n">IFeature</span><span class="p">&gt;</span> <span class="n">features</span> <span class="p">=</span> <span class="n">featureClass</span><span class="p">.</span><span class="n">Fetch</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
-</li>
-<li>
-<p><code class="codehilite">Fetch</code> features or rows that need a spatial and/or attribute dependencies to filter the results.</p>
-</li>
+<ul>
+<li><code class="codehilite">Fetch</code> features or rows that need a spatial and/or attribute dependencies to filter the results.</li>
 </ul>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
