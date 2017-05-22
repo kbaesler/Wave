@@ -7,6 +7,7 @@ These are the changes, additions, removals that are actively being worked on and
 !!! warning "Unpublished"
     The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. `master` branch).
 
+## Version 1.0.5 - 2017-05-22
 ### New 
 - Added `Task` static class that provides the ability to execute delegates on STA threads using `BackgroundWorker` and `STASynchronizationContext` in a simplified manner. [^1]
 - Added `RegexValidationRule` that is used for validation text input using regular expressions. [^1]
@@ -16,7 +17,7 @@ These are the changes, additions, removals that are actively being worked on and
 - Added `ScrollSynchronizer` class that allows for synchronizing `ScrollViewer` controls in XAML. [^1]
 - Added `STASynchronizationContext` class that dispatched the asynchronous message. [^1]
 - Added `SegmentationExtensions` class that provides extension methods for dealing with *Linear Referencing* and *M-Values*. [^1]
-- Added `Entity` and `EntityFieldAttribute` and `EntityTableAttribute` classes that allow for mapping rows or features within a table or feature class to class files (Object Relational Mapping). [^1] 
+- Added `Entity` and `EntityFieldAttribute` and `EntityTableAttribute` classes that allow for mapping rows or features within a table or feature class to class files [Object Relational Mapping](/features/orm.md). [^1] 
 
 ### Fixed 
 - The `AutoCompleteBox` control now supports case-sensitivity and a timed delay (using the `DelayedTextBox`) to delay drop down. [^1]
