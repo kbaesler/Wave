@@ -503,15 +503,15 @@
 </tbody>
 </table>
 <ul>
-<li><code class="codehilite">Fetch</code> features or rows with a list of OBJECTIDs.</li>
-</ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>   <span class="n">List</span><span class="p">&lt;</span><span class="n">IFeature</span><span class="p">&gt;</span> <span class="n">features</span> <span class="p">=</span> <span class="n">featureClass</span><span class="p">.</span><span class="n">Fetch</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">);</span>
+<li>
+<p><code class="codehilite">Fetch</code> features or rows with a list of OBJECTIDs.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">List</span><span class="p">&lt;</span><span class="n">IFeature</span><span class="p">&gt;</span> <span class="n">features</span> <span class="p">=</span> <span class="n">featureClass</span><span class="p">.</span><span class="n">Fetch</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
-<ul>
-<li><code class="codehilite">Fetch</code> features or rows that need a spatial and/or attribute dependencies to filter the results.</li>
-</ul>
+</li>
+<li>
+<p><code class="codehilite">Fetch</code> features or rows that need a spatial and/or attribute dependencies to filter the results.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -528,9 +528,9 @@
 </pre></div>
 </td></tr></table>
 
-<ul>
-<li><code class="codehilite">Fetch</code> features or rows that need actions performed but the memory can be recycled.</li>
-</ul>
+</li>
+<li>
+<p><code class="codehilite">Fetch</code> features or rows that need actions performed but the memory can be recycled.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -547,30 +547,25 @@
 
 <span class="kt">int</span> <span class="n">rowsAffected</span> <span class="p">=</span> <span class="n">featureClass</span><span class="p">.</span><span class="n">Fetch</span><span class="p">(</span><span class="n">filter</span><span class="p">,</span> <span class="n">feature</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
-     <span class="n">feature</span><span class="p">.</span><span class="n">set_Value</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
-     <span class="n">feature</span><span class="p">.</span><span class="n">Store</span><span class="p">();</span>
+    <span class="n">feature</span><span class="p">.</span><span class="n">set_Value</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+    <span class="n">feature</span><span class="p">.</span><span class="n">Store</span><span class="p">();</span>
 <span class="p">});</span>
 </pre></div>
 </td></tr></table>
 
-<ul>
-<li><code class="codehilite">Fetch</code> features or rows with a projection.</li>
+</li>
+<li>
+<p><code class="codehilite">Fetch</code> features or rows with a projection.</p>
+<p>```c#
+ISpatialFilter filter = new SpatialFilterClass();
+filter.WhereClause = featureClass.OIDFieldName + &rdquo; IN (1,2,3,4,5,6)&rdquo;;
+filter.Geometry = geometry;
+filter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
+filter.GeometryField = &ldquo;SHAPE&rdquo;;</p>
+<p>List<int> oids = featureClass.Fetch(filter, feature =&gt; feature.OID);
+```</p>
+</li>
 </ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ISpatialFilter</span> <span class="n">filter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SpatialFilterClass</span><span class="p">();</span>
-<span class="n">filter</span><span class="p">.</span><span class="n">WhereClause</span> <span class="p">=</span> <span class="n">featureClass</span><span class="p">.</span><span class="n">OIDFieldName</span> <span class="p">+</span> <span class="s">&quot; IN (1,2,3,4,5,6)&quot;</span><span class="p">;</span>
-<span class="n">filter</span><span class="p">.</span><span class="n">Geometry</span> <span class="p">=</span> <span class="n">geometry</span><span class="p">;</span>
-<span class="n">filter</span><span class="p">.</span><span class="n">SpatialRel</span> <span class="p">=</span> <span class="n">esriSpatialRelEnum</span><span class="p">.</span><span class="n">esriSpatialRelIntersects</span><span class="p">;</span>
-<span class="n">filter</span><span class="p">.</span><span class="n">GeometryField</span> <span class="p">=</span> <span class="s">&quot;SHAPE&quot;</span><span class="p">;</span>
-
-<span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">oids</span> <span class="p">=</span> <span class="n">featureClass</span><span class="p">.</span><span class="n">Fetch</span><span class="p">(</span><span class="n">filter</span><span class="p">,</span> <span class="n">feature</span> <span class="p">=&gt;</span> <span class="n">feature</span><span class="p">.</span><span class="n">OID</span><span class="p">);</span>
-</pre></div>
-</td></tr></table>
                 
                   
                 
