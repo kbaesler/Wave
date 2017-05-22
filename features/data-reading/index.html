@@ -490,8 +490,10 @@
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
 <span class="n">IWorkspace</span> <span class="n">workspace</span> <span class="p">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">EditWorkspace</span><span class="p">;</span>
+
 <span class="n">IFeatureClass</span> <span class="n">transformers</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetFeatureClass</span><span class="p">(</span><span class="s">&quot;Transformers&quot;</span><span class="p">);</span>
 <span class="n">List</span><span class="p">&lt;</span><span class="n">IFeature</span><span class="p">&gt;</span> <span class="n">features</span> <span class="p">=</span> <span class="n">transformers</span><span class="p">.</span><span class="n">Fetch</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">);</span>
 </pre></div>
@@ -513,8 +515,10 @@
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
 <span class="n">IWorkspace</span> <span class="n">workspace</span> <span class="p">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">EditWorkspace</span><span class="p">;</span>
+
 <span class="n">IFeatureClass</span> <span class="n">workRequests</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetFeatureClass</span><span class="p">(</span><span class="s">&quot;WorkRequests&quot;</span><span class="p">);</span>
 <span class="n">IFeatureClass</span> <span class="n">transformers</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetFeatureClass</span><span class="p">(</span><span class="s">&quot;Transformers&quot;</span><span class="p">);</span>
 
@@ -545,8 +549,10 @@
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
+13
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
 <span class="n">IWorkspace</span> <span class="n">workspace</span> <span class="p">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">EditWorkspace</span><span class="p">;</span>
+
 <span class="n">IFeatureClass</span> <span class="n">transformers</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetFeatureClass</span><span class="p">(</span><span class="s">&quot;Transformers&quot;</span><span class="p">);</span>
 <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">transformers</span><span class="p">.</span><span class="n">FindField</span><span class="p">(</span><span class="s">&quot;DATEMODIFIED&quot;</span><span class="p">);</span>
 
@@ -577,8 +583,10 @@
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IEditor</span> <span class="n">editor</span> <span class="p">=</span> <span class="n">ArcMap</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">GetEditor</span><span class="p">();</span>
 <span class="n">IWorkspace</span> <span class="n">workspace</span> <span class="p">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">EditWorkspace</span><span class="p">;</span>
+
 <span class="n">IFeatureClass</span> <span class="n">workRequests</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetFeatureClass</span><span class="p">(</span><span class="s">&quot;WorkRequests&quot;</span><span class="p">);</span>
 <span class="n">IFeatureClass</span> <span class="n">transformers</span> <span class="p">=</span> <span class="n">workspace</span><span class="p">.</span><span class="n">GetFeatureClass</span><span class="p">(</span><span class="s">&quot;Transformers&quot;</span><span class="p">);</span>
 
