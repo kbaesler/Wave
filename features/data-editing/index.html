@@ -466,6 +466,30 @@
                 
                 <h1 id="editing-data">Editing Data<a class="headerlink" href="#editing-data" title="Permanent link">#</a></h1>
 <p>There is a lot of editing that takes place within the ESRI platform. You can easily wrap up the necessary stop / start operations using the different flavors of the <code class="codehilite">PerformOperation</code> extension method on the <code class="codehilite">IWorkspace</code>, <code class="codehilite">IWorkspaceEdit</code>, <code class="codehilite">IVersion</code>, and <code class="codehilite">IEditor</code> interfaces.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Interface</th>
+<th align="left">Method</th>
+<th align="left">Description</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code class="codehilite">IWorkspace</code></td>
+<td align="left">PerformOperation(bool, Func<bool>)</td>
+<td align="left">Encapsulates the operation in the necessary start and stop constructs.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code class="codehilite">IWorkspace</code></td>
+<td align="left">PerformOperation(bool, esriMultiusreEditSessionMode, Func<bool>)</td>
+<td align="left">Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and control if versioned or non-versioned data should be edited.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="nonversioned-edits">Nonversioned Edits<a class="headerlink" href="#nonversioned-edits" title="Permanent link">#</a></h2>
 <p>There are situations when you need to update only non-versioned tables inside the GIS. You can use the following method, and specific the proper enumeration to ensure that you are only editing the non-versioned tables inside the workspace.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
