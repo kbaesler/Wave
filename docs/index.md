@@ -1,11 +1,13 @@
 # Wave
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e96cb13cfd345e4b4758550b3ebe5f1)](https://www.codacy.com/app/Jumpercables/Wave?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Jumpercables/Wave&amp;utm_campaign=Badge_Grade) 
+	
 ## Overview
 [Wave](https://github.com/Jumpercables/Wave) is a C# library that extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library and is built using [.NET Extension Methods](http://msdn.microsoft.com/en-us/library/bb383977.aspx) which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. 
 
 !!! info "Design" 
 	Any interfaces or objects that are extended have been setup to use the namespace of the object, which allows Wave's features to be available without adding new namespace delcarations.
-	
+
 	For instance, the `RowExtensions.cs` that contains extension methods for the `IRow` interface uses the `ESRI.ArcGIS.Geodatabase` namespace because that is the namespace that contains the `IRow` interface.
 
 **Wave Extensions for ArcGIS** - The package for the ArcGIS for Desktop extensions.

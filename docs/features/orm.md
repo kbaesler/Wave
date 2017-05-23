@@ -5,7 +5,8 @@ Simple object-relational mapping abstraction layer for geodatabase feature class
 You can begin using the object-relational mappping in 2 easy steps.
 
 1. Create a `class` that inherits from the `Entity` class.
-    * Decorate each property in the `class` with the `EntityField` attribute that you want to have mapped to column on a table.
+    * Decorate each property in the `class` with the `EntityField` attribute that you want to be mapped to column on a table.
+        * The data type of the property should match that of the table column.
     * Decorate the `class` with the `EntityTable` attribute that you want to have mapped to a table.
 
     ```c#
