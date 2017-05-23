@@ -75,6 +75,10 @@
                     case esriFeatureType.esriFTSimpleJunction:
                         this.Type = ClassType.Point;
                         break;
+
+                    default:
+                        this.Type = ClassType.Table;
+                        break;
                 }
             }
             else if (conflictClass is IRelationshipClass)
