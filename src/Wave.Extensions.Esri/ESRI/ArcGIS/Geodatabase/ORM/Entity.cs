@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 using ESRI.ArcGIS.ADF;
+using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -95,7 +96,7 @@ namespace ESRI.ArcGIS.Geodatabase
         #region IEntity<ITable> Members
 
         /// <summary>
-        ///     Deletes the underlying backing object (either IRow or IFeature)
+        ///     Deletes the underlying object from the table.
         /// </summary>
         public virtual void Delete()
         {
@@ -107,7 +108,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Inserts the entity object into the table using an insert cursor.
+        ///     Inserts the entity into the table using an insert cursor.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>
@@ -133,7 +134,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///    Updates the underlying backing object (either IRow or IFeature)
+        ///     Commits changes to the underlying context.
         /// </summary>
         public virtual void Update()
         {
@@ -149,48 +150,9 @@ namespace ESRI.ArcGIS.Geodatabase
             }
         }
 
-        /// <summary>
-        ///     Binds the entity to specified object from the context.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="oid">The OBJECTID of the row to bind.</param>
-        public virtual void Bind(ITable context, int oid)
-        {
-            this.Bind(context.Fetch(oid));
-        }
-
-        /// <summary>
-        ///     Binds the entity to specified object from the context.
-        /// </summary>
-        /// <param name="row"></param>
-        public void Bind(IRow row)
-        {
-            this.Row = row;
-
-            if (this.IsDataBound)
-            {
-                this.Fields = row.Fields.ToDictionary();
-
-                foreach (var field in _EntityFieldAttributes)
-                {
-                    var value = this.GetValue(field.Key);
-                    field.Value.SetValue(this, Convert.IsDBNull(value) ? null : value, null);
-                }
-            }
-        }
-
         #endregion
 
         #region Public Methods
-
-        /// <summary>
-        ///     Binds the entity to the underlying bounding object (or row).
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        public void Bind(Entity entity)
-        {
-            entity.Bind(this.Row);
-        }
 
         /// <summary>
         ///     Copies the contents of the entity into the buffer.
@@ -236,6 +198,36 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Protected Methods
 
         /// <summary>
+        ///     Binds the entity to specified object from the context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="oid">The OBJECTID of the row to bind.</param>
+        protected virtual void Bind(ITable context, int oid)
+        {
+            this.Bind(context.Fetch(oid));
+        }
+
+        /// <summary>
+        ///     Binds the entity to specified object from the context.
+        /// </summary>
+        /// <param name="row"></param>
+        protected void Bind(IRow row)
+        {
+            this.Row = row;
+
+            if (this.IsDataBound)
+            {
+                this.Fields = row.Fields.ToDictionary(f => _EntityFieldAttributes.ContainsKey(f.Name));
+
+                foreach (var field in _EntityFieldAttributes)
+                {
+                    var value = this.GetValue(field.Key);
+                    field.Value.SetValue(this, Convert.IsDBNull(value) ? null : value, null);
+                }
+            }
+        }
+
+        /// <summary>
         ///     Gets the value.
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
@@ -244,7 +236,19 @@ namespace ESRI.ArcGIS.Geodatabase
         protected object GetValue(string fieldName)
         {
             if (this.IsDataBound)
-                return this.Row.GetValue<object>(this.Fields[fieldName], null);
+            {
+                var value = this.Row.GetValue<object>(this.Fields[fieldName], null);
+                if (value != DBNull.Value)
+                {
+                    if (this.Row.Fields.Field[this.Fields[fieldName]].Type == esriFieldType.esriFieldTypeBlob)
+                    {
+                        ((IMemoryBlobStreamVariant)value).ExportToVariant(out value);
+                    }
+                }
+
+                return value;
+            }
+
 
             if (!_EntityFieldAttributes.ContainsKey(fieldName))
                 throw new MissingFieldException(string.Format("Field '{0}' has not been defined.", fieldName));
@@ -284,6 +288,13 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (this.IsDataBound)
             {
+                if (value is byte[])
+                {
+                    var ms = (IMemoryBlobStreamVariant)new MemoryBlobStream();
+                    ms.ImportFromVariant(value);
+                    value = ms;
+                }
+
                 this.Row.Update(this.Fields[fieldName], value, false);
             }
             else
@@ -358,7 +369,7 @@ namespace ESRI.ArcGIS.Geodatabase
         #region IEntity<IFeatureClass,TShape> Members
 
         /// <summary>
-        ///     Inserts the entity object into the table using an insert cursor.
+        ///     Inserts the entity into specified context.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>
@@ -374,6 +385,10 @@ namespace ESRI.ArcGIS.Geodatabase
             return oid;
         }
 
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         ///     Binds the entity to specified object from the context.
         /// </summary>
@@ -386,10 +401,6 @@ namespace ESRI.ArcGIS.Geodatabase
             if (this.HasShape)
                 this.TemporaryShape = ((IFeature)this.Row).Shape;
         }
-
-        #endregion
-
-        #region Public Methods
 
         /// <summary>
         ///     Copies the contents of the entity into the buffer.
