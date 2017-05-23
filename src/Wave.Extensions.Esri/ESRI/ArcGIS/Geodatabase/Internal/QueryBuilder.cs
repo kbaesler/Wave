@@ -241,11 +241,10 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                 case ComparisonOperator.EndsWith:
                     return value.EndsWith(keyword, StringComparison.CurrentCultureIgnoreCase);
 
-                case ComparisonOperator.Equals:
+                default:
                     return value.Equals(keyword, StringComparison.CurrentCultureIgnoreCase);
-            }
 
-            return false;
+            }
         }
 
         /// <summary>
@@ -499,6 +498,10 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
                             formattedValue = string.Format("{0}", number);
                         }
 
+                        break;
+
+                    default:
+                        formattedValue = string.Empty;
                         break;
                 }
             }

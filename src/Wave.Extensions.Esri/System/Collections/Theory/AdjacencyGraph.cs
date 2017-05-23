@@ -413,6 +413,9 @@ namespace System.Collections
                     }
 
                     break;
+
+                default:
+                    break;
             }
         }
 

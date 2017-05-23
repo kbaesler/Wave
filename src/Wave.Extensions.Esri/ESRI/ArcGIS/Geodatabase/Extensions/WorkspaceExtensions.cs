@@ -249,6 +249,8 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     case esriConnectionDBMS.esriDBMS_SQLServer:
                         return DBMS.SqlServer;
+                    default:
+                        throw new NotSupportedException("The database connection is not supported");
                 }
             }
 
@@ -685,9 +687,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
-        ///     <paramref name="withUndoRedo" /> and
-        ///     <paramref name="multiuserEditSessionMode" /> parameters.
+        ///     Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and control if versioned or non-versioned data should be edited.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="withUndoRedo">
@@ -716,9 +716,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
-        ///     <paramref name="withUndoRedo" /> and
-        ///     <paramref name="multiuserEditSessionMode" /> parameters.
+        ///     Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and control if versioned or non-versioned data should be edited.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="withUndoRedo">
@@ -771,7 +769,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        ///    Encapsulates the operation in the necessary start and stop constructs.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="withUndoRedo">
@@ -789,7 +787,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        ///     Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and allows for handling errors when saving the operation.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="withUndoRedo">

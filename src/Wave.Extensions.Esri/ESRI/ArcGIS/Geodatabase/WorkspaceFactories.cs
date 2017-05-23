@@ -207,9 +207,9 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     factory = new FileGDBWorkspaceFactoryClass();
                     return factory.OpenFromFile(database, 0);
+                default:
+                    throw new InvalidOperationException("Unexpected Database Type = " + type);
             }
-
-            return null;
         }
 
         #endregion

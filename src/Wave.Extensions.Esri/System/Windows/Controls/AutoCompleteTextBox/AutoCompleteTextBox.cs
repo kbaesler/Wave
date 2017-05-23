@@ -430,7 +430,7 @@ namespace System.Windows.Controls
                             flag = source.Contains(_TextBox.Text);
                             break;
 
-                        case AutoCompleteMode.Equals:
+                        default:
                             flag = source.Equals(_TextBox.Text, StringComparison.InvariantCultureIgnoreCase);
                             break;
                     }

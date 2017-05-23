@@ -261,6 +261,8 @@ namespace System.Windows.Behaviors
                     }
 
                     break;
+                default:
+                    break;
             }
         }
 
