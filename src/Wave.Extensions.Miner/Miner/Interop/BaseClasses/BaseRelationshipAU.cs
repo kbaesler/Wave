@@ -66,14 +66,10 @@ namespace Miner.Interop
             catch (COMException e)
             {
                 // If the MM_E_CANCELEDIT error is thrown, let it out.
-                switch (e.ErrorCode)
-                {
-                    case (int) mmErrorCodes.MM_E_CANCELEDIT:
-                        throw;
-                    default:
-                        this.WriteError(e);
-                        break;
-                }
+                if (e.ErrorCode == (int) mmErrorCodes.MM_E_CANCELEDIT)
+                    throw;
+                
+                this.WriteError(e);
             }
             catch (Exception e)
             {

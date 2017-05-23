@@ -64,14 +64,10 @@ namespace Miner.Interop
             {
                 // If the MM_S_NOCHANGE error was thrown, let it out so ArcFM will
                 // know what to do.
-                switch (e.ErrorCode)
-                {
-                    case (int) mmErrorCodes.MM_S_NOCHANGE:
-                        throw;
-                    default:
-                        this.WriteError(e);
-                        break;
-                }
+                if (e.ErrorCode == (int) mmErrorCodes.MM_S_NOCHANGE)
+                    throw;
+
+                this.WriteError(e);
             }
             catch (Exception e)
             {
