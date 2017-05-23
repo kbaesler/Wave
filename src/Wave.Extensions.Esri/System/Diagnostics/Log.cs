@@ -15,22 +15,19 @@ namespace System.Diagnostics
     /// </summary>
     public static class Log
     {
-        #region Fields
-
-        private static readonly object Lock = new object();
-        private static readonly Dictionary<Type, ILog> Loggers = new Dictionary<Type, ILog>();
-
-        #endregion
-
-        #region Public Properties
+        #region Constants
 
         /// <summary>
         ///     The name of the log configuration file.
         /// </summary>
-        public static string FileName
-        {
-            get { return "Sempra.log4net.config"; }
-        }
+        public const string FileName = "Sempra.log4net.config";
+
+        #endregion
+
+        #region Fields
+
+        private static readonly object Lock = new object();
+        private static readonly Dictionary<Type, ILog> Loggers = new Dictionary<Type, ILog>();
 
         #endregion
 
