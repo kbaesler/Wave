@@ -15,19 +15,22 @@ namespace System.Diagnostics
     /// </summary>
     public static class Log
     {
-        #region Constants
-
-        /// <summary>
-        ///     The name of the log configuration file.
-        /// </summary>
-        public const string FileName = "Sempra.log4net.config";
-
-        #endregion
-
         #region Fields
 
         private static readonly object Lock = new object();
         private static readonly Dictionary<Type, ILog> Loggers = new Dictionary<Type, ILog>();
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        ///     The name of the log configuration file.
+        /// </summary>
+        public static string FileName
+        {
+            get { return "Sempra.log4net.config"; }
+        }
 
         #endregion
 
@@ -42,7 +45,7 @@ namespace System.Diagnostics
             var skeleton = FindAppender<IAppender>(appender.Name);
             if (skeleton != null) return skeleton;
 
-            var repository = LogManager.GetRepository();           
+            var repository = LogManager.GetRepository();
             var hierarchy = (Hierarchy) repository;
             hierarchy.Root.AddAppender(appender);
             hierarchy.Configured = true;
@@ -52,7 +55,7 @@ namespace System.Diagnostics
         }
 
         /// <summary>
-        /// Adds the appender.
+        ///     Adds the appender.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="appender">The appender.</param>
@@ -60,17 +63,6 @@ namespace System.Diagnostics
         {
             IAppenderAttachable attachable = source as IAppenderAttachable;
             if (attachable != null) attachable.AddAppender(appender);
-        }
-
-        /// <summary>
-        /// Removes the appender.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="appender">The appender.</param>
-        public static void RemoveAppender(this ILogger source, IAppender appender)
-        {
-            IAppenderAttachable attachable = source as IAppenderAttachable;
-            if (attachable != null) attachable.RemoveAppender(appender);
         }
 
         /// <summary>
@@ -406,13 +398,24 @@ namespace System.Diagnostics
         }
 
         /// <summary>
+        ///     Removes the appender.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="appender">The appender.</param>
+        public static void RemoveAppender(this ILogger source, IAppender appender)
+        {
+            IAppenderAttachable attachable = source as IAppenderAttachable;
+            if (attachable != null) attachable.RemoveAppender(appender);
+        }
+
+        /// <summary>
         ///     Finds the appender that is attached to a logger and removes it.
         /// </summary>
         /// <param name="appender">The appender.</param>
         public static void RemoveAppender(IAppender appender)
         {
-            var repository = LogManager.GetRepository();         
-            var hierarchy = (Hierarchy)repository;
+            var repository = LogManager.GetRepository();
+            var hierarchy = (Hierarchy) repository;
             hierarchy.Root.RemoveAppender(appender);
             hierarchy.Configured = true;
             hierarchy.RaiseConfigurationChanged(EventArgs.Empty);

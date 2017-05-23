@@ -34,7 +34,7 @@ namespace ESRI.ArcGIS.Carto
                 var factory = new RelQueryTableFactoryClass();
                 var origin = factory.Open(table.RelationshipClass, true, null, null, "", true, ((IRelQueryTableInfo)table).JoinType == esriJoinType.esriLeftInnerJoin);
 
-                var join = ((IObjectClass)origin).Join(foreignClass, string.Format("{0}.{1}", ((IDataset)table.SourceTable).Name, layerKeyField), foreignKeyField, cardinality);
+                var join = ((IObjectClass)origin).Join(foreignClass, string.Format("{0}.{1}", ((IDataset)table.SourceTable).Name, layerKeyField), foreignKeyField, cardinality, null);
                 var result = factory.Open(join, true, null, null, "", true, joinType == esriJoinType.esriLeftInnerJoin);
 
                 IDisplayRelationshipClass display = (IDisplayRelationshipClass)source;
@@ -71,7 +71,7 @@ namespace ESRI.ArcGIS.Carto
             else
             {
                 var layer = (IFeatureClass)((IDisplayTable)source).DisplayTable;
-                relClass = layer.Join(foreignClass, layerKeyField, foreignKeyField, cardinality);
+                relClass = layer.Join(foreignClass, layerKeyField, foreignKeyField, cardinality, null);
 
                 var factory = new RelQueryTableFactoryClass();
                 result = factory.Open(relClass, true, null, null, "", true, joinType == esriJoinType.esriLeftInnerJoin);

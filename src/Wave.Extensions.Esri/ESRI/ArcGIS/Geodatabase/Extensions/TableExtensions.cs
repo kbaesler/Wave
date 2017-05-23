@@ -838,7 +838,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IRelationshipClass" /> representing the relationship between the two classes.
         /// </returns>
-        public static IRelationshipClass Join(this IObjectClass source, IObjectClass foreignClass, string primaryKeyField, string foreignKeyField, esriRelCardinality cardinality, string name = null)
+        public static IRelationshipClass Join(this IObjectClass source, IObjectClass foreignClass, string primaryKeyField, string foreignKeyField, esriRelCardinality cardinality, string name)
         {
             var joinName = name ?? string.Format("{0}_{1}", ((IDataset) source).Name, ((IDataset) foreignClass).Name);
 

@@ -10,15 +10,6 @@ namespace System
     [ClassInterface(ClassInterfaceType.None)]
     public class Recursion<TValue> : IRecursion<TValue>
     {
-        #region Constants
-
-        /// <summary>
-        ///     Used to indicate infinite recursion depth.
-        /// </summary>
-        public const int Infinity = -1;
-
-        #endregion
-
         #region Constructors
 
         /// <summary>
@@ -34,7 +25,15 @@ namespace System
 
         #endregion
 
-        #region IRecursion<TValue> Members
+        #region Public Properties
+
+        /// <summary>
+        ///     Used to indicate infinite recursion depth.
+        /// </summary>
+        public static int Infinity
+        {
+            get { return -1; }
+        }
 
         /// <summary>
         ///     Gets or sets the recursive depth.

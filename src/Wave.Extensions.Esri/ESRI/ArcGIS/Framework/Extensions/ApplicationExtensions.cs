@@ -299,7 +299,7 @@ namespace ESRI.ArcGIS.Framework
     ///     Provides access to the progress bar animation on the status bar.
     /// </summary>
     /// <seealso cref="System.IDisposable" />
-    public interface IProgressBarAnimation : IDisposable
+    public interface IProgressBarAnimation
     {
         #region Public Properties
 
@@ -327,7 +327,7 @@ namespace ESRI.ArcGIS.Framework
     ///     An interface used to handle starting and stopping the ArcMap progress animation.
     /// </summary>
     /// <seealso cref="System.IDisposable" />
-    public interface IProgressGlobeAnimation : IDisposable
+    public interface IProgressGlobeAnimation
     {
         #region Public Properties
 
