@@ -224,9 +224,10 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgressSurrogate.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityAttributesCollection.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityFieldAttribute.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityTableAttribute.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Entity.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityFieldAttribute.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityTableAttribute.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Extensions\EntityExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\IEntity.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\SqlVersionedEditing.cs" />

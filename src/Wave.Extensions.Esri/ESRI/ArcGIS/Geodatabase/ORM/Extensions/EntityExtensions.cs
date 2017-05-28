@@ -41,7 +41,7 @@ namespace ESRI.ArcGIS.Geodatabase
             if (attribute == null)
                 throw new ArgumentNullException("type", @"The object must be assigned the EntityTableAttribute attribute.");
 
-            return source.GetTable(attribute.TableName);
+            return source.GetTable(attribute.Name);
         }
 
         /// <summary>
@@ -93,6 +93,22 @@ namespace ESRI.ArcGIS.Geodatabase
         public static int[] Insert<TEntity>(this IFeatureClass source, IEnumerable<TEntity> items) where TEntity : Entity
         {
             return ((ITable)source).Insert(items);
+        }
+
+        /// <summary>
+        /// Reads database rows as a (lazily-evaluated) sequence of objects that are converted into the entity type.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        /// Returns a <see cref="IEnumerable{TEntity}" /> representing the entity object.
+        /// </returns>
+        public static IEnumerable<TEntity> Map<TEntity>(this ICursor source) where TEntity : Entity
+        {
+            foreach (var row in source.AsEnumerable())
+            {
+                yield return row.ToEntity<TEntity>();
+            }
         }
 
         /// <summary>

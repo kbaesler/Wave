@@ -17,7 +17,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="tableName">Name of the table.</param>
         public EntityTableAttribute(string tableName)
         {
-            this.TableName = tableName;
+            this.Name = tableName;
         }
 
         #endregion
@@ -30,7 +30,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <value>
         ///     The name of the table.
         /// </value>
-        public string TableName { get; set; }
+        public string Name { get; set; }
 
         #endregion
     }

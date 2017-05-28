@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -17,7 +18,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="fieldName">Name of the field.</param>
         public EntityFieldAttribute(string fieldName)
         {
-            this.FieldName = fieldName;
+            this.Name = fieldName;
         }
 
 
@@ -25,23 +26,13 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Initializes a new instance of the <see cref="EntityFieldAttribute" /> class.
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
-        /// <param name="length">The length.</param>
-        public EntityFieldAttribute(string fieldName, int? length)
+        /// <param name="sourceType">Type of the source.</param>
+        /// <param name="destinationType">Type of the destination.</param>
+        public EntityFieldAttribute(string fieldName, Type sourceType, Type destinationType)
             : this(fieldName)
         {
-            this.Length = length;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EntityFieldAttribute" /> class.
-        /// </summary>
-        /// <param name="fieldName">Name of the field.</param>
-        /// <param name="length">The length.</param>
-        /// <param name="dataType">Type of the data.</param>
-        public EntityFieldAttribute(string fieldName, int? length, Type dataType)
-            : this(fieldName, length)
-        {
-            this.DataType = dataType;
+            this.SourceType = sourceType;
+            this.DestinationType = destinationType;
         }
 
         #endregion
@@ -49,23 +40,28 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Properties
 
         /// <summary>
-        ///     Gets the type of the data.
+        ///     Gets the type of the destination.
         /// </summary>
         /// <value>
-        ///     The type of the data.
+        ///     The type of the destination.
         /// </value>
-        public Type DataType { get; private set; }
+        public Type DestinationType { get; private set; }
 
         /// <summary>
         ///     The name of the database field represented by this property.
         /// </summary>
-        public string FieldName { get; private set; }
+        public string Name { get; private set; }
+
 
         /// <summary>
-        ///     The length of the field.
+        ///     Gets the type of the source.
         /// </summary>
-        public int? Length { get; private set; }
+        /// <value>
+        ///     The type of the source.
+        /// </value>
+        public Type SourceType { get; private set; }
 
         #endregion
     }
+   
 }
