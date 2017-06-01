@@ -730,22 +730,22 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     The type of data changes.
         /// </summary>
-        public esriDataChangeType DataChangeType;
+        public esriDataChangeType DataChangeType { get; private set; }
 
         /// <summary>
         ///     Indicates if the row represents a feature class.
         /// </summary>
-        public bool IsFeatureClass;
+        public bool IsFeatureClass { get; private set; }
 
         /// <summary>
         ///     The OID of the row.
         /// </summary>
-        public int OID;
+        public int OID { get; private set; }
 
         /// <summary>
         ///     The name of the table.
         /// </summary>
-        public string TableName;
+        public string TableName { get; private set; }
 
         #endregion
 
@@ -783,27 +783,27 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     A reference to the row that has been modified.
         /// </summary>
-        public IRow Changed;
+        public IRow Changed { get; private set; }
 
         /// <summary>
         ///     The type of difference.
         /// </summary>
-        public esriDifferenceType DifferenceType;
+        public esriDifferenceType DifferenceType { get; private set; }
 
         /// <summary>
         ///     The field indices that have been changed.
         /// </summary>
-        public ILongArray FieldIndices;
+        public ILongArray FieldIndices { get; private set; }
 
         /// <summary>
         ///     The OID of the row.
         /// </summary>
-        public int OID;
+        public int OID { get; private set; }
 
         /// <summary>
         ///     The reference to the row prior to the changes.
         /// </summary>
-        public IRow Original;
+        public IRow Original { get; private set; }
 
         #endregion
 
