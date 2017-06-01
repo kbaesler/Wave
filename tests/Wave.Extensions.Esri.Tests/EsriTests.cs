@@ -41,7 +41,7 @@ namespace Wave.Extensions.Esri.Tests
         /// <param name="pathName">Name of the path.</param>
         protected EsriTests(string pathName)
         {
-            _PathName = pathName;
+            _PathName = Path.GetFullPath(pathName);
         }
 
         #endregion

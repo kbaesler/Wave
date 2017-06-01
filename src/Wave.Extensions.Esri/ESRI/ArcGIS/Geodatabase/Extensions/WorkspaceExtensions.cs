@@ -521,9 +521,10 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     // SqlServer - '3/11/2005'
                     return string.Format(CultureInfo.InvariantCulture, "'{0}'", dateTime.ToShortDateString());
-            }
 
-            return dateTime.ToShortTimeString();
+                default:
+                    return dateTime.ToShortTimeString();
+            }            
         }
 
         /// <summary>
@@ -614,12 +615,19 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            if (source.Contains(esriDatasetType.esriDTTable, tableName))
-                return ((IFeatureWorkspace)source).OpenTable(tableName);
+            esriDatasetType[] types = { esriDatasetType.esriDTTable, esriDatasetType.esriDTFeatureClass };
+            foreach (var type in types)
+            {
+                if (source.Contains(type, tableName))
+                    return ((IFeatureWorkspace)source).OpenTable(tableName);
+            }
 
-            var ds = source.Find(esriDatasetType.esriDTTable, tableName);
-            if (ds != null)
-                return ((IFeatureWorkspace)source).OpenTable(ds.Name);
+            foreach (var type in types)
+            {
+                var ds = source.Find(type, tableName);
+                if (ds != null)
+                    return ((IFeatureWorkspace)source).OpenTable(ds.Name);
+            }
 
             throw new ArgumentOutOfRangeException("tableName");
         }

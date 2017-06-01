@@ -343,50 +343,55 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
 
                     case ComparisonOperator.EndsWith:
                         return string.Format("{0}({1}) {2} '{4}{3}'", _UpperCase, field.Name, comparisonEquality, formattedValue.ToUpperInvariant(), _WildcardManyMatch);
+
+                    default:
+                        throw new NotSupportedException("The comparison operator is not supported: " + comparisonOperator);
                 }
             }
-            else
+
+            // Microsoft Jet Driver doesn't support the same function casting as the other datatabase,
+            // thus we need to reformat the non character statement.
+            if (_DBMS == DBMS.Access)
             {
-                // Microsoft Jet Driver doesn't support the same function casting as the other datatabase,
-                // thus we need to reformat the non character statement.
-                if (_DBMS == DBMS.Access)
-                {
-                    // We use the the CSTR statement for Access appended with "" because if the value is null it will return an empty string instead avoiding
-                    // an Invalid use of 'Null' error that will occur when the field value is null.
-                    if (isValueNull)
-                        return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, comparisonEquality, _WildcardManyMatch);
-
-                    switch (comparisonOperator)
-                    {
-                        case ComparisonOperator.StartsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
-
-                        case ComparisonOperator.Contains:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
-
-                        case ComparisonOperator.EndsWith:
-                            return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
-                    }
-                }
-
-                // Use the CHAR cast statement which supported in all databases except Access.
+                // We use the the CSTR statement for Access appended with "" because if the value is null it will return an empty string instead avoiding
+                // an Invalid use of 'Null' error that will occur when the field value is null.
                 if (isValueNull)
-                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", _Cast, field.Name, field.Name.Length, comparisonEquality, _WildcardManyMatch);
+                    return string.Format("CSTR({0} & \"\") {1} '{2}'", field.Name, comparisonEquality, _WildcardManyMatch);
 
                 switch (comparisonOperator)
                 {
                     case ComparisonOperator.StartsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
+                        return string.Format("CSTR({0} & \"\") {1} '{2}{3}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
 
                     case ComparisonOperator.Contains:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
+                        return string.Format("CSTR({0} & \"\") {1} '{3}{2}{3}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
 
                     case ComparisonOperator.EndsWith:
-                        return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
+                        return string.Format("CSTR({0} & \"\") {1} '{3}{2}'", field.Name, comparisonEquality, formattedValue, _WildcardManyMatch);
+
+                    default:
+                        throw new NotSupportedException("The comparison operator is not supported: " + comparisonOperator);
                 }
             }
 
-            return null;
+            // Use the CHAR cast statement which supported in all databases except Access.
+            if (isValueNull)
+                return string.Format("{0}({1} As CHAR({2})) {3} '{4}'", _Cast, field.Name, field.Name.Length, comparisonEquality, _WildcardManyMatch);
+
+            switch (comparisonOperator)
+            {
+                case ComparisonOperator.StartsWith:
+                    return string.Format("{0}({1} As CHAR({2})) {3} '{4}{5}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
+
+                case ComparisonOperator.Contains:
+                    return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}{5}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
+
+                case ComparisonOperator.EndsWith:
+                    return string.Format("{0}({1} As CHAR({2})) {3} '{5}{4}'", _Cast, field.Name, field.Name.Length, comparisonEquality, formattedValue, _WildcardManyMatch);
+
+                default:
+                    throw new NotSupportedException("The comparison operator is not supported: " + comparisonOperator);
+            }
         }
 
         /// <summary>

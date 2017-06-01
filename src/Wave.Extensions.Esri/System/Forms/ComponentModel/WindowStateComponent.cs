@@ -342,6 +342,9 @@ namespace System.Forms.ComponentModel
                     this.OnLoad(new WindowStateInfoEventArgs(_WindowInfo));
 
                     break;
+
+                default:
+                    throw new NotSupportedException("The persist method is not supported.");
             }
         }
 
