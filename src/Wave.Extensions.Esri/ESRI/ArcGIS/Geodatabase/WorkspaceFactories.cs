@@ -54,10 +54,6 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 new AccessWorkspaceFactoryClass(),
                 new SdeWorkspaceFactoryClass(),
-                new FeatureServiceWorkspaceFactoryClass(), 
-                new InMemoryWorkspaceFactoryClass(), 
-                new PlugInWorkspaceFactoryClass(), 
-                new SqlWorkspaceFactoryClass(), 
             };
 
             foreach (var l in list)
