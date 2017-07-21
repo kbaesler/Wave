@@ -7,7 +7,6 @@ namespace ESRI.ArcGIS.Location
     ///     Removes redundant information from event tables or separates event tables having more than one descriptive
     ///     attribute into individual tables
     /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteOperation{ConcatenateRouteEventData}" />
     public static class ConcatenateRouteOperationExtensions
     {
         #region Public Methods
@@ -27,20 +26,20 @@ namespace ESRI.ArcGIS.Location
         /// <param name="trackCancel">The object that allows for monitoring the progress.</param>
         /// <param name="concatenateFields">The field(s)used to aggregate rows.</param>
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
-        public static ITable Concatenate(this ITable table, RouteMeasureLineSegmentation source, IWorkspace outputWorkspace, string outputTableName, IRouteMeasureSegmentation output, ITrackCancel trackCancel, params string[] concatenateFields)
+        public static ITable Concatenate(this ITable table, IRouteEventProperties2 source, IWorkspace outputWorkspace, string outputTableName, IRouteEventProperties2 output, ITrackCancel trackCancel, params string[] concatenateFields)
         {
             var outputName = new TableNameClass();
-            outputName.WorkspaceName = (IWorkspaceName) ((IDataset) outputWorkspace).FullName;
+            outputName.WorkspaceName = (IWorkspaceName)((IDataset)outputWorkspace).FullName;
             outputName.Name = outputTableName;
 
             outputWorkspace.Delete(outputName);
 
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.EventProperties;
+            gp.InputEventProperties = source;
             gp.InputTable = table;
             gp.KeepZeroLengthLineEvents = false;
 
-            return gp.Concatenate2(output.EventProperties, concatenateFields, outputName, trackCancel, "");
+            return gp.Concatenate2(output, concatenateFields, outputName, trackCancel, "");
         }
 
         #endregion
