@@ -1,7 +1,9 @@
 # Reading Data
+
 One of the major benefits of using the ESRI platform it allows you to perform spatial and attribute based queries against the data to validate and perform analysis. As a side-effect, the same set of APIs are reused, which leads to code-duplication and/or memory management issues if used improperly.
 
 ## Fetch
+
 The `ITable` and `IFeatureClass` interfaces have been extended to include `Fetch` methods that simplifies queries by abstracting the complexities while enforcing the proper memory management for the COM objects.
 
 Method                        | Description
@@ -22,15 +24,13 @@ Fetch(IQueryFilter, Action<IRow>, bool)           | Fetch the features (or rows)
 
 - `Fetch` features or rows that need a spatial and/or attribute dependencies to filter the results.
 
-    ```c#  
+    ```c#
     IEditor editor = ArcMap.Application.GetEditor();
     IWorkspace workspace = editor.EditWorkspace;
 
     IFeatureClass workRequests = workspace.GetFeatureClass("WorkRequests");
     IFeatureClass transformers = workspace.GetFeatureClass("Transformers");
-    
     IFeature workRequest = workRequests.Fetch(1);
-    
     ISpatialFilter filter = new SpatialFilterClass();
     filter.WhereClause = transformers.OIDFieldName + " IN (1,2,3,4,5,6)";
     filter.Geometry = workRequest.Shape;
@@ -45,7 +45,7 @@ Fetch(IQueryFilter, Action<IRow>, bool)           | Fetch the features (or rows)
     ```c#
     IEditor editor = ArcMap.Application.GetEditor();
     IWorkspace workspace = editor.EditWorkspace;
-    
+
     IFeatureClass transformers = workspace.GetFeatureClass("Transformers");
     int i = transformers.FindField("DATEMODIFIED");
 
@@ -67,9 +67,7 @@ Fetch(IQueryFilter, Action<IRow>, bool)           | Fetch the features (or rows)
 
     IFeatureClass workRequests = workspace.GetFeatureClass("WorkRequests");
     IFeatureClass transformers = workspace.GetFeatureClass("Transformers");
-    
     IFeature workRequest = workRequests.Fetch(1);
-    
     ISpatialFilter filter = new SpatialFilterClass();
     filter.WhereClause = transformers.OIDFieldName + " IN (1,2,3,4,5,6)";
     filter.Geometry = workRequest.Shape;

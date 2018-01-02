@@ -1,7 +1,9 @@
 # Object Relational Mapping
+
 Simple object-relational mapping abstraction layer for geodatabase feature classes and tables. It converts features and rows into a (lazy) sequence of strongly-typed objects.
 
 ## Getting Started
+
 You can begin using the object-relational mappping in 2 easy steps.
 
 1. Create a `class` that inherits from the `Entity` class.
@@ -26,11 +28,12 @@ You can begin using the object-relational mappping in 2 easy steps.
         public string Description {get;set}
     }
     ```
-2. Use the **CRUD** extension methods that have been exposed on the `ITable` and `IFeatureClass` interfaces and `Entity` class.
+1. Use the **CRUD** extension methods that have been exposed on the `ITable` and `IFeatureClass` interfaces and `Entity` class.
 
 ## CRUD
+
 An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-elete either `IRow` or `IFeature` objects by using methods exposed on the `Entity` object or (`ITable` and `IFeatureClass`) interfaces.
-  
+
 1. Create: *Create new records using entity objects*.
 
     Class                   | Method                        | Description
@@ -50,7 +53,7 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
 
     denver.Insert(cities);
     ```
-2. Read: *Load data from a table into entity objects.*
+1. Read: *Load data from a table into entity objects.*
 
     Interface               | Method                        | Description
     :-----------------------|:------------------------------|:----------------------|
@@ -70,7 +73,7 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
         Console.WriteLine("Description : {0}", city.Description);
     }
     ```
-3. Update: *Flush property changes to the underlying row in the database.*
+1. Update: *Flush property changes to the underlying row in the database.*
 
     Class                   | Method                        | Description
     :-----------------------|:------------------------------|:----------------------|
@@ -87,7 +90,7 @@ An entity object can be used to **C**-reate, **R**-ead, **U**-pdate and **D**-el
 
     ```
 
- 4. Delete: *Remove records from the table using the entity object*.
+1. Delete: *Remove records from the table using the entity object*.
 
     Class                   | Method                        | Description
     :-----------------------|:------------------------------|:----------------------|

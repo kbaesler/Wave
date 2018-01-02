@@ -10,7 +10,7 @@ copyright: 'Copyright (c) 2017 Kyle Baesler'
 theme: 'material'
 
 extra:
-    version: '1.0.3'    
+    version: '1.0.6'    
     logo: 'images\wave-red-64.png'
     author:
       github: 'Jumpercables'

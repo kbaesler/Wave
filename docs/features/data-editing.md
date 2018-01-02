@@ -1,13 +1,15 @@
 # Editing Data
+
 There is a lot of editing that takes place within the ESRI platform. You can easily wrap up the necessary stop / start operations using the different flavors of the `PerformOperation` extension method on the `IWorkspace`, `IWorkspaceEdit`, `IVersion`, and `IEditor` interfaces.
 
 Method                              | Description
 :-----------------------------------|:------------------------------
-PerformOperation(bool, Func<bool>)  | Encapsulates the operation in the necessary start and stop constructs.
-PerformOperation(bool, esriMultiusreEditSessionMode, Func<bool>) | Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and control if versioned or non-versioned data should be edited.
-PerformOperation(bool, Func<bool>, Func<COMException>)  | Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and allows for handling errors when saving the operation.
+`PerformOperation(bool, Func<bool>)`  | Encapsulates the operation in the necessary start and stop constructs.
+`PerformOperation(bool, esriMultiusreEditSessionMode, Func<bool>)` | Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and control if versioned or non-versioned data should be edited.
+`PerformOperation(bool, Func<bool>, Func<COMException>)`  | Encapsulates the operation in necessary start and stop edit constructs with the ability to undo the operation and allows for handling errors when saving the operation.
 
 ## Nonversioned Edits
+
 There are situations when you need to update only non-versioned tables inside the GIS. You can use the following method, and specific the proper enumeration to ensure that you are only editing the non-versioned tables inside the workspace.
 
 ```c#
@@ -28,6 +30,7 @@ workspace.PerformOperation(true, esriMultiuserEditSessionMode.esriMESMNonVersion
 ```
 
 ## Versioned Edits
+
 When editing a version table or feature class, you can take the same actions as above, except specify the versioned enumeration.
 
 ```c#
