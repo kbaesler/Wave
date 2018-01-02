@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 using log4net;
 using log4net.Appender;
+using log4net.Config;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 
@@ -79,6 +83,84 @@ namespace System.Diagnostics
                 action(appender);
                 appender.ActivateOptions();
             }
+        }
+
+        /// <summary>
+        ///     Automatically configures the log4net system based on the
+        ///     application's configuration settings.
+        /// </summary>
+        /// <returns>A <see cref="ICollection" /> representing the configuration messages</returns>
+        /// <remarks>
+        ///     <para>
+        ///         Each application has a configuration file. This has the
+        ///         same name as the application with '.config' appended.
+        ///         This file is XML and calling this function prompts the
+        ///         configurator to look in that file for a section called
+        ///         <c>log4net</c> that contains the configuration data.
+        ///     </para>
+        ///     <para>
+        ///         To use this method to configure log4net you must specify
+        ///         the <see cref="T:log4net.Config.Log4NetConfigurationSectionHandler" /> section
+        ///         handler for the <c>log4net</c> configuration section. See the
+        ///         <see cref="T:log4net.Config.Log4NetConfigurationSectionHandler" /> for an example.
+        ///     </para>
+        /// </remarks>
+        /// <seealso cref="T:log4net.Config.Log4NetConfigurationSectionHandler" />
+        public static ICollection Configure()
+        {
+            return Configure(Assembly.GetCallingAssembly());
+        }
+
+        /// <summary>
+        ///     Automatically configures the log4net system based on the
+        ///     application's configuration settings.
+        /// </summary>
+        /// <returns>A <see cref="ICollection" /> representing the configuration messages</returns>
+        /// <remarks>
+        ///     <para>
+        ///         Each application has a configuration file. This has the
+        ///         same name as the application with '.config' appended.
+        ///         This file is XML and calling this function prompts the
+        ///         configurator to look in that file for a section called
+        ///         <c>log4net</c> that contains the configuration data.
+        ///     </para>
+        ///     <para>
+        ///         To use this method to configure log4net you must specify
+        ///         the <see cref="T:log4net.Config.Log4NetConfigurationSectionHandler" /> section
+        ///         handler for the <c>log4net</c> configuration section. See the
+        ///         <see cref="T:log4net.Config.Log4NetConfigurationSectionHandler" /> for an example.
+        ///     </para>
+        /// </remarks>
+        /// <seealso cref="T:log4net.Config.Log4NetConfigurationSectionHandler" />
+        public static ICollection Configure(Assembly assembly)
+        {
+            return XmlConfigurator.Configure(LogManager.GetRepository(assembly));
+        }
+
+        /// <summary>
+        ///     Automatically configures the log4net system based on the
+        ///     application's configuration settings.
+        /// </summary>
+        /// <returns>A <see cref="ICollection" /> representing the configuration messages</returns>
+        /// <remarks>
+        ///     <para>
+        ///         Each application has a configuration file. This has the
+        ///         same name as the application with '.config' appended.
+        ///         This file is XML and calling this function prompts the
+        ///         configurator to look in that file for a section called
+        ///         <c>log4net</c> that contains the configuration data.
+        ///     </para>
+        ///     <para>
+        ///         To use this method to configure log4net you must specify
+        ///         the <see cref="T:log4net.Config.Log4NetConfigurationSectionHandler" /> section
+        ///         handler for the <c>log4net</c> configuration section. See the
+        ///         <see cref="T:log4net.Config.Log4NetConfigurationSectionHandler" /> for an example.
+        ///     </para>
+        /// </remarks>
+        /// <seealso cref="T:log4net.Config.Log4NetConfigurationSectionHandler" />
+        public static ICollection Configure(FileInfo configFile)
+        {
+            return XmlConfigurator.ConfigureAndWatch(configFile);
         }
 
         /// <summary>
@@ -300,6 +382,24 @@ namespace System.Diagnostics
             }
 
             return default(TAppender);
+        }
+
+        /// <summary>
+        ///     Log a message object with the Info level.
+        /// </summary>
+        /// <param name="source">The source of the logger.</param>
+        /// <param name="messages">The messages.</param>
+        /// <exception cref="System.ArgumentNullException">source</exception>
+        public static void Info(object source, IEnumerable<string> messages)
+        {
+            if (source == null)
+                throw new ArgumentNullException("source");
+
+            lock (Lock)
+            {
+                foreach (var msg in messages)
+                    Info(source, msg);
+            }
         }
 
         /// <summary>

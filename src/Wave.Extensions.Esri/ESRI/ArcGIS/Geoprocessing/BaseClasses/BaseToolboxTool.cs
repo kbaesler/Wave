@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 using ESRI.ArcGIS.esriSystem;
@@ -19,56 +18,82 @@ namespace ESRI.ArcGIS.Geoprocessing
     ///     - Do not localize keywords
     ///     - Use a coded value domain for a Boolean parameter
     /// </remarks>
-    public abstract class BaseFunction : IGPFunction2
+    public abstract class BaseToolboxTool : IGPFunction2
     {
+        #region Constants
+
+        /// <summary>
+        ///     The output parameter
+        /// </summary>
+        protected const string OUTPUT_PARAMETER = "results";
+
+        #endregion
+
+        #region Fields
+
+        /// <summary>
+        ///     The cancelled results code (-1)
+        /// </summary>
+        public static IGPValue Cancelled = new GPLongClass {Value = -1};
+
+        /// <summary>
+        ///     The failed results code (1)
+        /// </summary>
+        public static IGPValue Failed = new GPLongClass {Value = 1};
+
+        /// <summary>
+        ///     The succeeded results code (0)
+        /// </summary>
+        public static IGPValue Succeeded = new GPLongClass {Value = 0};
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseFunction" /> class.
+        ///     Initializes a new instance of the <see cref="BaseToolboxTool" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="displayName">The display name.</param>
-        /// <param name="functionFactory">The function factory.</param>
+        /// <param name="toolboxFactory">The function factory.</param>
         /// <exception cref="System.ArgumentNullException">functionFactory</exception>
-        protected BaseFunction(string name, string displayName, IGPFunctionFactory functionFactory)
+        protected BaseToolboxTool(string name, string displayName, IGPFunctionFactory toolboxFactory)
         {
-            if (functionFactory == null)
-                throw new ArgumentNullException("functionFactory");
+            if (toolboxFactory == null)
+                throw new ArgumentNullException("toolboxFactory");
 
             this.Name = name;
             this.DisplayName = displayName;
             this.MetadataFile = string.Format("{0}_metadata.xml", name);
-            this.FunctionFactory = functionFactory;
+            this.ToolboxFactory = toolboxFactory;
             this.Utilities = new GPUtilitiesClass();
         }
 
         #endregion
 
-        #region Protected Properties
+        #region Public Properties
 
         /// <summary>
-        ///     Gets the function factory.
+        ///     Gets the function name object of the geoprocessing function.
         /// </summary>
-        /// <value>
-        ///     The function factory.
-        /// </value>
-        protected IGPFunctionFactory FunctionFactory { get; private set; }
-
-        #endregion
-
-        #region Private Properties
+        public virtual IName FullName
+        {
+            get
+            {
+                IGPName name = this.ToolboxFactory.GetFunctionName(Name);
+                return name as IName;
+            }
+        }
 
         /// <summary>
-        ///     Gets the utilities.
+        ///     Gets the list of parameters accepted by the geoprocessing function.
         /// </summary>
         /// <value>
-        ///     The utilities.
+        ///     The ParameterInfo property is the place where a function tool's parameters are defined. It returns an IArray of
+        ///     parameter objects (IGPParameter); these objects define the characteristics of the input and output parameters.
+        ///     At the minimum, your function should output a Boolean value containing success or failure.
         /// </value>
-        private IGPUtilities2 Utilities { get; set; }
-
-        #endregion
-
-        #region IGPFunction2 Members
+        public abstract IArray ParameterInfo { get; }
 
         /// <summary>
         ///     The class identifier (CLSID) of the custom dialog object to use when invoking the geoprocessing function.
@@ -92,57 +117,6 @@ namespace ESRI.ArcGIS.Geoprocessing
         public string DisplayName { get; protected set; }
 
         /// <summary>
-        ///     Executes the geoprocessing function using the given array of parameter values.
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <param name="trackCancel">The track cancel.</param>
-        /// <param name="environmentManager">Provides access to all the current environments and settings of the current client.</param>
-        /// <param name="messages">The messages.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException">
-        ///     parameters;A function tool must always have an output. At the minimum,
-        ///     your function should output a Boolean value containing success or failure.
-        /// </exception>
-        public void Execute(IArray parameters, ITrackCancel trackCancel, IGPEnvironmentManager environmentManager, IGPMessages messages)
-        {
-            try
-            {
-                if (parameters.AsEnumerable<IGPParameter>().All(o => o.Direction != esriGPParameterDirection.esriGPParameterDirectionOutput))
-                    throw new ArgumentOutOfRangeException("parameters", @"A function tool must always have an output. At the minimum, your function should output a Boolean value containing success or failure.");
-
-                var list = parameters.AsEnumerable<IGPParameter>().ToDictionary(o => o.Name, o => this.Utilities.UnpackGPValue(o));
-
-                this.Execute(list, trackCancel, environmentManager, messages, this.Utilities);
-            }
-            catch (Exception ex)
-            {
-                messages.AddError(-1, ex.GetErrorMessage());
-            }
-        }
-
-        /// <summary>
-        ///     Gets the function name object of the geoprocessing function.
-        /// </summary>
-        public virtual IName FullName
-        {
-            get
-            {
-                IGPName name = this.FunctionFactory.GetFunctionName(Name);
-                return name as IName;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the custom renderer to use for the specified parameter.
-        /// </summary>
-        /// <param name="parameter">The parameter.</param>
-        /// <returns></returns>
-        /// <remarks>Used to set a custom renderer for a function tool's output.</remarks>
-        public virtual object GetRenderer(IGPParameter parameter)
-        {
-            return null;
-        }
-
-        /// <summary>
         ///     Gets or sets the context identifier of the topic within the help file for this function object.
         /// </summary>
         /// <value>
@@ -158,20 +132,6 @@ namespace ESRI.ArcGIS.Geoprocessing
         ///     explains the tool's operation and usage.
         /// </value>
         public string HelpFile { get; protected set; }
-
-        /// <summary>
-        ///     Determines whether the geoprocessing function has all necessary licenses in order to execute.
-        /// </summary>
-        /// <returns>
-        ///     Returns a <see cref="bool" /> representing <c>true</c> when the function is licensed.
-        /// </returns>
-        /// <remarks>
-        ///     The IsLicensed property is used to check if a function tool is licensed to execute in the active application.
-        /// </remarks>
-        public virtual bool IsLicensed()
-        {
-            return true;
-        }
 
         /// <summary>
         ///     Gets or sets the name of the (XML) file containing the default metadata for this function object.
@@ -192,15 +152,86 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// </value>
         public string Name { get; protected set; }
 
+        #endregion
+
+        #region Protected Properties
+
         /// <summary>
-        ///     Gets the list of parameters accepted by the geoprocessing function.
+        ///     Gets the function factory.
         /// </summary>
         /// <value>
-        ///     The ParameterInfo property is the place where a function tool's parameters are defined. It returns an IArray of
-        ///     parameter objects (IGPParameter); these objects define the characteristics of the input and output parameters.
-        ///     At the minimum, your function should output a Boolean value containing success or failure.
+        ///     The function factory.
         /// </value>
-        public abstract IArray ParameterInfo { get; }
+        protected IGPFunctionFactory ToolboxFactory { get; private set; }
+
+        #endregion
+
+        #region Private Properties
+
+        /// <summary>
+        ///     Gets the utilities.
+        /// </summary>
+        /// <value>
+        ///     The utilities.
+        /// </value>
+        private IGPUtilities2 Utilities { get; set; }
+
+        #endregion
+
+        #region IGPFunction2 Members
+
+        /// <summary>
+        ///     Executes the geoprocessing function using the given array of parameter values.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="trackCancel">The track cancel.</param>
+        /// <param name="environmentManager">Provides access to all the current environments and settings of the current client.</param>
+        /// <param name="messages">The messages.</param>
+        /// <exception cref="System.ArgumentOutOfRangeException">
+        ///     parameters;A function tool must always have an output. At the minimum,
+        ///     your function should output a Boolean value containing success or failure.
+        /// </exception>
+        public virtual void Execute(IArray parameters, ITrackCancel trackCancel, IGPEnvironmentManager environmentManager, IGPMessages messages)
+        {
+            try
+            {
+                if (parameters.AsEnumerable<IGPParameter>().All(o => o.Direction != esriGPParameterDirection.esriGPParameterDirectionOutput))
+                    throw new ArgumentOutOfRangeException(nameof(parameters), @"A function tool must always have an output. At the minimum, your function should output a Boolean value containing success or failure.");
+
+                var list = this.Unpack(parameters);
+
+                this.Execute(list, trackCancel, environmentManager, messages, this.Utilities);
+            }
+            catch (Exception ex)
+            {
+                messages.AddError(-1, ex.StackTrace);
+            }
+        }
+
+        /// <summary>
+        ///     Gets the custom renderer to use for the specified parameter.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns></returns>
+        /// <remarks>Used to set a custom renderer for a function tool's output.</remarks>
+        public virtual object GetRenderer(IGPParameter parameter)
+        {
+            return null;
+        }
+
+        /// <summary>
+        ///     Determines whether the geoprocessing function has all necessary licenses in order to execute.
+        /// </summary>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the function is licensed.
+        /// </returns>
+        /// <remarks>
+        ///     The IsLicensed property is used to check if a function tool is licensed to execute in the active application.
+        /// </remarks>
+        public virtual bool IsLicensed()
+        {
+            return true;
+        }
 
         /// <summary>
         ///     Post validates the given set of values.
@@ -224,7 +255,7 @@ namespace ESRI.ArcGIS.Geoprocessing
             }
             catch (Exception ex)
             {
-                messages.AddError(-1, ex.GetErrorMessage());
+                messages.AddError(-1, ex.StackTrace);
             }
         }
 
@@ -290,6 +321,26 @@ namespace ESRI.ArcGIS.Geoprocessing
         ///     objects.
         /// </param>
         protected abstract void Execute(Dictionary<string, IGPValue> parameters, ITrackCancel trackCancel, IGPEnvironmentManager environmentManager, IGPMessages messages, IGPUtilities2 utilities);
+
+        /// <summary>
+        ///     Unpacks the specified parameters.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>Returns a <see cref="Dictionary{TKey,TValue}" /> representing the unpacked parameters.</returns>
+        protected Dictionary<string, IGPValue> Unpack(Dictionary<string, IGPParameter> parameters)
+        {
+            return parameters.ToDictionary(o => o.Key, o => this.Utilities.UnpackGPValue(o.Value));
+        }
+
+        /// <summary>
+        ///     Unpacks the specified parameters.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>Returns a <see cref="Dictionary{TKey,TValue}" /> representing the unpacked parameters.</returns>
+        protected Dictionary<string, IGPValue> Unpack(IArray parameters)
+        {
+            return parameters.AsEnumerable<IGPParameter>().ToDictionary(o => o.Name, o => this.Utilities.UnpackGPValue(o));
+        }
 
         /// <summary>
         ///     Post validates the given set of values.

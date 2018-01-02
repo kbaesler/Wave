@@ -63,5 +63,5 @@ namespace ESRI.ArcGIS.Geodatabase
 
         #endregion
     }
-   
+
 }

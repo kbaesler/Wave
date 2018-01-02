@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -25,6 +24,75 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets the feature class based on the entity type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="type">The entity type (which must inherit from <see cref="Entity" />).</param>
+        /// <returns>Returns a <see cref="ITable" /> representing the table for the entity type.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        public static IFeatureClass GetFeatureClass(this IVersion source, Type type)
+        {
+            return ((IWorkspace) source).GetFeatureClass(type);
+        }
+
+        /// <summary>
+        ///     Gets the table based on the entity type.
+        /// </summary>
+        /// <typeparam name="T">The entity type.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the table for the entity type.
+        /// </returns>
+        public static IFeatureClass GetFeatureClass<T>(this IWorkspace source) where T : Entity
+        {
+            return source.GetFeatureClass(typeof(T));
+        }
+
+        /// <summary>
+        ///     Gets the table based on the entity type.
+        /// </summary>
+        /// <typeparam name="T">The entity type.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IFeatureClass" /> representing the table for the entity type.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        public static IFeatureClass GetFeatureClass<T>(this IVersion source) where T : Entity
+        {
+            return ((IWorkspace) source).GetFeatureClass<T>();
+        }
+
+        /// <summary>
+        ///     Gets the relationship based on the entity type.
+        /// </summary>
+        /// <typeparam name="T">The entity type.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRelationshipClass" /> representing the table for the entity type.
+        /// </returns>
+        public static IRelationshipClass GetRelationshipClass<T>(this IWorkspace source) where T : Entity
+        {
+            return source.GetRelationshipClass(typeof(T));
+        }
+
+        /// <summary>
+        ///     Gets the relationship based on the entity type.
+        /// </summary>
+        /// <typeparam name="T">The entity type.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IRelationshipClass" /> representing the table for the entity type.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        public static IRelationshipClass GetRelationshipClass<T>(this IVersion source) where T : Entity
+        {
+            return ((IWorkspace) source).GetRelationshipClass<T>();
+        }
+
+        /// <summary>
         ///     Gets the table based on the entity type.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -32,16 +100,35 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns a <see cref="ITable" /> representing the table for the entity type.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
         /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
-        public static ITable GetTable(this IWorkspace source, Type type)
+        public static ITable GetTable(this IVersion source, Type type)
         {
-            if (!typeof(Entity).IsAssignableFrom(type))
-                throw new ArgumentOutOfRangeException("type", @"The object must be assignable from the Entity class");
+            return ((IWorkspace) source).GetTable(type);
+        }
 
-            var attribute = type.GetCustomAttributes(typeof(EntityTableAttribute), true).OfType<EntityTableAttribute>().SingleOrDefault();
-            if (attribute == null)
-                throw new ArgumentNullException("type", @"The object must be assigned the EntityTableAttribute attribute.");
+        /// <summary>
+        ///     Gets the table based on the entity type.
+        /// </summary>
+        /// <typeparam name="T">The entity type.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the table for the entity type.
+        /// </returns>
+        public static ITable GetTable<T>(this IWorkspace source) where T : Entity
+        {
+            return source.GetTable(typeof(T));
+        }
 
-            return source.GetTable(attribute.Name);
+        /// <summary>
+        ///     Gets the table based on the entity type.
+        /// </summary>
+        /// <typeparam name="T">The entity type.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the table for the entity type.
+        /// </returns>
+        public static ITable GetTable<T>(this IVersion source) where T : Entity
+        {
+            return source.GetTable(typeof(T));
         }
 
         /// <summary>
@@ -53,7 +140,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="int" /> array representing the object ids of the inserted records.
         /// </returns>
-        public static int[] Insert<TEntity>(this ITable source, IEnumerable<TEntity> items) where TEntity : Entity
+        public static int[] Insert<TEntity>(this ITable source, params TEntity[] items) where TEntity : Entity
         {
             var cursor = source.Insert(true);
 
@@ -70,7 +157,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     item.CopyTo(buffer);
 
-                    oids.Add((int)cursor.InsertRow(buffer));
+                    oids.Add((int) cursor.InsertRow(buffer));
                 }
 
                 return oids.ToArray();
@@ -90,24 +177,64 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="source">The source.</param>
         /// <param name="items">The items.</param>
         /// <returns>Returns a <see cref="int" /> array representing the object ids of the inserted records.</returns>
-        public static int[] Insert<TEntity>(this IFeatureClass source, IEnumerable<TEntity> items) where TEntity : Entity
+        public static int[] Insert<TEntity>(this IFeatureClass source, params TEntity[] items) where TEntity : Entity
         {
-            return ((ITable)source).Insert(items);
+            return ((ITable) source).Insert(items);
         }
 
         /// <summary>
-        /// Reads database rows as a (lazily-evaluated) sequence of objects that are converted into the entity type.
+        ///     Reads database rows as a (lazily-evaluated) sequence of objects that are converted into the entity type.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="commandText">The command text.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{TEntity}" /> representing the entity object.
+        /// </returns>
+        public static IEnumerable<TEntity> Map<TEntity>(this IWorkspace workspace, string commandText) where TEntity : Entity
+        {
+            var cursor = ((ISqlWorkspace) workspace).OpenQueryCursor(commandText);
+            return cursor.Map<TEntity>();
+        }
+
+        /// <summary>
+        ///     Reads database rows as a (lazily-evaluated) sequence of objects that are converted into the entity type.
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>
-        /// Returns a <see cref="IEnumerable{TEntity}" /> representing the entity object.
+        ///     Returns a <see cref="IEnumerable{TEntity}" /> representing the entity object.
         /// </returns>
         public static IEnumerable<TEntity> Map<TEntity>(this ICursor source) where TEntity : Entity
         {
             foreach (var row in source.AsEnumerable())
             {
                 yield return row.ToEntity<TEntity>();
+            }
+        }
+
+        /// <summary>
+        ///     Reads database rows as a (lazily-evaluated) sequence of objects that are converted into the entity type.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{TEntity}" /> representing the entity object.
+        /// </returns>
+        public static IEnumerable<TEntity> Map<TEntity>(this IQueryDef source) where TEntity : Entity
+        {
+            var cursor = source.Evaluate();
+
+            try
+            {
+                foreach (var row in cursor.Map<TEntity>())
+                    yield return row;
+            }
+            finally
+            {
+                while (Marshal.ReleaseComObject(cursor) != 0)
+                {
+                }
             }
         }
 
@@ -150,7 +277,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IEnumerable<TEntity> Map<TEntity>(this IFeatureClass source, IQueryFilter filter) where TEntity : Entity
         {
-            return ((ITable)source).Map<TEntity>(filter);
+            return ((ITable) source).Map<TEntity>(filter);
         }
 
         /// <summary>
@@ -164,6 +291,57 @@ namespace ESRI.ArcGIS.Geodatabase
         public static TEntity ToEntity<TEntity>(this IRow source) where TEntity : Entity
         {
             return Entity.Create<TEntity>(source);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        ///     Gets the relationship class based on the entity type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="type">The entity type (which must inherit from <see cref="Entity" />).</param>
+        /// <returns>Returns a <see cref="ITable" /> representing the table for the entity type.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        private static IRelationshipClass GetRelationshipClass(this IVersion source, Type type)
+        {
+            return ((IWorkspace) source).GetRelationshipClass(type);
+        }
+
+        /// <summary>
+        ///     Gets the table based on the entity type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="type">The entity type (which must inherit from <see cref="Entity" />).</param>
+        /// <returns>Returns a <see cref="ITable" /> representing the table for the entity type.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        private static IRelationshipClass GetRelationshipClass(this IWorkspace source, Type type)
+        {
+            var tableName = Entity.GetFullName(type);
+            if (tableName == null)
+                throw new ArgumentNullException("type", @"The type is not assigned the [EntityTable] attribute.");
+
+            return source.GetRelationshipClass(tableName);
+        }
+
+        /// <summary>
+        ///     Gets the table based on the entity type.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="type">The entity type (which must inherit from <see cref="Entity" />).</param>
+        /// <returns>Returns a <see cref="ITable" /> representing the table for the entity type.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The type must be assiable from the Entity class</exception>
+        /// <exception cref="System.ArgumentNullException">type - The type must be assigned the 'EntityTableAttribute'</exception>
+        private static ITable GetTable(this IWorkspace source, Type type)
+        {
+            var tableName = Entity.GetFullName(type);
+            if (tableName == null)
+                throw new ArgumentNullException("type", @"The type is not assigned the [EntityTable] attribute.");
+
+            return source.GetTable(tableName);
         }
 
         #endregion

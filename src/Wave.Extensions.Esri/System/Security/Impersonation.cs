@@ -1,25 +1,24 @@
 ﻿using System.ComponentModel;
 using System.Native;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Security.Principal;
 
 namespace System.Security
 {
-    
-
     #region Enumerations
 
     /// <summary>
     ///     Security impersonation levels govern the degree to which a server process can act on behalf of a client process.
     /// </summary>
-    public enum SecurityImpersonationLevel : int
+    public enum ImpersonationLevel : int
     {
         /// <summary>
         ///     The server process cannot obtain identification information about the client,
         ///     and it cannot impersonate the client. It is defined with no value given, and thus,
         ///     by ANSI C rules, defaults to a value of zero.
         /// </summary>
-        SecurityAnonymous = 0,
+        Anonymous = 0,
 
         /// <summary>
         ///     The server process can obtain information about the client, such as security identifiers and privileges,
@@ -28,22 +27,79 @@ namespace System.Security
         ///     Using the retrieved client-security information, the server can make access-validation decisions without
         ///     being able to use other services that are using the client's security context.
         /// </summary>
-        SecurityIdentification = 1,
+        Identification = 1,
 
         /// <summary>
         ///     The server process can impersonate the client's security context on its local system.
         ///     The server cannot impersonate the client on remote systems.
         /// </summary>
-        SecurityImpersonation = 2,
+        Impersonation = 2,
 
         /// <summary>
         ///     The server process can impersonate the client's security context on remote systems.
         ///     NOTE: Windows NT:  This impersonation level is not supported.
         /// </summary>
-        SecurityDelegation = 3,
+        Delegation = 3,
     }
 
     #endregion
+
+    /// <summary>
+    ///     The type of logon operation to perform.
+    /// </summary>
+    public enum LogonType
+    {
+        /// <summary>
+        ///     This logon type is intended for batch servers, where processes may be executing on behalf of a user without
+        ///     their direct intervention. This type is also for higher performance servers that process many plaintext
+        ///     authentication attempts at a time, such as mail or Web servers.
+        ///     The LogonUser function does not cache credentials for this logon type.
+        /// </summary>
+        Batch = 4,
+
+        /// <summary>
+        ///     This logon type is intended for users who will be interactively using the computer, such as a user being logged on
+        ///     by a terminal server, remote shell, or similar process.
+        ///     This logon type has the additional expense of caching logon information for disconnected operations,
+        ///     therefore, it is inappropriate for some client/server applications,
+        ///     such as a mail server.
+        /// </summary>
+        Interactive = 2,
+
+        /// <summary>
+        ///     This logon type is intended for high performance servers to authenticate plaintext passwords.
+        ///     The LogonUser function does not cache credentials for this logon type.
+        /// </summary>
+        Network = 3,
+
+        /// <summary>
+        ///     This logon type preserves the name and password in the authentication package, which allows the server to make
+        ///     connections to other network servers while impersonating the client. A server can accept plaintext credentials
+        ///     from a client, call LogonUser, verify that the user can access the system across the network, and still
+        ///     communicate with other servers.
+        ///     NOTE: Windows NT:  This value is not supported.
+        /// </summary>
+        NetworkClearText = 8,
+
+        /// <summary>
+        ///     This logon type allows the caller to clone its current token and specify new credentials for outbound connections.
+        ///     The new logon session has the same local identifier but uses different credentials for other network connections.
+        ///     NOTE: This logon type is supported only by the LOGON32_PROVIDER_WINNT50 logon provider.
+        ///     NOTE: Windows NT:  This value is not supported.
+        /// </summary>
+        NewCredentials = 9,
+
+        /// <summary>
+        ///     Indicates a service-type logon. The account provided must have the service privilege enabled.
+        /// </summary>
+        Service = 5,
+
+        /// <summary>
+        ///     This logon type is for GINA DLLs that log on users who will be interactively using the computer.
+        ///     This logon type can generate a unique audit record that shows when the workstation was unlocked.
+        /// </summary>
+        Unlock = 7,
+    }
 
     /// <summary>
     ///     Impersonation of a user. Allows to execute code under another
@@ -53,11 +109,13 @@ namespace System.Security
     ///     Please note that the account that instantiates the Impersonator class
     ///     needs to have the 'Act as part of operating system' privilege set.
     /// </remarks>
+    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     public sealed class Impersonation : IDisposable
     {
         #region Fields
 
         private WindowsImpersonationContext _ImpersonationContext;
+        private SafeTokenHandle _SafeDuplicateTokenHandle;
 
         #endregion
 
@@ -70,8 +128,8 @@ namespace System.Security
         /// <param name="domainName">The domain name of the user to act as.</param>
         /// <param name="password">The password of the user to act as.</param>
         public Impersonation(string userName, string domainName, SecureString password)
+            : this(userName, domainName, password, ImpersonationLevel.Identification)
         {
-            Impersonate(userName, domainName, password, SecurityImpersonationLevel.SecurityImpersonation);
         }
 
         /// <summary>
@@ -81,9 +139,34 @@ namespace System.Security
         /// <param name="domainName">Name of the domain.</param>
         /// <param name="password">The password.</param>
         /// <param name="impersonationLevel">The impersonation level.</param>
-        public Impersonation(string userName, string domainName, SecureString password, SecurityImpersonationLevel impersonationLevel)
+        public Impersonation(string userName, string domainName, SecureString password, ImpersonationLevel impersonationLevel)
+            : this(userName, domainName, password, impersonationLevel, LogonType.Interactive)
         {
-            Impersonate(userName, domainName, password, impersonationLevel);
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Impersonation" /> class.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="domainName">Name of the domain.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="logonType">Type of the logon.</param>
+        public Impersonation(string userName, string domainName, SecureString password, LogonType logonType)
+            : this(userName, domainName, password, ImpersonationLevel.Identification, logonType)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Impersonation" /> class.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="domainName">Name of the domain.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="impersonationLevel">The impersonation level.</param>
+        /// <param name="logonType">Type of the logon.</param>
+        public Impersonation(string userName, string domainName, SecureString password, ImpersonationLevel impersonationLevel, LogonType logonType)
+        {
+            Impersonate(userName, domainName, password, impersonationLevel, logonType);
         }
 
         #endregion
@@ -116,6 +199,13 @@ namespace System.Security
                 if (_ImpersonationContext != null)
                 {
                     _ImpersonationContext.Undo();
+                    _ImpersonationContext = null;
+                }
+
+                if (_SafeDuplicateTokenHandle != null)
+                {
+                    _SafeDuplicateTokenHandle.Dispose();
+                    _SafeDuplicateTokenHandle = null;
                 }
             }
         }
@@ -127,29 +217,28 @@ namespace System.Security
         /// <param name="domain">The domain.</param>
         /// <param name="password">The password.</param>
         /// <param name="impersonationLevel">The impersonation level.</param>
+        /// <param name="logonType">Type of the logon.</param>
         /// <exception cref="Win32Exception">
         /// </exception>
-        private void Impersonate(string userName, string domain, SecureString password, SecurityImpersonationLevel impersonationLevel)
+        private void Impersonate(string userName, string domain, SecureString password, ImpersonationLevel impersonationLevel, LogonType logonType)
         {
             if (UnsafeWindowMethods.RevertToSelf())
             {
                 var token = Marshal.SecureStringToGlobalAllocUnicode(password);
+                var logonProvider = (logonType == LogonType.NewCredentials)
+                    ? UnsafeWindowMethods.LogonProvider.WinNT50
+                    : UnsafeWindowMethods.LogonProvider.Default;
 
                 try
                 {
                     SafeTokenHandle safeTokenHandle;
-                    if (UnsafeWindowMethods.LogonUser(userName, domain, token, UnsafeWindowMethods.LogonType.Interactive, UnsafeWindowMethods.LogonProvider.Default, out safeTokenHandle) != 0)
+                    if (UnsafeWindowMethods.LogonUser(userName, domain, token, logonType, logonProvider, out safeTokenHandle) != 0)
                     {
                         using (safeTokenHandle)
                         {
-                            SafeTokenHandle safeDuplicateTokenHandle;
-                            if (UnsafeWindowMethods.DuplicateToken(safeTokenHandle.DangerousGetHandle(), (int) impersonationLevel, out safeDuplicateTokenHandle) != 0)
+                            if (UnsafeWindowMethods.DuplicateToken(safeTokenHandle.DangerousGetHandle(), (int) impersonationLevel, out _SafeDuplicateTokenHandle) != 0)
                             {
-                                using (safeDuplicateTokenHandle)
-                                {
-                                    var windowsIdentity = new WindowsIdentity(safeDuplicateTokenHandle.DangerousGetHandle());
-                                    _ImpersonationContext = windowsIdentity.Impersonate();
-                                }
+                                _ImpersonationContext = WindowsIdentity.Impersonate(_SafeDuplicateTokenHandle.DangerousGetHandle());
                             }
                             else
                             {

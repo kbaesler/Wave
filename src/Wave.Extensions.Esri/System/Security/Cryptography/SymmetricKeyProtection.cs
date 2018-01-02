@@ -16,12 +16,12 @@ namespace System.Security.Cryptography
         ///     The Initialization vector (or IV). This value is required to encrypt the
         ///     first block of plaintext data. For RijndaelManaged class IV must be exactly 16 ASCII characters long.
         /// </summary>
-        private const string IV = "@1B2c3D4e5F6g7H8";
+        private const string IV = "@s8oliJu86GR6DPe";
 
         /// <summary>
         ///     Salt value used along with passphrase to generate password.
         /// </summary>
-        private const string SALT = "s@lt";
+        private const string SALT = "xz5wAfoN";
 
         #endregion
 

@@ -26,7 +26,7 @@ namespace System.ComponentModel
         /// <summary>
         ///     The current single apartment synchronization context.
         /// </summary>
-        private static readonly SynchronizationContext STA = new STASynchronizationContext();
+        private static readonly SynchronizationContext STA = new TaskSynchronizationContext();
 
         /// <summary>
         ///     The threads
@@ -354,26 +354,26 @@ namespace System.ComponentModel
 
             // Launch a worker thread that, in turn, will run the multiple threads.
             var timer = Wait(() =>
+            {
+                foreach (var concurrency in tasks.Batch(MaximumConcurrencyLevel))
                 {
-                    foreach (var concurrency in tasks.Batch(MaximumConcurrencyLevel))
+                    var done = new List<WaitHandle>();
+
+                    foreach (var t in concurrency)
                     {
-                        var done = new List<WaitHandle>();
+                        AutoResetEvent wait = new AutoResetEvent(false);
 
-                        foreach (var t in concurrency)
-                        {
-                            AutoResetEvent wait = new AutoResetEvent(false);
+                        Func<TResult> task = t;
+                        Func<TResult> execute = () => task();
 
-                            Func<TResult> task = t;
-                            Func<TResult> execute = () => task();
+                        done.Add(wait);
 
-                            done.Add(wait);
-
-                            Run(execute, complete, e => errors.Add(e), wait, STA);
-                        }
-
-                        WaitHandle.WaitAll(done.ToArray());
+                        Run(execute, complete, e => errors.Add(e), wait, STA);
                     }
-                },
+
+                    WaitHandle.WaitAll(done.ToArray());
+                }
+            },
                 () => { },
                 Timeout.Infinite,
                 new SynchronizationContext()); // Calling the WaitHandle method must be done from a multithreaded apartment (MTA) thread. 
@@ -413,31 +413,31 @@ namespace System.ComponentModel
         {
             // Launch a worker thread that, in turn, will run the multiple threads.
             return Wait(() =>
+            {
+                foreach (var concurrency in tasks.Batch(MaximumConcurrencyLevel))
                 {
-                    foreach (var concurrency in tasks.Batch(MaximumConcurrencyLevel))
+                    var done = new List<WaitHandle>();
+
+                    foreach (var t in concurrency)
                     {
-                        var done = new List<WaitHandle>();
+                        AutoResetEvent wait = new AutoResetEvent(false);
 
-                        foreach (var t in concurrency)
+                        if (t.IsBusy)
                         {
-                            AutoResetEvent wait = new AutoResetEvent(false);
-
-                            if (t.IsBusy)
-                            {
-                                t.RunWorkerCompleted -= null;
-                                t.RunWorkerCompleted += (sender, e) => { wait.Set(); };
-                            }
-                            else
-                            {
-                                wait.Set();
-                            }
-
-                            done.Add(wait);
+                            t.RunWorkerCompleted -= null;
+                            t.RunWorkerCompleted += (sender, e) => { wait.Set(); };
+                        }
+                        else
+                        {
+                            wait.Set();
                         }
 
-                        WaitHandle.WaitAll(done.ToArray());
+                        done.Add(wait);
                     }
-                },
+
+                    WaitHandle.WaitAll(done.ToArray());
+                }
+            },
                 complete,
                 Timeout.Infinite,
                 new SynchronizationContext()); // Calling the WaitHandle method must be done from a multithreaded apartment (MTA) thread. 
@@ -531,31 +531,31 @@ namespace System.ComponentModel
 
             // Launch a worker thread that, in turn, will run the multiple threads.
             var timer = Wait(() =>
+            {
+                foreach (var concurrency in tasks.Batch(MaximumConcurrencyLevel))
                 {
-                    foreach (var concurrency in tasks.Batch(MaximumConcurrencyLevel))
+                    var done = new List<WaitHandle>();
+
+                    foreach (var t in concurrency)
                     {
-                        var done = new List<WaitHandle>();
+                        AutoResetEvent wait = new AutoResetEvent(false);
 
-                        foreach (var t in concurrency)
+                        Action task = t;
+                        Func<bool> execute = () =>
                         {
-                            AutoResetEvent wait = new AutoResetEvent(false);
+                            task();
 
-                            Action task = t;
-                            Func<bool> execute = () =>
-                            {
-                                task();
+                            return true;
+                        };
 
-                                return true;
-                            };
+                        done.Add(wait);
 
-                            done.Add(wait);
-
-                            Run(execute, null, e => errors.Add(e), wait, synchronizationContext);
-                        }
-
-                        WaitHandle.WaitAll(done.ToArray());
+                        Run(execute, null, e => errors.Add(e), wait, synchronizationContext);
                     }
-                },
+
+                    WaitHandle.WaitAll(done.ToArray());
+                }
+            },
                 complete,
                 Timeout.Infinite,
                 new SynchronizationContext()); // Calling the WaitHandle method must be done from a multithreaded apartment (MTA) thread. 
@@ -576,7 +576,7 @@ namespace System.ComponentModel
         ///     A single threaded apartment synchornization context.
         /// </summary>
         /// <seealso cref="System.Threading.SynchronizationContext" />
-        private class STASynchronizationContext : SynchronizationContext
+        private class TaskSynchronizationContext : SynchronizationContext
         {
             #region Public Methods
 

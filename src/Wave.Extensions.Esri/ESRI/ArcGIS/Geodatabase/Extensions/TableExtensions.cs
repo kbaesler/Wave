@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 using ESRI.ArcGIS.ADF;
-using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase.Internal;
 using ESRI.ArcGIS.GeoDatabaseUI;
@@ -166,38 +167,19 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Exports the source table using the query filter to the table in the output workspace.
         /// </summary>
-        /// <param name="source">The source table.</param>
-        /// <param name="filter">The filter used to create a subset of the data.</param>
-        /// <param name="outputTableName">The name of the output table.</param>
-        /// <param name="outputWorkspace">The workspace that will contain the table.</param>
-        /// <param name="handle">The handle to the parent application.</param>
-        /// <returns>Returns a <see cref="ITable" /> representing the exported table.</returns>
-        public static ITable Export(this ITable source, IQueryFilter filter, string outputTableName, IWorkspace outputWorkspace, int handle)
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="tableName">Name of the output table.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="handle">The handle.</param>
+        /// <param name="errors">The errors that occured during the export.</param>
+        /// <returns>
+        ///     Returns a <see cref="ITable" /> representing the feature class that was exported.
+        /// </returns>
+        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, out IEnumInvalidObject errors)
         {
-            var ds = (IDataset) source;
-            var inputDatasetName = (IDatasetName) ds.FullName;
-
-            var outputClassName = new TableNameClass();
-            outputClassName.WorkspaceName = (IWorkspaceName) ((IDataset) outputWorkspace).FullName;
-            outputClassName.Name = outputTableName;
-
-            ISelectionSet selection = null;
-
-            if (source.HasOID)
-            {
-                IScratchWorkspaceFactory2 factory = new ScratchWorkspaceFactoryClass();
-                var selectionContainer = factory.DefaultScratchWorkspace;
-
-                selection = source.Select(filter, esriSelectionType.esriSelectionTypeIDSet, esriSelectionOption.esriSelectionOptionNormal, selectionContainer);
-            }
-
-            outputWorkspace.Delete(outputClassName);
-
-            IExportOperation operation = new ExportOperationClass();
-            operation.ExportTable(inputDatasetName, filter, selection, outputClassName, handle);
-
-            var table = outputWorkspace.GetTable(outputTableName);
-            return table;
+            IEnumFieldError fieldError;
+            return source.Export(filter, tableName, workspace, source.Fields, handle, new ProgressSurrogate(), out errors, out fieldError);
         }
 
         /// <summary>
@@ -208,14 +190,15 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="tableName">Name of the output table.</param>
         /// <param name="workspace">The workspace.</param>
         /// <param name="handle">The handle.</param>
+        /// <param name="surrogate">The surrogate for the event handler.</param>
         /// <param name="errors">The errors that occured during the export.</param>
         /// <returns>
-        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
+        ///     Returns a <see cref="ITable" /> representing the feature class that was exported.
         /// </returns>
-        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, out IEnumInvalidObject errors)
+        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, ProgressSurrogate surrogate, out IEnumInvalidObject errors)
         {
             IEnumFieldError fieldError;
-            return source.Export(filter, tableName, workspace, source.Fields, handle, out errors, out fieldError);
+            return source.Export(filter, tableName, workspace, source.Fields, handle, surrogate, out errors, out fieldError);
         }
 
         /// <summary>
@@ -227,16 +210,17 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="workspace">The output workspace.</param>
         /// <param name="requiredFields">The required fields.</param>
         /// <param name="handle">The handle.</param>
+        /// <param name="surrogate">The surrogate for the event handler.</param>
         /// <param name="invalid">The errors that occured during the export.</param>
         /// <param name="errors">The field errors.</param>
         /// <returns>
         ///     Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
         /// </returns>
-        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, out IEnumInvalidObject invalid, out IEnumFieldError errors)
+        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, ProgressSurrogate surrogate, out IEnumInvalidObject invalid, out IEnumFieldError errors)
         {
             var ds = (IDataset) source;
-
             var input = ds.Workspace.Define(ds.Name, new TableNameClass());
+
             var output = workspace.Define(tableName, new TableNameClass());
             workspace.Delete(output);
 
@@ -247,8 +231,13 @@ namespace ESRI.ArcGIS.Geodatabase
             IFields targetFields;
             fieldChecker.Validate(requiredFields, out errors, out targetFields);
 
-            IFeatureDataConverter featureDataConverter = new FeatureDataConverterClass();
-            invalid = featureDataConverter.ConvertTable(input, filter, output, targetFields, "", 1000, handle);
+            var featureDataConverter = new FeatureDataConverterClass();
+            if (surrogate != null)
+            {
+                surrogate.Advise(featureDataConverter);
+            }
+
+            invalid = featureDataConverter.ConvertTable(input, filter, null, output, targetFields, "", 1000, handle);
 
             return ((IName) output).Open() as ITable;
         }
@@ -504,45 +493,6 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Gets the registration identifier.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns>Returns a <see cref="int"/> representing the registation identifier.</returns>
-        public static int GetRegistrationId(this ITable source)
-        {
-            if (source == null) return -1;
-
-            string className = ((IDataset) source).Name;
-            int index = className.IndexOf('.');
-            if (index > 0)
-            {
-                string ownerName = source.GetSchemaName();
-                string tableName = source.GetTableName();
-
-                using (var cr = new ComReleaser())
-                {
-                    IWorkspace workspace = ((IDataset) source).Workspace;
-                    var fws = (IFeatureWorkspace) workspace;
-                    var syntax = (ISQLSyntax) workspace;
-                    string functionName = syntax.GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
-
-                    IQueryDef queryDef = fws.CreateQueryDef();
-                    queryDef.Tables = "sde.table_registry";
-                    queryDef.SubFields = "registration_id";
-                    queryDef.WhereClause = string.Format("{2}(table_name) = {2}('{0}') AND {2}(owner) = {2}('{1}')", tableName, ownerName, functionName);
-
-                    ICursor cursor = queryDef.Evaluate();
-                    cr.ManageLifetime(cursor);
-
-                    IRow row = cursor.NextRow();
-                    return (row != null) ? TypeCast.Cast(row.Value[0], -1) : -1;
-                }
-            }
-
-            return -1;
-        }
-
-        /// <summary>
         ///     Gets the name of the delta (either the A or D) table for the versioned <paramref name="source" />.
         /// </summary>
         /// <param name="source">The versioned table or feature class.</param>
@@ -606,6 +556,45 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return null;
+        }
+
+        /// <summary>
+        ///     Gets the registration identifier.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="int" /> representing the registation identifier.</returns>
+        public static int GetRegistrationId(this ITable source)
+        {
+            if (source == null) return -1;
+
+            string className = ((IDataset) source).Name;
+            int index = className.IndexOf('.');
+            if (index > 0)
+            {
+                string ownerName = source.GetSchemaName();
+                string tableName = source.GetTableName();
+
+                using (var cr = new ComReleaser())
+                {
+                    IWorkspace workspace = ((IDataset) source).Workspace;
+                    var fws = (IFeatureWorkspace) workspace;
+                    var syntax = (ISQLSyntax) workspace;
+                    string functionName = syntax.GetFunctionName(esriSQLFunctionName.esriSQL_UPPER);
+
+                    IQueryDef queryDef = fws.CreateQueryDef();
+                    queryDef.Tables = "sde.table_registry";
+                    queryDef.SubFields = "registration_id";
+                    queryDef.WhereClause = string.Format("{2}(table_name) = {2}('{0}') AND {2}(owner) = {2}('{1}')", tableName, ownerName, functionName);
+
+                    ICursor cursor = queryDef.Evaluate();
+                    cr.ManageLifetime(cursor);
+
+                    IRow row = cursor.NextRow();
+                    return (row != null) ? TypeCast.Cast(row.Value[0], -1) : -1;
+                }
+            }
+
+            return -1;
         }
 
         /// <summary>
@@ -845,6 +834,85 @@ namespace ESRI.ArcGIS.Geodatabase
             var factory = new MemoryRelationshipClassFactory();
             return factory.Open(joinName, source, primaryKeyField, foreignClass, foreignKeyField, "Forward", "Backward", cardinality);
         }
+
+        /// <summary>
+        /// Copies the rows from the <paramref name="data" /> table to the source table.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="data">The data that will be copied.</param>
+        /// <param name="filter">The filter that will be used prior to copying the data.</param>
+        /// <param name="progress">The progress callback.</param>
+        /// <returns>
+        /// Returns a <see cref="List{T}" /> representing the object ids of the records loaded.
+        /// </returns>
+        /// <remarks>
+        /// Assumes that the source and data table have the same schema.
+        /// </remarks>
+        public static List<int> Load(this ITable source, ITable data, IQueryFilter filter = null, IFeatureProgress progress = null)
+        {
+            if (progress != null)
+            {
+                progress.FeatureClassName = ((IDataset) source).Name;
+                progress.MinFeatures = 0;
+                progress.MaxFeatures = data.RowCount(filter);
+                progress.Position = 0;
+                progress.StepValue = 1;
+            }
+
+            var oids = new List<int>();
+            var fields = source.Fields.ToDictionary(f => f.Editable);
+
+            using (ComReleaser cr = new ComReleaser())
+            {
+                ICursor cursor = data.Search(filter, false);
+                cr.ManageLifetime(cursor);
+
+                ICursor insert = source.Insert(true);
+                cr.ManageLifetime(insert);
+
+                var buffer = source.CreateRowBuffer();
+                
+                foreach (var rows in cursor.AsEnumerable().Batch(1000))
+                {
+                    foreach (var row in rows)
+                    {
+                        Task.Parallel(fields, field =>
+                        {
+                            buffer.Update(field.Value, row.Value[field.Value], false);
+                        });
+
+                        var oid = (int) insert.InsertRow(buffer);
+                        oids.Add(oid);
+
+                        if (progress != null)
+                        {
+                            progress.Step();
+                        }
+                    }
+                    
+                    insert.Flush();
+                }
+
+                insert.Flush();
+            }
+
+            return oids;
+        }
+
+        /// <summary>
+        ///     Truncates the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <remarks>
+        ///     The truncate method is only available for local geodatabase datasets and non-versioned SDE feature classes and
+        ///     tables. This method will truncate the non-versioned table or feature class table. Since this method ignores any
+        ///     schma locks that might be present on the table it should be used with caution.
+        /// </remarks>
+        public static void Truncate(this ITable source)
+        {
+            ((ITableWrite2) source).Truncate();
+        }
+
         
         #endregion
     }

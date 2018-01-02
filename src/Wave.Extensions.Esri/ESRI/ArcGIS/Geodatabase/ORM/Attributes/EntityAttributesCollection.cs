@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -6,6 +7,9 @@ using System.Reflection;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
+    /// <summary>
+    ///     Provides property refelection for the entity object.
+    /// </summary>
     class EntityAttributesCollection
     {
         #region Fields
@@ -13,6 +17,7 @@ namespace ESRI.ArcGIS.Geodatabase
         private readonly Dictionary<string, string> _Aliases = new Dictionary<string, string>();
         private readonly Dictionary<string, EntityFieldAttribute> _Attributes = new Dictionary<string, EntityFieldAttribute>();
         private readonly List<PropertyInfo> _Dependencies = new List<PropertyInfo>();
+        private readonly ConcurrentDictionary<string, EntityAttributeProperty> _Fields = new ConcurrentDictionary<string, EntityAttributeProperty>();
         private readonly Dictionary<string, PropertyInfo> _Properties = new Dictionary<string, PropertyInfo>();
 
         #endregion
@@ -37,7 +42,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     if (table != null)
                     {
-                        _Aliases.Add(string.Format("{0}.{1}", table.Name, field.Name), field.Name);
+                        _Aliases.Add(string.Format("{0}.{1}", table.FullName, field.Name), field.Name);
                     }
                 }
                 else if (typeof(Entity).IsAssignableFrom(prop.PropertyType))
@@ -50,6 +55,17 @@ namespace ESRI.ArcGIS.Geodatabase
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        ///     Gets the count.
+        /// </summary>
+        /// <value>
+        ///     The count.
+        /// </value>
+        public int Count
+        {
+            get { return _Attributes.Count; }
+        }
 
         /// <summary>
         ///     Gets the dependencies.
@@ -74,10 +90,23 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns></returns>
         public object Convert(string fieldName, object value)
         {
+            if (value == null || value == DBNull.Value)
+                return value;
+
             var attribute = this.GetAttribute(fieldName);
             if (attribute != null && attribute.DestinationType != null && attribute.SourceType != null)
             {
-                TypeConverter converter = TypeDescriptor.GetConverter(value);
+                var prop = this.GetProperty(fieldName);
+                if (prop != null)
+                {
+                    foreach (TypeConverter c in this.GetCustomTypeConverters(prop))
+                    {
+                        if (c.CanConvertTo(attribute.DestinationType))
+                            return c.ConvertTo(value, attribute.DestinationType);
+                    }
+                }
+
+                TypeConverter converter = TypeDescriptor.GetConverter(attribute.SourceType);
                 if (converter.CanConvertTo(attribute.DestinationType))
                 {
                     return converter.ConvertTo(value, attribute.DestinationType);
@@ -93,25 +122,28 @@ namespace ESRI.ArcGIS.Geodatabase
             return value;
         }
 
+
         /// <summary>
         ///     Gets the fields.
         /// </summary>
         /// <param name="row">The row.</param>
-        /// <returns></returns>
-        public Dictionary<string, PropertyInfo> GetFields(IRow row)
+        /// <returns>Returns a <see cref="IDictionary{TKey,TValue}" /> representing the fields and property pairs.</returns>
+        public IDictionary<string, EntityAttributeProperty> GetFields(IRow row)
         {
-            var fields = new Dictionary<string, PropertyInfo>();
-
-            foreach (var f in row.Fields.AsEnumerable())
+            if (_Fields == null || !_Fields.Any())
             {
-                var p = this.GetProperty(f.Name);
-                if (p == null) continue;
+                if (row == null) return _Fields;
 
-                if (!fields.ContainsKey(f.Name))
-                    fields.Add(f.Name, p);
+                Task.Parallel(row.Fields.AsEnumerable(), f =>
+                {
+                    var p = this.GetProperty(f.Name);
+                    if (p == null) return;
+
+                    _Fields.TryAdd(f.Name, new EntityAttributeProperty {Property = p, Editable = f.Editable});
+                });
             }
 
-            return fields;
+            return _Fields;
         }
 
         /// <summary>
@@ -149,6 +181,59 @@ namespace ESRI.ArcGIS.Geodatabase
 
             return null;
         }
+
+        /// <summary>
+        ///     Extracts and instantiates any customer type converters assigned to a
+        ///     derivitive of the <see cref="System.Reflection.MemberInfo" /> property
+        /// </summary>
+        /// <param name="member">Any class deriving from MemberInfo</param>
+        /// <returns>A list of customer type converters, empty if none found</returns>
+        private List<TypeConverter> GetCustomTypeConverters(MemberInfo member)
+        {
+            List<TypeConverter> result = new List<TypeConverter>();
+
+            try
+            {
+                foreach (TypeConverterAttribute a in member.GetCustomAttributes(typeof(TypeConverterAttribute), true))
+                {
+                    TypeConverter converter = Activator.CreateInstance(Type.GetType(a.ConverterTypeName)) as TypeConverter;
+
+                    if (converter != null)
+                        result.Add(converter);
+                }
+            }
+            catch
+            {
+                // Let it go, there were no custom converters
+            }
+
+            return result;
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// </summary>
+    class EntityAttributeProperty
+    {
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether this <see cref="EntityAttributeProperty" /> is editable.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if editable; otherwise, <c>false</c>.
+        /// </value>
+        public bool Editable { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the property.
+        /// </summary>
+        /// <value>
+        ///     The property.
+        /// </value>
+        public PropertyInfo Property { get; set; }
 
         #endregion
     }

@@ -20,7 +20,7 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </remarks>
     /// <seealso cref="ESRI.ArcGIS.Geodatabase.IFeatureProgress" />
     /// http://support.esri.com/technical-article/000010047
-    public class FeatureProgressSurrogate : IFeatureProgress
+    public class ProgressSurrogate : IFeatureProgress
     {
         #region Fields
 
@@ -31,18 +31,18 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FeatureProgressSurrogate" /> class.
+        ///     Initializes a new instance of the <see cref="ProgressSurrogate" /> class.
         /// </summary>
-        public FeatureProgressSurrogate()
+        public ProgressSurrogate()
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FeatureProgressSurrogate" /> class.
+        ///     Initializes a new instance of the <see cref="DataProgressSurrogate" /> class.
         /// </summary>
         /// <param name="connectionPointContainer">The connection point container.</param>
         /// <exception cref="ArgumentException">An feature progress connection point could not be found.</exception>
-        protected FeatureProgressSurrogate(IConnectionPointContainer connectionPointContainer)
+        protected ProgressSurrogate(IConnectionPointContainer connectionPointContainer)
         {
             this.Advise(connectionPointContainer);
         }
@@ -136,7 +136,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             Count += _StepValue;
 
-            Log.Info(this, "\t\t{0:N0} feature(s) exported.", Count);
+            Log.Info(this, "\t\t{0:N0} row(s) exported.", Count);
         }
 
         #endregion

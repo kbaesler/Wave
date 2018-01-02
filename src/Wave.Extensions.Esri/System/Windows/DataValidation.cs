@@ -64,7 +64,7 @@ namespace System.Windows
         /// <returns>
         ///     An error message indicating what is wrong with this property. The default is an empty string ("").
         /// </returns>
-        public string this[string columnName]
+        public virtual string this[string columnName]
         {
             get
             {

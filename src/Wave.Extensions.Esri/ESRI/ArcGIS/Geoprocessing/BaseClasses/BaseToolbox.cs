@@ -14,23 +14,23 @@ namespace ESRI.ArcGIS.Geoprocessing
     /// </summary>
     /// <remarks>The FunctionFactory object manages the function tools based on the FunctionName object.</remarks>
     [ComVisible(true)]
-    public abstract class BaseFunctionFactory : IGPFunctionFactory, IGPFunctionFactory2
+    public abstract class BaseToolbox : IGPFunctionFactory, IGPFunctionFactory2
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseFunctionFactory" /> class.
+        ///     Initializes a new instance of the <see cref="BaseToolbox" /> class.
         /// </summary>
         /// <param name="name">
         ///     The name of the toolbox. This is used when generating the Toolbox containing the function tools of
         ///     the factory.
         /// </param>
         /// <param name="alias">The alias.</param>
-        protected BaseFunctionFactory(string name, string alias)
+        protected BaseToolbox(string name, string alias)
         {
             this.Name = name;
             this.Alias = alias;
-            this.Functions = new Dictionary<IGPFunction2, string>();
+            this.Tools = new Dictionary<IGPFunction2, string>();
         }
 
         #endregion
@@ -80,7 +80,7 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// <value>
         ///     The functions.
         /// </value>
-        private Dictionary<IGPFunction2, string> Functions { get; set; }
+        private Dictionary<IGPFunction2, string> Tools { get; set; }
 
         #endregion
 
@@ -96,7 +96,7 @@ namespace ESRI.ArcGIS.Geoprocessing
             if (name == null)
                 throw new ArgumentNullException("name");
 
-            return this.Functions.Keys.First(o => o.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+            return this.Tools.Keys.FirstOrDefault(o => o.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
         }
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace ESRI.ArcGIS.Geoprocessing
             var function = (IGPFunction2) this.GetFunction(name);
             var functionName = (IGPName) this.GetFunctionName(function);
 
-            if (this.Functions.ContainsKey(function))
-                functionName.Category = this.Functions[function];
+            if (this.Tools.ContainsKey(function))
+                functionName.Category = this.Tools[function];
 
             return functionName;
         }
@@ -138,7 +138,7 @@ namespace ESRI.ArcGIS.Geoprocessing
         {
             IArray list = new EnumGPNameClass();
 
-            foreach (IGPFunction function in this.Functions.Keys)
+            foreach (IGPFunction function in this.Tools.Keys)
             {
                 IGPName functionName = this.GetFunctionName(function.Name);
                 list.Add(functionName);
@@ -156,6 +156,7 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// </summary>
         public virtual void ReleaseInternals()
         {
+            this.Tools.Clear();
         }
 
         #endregion
@@ -169,7 +170,7 @@ namespace ESRI.ArcGIS.Geoprocessing
         /// <param name="category">The category.</param>
         protected void Add(IGPFunction2 function, string category)
         {
-            this.Functions.Add(function, category);
+            this.Tools.Add(function, category);
         }
 
         /// <summary>

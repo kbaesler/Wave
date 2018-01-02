@@ -10,12 +10,16 @@ namespace System.Windows
     /// </summary>
     public abstract class Observable : DataValidation, INotifyPropertyChanged, INotifyPropertyChanging
     {
-        #region Events
+        #region INotifyPropertyChanged Members
 
         /// <summary>
         ///     Occurs when a property value changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        #region INotifyPropertyChanging Members
 
         /// <summary>
         ///     Occurs when a property value is changing.
@@ -25,19 +29,6 @@ namespace System.Windows
         #endregion
 
         #region Protected Methods
-
-        /// <summary>
-        ///     Called from a property setter to notify the framework that a member has changed.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="propertySelector">The property selector.</param>
-        protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertySelector)
-        {
-            var memberExpression = propertySelector.Body as MemberExpression;
-
-            if (memberExpression != null)
-                OnPropertyChanged(memberExpression.Member.Name);
-        }
 
         /// <summary>
         ///     Raises the <see cref="PropertyChanged" /> event.
@@ -63,6 +54,18 @@ namespace System.Windows
             PropertyChangingEventHandler eventHandler = this.PropertyChanging;
             if (eventHandler != null)
                 eventHandler(this, new PropertyChangingEventArgs(propertyName));
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="PropertyChanged" /> event.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertySelector">The property selector.</param>
+        protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertySelector)
+        {
+            var expression = propertySelector.Body as MemberExpression;
+            if (expression != null)
+                OnPropertyChanged(expression.Member.Name);
         }
 
         #endregion
