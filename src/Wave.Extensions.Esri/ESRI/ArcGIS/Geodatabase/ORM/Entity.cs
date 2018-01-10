@@ -172,8 +172,9 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             var row = (IRow)buffer;
             var fields = _Attributes.GetFields(row);
+            var editableFields = fields.Where(o => o.Value.Editable).Select(o => o.Key);
 
-            Task.Parallel(fields.Keys, fieldName => { row.Update(fieldName, this.GetValue(fieldName), false); });
+            Task.Parallel(editableFields, fieldName => { row.Update(fieldName, this.GetValue(fieldName), false); });
         }
 
         /// <summary>
