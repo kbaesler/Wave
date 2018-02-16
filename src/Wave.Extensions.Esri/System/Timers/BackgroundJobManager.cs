@@ -6,25 +6,13 @@ namespace System.Timers
 {
     /// <inheritdoc />
     /// <summary>
-    ///     Provides access to a collection of <see cref="T:RecurringJob" /> objects.
+    ///     Provides access to a collection of <see cref="T:BackgroundJob" /> objects.
     /// </summary>
-    public sealed class RecurringJobManager : IDisposable
+    public class BackgroundJobManager : IDisposable
     {
         #region Fields
 
-        private readonly ConcurrentDictionary<string, RecurringJob> _Jobs;
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RecurringJobManager" /> class.
-        /// </summary>
-        public RecurringJobManager()
-        {
-            _Jobs = new ConcurrentDictionary<string, RecurringJob>();
-        }
+        private readonly ConcurrentDictionary<string, BackgroundJob> _Jobs = new ConcurrentDictionary<string, BackgroundJob>();
 
         #endregion
 
@@ -44,53 +32,24 @@ namespace System.Timers
         #region Public Methods
 
         /// <summary>
-        ///     Adds the <see cref="RecurringJob" /> with the specified identifier when it doesn't exist, otherwise the schedule
-        ///     is updated for the existing job.
+        ///     Adds the <see cref="BackgroundJob" /> with the specified identifier when it doesn't exist, otherwise adds it to the
+        ///     colleciton.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="task">The action that will be executed.</param>
-        /// <param name="dueTime">The signal time of when the job should be initially triggered.</param>
-        /// <param name="signalTime">A function that calculates the next time the job should be triggered.</param>
-        /// <returns>
-        ///     Returns a <see cref="RecurringJob" /> representing the job that has been added or updated.
-        /// </returns>
-        public RecurringJob Add(string id, Action task, TimeSpan dueTime, Func<DateTime, DateTime> signalTime)
+        /// <param name="job">The job.</param>
+        public void Add(BackgroundJob job)
         {
-            RecurringJob job;
-
-            if (!_Jobs.ContainsKey(id))
+            if (!_Jobs.ContainsKey(job.Id))
             {
-                job = new RecurringJob(id, task);
-                job.Schedule(dueTime, signalTime);
-
-                _Jobs.TryAdd(id, job);
+                _Jobs.TryAdd(job.Id, job);
             }
             else
             {
-                job = RecurringJob.Schedule(id, task, dueTime, signalTime);
-
-                _Jobs.TryUpdate(id, job, _Jobs[id]);
-            }
-
-            return job;
-        }
-
-
-        /// <summary>
-        ///     Removes the <see cref="RecurringJob" /> with the specified identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        public void Remove(string id)
-        {
-            RecurringJob job;
-            if (_Jobs.TryRemove(id, out job))
-            {
-                job.Dispose();
+                _Jobs.TryUpdate(job.Id, job, _Jobs[job.Id]);
             }
         }
 
         /// <summary>
-        ///     Removes and stops all of the jobs.
+        ///     Removes all of the jobs and stops them from recurring but will not terminate active jobs.
         /// </summary>
         public void Clear()
         {
@@ -100,6 +59,20 @@ namespace System.Timers
             }
 
             _Jobs.Clear();
+        }
+
+
+        /// <summary>
+        ///     Removes the <see cref="BackgroundJob" /> with the specified identifier.
+        /// </summary>
+        /// <param name="job">The job.</param>
+        public void Remove(BackgroundJob job)
+        {
+            BackgroundJob value;
+            if (_Jobs.TryRemove(job.Id, out value))
+            {
+                value.Dispose();
+            }
         }
 
         /// <summary>
@@ -112,7 +85,7 @@ namespace System.Timers
         /// <returns>Returns a <see cref="bool" /> representing <c>true</c> when every job has received a signal; otherwise, false.</returns>
         public bool WaitAll(TimeSpan timeout)
         {
-            var waitHandles = _Jobs.Select(o => o.Value.Wait).ToArray();
+            WaitHandle[] waitHandles = _Jobs.Select(o => o.Value.Wait).Cast<WaitHandle>().ToArray();
             if (waitHandles.Any())
             {
                 return WaitHandle.WaitAll(waitHandles, timeout);

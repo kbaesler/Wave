@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 
 using ESRI.ArcGIS.ADF;
+using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Geodatabase.Internal
 {

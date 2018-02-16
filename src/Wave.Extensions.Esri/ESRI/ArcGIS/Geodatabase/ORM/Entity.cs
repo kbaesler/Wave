@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -15,7 +16,6 @@ namespace ESRI.ArcGIS.Geodatabase
     ///     An row level entity object.
     /// </summary>
     /// <seealso cref="IEntity{ITable}" />
-    [Serializable]
     public abstract class Entity : IEntity<ITable>, INotifyPropertyChanged
     {
         #region Fields
@@ -125,6 +125,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public virtual int Insert(ITable context)
         {
+            this.Validate();
+
             using (ComReleaser cr = new ComReleaser())
             {
                 var cursor = context.Insert(true);
@@ -149,12 +151,14 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (this.IsDataBound && !this.IsReadOnly)
             {
+                this.Validate();
+
                 var editableFields = _Fields.Where(o => o.Value.Editable);
-                Task.Parallel(editableFields, field =>
+                foreach (var field in editableFields)
                 {
                     var value = field.Value.Property.GetValue(this, null);
                     this.SetValue(field.Key, value);
-                });
+                }
 
                 this.Row.Store();
             }
@@ -170,11 +174,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="buffer">The buffer.</param>
         public virtual void CopyTo(IRowBuffer buffer)
         {
-            var row = (IRow)buffer;
+            var row = (IRow) buffer;
             var fields = _Attributes.GetFields(row);
             var editableFields = fields.Where(o => o.Value.Editable).Select(o => o.Key);
-
-            Task.Parallel(editableFields, fieldName => { row.Update(fieldName, this.GetValue(fieldName), false); });
+            foreach (var fieldName in editableFields)
+                row.Update(fieldName, this.GetValue(fieldName), false);
         }
 
         /// <summary>
@@ -188,26 +192,35 @@ namespace ESRI.ArcGIS.Geodatabase
         public static TEntity Create<TEntity>(IRow row)
             where TEntity : Entity
         {
-            var item = (TEntity)Activator.CreateInstance(typeof(TEntity));
+            var item = (TEntity) Activator.CreateInstance(typeof(TEntity));
             item.Bind(row);
 
             return item;
         }
 
+
         /// <summary>
-        /// Gets the full name that has been decorated to the entity using the <see cref="EntityTableAttribute" /> attribute.
+        ///     Gets the field and property name pairs that have been decorated with the <see cref="EntityFieldAttribute" />
+        ///     attribute.
         /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns>
-        /// Returns a <see cref="string" /> representing the full name; otherwise <c>null</c>
-        /// </returns>
-        public static string GetFullName(Type type)
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <returns>Returns a <see cref="Dictionary{TKey, TValue}" /> representing the field and property pairs.</returns>
+        public static Dictionary<string, PropertyInfo> GetFieldNames<TEntity>()
         {
-            var attributes = type.GetCustomAttributes(typeof(EntityTableAttribute));
-            var attribute = attributes.SingleOrDefault() as EntityTableAttribute;
-            return attribute?.FullName;
+            Dictionary<string, PropertyInfo> fieldNames = new Dictionary<string, PropertyInfo>();
+
+            foreach (var prop in typeof(TEntity).GetProperties())
+            {
+                var field = Attribute.GetCustomAttributes(prop).OfType<EntityFieldAttribute>().SingleOrDefault();
+                if (field != null)
+                {
+                    fieldNames.Add(field.Name, prop);
+                }
+            }
+
+            return fieldNames;
         }
-        
+
 
         /// <summary>
         ///     Gets the full name that has been decorated to the entity using the <see cref="EntityTableAttribute" /> attribute.
@@ -218,7 +231,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static string GetFullName<TEntity>()
         {
-            return GetFullName(typeof(TEntity));
+            var attributes = typeof(TEntity).GetCustomAttributes(typeof(EntityTableAttribute));
+            var attribute = attributes.SingleOrDefault() as EntityTableAttribute;
+            return attribute?.FullName;
         }
 
         #endregion
@@ -248,19 +263,22 @@ namespace ESRI.ArcGIS.Geodatabase
 
             if (this.IsDataBound)
             {
-                Task.Parallel(_Fields, field =>
+                foreach (var field in _Fields)
                 {
                     var value = this.GetValue(field.Key);
-                    field.Value.Property.SetValue(this, Convert.IsDBNull(value) ? null : value, null);
-                });
+                    if (field.Value.CanWrite)
+                    {
+                        field.Value.Property.SetValue(this, Convert.IsDBNull(value) ? null : value, null);
+                    }
+                }
 
-                Task.Parallel(_Attributes.Dependencies, dependencyProperty =>
+                foreach (var dependencyProperty in _Attributes.Dependencies)
                 {
-                    var dependencyObject = (Entity)Activator.CreateInstance(dependencyProperty.PropertyType);
+                    var dependencyObject = (Entity) Activator.CreateInstance(dependencyProperty.PropertyType);
                     dependencyObject.Bind(row);
 
                     dependencyProperty.SetValue(this, dependencyObject);
-                });
+                }
             }
         }
 
@@ -280,7 +298,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 {
                     if (_Row.Fields.Field[index].Type == esriFieldType.esriFieldTypeBlob)
                     {
-                        ((IMemoryBlobStreamVariant)value).ExportToVariant(out value);
+                        ((IMemoryBlobStreamVariant) value).ExportToVariant(out value);
                     }
                 }
 
@@ -328,11 +346,11 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 if (value is byte[])
                 {
-                    var ms = (IMemoryBlobStreamVariant)new MemoryBlobStream();
+                    var ms = (IMemoryBlobStreamVariant) new MemoryBlobStream();
                     ms.ImportFromVariant(value);
                     value = ms;
                 }
-               
+
                 _Row.Update(fieldName, value, false);
                 this.OnPropertyChanged(_Fields[fieldName].Property.Name);
             }
@@ -346,6 +364,18 @@ namespace ESRI.ArcGIS.Geodatabase
                     this.OnPropertyChanged(prop.Name);
                 }
             }
+        }
+
+        /// <summary>
+        ///     Determines whether the specified object is valid.
+        /// </summary>
+        /// <returns>
+        ///     A collection that holds failed-validation information.
+        /// </returns>
+        protected virtual void Validate()
+        {
+            var validationContext = new ValidationContext(this, serviceProvider: null, items: null);
+            Validator.ValidateObject(this, validationContext, true);
         }
 
         #endregion
@@ -373,7 +403,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         public TShape Shape
         {
-            get { return (this.IsDataBound ? ((IFeature)this.Row).Shape : this.TemporaryShape) as TShape; }
+            get { return (this.IsDataBound ? ((IFeature) this.Row).Shape : this.TemporaryShape) as TShape; }
             set
             {
                 if (this.IsDataBound)
@@ -418,10 +448,10 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public int Insert(IFeatureClass context)
         {
-            var oid = this.Insert(((ITable)context));
+            var oid = this.Insert(((ITable) context));
 
             if (this.HasShape)
-                this.TemporaryShape = ((IFeature)this.Row).Shape;
+                this.TemporaryShape = ((IFeature) this.Row).Shape;
 
             return oid;
         }
@@ -440,7 +470,7 @@ namespace ESRI.ArcGIS.Geodatabase
             this.Bind(context.Fetch(oid));
 
             if (this.HasShape)
-                this.TemporaryShape = ((IFeature)this.Row).Shape;
+                this.TemporaryShape = ((IFeature) this.Row).Shape;
         }
 
         /// <summary>

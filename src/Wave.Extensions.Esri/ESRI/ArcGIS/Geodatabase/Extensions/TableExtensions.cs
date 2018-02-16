@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase.Internal;
 using ESRI.ArcGIS.GeoDatabaseUI;
@@ -14,6 +13,106 @@ using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
+    /// <summary>
+    ///     Enumeration of the comparison operators supported in SQL statements.
+    /// </summary>
+    public enum ComparisonOperator
+    {
+        /// <summary>
+        ///     This is the equals operator for strict equality comparisons. The framework automatically
+        ///     uses the correct syntax for null value comparisons.
+        /// </summary>
+        Equals,
+
+        /// <summary>
+        ///     This is the negated equals operator. The framework automatically uses the correct syntax
+        ///     for null value comparisons.
+        /// </summary>
+        NotEquals,
+
+        /// <summary>
+        ///     This is the equals operator for partial equality comparisons. The parameter value
+        ///     should be a string to match with percent characters used as wildcards.
+        /// </summary>
+        Like,
+
+        /// <summary>
+        ///     This is the equals operator for partial equality comparisons. The parameter value
+        ///     should be a string to match with percent characters used as wildcards.
+        /// </summary>
+        Contains,
+
+        /// <summary>
+        ///     This is the equals operator for partial equality comparisons. The parameter value
+        ///     should be a string to match with percent characters used as wildcards.
+        /// </summary>
+        StartsWith,
+
+        /// <summary>
+        ///     This is the equals operator for partial equality comparisons. The parameter value
+        ///     should be a string to match with percent characters used as wildcards.
+        /// </summary>
+        EndsWith,
+
+        /// <summary>
+        ///     This is the negated equals operator for partial equality comparisons. The parameter value
+        ///     should be a string to match with percent characters used as wildcards.
+        /// </summary>
+        NotLike,
+
+        /// <summary>
+        ///     This is the less than operator.
+        /// </summary>
+        LessThan,
+
+        /// <summary>
+        ///     This is the less than or equals operator.
+        /// </summary>
+        LessThanOrEquals,
+
+        /// <summary>
+        ///     This is the greater than operator.
+        /// </summary>
+        GreaterThan,
+
+        /// <summary>
+        ///     This is the greater than or equals operator.
+        /// </summary>
+        GreaterThanOrEquals,
+
+        /// <summary>
+        ///     This is the in operator which tests for set membership. Constraints using Operator.In can
+        ///     only be added by specifying a list of elements (though the lists may contain 0 or 1 elements).
+        /// </summary>
+        In,
+
+        /// <summary>
+        ///     This is the negated in operator which tests for set non-membership.
+        /// </summary>
+        NotIn
+    }
+
+    /// <summary>
+    ///     Enumeration of the logic operators supported in SQL statements.
+    /// </summary>
+    public enum LogicalOperator
+    {
+        /// <summary>
+        ///     This is the AND operator. Combines two conditions together. Selects a record if both conditions are true.
+        /// </summary>
+        And,
+
+        /// <summary>
+        ///     This is the OR operator. Combines two conditions together. Selects a record if at least one condition is true.
+        /// </summary>
+        Or,
+
+        /// <summary>
+        ///     This is the NOT operator. Selects a record if it doesn't match the following expression.
+        /// </summary>
+        Not
+    }
+
     /// <summary>
     ///     Provides extension methods for the <see cref="ESRI.ArcGIS.Geodatabase.ITable" /> interface.
     /// </summary>
@@ -179,7 +278,7 @@ namespace ESRI.ArcGIS.Geodatabase
         public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, out IEnumInvalidObject errors)
         {
             IEnumFieldError fieldError;
-            return source.Export(filter, tableName, workspace, source.Fields, handle, new ProgressSurrogate(), out errors, out fieldError);
+            return source.Export(filter, tableName, workspace, source.Fields, handle, null, out errors, out fieldError);
         }
 
         /// <summary>
@@ -195,7 +294,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="ITable" /> representing the feature class that was exported.
         /// </returns>
-        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, ProgressSurrogate surrogate, out IEnumInvalidObject errors)
+        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, FeatureProgress surrogate, out IEnumInvalidObject errors)
         {
             IEnumFieldError fieldError;
             return source.Export(filter, tableName, workspace, source.Fields, handle, surrogate, out errors, out fieldError);
@@ -216,7 +315,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
         /// </returns>
-        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, ProgressSurrogate surrogate, out IEnumInvalidObject invalid, out IEnumFieldError errors)
+        public static ITable Export(this ITable source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, FeatureProgress surrogate, out IEnumInvalidObject invalid, out IEnumFieldError errors)
         {
             var ds = (IDataset) source;
             var input = ds.Workspace.Define(ds.Name, new TableNameClass());
@@ -836,17 +935,17 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Copies the rows from the <paramref name="data" /> table to the source table.
+        ///     Copies the rows from the <paramref name="data" /> table to the source table.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="data">The data that will be copied.</param>
         /// <param name="filter">The filter that will be used prior to copying the data.</param>
         /// <param name="progress">The progress callback.</param>
         /// <returns>
-        /// Returns a <see cref="List{T}" /> representing the object ids of the records loaded.
+        ///     Returns a <see cref="List{T}" /> representing the object ids of the records loaded.
         /// </returns>
         /// <remarks>
-        /// Assumes that the source and data table have the same schema.
+        ///     Assumes that the source and data table have the same schema.
         /// </remarks>
         public static List<int> Load(this ITable source, ITable data, IQueryFilter filter = null, IFeatureProgress progress = null)
         {
@@ -871,15 +970,13 @@ namespace ESRI.ArcGIS.Geodatabase
                 cr.ManageLifetime(insert);
 
                 var buffer = source.CreateRowBuffer();
-                
+
                 foreach (var rows in cursor.AsEnumerable().Batch(1000))
                 {
                     foreach (var row in rows)
                     {
-                        Task.Parallel(fields, field =>
-                        {
+                        foreach (var field in fields)
                             buffer.Update(field.Value, row.Value[field.Value], false);
-                        });
 
                         var oid = (int) insert.InsertRow(buffer);
                         oids.Add(oid);
@@ -889,7 +986,7 @@ namespace ESRI.ArcGIS.Geodatabase
                             progress.Step();
                         }
                     }
-                    
+
                     insert.Flush();
                 }
 
@@ -913,7 +1010,6 @@ namespace ESRI.ArcGIS.Geodatabase
             ((ITableWrite2) source).Truncate();
         }
 
-        
         #endregion
     }
 }

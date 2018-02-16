@@ -73,7 +73,7 @@ namespace ESRI.ArcGIS.esriSystem
         ///     Initializes a new instance of the <see cref="EsriRuntimeAuthorization" /> class.
         /// </summary>
         public EsriRuntimeAuthorization()
-            : this(ProductCode.EngineOrDesktop)
+            : this(RuntimeManager.ActiveRuntime == null ? ProductCode.Desktop : RuntimeManager.ActiveRuntime.Product)
         {
         }
 

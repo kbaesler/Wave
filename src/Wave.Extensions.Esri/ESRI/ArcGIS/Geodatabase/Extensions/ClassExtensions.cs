@@ -163,7 +163,7 @@ namespace ESRI.ArcGIS.Geodatabase
         public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, bool keepFeatureDatset, out IEnumInvalidObject errors)
         {
             IEnumFieldError fieldError;
-            return source.Export(filter, tableName, workspace, source.Fields, handle, keepFeatureDatset, new ProgressSurrogate(), out errors, out fieldError);
+            return source.Export(filter, tableName, workspace, source.Fields, handle, keepFeatureDatset, null, out errors, out fieldError);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         /// Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
         /// </returns>
-        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, bool keepFeatureDatset, ProgressSurrogate surrogate, out IEnumInvalidObject errors)
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, bool keepFeatureDatset, FeatureProgress surrogate, out IEnumInvalidObject errors)
         {
             IEnumFieldError fieldError;
             return source.Export(filter, tableName, workspace, source.Fields, handle, keepFeatureDatset, surrogate, out errors, out fieldError);
@@ -202,7 +202,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         /// Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
         /// </returns>
-        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, bool keepFeatureDatset, ProgressSurrogate surrogate, out IEnumInvalidObject invalid, out IEnumFieldError errors)
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, bool keepFeatureDatset, FeatureProgress surrogate, out IEnumInvalidObject invalid, out IEnumFieldError errors)
         {
             var ds = (IDataset)source;
 
@@ -254,7 +254,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             IEnumInvalidObject errors;
             IEnumFieldError fieldError;
-            return source.Export(filter, tableName, workspace, source.Fields, handle, true, new ProgressSurrogate(), out errors, out fieldError);
+            return source.Export(filter, tableName, workspace, source.Fields, handle, true, null, out errors, out fieldError);
         }
 
         /// <summary>

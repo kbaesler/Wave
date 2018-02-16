@@ -19,7 +19,7 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Deletes this item from the context.
+        ///     Deletes the entity.
         /// </summary>
         void Delete();
 
@@ -31,7 +31,7 @@ namespace ESRI.ArcGIS.Geodatabase
         int Insert(TContext context);
 
         /// <summary>
-        ///     Commits changes to the context.
+        ///     Commits changes.
         /// </summary>
         void Update();
 

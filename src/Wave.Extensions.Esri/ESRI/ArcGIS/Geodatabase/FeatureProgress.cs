@@ -20,29 +20,29 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </remarks>
     /// <seealso cref="ESRI.ArcGIS.Geodatabase.IFeatureProgress" />
     /// http://support.esri.com/technical-article/000010047
-    public class ProgressSurrogate : IFeatureProgress
+    public abstract class FeatureProgress : IFeatureProgress
     {
         #region Fields
 
-        private int _StepValue;
+        private static readonly ILog Log = LogProvider.For<FeatureProgress>();
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ProgressSurrogate" /> class.
+        ///     Initializes a new instance of the <see cref="FeatureProgress" /> class.
         /// </summary>
-        public ProgressSurrogate()
+        protected FeatureProgress()
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="DataProgressSurrogate" /> class.
+        ///     Initializes a new instance of the <see cref="FeatureProgress" /> class.
         /// </summary>
         /// <param name="connectionPointContainer">The connection point container.</param>
         /// <exception cref="ArgumentException">An feature progress connection point could not be found.</exception>
-        protected ProgressSurrogate(IConnectionPointContainer connectionPointContainer)
+        protected FeatureProgress(IConnectionPointContainer connectionPointContainer)
         {
             this.Advise(connectionPointContainer);
         }
@@ -60,26 +60,20 @@ namespace ESRI.ArcGIS.Geodatabase
         public int Count { get; private set; }
 
         /// <summary>
-        ///     Gets a value indicating whether this instance is cancelled.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is cancelled; otherwise, <c>false</c>.
-        /// </value>
-        public virtual bool IsCancelled
-        {
-            get { return false; }
-        }
-
-        /// <summary>
         ///     Sets the name of the feature class.
         /// </summary>
         /// <value>
         ///     The name of the feature class.
         /// </value>
-        public virtual string FeatureClassName
-        {
-            set { Log.Info(this, "\tName: {0}", value); }
-        }
+        public virtual string FeatureClassName { get; set; }
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is cancelled.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is cancelled; otherwise, <c>false</c>.
+        /// </value>
+        public virtual bool IsCancelled { get; set; }
 
         /// <summary>
         ///     Sets the maximum features.
@@ -87,10 +81,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <value>
         ///     The maximum features.
         /// </value>
-        public virtual int MaxFeatures
-        {
-            set { Log.Info(this, "\tMaximum: {0:N0}", value); }
-        }
+        public virtual int MaxFeatures { get; set; }
 
         /// <summary>
         ///     Sets the minimum features.
@@ -98,10 +89,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <value>
         ///     The minimum features.
         /// </value>
-        public virtual int MinFeatures
-        {
-            set { Log.Info(this, "\tMinimum: {0:N0}", value); }
-        }
+        public virtual int MinFeatures { get; set; }
 
         /// <summary>
         ///     Sets the position.
@@ -109,10 +97,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <value>
         ///     The position.
         /// </value>
-        public virtual int Position
-        {
-            set { Log.Info(this, "\tPosition: {0:N0}", value); }
-        }
+        public virtual int Position { get; set; }
 
         /// <summary>
         ///     Sets the step value.
@@ -120,10 +105,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <value>
         ///     The step value.
         /// </value>
-        public virtual int StepValue
-        {
-            set { _StepValue = value; }
-        }
+        public virtual int StepValue { get; set; }
 
         #endregion
 
@@ -134,9 +116,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         public virtual void Step()
         {
-            Count += _StepValue;
-
-            Log.Info(this, "\t\t{0:N0} row(s) exported.", Count);
+            Count += StepValue;
         }
 
         #endregion
@@ -179,6 +159,48 @@ namespace ESRI.ArcGIS.Geodatabase
 
             uint connectionPointCookie;
             connectionPoint.Advise(this, out connectionPointCookie);
+        }
+
+        #endregion
+
+        #region Nested Type: Default
+
+        public class Default : FeatureProgress
+        {
+            #region Public Properties
+
+            public override string FeatureClassName
+            {
+                set { Log.Info("\tName: {0}", value); }
+            }
+
+            public override int MaxFeatures
+            {
+                set { Log.Info("\tMaximum: {0:N0}", value); }
+            }
+
+            public override int MinFeatures
+            {
+                set { Log.Info("\tMinimum: {0:N0}", value); }
+            }
+
+            public override int Position
+            {
+                set { Log.Info("\tPosition: {0:N0}", value); }
+            }
+
+            #endregion
+
+            #region Public Methods
+
+            public override void Step()
+            {
+                base.Step();
+
+                Log.Info("\t\t{0:N0} row(s) exported.", Count);
+            }
+
+            #endregion
         }
 
         #endregion

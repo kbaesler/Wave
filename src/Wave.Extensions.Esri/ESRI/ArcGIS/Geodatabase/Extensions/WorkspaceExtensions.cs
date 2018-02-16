@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -222,14 +221,14 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Finds the dataset that satisfies the specified function predicate.
+        ///     Finds the dataset that satisfies the specified function predicate.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="predicate">The function delegate that determines it should be returned.</param>
         /// <param name="dfs">if set to <c>true</c> when a depth first search should be used.</param>
         /// <returns>
-        /// Returns a <see cref="IDatasetName" /> representing the dataset that satisfiied the predicate; otherwise <c>null</c>
-        /// .
+        ///     Returns a <see cref="IDatasetName" /> representing the dataset that satisfiied the predicate; otherwise <c>null</c>
+        ///     .
         /// </returns>
         public static IDatasetName Find(this IEnumDatasetName source, Predicate<IDatasetName> predicate, bool dfs = true)
         {
@@ -256,7 +255,6 @@ namespace ESRI.ArcGIS.Geodatabase
                     {
                         var ds = dataset.SubsetNames.Find(predicate, false);
                         if (ds != null) return ds;
-
                     }
                 }
             }
@@ -1040,6 +1038,65 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return saveEdits;
+        }
+
+        /// <summary>
+        ///     Peforms the transaction and comits it on completion of the action, and should only be used for direct updates.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <remarks>
+        ///     Applications can use transactions to manage direct updates, for example, updates made outside of an edit
+        ///     session, on object and feature classes that are tagged as not requiring an edit session.
+        /// </remarks>
+        public static void PerformTransaction(this ITransactions source, Action transaction)
+        {
+            source.StartTransaction();
+
+            try
+            {
+                transaction();
+
+                source.CommitTransaction();
+            }
+            catch (Exception)
+            {
+                source.AbortTransaction();
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Peforms the transaction and comits it on completion of the action, and should only be used for direct updates.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <returns>Returns a <see cref="TResult"/> representing the results of the transaction.</returns>
+        /// <remarks>
+        /// Applications can use transactions to manage direct updates, for example, updates made outside of an edit
+        /// session, on object and feature classes that are tagged as not requiring an edit session.
+        /// </remarks>
+        public static TResult PerformTransaction<TResult>(this ITransactions source, Func<TResult> transaction)
+        {
+            TResult result;
+            source.StartTransaction();
+
+            try
+            {
+                result = transaction();
+
+                source.CommitTransaction();
+            }
+            catch (Exception)
+            {
+                source.AbortTransaction();
+
+                throw;
+            }
+
+            return result;
         }
 
         /// <summary>

@@ -134,13 +134,13 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 if (row == null) return _Fields;
 
-                Task.Parallel(row.Fields.AsEnumerable(), f =>
+                foreach (var field in row.Fields.AsEnumerable())
                 {
-                    var p = this.GetProperty(f.Name);
-                    if (p == null) return;
+                    var p = this.GetProperty(field.Name);
+                    if (p == null) continue;
 
-                    _Fields.TryAdd(f.Name, new EntityAttributeProperty {Property = p, Editable = f.Editable});
-                });
+                    _Fields.TryAdd(field.Name, new EntityAttributeProperty {Property = p, Editable = field.Editable});
+                }
             }
 
             return _Fields;
@@ -218,6 +218,22 @@ namespace ESRI.ArcGIS.Geodatabase
     class EntityAttributeProperty
     {
         #region Public Properties
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance can read.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance can read; otherwise, <c>false</c>.
+        /// </value>
+        public bool CanRead => Property.CanRead;
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance can write.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance can write; otherwise, <c>false</c>.
+        /// </value>
+        public bool CanWrite => Property.CanWrite;
 
         /// <summary>
         ///     Gets or sets a value indicating whether this <see cref="EntityAttributeProperty" /> is editable.

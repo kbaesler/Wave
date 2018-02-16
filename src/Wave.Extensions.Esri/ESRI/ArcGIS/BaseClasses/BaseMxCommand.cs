@@ -70,14 +70,7 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// </remarks>
         public override void OnClick()
         {
-            try
-            {
-                this.InternalClick();
-            }
-            catch (Exception ex)
-            {
-                Log.Error(this, ex);
-            }
+            this.InternalClick();
         }
 
         /// <summary>

@@ -211,6 +211,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
@@ -267,12 +268,12 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgress.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityAttributesCollection.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityFieldAttribute.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityTableAttribute.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\ProgressSurrogate.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\SqlVersionedEditing.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
@@ -321,6 +322,7 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Entity.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Extensions\EntityExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\IEntity.cs" />
+    <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseEsriProgram.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />
@@ -365,12 +367,11 @@
     <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="System\Diagnostics\Appenders\RichTextBoxAppender.cs" />
-    <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
-    <Compile Include="System\Diagnostics\Log.cs" />
-    <Compile Include="System\Diagnostics\LogScope.cs" />
-    <Compile Include="System\Diagnostics\LogScopeManager.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\FileAppenderLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\LogLevelLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\LogManagerLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\LogProvider.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicDictionary.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicKeyValuePair.cs" />
     <Compile Include="System\Dynamic\Collections\Extensions\DynamicCollectionsExtensions.cs" />
@@ -390,11 +391,18 @@
     <Compile Include="System\Reflection\Extensions\AssemblyExtensions.cs" />
     <Compile Include="System\Reflection\Internal\PropertyBinding.cs" />
     <Compile Include="System\Native\SafeTokenHandle.cs" />
+    <Compile Include="System\Runtime\Caching\ComCacheItemPolicy.cs" />
+    <Compile Include="System\Runtime\Caching\Extensions\MemoryCacheExtensions.cs" />
     <Compile Include="System\Security\Impersonation.cs" />
     <Compile Include="System\Security\Cryptography\DataProtection.cs" />
     <Compile Include="System\Security\Cryptography\SymmetricKeyProtection.cs" />
+    <Compile Include="System\Threading\Tasks\Extensions\TaskFactoryExtensions.cs" />
+    <Compile Include="System\Threading\Tasks\Schedulers\QueuedTaskScheduler.cs" />
+    <Compile Include="System\Threading\Tasks\Schedulers\STATaskScheduler.cs" />
+    <Compile Include="System\Timers\BackgroundJob..cs" />
+    <Compile Include="System\Timers\BackgroundJobManager.cs" />
+    <Compile Include="System\Timers\CronJob.cs" />
     <Compile Include="System\Timers\RecurringJob.cs" />
-    <Compile Include="System\Timers\RecurringJobManager.cs" />
     <Compile Include="System\TypeCast.cs" />
     <Compile Include="System\Forms\ApplicationMutex.cs" />
     <Compile Include="System\Forms\Collections\ListViewItemComparer.cs" />
@@ -420,6 +428,7 @@
     </Compile>
     <Compile Include="System\Forms\Extensions\ComboBoxExtensions.cs" />
     <Compile Include="System\Forms\Extensions\ListViewExtensions.cs" />
+    <Compile Include="System\Web\JsonObject.cs" />
     <Compile Include="System\Windows\Behaviors\BehaviorBinding.cs" />
     <Compile Include="System\Windows\Behaviors\BehaviorEventHandler.cs" />
     <Compile Include="System\Windows\Behaviors\CommandBehavior.cs" />
@@ -543,9 +552,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ESRI\ArcGIS\System\Internal\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
