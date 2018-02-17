@@ -208,6 +208,7 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -370,7 +371,7 @@
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
     <Compile Include="System\Diagnostics\Logging\log4net\FileAppenderLogProvider.cs" />
     <Compile Include="System\Diagnostics\Logging\log4net\LogLevelLogProvider.cs" />
-    <Compile Include="System\Diagnostics\Logging\log4net\LogManagerLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\ApacheLogProvider.cs" />
     <Compile Include="System\Diagnostics\Logging\LogProvider.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicDictionary.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicKeyValuePair.cs" />

@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace System.Diagnostics
 {
     /// <summary>
-    ///     Provides methods for logging at different levels using the Apache log4net framework.
+    ///     Provides methods for logging at different levels using the <see cref="ILog" /> interface
     /// </summary>
     public static class LogExtensions
     {
@@ -110,6 +109,48 @@ namespace System.Diagnostics
         {
             Error(source, message);
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        ///     Log a message object with the Fatal level.
+        /// </summary>
+        /// <param name="source">The source of the logger.</param>
+        /// <param name="message">The message.</param>
+        /// <exception cref="System.ArgumentNullException">source</exception>
+        public static void Fatal(this ILog source, string message)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            source.Log(LogLevel.Fatal, message);
+        }
+
+
+        /// <summary>
+        ///     Log a message object with the Fatal level.
+        /// </summary>
+        /// <param name="source">The source of the logger.</param>
+        /// <param name="format">A composite format string.</param>
+        /// <param name="args">An object array that contains zero or more objects to format.</param>
+        public static void Fatal(this ILog source, string format, params object[] args)
+        {
+            Fatal(source, string.Format(CultureInfo.CurrentCulture, format, args));
+        }
+
+
+        /// <summary>
+        ///     Log a message object with the Fatal level including the stack trace of the exception.
+        /// </summary>
+        /// <param name="source">The source of the logger.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="exception">The exception.</param>
+        /// <exception cref="System.ArgumentNullException">source</exception>
+        public static void Fatal(this ILog source, string message, Exception exception)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            source.Log(LogLevel.Fatal, message, exception);
         }
 
 
@@ -232,7 +273,6 @@ namespace System.Diagnostics
     /// </summary>
     public enum LogLevel
     {
-        Trace,
         Debug,
         Info,
         Warn,
@@ -421,19 +461,52 @@ namespace System.Diagnostics
             if (repositoryName != null && _LogProviders.ContainsKey(repositoryName))
                 return _LogProviders[repositoryName];
 
-            ILogProvider logProvider = _LogProvider ?? new LogManagerLogProvider();
+            ILogProvider logProvider = _LogProvider ?? new ApacheLogProvider();
             return logProvider;
         }
 
         #endregion
     }
 
+    /// <summary>
+    /// A dynamic log that has a physical file locations.
+    /// </summary>
+    /// <seealso cref="System.Diagnostics.ILog" />
+    public interface IFileLog : ILog
+    {
+        /// <summary>
+        /// The path to the file used the log.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>
+        /// Retunrns the path to the file.
+        /// </returns>
+        string GetFile(string name);
+    }
+
+    /// <summary>
+    ///     A dynamic log that assumes it is compatible with <see cref="ILog" />
+    /// </summary>
+    public interface IDynamicLog : ILog
+    {
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets the logger.
+        /// </summary>
+        /// <value>
+        ///     The logger.
+        /// </value>
+        dynamic Logger { get; }
+
+        #endregion
+    }
 
     /// <summary>
     ///     A dynamic log that assumes it is compatible with <see cref="ILog" />
     /// </summary>
     /// <seealso cref="System.Diagnostics.ILog" />
-    public class DynamicLog : ILog
+    internal class DynamicLog : IDynamicLog
     {
         #region Constructors
 
@@ -467,7 +540,7 @@ namespace System.Diagnostics
 
         #endregion
 
-        #region ILog Members
+        #region IDynamicLog Members
 
         /// <summary>
         ///     Log a message the specified log level.
@@ -604,20 +677,20 @@ namespace System.Diagnostics
         /// <summary>
         ///     Returns the log levels that are captured.
         /// </summary>
-        LogLevel[] LogLevels { get; }
+        LogLevel LogLevel { get; }
 
         #endregion
 
         #region Public Methods
 
         /// <summary>
-        ///     Gets the logs that have been captured for the log level.
+        ///     Gets the number of times the a log message with that log level has been captured.
         /// </summary>
         /// <param name="logLevel">The log level.</param>
         /// <returns>
-        ///     Returns a <see cref="List{T}" /> representing the log messages captured.
+        ///     Returns a <see cref="int" /> representing the number of messages logged.
         /// </returns>
-        List<string> Captures(LogLevel logLevel);
+        int Captures(LogLevel logLevel);
 
         #endregion
     }
@@ -627,11 +700,11 @@ namespace System.Diagnostics
     ///     that tracks the log messages.
     /// </summary>
     /// <seealso cref="System.Diagnostics.ILog" />
-    public class LogLevelLog : DynamicLog, ILogLevelLog
+    internal class LogLevelLog : DynamicLog, ILogLevelLog
     {
         #region Fields
 
-        private readonly Dictionary<LogLevel, List<string>> _Logs = new Dictionary<LogLevel, List<string>>();
+        private readonly Dictionary<LogLevel, int> _Logs = new Dictionary<LogLevel, int>();
 
         #endregion
 
@@ -641,11 +714,11 @@ namespace System.Diagnostics
         ///     Initializes a new instance of the <see cref="LogLevelLog" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
-        /// <param name="logLevels">The log levels.</param>
-        public LogLevelLog(dynamic logger, params LogLevel[] logLevels)
+        /// <param name="logLevel">The log level.</param>
+        public LogLevelLog(dynamic logger, LogLevel logLevel)
         {
             base.Logger = logger;
-            this.LogLevels = logLevels;
+            this.LogLevel = logLevel;
         }
 
         #endregion
@@ -655,25 +728,22 @@ namespace System.Diagnostics
         /// <summary>
         ///     The log levels that will be captured.
         /// </summary>
-        public LogLevel[] LogLevels { get; }
+        public LogLevel LogLevel { get; }
 
         #endregion
 
         #region ILogLevelLog Members
 
         /// <summary>
-        ///     Gets the logs that have been captured for the log level.
+        ///     Gets the number of times the a log message with that log level has been captured.
         /// </summary>
         /// <param name="logLevel">The log level.</param>
         /// <returns>
-        ///     Returns a <see cref="List{T}" /> representing the log messages captured.
+        ///     Returns a <see cref="int" /> representing the number of messages logged.
         /// </returns>
-        public List<string> Captures(LogLevel logLevel)
+        public int Captures(LogLevel logLevel)
         {
-            if (_Logs.ContainsKey(logLevel))
-                return _Logs[logLevel];
-
-            return null;
+            return _Logs.GetOrAdd(logLevel, 0);
         }
 
         /// <summary>
@@ -692,18 +762,12 @@ namespace System.Diagnostics
         /// </remarks>
         public override bool Log(LogLevel logLevel, string message, Exception exception = null)
         {
-            if (base.Log(logLevel, message, exception))
+            if (logLevel <= LogLevel)
             {
-                if (LogLevels == null || LogLevels.Contains(logLevel))
-                {
-                    var log = _Logs.GetOrAdd(logLevel, new List<string>());
-                    log.Add(message);
-                }
-
-                return true;
+                _Logs[logLevel] = _Logs.GetOrAdd(logLevel, 0) + 1;
             }
 
-            return false;
+            return base.Log(logLevel, message, exception);
         }
 
         #endregion

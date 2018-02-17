@@ -15,12 +15,12 @@ namespace System.Diagnostics
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="LogLevelLogProvider" /> class.
+        /// Initializes a new instance of the <see cref="LogLevelLogProvider" /> class.
         /// </summary>
-        /// <param name="logLevels">The log levels.</param>
-        public LogLevelLogProvider(params LogLevel[] logLevels)
+        /// <param name="logLevel">The log level.</param>
+        public LogLevelLogProvider(LogLevel logLevel)
         {
-            LogLevels = logLevels;
+            LogLevel = logLevel;
         }
 
         #endregion
@@ -33,7 +33,7 @@ namespace System.Diagnostics
         /// <value>
         ///     The log levels.
         /// </value>
-        public LogLevel[] LogLevels { get; }
+        public LogLevel LogLevel { get; }
 
         #endregion
 
@@ -48,7 +48,7 @@ namespace System.Diagnostics
         /// </returns>
         public virtual ILog GetLogger(string loggerName)
         {
-            return new LogLevelLog(LogManager.GetLogger(loggerName), LogLevels);
+            return new LogLevelLog(LogManager.GetLogger(loggerName), LogLevel);
         }
 
 
@@ -67,10 +67,10 @@ namespace System.Diagnostics
                 var repository = LogManager.CreateRepository(repositoryName);
                 BasicConfigurator.Configure(repository);
 
-                return new LogLevelLog(LogManager.GetLogger(repositoryName, loggerName), LogLevels);
+                return new LogLevelLog(LogManager.GetLogger(repositoryName, loggerName), LogLevel);
             }
 
-            return new LogLevelLog(LogManager.GetLogger(repositoryName, loggerName), LogLevels);
+            return new LogLevelLog(LogManager.GetLogger(repositoryName, loggerName), LogLevel);
         }
 
         #endregion
