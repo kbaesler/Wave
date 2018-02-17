@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 
+using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.GeoDatabaseDistributed;
 
