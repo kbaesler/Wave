@@ -186,15 +186,6 @@ namespace ESRI.ArcGIS.Geoprocessing
             {
                 result = gp.Execute(process, trackCancel) as IGeoProcessorResult;
             }
-            catch (Exception e)
-            {
-                Log.Error(gp.GetType(), e);
-
-                foreach (var msg in gp.GetMessages())
-                    Log.Error(gp.GetType(), msg);
-
-                throw;
-            }
             finally
             {
                 if (eventHandler != null)

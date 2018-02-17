@@ -110,42 +110,35 @@ namespace System.Windows.Behaviors
         /// </summary>
         public virtual void Restore()
         {
-            try
+            Action action = () =>
             {
-                Action action = () =>
+                using (var key = GetRegistryKey(false))
                 {
-                    using (var key = GetRegistryKey(false))
+                    if (key != null)
                     {
-                        if (key != null)
+                        int left = (int)key.GetValue("Left", SystemParameters.PrimaryScreenWidth / 2 - _Window.Width / 2);
+                        int top = (int)key.GetValue("Top", SystemParameters.PrimaryScreenHeight / 2 - _Window.Height / 2);
+                        int width = (int)key.GetValue("Width", SystemParameters.PrimaryScreenWidth);
+                        int height = (int)key.GetValue("Height", SystemParameters.PrimaryScreenHeight);
+
+                        Rectangle rect = new Rectangle(left, top, width, height);
+                        if (this.IsVisibleWithinAnyScreen(rect))
                         {
-                            int left = (int)key.GetValue("Left", SystemParameters.PrimaryScreenWidth / 2 - _Window.Width / 2);
-                            int top = (int)key.GetValue("Top", SystemParameters.PrimaryScreenHeight / 2 - _Window.Height / 2);
-                            int width = (int)key.GetValue("Width", SystemParameters.PrimaryScreenWidth);
-                            int height = (int)key.GetValue("Height", SystemParameters.PrimaryScreenHeight);
-
-                            Rectangle rect = new Rectangle(left, top, width, height);
-                            if (this.IsVisibleWithinAnyScreen(rect))
-                            {
-                                _Window.Left = left;
-                                _Window.Top = top;
-                                _Window.Height = height;
-                                _Window.Width = width;
-                            }
-
-                            _Window.WindowState = (WindowState)key.GetValue("WindowState", (int)_Window.WindowState);
-
-                            this.SizeToFit();
-                            this.MoveIntoView();
+                            _Window.Left = left;
+                            _Window.Top = top;
+                            _Window.Height = height;
+                            _Window.Width = width;
                         }
-                    }
-                };
 
-                _Window.Dispatcher.Invoke(DispatcherPriority.Normal, action);
-            }
-            catch (Exception e)
-            {
-                Log.Error(this, e);
-            }
+                        _Window.WindowState = (WindowState)key.GetValue("WindowState", (int)_Window.WindowState);
+
+                        this.SizeToFit();
+                        this.MoveIntoView();
+                    }
+                }
+            };
+
+            _Window.Dispatcher.Invoke(DispatcherPriority.Normal, action);
         }
 
         /// <summary>
@@ -153,28 +146,21 @@ namespace System.Windows.Behaviors
         /// </summary>
         public virtual void Save()
         {
-            try
+            using (var key = GetRegistryKey(true))
             {
-                using (var key = GetRegistryKey(true))
+                if (key != null)
                 {
-                    if (key != null)
+                    if (_Window.RestoreBounds != Rect.Empty)
                     {
-                        if (_Window.RestoreBounds != Rect.Empty)
-                        {
-                            key.SetValue("Left", _Window.RestoreBounds.Left, RegistryValueKind.DWord);
-                            key.SetValue("Top", _Window.RestoreBounds.Top, RegistryValueKind.DWord);
-                            key.SetValue("Width", _Window.RestoreBounds.Width, RegistryValueKind.DWord);
-                            key.SetValue("Height", _Window.RestoreBounds.Height, RegistryValueKind.DWord);
-                        }
-
-                        key.SetValue("WindowState", (int)_Window.WindowState, RegistryValueKind.DWord);
-                        key.Flush();
+                        key.SetValue("Left", _Window.RestoreBounds.Left, RegistryValueKind.DWord);
+                        key.SetValue("Top", _Window.RestoreBounds.Top, RegistryValueKind.DWord);
+                        key.SetValue("Width", _Window.RestoreBounds.Width, RegistryValueKind.DWord);
+                        key.SetValue("Height", _Window.RestoreBounds.Height, RegistryValueKind.DWord);
                     }
+
+                    key.SetValue("WindowState", (int)_Window.WindowState, RegistryValueKind.DWord);
+                    key.Flush();
                 }
-            }
-            catch (Exception e)
-            {
-                Log.Error(this, e);
             }
         }
 
