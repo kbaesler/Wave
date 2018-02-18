@@ -190,7 +190,7 @@ namespace System.Diagnostics
             /// <returns>
             ///     Retunrns the path to the file.
             /// </returns>
-            public string GetFile(string name)
+            public string GetPath(string name)
             {
                 var wrapper = (ILoggerWrapper) Logger;
                 var appender = wrapper.Logger.FindAppender<FileAppender>(name);

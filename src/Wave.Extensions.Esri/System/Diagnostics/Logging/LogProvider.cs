@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -258,11 +257,6 @@ namespace System.Diagnostics
         /// <returns>
         ///     true if the message was logged. Otherwise false.
         /// </returns>
-        /// <remarks>
-        ///     Note to implementers: the message func should not be called if the loglevel is not enabled
-        ///     so as not to incur performance penalties.
-        ///     To check IsEnabled call Log with only LogLevel and check the return value, no event will be written
-        /// </remarks>
         bool Log(LogLevel logLevel, string message, Exception exception = null);
 
         #endregion
@@ -312,7 +306,7 @@ namespace System.Diagnostics
     {
         #region Fields
 
-        private static readonly Dictionary<string, ILogProvider> _LogProviders = new Dictionary<string, ILogProvider>();
+        private static readonly Dictionary<string, ILogProvider> LogProviders = new Dictionary<string, ILogProvider>();
 
         private static ILogProvider _LogProvider;
 
@@ -404,7 +398,7 @@ namespace System.Diagnostics
         /// </returns>
         public static ILog GetLogger(string loggerName)
         {
-            ILogProvider logProvider = ResolveLogProviders();
+            ILogProvider logProvider = ResolveLogProvider();
             return logProvider.GetLogger(loggerName);
         }
 
@@ -419,7 +413,7 @@ namespace System.Diagnostics
         /// </returns>
         public static ILog GetLogger(string loggerName, string repositoryName)
         {
-            ILogProvider logProvider = ResolveLogProviders(repositoryName);
+            ILogProvider logProvider = ResolveLogProvider(repositoryName);
             return logProvider.GetLogger(loggerName, repositoryName);
         }
 
@@ -439,10 +433,10 @@ namespace System.Diagnostics
         /// <param name="logProvider">The log provider.</param>
         public static void SetLogProvider(string repositoryName, ILogProvider logProvider)
         {
-            if (!_LogProviders.ContainsKey(repositoryName))
-                _LogProviders.Add(repositoryName, logProvider);
+            if (!LogProviders.ContainsKey(repositoryName))
+                LogProviders.Add(repositoryName, logProvider);
             else
-                _LogProviders[repositoryName] = logProvider;
+                LogProviders[repositoryName] = logProvider;
         }
 
         #endregion
@@ -456,10 +450,10 @@ namespace System.Diagnostics
         /// <returns>
         ///     An instance of <see cref="ILogProvider" />
         /// </returns>
-        private static ILogProvider ResolveLogProviders(string repositoryName = null)
+        private static ILogProvider ResolveLogProvider(string repositoryName = null)
         {
-            if (repositoryName != null && _LogProviders.ContainsKey(repositoryName))
-                return _LogProviders[repositoryName];
+            if (repositoryName != null && LogProviders.ContainsKey(repositoryName))
+                return LogProviders[repositoryName];
 
             ILogProvider logProvider = _LogProvider ?? new ApacheLogProvider();
             return logProvider;
@@ -469,35 +463,21 @@ namespace System.Diagnostics
     }
 
     /// <summary>
-    /// A dynamic log that has a physical file locations.
+    ///     A dynamic log that has a physical file locations.
     /// </summary>
     /// <seealso cref="System.Diagnostics.ILog" />
     public interface IFileLog : ILog
     {
+        #region Public Methods
+
         /// <summary>
-        /// The path to the file used the log.
+        ///     The path to the file used the by log.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>
-        /// Retunrns the path to the file.
+        ///     Retunrns the path to the file.
         /// </returns>
-        string GetFile(string name);
-    }
-
-    /// <summary>
-    ///     A dynamic log that assumes it is compatible with <see cref="ILog" />
-    /// </summary>
-    public interface IDynamicLog : ILog
-    {
-        #region Public Properties
-
-        /// <summary>
-        ///     Gets the logger.
-        /// </summary>
-        /// <value>
-        ///     The logger.
-        /// </value>
-        dynamic Logger { get; }
+        string GetPath(string name);
 
         #endregion
     }
@@ -506,7 +486,7 @@ namespace System.Diagnostics
     ///     A dynamic log that assumes it is compatible with <see cref="ILog" />
     /// </summary>
     /// <seealso cref="System.Diagnostics.ILog" />
-    internal class DynamicLog : IDynamicLog
+    internal class DynamicLog : ILog
     {
         #region Constructors
 
@@ -540,7 +520,7 @@ namespace System.Diagnostics
 
         #endregion
 
-        #region IDynamicLog Members
+        #region ILog Members
 
         /// <summary>
         ///     Log a message the specified log level.
@@ -551,11 +531,6 @@ namespace System.Diagnostics
         /// <returns>
         ///     true if the message was logged. Otherwise false.
         /// </returns>
-        /// <remarks>
-        ///     Note to implementers: the message func should not be called if the loglevel is not enabled
-        ///     so as not to incur performance penalties.
-        ///     To check IsEnabled call Log with only LogLevel and check the return value, no event will be written
-        /// </remarks>
         public virtual bool Log(LogLevel logLevel, string message, Exception exception = null)
         {
             if (exception != null)
@@ -691,84 +666,6 @@ namespace System.Diagnostics
         ///     Returns a <see cref="int" /> representing the number of messages logged.
         /// </returns>
         int Captures(LogLevel logLevel);
-
-        #endregion
-    }
-
-    /// <summary>
-    ///     A dynamic log that assumes it is compatible with <see cref="ILog" />
-    ///     that tracks the log messages.
-    /// </summary>
-    /// <seealso cref="System.Diagnostics.ILog" />
-    internal class LogLevelLog : DynamicLog, ILogLevelLog
-    {
-        #region Fields
-
-        private readonly Dictionary<LogLevel, int> _Logs = new Dictionary<LogLevel, int>();
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="LogLevelLog" /> class.
-        /// </summary>
-        /// <param name="logger">The logger.</param>
-        /// <param name="logLevel">The log level.</param>
-        public LogLevelLog(dynamic logger, LogLevel logLevel)
-        {
-            base.Logger = logger;
-            this.LogLevel = logLevel;
-        }
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        ///     The log levels that will be captured.
-        /// </summary>
-        public LogLevel LogLevel { get; }
-
-        #endregion
-
-        #region ILogLevelLog Members
-
-        /// <summary>
-        ///     Gets the number of times the a log message with that log level has been captured.
-        /// </summary>
-        /// <param name="logLevel">The log level.</param>
-        /// <returns>
-        ///     Returns a <see cref="int" /> representing the number of messages logged.
-        /// </returns>
-        public int Captures(LogLevel logLevel)
-        {
-            return _Logs.GetOrAdd(logLevel, 0);
-        }
-
-        /// <summary>
-        ///     Log a message the specified log level.
-        /// </summary>
-        /// <param name="logLevel">The log level.</param>
-        /// <param name="message">The message.</param>
-        /// <param name="exception">An optional exception.</param>
-        /// <returns>
-        ///     true if the message was logged. Otherwise false.
-        /// </returns>
-        /// <remarks>
-        ///     Note to implementers: the message func should not be called if the loglevel is not enabled
-        ///     so as not to incur performance penalties.
-        ///     To check IsEnabled call Log with only LogLevel and check the return value, no event will be written
-        /// </remarks>
-        public override bool Log(LogLevel logLevel, string message, Exception exception = null)
-        {
-            if (logLevel <= LogLevel)
-            {
-                _Logs[logLevel] = _Logs.GetOrAdd(logLevel, 0) + 1;
-            }
-
-            return base.Log(logLevel, message, exception);
-        }
 
         #endregion
     }
