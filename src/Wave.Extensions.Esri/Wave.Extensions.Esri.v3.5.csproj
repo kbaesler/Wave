@@ -40,7 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\bin\x86\Debug\net35\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;V10</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -141,6 +141,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.GeoDatabaseUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -152,6 +153,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Location, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -218,10 +220,15 @@
     <Compile Include="ESRI\ArcGIS\Framework\Internal\ProgressGlobeAnimation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FeatureClassEnumerator.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Collections\FieldsEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialog.xaml.cs">
+      <DependentUpon>ChangeVersionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialogViewModel.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\IChangeVersionDialog2.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgressSurrogate.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgress.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityAttributesCollection.cs" />
@@ -256,30 +263,29 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\SegmentationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunction.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunctionFactory.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolbox.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolboxTool.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\AnalysisTools\AnalysisToolsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\DataManagementToolsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\FeatureVerticesToPointsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\TableCompareExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DEExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\EditingTools\EditingToolsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GeoprocessingExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMessagesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\LinearReferencingTools\LinearReferencingToolsExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\ConcatenateRouteEventtData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\DissolveRouteEventData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\OverlayRouteEventData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\RouteEventData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Route.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureLineSegmentation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasurePointSegmentation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureSegmentation.cs" />
+    <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseEsriProgram.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ComReleaser.cs" />
     <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\ExtensionManager.cs" />
     <Compile Include="ESRI\ArcGIS\System\Extensions\EnumerationExtensions.cs" />
@@ -320,10 +326,11 @@
     <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="System\Diagnostics\Appenders\RichTextBoxAppender.cs" />
-    <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
-    <Compile Include="System\Diagnostics\Log.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\ApacheLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\FileAppenderLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\LogLevelLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\LogProvider.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
     <Compile Include="System\Extensions\StringExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
@@ -338,6 +345,13 @@
     <Compile Include="System\Security\Cryptography\DataProtection.cs" />
     <Compile Include="System\Security\Cryptography\SymmetricKeyProtection.cs" />
     <Compile Include="System\Security\Impersonation.cs" />
+    <Compile Include="System\Threading\Tasks\Extensions\TaskFactoryExtensions.cs" />
+    <Compile Include="System\Threading\Tasks\Schedulers\QueuedTaskScheduler.cs" />
+    <Compile Include="System\Threading\Tasks\Schedulers\STATaskScheduler.cs" />
+    <Compile Include="System\Timers\BackgroundJob..cs" />
+    <Compile Include="System\Timers\BackgroundJobManager.cs" />
+    <Compile Include="System\Timers\CronJob.cs" />
+    <Compile Include="System\Timers\RecurringJob.cs" />
     <Compile Include="System\TypeCast.cs" />
     <Compile Include="System\Forms\ApplicationMutex.cs" />
     <Compile Include="System\Forms\Collections\ListViewItemComparer.cs" />
@@ -363,6 +377,7 @@
     </Compile>
     <Compile Include="System\Forms\Extensions\ComboBoxExtensions.cs" />
     <Compile Include="System\Forms\Extensions\ListViewExtensions.cs" />
+    <Compile Include="System\Web\JsonObject.cs" />
     <Compile Include="System\Windows\Behaviors\BehaviorBinding.cs" />
     <Compile Include="System\Windows\Behaviors\BehaviorEventHandler.cs" />
     <Compile Include="System\Windows\Behaviors\CommandBehavior.cs" />
@@ -453,6 +468,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ESRI\ArcGIS\Geodatabase\Controls\ChangeVersionDialog\ChangeVersionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="System\Windows\Controls\BusyIndicator\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
