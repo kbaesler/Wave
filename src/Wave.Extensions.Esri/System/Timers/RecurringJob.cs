@@ -94,6 +94,7 @@
 
             if (disposing)
             {
+                Timer?.Stop();
                 Timer?.Dispose();
             }
         }

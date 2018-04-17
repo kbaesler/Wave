@@ -121,9 +121,6 @@ namespace System.Windows.Behaviors
                         foreach (BehaviorBinding item in e.OldItems)
                             item.Behavior.Dispose();
                     break;
-
-                default:
-                    break;
             }
         }
 

@@ -50,7 +50,7 @@ namespace System.Diagnostics
         /// </returns>
         public virtual ILog GetLogger(string loggerName)
         {
-            return new LogLevelLog(LogManager.GetLogger(loggerName), LogLevel);
+            return new Logger(LogManager.GetLogger(loggerName), LogLevel);
         }
 
 
@@ -69,22 +69,22 @@ namespace System.Diagnostics
                 var repository = LogManager.CreateRepository(repositoryName);
                 BasicConfigurator.Configure(repository);
 
-                return new LogLevelLog(LogManager.GetLogger(repositoryName, loggerName), LogLevel);
+                return new Logger(LogManager.GetLogger(repositoryName, loggerName), LogLevel);
             }
 
-            return new LogLevelLog(LogManager.GetLogger(repositoryName, loggerName), LogLevel);
+            return new Logger(LogManager.GetLogger(repositoryName, loggerName), LogLevel);
         }
 
         #endregion
 
-        #region Nested Type: LogLevelLog
+        #region Nested Type: Logger
 
         /// <summary>
         ///     A dynamic log that assumes it is compatible with <see cref="ILog" />
         ///     that tracks the log messages.
         /// </summary>
         /// <seealso cref="System.Diagnostics.ILog" />
-        internal class LogLevelLog : DynamicLog, ILogLevelLog
+        internal class Logger : ApacheLogProvider.Logger, ILogLevelLog
         {
             #region Fields
 
@@ -95,13 +95,13 @@ namespace System.Diagnostics
             #region Constructors
 
             /// <summary>
-            ///     Initializes a new instance of the <see cref="LogLevelLog" /> class.
+            ///     Initializes a new instance of the <see cref="Logger" /> class.
             /// </summary>
             /// <param name="logger">The logger.</param>
             /// <param name="logLevel">The log level.</param>
-            public LogLevelLog(dynamic logger, LogLevel logLevel)
+            public Logger(log4net.ILog logger, LogLevel logLevel)
+                : base(logger)
             {
-                base.Logger = logger;
                 this.LogLevel = logLevel;
             }
 

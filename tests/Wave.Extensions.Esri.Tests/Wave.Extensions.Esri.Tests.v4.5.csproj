@@ -114,9 +114,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EsriTests.cs" />
-    <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\LayerAsyncExtensionsTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensionsTest.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\DynamicRowBufferTests.cs" />

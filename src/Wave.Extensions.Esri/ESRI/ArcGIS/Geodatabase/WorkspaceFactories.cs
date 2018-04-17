@@ -1,10 +1,6 @@
 ﻿using System;
 using System.IO;
-
-using ESRI.ArcGIS.Carto;
-#if NET45
-using System.Threading.Tasks;
-#endif
+using System.Linq;
 
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.esriSystem;
@@ -17,6 +13,48 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class WorkspaceFactories
     {
         #region Public Methods
+
+        /// <summary>
+        ///     Gets the workspace factory.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="factories">The list of factories that will be used to make the connection.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspaceFactory" /> representing the supported factory for the file.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">fileName</exception>
+        /// <exception cref="System.IO.DirectoryNotFoundException">
+        ///     The workspace factory cannot be determined because the file was
+        ///     not found.
+        /// </exception>
+        /// <exception cref="System.IO.FileNotFoundException">
+        ///     The workspace factory cannot be determined because the file was not
+        ///     found.
+        /// </exception>
+        /// <exception cref="System.NotSupportedException">The workspace factory for the file is not supported.</exception>
+        public static IWorkspaceFactory GetFactory(string fileName, params IWorkspaceFactory[] factories)
+        {
+            if (fileName == null) throw new ArgumentNullException("fileName");
+
+            if ((fileName.EndsWith(".gdb", StringComparison.OrdinalIgnoreCase)))
+            {
+                if (!Directory.Exists(fileName))
+                    throw new DirectoryNotFoundException("The workspace factory cannot be determined because the file was not found.");
+            }
+            else if (!File.Exists(fileName))
+            {
+                throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found.", fileName);
+            }
+
+            foreach (var l in factories)
+            {
+                if (l.IsWorkspace(fileName))
+                    return l;
+            }
+
+            throw new NotSupportedException("The workspace factory for the file is not supported.");
+        }
+
 
         /// <summary>
         ///     Gets the workspace factory.
@@ -37,85 +75,54 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.NotSupportedException">The workspace factory for the file is not supported.</exception>
         public static IWorkspaceFactory GetFactory(string fileName)
         {
-            if (fileName == null) throw new ArgumentNullException("fileName");
-
-            if ((fileName.EndsWith(".gdb", StringComparison.OrdinalIgnoreCase)))
-            {
-                if (!Directory.Exists(fileName))
-                    throw new DirectoryNotFoundException("The workspace factory cannot be determined because the file was not found.");
-
-                return new FileGDBWorkspaceFactoryClass();
-            }
-
-            if (!File.Exists(fileName))
-                throw new FileNotFoundException("The workspace factory cannot be determined because the file was not found.", fileName);
-
-            IWorkspaceFactory[] list =
-            {
-                new AccessWorkspaceFactoryClass(),
+            return GetFactory(fileName, new AccessWorkspaceFactoryClass(),
                 new SdeWorkspaceFactoryClass(),
-            };
+                new FileGDBWorkspaceFactoryClass());
+        }
 
-            foreach (var l in list)
+        /// <summary>
+        ///     Gets the workspace factory used by the connection properties.
+        /// </summary>
+        /// <param name="connectionProperties">The connection properties.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspaceFactory" /> representing the workspace for the connection properties; otherwise
+        ///     <c>null</c>
+        /// </returns>
+        public static IWorkspaceFactory GetFactory(IPropertySet connectionProperties)
+        {
+            var list = connectionProperties.AsEnumerable()
+                .ToDictionary(o => o.Key, o => o.Value.ToString());
+
+            string server;
+            list.TryGetValue("SERVER", out server);
+
+            string instance;
+            list.TryGetValue("INSTANCE", out instance);
+
+            string database;
+            list.TryGetValue("DATABASE", out database);
+
+            string version;
+            list.TryGetValue("VERSION", out version);
+
+            DBMS type = GetDBMS(server, instance, database, version);
+            switch (type)
             {
-                if (l.IsWorkspace(fileName))
-                    return l;
+                case DBMS.Access:
+                    return new AccessWorkspaceFactoryClass();
+
+                case DBMS.Oracle:
+                case DBMS.SqlServer:
+
+                    return new SdeWorkspaceFactoryClass();
+
+                case DBMS.File:
+
+                    return new FileGDBWorkspaceFactoryClass();
             }
 
-            throw new NotSupportedException("The workspace factory for the file is not supported.");
+            throw new NotSupportedException("The workspace factory cannot be determined from the connection properties.");
         }
-
-#if NET45
-        /// <summary>
-        ///     Connects to the geodatabase given the specified parameters.
-        /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns>
-        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">fileName</exception>
-        public static Task<IWorkspace> OpenAsync(string fileName)
-        {
-            return Task.Run(() => Open(fileName));
-        }
-
-        /// <summary>
-        ///     Connects to the remote geodatabase given the specified parameters.
-        /// </summary>
-        /// <param name="server">The server.</param>
-        /// <param name="instance">The instance.</param>
-        /// <param name="version">The version.</param>
-        /// <param name="database">The database.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="username">The username.</param>
-        /// <returns>
-        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
-        /// </returns>
-        public static Task<IWorkspace> OpenAsync(string server, string instance, string version, string database, string password, string username)
-        {
-            return Task.Run(() => Open(server, instance, version, database, password, username, null, "DBMS"));
-        }
-
-        /// <summary>
-        ///     Connects to the remote geodatabase given the specified parameters.
-        /// </summary>
-        /// <param name="server">The server.</param>
-        /// <param name="instance">The instance.</param>
-        /// <param name="version">The version.</param>
-        /// <param name="database">The database.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="username">The username.</param>
-        /// <param name="timestamp">The timestamp.</param>
-        /// <param name="authentication">The authentication (either DBMS or OSA).</param>
-        /// <returns>
-        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
-        /// </returns>
-        public static Task<IWorkspace> OpenAsync(string server, string instance, string version, string database, string password, string username,
-            DateTime? timestamp, string authentication)
-        {
-            return Task.Run(() => Open(server, instance, version, database, password, username, null, "DBMS"));
-        }
-#endif
 
         /// <summary>
         ///     Connects to the geodatabase given the specified parameters.
@@ -127,85 +134,51 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.ArgumentNullException">fileName</exception>
         public static IWorkspace Open(string fileName)
         {
-            if (fileName == null) throw new ArgumentNullException("fileName");
+            if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
 
             IWorkspaceFactory factory = GetFactory(fileName);
-            return factory.OpenFromFile(fileName, 0);
-        }
+            IWorkspace workspace = factory.OpenFromFile(fileName, 0);
 
-        /// <summary>
-        ///     Connects to the remote geodatabase given the specified parameters.
-        /// </summary>
-        /// <param name="server">The server.</param>
-        /// <param name="instance">The instance.</param>
-        /// <param name="version">The version.</param>
-        /// <param name="database">The database.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="username">The username.</param>
-        /// <returns>
-        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
-        /// </returns>
-        public static IWorkspace Open(string server, string instance, string version, string database, string password, string username)
-        {
-            return Open(server, instance, version, database, password, username, null, "DBMS");
-        }
-
-        /// <summary>
-        ///     Connects to the remote geodatabase given the specified parameters.
-        /// </summary>
-        /// <param name="server">The server.</param>
-        /// <param name="instance">The instance.</param>
-        /// <param name="version">The version.</param>
-        /// <param name="database">The database.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="username">The username.</param>
-        /// <param name="timestamp">The timestamp.</param>
-        /// <param name="authentication">The authentication (either DBMS or OSA).</param>
-        /// <returns>
-        ///     Returns the <see cref="IWorkspace" /> representing the connection to the geodatabase; otherwise <c>null</c>.
-        /// </returns>
-        public static IWorkspace Open(string server, string instance, string version, string database, string password, string username,
-            DateTime? timestamp, string authentication)
-        {
-            IWorkspaceFactory factory;
-            DBMS type = GetDBMS(server, instance, database, version);
-            switch (type)
+            // When using a versioned geodatabase, make sure the version has been refreshed.
+            IVersionedWorkspace versionedWorkspace = workspace as IVersionedWorkspace;
+            if (versionedWorkspace != null)
             {
-                case DBMS.Access:
-                    factory = new AccessWorkspaceFactoryClass();
-                    return factory.OpenFromFile(database, 0);
+                IVersion version = (IVersion) workspace;
+                version.RefreshVersion();
 
-                case DBMS.Oracle:
-                case DBMS.SqlServer:
-
-                    IPropertySet propset = new PropertySetClass();
-                    propset.SetProperty("SERVER", server);
-                    propset.SetProperty("INSTANCE", instance);
-                    propset.SetProperty("USER", username);
-                    propset.SetProperty("PASSWORD", password);
-                    propset.SetProperty("VERSION", version);
-                    propset.SetProperty("AUTHENTICATION_MODE", authentication);
-
-                    if (type == DBMS.SqlServer)
-                    {
-                        propset.SetProperty("DATABASE", database);
-                    }
-
-                    if (timestamp.HasValue)
-                    {
-                        propset.SetProperty("HISTORICAL_TIMESTAMP", timestamp.Value);
-                    }
-
-                    factory = new SdeWorkspaceFactoryClass();
-                    return factory.Open(propset, 0);
-
-                case DBMS.File:
-
-                    factory = new FileGDBWorkspaceFactoryClass();
-                    return factory.OpenFromFile(database, 0);
-                default:
-                    throw new InvalidOperationException("Unexpected Database Type = " + type);
+                return (IWorkspace)version;
             }
+
+            return workspace;
+        }
+
+        /// <summary>
+        ///     Connects to the version in the geodatabase that is specified in the connection file.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="versionName">Name of the version.</param>
+        /// <returns>Returns a <see cref="IVersion" /> representing the version in the geodatabase.</returns>
+        /// <exception cref="System.ArgumentNullException">fileName</exception>
+        public static IVersion Open(string fileName, string versionName)
+        {
+            if (fileName == null) throw new ArgumentNullException("fileName");
+
+            var factory = GetFactory(fileName);
+            var workspace = factory.OpenFromFile(fileName, 0);
+            return ((IVersionedWorkspace) workspace).GetVersion(versionName);
+        }
+
+        /// <summary>
+        ///     Opens a connection to the workspace using specified connection properties.
+        /// </summary>
+        /// <param name="connectionProperties">The connection properties.</param>
+        /// <returns>
+        ///     Returns a <see cref="IWorkspace" /> representing the connection to the geodatabase.
+        /// </returns>
+        public static IWorkspace Open(IPropertySet connectionProperties)
+        {
+            var factory = GetFactory(connectionProperties);
+            return factory.Open(connectionProperties, 0);
         }
 
         #endregion

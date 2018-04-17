@@ -45,7 +45,7 @@ namespace Wave.Extensions.Esri.Tests
         [ExpectedException(typeof (ArgumentNullException))]
         public void WorkspaceFactories_Open_ArgumentNullException()
         {
-            Assert.IsNull(WorkspaceFactories.Open(null));
+            Assert.IsNull(WorkspaceFactories.Open(""));
         }
 
         [TestMethod]

@@ -1,7 +1,6 @@
-﻿using System.Threading.Tasks;
-#if NET45
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -21,9 +20,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">oids</exception>
-        public static Task<IList<IRow>> FetchAsync(this ITable source, params int[] oids)
+        public static IList<IRow> FetchAsync(this ITable source, params int[] oids)
         {
-            return Task.Run(() => source.Fetch(oids));
+            return Task.Wait(() => source.Fetch(oids));
         }
 
         /// <summary>
@@ -38,9 +37,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{TResult}" /> representing the results of the query projected to the type.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static Task<IList<TResult>> FetchAsync<TResult>(this ITable source, IQueryFilter filter, Func<IRow, TResult> selector)
+        public static IList<TResult> FetchAsync<TResult>(this ITable source, IQueryFilter filter, Func<IRow, TResult> selector)
         {
-            return Task.Run(() => source.Fetch(filter, selector));
+            return Task.Wait(() => source.Fetch(filter, selector));
         }
 
         /// <summary>
@@ -58,9 +57,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     oids
         /// </exception>
-        public static Task<IList<TResult>> FetchAsync<TResult>(this ITable source, Func<IRow, TResult> selector, params int[] oids)
+        public static IList<TResult> FetchAsync<TResult>(this ITable source, Func<IRow, TResult> selector, params int[] oids)
         {
-            return Task.Run(() => source.Fetch(selector, oids));
+            return Task.Wait(() => source.Fetch(selector, oids));
         }
 
         /// <summary>
@@ -71,9 +70,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="List{IRow}" /> representing the rows returned from the query.
         /// </returns>
-        public static Task<IList<IRow>> FetchAsync(this ITable source, IQueryFilter filter)
+        public static IList<IRow> FetchAsync(this ITable source, IQueryFilter filter)
         {
-            return Task.Run(() => source.Fetch(filter));
+            return Task.Wait(() => source.Fetch(filter));
         }
 
         /// <summary>
@@ -89,9 +88,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static Task<int> FetchAsync(this ITable source, IQueryFilter filter, Func<IRow, bool> action)
+        public static int FetchAsync(this ITable source, IQueryFilter filter, Func<IRow, bool> action)
         {
-            return Task.Run(() => source.Fetch(filter, action));
+            return Task.Wait(() => source.Fetch(filter, action));
         }
 
         /// <summary>
@@ -111,9 +110,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static Task<int> FetchAsync(this ITable source, IQueryFilter filter, Func<IRow, bool> action, bool recycling)
+        public static int FetchAsync(this ITable source, IQueryFilter filter, Func<IRow, bool> action, bool recycling)
         {
-            return Task.Run(() => source.Fetch(filter, action, recycling));
+            return Task.Wait(() => source.Fetch(filter, action, recycling));
         }
 
         /// <summary>
@@ -132,9 +131,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
         ///     access
         /// </remarks>
-        public static Task<int> FetchAsync(this ITable source, IQueryFilter filter, Action<IRow> action)
+        public static int FetchAsync(this ITable source, IQueryFilter filter, Action<IRow> action)
         {
-            return Task.Run(() => source.Fetch(filter, action));
+            return Task.Wait(() => source.Fetch(filter, action));
         }
 
 
@@ -147,9 +146,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="IRow" /> representing the row for the oid; otherwise <c>null</c>
         /// </returns>
-        public static Task<IRow> FetchAsync(this ITable source, int oid)
+        public static IRow FetchAsync(this ITable source, int oid)
         {
-            return Task.Run(() => source.Fetch(oid));
+            return Task.Wait(() => source.Fetch(oid));
         }
 
         /// <summary>
@@ -172,13 +171,11 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
         ///     access
         /// </remarks>
-        public static Task<int> FetchAync(this ITable source, IQueryFilter filter, Action<IRow> action, bool recycling)
+        public static int FetchAync(this ITable source, IQueryFilter filter, Action<IRow> action, bool recycling)
         {
-            return Task.Run(() => source.Fetch(filter, action, recycling));
+            return Task.Wait(() => source.Fetch(filter, action, recycling));
         }
 
         #endregion
     }
 }
-
-#endif

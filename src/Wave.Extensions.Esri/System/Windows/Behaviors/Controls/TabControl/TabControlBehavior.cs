@@ -178,9 +178,6 @@ namespace System.Windows.Behaviors
                             }
                         }
                         break;
-
-                    default:
-                        break;
                 }
 
                 // Select the first element if necessary.

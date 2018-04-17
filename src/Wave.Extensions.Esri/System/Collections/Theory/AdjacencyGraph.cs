@@ -368,46 +368,51 @@ namespace System.Collections
             if (e == null)
                 throw new ArgumentNullException("e");
 
-            if (e.Action == NotifyCollectionChangedAction.Add)
+            switch (e.Action)
             {
-                if (this.EdgeAdded != null)
-                {
-                    // Raise the event for each edge that was added.
-                    foreach (var entry in e.NewItems)
+                case NotifyCollectionChangedAction.Add:
+
+                    if (this.EdgeAdded != null)
                     {
-                        foreach (var edge in entry.Value)
+                        // Raise the event for each edge that was added.
+                        foreach (var entry in e.NewItems)
                         {
-                            this.OnEdgeAdded(new EdgeEventArgs<TVertex, TEdge>(edge));
+                            foreach (var edge in entry.Value)
+                            {
+                                this.OnEdgeAdded(new EdgeEventArgs<TVertex, TEdge>(edge));
+                            }
                         }
                     }
-                }
 
-                if (this.VertexAdded != null)
-                {
-                    // Raise the event for the vertex.
-                    this.OnVertexAdded(new VertexEventArgs<TVertex>(e.NewItem.Key));
-                }
-            }
-            else if (e.Action == NotifyCollectionChangedAction.Remove)
-            {
-
-                if (this.EdgeRemoved != null)
-                {
-                    // Raise the event for each edge that was removed.
-                    foreach (var entry in e.OldItems)
+                    if (this.VertexAdded != null)
                     {
-                        foreach (var edge in entry.Value)
+                        // Raise the event for the vertex.
+                        this.OnVertexAdded(new VertexEventArgs<TVertex>(e.NewItem.Key));
+                    }
+
+                    break;
+
+                case NotifyCollectionChangedAction.Remove:
+
+                    if (this.EdgeRemoved != null)
+                    {
+                        // Raise the event for each edge that was removed.
+                        foreach (var entry in e.OldItems)
                         {
-                            this.OnEdgeRemoved(new EdgeEventArgs<TVertex, TEdge>(edge));
+                            foreach (var edge in entry.Value)
+                            {
+                                this.OnEdgeRemoved(new EdgeEventArgs<TVertex, TEdge>(edge));
+                            }
                         }
                     }
-                }
 
-                if (this.VertexRemoved != null)
-                {
-                    // Raise the event for the vertex.
-                    this.OnVertexRemoved(new VertexEventArgs<TVertex>(e.OldItem.Key));
-                }
+                    if (this.VertexRemoved != null)
+                    {
+                        // Raise the event for the vertex.
+                        this.OnVertexRemoved(new VertexEventArgs<TVertex>(e.OldItem.Key));
+                    }
+
+                    break;
             }
         }
 

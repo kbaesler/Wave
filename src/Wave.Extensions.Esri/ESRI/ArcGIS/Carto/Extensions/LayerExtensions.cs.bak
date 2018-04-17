@@ -15,7 +15,7 @@ namespace ESRI.ArcGIS.Carto
         #region Public Methods
 
         /// <summary>
-        ///     Sets a join based on the specified relationship class and join type.
+        /// Sets a join based on the specified relationship class and join type.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="table">The table.</param>

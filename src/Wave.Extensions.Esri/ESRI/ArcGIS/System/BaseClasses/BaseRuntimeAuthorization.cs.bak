@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ESRI.ArcGIS.esriSystem
 {
@@ -84,21 +83,6 @@ namespace ESRI.ArcGIS.esriSystem
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        ///     Gets a value indicating whether this instance is initialized.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is initialized; otherwise, <c>false</c>.
-        /// </value>
-        public virtual bool IsInitialized
-        {
-            get
-            {
-                return this.ProductStatus.All(o => this.IsProductInitialized(o.Value))
-                       && this.ExtensionStatus.All(o => this.IsExtensionInitialized(o.Value));
-            }
-        }
 
         /// <summary>
         ///     Gets or sets the extension status.

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Forms;
 
 namespace System.Diagnostics
@@ -22,7 +21,7 @@ namespace System.Diagnostics
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
 
-            source.Log(LogLevel.Error, message);
+            source.Log(LogLevel.Debug, message);
         }
 
 
@@ -124,6 +123,19 @@ namespace System.Diagnostics
             source.Log(LogLevel.Fatal, message);
         }
 
+        /// <summary>
+        ///     Log a message object with the Fatal level.
+        /// </summary>
+        /// <param name="source">The source of the logger.</param>
+        /// <param name="exception">The exception.</param>
+        /// <exception cref="System.ArgumentNullException">source</exception>
+        public static void Fatal(this ILog source, Exception exception)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            source.Log(LogLevel.Fatal, null, exception);
+        }
 
         /// <summary>
         ///     Log a message object with the Fatal level.
@@ -267,10 +279,25 @@ namespace System.Diagnostics
     /// </summary>
     public enum LogLevel
     {
+        /// <summary>
+        /// The debug
+        /// </summary>
         Debug,
+        /// <summary>
+        /// The information
+        /// </summary>
         Info,
+        /// <summary>
+        /// The warn
+        /// </summary>
         Warn,
+        /// <summary>
+        /// The error
+        /// </summary>
         Error,
+        /// <summary>
+        /// The fatal
+        /// </summary>
         Fatal
     }
 
@@ -306,8 +333,6 @@ namespace System.Diagnostics
     {
         #region Fields
 
-        private static readonly Dictionary<string, ILogProvider> LogProviders = new Dictionary<string, ILogProvider>();
-
         private static ILogProvider _LogProvider;
 
         #endregion
@@ -339,18 +364,6 @@ namespace System.Diagnostics
             return GetLogger(typeof(T));
         }
 
-        /// <summary>
-        ///     Gets a logger for the specified type.
-        /// </summary>
-        /// <typeparam name="T">The type whose name will be used for the logger.</typeparam>
-        /// <param name="repositoryName">Name of the repository.</param>
-        /// <returns>
-        ///     An instance of <see cref="ILog" />
-        /// </returns>
-        public static ILog For<T>(string repositoryName)
-        {
-            return GetLogger(typeof(T), repositoryName);
-        }
 
         /// <summary>
         ///     Gets a logger for the current class.
@@ -376,18 +389,6 @@ namespace System.Diagnostics
             return GetLogger(type.FullName);
         }
 
-        /// <summary>
-        ///     Gets a logger for the specified type.
-        /// </summary>
-        /// <param name="type">The type whose name will be used for the logger.</param>
-        /// <param name="repositoryName">Name of the repository.</param>
-        /// <returns>
-        ///     An instance of <see cref="ILog" />
-        /// </returns>
-        public static ILog GetLogger(Type type, string repositoryName)
-        {
-            return GetLogger(type.FullName, repositoryName);
-        }
 
         /// <summary>
         ///     Gets a logger with the specified name.
@@ -402,21 +403,6 @@ namespace System.Diagnostics
             return logProvider.GetLogger(loggerName);
         }
 
-
-        /// <summary>
-        ///     Gets a logger with the specified name.
-        /// </summary>
-        /// <param name="loggerName">Name of the logger.</param>
-        /// <param name="repositoryName">Name of the repository.</param>
-        /// <returns>
-        ///     An instance of <see cref="ILog" />
-        /// </returns>
-        public static ILog GetLogger(string loggerName, string repositoryName)
-        {
-            ILogProvider logProvider = ResolveLogProvider(repositoryName);
-            return logProvider.GetLogger(loggerName, repositoryName);
-        }
-
         /// <summary>
         ///     Sets the current log provider.
         /// </summary>
@@ -426,19 +412,6 @@ namespace System.Diagnostics
             _LogProvider = logProvider;
         }
 
-        /// <summary>
-        ///     Sets the current log provider for the unique repository.
-        /// </summary>
-        /// <param name="repositoryName">Name of the repository.</param>
-        /// <param name="logProvider">The log provider.</param>
-        public static void SetLogProvider(string repositoryName, ILogProvider logProvider)
-        {
-            if (!LogProviders.ContainsKey(repositoryName))
-                LogProviders.Add(repositoryName, logProvider);
-            else
-                LogProviders[repositoryName] = logProvider;
-        }
-
         #endregion
 
         #region Private Methods
@@ -446,17 +419,12 @@ namespace System.Diagnostics
         /// <summary>
         ///     Resolves the log providers.
         /// </summary>
-        /// <param name="repositoryName">Name of the repository.</param>
         /// <returns>
         ///     An instance of <see cref="ILogProvider" />
         /// </returns>
-        private static ILogProvider ResolveLogProvider(string repositoryName = null)
+        private static ILogProvider ResolveLogProvider()
         {
-            if (repositoryName != null && LogProviders.ContainsKey(repositoryName))
-                return LogProviders[repositoryName];
-
-            ILogProvider logProvider = _LogProvider ?? new ApacheLogProvider();
-            return logProvider;
+            return _LogProvider ?? new ApacheLogProvider();
         }
 
         #endregion
@@ -466,7 +434,7 @@ namespace System.Diagnostics
     ///     A dynamic log that has a physical file locations.
     /// </summary>
     /// <seealso cref="System.Diagnostics.ILog" />
-    public interface IFileLog : ILog
+    public interface ILogFile : ILog
     {
         #region Public Methods
 
@@ -478,165 +446,6 @@ namespace System.Diagnostics
         ///     Retunrns the path to the file.
         /// </returns>
         string GetPath(string name);
-
-        #endregion
-    }
-
-    /// <summary>
-    ///     A dynamic log that assumes it is compatible with <see cref="ILog" />
-    /// </summary>
-    /// <seealso cref="System.Diagnostics.ILog" />
-    internal class DynamicLog : ILog
-    {
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="DynamicLog" /> class.
-        /// </summary>
-        protected DynamicLog()
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="DynamicLog" /> class.
-        /// </summary>
-        /// <param name="logger">The logger.</param>
-        public DynamicLog(dynamic logger)
-        {
-            this.Logger = logger;
-        }
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        ///     Gets the logger.
-        /// </summary>
-        /// <value>
-        ///     The logger.
-        /// </value>
-        public dynamic Logger { get; protected set; }
-
-        #endregion
-
-        #region ILog Members
-
-        /// <summary>
-        ///     Log a message the specified log level.
-        /// </summary>
-        /// <param name="logLevel">The log level.</param>
-        /// <param name="message">The message.</param>
-        /// <param name="exception">An optional exception.</param>
-        /// <returns>
-        ///     true if the message was logged. Otherwise false.
-        /// </returns>
-        public virtual bool Log(LogLevel logLevel, string message, Exception exception = null)
-        {
-            if (exception != null)
-            {
-                return LogException(logLevel, message, exception);
-            }
-
-            switch (logLevel)
-            {
-                case LogLevel.Info:
-                    if (Logger.IsInfoEnabled)
-                    {
-                        Logger.Info(message);
-                        return true;
-                    }
-
-                    break;
-                case LogLevel.Warn:
-                    if (Logger.IsWarnEnabled)
-                    {
-                        Logger.Warn(message);
-                        return true;
-                    }
-
-                    break;
-                case LogLevel.Error:
-                    if (Logger.IsErrorEnabled)
-                    {
-                        Logger.Error(message);
-                        return true;
-                    }
-
-                    break;
-                case LogLevel.Fatal:
-                    if (Logger.IsFatalEnabled)
-                    {
-                        Logger.Fatal(message);
-                        return true;
-                    }
-
-                    break;
-                default:
-                    if (Logger.IsDebugEnabled)
-                    {
-                        Logger.Debug(message);
-                        return true;
-                    }
-
-                    break;
-            }
-
-            return false;
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private bool LogException(LogLevel logLevel, string message, Exception exception)
-        {
-            switch (logLevel)
-            {
-                case LogLevel.Info:
-                    if (Logger.IsDebugEnabled)
-                    {
-                        Logger.Info(message, exception);
-                        return true;
-                    }
-
-                    break;
-                case LogLevel.Warn:
-                    if (Logger.IsWarnEnabled)
-                    {
-                        Logger.Warn(message, exception);
-                        return true;
-                    }
-
-                    break;
-                case LogLevel.Error:
-                    if (Logger.IsErrorEnabled)
-                    {
-                        Logger.Error(message, exception);
-                        return true;
-                    }
-
-                    break;
-                case LogLevel.Fatal:
-                    if (Logger.IsFatalEnabled)
-                    {
-                        Logger.Fatal(message, exception);
-                        return true;
-                    }
-
-                    break;
-                default:
-                    if (Logger.IsDebugEnabled)
-                    {
-                        Logger.Debug(message, exception);
-                        return true;
-                    }
-
-                    break;
-            }
-
-            return false;
-        }
 
         #endregion
     }

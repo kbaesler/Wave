@@ -103,13 +103,12 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Connection.Local.dll</HintPath>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Local.dll</HintPath>
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Connection.Local.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -235,8 +234,8 @@
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseWorkspaceExtension.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\LayerAsyncExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\MapAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Editor\Extensions\EditorExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\ApplicationExtensions.cs" />
@@ -265,10 +264,10 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\Extensions\DynamicRowBufferExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\ClassAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\WorkspaceAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgress.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
@@ -326,6 +325,7 @@
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseEsriProgram.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ComReleaser.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComStream.cs" />
     <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
@@ -362,6 +362,7 @@
     <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
+    <Compile Include="System\Configuration\NameValueConfiguration.cs" />
     <Compile Include="System\Data\ConfigDataSource.cs" />
     <Compile Include="System\Data\Extensions\DataSetExtensions.cs" />
     <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
@@ -379,12 +380,14 @@
     <Compile Include="System\Dynamic\Xml\DynamicXmlNode.cs" />
     <Compile Include="System\Dynamic\Xml\DynamicXmlNodeList.cs" />
     <Compile Include="System\Dynamic\Xml\Extensions\DynamicXmlExtensions.cs" />
+    <Compile Include="System\Extensions\DateTimeExtensions.cs" />
     <Compile Include="System\Extensions\EnumExtensions.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
     <Compile Include="System\Extensions\StringExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />
+    <Compile Include="System\IO\Extensions\DirectoryInfoExtensions.cs" />
     <Compile Include="System\IO\Extensions\StreamExtensions.cs" />
     <Compile Include="System\IO\NetworkDrive.cs" />
     <Compile Include="System\Native\UnsafeWindowMethods.cs" />

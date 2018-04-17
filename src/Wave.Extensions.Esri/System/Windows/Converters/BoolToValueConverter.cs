@@ -14,6 +14,13 @@ namespace System.Windows.Converters
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoolToValueConverter{TValue}" /> class.
         /// </summary>
+        public BoolToValueConverter()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BoolToValueConverter{TValue}" /> class.
+        /// </summary>
         /// <param name="trueValue">The true value.</param>
         /// <param name="falseValue">The false value.</param>
         protected BoolToValueConverter(TValue trueValue, TValue falseValue)

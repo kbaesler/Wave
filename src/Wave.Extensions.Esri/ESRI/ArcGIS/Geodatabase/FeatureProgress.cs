@@ -44,7 +44,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="ArgumentException">An feature progress connection point could not be found.</exception>
         protected FeatureProgress(IConnectionPointContainer connectionPointContainer)
         {
-            this.Advise(connectionPointContainer);
+            Advise(connectionPointContainer);
         }
 
         #endregion
@@ -135,7 +135,7 @@ namespace ESRI.ArcGIS.Geodatabase
             enumConnectionPoints.Reset();
 
             IConnectionPoint connectionPoint;
-            Guid guid = typeof(IFeatureProgress).GUID;
+            var guid = typeof(IFeatureProgress).GUID;
 
             uint pcFetched;
             enumConnectionPoints.RemoteNext(1, out connectionPoint, out pcFetched);
@@ -144,18 +144,12 @@ namespace ESRI.ArcGIS.Geodatabase
                 Guid connectionGuid;
                 connectionPoint.GetConnectionInterface(out connectionGuid);
 
-                if (connectionGuid == guid)
-                {
-                    break;
-                }
+                if (connectionGuid == guid) break;
 
                 enumConnectionPoints.RemoteNext(1, out connectionPoint, out pcFetched);
             }
 
-            if (connectionPoint == null)
-            {
-                throw new ArgumentException("An feature progress connection point could not be found.");
-            }
+            if (connectionPoint == null) throw new ArgumentException("An feature progress connection point could not be found.");
 
             uint connectionPointCookie;
             connectionPoint.Advise(this, out connectionPointCookie);
@@ -165,34 +159,65 @@ namespace ESRI.ArcGIS.Geodatabase
 
         #region Nested Type: Default
 
+        /// <summary>
+        ///     The default feature progress.
+        /// </summary>
+        /// <seealso cref="ESRI.ArcGIS.Geodatabase.FeatureProgress" />
         public class Default : FeatureProgress
         {
             #region Public Properties
 
+            /// <summary>
+            ///     Sets the name of the feature class.
+            /// </summary>
+            /// <value>
+            ///     The name of the feature class.
+            /// </value>
             public override string FeatureClassName
             {
-                set { Log.Info("\tName: {0}", value); }
+                set => Log.Info("\tName: {0}", value);
             }
 
+            /// <summary>
+            ///     Sets the maximum features.
+            /// </summary>
+            /// <value>
+            ///     The maximum features.
+            /// </value>
             public override int MaxFeatures
             {
-                set { Log.Info("\tMaximum: {0:N0}", value); }
+                set => Log.Info("\tMaximum: {0:N0}", value);
             }
 
+            /// <summary>
+            ///     Sets the minimum features.
+            /// </summary>
+            /// <value>
+            ///     The minimum features.
+            /// </value>
             public override int MinFeatures
             {
-                set { Log.Info("\tMinimum: {0:N0}", value); }
+                set => Log.Info("\tMinimum: {0:N0}", value);
             }
 
+            /// <summary>
+            ///     Sets the position.
+            /// </summary>
+            /// <value>
+            ///     The position.
+            /// </value>
             public override int Position
             {
-                set { Log.Info("\tPosition: {0:N0}", value); }
+                set => Log.Info("\tPosition: {0:N0}", value);
             }
 
             #endregion
 
             #region Public Methods
 
+            /// <summary>
+            /// Steps this instance.
+            /// </summary>
             public override void Step()
             {
                 base.Step();

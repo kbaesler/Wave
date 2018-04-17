@@ -5,6 +5,7 @@ using log4net;
 using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
+using log4net.Repository;
 using log4net.Repository.Hierarchy;
 
 namespace System.Diagnostics
@@ -132,7 +133,7 @@ namespace System.Diagnostics
         /// </returns>
         public virtual ILog GetLogger(string loggerName)
         {
-            return new ApacheLog(LogManager.GetLogger(loggerName));
+            return new Logger(LogManager.GetLogger(loggerName));
         }
 
 
@@ -151,33 +152,44 @@ namespace System.Diagnostics
                 var repository = LogManager.CreateRepository(repositoryName);
                 BasicConfigurator.Configure(repository);
 
-                return new ApacheLog(LogManager.GetLogger(repositoryName, loggerName));
+                return new Logger(LogManager.GetLogger(repositoryName, loggerName));
             }
 
-            return new ApacheLog(LogManager.GetLogger(repositoryName, loggerName));
+            return new Logger(LogManager.GetLogger(repositoryName, loggerName));
         }
 
         #endregion
 
-        #region Nested Type: ApacheLog
+        #region Nested Type: Logger
 
         /// <summary>
         ///     The logger for the <see cref="log4net" /> component.
         /// </summary>
-        /// <seealso cref="System.Diagnostics.DynamicLog" />
-        /// <seealso cref="System.Diagnostics.IFileLog" />
-        class ApacheLog : DynamicLog, IFileLog
+        /// <seealso cref="System.Diagnostics.ILogFile" />
+        internal class Logger : ILogFile
         {
             #region Constructors
 
             /// <summary>
-            ///     Initializes a new instance of the <see cref="ApacheLog" /> class.
+            ///     Initializes a new instance of the <see cref="Logger" /> class.
             /// </summary>
             /// <param name="logger">The logger.</param>
-            public ApacheLog(log4net.ILog logger)
-                : base(logger)
+            public Logger(log4net.ILog logger)
             {
+                InternaLogger = logger;
             }
+
+            #endregion
+
+            #region Internal Properties
+
+            /// <summary>
+            ///     Gets or sets the interna logger.
+            /// </summary>
+            /// <value>
+            ///     The interna logger.
+            /// </value>
+            internal log4net.ILog InternaLogger { get; }
 
             #endregion
 
@@ -192,9 +204,191 @@ namespace System.Diagnostics
             /// </returns>
             public string GetPath(string name)
             {
-                var wrapper = (ILoggerWrapper) Logger;
+                var wrapper = (ILoggerWrapper) InternaLogger;
                 var appender = wrapper.Logger.FindAppender<FileAppender>(name);
                 return appender?.File;
+            }
+
+            /// <summary>
+            ///     Log a message the specified log level.
+            /// </summary>
+            /// <param name="logLevel">The log level.</param>
+            /// <param name="message">The message.</param>
+            /// <param name="exception">An optional exception.</param>
+            /// <returns>
+            ///     true if the message was logged. Otherwise false.
+            /// </returns>
+            public virtual bool Log(LogLevel logLevel, string message, Exception exception = null)
+            {
+                if (exception != null)
+                {
+                    return LogException(logLevel, message, exception);
+                }
+
+                switch (logLevel)
+                {
+                    case LogLevel.Info:
+                        if (InternaLogger.IsInfoEnabled)
+                        {
+                            InternaLogger.Info(message);
+                            return true;
+                        }
+
+                        break;
+                    case LogLevel.Warn:
+                        if (InternaLogger.IsWarnEnabled)
+                        {
+                            InternaLogger.Warn(message);
+                            return true;
+                        }
+
+                        break;
+                    case LogLevel.Error:
+                        if (InternaLogger.IsErrorEnabled)
+                        {
+                            InternaLogger.Error(message);
+                            return true;
+                        }
+
+                        break;
+                    case LogLevel.Fatal:
+                        if (InternaLogger.IsFatalEnabled)
+                        {
+                            InternaLogger.Fatal(message);
+                            return true;
+                        }
+
+                        break;
+                    default:
+                        if (InternaLogger.IsDebugEnabled)
+                        {
+                            InternaLogger.Debug(message);
+                            return true;
+                        }
+
+                        break;
+                }
+
+                return false;
+            }
+
+            #endregion
+
+            #region Private Methods
+
+            private bool LogException(LogLevel logLevel, string message, Exception exception)
+            {
+                switch (logLevel)
+                {
+                    case LogLevel.Info:
+                        if (InternaLogger.IsDebugEnabled)
+                        {
+                            InternaLogger.Info(message, exception);
+                            return true;
+                        }
+
+                        break;
+                    case LogLevel.Warn:
+                        if (InternaLogger.IsWarnEnabled)
+                        {
+                            InternaLogger.Warn(message, exception);
+                            return true;
+                        }
+
+                        break;
+                    case LogLevel.Error:
+                        if (InternaLogger.IsErrorEnabled)
+                        {
+                            InternaLogger.Error(message, exception);
+                            return true;
+                        }
+
+                        break;
+                    case LogLevel.Fatal:
+                        if (InternaLogger.IsFatalEnabled)
+                        {
+                            InternaLogger.Fatal(message, exception);
+                            return true;
+                        }
+
+                        break;
+                    default:
+                        if (InternaLogger.IsDebugEnabled)
+                        {
+                            InternaLogger.Debug(message, exception);
+                            return true;
+                        }
+
+                        break;
+                }
+
+                return false;
+            }
+
+            #endregion
+        }
+
+        #endregion
+
+        #region Nested Type: RepositoryLogger
+
+        internal class RepositoryLogger : ILog
+        {
+            #region Constructors
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="RepositoryLogger" /> class.
+            /// </summary>
+            /// <param name="repositories">The repositories.</param>
+            /// <param name="loggerName">Name of the logger.</param>
+            public RepositoryLogger(ILoggerRepository[] repositories, string loggerName)
+            {
+                Repositories = repositories;
+                Name = loggerName;
+            }
+
+            #endregion
+
+            #region Protected Properties
+
+            /// <summary>
+            ///     Gets or sets the name.
+            /// </summary>
+            /// <value>
+            ///     The name.
+            /// </value>
+            protected string Name { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the repositories.
+            /// </summary>
+            /// <value>
+            ///     The repositories.
+            /// </value>
+            protected ILoggerRepository[] Repositories { get; set; }
+
+            #endregion
+
+            #region ILog Members
+
+            /// <summary>
+            ///     Log a message the specified log level.
+            /// </summary>
+            /// <param name="logLevel">The log level.</param>
+            /// <param name="message">The message.</param>
+            /// <param name="exception">An optional exception.</param>
+            /// <returns>
+            ///     true if the message was logged. Otherwise false.
+            /// </returns>
+            public bool Log(LogLevel logLevel, string message, Exception exception = null)
+            {
+                foreach (var repository in Repositories)
+                {
+                    var logger = new Logger(LogManager.GetLogger(repository.Name, Name));
+                    logger.Log(logLevel, message, exception);
+                }
+
+                return true;
             }
 
             #endregion

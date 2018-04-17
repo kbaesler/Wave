@@ -65,17 +65,18 @@ namespace System.Web
         }
 
         /// <summary>
-        ///     Parses the specified json file into the JSON object.
+        /// Parses the specified json file into the JSON object.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="jsonFile">The json file.</param>
+        /// <param name="minify">if set to <c>true</c> [minify].</param>
         /// <returns>
-        ///     Returns a <see cref="T" /> repesenting the JSON object.
+        /// Returns a <see cref="T" /> repesenting the JSON object.
         /// </returns>
         public static T Read<T>(string jsonFile)
         {
             var json = File.ReadAllText(jsonFile);
-            var mini = Minify(json);
+            var mini = Minify(json); 
 
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof (T));
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(mini)))

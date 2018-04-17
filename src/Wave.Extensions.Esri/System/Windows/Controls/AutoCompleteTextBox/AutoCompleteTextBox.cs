@@ -151,7 +151,7 @@ namespace System.Windows.Controls
         /// </value>
         public AutoCompleteMode AutoCompleteMode
         {
-            get { return (AutoCompleteMode) GetValue(AutoCompleteModeProperty); }
+            get { return (AutoCompleteMode)GetValue(AutoCompleteModeProperty); }
             set { SetValue(AutoCompleteModeProperty, value); }
         }
 
@@ -163,7 +163,7 @@ namespace System.Windows.Controls
         /// </value>
         public IEnumerable<string> AutoCompleteSource
         {
-            get { return (IEnumerable<string>) this.GetValue(AutoCompleteSourceProperty); }
+            get { return (IEnumerable<string>)this.GetValue(AutoCompleteSourceProperty); }
             set { this.SetValue(AutoCompleteSourceProperty, value); }
         }
 
@@ -175,7 +175,7 @@ namespace System.Windows.Controls
         /// </value>
         public DataTemplate DataTemplate
         {
-            get { return (DataTemplate) GetValue(DataTemplateProperty); }
+            get { return (DataTemplate)GetValue(DataTemplateProperty); }
             set { SetValue(DataTemplateProperty, value); }
         }
 
@@ -220,7 +220,7 @@ namespace System.Windows.Controls
         /// </value>
         public string Text
         {
-            get { return (string) this.GetValue(TextProperty); }
+            get { return (string)this.GetValue(TextProperty); }
             set { this.SetValue(TextProperty, value); }
         }
 
@@ -321,7 +321,7 @@ namespace System.Windows.Controls
         {
             if (_ComboBox.SelectedItem != null)
             {
-                var item = (ComboBoxItem) _ComboBox.SelectedItem;
+                var item = (ComboBoxItem)_ComboBox.SelectedItem;
 
                 _TextBox.Text = string.Format("{0}", item.Tag);
                 _TextBox.SelectAll();
@@ -388,7 +388,7 @@ namespace System.Windows.Controls
         {
             AutoCompleteTextBox autoCompleteTextBox = dependencyObject as AutoCompleteTextBox;
             if (autoCompleteTextBox != null)
-                autoCompleteTextBox.AutoCompleteSource = (IEnumerable<string>) e.NewValue;
+                autoCompleteTextBox.AutoCompleteSource = (IEnumerable<string>)e.NewValue;
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace System.Windows.Controls
         {
             AutoCompleteTextBox autoCompleteTextBox = dependencyObject as AutoCompleteTextBox;
             if (autoCompleteTextBox != null)
-                autoCompleteTextBox.Text = (string) e.NewValue;
+                autoCompleteTextBox.Text = (string)e.NewValue;
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace System.Windows.Controls
                             flag = source.Contains(_TextBox.Text);
                             break;
 
-                        default:
+                        case AutoCompleteMode.Equals:
                             flag = source.Equals(_TextBox.Text, StringComparison.InvariantCultureIgnoreCase);
                             break;
                     }
@@ -465,7 +465,7 @@ namespace System.Windows.Controls
         /// <param name="eventArgs">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void TextBox_DelayedTextChanged(object sender, EventArgs eventArgs)
         {
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action) this.ShowDropDown);
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action)this.ShowDropDown);
         }
 
         /// <summary>
@@ -514,7 +514,7 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="TextChangedEventArgs" /> instance containing the event data.</param>
         private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            this.Text = ((DelayedTextBox) sender).Text;
+            this.Text = ((DelayedTextBox)sender).Text;
             this.OnTextChanged(e);
         }
 

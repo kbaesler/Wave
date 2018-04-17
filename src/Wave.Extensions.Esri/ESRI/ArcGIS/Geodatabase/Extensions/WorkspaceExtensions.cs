@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -81,14 +81,14 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Defines the data set definition in the specified workspace.
+        /// Defines the data set definition in the specified workspace.
         /// </summary>
         /// <typeparam name="T">The type of dataset.</typeparam>
         /// <param name="source">The output workspace.</param>
         /// <param name="name">The name of the dataset.</param>
         /// <param name="definition">The definition.</param>
         /// <returns>
-        ///     Returns a <see cref="T" /> representing the definition for the dataset.
+        /// Returns a <see cref="IDatasetName" /> representing the definition for the dataset.
         /// </returns>
         public static T Define<T>(this IWorkspace source, string name, T definition)
             where T : IDatasetName
@@ -146,7 +146,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Executes the specified query (SQL) and returns the results as a <see cref="TValue" /> of the single column
+        ///     Executes the specified query (SQL) and returns the results of the single column
         ///     returned.
         /// </summary>
         /// <typeparam name="TValue">The type of the value.</typeparam>
@@ -744,16 +744,6 @@ namespace ESRI.ArcGIS.Geodatabase
             return supportedValue > 0;
         }
 
-        /// <summary>
-        ///     Opens the object referring to the dataset name.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
-        /// <returns>Returns the object referring to the dataset name.</returns>
-        public static T Open<T>(this IDatasetName source)
-        {
-            return (T) ((IName) source).Open();
-        }
 
         /// <summary>
         ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
@@ -1069,15 +1059,15 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// Peforms the transaction and comits it on completion of the action, and should only be used for direct updates.
+        ///     Peforms the transaction and comits it on completion of the action, and should only be used for direct updates.
         /// </summary>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="transaction">The transaction.</param>
-        /// <returns>Returns a <see cref="TResult"/> representing the results of the transaction.</returns>
+        /// <returns>Returns the result of the transaction.</returns>
         /// <remarks>
-        /// Applications can use transactions to manage direct updates, for example, updates made outside of an edit
-        /// session, on object and feature classes that are tagged as not requiring an edit session.
+        ///     Applications can use transactions to manage direct updates, for example, updates made outside of an edit
+        ///     session, on object and feature classes that are tagged as not requiring an edit session.
         /// </remarks>
         public static TResult PerformTransaction<TResult>(this ITransactions source, Func<TResult> transaction)
         {
@@ -1098,6 +1088,91 @@ namespace ESRI.ArcGIS.Geodatabase
             }
 
             return result;
+        }
+
+        /// <summary>
+        ///     Check the status of an open workspace. If a workspace is disconnected,
+        ///     the method will ping it until it's once again available, or a maximum number of checks are exhausted.
+        ///     Between checking a workspace's status, it will sleep for a number of milliseconds specified.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="disconnected">if set to <c>true</c> the workspace has been disconnected.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="retryAttempts">The retry attempts.</param>
+        /// <param name="sleepTime">The sleep time.</param>
+        /// <returns>
+        ///     The return parameter is null if the workspace was never disconnected, or if it was disconnected and
+        ///     could not be reconnected. If it has been disconnected but was successfully reconnected, the return
+        ///     value is the newly-reconnected workspace. The outbound parameter can be used to disambiguate a null
+        ///     return value. It's important to note that if a workspace was disconnected and reconnected, all of the
+        ///     workspace objects - i.e. feature classes and tables - must be reopened.
+        /// </returns>
+        /// <exception cref="System.ArgumentException">The workspace could not be found.</exception>
+        /// <remarks>
+        ///     This method should be used as an error handling routine when it's suspected problems are being
+        ///     caused due to workspace disconnection.
+        /// </remarks>
+        public static IWorkspace Reconnect(this IWorkspace source, out bool disconnected, string fileName = null, int retryAttempts = 3, int sleepTime = 250)
+        {
+            // At this point, assume disconnection hasn't taken place.
+            disconnected = false;
+
+            try
+            {
+                // Attempt to locate a matching workspace.
+                IWorkspaceFactoryStatus workspaceFactoryStatus = (IWorkspaceFactoryStatus) source.WorkspaceFactory;
+                IEnumWorkspaceStatus enumWorkspaceStatus = workspaceFactoryStatus.WorkspaceStatus;
+                IWorkspaceStatus workspaceStatus;
+                while ((workspaceStatus = enumWorkspaceStatus.Next()) != null)
+                {
+                    if (source.Equals(workspaceStatus.Workspace))
+                    {
+                        break;
+                    }
+                }
+
+                // When there is no matching status object.
+                if (workspaceStatus == null)
+                {
+                    throw new ArgumentException("The workspace could not be found.");
+                }
+
+                // Check the workspace's connection status.
+                if (workspaceStatus.ConnectionStatus == esriWorkspaceConnectionStatus.esriWCSDown)
+                {
+                    // Indicate that disconnection has occurred.
+                    disconnected = true;
+
+                    // Ping the workspace up to a maximum number of times.
+                    for (int i = 0; i < retryAttempts; i++)
+                    {
+                        // PingWorkspaceStatus should only be used on a workspace that is known to be down.
+                        IWorkspaceStatus pingStatus = workspaceFactoryStatus.PingWorkspaceStatus(source);
+
+                        // If the workspace becomes available, reopen it and break out of the loop.
+                        if (pingStatus.ConnectionStatus == esriWorkspaceConnectionStatus.esriWCSAvailable)
+                        {
+                            return workspaceFactoryStatus.OpenAvailableWorkspace(pingStatus);
+                        }
+
+                        Thread.Sleep(sleepTime);
+                    }
+                }
+            }
+            catch (InvalidComObjectException)
+            {
+                // The reconnect is optional.
+                if (string.IsNullOrEmpty(fileName))
+                    throw;
+
+                // Indicate that disconnection has occurred.
+                disconnected = true;
+
+                // Reconnect to the workspace.
+                source = WorkspaceFactories.Open(fileName);
+            }
+
+            return source;
         }
 
         /// <summary>

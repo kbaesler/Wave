@@ -22,9 +22,12 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
     [ComVisible(false)]
     public abstract class BaseEsriProgram<TProgramArguments>
     {
-        #region Fields
+        #region Protected Properties
 
-        protected static readonly ILog Log = LogProvider.For<BaseEsriProgram<TProgramArguments>>();
+        /// <summary>
+        ///     The log for the program.
+        /// </summary>
+        protected virtual ILog Log { get; set; } = LogProvider.For<BaseEsriProgram<TProgramArguments>>(new ApacheLogProvider(new FileInfo(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile)));
 
         #endregion
 

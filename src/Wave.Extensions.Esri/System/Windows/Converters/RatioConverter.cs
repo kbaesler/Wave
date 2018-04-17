@@ -17,7 +17,7 @@ namespace System.Windows.Converters
     {
         #region Fields
 
-        private static readonly RatioConverter Instance = new RatioConverter();
+        private static RatioConverter _Instance;
 
         #endregion
 
@@ -69,7 +69,7 @@ namespace System.Windows.Converters
         /// </returns>
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Instance;
+            return _Instance ?? (_Instance = new RatioConverter());
         }
 
         #endregion
