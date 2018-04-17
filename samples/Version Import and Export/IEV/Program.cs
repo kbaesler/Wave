@@ -15,10 +15,10 @@ namespace Wave.IEV
     {
         #region Fields
 
-        public string ConnectionFile;
-        public string Path;
-        public ProgramTask Task = ProgramTask.Export;
-        public string VersionName;
+        public string ConnectionFile { get;set; }
+        public string Path { get;set; }
+        public ProgramTask Task { get;set; }
+        public string VersionName { get;set; }
 
         #endregion
     }
@@ -49,6 +49,7 @@ namespace Wave.IEV
 
                 p.Setup(arg => arg.Task)
                     .As('t', "task")
+                    .SetDefault(ProgramTask.Export)
                     .Required();
 
                 p.Setup(arg => arg.VersionName)
