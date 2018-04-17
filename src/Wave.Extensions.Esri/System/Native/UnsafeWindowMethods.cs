@@ -12,61 +12,21 @@ namespace System.Native
         #region Enumerations
 
         /// <summary>
-        /// The type of logon operation to perform.
+        ///     The type of logon provider
         /// </summary>
-        public enum LogonType
+        public enum LogonProvider
         {
             /// <summary>
-            ///     This logon type is intended for batch servers, where processes may be executing on behalf of a user without
-            ///     their direct intervention. This type is also for higher performance servers that process many plaintext
-            ///     authentication attempts at a time, such as mail or Web servers.
-            ///     The LogonUser function does not cache credentials for this logon type.
+            ///     Use the standard logon provider for the system.
+            ///     The default security provider is negotiate, unless you pass NULL for the domain name and the user name
+            ///     is not in UPN format. In this case, the default provider is NTLM.
             /// </summary>
-            Batch = 4,
-
-            /// <summary>
-            ///     This logon type is intended for users who will be interactively using the computer, such as a user being logged on
-            ///     by a terminal server, remote shell, or similar process.
-            ///     This logon type has the additional expense of caching logon information for disconnected operations,
-            ///     therefore, it is inappropriate for some client/server applications,
-            ///     such as a mail server.
-            /// </summary>
-            Interactive = 2,
-
-            /// <summary>
-            ///     This logon type is intended for high performance servers to authenticate plaintext passwords.
-            ///     The LogonUser function does not cache credentials for this logon type.
-            /// </summary>
-            Network = 3,
-
-            /// <summary>
-            ///     This logon type preserves the name and password in the authentication package, which allows the server to make
-            ///     connections to other network servers while impersonating the client. A server can accept plaintext credentials
-            ///     from a client, call LogonUser, verify that the user can access the system across the network, and still
-            ///     communicate with other servers.
-            ///     NOTE: Windows NT:  This value is not supported.
-            /// </summary>
-            NetworkClearText = 8,
-
-            /// <summary>
-            ///     This logon type allows the caller to clone its current token and specify new credentials for outbound connections.
-            ///     The new logon session has the same local identifier but uses different credentials for other network connections.
-            ///     NOTE: This logon type is supported only by the LOGON32_PROVIDER_WINNT50 logon provider.
-            ///     NOTE: Windows NT:  This value is not supported.
-            /// </summary>
-            NewCredentials = 9,
-
-            /// <summary>
-            ///     Indicates a service-type logon. The account provided must have the service privilege enabled.
-            /// </summary>
-            Service = 5,
-
-            /// <summary>
-            ///     This logon type is for GINA DLLs that log on users who will be interactively using the computer.
-            ///     This logon type can generate a unique audit record that shows when the workstation was unlocked.
-            /// </summary>
-            Unlock = 7,
+            Default = 0,
+            WinNT35 = 1,
+            WinNT40 = 2,
+            WinNT50 = 3
         }
+
 
         /// <summary>
         ///     The zero-based offset to the value to be retrieved. Valid values are in the range zero through the number of bytes
@@ -253,20 +213,67 @@ namespace System.Native
         public static extern int DuplicateToken(IntPtr hToken, int impersonationLevel, out SafeTokenHandle hNewToken);
 
         /// <summary>
-        /// The type of logon provider
+        ///     Retrieves information about the specified window. The function also retrieves the value at a specified offset into
+        ///     the extra window memory.
         /// </summary>
-        public enum LogonProvider
-        {
-            /// <summary>
-            /// Use the standard logon provider for the system. 
-            /// The default security provider is negotiate, unless you pass NULL for the domain name and the user name 
-            /// is not in UPN format. In this case, the default provider is NTLM. 
-            /// </summary>
-            Default = 0,
-            WinNT35 = 1,
-            WinNT40 = 2,
-            WinNT50 = 3
-        }
+        /// <param name="hWnd">A handle to the window and, indirectly, the class to which the window belongs.</param>
+        /// <param name="nIndex">
+        ///     The zero-based offset to the value to be retrieved. Valid values are in the range zero through the
+        ///     number of bytes of extra window memory, minus the size of an integer.
+        /// </param>
+        /// <returns>
+        ///     If the function succeeds, the return value is the requested value. If the function fails, the return value is
+        ///     zero. To get extended error information, call GetLastError.
+        /// </returns>
+        /// <remarks>
+        ///     To write code that is compatible with both 32-bit and 64-bit versions of Windows, use GetWindowLongPtr. When
+        ///     compiling for 32-bit Windows, GetWindowLongPtr is defined as a call to the GetWindowLong function.
+        /// </remarks>
+        [DllImport("User32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLongPtr(IntPtr hWnd, WindowIndex nIndex);
+
+        /// <summary>
+        ///     Loads the specified user's profile. The profile can be a local user profile or a roaming user profile.
+        /// </summary>
+        /// <param name="hToken">
+        ///     Token for the user, which is returned by the LogonUser, CreateRestrictedToken, DuplicateToken,
+        ///     OpenProcessToken, or OpenThreadToken function. The token must have TOKEN_QUERY, TOKEN_IMPERSONATE, and
+        ///     TOKEN_DUPLICATE access. For more information, see Access Rights for Access-Token Objects.
+        /// </param>
+        /// <param name="lpProfileInfo">
+        ///     The lp profile information.Pointer to a PROFILEINFO structure. LoadUserProfile fails and
+        ///     returns ERROR_INVALID_PARAMETER if the dwSize member of the structure is not set to sizeof(PROFILEINFO) or if the
+        ///     lpUserName member is NULL. For more information, see Remarks.
+        /// </param>
+        /// <returns></returns>
+        /// <remarks>
+        ///     The function fails and returns ERROR_INVALID_PARAMETER if the dwSize member of the structure at lpProfileInfo is
+        ///     not set to sizeof(PROFILEINFO) or if the lpUserName member is NULL.
+        ///     When a user logs on interactively, the system automatically loads the user's profile. If a service or an
+        ///     application impersonates a user, the system does not load the user's profile. Therefore, the service or application
+        ///     should load the user's profile with LoadUserProfile.
+        ///     Services and applications that call LoadUserProfile should check to see if the user has a roaming profile.If the
+        ///     user has a roaming profile, specify its path as the lpProfilePath member of PROFILEINFO.To retrieve the user's
+        ///     roaming profile path, you can call the NetUserGetInfo function, specifying information level 3 or 4.
+        ///     Upon successful return, the hProfile member of PROFILEINFO is a registry key handle opened to the root of the
+        ///     user's hive. It has been opened with full access (KEY_ALL_ACCESS). If a service that is impersonating a user needs
+        ///     to read or write to the user's registry file, use this handle instead of HKEY_CURRENT_USER. Do not close the
+        ///     hProfile handle. Instead, pass it to the UnloadUserProfile function. This function closes the handle.You should
+        ///     ensure that all handles to keys in the user's registry hive are closed. If you do not close all open registry
+        ///     handles, the user's profile fails to unload.For more information, see Registry Key Security and Access Rights and
+        ///     Registry Hives.
+        ///     Note that it is your responsibility to load the user's registry hive into the HKEY_USERS registry key with the
+        ///     LoadUserProfile function before you call CreateProcessAsUser. This is because CreateProcessAsUser does not load the
+        ///     specified user's profile into HKEY_USERS. This means that access to information in the HKEY_CURRENT_USER registry
+        ///     key may not produce results consistent with a normal interactive logon.
+        ///     The calling process must have the SE_RESTORE_NAME and SE_BACKUP_NAME privileges. For more information, see Running
+        ///     with Special Privileges.
+        ///     Starting with Windows XP Service Pack 2 (SP2) and Windows Server 2003, the caller must be an administrator or the
+        ///     LocalSystem account.It is not sufficient for the caller to merely impersonate the administrator or LocalSystem
+        ///     account.
+        /// </remarks>
+        [DllImport("userenv.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern bool LoadUserProfile(SafeTokenHandle hToken, ref ProfileInfo lpProfileInfo);
 
         /// <summary>
         ///     The LogonUser function attempts to log a user on to the local computer. The local computer is the computer from
@@ -316,6 +323,31 @@ namespace System.Native
         /// </remarks>
         [DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool RevertToSelf();
+
+        /// <summary>
+        ///     Changes an attribute of the specified window. The function also sets a value at the specified offset in the extra
+        ///     window memory.
+        /// </summary>
+        /// <param name="hWnd">
+        ///     A handle to the window and, indirectly, the class to which the window belongs. The SetWindowLongPtr
+        ///     function fails if the process that owns the window specified by the hWnd parameter is at a higher process privilege
+        ///     in the UIPI hierarchy than the process the calling thread resides in.
+        /// </param>
+        /// <param name="nIndex">
+        ///     The zero-based offset to the value to be set. Valid values are in the range zero through the
+        ///     number of bytes of extra window memory, minus the size of an integer.
+        /// </param>
+        /// <param name="dwNewLong">The replacement value.</param>
+        /// <returns>
+        ///     If the function succeeds, the return value is the previous value of the specified offset. If the function
+        ///     fails, the return value is zero. To get extended error information, call GetLastError.
+        /// </returns>
+        /// <remarks>
+        ///     To write code that is compatible with both 32-bit and 64-bit versions of Windows, use SetWindowLongPtr. When
+        ///     compiling for 32-bit Windows, SetWindowLongPtr is defined as a call to the SetWindowLong function.
+        /// </remarks>
+        [DllImport("User32.dll", EntryPoint = "SetWindowLong")]
+        public static extern int SetWindowLongPtr(IntPtr hWnd, WindowIndex nIndex, int dwNewLong);
 
         /// <summary>Shows a Window</summary>
         /// <remarks>
@@ -371,54 +403,68 @@ namespace System.Native
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool ShowWindow(IntPtr hWnd, WindowShowStyle nCmdShow);
 
+        /// <summary>
+        ///     Unloads a user's profile that was loaded by the LoadUserProfile function. The caller must have administrative
+        ///     privileges on the computer. For more information, see the Remarks section of the LoadUserProfile function.
+        /// </summary>
+        /// <param name="hToken">
+        ///     Token for the user, returned from the LogonUser, CreateRestrictedToken, DuplicateToken,
+        ///     OpenProcessToken, or OpenThreadToken function. The token must have TOKEN_IMPERSONATE and TOKEN_DUPLICATE access.
+        ///     For more information, see Access Rights for Access-Token Objects.
+        /// </param>
+        /// <param name="lpProfileInfo">
+        ///     Handle to the registry key. This value is the hProfile member of the PROFILEINFO structure.
+        ///     For more information see the Remarks section of LoadUserProfile and Registry Key Security and Access Rights.
+        /// </param>
+        /// <returns></returns>
+        /// <remarks>
+        ///     Before calling UnloadUserProfile you should ensure that all handles to keys that you have opened in the user's
+        ///     registry hive are closed. If you do not close all open registry handles, the user's profile fails to unload. For
+        ///     more information, see Registry Key Security and Access Rights and Registry Hives.
+        ///     For more information about calling functions that require administrator privileges, see Running with Special
+        ///     Privileges.
+        /// </remarks>
+        [DllImport("Userenv.dll", CallingConvention = CallingConvention.Winapi, SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern bool UnloadUserProfile(SafeTokenHandle hToken, IntPtr lpProfileInfo);
+
         #endregion
 
-        #region Private Methods
+        #region Nested Type: ProfileInfo
 
         /// <summary>
-        ///     Retrieves information about the specified window. The function also retrieves the value at a specified offset into
-        ///     the extra window memory.
+        /// Contains information used when loading or unloading a user profile.
         /// </summary>
-        /// <param name="hWnd">A handle to the window and, indirectly, the class to which the window belongs.</param>
-        /// <param name="nIndex">
-        ///     The zero-based offset to the value to be retrieved. Valid values are in the range zero through the
-        ///     number of bytes of extra window memory, minus the size of an integer.
-        /// </param>
-        /// <returns>
-        ///     If the function succeeds, the return value is the requested value. If the function fails, the return value is
-        ///     zero. To get extended error information, call GetLastError.
-        /// </returns>
-        /// <remarks>
-        ///     To write code that is compatible with both 32-bit and 64-bit versions of Windows, use GetWindowLongPtr. When
-        ///     compiling for 32-bit Windows, GetWindowLongPtr is defined as a call to the GetWindowLong function.
-        /// </remarks>
-        [DllImport("User32.dll", EntryPoint = "GetWindowLong")]
-        private static extern int GetWindowLongPtr(IntPtr hWnd, WindowIndex nIndex);
+        [StructLayout(LayoutKind.Sequential)]
+        public struct ProfileInfo
+        {
+            /// Specifies the size of the structure, in bytes.
+            public int dwSize;
 
-        /// <summary>
-        ///     Changes an attribute of the specified window. The function also sets a value at the specified offset in the extra
-        ///     window memory.
-        /// </summary>
-        /// <param name="hWnd">
-        ///     A handle to the window and, indirectly, the class to which the window belongs. The SetWindowLongPtr
-        ///     function fails if the process that owns the window specified by the hWnd parameter is at a higher process privilege
-        ///     in the UIPI hierarchy than the process the calling thread resides in.
-        /// </param>
-        /// <param name="nIndex">
-        ///     The zero-based offset to the value to be set. Valid values are in the range zero through the
-        ///     number of bytes of extra window memory, minus the size of an integer.
-        /// </param>
-        /// <param name="dwNewLong">The replacement value.</param>
-        /// <returns>
-        ///     If the function succeeds, the return value is the previous value of the specified offset. If the function
-        ///     fails, the return value is zero. To get extended error information, call GetLastError.
-        /// </returns>
-        /// <remarks>
-        ///     To write code that is compatible with both 32-bit and 64-bit versions of Windows, use SetWindowLongPtr. When
-        ///     compiling for 32-bit Windows, SetWindowLongPtr is defined as a call to the SetWindowLong function.
-        /// </remarks>
-        [DllImport("User32.dll", EntryPoint = "SetWindowLong")]
-        private static extern int SetWindowLongPtr(IntPtr hWnd, WindowIndex nIndex, int dwNewLong);
+            /// This member can be one of the following flags: PI_NOUI or PI_APPLYPOLICY
+            public int dwFlags;
+
+            /// Pointer to the name of the user.
+            /// This member is used as the base name
+            /// of the directory in which to store a new profile.
+            public string lpUserName;
+
+            /// Pointer to the roaming user profile path.
+            /// If the user does not have a roaming profile, this member can be NULL.
+            public string lpProfilePath;
+
+            /// Pointer to the default user profile path. This member can be NULL.
+            public string lpDefaultPath;
+
+            /// Pointer to the name of the validating domain controller, in NetBIOS format.
+            /// If this member is NULL, the Windows NT 4.0-style policy will not be applied.
+            public string lpServerName;
+
+            /// Pointer to the path of the Windows NT 4.0-style policy file. This member can be NULL.
+            public string lpPolicyPath;
+
+            /// Handle to the HKEY_CURRENT_USER registry key.
+            public IntPtr hProfile;
+        }
 
         #endregion
     }

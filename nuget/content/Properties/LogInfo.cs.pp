@@ -7,4 +7,4 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = System.Diagnostics.Log.FileName, Watch = true)]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "Wave.log4net.config", Watch = true)]

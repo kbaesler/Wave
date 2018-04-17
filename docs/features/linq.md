@@ -1,4 +1,5 @@
 # LINQ
+
 The `while` statement is used in conjunction with the ArcFM and ArcGIS APIs to iterate through collections using the `Reset()` and `Next()` method combinations. However, in most cases the `foreach` statement is the preferred method, thus the most frequently used iterators can be converted to an enumerable type using the `AsEnumerable()` extension method, which allows these collections to now take advantage of `LINQ`.
 
 The following is a short list of the interfaces that support enumerable types:

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -77,24 +77,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static bool Contains(this IWorkspace source, esriDatasetType type, string tableName)
         {
-            return ((IWorkspace2)source).NameExists[type, tableName];
+            return ((IWorkspace2) source).NameExists[type, tableName];
         }
 
         /// <summary>
-        ///     Defines the data set definition in the specified workspace.
+        /// Defines the data set definition in the specified workspace.
         /// </summary>
         /// <typeparam name="T">The type of dataset.</typeparam>
         /// <param name="source">The output workspace.</param>
         /// <param name="name">The name of the dataset.</param>
         /// <param name="definition">The definition.</param>
         /// <returns>
-        ///     Returns a <see cref="T" /> representing the definition for the dataset.
+        /// Returns a <see cref="IDatasetName" /> representing the definition for the dataset.
         /// </returns>
         public static T Define<T>(this IWorkspace source, string name, T definition)
             where T : IDatasetName
         {
-            var ds = (IDataset)source;
-            var workspaceName = (IWorkspaceName)ds.FullName;
+            var ds = (IDataset) source;
+            var workspaceName = (IWorkspaceName) ds.FullName;
 
             definition.WorkspaceName = workspaceName;
             definition.Name = name;
@@ -146,6 +146,40 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Executes the specified query (SQL) and returns the results of the single column
+        ///     returned.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="commandText">The command text.</param>
+        /// <param name="fallbackValue">The fallback value.</param>
+        /// <returns>
+        ///     Returns a <see cref="ICursor" /> representing the results of the query.
+        /// </returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public static TValue ExecuteScalar<TValue>(this IWorkspace source, string commandText, TValue fallbackValue)
+        {
+            ISqlWorkspace sw = source as ISqlWorkspace;
+            if (sw == null) throw new NotSupportedException();
+
+            using (var cr = new ComReleaser())
+            {
+                var cursor = sw.OpenQueryCursor(commandText);
+                cr.ManageLifetime(cursor);
+
+                var row = cursor.AsEnumerable().FirstOrDefault();
+                if (row != null)
+                {
+                    TValue value;
+                    if (row.TryGetValue(0, fallbackValue, out value))
+                        return value;
+                }
+            }
+
+            return fallbackValue;
+        }
+
+        /// <summary>
         ///     Finds the dataset using the specified dataset type and name
         /// </summary>
         /// <param name="source">The source.</param>
@@ -158,6 +192,11 @@ namespace ESRI.ArcGIS.Geodatabase
                 ds =>
                 {
                     if (ds.Name == null) return false;
+
+                    if (name.IndexOf(".", StringComparison.OrdinalIgnoreCase) > 0 && ds.Name.IndexOf(".", StringComparison.OrdinalIgnoreCase) > 0)
+                    {
+                        return string.Equals(ds.Name, name, StringComparison.OrdinalIgnoreCase);
+                    }
 
                     return (source.Type == esriWorkspaceType.esriLocalDatabaseWorkspace ||
                             source.Type == esriWorkspaceType.esriFileSystemWorkspace)
@@ -179,7 +218,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IDatasetName Find(this IWorkspace source, esriDatasetType datasetType, Predicate<IDatasetName> predicate)
         {
-            return source.DatasetNames[datasetType].Find(predicate);
+            return source.DatasetNames[datasetType].Find(predicate, datasetType != esriDatasetType.esriDTTable);
         }
 
         /// <summary>
@@ -187,11 +226,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="predicate">The function delegate that determines it should be returned.</param>
+        /// <param name="dfs">if set to <c>true</c> when a depth first search should be used.</param>
         /// <returns>
         ///     Returns a <see cref="IDatasetName" /> representing the dataset that satisfiied the predicate; otherwise <c>null</c>
         ///     .
         /// </returns>
-        public static IDatasetName Find(this IEnumDatasetName source, Predicate<IDatasetName> predicate)
+        public static IDatasetName Find(this IEnumDatasetName source, Predicate<IDatasetName> predicate, bool dfs = true)
         {
             if (source != null)
             {
@@ -202,8 +242,21 @@ namespace ESRI.ArcGIS.Geodatabase
                     if (predicate(dataset))
                         return dataset;
 
-                    var ds = dataset.SubsetNames.Find(predicate);
-                    if (ds != null) return ds;
+                    if (dfs)
+                    {
+                        var ds = dataset.SubsetNames.Find(predicate);
+                        if (ds != null) return ds;
+                    }
+                }
+
+                if (!dfs)
+                {
+                    source.Reset();
+                    while ((dataset = source.Next()) != null)
+                    {
+                        var ds = dataset.SubsetNames.Find(predicate, false);
+                        if (ds != null) return ds;
+                    }
                 }
             }
 
@@ -290,7 +343,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            IWorkspaceDomains wd = (IWorkspaceDomains)source;
+            IWorkspaceDomains wd = (IWorkspaceDomains) source;
             IEnumDomain domains = wd.Domains;
             return domains.AsEnumerable();
         }
@@ -321,7 +374,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             var list = new Dictionary<string, List<DifferenceRow>>();
 
-            IWorkspaceEdit2 workspaceEdit2 = (IWorkspaceEdit2)source;
+            IWorkspaceEdit2 workspaceEdit2 = (IWorkspaceEdit2) source;
             if (!workspaceEdit2.IsBeingEdited())
                 throw new InvalidOperationException("The workspace must be within an edit session in order to determine the edit changes.");
 
@@ -448,11 +501,11 @@ namespace ESRI.ArcGIS.Geodatabase
             if (tableName == null) throw new ArgumentNullException("tableName");
 
             if (source.Contains(esriDatasetType.esriDTFeatureClass, tableName))
-                return ((IFeatureWorkspace)source).OpenFeatureClass(tableName);
+                return ((IFeatureWorkspace) source).OpenFeatureClass(tableName);
 
             var ds = source.Find(esriDatasetType.esriDTFeatureClass, tableName);
             if (ds != null)
-                return ((IFeatureWorkspace)source).OpenFeatureClass(ds.Name);
+                return ((IFeatureWorkspace) source).OpenFeatureClass(ds.Name);
 
             throw new ArgumentOutOfRangeException("tableName");
         }
@@ -537,7 +590,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             if (source == null) return null;
 
-            ISQLSyntax sqlSyntax = (ISQLSyntax)source;
+            ISQLSyntax sqlSyntax = (ISQLSyntax) source;
             string functionName = sqlSyntax.GetFunctionName(sqlFunctionName);
             if (!string.IsNullOrEmpty(functionName))
                 return functionName;
@@ -563,11 +616,11 @@ namespace ESRI.ArcGIS.Geodatabase
             if (tableName == null) throw new ArgumentNullException("tableName");
 
             if (source.Contains(esriDatasetType.esriDTRelationshipClass, tableName))
-                return ((IFeatureWorkspace)source).OpenRelationshipClass(tableName);
+                return ((IFeatureWorkspace) source).OpenRelationshipClass(tableName);
 
             var ds = source.Find(esriDatasetType.esriDTRelationshipClass, tableName);
             if (ds != null)
-                return ((IFeatureWorkspace)source).OpenRelationshipClass(ds.Name);
+                return ((IFeatureWorkspace) source).OpenRelationshipClass(ds.Name);
 
             throw new ArgumentOutOfRangeException("tableName");
         }
@@ -591,7 +644,7 @@ namespace ESRI.ArcGIS.Geodatabase
             datasets = source.Datasets[esriDatasetType.esriDTRelationshipClass];
             foreach (var dataset in datasets.AsEnumerable())
             {
-                yield return (IRelationshipClass)dataset;
+                yield return (IRelationshipClass) dataset;
             }
         }
 
@@ -612,14 +665,21 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return null;
             if (tableName == null) throw new ArgumentNullException("tableName");
 
-            if (source.Contains(esriDatasetType.esriDTTable, tableName))
-                return ((IFeatureWorkspace)source).OpenTable(tableName);
+            esriDatasetType[] types = {esriDatasetType.esriDTTable, esriDatasetType.esriDTFeatureClass};
+            foreach (var type in types)
+            {
+                if (source.Contains(type, tableName))
+                    return ((IFeatureWorkspace) source).OpenTable(tableName);
+            }
 
-            var ds = source.Find(esriDatasetType.esriDTTable, tableName);
-            if (ds != null)
-                return ((IFeatureWorkspace)source).OpenTable(ds.Name);
+            foreach (var type in types)
+            {
+                var ds = source.Find(type, tableName);
+                if (ds != null)
+                    return ((IFeatureWorkspace) source).OpenTable(ds.Name);
+            }
 
-            throw new ArgumentOutOfRangeException("tableName");
+            throw new ArgumentOutOfRangeException("tableName", $@"The {tableName} table was not found.");
         }
 
         /// <summary>
@@ -629,7 +689,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
         public static IEnumerable<string> GetTableNames(this IWorkspace source)
         {
-            var sw = (ISqlWorkspace)source;
+            var sw = (ISqlWorkspace) source;
             return sw.GetTables().AsEnumerable();
         }
 
@@ -674,15 +734,16 @@ namespace ESRI.ArcGIS.Geodatabase
             if (source == null) return false;
 
             // Cast to the ISQLSyntax interface and get the supportedPredicates value.
-            ISQLSyntax sqlSyntax = (ISQLSyntax)source;
+            ISQLSyntax sqlSyntax = (ISQLSyntax) source;
             int supportedPredicates = sqlSyntax.GetSupportedPredicates();
 
             // Cast the predicate value to an integer and use bitwise arithmetic to check for support.
-            int predicateValue = (int)predicate;
+            int predicateValue = (int) predicate;
             int supportedValue = predicateValue & supportedPredicates;
 
             return supportedValue > 0;
         }
+
 
         /// <summary>
         ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
@@ -818,6 +879,95 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such
         ///     suppression).
         /// </param>
+        /// <param name="operation">
+        ///     The delegate that performs the operation and the action delegate used to commit the transaction
+        ///     (i.e. edit operation).
+        /// </param>
+        /// <param name="error">
+        ///     The error handling action that occurred during commit when true is returned the error has been
+        ///     handled.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing <c>true</c> when the operation completes.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">operation</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">source;An edit operation is already started.</exception>
+        public static bool PerformOperation(this IWorkspaceEdit source, bool withUndoRedo, Func<Action, bool> operation, Func<COMException, bool> error)
+        {
+            if (source == null) return false;
+            if (operation == null) throw new ArgumentNullException("operation");
+
+            if (!source.IsBeingEdited())
+                source.StartEditing(withUndoRedo);
+
+            source.StartEditOperation();
+
+            bool saveEdits = false;
+            bool editOperation = true;
+
+            Action commit = () =>
+            {
+                source.StopEditOperation();
+                editOperation = false;
+
+                source.StopEditing(true);
+
+                source.StartEditing(withUndoRedo);
+                saveEdits = false;
+
+                source.StartEditOperation();
+                editOperation = true;
+            };
+
+            try
+            {
+                saveEdits = operation(commit);
+            }
+            catch
+            {
+                source.AbortEditOperation();
+                editOperation = false;
+
+                throw;
+            }
+            finally
+            {
+                if (editOperation)
+                {
+                    if (saveEdits)
+                        source.StopEditOperation();
+                    else
+                        source.AbortEditOperation();
+                }
+
+                if (source.IsBeingEdited())
+                {
+                    try
+                    {
+                        source.StopEditing(saveEdits);
+                    }
+                    catch (COMException com)
+                    {
+                        if (!error(com))
+                            throw;
+
+                        source.StopEditing(saveEdits);
+                    }
+                }
+            }
+
+            return saveEdits;
+        }
+
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> in the necessary start and stop operation constructs.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">
+        ///     if set to <c>true</c> the undo/redo logging is supressed (if the workspace supports such
+        ///     suppression).
+        /// </param>
         /// <param name="operation">The delegate that performs the operation.</param>
         /// <param name="error">
         ///     The error handling action that occurred during commit when true is returned the error has been
@@ -882,6 +1032,150 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Peforms the transaction and comits it on completion of the action, and should only be used for direct updates.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <remarks>
+        ///     Applications can use transactions to manage direct updates, for example, updates made outside of an edit
+        ///     session, on object and feature classes that are tagged as not requiring an edit session.
+        /// </remarks>
+        public static void PerformTransaction(this ITransactions source, Action transaction)
+        {
+            source.StartTransaction();
+
+            try
+            {
+                transaction();
+
+                source.CommitTransaction();
+            }
+            catch (Exception)
+            {
+                source.AbortTransaction();
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///     Peforms the transaction and comits it on completion of the action, and should only be used for direct updates.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <returns>Returns the result of the transaction.</returns>
+        /// <remarks>
+        ///     Applications can use transactions to manage direct updates, for example, updates made outside of an edit
+        ///     session, on object and feature classes that are tagged as not requiring an edit session.
+        /// </remarks>
+        public static TResult PerformTransaction<TResult>(this ITransactions source, Func<TResult> transaction)
+        {
+            TResult result;
+            source.StartTransaction();
+
+            try
+            {
+                result = transaction();
+
+                source.CommitTransaction();
+            }
+            catch (Exception)
+            {
+                source.AbortTransaction();
+
+                throw;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Check the status of an open workspace. If a workspace is disconnected,
+        ///     the method will ping it until it's once again available, or a maximum number of checks are exhausted.
+        ///     Between checking a workspace's status, it will sleep for a number of milliseconds specified.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="disconnected">if set to <c>true</c> the workspace has been disconnected.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="retryAttempts">The retry attempts.</param>
+        /// <param name="sleepTime">The sleep time.</param>
+        /// <returns>
+        ///     The return parameter is null if the workspace was never disconnected, or if it was disconnected and
+        ///     could not be reconnected. If it has been disconnected but was successfully reconnected, the return
+        ///     value is the newly-reconnected workspace. The outbound parameter can be used to disambiguate a null
+        ///     return value. It's important to note that if a workspace was disconnected and reconnected, all of the
+        ///     workspace objects - i.e. feature classes and tables - must be reopened.
+        /// </returns>
+        /// <exception cref="System.ArgumentException">The workspace could not be found.</exception>
+        /// <remarks>
+        ///     This method should be used as an error handling routine when it's suspected problems are being
+        ///     caused due to workspace disconnection.
+        /// </remarks>
+        public static IWorkspace Reconnect(this IWorkspace source, out bool disconnected, string fileName = null, int retryAttempts = 3, int sleepTime = 250)
+        {
+            // At this point, assume disconnection hasn't taken place.
+            disconnected = false;
+
+            try
+            {
+                // Attempt to locate a matching workspace.
+                IWorkspaceFactoryStatus workspaceFactoryStatus = (IWorkspaceFactoryStatus) source.WorkspaceFactory;
+                IEnumWorkspaceStatus enumWorkspaceStatus = workspaceFactoryStatus.WorkspaceStatus;
+                IWorkspaceStatus workspaceStatus;
+                while ((workspaceStatus = enumWorkspaceStatus.Next()) != null)
+                {
+                    if (source.Equals(workspaceStatus.Workspace))
+                    {
+                        break;
+                    }
+                }
+
+                // When there is no matching status object.
+                if (workspaceStatus == null)
+                {
+                    throw new ArgumentException("The workspace could not be found.");
+                }
+
+                // Check the workspace's connection status.
+                if (workspaceStatus.ConnectionStatus == esriWorkspaceConnectionStatus.esriWCSDown)
+                {
+                    // Indicate that disconnection has occurred.
+                    disconnected = true;
+
+                    // Ping the workspace up to a maximum number of times.
+                    for (int i = 0; i < retryAttempts; i++)
+                    {
+                        // PingWorkspaceStatus should only be used on a workspace that is known to be down.
+                        IWorkspaceStatus pingStatus = workspaceFactoryStatus.PingWorkspaceStatus(source);
+
+                        // If the workspace becomes available, reopen it and break out of the loop.
+                        if (pingStatus.ConnectionStatus == esriWorkspaceConnectionStatus.esriWCSAvailable)
+                        {
+                            return workspaceFactoryStatus.OpenAvailableWorkspace(pingStatus);
+                        }
+
+                        Thread.Sleep(sleepTime);
+                    }
+                }
+            }
+            catch (InvalidComObjectException)
+            {
+                // The reconnect is optional.
+                if (string.IsNullOrEmpty(fileName))
+                    throw;
+
+                // Indicate that disconnection has occurred.
+                disconnected = true;
+
+                // Reconnect to the workspace.
+                source = WorkspaceFactories.Open(fileName);
+            }
+
+            return source;
+        }
+
+        /// <summary>
         ///     Transfers one or more datasets from one geodatabase to another geodatabase, which includes tables, feature classes,
         ///     feature datasets, or any other kind of dataset and a set containing
         ///     different types of datasets.
@@ -909,8 +1203,8 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="resolveNameConflict">The resolve name conflict function.</param>
         public static void Transfer(this IWorkspace source, IWorkspace workspace, IEnumName fromNames, out bool conflicts, out IEnumNameMapping enumNameMapping, Func<INameMapping, IName, string> resolveNameConflict)
         {
-            IWorkspaceName targetWorkspaceName = (IWorkspaceName)((IDataset)workspace).FullName;
-            IName targetName = (IName)targetWorkspaceName;
+            IWorkspaceName targetWorkspaceName = (IWorkspaceName) ((IDataset) workspace).FullName;
+            IName targetName = (IName) targetWorkspaceName;
 
             IGeoDBDataTransfer2 transfer = new GeoDBDataTransferClass();
             conflicts = transfer.GenerateNameMapping(fromNames, targetName, out enumNameMapping);

@@ -103,7 +103,7 @@ namespace Miner.Interop
                         value = this.OnRefresh();
                         break;
 
-                    case mmAutoTextEvents.mmStartPlot:
+                    default:
                         value = this.OnStart(pMapProdInfo);
                         break;
                 }

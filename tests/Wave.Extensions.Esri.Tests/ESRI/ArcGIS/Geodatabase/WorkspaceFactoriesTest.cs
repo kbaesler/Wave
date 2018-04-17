@@ -38,21 +38,14 @@ namespace Wave.Extensions.Esri.Tests
         public void WorkspaceFactories_GetFactory_FileNotFoundException()
         {
             Assert.IsNull(WorkspaceFactories.GetFactory("@C:\\kadhfakjfh.sde"));
-        }
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void WorkspaceFactories_GetFactory_NotNull()
-        {
-            Assert.IsNotNull(WorkspaceFactories.GetFactory(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))));
-        }
+        }       
 
         [TestMethod]
         [TestCategory("ESRI")]
         [ExpectedException(typeof (ArgumentNullException))]
         public void WorkspaceFactories_Open_ArgumentNullException()
         {
-            Assert.IsNull(WorkspaceFactories.Open(null));
+            Assert.IsNull(WorkspaceFactories.Open(""));
         }
 
         [TestMethod]
@@ -61,13 +54,6 @@ namespace Wave.Extensions.Esri.Tests
         public void WorkspaceFactories_Open_FileNotFoundException()
         {
             Assert.IsNull(WorkspaceFactories.Open("@C:\\*.sde"));
-        }
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void WorkspaceFactories_Open_NotNull()
-        {
-            Assert.IsNotNull(WorkspaceFactories.Open(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.Minerville))));
         }
 
         #endregion

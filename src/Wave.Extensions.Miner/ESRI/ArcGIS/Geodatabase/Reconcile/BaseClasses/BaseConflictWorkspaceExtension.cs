@@ -337,7 +337,7 @@ namespace ESRI.ArcGIS.Geodatabase
                     set = conflictClass.UpdateDeletes;
                     break;
 
-                case TableConflictType.UpdateUpdates:
+                default:
                     set = conflictClass.UpdateUpdates;
                     break;
             }

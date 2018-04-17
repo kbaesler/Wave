@@ -40,6 +40,26 @@ namespace System.Collections
         }
 
         /// <summary>
+        ///     Adds a key/value pair to the <see cref="IDictionary{TKey, TValue}" /> if the key does not already exist
+        /// </summary>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="key">The key of the element to add.</param>
+        /// <param name="value">the value to be added, if the key does not already exist</param>
+        /// <returns>
+        ///     The value for the key. This will be either the existing value for the key if the key is already in the
+        ///     dictionary, or the new value if the key was not in the dictionary.
+        /// </returns>
+        public static TValue GetOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key, TValue value)
+        {
+            if (!source.ContainsKey(key))
+                source.Add(key, value);
+
+            return source[key];
+        }
+
+        /// <summary>
         ///     Returns true if <paramref name="source" /> has no items in it; otherwise, falSE.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>

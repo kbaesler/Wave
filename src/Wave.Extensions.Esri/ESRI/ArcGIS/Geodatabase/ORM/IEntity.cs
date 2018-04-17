@@ -19,20 +19,7 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Public Methods
 
         /// <summary>
-        ///     Binds the entity to specified object from the context.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="oid">The OBJECTID of the row to bind.</param>
-        void Bind(TContext context, int oid);
-
-        /// <summary>
-        ///     Binds the entity to specified row.
-        /// </summary>
-        /// <param name="row">The row.</param>
-        void Bind(IRow row);
-
-        /// <summary>
-        ///     Deletes this item from the context.
+        ///     Deletes the entity.
         /// </summary>
         void Delete();
 
@@ -44,7 +31,7 @@ namespace ESRI.ArcGIS.Geodatabase
         int Insert(TContext context);
 
         /// <summary>
-        ///     Commits changes to the context.
+        ///     Commits changes.
         /// </summary>
         void Update();
 

@@ -77,7 +77,7 @@ namespace System.Windows
         /// <summary>
         ///     Requests cancellation of a pending background operation.
         /// </summary>
-        protected void CancelAsync()
+        protected virtual void CancelAsync()
         {
             if (_Worker != null && _Worker.IsBusy)
             {

@@ -16,7 +16,7 @@ namespace Wave.IEV
         #region Fields
 
         public string ConnectionFile;
-        public string Delta;
+        public string Path;
         public ProgramTask Task = ProgramTask.Export;
         public string VersionName;
 
@@ -43,8 +43,8 @@ namespace Wave.IEV
                     .As('c', "connection")
                     .Required();
 
-                p.Setup(arg => arg.Delta)
-                    .As('d', "delta")
+                p.Setup(arg => arg.Path)
+                    .As('p', "path")
                     .Required();
 
                 p.Setup(arg => arg.Task)
@@ -89,7 +89,7 @@ namespace Wave.IEV
                             var version = versionedWorkspace.DefaultVersion.CreateVersion(args.VersionName);
                             var workspaceName = (IWorkspaceName)((IDataset)version).FullName;
 
-                            string changesFileName = Path.GetFullPath(args.Delta);
+                            string changesFileName = Path.GetFullPath(args.Path);
 
                             IDeltaDataChangesInit2 ddci = new DeltaDataChangesClass();
                             ddci.Init2(changesFileName, esriExportDataChangesOption.esriExportToXML, false);
@@ -107,7 +107,7 @@ namespace Wave.IEV
                             IWorkspaceName wsNameSource = (IWorkspaceName)((IDataset)source).FullName;
                             IWorkspaceName wsNameTarget = (IWorkspaceName)((IDataset)target).FullName;
 
-                            var exportFileName = Path.Combine(Path.GetFullPath(args.Delta), args.VersionName + ".xml");
+                            var exportFileName = Path.Combine(Path.GetFullPath(args.Path), args.VersionName + ".xml");
 
                             IVersionDataChangesInit vdci = new VersionDataChangesClass();
                             vdci.Init(wsNameSource, wsNameTarget);

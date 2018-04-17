@@ -16,8 +16,8 @@ namespace System.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty ContentProperty = DependencyProperty.RegisterAttached(
             "Content",
-            typeof (FrameworkElement),
-            typeof (Watermark),
+            typeof(FrameworkElement),
+            typeof(Watermark),
             new FrameworkPropertyMetadata(null, OnContentChanged));
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace System.Windows.Controls
         /// <returns>The value of the content property</returns>
         public static FrameworkElement GetContent(DependencyObject d)
         {
-            return (FrameworkElement) d.GetValue(ContentProperty);
+            return (FrameworkElement)d.GetValue(ContentProperty);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace System.Windows.Controls
         /// <param name="e">A <see cref="RoutedEventArgs" /> that contains the event data.</param>
         private static void Control_GotKeyboardFocus(object sender, RoutedEventArgs e)
         {
-            Control c = (Control) sender;
+            Control c = (Control)sender;
             c.TryRemoveAdorners<WatermarkAdorner>();
         }
 
@@ -71,7 +71,7 @@ namespace System.Windows.Controls
         /// <param name="e">A <see cref="RoutedEventArgs" /> that contains the event data.</param>
         private static void Control_Loaded(object sender, RoutedEventArgs e)
         {
-            Control c = (Control) sender;
+            Control c = (Control)sender;
             UpdateWatermark(c);
         }
 
@@ -96,7 +96,7 @@ namespace System.Windows.Controls
         /// <param name="e">A <see cref="EventArgs" /> that contains the event data.</param>
         private static void ItemsSourceChanged(object sender, EventArgs e)
         {
-            ItemsControl c = (ItemsControl) sender;
+            ItemsControl c = (ItemsControl)sender;
             if (c.ItemsSource != null)
             {
                 UpdateWatermark(c);
@@ -114,7 +114,7 @@ namespace System.Windows.Controls
         /// <param name="e">A <see cref="DependencyPropertyChangedEventArgs" /> that contains the event data.</param>
         private static void OnContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Control control = (Control) d;
+            Control control = (Control)d;
             control.Loaded += Control_Loaded;
 
             ComboBox comboBox = d as ComboBox;
@@ -156,7 +156,7 @@ namespace System.Windows.Controls
             TextBox textBox = c as TextBox;
             ItemsControl itemsControl = c as ItemsControl;
             AutoCompleteTextBox autoCompleteTextBox = c as AutoCompleteTextBox;
-            
+
             if (comboBox != null)
             {
                 return string.IsNullOrEmpty(comboBox.Text);
@@ -200,7 +200,7 @@ namespace System.Windows.Controls
         /// <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs" /> instance containing the event data.</param>
         private static void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Control c = (Control) sender;
+            Control c = (Control)sender;
             UpdateWatermark(c);
         }
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 
 namespace ESRI.ArcGIS.Carto
 {
@@ -81,6 +83,54 @@ namespace ESRI.ArcGIS.Carto
                 for (int i = 0; i < source.Count - 1; i++)
                     yield return source.Item[i];
             }
+        }
+
+        /// <summary>
+        ///     Returns the first layer that are associated with the <paramref name="table" /> that resides the map.
+        /// </summary>
+        /// <param name="source">The map.</param>
+        /// <param name="table">The feature class.</param>
+        /// <returns>
+        ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers are associated with the feature
+        ///     class.
+        /// </returns>
+        public static IFeatureClass GetFeatureClass(this IMap source, IFeatureClass table)
+        {
+            var layers = source.GetFeatureLayers(table);
+            return layers.Select(o => o.FeatureClass).FirstOrDefault();
+        }
+
+        /// <summary>
+        ///     Returns the layer that has the give layer name.
+        /// </summary>
+        /// <param name="source">The map.</param>
+        /// <param name="layerName">Name of the layer.</param>
+        /// <returns>
+        ///     Returns the <see cref="IFeatureClass" /> representing the layer with the specified name.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">layerName</exception>
+        public static IFeatureClass GetFeatureClass(this IMap source, string layerName)
+        {
+            var layer = source.GetFeatureLayer(layerName);
+            return layer != null ? layer.FeatureClass : null;
+        }
+
+        /// <summary>
+        ///     Returns the layer that has the give layer name.
+        /// </summary>
+        /// <param name="source">The map.</param>
+        /// <param name="layerName">Name of the layer.</param>
+        /// <returns>
+        ///     Returns the <see cref="IFeatureLayer" /> representing the layer with the specified name.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">layerName</exception>
+        public static IFeatureLayer GetFeatureLayer(this IMap source, string layerName)
+        {
+            if (source == null) return null;
+            if (layerName == null) throw new ArgumentNullException("layerName");
+
+            var list = source.GetFeatureLayers();
+            return list.FirstOrDefault(o => o.Name.Equals(layerName, StringComparison.CurrentCultureIgnoreCase));
         }
 
         /// <summary>
@@ -341,6 +391,16 @@ namespace ESRI.ArcGIS.Carto
         }
 
         /// <summary>
+        ///     Determines whether this map contains any layers meaning it is empty.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="bool" /> representing <c>true</c> when the map is empty.</returns>
+        public static bool IsEmpty(this IMap source)
+        {
+            return source.LayerCount == 0;
+        }
+
+        /// <summary>
         ///     Determines whether the specified layer is visible in the map.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -371,8 +431,7 @@ namespace ESRI.ArcGIS.Carto
             layers.IsLayerVisibleEx(layer, out isLayerVisible, out isParentVisible);
             return isParentVisible;
         }
-
-
+        
         /// <summary>
         ///     Traverses the <paramref name="source" /> selecting only those layers that satisfy the
         ///     <paramref name="selector" />

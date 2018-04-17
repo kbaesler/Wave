@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
-using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.GeoDatabaseUI;
@@ -148,21 +145,42 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Exports the source table using the query filter to the table in the output workspace.
+        /// Exports the source table using the query filter to the table in the output workspace.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="filter">The filter.</param>
         /// <param name="tableName">Name of the output table.</param>
         /// <param name="workspace">The workspace.</param>
         /// <param name="handle">The handle.</param>
+        /// <param name="keepFeatureDatset">if set to <c>true</c> when the feature class should be created within feature datset.</param>
         /// <param name="errors">The errors that occured during the export.</param>
         /// <returns>
-        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
+        /// Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
         /// </returns>
-        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, out IEnumInvalidObject errors)
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, bool keepFeatureDatset, out IEnumInvalidObject errors)
         {
             IEnumFieldError fieldError;
-            return source.Export(filter, tableName, workspace, source.Fields, handle, out errors, out fieldError);
+            return source.Export(filter, tableName, workspace, source.Fields, handle, keepFeatureDatset, null, out errors, out fieldError);
+        }
+
+        /// <summary>
+        /// Exports the source table using the query filter to the table in the output workspace.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="tableName">Name of the output table.</param>
+        /// <param name="workspace">The workspace.</param>
+        /// <param name="handle">The handle.</param>
+        /// <param name="keepFeatureDatset">if set to <c>true</c> when the feature class should be created within feature datset.</param>
+        /// <param name="surrogate">The surrogate for the event handler.</param>
+        /// <param name="errors">The errors that occured during the export.</param>
+        /// <returns>
+        /// Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
+        /// </returns>
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle, bool keepFeatureDatset, FeatureProgress surrogate, out IEnumInvalidObject errors)
+        {
+            IEnumFieldError fieldError;
+            return source.Export(filter, tableName, workspace, source.Fields, handle, keepFeatureDatset, surrogate, out errors, out fieldError);
         }
 
         /// <summary>
@@ -174,20 +192,24 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="workspace">The output workspace.</param>
         /// <param name="requiredFields">The required fields.</param>
         /// <param name="handle">The handle.</param>
+        /// <param name="keepFeatureDatset">if set to <c>true</c> when the feature class should be created within feature datset.</param>
+        /// <param name="surrogate">The surrogate for the event handler.</param>
         /// <param name="invalid">The errors that occured during the export.</param>
         /// <param name="errors">The field errors.</param>
         /// <returns>
         /// Returns a <see cref="IFeatureClass" /> representing the feature class that was exported.
         /// </returns>
-        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, out IEnumInvalidObject invalid, out IEnumFieldError errors)
+        public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, IFields requiredFields, int handle, bool keepFeatureDatset, FeatureProgress surrogate, out IEnumInvalidObject invalid, out IEnumFieldError errors)
         {
             var ds = (IDataset)source;
 
             var input = ds.Workspace.Define(ds.Name, new FeatureClassNameClass());
             var output = workspace.Define(tableName, new FeatureClassNameClass());
 
-            if (source.FeatureDataset != null)
+            if (source.FeatureDataset != null && keepFeatureDatset)
+            {
                 output.FeatureDatasetName = source.FeatureDataset.FullName as IDatasetName;
+            }
 
             var i = source.Fields.FindField(source.ShapeFieldName);
             var field = source.Fields.Field[i];
@@ -203,7 +225,12 @@ namespace ESRI.ArcGIS.Geodatabase
             IFields targetFields;
             fieldChecker.Validate(requiredFields, out errors, out targetFields);
 
-            IFeatureDataConverter featureDataConverter = new FeatureDataConverterClass();
+            var featureDataConverter = new FeatureDataConverterClass();
+            if (surrogate != null)
+            {
+                surrogate.Advise(featureDataConverter);
+            }
+
             invalid = featureDataConverter.ConvertFeatureClass(input, filter, null, output, geometryDef, targetFields, "", 1000, handle);
 
             return ((IName)output).Open() as IFeatureClass;
@@ -222,34 +249,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         public static IFeatureClass Export(this IFeatureClass source, IQueryFilter filter, string tableName, IWorkspace workspace, int handle)
         {
-            var ds = (IDataset)source;
-            var inputDatasetName = (IDatasetName)ds.FullName;
-
-            var outputFeatureClass = workspace.Define(tableName, new FeatureClassNameClass());
-            if (source.FeatureDataset != null)
-                outputFeatureClass.FeatureDatasetName = source.FeatureDataset.FullName as IDatasetName;
-
-            ISelectionSet selection = null;
-            if (source.HasOID)
-            {
-                IScratchWorkspaceFactory2 factory = new ScratchWorkspaceFactoryClass();
-                var selectionContainer = factory.DefaultScratchWorkspace;
-
-                selection = source.Select(filter, esriSelectionType.esriSelectionTypeIDSet, esriSelectionOption.esriSelectionOptionNormal, selectionContainer);
-            }
-
-            var i = source.Fields.FindField(source.ShapeFieldName);
-            var field = source.Fields.Field[i];
-            var clone = (IClone)field.GeometryDef;
-            var geometryDef = (IGeometryDef)clone.Clone();
-
-            workspace.Delete(outputFeatureClass);
-
-            IExportOperation operation = new ExportOperationClass();
-            operation.ExportFeatureClass(inputDatasetName, filter, selection, geometryDef, outputFeatureClass, handle);
-
-            var table = workspace.GetFeatureClass(tableName);
-            return table;
+            IEnumInvalidObject errors;
+            IEnumFieldError fieldError;
+            return source.Export(filter, tableName, workspace, source.Fields, handle, true, null, out errors, out fieldError);
         }
 
         /// <summary>

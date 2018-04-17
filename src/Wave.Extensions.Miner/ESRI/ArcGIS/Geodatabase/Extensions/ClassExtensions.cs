@@ -501,7 +501,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                         break;
 
-                    case esriRelRole.esriRelRoleOrigin:
+                    default:
                         if (relClass.DestinationClass.IsAssignedClassModelName(modelNames))
                             yield return relClass;
 

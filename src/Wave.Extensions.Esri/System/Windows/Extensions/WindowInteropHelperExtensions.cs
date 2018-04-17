@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms.Integration;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Windows.Forms.Integration;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -11,10 +13,57 @@ namespace System.Windows
     /// </summary>
     public static class WindowInteropHelperExtensions
     {
+        #region Fields
+
+        private static readonly Dictionary<string, Window> Windows = new Dictionary<string, Window>();
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
-        ///     Opens a window and returns without waiting for the newly opened window to cloSE.
+        ///     Opens a window and returns without waiting for the newly opened window to close.
+        /// </summary>
+        /// <param name="window">The window.</param>
+        /// <param name="singleton">if set to <c>true</c> only once instance of the window will be shown.</param>
+        public static void Show(this Window window, bool singleton)
+        {
+            window.Show(IntPtr.Zero, singleton);
+        }
+
+        /// <summary>
+        ///     Opens a window and returns without waiting for the newly opened window to close.
+        /// </summary>
+        /// <param name="window">The window.</param>
+        /// <param name="owner">The owner.</param>
+        /// <param name="singleton">if set to <c>true</c> only once instance of the window will be shown.</param>
+        public static void Show(this Window window, IntPtr owner, bool singleton)
+        {
+            if (singleton)
+            {
+                if (!Windows.ContainsKey(window.GetType().Name))
+                {
+                    window.Show(owner);
+                    window.Closed += (sender, args) =>
+                    {
+                        Windows.Remove(window.GetType().Name);
+                    };
+
+                    Windows.Add(window.GetType().Name, window);
+                }
+                else
+                {
+                    Windows[window.GetType().Name].Show(owner);
+                }
+            }
+            else
+            {
+                window.Show(owner);
+            }
+        }
+
+        /// <summary>
+        ///     Opens a window and returns without waiting for the newly opened window to close.
         /// </summary>
         /// <param name="window">The window.</param>
         /// <param name="owner">The owner.</param>
@@ -39,7 +88,7 @@ namespace System.Windows
         /// <param name="owner">The owner.</param>
         public static void Show(this Window window, IWin32Window owner)
         {
-            Show(window, owner.Handle);
+            Show(window, owner.Handle, false);
         }
 
         /// <summary>

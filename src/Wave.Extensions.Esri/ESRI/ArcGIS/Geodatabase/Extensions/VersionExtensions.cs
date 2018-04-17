@@ -2,13 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Editor;
 using ESRI.ArcGIS.GeoDatabaseDistributed;
 
 namespace ESRI.ArcGIS.Geodatabase
@@ -39,6 +38,24 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Creates an enumeration of the <see cref="IEnumModifiedClassInfo" /> object.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns>Returns a <see cref="IEnumerable{IModifiedClassInfo}" /> representing the items.</returns>
+        public static IEnumerable<IModifiedClassInfo> AsEnumerable(this IEnumModifiedClassInfo source)
+        {
+            if (source != null)
+            {
+                source.Reset();
+                IModifiedClassInfo mci;
+                while ((mci = source.Next()) != null)
+                {
+                    yield return mci;
+                }
+            }
+        }
+
+        /// <summary>
         ///     Creates the version or returns the version that already exists.
         /// </summary>
         /// <param name="source">The source.</param>
@@ -54,7 +71,9 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 var version = source.DefaultVersion.CreateVersion(name);
                 version.Access = access;
-                version.Description = description;
+
+                if (!string.IsNullOrEmpty(description))
+                    version.Description = description.Length > 64 ? description.Substring(0, 64) : description; // The size limit on the description is 62 characters.
 
                 return version;
             }
@@ -64,6 +83,25 @@ namespace ESRI.ArcGIS.Geodatabase
                     return source.GetVersion(name);
 
                 throw;
+            }
+        }
+
+        /// <summary>
+        ///     Deletes the version (when it exists).
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="name">The name.</param>
+        public static void DeleteVersion(this IVersionedWorkspace source, string name)
+        {
+            using (ComReleaser cr = new ComReleaser())
+            {
+                var version = source.GetVersion(name);
+                cr.ManageLifetime(version);
+
+                if (version != null)
+                {
+                    version.Delete();
+                }
             }
         }
 
@@ -108,7 +146,7 @@ namespace ESRI.ArcGIS.Geodatabase
             if (target == null) throw new ArgumentNullException("target");
             if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
 
-            return source.GetDataChanges(target, (s, t) => t != null, dataChangeTypes);
+            return source.GetDataChanges(target, (mci) => mci.ClassID > 0, dataChangeTypes);
         }
 
         /// <summary>
@@ -133,14 +171,14 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     dataChangeTypes
         /// </exception>
-        public static Dictionary<string, DeltaRowCollection> GetDataChanges(this IVersion source, IVersion target, Func<string, ITable, bool> predicate, params esriDataChangeType[] dataChangeTypes)
+        public static Dictionary<string, DeltaRowCollection> GetDataChanges(this IVersion source, IVersion target, Func<IModifiedClassInfo, bool> predicate, params esriDataChangeType[] dataChangeTypes)
         {
             if (source == null) return null;
             if (target == null) throw new ArgumentNullException("target");
             if (predicate == null) throw new ArgumentNullException("predicate");
             if (dataChangeTypes == null) throw new ArgumentNullException("dataChangeTypes");
 
-            var list = new Dictionary<string, DeltaRowCollection>();
+            var list = new Dictionary<string, DeltaRowCollection>(StringComparer.Create(CultureInfo.InvariantCulture, true));
 
             IVersionDataChangesInit vdci = new VersionDataChangesClass();
             IWorkspaceName wsNameSource = (IWorkspaceName) ((IDataset) source).FullName;
@@ -150,48 +188,58 @@ namespace ESRI.ArcGIS.Geodatabase
             IDataChanges dataChanges = (IDataChanges) vdci;
             IDataChangesInfo dci = (IDataChangesInfo) vdci;
 
+            var tasks = new List<Action>();
+
             IEnumModifiedClassInfo enumMci = dataChanges.GetModifiedClassesInfo();
-            enumMci.Reset();
-            IModifiedClassInfo mci;
-            while ((mci = enumMci.Next()) != null)
+            foreach (var mci in enumMci.AsEnumerable())
             {
-                string tableName = mci.ChildClassName;
-                var rows = new DeltaRowCollection(tableName, source, target);
-
-                using (ComReleaser cr = new ComReleaser())
+                // Validate that the table needs to be loaded.
+                if (predicate(mci))
                 {
-                    // Load the copy of the table from the source version.
-                    ITable table = ((IFeatureWorkspace) source).OpenTable(tableName);
-                    cr.ManageLifetime(table);
-
-                    // Validate that the table needs to be loaded.
-                    if (predicate(tableName, table))
+                    string tableName = mci.ChildClassName;
+                    tasks.Add(() =>
                     {
+                        var rows = new DeltaRowCollection(mci, source, target);
+                        var actions = new List<Action>();
+
                         // Determines if the table represents a feature class.
-                        bool isFeatureClass = (mci.DatasetType == esriDatasetType.esriDTFeatureClass);
+                        bool isFeatureClass = mci.DatasetType == esriDatasetType.esriDTFeatureClass;
 
                         // Iterate through all of the data change types.
                         foreach (var dataChangeType in dataChangeTypes)
                         {
-                            // IRow objects returned from a difference cursor are meant to be a read only. Thus, only the OIDs are being loaded and
-                            // the rows are hydrated from the struct.
-                            IFIDSet set = dci.ChangedIDs[tableName, dataChangeType];
-                            set.Reset();
-
-                            int oid;
-                            set.Next(out oid);
-                            while (oid != -1)
+                            actions.Add(() =>
                             {
-                                var row = new DeltaRow(dataChangeType, oid, tableName, isFeatureClass);
-                                rows.Add(row);
+                                // IRow objects returned from a difference cursor are meant to be a read only. Thus, only the OIDs are being loaded and
+                                // the rows are hydrated from the struct.
+                                IFIDSet set = dci.ChangedIDs[tableName, dataChangeType];
+                                set.Reset();
 
+                                int oid;
                                 set.Next(out oid);
-                            }
+                                while (oid != -1)
+                                {
+                                    var row = new DeltaRow(dataChangeType, oid, tableName, isFeatureClass);
+                                    rows.Add(row);
+
+                                    set.Next(out oid);
+                                }
+                            });
+                        }
+
+                        if (actions.Any())
+                        {
+                            Task.WaitAll(actions);
                         }
 
                         list.Add(tableName, rows);
-                    }
+                    });
                 }
+            }
+
+            if (tasks.Any())
+            {
+                Task.WaitAll(tasks);
             }
 
             return list;
@@ -357,7 +405,6 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IWorkspace) source).GetFeatureClass(tableName);
         }
 
-
         /// <summary>
         ///     Gets the parent version.
         /// </summary>
@@ -401,7 +448,10 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             try
             {
-                return source.FindVersion(name);
+                var version = source.FindVersion(name);
+                version.RefreshVersion();
+
+                return version;
             }
             catch (COMException e)
             {
@@ -412,7 +462,6 @@ namespace ESRI.ArcGIS.Geodatabase
                 throw;
             }
         }
-
 
         /// <summary>
         ///     Gets the locks.
@@ -444,6 +493,44 @@ namespace ESRI.ArcGIS.Geodatabase
 
         /// <summary>
         ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
+        ///     <paramref name="withUndoRedo" />s
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing the state of the operation.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        public static bool PerformOperation(this IVersion source, bool withUndoRedo, Func<Action, bool> operation)
+        {
+            return ((IWorkspaceEdit) source).PerformOperation(withUndoRedo, operation, error => false);
+        }
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
+        ///     <paramref name="withUndoRedo" />s
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="withUndoRedo">if set to <c>true</c> when the changes are reverted when the edits are aborted.</param>
+        /// <param name="operation">
+        ///     The edit operation delegate that handles making the necessary edits. When the delegate returns
+        ///     <c>true</c> the edits will be saved; otherwise they will not be saved.
+        /// </param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing the state of the operation.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">action</exception>
+        public static bool PerformOperation(this IVersion source, bool withUndoRedo, Func<bool> operation)
+        {
+            return ((IWorkspaceEdit) source).PerformOperation(withUndoRedo, operation, error => false);
+        }
+
+        /// <summary>
+        ///     Encapsulates the <paramref name="operation" /> by the necessary start and stop edit constructs using the specified
         ///     <paramref name="withUndoRedo" /> and
         ///     <paramref name="multiuserEditSessionMode" /> parameters.
         /// </summary>
@@ -470,10 +557,84 @@ namespace ESRI.ArcGIS.Geodatabase
             return ((IWorkspace) source).PerformOperation(withUndoRedo, multiuserEditSessionMode, operation, error => false);
         }
 
+
+        /// <summary>
+        ///     Posts the current version to the reconcilled version.
+        /// </summary>
+        /// <remarks>
+        ///     Requires that the current edit version has been reconciled with any ancestor versions prior to being
+        ///     called. The implicit locking during a reconcile should greatly increase the chances of the source and target
+        ///     versions being ready to post. There is a possibility that these two versions could be out of sync, possible do to
+        ///     the target version changing after a reconcile operation, and in this case an error will be returned to the
+        ///     application on the post call. It is the application developer’s responsibility to check the CanPost method prior to
+        ///     calling post and handling the post errors mentioned above thrown during the Post operation.
+        /// </remarks>
+        /// <param name="version">The version.</param>
+        /// <param name="versionName">The target version name passed in is case-sensitive and should take the form {owner}.{version_name} for example, SDE.DEFAULT.</param>
+        /// <returns>Returns a <see cref="bool"/> representing <c>true</c> when the version has been posted.</returns>
+        public static bool Post(this IVersion version, string versionName)
+        {
+            var versionEdit3 = (IVersionEdit4) version;
+            if (versionEdit3.CanPost())
+            {
+                return version.PerformOperation(false, () =>
+                {
+                    versionEdit3.Post(versionName);
+
+                    return true;
+                });
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        ///     Reconciles the current source version with the specified target version. The target version must be
+        ///     an ancestor of the current version or an error will be returned.
+        /// </summary>
+        /// <param name="source">The source version that will be reconciled.</param>
+        /// <param name="target">The target version must be an ancestor of the current version or an error will be returned.</param>
+        /// <param name="acquireLock">
+        ///     The default behavior of reconcile is to obtain a shared version lock on the target version. The lock ensures the
+        ///     target version cannot be reconciled while the source version can be reconciled. The purpose of the version lock on
+        ///     the target version is to ensure the version is available when the intention is to post. If the intention is not to
+        ///     post to the target version following a reconcile, the acquireLock method can be set to false.
+        /// </param>
+        /// <param name="abortIfConflicts">
+        ///     It is also possible to abort the reconcile when a conflict is detected. Setting the abortIfConflicts to true will
+        ///     abort the reconcile process when conflicts are detected; for example, you could choose to abort when performing the
+        ///     reconcile in a batch process when there is no human interaction to resolve the conflicts.
+        /// </param>
+        /// <param name="childWins">
+        ///     If conflicts occur, the conflicts are initially resolved in favor of the target version. Setting this argument to
+        ///     true replaces all conflicting features with the source version's representation of the object.
+        /// </param>
+        /// <param name="columnLevel">
+        ///     The reconcile method also provides the ability to define what constitutes a conflict during the reconcile. The
+        ///     columnLevel argument is a Boolean argument that, if set to true, will only promote the same modified object in both
+        ///     versions as a conflict if the same attribute for the object has changed in both versions. For example, if a feature
+        ///     was moved in the target version, the same feature's attribute was updated in the edit version, and column level
+        ///     conflict filtering was set to true, the reconcile would not detect this feature as a conflict.
+        /// </param>
+        /// <returns>Returns a <see cref="bool"/> representing <c>true</c> when conflicts have been detected.</returns>
+        public static bool Reconcile(this IVersion source, IVersion target, bool acquireLock, bool abortIfConflicts, bool childWins, bool columnLevel)
+        {
+            IVersionEdit4 versionEdit = (IVersionEdit4) source;
+            return source.PerformOperation(true, esriMultiuserEditSessionMode.esriMESMVersioned, () => versionEdit.Reconcile4(target.VersionName, acquireLock, abortIfConflicts, childWins, columnLevel));
+        }
+
         #endregion
     }
 
     #region Nested Type: DeltaRowCollection
+
+    /// <summary>Delta Row Change Version.</summary>
+    public enum DeltaRowChangeVersion
+    {
+        SourceVersion,
+        TargetVersion,
+        CommonAncestorVersion
+    }
 
     /// <summary>
     ///     Provides a collection of <see cref="DeltaRow" /> objects.
@@ -485,12 +646,12 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Initializes a new instance of the <see cref="DeltaRowCollection" /> class.
         /// </summary>
-        /// <param name="tableName">Name of the table.</param>
+        /// <param name="modifiedClassInfo">The modified class information.</param>
         /// <param name="source">The source (or child) version.</param>
         /// <param name="target">The target (or parent) version.</param>
-        public DeltaRowCollection(string tableName, IVersion source, IVersion target)
+        public DeltaRowCollection(IModifiedClassInfo modifiedClassInfo, IVersion source, IVersion target)
         {
-            this.TableName = tableName;
+            this.ModifiedClassInfo = modifiedClassInfo;
             this.SourceVersion = source;
             this.TargetVersion = target;
             this.CommonAncestorVersion = target == null ? null : ((IVersion2) source).GetCommonAncestor(target);
@@ -499,10 +660,10 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <summary>
         ///     Initializes a new instance of the <see cref="DeltaRowCollection" /> class.
         /// </summary>
-        /// <param name="tableName">Name of the table.</param>
+        /// <param name="modifiedClassInfo">The modified class information.</param>
         /// <param name="source">The source.</param>
-        public DeltaRowCollection(string tableName, IVersion source)
-            : this(tableName, source, null)
+        public DeltaRowCollection(IModifiedClassInfo modifiedClassInfo, IVersion source)
+            : this(modifiedClassInfo, source, null)
         {
         }
 
@@ -540,6 +701,15 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </value>
         public IVersion CommonAncestorVersion { get; private set; }
 
+
+        /// <summary>
+        ///     Gets the modified class information.
+        /// </summary>
+        /// <value>
+        ///     The modified class information.
+        /// </value>
+        public IModifiedClassInfo ModifiedClassInfo { get; private set; }
+
         /// <summary>
         ///     Gets the source (or current) version.
         /// </summary>
@@ -547,14 +717,6 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The source (or current) version.
         /// </value>
         public IVersion SourceVersion { get; private set; }
-
-        /// <summary>
-        ///     The name of the table.
-        /// </summary>
-        /// <value>
-        ///     The name of the table.
-        /// </value>
-        public string TableName { get; private set; }
 
         /// <summary>
         ///     Gets the target version.
@@ -576,7 +738,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IRow" /> representing the row for the state.
         /// </returns>
-        public IRow GetRow(esriChangeVersion changeVersion, DeltaRow deltaRow)
+        public IRow GetRow(DeltaRowChangeVersion changeVersion, DeltaRow deltaRow)
         {
             return this.GetRow(changeVersion, deltaRow.OID);
         }
@@ -589,14 +751,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IRow" /> representing the row for the state.
         /// </returns>
-        public IRow GetRow(esriChangeVersion changeVersion, int oid)
+        public IRow GetRow(DeltaRowChangeVersion changeVersion, int oid)
         {
             IFeatureWorkspace workspace = this.GetWorkspace(changeVersion);
             if (workspace == null) return null;
 
             using (ComReleaser cr = new ComReleaser())
             {
-                ITable table = workspace.OpenTable(this.TableName);
+                ITable table = workspace.OpenTable(this.ModifiedClassInfo.ChildClassName);
                 cr.ManageLifetime(table);
 
                 IQueryFilter filter = new QueryFilterClass();
@@ -614,6 +776,55 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Gets the rows that have differences in the given fields.
+        /// </summary>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{T}" /> representing the rows that have differences.
+        /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">
+        ///     sourceFieldName
+        ///     or
+        ///     targetFieldName
+        /// </exception>
+        public IEnumerable<IRow> GetRows(string fieldName)
+        {
+            var equailityComparer = new FieldsEqualityComparer();
+
+            foreach (var source in this.GetRows(DeltaRowChangeVersion.SourceVersion))
+            {
+                var s = source.Fields.FindField(fieldName);
+                if (s == -1)
+                    throw new ArgumentOutOfRangeException("fieldName");
+
+                foreach (var target in this.GetRows(DeltaRowChangeVersion.SourceVersion))
+                {
+                    var t = target.Fields.FindField(fieldName);
+                    if (t == -1)
+                        throw new ArgumentOutOfRangeException("fieldName");
+
+                    if (!equailityComparer.Equals(source, target, s))
+                        yield return source;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets the rows that reside in the version that corresponds to the state.
+        /// </summary>
+        /// <param name="changeVersion">The change version.</param>
+        /// <param name="dataChangeTypes">The data change types.</param>
+        /// <returns>
+        ///     Returns a <see cref="IEnumerable{IRow}" /> representing the rows for the state.
+        /// </returns>
+        /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
+        public IEnumerable<IRow> GetRows(DeltaRowChangeVersion changeVersion, params esriDataChangeType[] dataChangeTypes)
+        {
+            var rows = this.GetRows(dataChangeTypes);
+            return rows.GetRows(changeVersion);
+        }
+
+        /// <summary>
         ///     Gets the rows that pertain to the data change type.
         /// </summary>
         /// <param name="dataChangeTypes">Type of the data changes.</param>
@@ -622,8 +833,25 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             var rows = this.Where(deltaRow => dataChangeTypes.Contains(deltaRow.DataChangeType));
 
-            var collection = new DeltaRowCollection(this.TableName, this.SourceVersion, this.TargetVersion);
+            var collection = new DeltaRowCollection(this.ModifiedClassInfo, this.SourceVersion, this.TargetVersion);
             collection.AddRange(rows);
+
+            return collection;
+        }
+
+        /// <summary>
+        ///     Combines the rows from the collections in into a single collection
+        /// </summary>
+        /// <param name="collections">The collections.</param>
+        /// <returns>
+        ///     Retursn a <see cref="DeltaRowCollection" /> representing the delta rows for the data change type.
+        /// </returns>
+        public DeltaRowCollection GetRows(params DeltaRowCollection[] collections)
+        {
+            var collection = new DeltaRowCollection(this.ModifiedClassInfo, this.SourceVersion, this.TargetVersion);
+
+            foreach (var rows in collections)
+                collection.AddRange(rows);
 
             return collection;
         }
@@ -637,7 +865,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
         public IEnumerable<IRow> GetRows()
         {
-            return this.GetRows(esriChangeVersion.esriChangeSourceVersion);
+            return this.GetRows(DeltaRowChangeVersion.SourceVersion);
         }
 
         /// <summary>
@@ -648,27 +876,33 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IEnumerable{IRow}" /> representing the rows for the state.
         /// </returns>
         /// <exception cref="System.NotSupportedException">The row state is not supported.</exception>
-        public IEnumerable<IRow> GetRows(esriChangeVersion changeVersion)
+        public IEnumerable<IRow> GetRows(DeltaRowChangeVersion changeVersion)
         {
             IFeatureWorkspace workspace = this.GetWorkspace(changeVersion);
             if (workspace != null)
             {
-                using (ComReleaser cr = new ComReleaser())
-                {
-                    ITable table = workspace.OpenTable(this.TableName);
-                    cr.ManageLifetime(table);
+                ITable table = workspace.OpenTable(this.ModifiedClassInfo.ChildClassName);
+                ICursor cursor = null;
 
+                try
+                {
                     foreach (var oids in this.Select(o => o.OID.ToString(CultureInfo.InvariantCulture)).Batch(1000))
                     {
                         IQueryFilter filter = new QueryFilterClass();
                         filter.WhereClause = string.Format("{0} IN ({1})", table.OIDFieldName, string.Join(",", oids.ToArray()));
 
-                        var cursor = table.Search(filter, false);
-                        cr.ManageLifetime(cursor);
+                        cursor = table.Search(filter, false);
 
                         foreach (var row in cursor.AsEnumerable())
                             yield return row;
                     }
+                }
+                finally
+                {
+                    if (cursor != null)
+                        while (Marshal.ReleaseComObject(cursor) > 0)
+                        {
+                        }
                 }
             }
         }
@@ -698,14 +932,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IFeatureWorkspace" /> representing the workspace for that state
         /// </returns>
-        private IFeatureWorkspace GetWorkspace(esriChangeVersion changeVersion)
+        private IFeatureWorkspace GetWorkspace(DeltaRowChangeVersion changeVersion)
         {
             switch (changeVersion)
             {
-                case esriChangeVersion.esriChangeSourceVersion:
+                case DeltaRowChangeVersion.SourceVersion:
                     return this.SourceVersion as IFeatureWorkspace;
 
-                case esriChangeVersion.esriChangeTargetVersion:
+                case DeltaRowChangeVersion.TargetVersion:
                     return this.TargetVersion as IFeatureWorkspace;
 
                 default:

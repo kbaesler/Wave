@@ -76,7 +76,7 @@ namespace System.Windows.Controls
         /// </summary>
         public int DelayTime
         {
-            get { return (int) this.GetValue(DelayTimeProperty); }
+            get { return (int)this.GetValue(DelayTimeProperty); }
             set { this.SetValue(DelayTimeProperty, value); }
         }
 
@@ -244,7 +244,7 @@ namespace System.Windows.Controls
         {
             DelayedTextBox delayedTextBox = dependencyObject as DelayedTextBox;
             if (delayedTextBox != null)
-                delayedTextBox.DelayTime = (int) e.NewValue;
+                delayedTextBox.DelayTime = (int)e.NewValue;
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
     ///     A lightweight structure for the intermediate row.
     /// </summary>
     [ComVisible(false)]
-    internal class IntermediateRow : IIntermediateRow
+    internal class IntermediateRow : IIntermediateRow, IEquatable<IIntermediateRow>
     {
         #region Constructors
 
@@ -30,7 +30,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
 
         #endregion
 
-        #region IIntermediateRow Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the destination foreign key.
@@ -51,6 +51,29 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         ///     Gets the physical intermediate row.
         /// </summary>
         public IRow Row { get; private set; }
+
+        #endregion
+
+        #region IEquatable<IIntermediateRow> Members
+
+        /// <summary>
+        ///     Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        ///     true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(IIntermediateRow other)
+        {
+            if (other == null)
+                return false;
+
+            return other.DestinationForeignKey.Equals(this.DestinationForeignKey, StringComparison.InvariantCultureIgnoreCase) && other.OriginForeignKey.Equals(this.OriginForeignKey, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        #endregion
+
+        #region IIntermediateRow Members
 
         /// <summary>
         ///     Updates the field with specified <paramref name="fieldName" /> with the <paramref name="value" />.
@@ -84,9 +107,7 @@ namespace ESRI.ArcGIS.Geodatabase.Internal
         public override bool Equals(object obj)
         {
             IntermediateRow other = obj as IntermediateRow;
-            if (other == null) return false;
-
-            return other.DestinationForeignKey.Equals(this.DestinationForeignKey, StringComparison.InvariantCultureIgnoreCase) && other.OriginForeignKey.Equals(this.OriginForeignKey, StringComparison.InvariantCultureIgnoreCase);
+            return this.Equals(other);
         }
 
         /// <summary>

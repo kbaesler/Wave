@@ -39,4 +39,4 @@ using log4net.Config;
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: XmlConfigurator(ConfigFile = Log.FileName, Watch = true)]
+[assembly: XmlConfigurator(ConfigFile = "Wave.log4net.config", Watch = true)]

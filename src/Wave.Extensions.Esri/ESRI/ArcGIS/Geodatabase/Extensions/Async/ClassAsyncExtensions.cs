@@ -1,7 +1,6 @@
-﻿#if NET45
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -29,9 +28,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     selector
         /// </exception>
-        public static Task<IList<TResult>> FetchAsync<TResult>(this IFeatureClass source, IQueryFilter filter, Func<IFeature, TResult> selector)
+        public static IList<TResult> FetchAsync<TResult>(this IFeatureClass source, IQueryFilter filter, Func<IFeature, TResult> selector)
         {
-            return Task.Run(() => source.Fetch(filter, selector));
+            return Task.Wait(() => source.Fetch(filter, selector));
         }
 
         /// <summary>
@@ -44,9 +43,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns an <see cref="IFeature" /> representing the feature for the oid; otherwise <c>null</c>
         /// </returns>
-        public static Task<IFeature> FetchAsync(this IFeatureClass source, int oid)
+        public static IFeature FetchAsync(this IFeatureClass source, int oid)
         {
-            return Task.Run(() => source.Fetch(oid));
+            return Task.Wait(() => source.Fetch(oid));
         }
 
         /// <summary>
@@ -59,9 +58,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{IFeature}" /> representing the results of the query projected to the type.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">filter</exception>
-        public static Task<IList<IFeature>> FetchAsync(this IFeatureClass source, IQueryFilter filter)
+        public static IList<IFeature> FetchAsync(this IFeatureClass source, IQueryFilter filter)
         {
-            return Task.Run(() => source.Fetch(filter));
+            return Task.Wait(() => source.Fetch(filter));
         }
 
         /// <summary>
@@ -79,9 +78,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     or
         ///     oids
         /// </exception>
-        public static Task<IList<TResult>> FetchAsync<TResult>(this IFeatureClass source, Func<IFeature, TResult> selector, params int[] oids)
+        public static IList<TResult> FetchAsync<TResult>(this IFeatureClass source, Func<IFeature, TResult> selector, params int[] oids)
         {
-            return Task.Run(() => source.Fetch(selector, oids));
+            return Task.Wait(() => source.Fetch(selector, oids));
         }
 
         /// <summary>
@@ -93,9 +92,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="List{IFeature}" /> representing the features returned from the query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">oids</exception>
-        public static Task<IList<IFeature>> FetchAsync(this IFeatureClass source, params int[] oids)
+        public static IList<IFeature> FetchAsync(this IFeatureClass source, params int[] oids)
         {
-            return Task.Run(() => source.Fetch(oids));
+            return Task.Wait(() => source.Fetch(oids));
         }
 
         /// <summary>
@@ -113,9 +112,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
         ///     access
         /// </remarks>
-        public static Task<int> FetchAsync(this IFeatureClass source, Func<IFeature, bool> action)
+        public static int FetchAsync(this IFeatureClass source, Func<IFeature, bool> action)
         {
-            return Task.Run(() => source.Fetch(action));
+            return Task.Wait(() => source.Fetch(action));
         }
 
         /// <summary>
@@ -137,9 +136,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Uses a recycling cursors rehydrate a single feature object on each fetch and can be used to optimize read-only
         ///     access
         /// </remarks>
-        public static Task<int> FetchAsync(this IFeatureClass source, Func<IFeature, bool> action, bool recycling)
+        public static int FetchAsync(this IFeatureClass source, Func<IFeature, bool> action, bool recycling)
         {
-            return Task.Run(() => source.Fetch(action, recycling));
+            return Task.Wait(() => source.Fetch(action, recycling));
         }
 
         /// <summary>
@@ -155,9 +154,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static Task<int> FetchAsync(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action)
+        public static int FetchAsync(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action)
         {
-            return Task.Run(() => source.Fetch(filter, action));
+            return Task.Wait(() => source.Fetch(filter, action));
         }
 
         /// <summary>
@@ -177,9 +176,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static Task<int> FetchAsync(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action, bool recycling)
+        public static int FetchAsync(this IFeatureClass source, IQueryFilter filter, Action<IFeature> action, bool recycling)
         {
-            return Task.Run(() => source.Fetch(filter, action, recycling));
+            return Task.Wait(() => source.Fetch(filter, action, recycling));
         }
 
         /// <summary>
@@ -195,9 +194,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static Task<int> FetchAsync(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action)
+        public static int FetchAsync(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action)
         {
-            return Task.Run(() => source.Fetch(filter, action));
+            return Task.Wait(() => source.Fetch(filter, action));
         }
 
         /// <summary>
@@ -214,13 +213,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="System.ArgumentNullException">action</exception>
         /// <exception cref="ArgumentNullException">action</exception>
-        public static Task<int> FetchAsync(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action, bool recycling)
+        public static int FetchAsync(this IFeatureClass source, IQueryFilter filter, Func<IFeature, bool> action, bool recycling)
         {
-            return Task.Run(() => source.Fetch(filter, action, recycling));
+            return Task.Wait(() => source.Fetch(filter, action, recycling));
         }
 
         #endregion
     }
 }
-
-#endif

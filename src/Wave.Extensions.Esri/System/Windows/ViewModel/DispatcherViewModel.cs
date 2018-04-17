@@ -14,8 +14,8 @@ namespace System.Windows
         #region Fields
 
         private bool _CancellationPending;
-        private bool _IsBusy;
         private bool _IsAborted;
+        private bool _IsBusy;
 
         #endregion
 
@@ -43,21 +43,6 @@ namespace System.Windows
         #region Public Properties
 
         /// <summary>
-        ///     Gets a value indicating whether this <see cref="DispatcherViewModel" /> is busy.
-        /// </summary>
-        /// <value><c>true</c> if busy; otherwise, <c>false</c>.</value>
-        public bool IsBusy
-        {
-            get { return _IsBusy; }
-            set
-            {
-                _IsBusy = value;
-
-                OnPropertyChanged("IsBusy");
-            }
-        }
-
-        /// <summary>
         ///     Gets a value indicating whether this <see cref="DispatcherViewModel" /> is aborted.
         /// </summary>
         /// <value><c>true</c> if aborted; otherwise, <c>false</c>.</value>
@@ -69,6 +54,21 @@ namespace System.Windows
                 _IsAborted = value;
 
                 OnPropertyChanged("IsAborted");
+            }
+        }
+
+        /// <summary>
+        ///     Gets a value indicating whether this <see cref="DispatcherViewModel" /> is busy.
+        /// </summary>
+        /// <value><c>true</c> if busy; otherwise, <c>false</c>.</value>
+        public bool IsBusy
+        {
+            get { return _IsBusy; }
+            set
+            {
+                _IsBusy = value;
+
+                OnPropertyChanged("IsBusy");
             }
         }
 
@@ -112,7 +112,7 @@ namespace System.Windows
         /// </summary>
         protected void CancelAsync()
         {
-            if (this.IsBusy)
+            if (this.IsBusy && this.DispatcherOperation != null)
             {
                 this.DispatcherOperation.Abort();
                 this.CancellationPending = true;
@@ -120,8 +120,31 @@ namespace System.Windows
         }
 
         /// <summary>
-        /// Runs the action on a <see cref="Dispatcher" /> thread using the delegates
-        /// passed to the methods.
+        ///     Executes the specified delegate at the specified priority with the specified argument synchronously on the thread
+        ///     the Dispatcher is associated with.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="execute">The delegate that handles the execution on the work.</param>
+        /// <param name="completion">The delegate that handles when the work has completed.</param>
+        protected void Run<TResult>(Func<TResult> execute, Action<TResult> completion)
+        {
+            this.IsAborted = false;
+            this.IsBusy = true;
+
+            try
+            {
+                var results = Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, execute);
+                completion((TResult)results);
+            }
+            finally
+            {
+                this.IsAborted = false;
+                this.IsBusy = false;
+            }           
+        }
+
+        /// <summary>
+        ///     Executes a delegate asynchronously on the thread the Dispatcher is associated with.
         /// </summary>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="execute">The delegate that handles the execution on the work.</param>
@@ -132,12 +155,13 @@ namespace System.Windows
         }
 
         /// <summary>
-        /// Runs the action on a <see cref="Dispatcher"/> thread using the delegates
-        /// passed to the methods.
+        ///     Executes a delegate asynchronously on the thread the Dispatcher is associated with.
         /// </summary>
         /// <typeparam name="TResult">The type of the result.</typeparam>
-        /// <param name="priority">The priority, relative to the other pending operations in the Dispatcher event queue, the
-        /// specified method is invoked.</param>
+        /// <param name="priority">
+        ///     The priority, relative to the other pending operations in the Dispatcher event queue, the
+        ///     specified method is invoked.
+        /// </param>
         /// <param name="execute">The delegate that handles the execution on the work.</param>
         /// <param name="completion">The delegate that handles when the work has completed.</param>
         /// <exception cref="ArgumentNullException">execute</exception>
@@ -155,7 +179,7 @@ namespace System.Windows
             {
                 if (completion != null)
                 {
-                    completion((TResult)this.DispatcherOperation.Result, this.IsAborted, this.DispatcherOperation.Status);
+                    completion((TResult) this.DispatcherOperation.Result, this.IsAborted, this.DispatcherOperation.Status);
                 }
 
                 this.IsBusy = false;

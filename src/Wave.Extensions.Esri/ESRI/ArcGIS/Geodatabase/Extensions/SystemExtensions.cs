@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.esriSystem;
@@ -490,6 +491,62 @@ namespace ESRI.ArcGIS.Geodatabase
             {
                 // Empty on purpose.
             }
+        }
+
+        /// <summary>
+        ///     Removes the elements in the array that satisfy the predicate condition.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The function delegate that when returns true will remove the item from the array.</param>
+        /// <returns>Returns a <see cref="int" /> representing the number of items removed.</returns>
+        public static int Remove<TValue>(this IArray source, Predicate<TValue> predicate)
+        {
+            if (source != null)
+            {
+                var length = source.Count;
+
+                for (int i = source.Count - 1; i >= 0; i--)
+                {
+                    var element = (TValue) source.Element[i];
+                    if (predicate(element))
+                        source.Remove(i);
+                }
+
+                return length - source.Count;
+            }
+
+            return 0;
+        }
+
+
+        /// <summary>
+        ///     Replaces the element in the array that satisfies the predicate condition.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The function delegate that when returns true will remove the item from the array.</param>
+        /// <param name="replacement">The new value that will used as the replacement.</param>
+        /// <returns>
+        ///     Returns a <see cref="bool" /> representing the number of items removed.
+        /// </returns>
+        public static bool Replace<TValue>(this IArray source, Predicate<TValue> predicate, TValue replacement)
+        {
+            if (source != null)
+            {
+                for (int i = source.Count - 1; i >= 0; i--)
+                {
+                    var element = (TValue) source.Element[i];
+                    if (predicate(element))
+                    {
+                        source.Remove(i);
+                        source.Insert(i, replacement);
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         #endregion

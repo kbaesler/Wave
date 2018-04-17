@@ -10,7 +10,7 @@ namespace System.Windows.Behaviors
     ///     <![CDATA[
     ///                <Grid.Resources>
     ///                    <Style TargetType="ScrollViewer">
-    ///                         <Setter Property="behaviors:ScrollViewerSynchronization.VerticalScrollGroup"
+    ///                         <Setter Property="behaviors:ScrollViewerSynchronization.ScrollGroup"
     ///                                Value="Group1" />
     ///                    </Style>
     ///                </Grid.Resources>
@@ -19,17 +19,46 @@ namespace System.Windows.Behaviors
     /// <seealso cref="System.Windows.DependencyObject" />
     public sealed class ScrollViewerSynchronization
     {
-        #region Constants
+        #region Nested Type: OffSetContainer
 
-        private const string HorizontalScrollGroupPropertyName = "HorizontalScrollGroup";
-        private const string ScrollSyncTypePropertyName = "ScrollSyncType";
+        /// <summary>
+        /// </summary>
+        private class OffSetContainer
+        {
+            #region Public Properties
 
+            /// <summary>
+            ///     Gets or sets the offset.
+            /// </summary>
+            /// <value>
+            ///     The offset.
+            /// </value>
+            public double Offset { get; set; }
 
-        private const string VerticalScrollGroupPropertyName = "VerticalScrollGroup";
+            /// <summary>
+            ///     Gets or sets the scroll viewers.
+            /// </summary>
+            /// <value>
+            ///     The scroll viewers.
+            /// </value>
+            public List<ScrollViewer> ScrollViewers { get; set; }
+
+            #endregion
+        }
 
         #endregion
 
-        #region Fields
+        #region Constant(s)
+
+        private const string VerticalScrollGroupPropertyName = "VerticalScrollGroup";
+        private const string HorizontalScrollGroupPropertyName = "HorizontalScrollGroup";
+        private const string ScrollSyncTypePropertyName = "ScrollSyncType";
+
+        #endregion
+
+        #region Dependency Propert(y/ies)
+
+        #region Declaration(s)
 
         /// <summary>
         ///     The horizontal scroll group property
@@ -49,34 +78,18 @@ namespace System.Windows.Behaviors
         public static readonly DependencyProperty ScrollSyncTypeProperty =
             DependencyProperty.RegisterAttached(ScrollSyncTypePropertyName, typeof(ScrollSyncType), typeof(ScrollViewerSynchronization), new PropertyMetadata(ScrollSyncType.None, OnScrollSyncTypeChanged));
 
-        private static readonly Dictionary<string, OffSetContainer> HorizontalScrollGroups = new Dictionary<string, OffSetContainer>();
-        private static readonly Dictionary<ScrollViewer, ScrollSyncType> RegisteredScrollViewers = new Dictionary<ScrollViewer, ScrollSyncType>();
-
-
-        private static readonly Dictionary<string, OffSetContainer> VerticalScrollGroups = new Dictionary<string, OffSetContainer>();
-
         #endregion
 
-        #region Public Methods
+        #region Getter(s)/Setter(s)
 
         /// <summary>
-        ///     Gets the horizontal scroll group.
+        ///     Sets the vertical scroll group.
         /// </summary>
         /// <param name="obj">The object.</param>
-        /// <returns></returns>
-        public static string GetHorizontalScrollGroup(DependencyObject obj)
+        /// <param name="verticalScrollGroup">The vertical scroll group.</param>
+        public static void SetVerticalScrollGroup(DependencyObject obj, string verticalScrollGroup)
         {
-            return (string) obj.GetValue(HorizontalScrollGroupProperty);
-        }
-
-        /// <summary>
-        ///     Gets the type of the scroll synchronize.
-        /// </summary>
-        /// <param name="obj">The object.</param>
-        /// <returns></returns>
-        public static ScrollSyncType GetScrollSyncType(DependencyObject obj)
-        {
-            return (ScrollSyncType) obj.GetValue(ScrollSyncTypeProperty);
+            obj.SetValue(VerticalScrollGroupProperty, verticalScrollGroup);
         }
 
         /// <summary>
@@ -100,6 +113,16 @@ namespace System.Windows.Behaviors
         }
 
         /// <summary>
+        ///     Gets the horizontal scroll group.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <returns></returns>
+        public static string GetHorizontalScrollGroup(DependencyObject obj)
+        {
+            return (string) obj.GetValue(HorizontalScrollGroupProperty);
+        }
+
+        /// <summary>
         ///     Sets the type of the scroll synchronize.
         /// </summary>
         /// <param name="obj">The object.</param>
@@ -109,59 +132,42 @@ namespace System.Windows.Behaviors
             obj.SetValue(ScrollSyncTypeProperty, scrollSyncType);
         }
 
-
         /// <summary>
-        ///     Sets the vertical scroll group.
+        ///     Gets the type of the scroll synchronize.
         /// </summary>
         /// <param name="obj">The object.</param>
-        /// <param name="verticalScrollGroup">The vertical scroll group.</param>
-        public static void SetVerticalScrollGroup(DependencyObject obj, string verticalScrollGroup)
+        /// <returns></returns>
+        public static ScrollSyncType GetScrollSyncType(DependencyObject obj)
         {
-            obj.SetValue(VerticalScrollGroupProperty, verticalScrollGroup);
+            return (ScrollSyncType) obj.GetValue(ScrollSyncTypeProperty);
         }
 
         #endregion
 
-        #region Private Methods
+        #region Event Handler(s)
 
         /// <summary>
-        ///     Adds to horizontal scroll group.
+        ///     Called when [vertical scroll group changed].
         /// </summary>
-        /// <param name="horizontalGroupName">Name of the horizontal group.</param>
-        /// <param name="scrollViewer">The scroll viewer.</param>
-        private static void AddToHorizontalScrollGroup(string horizontalGroupName, ScrollViewer scrollViewer)
+        /// <param name="d">The d.</param>
+        /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
+        private static void OnVerticalScrollGroupChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (HorizontalScrollGroups.ContainsKey(horizontalGroupName))
-            {
-                scrollViewer.ScrollToHorizontalOffset(HorizontalScrollGroups[horizontalGroupName].Offset);
-                HorizontalScrollGroups[horizontalGroupName].ScrollViewers.Add(scrollViewer);
-            }
-            else
-            {
-                HorizontalScrollGroups.Add(horizontalGroupName, new OffSetContainer {ScrollViewers = new List<ScrollViewer> {scrollViewer}, Offset = scrollViewer.HorizontalOffset});
-            }
+            var scrollViewer = d as ScrollViewer;
+            if (scrollViewer == null)
+                return;
 
-            scrollViewer.ScrollChanged += ScrollViewer_HorizontalScrollChanged;
-        }
+            var newVerticalGroupName = e.NewValue == DependencyProperty.UnsetValue ? string.Empty : (string) e.NewValue;
+            var oldVerticalGroupName = e.NewValue == DependencyProperty.UnsetValue ? string.Empty : (string) e.OldValue;
 
-        /// <summary>
-        ///     Adds to vertical scroll group.
-        /// </summary>
-        /// <param name="verticalGroupName">Name of the vertical group.</param>
-        /// <param name="scrollViewer">The scroll viewer.</param>
-        private static void AddToVerticalScrollGroup(string verticalGroupName, ScrollViewer scrollViewer)
-        {
-            if (VerticalScrollGroups.ContainsKey(verticalGroupName))
-            {
-                scrollViewer.ScrollToVerticalOffset(VerticalScrollGroups[verticalGroupName].Offset);
-                VerticalScrollGroups[verticalGroupName].ScrollViewers.Add(scrollViewer);
-            }
-            else
-            {
-                VerticalScrollGroups.Add(verticalGroupName, new OffSetContainer {ScrollViewers = new List<ScrollViewer> {scrollViewer}, Offset = scrollViewer.VerticalOffset});
-            }
+            RemoveFromVerticalScrollGroup(oldVerticalGroupName, scrollViewer);
+            AddToVerticalScrollGroup(newVerticalGroupName, scrollViewer);
 
-            scrollViewer.ScrollChanged += ScrollViewer_VerticalScrollChanged;
+            var currentScrollSyncValue = ReadSyncTypeValue(d, ScrollSyncTypeProperty);
+            if (currentScrollSyncValue == ScrollSyncType.None)
+                d.SetValue(ScrollSyncTypeProperty, ScrollSyncType.Vertical);
+            else if (currentScrollSyncValue == ScrollSyncType.Horizontal)
+                d.SetValue(ScrollSyncTypeProperty, ScrollSyncType.Vertical);
         }
 
         /// <summary>
@@ -264,29 +270,92 @@ namespace System.Windows.Behaviors
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Variable(s)
+
+        private static readonly Dictionary<string, OffSetContainer> VerticalScrollGroups = new Dictionary<string, OffSetContainer>();
+        private static readonly Dictionary<string, OffSetContainer> HorizontalScrollGroups = new Dictionary<string, OffSetContainer>();
+        private static readonly Dictionary<ScrollViewer, ScrollSyncType> RegisteredScrollViewers = new Dictionary<ScrollViewer, ScrollSyncType>();
+
+        #endregion
+
+        #region Method(s)
 
         /// <summary>
-        ///     Called when [vertical scroll group changed].
+        ///     Removes from vertical scroll group.
         /// </summary>
-        /// <param name="d">The d.</param>
-        /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
-        private static void OnVerticalScrollGroupChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        /// <param name="verticalGroupName">Name of the vertical group.</param>
+        /// <param name="scrollViewer">The scroll viewer.</param>
+        private static void RemoveFromVerticalScrollGroup(string verticalGroupName, ScrollViewer scrollViewer)
         {
-            var scrollViewer = d as ScrollViewer;
-            if (scrollViewer == null)
-                return;
+            if (VerticalScrollGroups.ContainsKey(verticalGroupName))
+            {
+                VerticalScrollGroups[verticalGroupName].ScrollViewers.Remove(scrollViewer);
+                if (VerticalScrollGroups[verticalGroupName].ScrollViewers.Count == 0)
+                    VerticalScrollGroups.Remove(verticalGroupName);
+            }
 
-            var newVerticalGroupName = e.NewValue == DependencyProperty.UnsetValue ? string.Empty : (string) e.NewValue;
-            var oldVerticalGroupName = e.NewValue == DependencyProperty.UnsetValue ? string.Empty : (string) e.OldValue;
+            scrollViewer.ScrollChanged -= ScrollViewer_VerticalScrollChanged;
+        }
 
-            RemoveFromVerticalScrollGroup(oldVerticalGroupName, scrollViewer);
-            AddToVerticalScrollGroup(newVerticalGroupName, scrollViewer);
+        /// <summary>
+        ///     Adds to vertical scroll group.
+        /// </summary>
+        /// <param name="verticalGroupName">Name of the vertical group.</param>
+        /// <param name="scrollViewer">The scroll viewer.</param>
+        private static void AddToVerticalScrollGroup(string verticalGroupName, ScrollViewer scrollViewer)
+        {
+            if (VerticalScrollGroups.ContainsKey(verticalGroupName))
+            {
+                scrollViewer.ScrollToVerticalOffset(VerticalScrollGroups[verticalGroupName].Offset);
+                VerticalScrollGroups[verticalGroupName].ScrollViewers.Add(scrollViewer);
+            }
+            else
+            {
+                VerticalScrollGroups.Add(verticalGroupName, new OffSetContainer {ScrollViewers = new List<ScrollViewer> {scrollViewer}, Offset = scrollViewer.VerticalOffset});
+            }
 
-            var currentScrollSyncValue = ReadSyncTypeValue(d, ScrollSyncTypeProperty);
-            if (currentScrollSyncValue == ScrollSyncType.None)
-                d.SetValue(ScrollSyncTypeProperty, ScrollSyncType.Vertical);
-            else if (currentScrollSyncValue == ScrollSyncType.Horizontal)
-                d.SetValue(ScrollSyncTypeProperty, ScrollSyncType.Vertical);
+            scrollViewer.ScrollChanged += ScrollViewer_VerticalScrollChanged;
+        }
+
+        /// <summary>
+        ///     Removes from horizontal scroll group.
+        /// </summary>
+        /// <param name="horizontalGroupName">Name of the horizontal group.</param>
+        /// <param name="scrollViewer">The scroll viewer.</param>
+        private static void RemoveFromHorizontalScrollGroup(string horizontalGroupName, ScrollViewer scrollViewer)
+        {
+            if (HorizontalScrollGroups.ContainsKey(horizontalGroupName))
+            {
+                HorizontalScrollGroups[horizontalGroupName].ScrollViewers.Remove(scrollViewer);
+                if (HorizontalScrollGroups[horizontalGroupName].ScrollViewers.Count == 0)
+                    HorizontalScrollGroups.Remove(horizontalGroupName);
+            }
+
+            scrollViewer.ScrollChanged -= ScrollViewer_HorizontalScrollChanged;
+        }
+
+        /// <summary>
+        ///     Adds to horizontal scroll group.
+        /// </summary>
+        /// <param name="horizontalGroupName">Name of the horizontal group.</param>
+        /// <param name="scrollViewer">The scroll viewer.</param>
+        private static void AddToHorizontalScrollGroup(string horizontalGroupName, ScrollViewer scrollViewer)
+        {
+            if (HorizontalScrollGroups.ContainsKey(horizontalGroupName))
+            {
+                scrollViewer.ScrollToHorizontalOffset(HorizontalScrollGroups[horizontalGroupName].Offset);
+                HorizontalScrollGroups[horizontalGroupName].ScrollViewers.Add(scrollViewer);
+            }
+            else
+            {
+                HorizontalScrollGroups.Add(horizontalGroupName, new OffSetContainer {ScrollViewers = new List<ScrollViewer> {scrollViewer}, Offset = scrollViewer.HorizontalOffset});
+            }
+
+            scrollViewer.ScrollChanged += ScrollViewer_HorizontalScrollChanged;
         }
 
         /// <summary>
@@ -313,70 +382,9 @@ namespace System.Windows.Behaviors
             return value == DependencyProperty.UnsetValue ? ScrollSyncType.None : (ScrollSyncType) value;
         }
 
-        /// <summary>
-        ///     Removes from horizontal scroll group.
-        /// </summary>
-        /// <param name="horizontalGroupName">Name of the horizontal group.</param>
-        /// <param name="scrollViewer">The scroll viewer.</param>
-        private static void RemoveFromHorizontalScrollGroup(string horizontalGroupName, ScrollViewer scrollViewer)
-        {
-            if (HorizontalScrollGroups.ContainsKey(horizontalGroupName))
-            {
-                HorizontalScrollGroups[horizontalGroupName].ScrollViewers.Remove(scrollViewer);
-                if (HorizontalScrollGroups[horizontalGroupName].ScrollViewers.Count == 0)
-                    HorizontalScrollGroups.Remove(horizontalGroupName);
-            }
+        #endregion
 
-            scrollViewer.ScrollChanged -= ScrollViewer_HorizontalScrollChanged;
-        }
-
-
-        /// <summary>
-        ///     Removes from vertical scroll group.
-        /// </summary>
-        /// <param name="verticalGroupName">Name of the vertical group.</param>
-        /// <param name="scrollViewer">The scroll viewer.</param>
-        private static void RemoveFromVerticalScrollGroup(string verticalGroupName, ScrollViewer scrollViewer)
-        {
-            if (VerticalScrollGroups.ContainsKey(verticalGroupName))
-            {
-                VerticalScrollGroups[verticalGroupName].ScrollViewers.Remove(scrollViewer);
-                if (VerticalScrollGroups[verticalGroupName].ScrollViewers.Count == 0)
-                    VerticalScrollGroups.Remove(verticalGroupName);
-            }
-
-            scrollViewer.ScrollChanged -= ScrollViewer_VerticalScrollChanged;
-        }
-
-        /// <summary>
-        ///     Handles the HorizontalScrollChanged event of the ScrollViewer control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="ScrollChangedEventArgs" /> instance containing the event data.</param>
-        private static void ScrollViewer_HorizontalScrollChanged(object sender, ScrollChangedEventArgs e)
-        {
-            var changedScrollViewer = sender as ScrollViewer;
-            if (changedScrollViewer == null)
-                return;
-
-            if (e.HorizontalChange == 0)
-                return;
-
-            var horizontalScrollGroup = ReadStringValue(sender as DependencyObject, HorizontalScrollGroupProperty);
-            if (!HorizontalScrollGroups.ContainsKey(horizontalScrollGroup))
-                return;
-
-            HorizontalScrollGroups[horizontalScrollGroup].Offset = changedScrollViewer.HorizontalOffset;
-
-            foreach (var scrollViewer in HorizontalScrollGroups[horizontalScrollGroup].ScrollViewers)
-            {
-                if (scrollViewer.HorizontalOffset == changedScrollViewer.HorizontalOffset)
-                    continue;
-
-                scrollViewer.ScrollToHorizontalOffset(changedScrollViewer.HorizontalOffset);
-            }
-        }
-
+        #region Event Handler(s)
 
         /// <summary>
         ///     Handles the VerticalScrollChanged event of the ScrollViewer control.
@@ -407,33 +415,33 @@ namespace System.Windows.Behaviors
             }
         }
 
-        #endregion
-
-        #region Nested Type: OffSetContainer
-
         /// <summary>
+        ///     Handles the HorizontalScrollChanged event of the ScrollViewer control.
         /// </summary>
-        private class OffSetContainer
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ScrollChangedEventArgs" /> instance containing the event data.</param>
+        private static void ScrollViewer_HorizontalScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            #region Public Properties
+            var changedScrollViewer = sender as ScrollViewer;
+            if (changedScrollViewer == null)
+                return;
 
-            /// <summary>
-            ///     Gets or sets the offset.
-            /// </summary>
-            /// <value>
-            ///     The offset.
-            /// </value>
-            public double Offset { get; set; }
+            if (e.HorizontalChange == 0)
+                return;
 
-            /// <summary>
-            ///     Gets or sets the scroll viewers.
-            /// </summary>
-            /// <value>
-            ///     The scroll viewers.
-            /// </value>
-            public List<ScrollViewer> ScrollViewers { get; set; }
+            var horizontalScrollGroup = ReadStringValue(sender as DependencyObject, HorizontalScrollGroupProperty);
+            if (!HorizontalScrollGroups.ContainsKey(horizontalScrollGroup))
+                return;
 
-            #endregion
+            HorizontalScrollGroups[horizontalScrollGroup].Offset = changedScrollViewer.HorizontalOffset;
+
+            foreach (var scrollViewer in HorizontalScrollGroups[horizontalScrollGroup].ScrollViewers)
+            {
+                if (scrollViewer.HorizontalOffset == changedScrollViewer.HorizontalOffset)
+                    continue;
+
+                scrollViewer.ScrollToHorizontalOffset(changedScrollViewer.HorizontalOffset);
+            }
         }
 
         #endregion

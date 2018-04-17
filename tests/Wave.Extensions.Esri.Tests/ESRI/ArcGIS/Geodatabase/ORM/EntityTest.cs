@@ -32,7 +32,7 @@ namespace Wave.Extensions.Esri.Tests
         [TestMethod]
         public void Entity_GetTable_From_Type()
         {
-            var table = this.Workspace.GetTable(typeof(Crash));
+            var table = this.Workspace.GetTable<Crash>();
             Assert.IsNotNull(table);
         }
 

@@ -7,7 +7,7 @@ namespace ESRI.ArcGIS.Framework.Internal
     /// <summary>
     ///     An internal class used to handle starting and stopping the ArcMap progress animation.
     /// </summary>
-    internal class ProgressGlobeAnimation : IProgressGlobeAnimation
+    internal class ProgressGlobeAnimation : IProgressGlobeAnimation, IDisposable
     {
         #region Fields
 

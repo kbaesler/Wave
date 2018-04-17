@@ -456,9 +456,9 @@ namespace ESRI.ArcGIS.Geodatabase
                     case esriFieldType.esriFieldTypeGUID:
                     case esriFieldType.esriFieldTypeGlobalID:
                         return source.Update(index, TypeCast.Cast(value, default(string)), EqualityComparer<string>.Default);
+                    default:
+                        return source.Update(index, value, EqualityComparer<object>.Default);
                 }
-
-                return source.Update(index, value, EqualityComparer<object>.Default);
             }
 
             return source.Update(index, value, null);

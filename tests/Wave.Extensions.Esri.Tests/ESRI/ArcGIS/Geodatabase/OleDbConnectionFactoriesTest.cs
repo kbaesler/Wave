@@ -21,27 +21,5 @@ namespace Wave.Extensions.Esri.Tests
         {
             Assert.IsNotNull(OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville), OleDbGeometryType.Wkb));
         }
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void OleDbConnectionFactories_GetFileGdbConnection_Open()
-        {
-            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville), OleDbGeometryType.Wkb))
-            {
-                connection.Open();
-                Assert.IsTrue(connection.State == ConnectionState.Open);
-            }
-        }
-
-        [TestMethod]
-        [TestCategory("ESRI")]
-        public void WorkspaceFactories_GetDbConnection_ExecuteNonQuery()
-        {
-            using (var connection = OleDbConnectionFactories.GetFileGdbConnection(Path.GetFullPath(Settings.Default.Minerville), OleDbGeometryType.Wkb))
-            {
-                connection.Open();
-                Assert.IsTrue(connection.State == ConnectionState.Open);
-            }
-        }
     }
 }

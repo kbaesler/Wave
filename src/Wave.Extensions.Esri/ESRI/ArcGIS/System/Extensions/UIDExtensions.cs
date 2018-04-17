@@ -17,7 +17,7 @@ namespace ESRI.ArcGIS.esriSystem
         /// <returns>
         ///     The class for the GUID; otherwise null.
         /// </returns>
-        public static TValue Create<TValue>(this IUID source)
+        public static TValue Create<TValue>(this IUID source) where TValue : class
         {
             if (source == null) return default(TValue);
 
@@ -26,10 +26,7 @@ namespace ESRI.ArcGIS.esriSystem
             if (t == null) return default(TValue);
 
             object o = Activator.CreateInstance(t);
-            if (o is TValue)
-                return (TValue) o;
-
-            return default(TValue);
+            return o as TValue;
         }
 
         #endregion

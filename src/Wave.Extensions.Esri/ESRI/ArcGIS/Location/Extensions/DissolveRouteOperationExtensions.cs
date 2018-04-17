@@ -7,7 +7,6 @@ namespace ESRI.ArcGIS.Location
     ///     Removes redundant information from event tables or separates event tables having more than one descriptive
     ///     attribute into individual tables
     /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteOperation{DissolveRouteEventData}" />
     public static class DissolveRouteOperationExtensions
     {
         #region Public Methods
@@ -26,20 +25,20 @@ namespace ESRI.ArcGIS.Location
         /// <param name="trackCancel">The object that allows for monitoring the progress.</param>
         /// <param name="dissolveFields">The field(s)used to aggregate rows.</param>
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
-        public static ITable Dissolve(this ITable table, IRouteMeasureSegmentation source, IWorkspace outputWorkspace, string outputTableName, IRouteMeasureSegmentation output, ITrackCancel trackCancel, params string[] dissolveFields)
+        public static ITable Dissolve(this ITable table, IRouteEventProperties2 source, IWorkspace outputWorkspace, string outputTableName, IRouteEventProperties2 output, ITrackCancel trackCancel, params string[] dissolveFields)
         {
             var outputName = new TableNameClass();
-            outputName.WorkspaceName = (IWorkspaceName) ((IDataset) outputWorkspace).FullName;
+            outputName.WorkspaceName = (IWorkspaceName)((IDataset)outputWorkspace).FullName;
             outputName.Name = outputTableName;
 
             outputWorkspace.Delete(outputName);
 
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.EventProperties;
+            gp.InputEventProperties = source;
             gp.InputTable = table;
             gp.KeepZeroLengthLineEvents = false;
 
-            return gp.Dissolve2(output.EventProperties, dissolveFields, outputName, trackCancel, "");
+            return gp.Dissolve2(output, dissolveFields, outputName, trackCancel, "");
         }
 
         #endregion

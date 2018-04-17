@@ -1,8 +1,6 @@
-﻿#if NET45
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -20,9 +18,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="commandText">The command text.</param>
         /// <returns>Returns a <see cref="ICursor" /> representing the results of the query.</returns>
         /// <exception cref="System.NotSupportedException"></exception>
-        public static Task<ICursor> ExecuteReaderAsync(this IWorkspace source, string commandText)
+        public static ICursor ExecuteReaderAsync(this IWorkspace source, string commandText)
         {
-            return Task.Run(() => source.ExecuteReader(commandText));
+            return Task.Wait(() => source.ExecuteReader(commandText));
         }
 
         /// <summary>
@@ -32,9 +30,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IEnumerable{IDomain}" /> representing the domains available; otherwise <c>null</c>.
         /// </returns>
-        public static Task<IEnumerable<IDomain>> GetDomainsAsync(this IWorkspace source)
+        public static IEnumerable<IDomain> GetDomainsAsync(this IWorkspace source)
         {
-            return Task.Run(() => source.GetDomains());
+            return Task.Wait(source.GetDomains);
         }
 
         /// <summary>
@@ -54,9 +52,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace must be within an edit session in order to determine the
         ///     edit changes.
         /// </exception>
-        public static Task<Dictionary<string, List<DifferenceRow>>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func<string, bool> func, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
+        public static Dictionary<string, List<DifferenceRow>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func<string, bool> func, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
         {
-            return Task.Run(() => source.GetEditChanges(editDataChangesType, func, predicate, differenceTypes));
+            return Task.Wait(() => source.GetEditChanges(editDataChangesType, func, predicate, differenceTypes));
         }
 
         /// <summary>
@@ -75,9 +73,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace must be within an edit session in order to determine the
         ///     edit changes.
         /// </exception>
-        public static Task<Dictionary<string, List<DifferenceRow>>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
+        public static Dictionary<string, List<DifferenceRow>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, Predicate<DifferenceRow> predicate, params esriDifferenceType[] differenceTypes)
         {
-            return Task.Run(() => source.GetEditChanges(editDataChangesType, func => true, predicate, differenceTypes));
+            return Task.Wait(() => source.GetEditChanges(editDataChangesType, func => true, predicate, differenceTypes));
         }
 
         /// <summary>
@@ -96,9 +94,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace must be within an edit session in order to determine the
         ///     edit changes.
         /// </exception>
-        public static Task<Dictionary<string, List<DifferenceRow>>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func<string, bool> func, params esriDifferenceType[] differenceTypes)
+        public static Dictionary<string, List<DifferenceRow>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, Func<string, bool> func, params esriDifferenceType[] differenceTypes)
         {
-            return Task.Run(() => source.GetEditChanges(editDataChangesType, func, differenceTypes));
+            return Task.Wait(() => source.GetEditChanges(editDataChangesType, func, differenceTypes));
         }
 
         /// <summary>
@@ -116,9 +114,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     The workspace must be within an edit session in order to determine the
         ///     edit changes.
         /// </exception>
-        public static Task<Dictionary<string, List<DifferenceRow>>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, params esriDifferenceType[] differenceTypes)
+        public static Dictionary<string, List<DifferenceRow>> GetEditChangesAsync(this IWorkspace source, esriEditDataChangesType editDataChangesType, params esriDifferenceType[] differenceTypes)
         {
-            return Task.Run(() => source.GetEditChanges(editDataChangesType, differenceTypes));
+            return Task.Wait(() => source.GetEditChanges(editDataChangesType, differenceTypes));
         }
 
         /// <summary>
@@ -126,9 +124,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature classes.</returns>
-        public static Task<IEnumerable<IFeatureClass>> GetFeatureClassesAsync(this IWorkspace source)
+        public static IEnumerable<IFeatureClass> GetFeatureClassesAsync(this IWorkspace source)
         {
-            return Task.Run(() => source.GetFeatureClasses());
+            return Task.Wait(source.GetFeatureClasses);
         }
 
         /// <summary>
@@ -136,9 +134,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>Returns a <see cref="IEnumerable{IFeatureClass}" /> representing the feature classes.</returns>
-        public static Task<IEnumerable<IRelationshipClass>> GetRelationshipClassesAsync(this IWorkspace source)
+        public static IEnumerable<IRelationshipClass> GetRelationshipClassesAsync(this IWorkspace source)
         {
-            return Task.Run(() => source.GetRelationshipClasses());
+            return Task.Wait(source.GetRelationshipClasses);
         }
 
         /// <summary>
@@ -146,9 +144,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
-        public static Task<IEnumerable<string>> GetTableNamesAsync(this IWorkspace source)
+        public static IEnumerable<string> GetTableNamesAsync(this IWorkspace source)
         {
-            return Task.Run(() => source.GetTableNames());
+            return Task.Wait(source.GetTableNames);
         }
 
         /// <summary>
@@ -156,13 +154,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the feature classes.</returns>
-        public static Task<IEnumerable<ITable>> GetTablesAsync(this IWorkspace source)
+        public static IEnumerable<ITable> GetTablesAsync(this IWorkspace source)
         {
-            return Task.Run(() => source.GetTables());
+            return Task.Wait(source.GetTables);
         }
 
         #endregion
     }
 }
-
-#endif

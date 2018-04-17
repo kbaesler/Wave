@@ -1,7 +1,5 @@
-﻿#if NET45
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
@@ -32,17 +30,15 @@ namespace ESRI.ArcGIS.Carto
         /// <exception cref="System.ArgumentNullException">geometry</exception>
         /// <remarks>
         ///     On a FeatureIdentifyObject, you can do a QI to the IIdentifyObj interface to get more information about the
-        ///     identified feature. The IIdentifyObj interface returns the window handle, layer, and name of the feature; it has
+        ///     identified feature. The IIdentifyvsObj interface returns the window handle, layer, and name of the feature; it has
         ///     methods to flash the
         ///     feature in the display and to display a context menu at the Identify location.
         /// </remarks>
-        public static Task<IEnumerable<IFeatureIdentifyObj>> IdentifyAsync(this IFeatureLayer source, IGeometry geometry, ITrackCancel trackCancel)
+        public static IEnumerable<IFeatureIdentifyObj> IdentifyAsync(this IFeatureLayer source, IGeometry geometry, ITrackCancel trackCancel)
         {
-            return Task.Run(() => source.Identify(geometry, trackCancel));
+            return Task.Wait(() => source.Identify(geometry, trackCancel));
         }
 
         #endregion
     }
 }
-
-#endif

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
@@ -9,7 +8,7 @@ using System.Windows.Data;
 namespace ESRI.ArcGIS.Geodatabase
 {
     /// <summary>
-    /// The controller for the <see cref="ChangeVersionDialog"/> control.
+    ///     The controller for the <see cref="ChangeVersionDialog" /> control.
     /// </summary>
     /// <seealso cref="System.Windows.BaseViewModel" />
     class ChangeVersionDialogViewModel : BaseViewModel
@@ -20,7 +19,7 @@ namespace ESRI.ArcGIS.Geodatabase
         private string _Owner;
         private List<string> _Owners;
         private ChangeVersionInfo _Version;
-        private ICollectionView _Versions;
+        private ListCollectionView _Versions;
         private IWorkspace _Workspace;
 
         #endregion
@@ -28,7 +27,7 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChangeVersionDialogViewModel"/> class.
+        ///     Initializes a new instance of the <see cref="ChangeVersionDialogViewModel" /> class.
         /// </summary>
         public ChangeVersionDialogViewModel()
             : base("Change Version")
@@ -71,7 +70,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 OnPropertyChanged(() => Name);
 
-                ApplyFilter(value, false);
+                Versions.Refresh();
             }
         }
 
@@ -90,7 +89,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 OnPropertyChanged(() => Owner);
 
-                ApplyFilter(value, true);
+                Versions.Refresh();
             }
         }
 
@@ -134,7 +133,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <value>
         ///     The versions.
         /// </value>
-        public ICollectionView Versions
+        public ListCollectionView Versions
         {
             get { return _Versions; }
             set
@@ -142,6 +141,8 @@ namespace ESRI.ArcGIS.Geodatabase
                 _Versions = value;
 
                 OnPropertyChanged(() => Versions);
+
+                value.Filter += ApplyFilter;
 
                 var list = new List<string>();
                 list.Add("");
@@ -166,8 +167,8 @@ namespace ESRI.ArcGIS.Geodatabase
 
                 OnPropertyChanged(() => Workspace);
 
-                var source = ((IVersionedWorkspace) value).Versions.AsEnumerable().Select(o => new ChangeVersionInfo(o));
-                this.Versions = CollectionViewSource.GetDefaultView(source);
+                var source = ((IVersionedWorkspace) value).Versions.AsEnumerable().Select(o => new ChangeVersionInfo(o)).ToList();
+                this.Versions = new ListCollectionView(source);
             }
         }
 
@@ -176,59 +177,45 @@ namespace ESRI.ArcGIS.Geodatabase
         #region Private Methods
 
         /// <summary>
-        /// Applies the filter.
+        ///     Applies the filter.
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="owner">if set to <c>true</c> the owner property initiated the filter.</param>
-        private void ApplyFilter(string value, bool owner)
+        /// <param name="obj">The object.</param>
+        /// <returns></returns>
+        private bool ApplyFilter(object obj)
         {
-            if (this.Versions == null)
-                return;
+            ChangeVersionInfo version = obj as ChangeVersionInfo;
+            if (version == null)
+                return true;
 
-            this.Versions.Filter += o =>
+            if (!string.IsNullOrEmpty(this.Owner))
             {
-                ChangeVersionInfo version = o as ChangeVersionInfo;
-                if (version == null)
+                if (string.IsNullOrEmpty(this.Name))
+                    return version.Owner.Equals(this.Owner, StringComparison.OrdinalIgnoreCase);
+
+                return version.Owner.Equals(this.Owner, StringComparison.OrdinalIgnoreCase)
+                       && version.Name.Like(this.Name);
+            }
+
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                if (string.IsNullOrEmpty(this.Owner))
                     return true;
 
-                if (owner)
-                {
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        if (string.IsNullOrEmpty(this.Name))
-                            return true;
+                return version.Owner.Equals(this.Owner, StringComparison.OrdinalIgnoreCase);
+            }
 
-                        return version.Name.StartsWith(this.Name, StringComparison.OrdinalIgnoreCase);
-                    }
+            if (string.IsNullOrEmpty(this.Owner))
+                return version.Name.Like(this.Name);
 
-                    if (string.IsNullOrEmpty(this.Name))
-                        return version.Owner.StartsWith(value, StringComparison.OrdinalIgnoreCase);
-
-                    return version.Owner.StartsWith(value, StringComparison.OrdinalIgnoreCase)
-                           && version.Name.StartsWith(this.Name, StringComparison.OrdinalIgnoreCase);
-                }
-                
-                if (string.IsNullOrEmpty(value))
-                {
-                    if (string.IsNullOrEmpty(this.Owner))
-                        return true;
-
-                    return version.Owner.StartsWith(this.Owner, StringComparison.OrdinalIgnoreCase);
-                }
-
-                if (string.IsNullOrEmpty(this.Owner))
-                    return version.Name.StartsWith(value, StringComparison.OrdinalIgnoreCase);
-
-                return version.Owner.StartsWith(this.Owner, StringComparison.OrdinalIgnoreCase)
-                       && version.Name.StartsWith(value, StringComparison.OrdinalIgnoreCase);
-            };
+            return version.Owner.Equals(this.Owner, StringComparison.OrdinalIgnoreCase)
+                   && version.Name.Like(this.Name);
         }
 
         #endregion
     }
 
     /// <summary>
-    /// An observable object for the <see cref="IVersionInfo"/>
+    ///     An observable object for the <see cref="IVersionInfo" />
     /// </summary>
     class ChangeVersionInfo : Observable, IVersionInfo
     {
@@ -294,7 +281,7 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        /// The date and time the version was last modified.
+        ///     The date and time the version was last modified.
         /// </summary>
         public object Modified
         {

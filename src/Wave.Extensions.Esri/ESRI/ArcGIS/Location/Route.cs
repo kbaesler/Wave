@@ -19,10 +19,10 @@ namespace ESRI.ArcGIS.Location
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Route" /> class.
+        /// Initializes a new instance of the <see cref="Route" /> class.
         /// </summary>
-        /// <param name="routeFeatureClass">The route feature class.</param>
-        /// <param name="routeIDFieldName">Name of the route identifier field.</param>
+        /// <param name="routeFeatureClass">A polyline feature class with m-values.</param>
+        /// <param name="routeIDFieldName">Any numeric or text field containing route identifiers.</param>
         /// <param name="routeIDIsUnique">if set to <c>true</c> when the route identifier is unique.</param>
         public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, bool routeIDIsUnique)
             : this(routeFeatureClass, routeIDFieldName, routeIDIsUnique, null)
@@ -31,12 +31,12 @@ namespace ESRI.ArcGIS.Location
 
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Route" /> class.
+        /// Initializes a new instance of the <see cref="Route" /> class.
         /// </summary>
-        /// <param name="routeFeatureClass">The route feature class.</param>
-        /// <param name="routeIDFieldName">Name of the route identifier field.</param>
+        /// <param name="routeFeatureClass">A polyline feature class with m-values.</param>
+        /// <param name="routeIDFieldName">Any numeric or text field containing route identifiers.</param>
         /// <param name="routeIDIsUnique">if set to <c>true</c> when the route identifier is unique.</param>
-        /// <param name="routeWhereClause">The filter used to query the source feature class for route data.</param>
+        /// <param name="routeWhereClause">The string that limits the number of routes on which route locations can be found.</param>
         public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, bool routeIDIsUnique, string routeWhereClause)
             : this(routeFeatureClass, routeIDFieldName, esriUnits.esriUnknownUnits, routeIDIsUnique, routeWhereClause)
         {
@@ -45,15 +45,16 @@ namespace ESRI.ArcGIS.Location
         /// <summary>
         ///     Initializes a new instance of the <see cref="Route" /> class.
         /// </summary>
-        /// <param name="routeFeatureClass">The route feature class.</param>
-        /// <param name="routeIDFieldName">Name of the route identifier field.</param>
-        /// <param name="routeMeasureUnits">The route measure units.</param>
+        /// <param name="routeFeatureClass">A polyline feature class with m-values.</param>
+        /// <param name="routeIDFieldName">Any numeric or text field containing route identifiers.</param>
+        /// <param name="routeMeasureUnits">The units of the m-values stored in the routes. The default is esriUnknownUnits.</param>
         /// <param name="routeIDIsUnique">if set to <c>true</c> when the route identifier is unique.</param>
-        /// <param name="routeWhereClause">The filter used to query the source feature class for route data.</param>
+        /// <param name="routeWhereClause">The string that limits the number of routes on which route locations can be found.</param>
         public Route(IFeatureClass routeFeatureClass, string routeIDFieldName, esriUnits routeMeasureUnits, bool routeIDIsUnique, string routeWhereClause)
         {
             this.FeatureClass = routeFeatureClass;
             this.Name = this.GetRouteMeasureLocatorName(routeFeatureClass, routeIDFieldName, routeMeasureUnits, routeIDIsUnique, routeWhereClause);
+            this.Locator = (IRouteLocator2)((IName)this.Name).Open();
         }
 
         #endregion
@@ -65,7 +66,7 @@ namespace ESRI.ArcGIS.Location
         /// </summary>
         public IRouteLocator2 Locator
         {
-            get { return (IRouteLocator2)((IName)this.Name).Open(); }
+            get; private set;
         }
 
         /// <summary>
@@ -85,31 +86,31 @@ namespace ESRI.ArcGIS.Location
         /// <summary>
         ///     Identify route locations in an envelope.
         /// </summary>
-        /// <param name="geometry">The buffer.</param>
+        /// <param name="buffer">The buffer.</param>
         /// <param name="whereClause">The where clause.</param>
         /// <param name="tolerance">The tolerance.</param>
         /// <returns>
         ///     Returns a <see cref="IEnumerable{T}" /> representing the route and location.
         /// </returns>
-        public List<RouteIdentifyResult> Identify(IGeometry geometry, string whereClause, double tolerance)
+        public List<RouteLocationResult> Identify(IGeometry buffer, string whereClause, double tolerance)
         {
-            var searchEnvelope = geometry.Envelope;
+            var searchEnvelope = buffer.Envelope;
             searchEnvelope.Expand(tolerance, tolerance, false);
 
             return Identify(searchEnvelope, whereClause);
         }
 
         /// <summary>
-        ///     Identify route locations in an envelope.
+        /// Identify route locations in an envelope.
         /// </summary>
-        /// <param name="searchEnvelope">The buffer.</param>
+        /// <param name="searchEnvelope">The search envelope.</param>
         /// <param name="whereClause">The where clause.</param>
         /// <returns>
-        ///     Returns a <see cref="IEnumerable{T}" /> representing the route and location.
+        /// Returns a <see cref="IEnumerable{T}"/> representing the route and location.
         /// </returns>
-        public List<RouteIdentifyResult> Identify(IEnvelope searchEnvelope, string whereClause)
+        public List<RouteLocationResult> Identify(IEnvelope searchEnvelope, string whereClause)
         {
-            List<RouteIdentifyResult> list = new List<RouteIdentifyResult>();
+            List<RouteLocationResult> list = new List<RouteLocationResult>();
 
             var values = this.Locator.Identify(searchEnvelope, whereClause);
             values.Reset();
@@ -124,7 +125,7 @@ namespace ESRI.ArcGIS.Location
                 esriLocatingError error;
                 this.Locator.Locate(location, out geometry, out error);
 
-                list.Add(new RouteIdentifyResult(location, feature, geometry, error));
+                list.Add(new RouteLocationResult(location, feature, geometry, error));
             }
 
             return list;
@@ -133,7 +134,7 @@ namespace ESRI.ArcGIS.Location
         /// <summary>
         ///     Locates point route location with the specified route identifier.
         /// </summary>
-        /// <param name="routeId">The route identifier (string, double, or int).</param>
+        /// <param name="routeId">The route identifier.</param>
         /// <param name="point">The point.</param>
         /// <param name="error">The error that occured during location.</param>
         /// <returns>
@@ -141,12 +142,14 @@ namespace ESRI.ArcGIS.Location
         /// </returns>
         public IGeometry Locate(object routeId, IPoint point, out esriLocatingError error)
         {
-            var location = new RouteMeasurePointLocationClass();
-            location.RouteID = routeId;
+            IRouteLocation routeLocation = new RouteMeasurePointLocationClass();
+            routeLocation.RouteID = routeId;
+
+            IRouteMeasurePointLocation location = (IRouteMeasurePointLocation)routeLocation;
             location.Measure = point.M;
 
             IGeometry result;
-            this.Locator.Locate(location, out result, out error);
+            this.Locator.Locate(routeLocation, out result, out error);
 
             return result.IsEmpty ? null : result;
         }
@@ -154,7 +157,7 @@ namespace ESRI.ArcGIS.Location
         /// <summary>
         ///     Locates line route location with the specified route identifier.
         /// </summary>
-        /// <param name="routeId">The route identifier (string, double, or int).</param>
+        /// <param name="routeId">The route identifier.</param>
         /// <param name="polyline">The polyline.</param>
         /// <param name="error">The error that occured during location.</param>
         /// <returns>
@@ -162,15 +165,17 @@ namespace ESRI.ArcGIS.Location
         /// </returns>
         public IGeometry Locate(object routeId, IPolyline polyline, out esriLocatingError error)
         {
-            var location = new RouteMeasureLineLocationClass();
-            location.RouteID = routeId;
+            IRouteLocation routeLocation = new RouteMeasureLineLocationClass();
+            routeLocation.RouteID = routeId;
 
             IMSegmentation segmentation = (IMSegmentation)polyline;
-            location.FromMeasure = segmentation.MMin;
-            location.ToMeasure = segmentation.MMax;
+
+            IRouteMeasureLineLocation lineLocation = (IRouteMeasureLineLocation)routeLocation;
+            lineLocation.FromMeasure = segmentation.MMin;
+            lineLocation.ToMeasure = segmentation.MMax;
 
             IGeometry result;
-            this.Locator.Locate(location, out result, out error);
+            this.Locator.Locate(routeLocation, out result, out error);
 
             return result.IsEmpty ? null : result;
         }
@@ -270,8 +275,8 @@ namespace ESRI.ArcGIS.Location
         {
             var properties = new RouteMeasureLinePropertiesClass();
             properties.EventRouteIDFieldName = this.Name.RouteIDFieldName;
-            properties.ToMeasureFieldName = "TMEASURE";
-            properties.FromMeasureFieldName = "FMEASURE";
+            properties.ToMeasureFieldName = "TMEAS";
+            properties.FromMeasureFieldName = "FMEAS";
 
             return this.Locate(locateLinesAlongRouteName, lines, clusterTolerance, properties, filter, keepAllFields, workspace);
         }
@@ -386,6 +391,7 @@ namespace ESRI.ArcGIS.Location
         {
             IRouteLocatorOperations2 locator = new RouteLocatorOperationsClass();
             locator.RouteLocator = this.Locator;
+            locator.RouteIDFieldName = this.Locator.RouteIDFieldName;
 
             if (source.HasOID && (filter != null && !string.IsNullOrEmpty(filter.WhereClause)))
             {
@@ -429,18 +435,18 @@ namespace ESRI.ArcGIS.Location
 
     /// <summary>
     /// </summary>
-    public class RouteIdentifyResult
+    public class RouteLocationResult
     {
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RouteIdentifyResult" /> class.
+        ///     Initializes a new instance of the <see cref="RouteLocationResult" /> class.
         /// </summary>
-        /// <param name="location">The location.</param>
+        /// <param name="location">Describes a portion of a route or a single position along a route.</param>
         /// <param name="feature">The feature.</param>
         /// <param name="geometry">The geometry.</param>
         /// <param name="error">The error.</param>
-        public RouteIdentifyResult(IRouteLocation location, IFeature feature, IGeometry geometry, esriLocatingError error)
+        public RouteLocationResult(IRouteLocation location, IFeature feature, IGeometry geometry, esriLocatingError error)
         {
             this.Location = location;
             this.Feature = feature;
@@ -461,7 +467,7 @@ namespace ESRI.ArcGIS.Location
         public esriLocatingError Error { get; private set; }
 
         /// <summary>
-        ///     Gets the feature.
+        ///     Gets the feature corresponding to the location.
         /// </summary>
         /// <value>
         ///     The feature.
@@ -469,7 +475,7 @@ namespace ESRI.ArcGIS.Location
         public IFeature Feature { get; private set; }
 
         /// <summary>
-        ///     Gets the geometry.
+        ///     Gets the geometry of the route location.
         /// </summary>
         /// <value>
         ///     The geometry.
@@ -477,7 +483,7 @@ namespace ESRI.ArcGIS.Location
         public IGeometry Geometry { get; private set; }
 
         /// <summary>
-        ///     Gets the location.
+        ///     Gets the portion of a route or a single position along a route.
         /// </summary>
         /// <value>
         ///     The location.
@@ -528,16 +534,6 @@ namespace ESRI.ArcGIS.Location
 
             this.Name = eventSourceName;
             this.FeatureClass = (IRouteEventSource)((IName)eventSourceName).Open();
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RouteEventSourceProxy" /> class.
-        /// </summary>
-        /// <param name="eventData">The event data.</param>
-        /// <param name="workspace">The workspace.</param>
-        public RouteEventSourceProxy(RouteEventData<RouteMeasureLineSegmentation> eventData, IWorkspace workspace)
-            : this(workspace.GetTable(eventData.EventTableName), workspace.GetFeatureClass(eventData.RouteFeatureClassName), eventData.Segmentation.EventProperties, eventData.RouteIdIsUnique)
-        {
         }
 
         #endregion

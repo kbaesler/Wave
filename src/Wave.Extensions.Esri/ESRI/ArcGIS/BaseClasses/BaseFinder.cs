@@ -68,14 +68,7 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// <param name="pFindCallBack"></param>
         public virtual void Find(IFindCallBack pFindCallBack)
         {
-            try
-            {
-                this.InternalFind(pFindCallBack);
-            }
-            catch (Exception e)
-            {
-                Log.Error(this, this.Name, e);
-            }
+            this.InternalFind(pFindCallBack);
         }
 
         /// <summary>
@@ -85,18 +78,11 @@ namespace ESRI.ArcGIS.ADF.BaseClasses
         /// <param name="pFindEventsCallBack">The find events call back.</param>
         public virtual void InitializeControl(AppRef pApplication, IFindPanelEvents pFindEventsCallBack)
         {
-            try
-            {
-                this.Application = pApplication;
-                this.FindEventsCallBack = pFindEventsCallBack;
+            this.Application = pApplication;
+            this.FindEventsCallBack = pFindEventsCallBack;
 
-                this.InitializeControl();
-                this.NewSearch();
-            }
-            catch (Exception e)
-            {
-                Log.Error(this, this.Name, e);
-            }
+            this.InitializeControl();
+            this.NewSearch();
         }
 
         /// <summary>

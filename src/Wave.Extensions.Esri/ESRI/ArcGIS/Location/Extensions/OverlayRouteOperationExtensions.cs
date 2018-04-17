@@ -4,10 +4,25 @@ using ESRI.ArcGIS.Geodatabase;
 namespace ESRI.ArcGIS.Location
 {
     /// <summary>
+    ///     The type of overlay operations.
+    /// </summary>
+    public enum OverlayType
+    {
+        /// <summary>
+        ///     Writes only overlapping events to the output event table.
+        /// </summary>
+        Intersect,
+
+        /// <summary>
+        ///     Writes all events to the output table. Linear events are split at their intersections.
+        /// </summary>
+        Union
+    }
+
+    /// <summary>
     ///     Provides extension methods for overlaying two event tables to create an output event table that represents the
     ///     union or intersection of the input.
     /// </summary>
-    /// <seealso cref="ESRI.ArcGIS.Location.RouteOperation{OverlayRouteEventData}" />
     /// <remarks>
     ///     Line-on-line, line-on-point, point-on-line, and point-on-point event overlays can be performed.
     ///     The input and overlay events should be based on the same route reference.
@@ -38,13 +53,13 @@ namespace ESRI.ArcGIS.Location
         /// <param name="outputWorkspace">The workspace that will contain the table that has been created.</param>
         /// <param name="trackCancel">Allows the operation be be cancelled.</param>
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
-        public static ITable Overlay(this ISelectionSet sourceSelection, IRouteMeasureSegmentation source, ISelectionSet overlaySelection, IRouteMeasureSegmentation overlay, OverlayType type, IRouteMeasureSegmentation output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
+        public static ITable Overlay(this ISelectionSet sourceSelection, IRouteEventProperties2 source, ISelectionSet overlaySelection, IRouteEventProperties2 overlay, OverlayType type, IRouteEventProperties2 output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
         {
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.EventProperties;
+            gp.InputEventProperties = source;
             gp.InputSelection = sourceSelection;
             gp.BuildOutputIndex = true;
-            gp.OverlayEventProperties = overlay.EventProperties;
+            gp.OverlayEventProperties = overlay;
             gp.OverlaySelection = overlaySelection;
             gp.KeepZeroLengthLineEvents = false;
 
@@ -73,13 +88,13 @@ namespace ESRI.ArcGIS.Location
         /// <param name="outputWorkspace">The workspace that will contain the table that has been created.</param>
         /// <param name="trackCancel">Allows the operation be be cancelled.</param>
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
-        public static ITable Overlay(this ITable sourceTable, IRouteMeasureSegmentation source, ITable overlayTable, IRouteMeasureSegmentation overlay, OverlayType type, IRouteMeasureSegmentation output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
+        public static ITable Overlay(this ITable sourceTable, IRouteEventProperties2 source, ITable overlayTable, IRouteEventProperties2 overlay, OverlayType type, IRouteEventProperties2 output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
         {
             IRouteMeasureEventGeoprocessor2 gp = new RouteMeasureGeoprocessorClass();
-            gp.InputEventProperties = source.EventProperties;
+            gp.InputEventProperties = source;
             gp.InputTable = sourceTable;
             gp.BuildOutputIndex = true;
-            gp.OverlayEventProperties = overlay.EventProperties;
+            gp.OverlayEventProperties = overlay;
             gp.OverlayTable = overlayTable;
             gp.KeepZeroLengthLineEvents = false;
 
@@ -103,20 +118,20 @@ namespace ESRI.ArcGIS.Location
         /// <param name="outputWorkspace">The workspace that will contain the table that has been created.</param>
         /// <param name="trackCancel">Allows the operation be be cancelled.</param>
         /// <returns>Returns a <see cref="ITable" /> representing the table that has been created.</returns>
-        private static ITable OverlayImpl(IRouteMeasureEventGeoprocessor2 gp, OverlayType type, IRouteMeasureSegmentation output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
+        private static ITable OverlayImpl(IRouteMeasureEventGeoprocessor2 gp, OverlayType type, IRouteEventProperties2 output, string outputTableName, IWorkspace outputWorkspace, ITrackCancel trackCancel)
         {
             var outputName = new TableNameClass();
-            outputName.WorkspaceName = (IWorkspaceName) ((IDataset) outputWorkspace).FullName;
+            outputName.WorkspaceName = (IWorkspaceName)((IDataset)outputWorkspace).FullName;
             outputName.Name = outputTableName;
 
             outputWorkspace.Delete(outputName);
 
             if (type == OverlayType.Union)
             {
-                return gp.Union2(output.EventProperties, true, outputName, trackCancel, "");
+                return gp.Union2(output, true, outputName, trackCancel, "");
             }
 
-            return gp.Intersect2(output.EventProperties, true, outputName, trackCancel, "");
+            return gp.Intersect2(output, true, outputName, trackCancel, "");
         }
 
         #endregion

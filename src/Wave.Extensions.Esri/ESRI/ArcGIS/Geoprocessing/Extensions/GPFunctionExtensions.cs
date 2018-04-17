@@ -41,8 +41,7 @@ namespace ESRI.ArcGIS.Geoprocessing
                 IGPParameterEdit3_DataType = compositeDataTypeClass,
                 IGPParameterEdit3_DisplayName = displayName,
                 IGPParameterEdit3_Name = name,
-                IGPParameterEdit3_ParameterType = parameterType,
-                IGPParameterEdit2_Value = new GPTableViewClass()
+                IGPParameterEdit3_ParameterType = parameterType                
             };
         }
 

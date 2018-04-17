@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
@@ -41,7 +40,7 @@ namespace Wave.Extensions.Esri.Tests
         /// <param name="pathName">Name of the path.</param>
         protected EsriTests(string pathName)
         {
-            _PathName = pathName;
+            _PathName = Path.GetFullPath(pathName);
         }
 
         #endregion

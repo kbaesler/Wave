@@ -43,7 +43,7 @@ namespace ESRI.ArcGIS.Geodatabase
         {
             ChangeVersionDialogViewModel dataContext = (ChangeVersionDialogViewModel) this.DataContext;
             dataContext.Close += (sender, args) => this.Close();
-            dataContext.Versions = CollectionViewSource.GetDefaultView(versions.Select(o => new ChangeVersionInfo(o)));
+            dataContext.Versions = new ListCollectionView(versions.Select(o => new ChangeVersionInfo(o)).ToList());
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace ESRI.ArcGIS.Geodatabase
             ChangeVersionDialogViewModel dataContext = (ChangeVersionDialogViewModel) this.DataContext;
             dataContext.Close += (sender, args) => this.Close();
             dataContext.Workspace = workspace;
-            dataContext.Versions = CollectionViewSource.GetDefaultView(versions.Select(o => new ChangeVersionInfo(o)));
+            dataContext.Versions = new ListCollectionView(versions.Select(o => new ChangeVersionInfo(o)).ToList());
 
             var hWnd = ArcMap.Application.GetNativeWindow();
             return this.ShowDialog(hWnd).GetValueOrDefault(false);

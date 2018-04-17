@@ -1,7 +1,6 @@
-﻿#if NET45
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 using ESRI.ArcGIS.Geodatabase;
 
@@ -23,9 +22,9 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns the <see cref="IFeatureLayer" /> representing the layer is associated with the feature class.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">table</exception>
-        public static Task<IFeatureLayer> GetFeatureLayerAsync(this IMap source, IFeatureClass table)
+        public static IFeatureLayer GetFeatureLayerAsync(this IMap source, IFeatureClass table)
         {
-            return Task.Run(() => source.GetFeatureLayer(table));
+            return Task.Wait(() => source.GetFeatureLayer(table));
         }
 
         /// <summary>
@@ -37,9 +36,9 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers are associated with the feature
         ///     class.
         /// </returns>
-        public static Task<IEnumerable<IFeatureLayer>> GetFeatureLayersAsync(this IMap source, IFeatureClass table)
+        public static IEnumerable<IFeatureLayer> GetFeatureLayersAsync(this IMap source, IFeatureClass table)
         {
-            return Task.Run(() => source.GetFeatureLayersAsync(table));
+            return Task.Wait(() => source.GetFeatureLayersAsync(table));
         }
 
         /// <summary>
@@ -47,9 +46,9 @@ namespace ESRI.ArcGIS.Carto
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>Returns a <see cref="IEnumerable{IFeatureLayer}" /> representing the layers in the map.</returns>
-        public static Task<IEnumerable<IFeatureLayer>> GetFeatureLayersAsync(this IMap source)
+        public static IEnumerable<IFeatureLayer> GetFeatureLayersAsync(this IMap source)
         {
-            return Task.Run(() => source.GetFeatureLayersAsync());
+            return Task.Wait(source.GetFeatureLayersAsync);
         }
 
         /// <summary>
@@ -65,10 +64,10 @@ namespace ESRI.ArcGIS.Carto
         ///     who are the result of invoking the recursive transform function on each element of the input sequence.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
-        public static Task<IEnumerable<TLayer>> GetLayersAsync<TLayer>(this IMaps source, Func<TLayer, bool> selector)
+        public static IEnumerable<TLayer> GetLayersAsync<TLayer>(this IMaps source, Func<TLayer, bool> selector)
             where TLayer : ILayer
         {
-            return Task.Run(() => source.GetLayersAsync(selector));
+            return Task.Wait(() => source.GetLayersAsync(selector));
         }
 
         /// <summary>
@@ -85,10 +84,10 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="System.ArgumentNullException">selector</exception>
         /// <exception cref="System.NotSupportedException">The layer type is not supported.</exception>
-        public static Task<IEnumerable<TLayer>> GetLayersAsync<TLayer>(this IMap source, Func<TLayer, bool> selector)
+        public static IEnumerable<TLayer> GetLayersAsync<TLayer>(this IMap source, Func<TLayer, bool> selector)
             where TLayer : ILayer
         {
-            return Task.Run(() => source.GetLayersAsync(selector));
+            return Task.Wait(() => source.GetLayersAsync(selector));
         }
 
         /// <summary>
@@ -96,9 +95,9 @@ namespace ESRI.ArcGIS.Carto
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>Returns a <see cref="IEnumerable{ITable}" /> representing the tables in the map.</returns>
-        public static Task<IEnumerable<ITable>> GetTablesAsync(this IMap source)
+        public static IEnumerable<ITable> GetTablesAsync(this IMap source)
         {
-            return Task.Run(() => source.GetTables());
+            return Task.Wait(source.GetTables);
         }
 
         /// <summary>
@@ -109,9 +108,9 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>
         ///     Returns a <see cref="IWorkspace" /> representing the workspace.
         /// </returns>
-        public static Task<IWorkspace> GetWorkspaceAsync(this IMap source, Predicate<ILayer> predicate)
+        public static IWorkspace GetWorkspaceAsync(this IMap source, Predicate<ILayer> predicate)
         {
-            return Task.Run(() => source.GetWorkspace(predicate));
+            return Task.Wait(() => source.GetWorkspace(predicate));
         }
 
         /// <summary>
@@ -122,9 +121,9 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>
         ///     Returns a <see cref="IWorkspace" /> representing the workspace.
         /// </returns>
-        public static Task<IWorkspace> GetWorkspaceAsync(this IMap source, Predicate<ITable> predicate)
+        public static IWorkspace GetWorkspaceAsync(this IMap source, Predicate<ITable> predicate)
         {
-            return Task.Run(() => source.GetWorkspace(predicate));
+            return Task.Wait(() => source.GetWorkspace(predicate));
         }
 
         /// <summary>
@@ -134,13 +133,11 @@ namespace ESRI.ArcGIS.Carto
         /// <returns>
         ///     Returns a <see cref="IWorkspace" /> representing the workspace.
         /// </returns>
-        public static Task<IWorkspace> GetWorkspaceAsync(this IMap source)
+        public static IWorkspace GetWorkspaceAsync(this IMap source)
         {
-            return Task.Run(() => source.GetWorkspace());
+            return Task.Wait(source.GetWorkspace);
         }
 
         #endregion
     }
 }
-
-#endif

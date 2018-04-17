@@ -103,14 +103,17 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Connection.Local.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Local.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ESRI.ArcGIS.AnalysisTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.ArcMapUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -119,6 +122,7 @@
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.Carto.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Catalog, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -130,13 +134,22 @@
     </Reference>
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataManagementTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.Display.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.EditingTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Editor, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -156,6 +169,7 @@
     </Reference>
     <Reference Include="ESRI.ArcGIS.GeoDatabaseUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -165,8 +179,13 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.LinearReferencingTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Location, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -188,9 +207,11 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
@@ -213,8 +234,8 @@
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseToolPalette.cs" />
     <Compile Include="ESRI\ArcGIS\BaseClasses\BaseWorkspaceExtension.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\LayerAsyncExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\Async\MapAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Carto\Extensions\LayerExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Carto\Extensions\MapExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Editor\Extensions\EditorExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Framework\Extensions\ApplicationExtensions.cs" />
@@ -243,15 +264,16 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Dynamic\Extensions\DynamicRowBufferExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Enumerations.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\ClassAsyncExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\VersionAsyncExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\WorkspaceAsyncExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\QueryDefExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\SelectionSetExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\Async\TableAsyncExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgressSurrogate.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\FeatureProgress.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Internal\QueryBuilder.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\OleDbConnectionFactories.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityTableAttribute.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityAttributesCollection.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityFieldAttribute.cs" />
+    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Attributes\EntityTableAttribute.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\SqlVersionedEditing.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\PolylineEqualityComparer.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Collections\RelationalEqualityComparer.cs" />
@@ -278,34 +300,32 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\LineExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\PolylineExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\SegmentationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunction.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseFunctionFactory.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolbox.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolboxTool.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\AnalysisTools\AnalysisToolsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\DataManagementToolsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\FeatureVerticesToPointsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\TableCompareExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DEExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\EditingTools\EditingToolsExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GeoprocessingExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMessagesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
+    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\LinearReferencingTools\LinearReferencingToolsExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\ConcatenateRouteEventtData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\ConcatenateRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\DissolveRouteEventData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\DissolveRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\OverlayRouteEventData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\OverlayRouteOperation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\EventData\RouteEventData.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Operations\RouteOperation.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Route.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureSegmentation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasureLineSegmentation.cs" />
-    <Compile Include="ESRI\ArcGIS\Location\Segmentation\RouteMeasurePointSegmentation.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Entity.cs" />
-    <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\EntityFieldAttribute.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\Extensions\EntityExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\ORM\IEntity.cs" />
+    <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseEsriProgram.cs" />
     <Compile Include="ESRI\ArcGIS\System\BaseClasses\BaseRuntimeAuthorization.cs" />
     <Compile Include="ESRI\ArcGIS\System\Collections\UIDEqualityComparer.cs" />
+    <Compile Include="ESRI\ArcGIS\System\ComReleaser.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComSerializable.cs" />
     <Compile Include="ESRI\ArcGIS\System\ComStream.cs" />
     <Compile Include="ESRI\ArcGIS\System\EsriRuntimeAuthorization.cs" />
@@ -342,30 +362,32 @@
     <Compile Include="System\Configuration\Interfaces\IKeyedElementCollection.cs" />
     <Compile Include="System\Configuration\KeyedElement.cs" />
     <Compile Include="System\Configuration\KeyedElementCollection.cs" />
+    <Compile Include="System\Configuration\NameValueConfiguration.cs" />
     <Compile Include="System\Data\ConfigDataSource.cs" />
     <Compile Include="System\Data\Extensions\DataSetExtensions.cs" />
     <Compile Include="System\Data\Extensions\DataTableExtensions.cs" />
     <Compile Include="System\Data\Extensions\DbConnectionExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="System\Diagnostics\Appenders\RichTextBoxAppender.cs" />
-    <Compile Include="System\Diagnostics\Appenders\TextStyleLevel.cs" />
     <Compile Include="System\Diagnostics\Extensions\ExceptionExtensions.cs" />
-    <Compile Include="System\Diagnostics\Log.cs" />
-    <Compile Include="System\Diagnostics\LogScope.cs" />
-    <Compile Include="System\Diagnostics\LogScopeManager.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\FileAppenderLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\LogLevelLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\log4net\ApacheLogProvider.cs" />
+    <Compile Include="System\Diagnostics\Logging\LogProvider.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicDictionary.cs" />
     <Compile Include="System\Dynamic\Collections\DynamicKeyValuePair.cs" />
     <Compile Include="System\Dynamic\Collections\Extensions\DynamicCollectionsExtensions.cs" />
     <Compile Include="System\Dynamic\Xml\DynamicXmlNode.cs" />
     <Compile Include="System\Dynamic\Xml\DynamicXmlNodeList.cs" />
     <Compile Include="System\Dynamic\Xml\Extensions\DynamicXmlExtensions.cs" />
+    <Compile Include="System\Extensions\DateTimeExtensions.cs" />
     <Compile Include="System\Extensions\EnumExtensions.cs" />
     <Compile Include="System\Extensions\HierarchyExtensions.cs" />
     <Compile Include="System\Extensions\StringExtensions.cs" />
     <Compile Include="System\Hierarchy.cs" />
     <Compile Include="System\Interfaces\IHierarchy.cs" />
     <Compile Include="System\Interfaces\IRecursion.cs" />
+    <Compile Include="System\IO\Extensions\DirectoryInfoExtensions.cs" />
     <Compile Include="System\IO\Extensions\StreamExtensions.cs" />
     <Compile Include="System\IO\NetworkDrive.cs" />
     <Compile Include="System\Native\UnsafeWindowMethods.cs" />
@@ -373,9 +395,18 @@
     <Compile Include="System\Reflection\Extensions\AssemblyExtensions.cs" />
     <Compile Include="System\Reflection\Internal\PropertyBinding.cs" />
     <Compile Include="System\Native\SafeTokenHandle.cs" />
+    <Compile Include="System\Runtime\Caching\ComCacheItemPolicy.cs" />
+    <Compile Include="System\Runtime\Caching\Extensions\MemoryCacheExtensions.cs" />
     <Compile Include="System\Security\Impersonation.cs" />
     <Compile Include="System\Security\Cryptography\DataProtection.cs" />
     <Compile Include="System\Security\Cryptography\SymmetricKeyProtection.cs" />
+    <Compile Include="System\Threading\Tasks\Extensions\TaskFactoryExtensions.cs" />
+    <Compile Include="System\Threading\Tasks\Schedulers\QueuedTaskScheduler.cs" />
+    <Compile Include="System\Threading\Tasks\Schedulers\STATaskScheduler.cs" />
+    <Compile Include="System\Timers\BackgroundJob..cs" />
+    <Compile Include="System\Timers\BackgroundJobManager.cs" />
+    <Compile Include="System\Timers\CronJob.cs" />
+    <Compile Include="System\Timers\RecurringJob.cs" />
     <Compile Include="System\TypeCast.cs" />
     <Compile Include="System\Forms\ApplicationMutex.cs" />
     <Compile Include="System\Forms\Collections\ListViewItemComparer.cs" />
@@ -401,6 +432,7 @@
     </Compile>
     <Compile Include="System\Forms\Extensions\ComboBoxExtensions.cs" />
     <Compile Include="System\Forms\Extensions\ListViewExtensions.cs" />
+    <Compile Include="System\Web\JsonObject.cs" />
     <Compile Include="System\Windows\Behaviors\BehaviorBinding.cs" />
     <Compile Include="System\Windows\Behaviors\BehaviorEventHandler.cs" />
     <Compile Include="System\Windows\Behaviors\CommandBehavior.cs" />
