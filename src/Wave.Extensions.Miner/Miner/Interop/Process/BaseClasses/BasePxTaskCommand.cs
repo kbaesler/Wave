@@ -4,8 +4,6 @@ using System.Diagnostics;
 using ESRI.ArcGIS.ADF.BaseClasses;
 using ESRI.ArcGIS.Framework;
 
-using Miner.Framework;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -14,6 +12,12 @@ namespace Miner.Interop.Process
     /// </summary>
     public abstract class BasePxTaskCommand : BaseMxCommand
     {
+        #region Fields
+
+        private static readonly ILog Log = LogProvider.For<BasePxTaskCommand>();
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -92,7 +96,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception ex)
             {
-                Log.Error(this, this.Caption, ex);
+                Log.Error(this.Caption, ex);
             }
         }
 
