@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
+using Miner.ComCategories;
+using Miner.Framework;
 
 namespace Miner.Interop
 {

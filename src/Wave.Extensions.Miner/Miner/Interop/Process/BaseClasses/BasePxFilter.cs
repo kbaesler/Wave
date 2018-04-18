@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-
+using Miner.ComCategories;
 using stdole;
 
 namespace Miner.Interop.Process

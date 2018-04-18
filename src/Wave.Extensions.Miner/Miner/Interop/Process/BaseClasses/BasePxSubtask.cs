@@ -1,3 +1,5 @@
+using Miner.ComCategories;
+using Miner.Framework;
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;

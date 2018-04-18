@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using Miner.Framework.Search;
+using Miner.FrameworkUI.Search;
 
 namespace Miner.Interop
 {
