@@ -302,7 +302,6 @@
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolbox.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolboxTool.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DEExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GeoprocessingExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMessagesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
