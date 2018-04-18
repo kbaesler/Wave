@@ -5,6 +5,11 @@ using System.Xml;
 
 using ESRI.ArcGIS.esriSystem;
 
+using Miner.Controls;
+using Miner.Controls.XmlLogin;
+using Miner.Framework;
+using Miner.FrameworkUI;
+
 namespace Miner.Interop
 {
     /// <summary>
