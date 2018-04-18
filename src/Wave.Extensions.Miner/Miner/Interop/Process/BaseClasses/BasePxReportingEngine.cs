@@ -10,6 +10,12 @@ namespace Miner.Interop.Process
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Px")]
     public abstract class BasePxReportingEngine : IMMWMSReportingEngine, IMMPxDisplayName
     {
+        #region Fields
+
+        private static readonly ILog Log = LogProvider.For<BasePxReportingEngine>();
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -25,7 +31,32 @@ namespace Miner.Interop.Process
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the display name.
+        /// </summary>
+        /// <value>
+        ///     The display name.
+        /// </value>
+        public string DisplayName { get; protected set; }
+
+        #endregion
+
         #region Protected Properties
+
+        /// <summary>
+        ///     Gets the path to the XSL file that is used to translate the XML into HTML.
+        /// </summary>
+        protected virtual string XslPath
+        {
+            get
+            {
+                IMMRegistry registry = new MMRegistry();
+                registry.OpenKey(mmHKEY.mmHKEY_LOCAL_MACHINE, mmBaseKey.mmWMS, "Style Sheets");
+                return TypeCast.Cast(registry.Read(this.StyleSheetName, string.Empty), string.Empty);
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the px application.
@@ -43,34 +74,9 @@ namespace Miner.Interop.Process
         /// </value>
         protected string StyleSheetName { get; private set; }
 
-        /// <summary>
-        ///     Gets the path to the XSL file that is used to translate the XML into HTML.
-        /// </summary>
-        protected virtual string XslPath
-        {
-            get
-            {
-                IMMRegistry registry = new MMRegistry();
-                registry.OpenKey(mmHKEY.mmHKEY_LOCAL_MACHINE, mmBaseKey.mmWMS, "Style Sheets");
-                return TypeCast.Cast(registry.Read(this.StyleSheetName, string.Empty), string.Empty);
-            }
-        }
-
         #endregion
 
-        #region IMMPxDisplayName Members
-
-        /// <summary>
-        ///     Gets or sets the display name.
-        /// </summary>
-        /// <value>
-        ///     The display name.
-        /// </value>
-        public string DisplayName { get; protected set; }
-
-        #endregion
-
-        #region IMMWMSReportingEngine Members
+        #region Public Methods
 
         /// <summary>
         ///     Executes the cost engine for the specified report.
@@ -87,7 +93,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Executing Reporting Engine " + this.DisplayName, e);
+                Log.Error("Error Executing Reporting Engine " + this.DisplayName, e);
             }
 
             return string.Empty;
@@ -108,7 +114,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Initializing Reporting Engine " + this.DisplayName, e);
+                Log.Error("Error Initializing Reporting Engine " + this.DisplayName, e);
             }
 
             return false;

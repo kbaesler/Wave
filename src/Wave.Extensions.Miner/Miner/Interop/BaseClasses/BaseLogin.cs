@@ -7,9 +7,7 @@ using ADODB;
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
-
 using Miner.Framework;
-
 
 namespace Miner.Interop
 {
@@ -63,7 +61,6 @@ namespace Miner.Interop
         #region Fields
 
         private readonly MMFrameworkLoginObjectClass _LoginObject;
-        private readonly TWindow _Window;
 
         #endregion
 
@@ -76,33 +73,12 @@ namespace Miner.Interop
         protected BaseLogin(TWindow window)
         {
             _LoginObject = new MMFrameworkLoginObjectClass();
-            _Window = window;
+            Window = window;
         }
 
         #endregion
 
-        #region Protected Properties
-
-        /// <summary>
-        ///     Gets the connection properties for the user selected default connection.
-        /// </summary>
-        /// <returns>A property set of the connection properties for the default connection.</returns>
-        protected abstract IPropertySet ConnectionProperties { get; }
-
-        /// <summary>
-        ///     Gets the window.
-        /// </summary>
-        /// <value>
-        ///     The window.
-        /// </value>
-        protected TWindow Window
-        {
-            get { return _Window; }
-        }
-
-        #endregion
-
-        #region IMMAdoConnection Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the connection.
@@ -114,23 +90,6 @@ namespace Miner.Interop
         {
             get { return _LoginObject.Connection; }
         }
-
-        #endregion
-
-        #region IMMChangeDefaultVersion Members
-
-        /// <summary>
-        ///     Changes the default version.
-        /// </summary>
-        /// <param name="pVersion">The version.</param>
-        public virtual void ChangeDefaultVersion(IVersion pVersion)
-        {
-            _LoginObject.ChangeDefaultVersion(pVersion);
-        }
-
-        #endregion
-
-        #region IMMLoginObject Members
 
         /// <summary>
         ///     Gets a value indicating whether this instance is valid login.
@@ -165,6 +124,37 @@ namespace Miner.Interop
             get { return _LoginObject.UserName; }
         }
 
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets the connection properties for the user selected default connection.
+        /// </summary>
+        /// <returns>A property set of the connection properties for the default connection.</returns>
+        protected abstract IPropertySet ConnectionProperties { get; }
+
+        /// <summary>
+        ///     Gets the window.
+        /// </summary>
+        /// <value>
+        ///     The window.
+        /// </value>
+        protected TWindow Window { get; }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Changes the default version.
+        /// </summary>
+        /// <param name="pVersion">The version.</param>
+        public virtual void ChangeDefaultVersion(IVersion pVersion)
+        {
+            _LoginObject.ChangeDefaultVersion(pVersion);
+        }
+
         /// <summary>
         ///     Gets the full name of the table.
         /// </summary>
@@ -193,7 +183,7 @@ namespace Miner.Interop
         /// </remarks>
         public virtual bool Login(bool vbInitialLogin)
         {
-            switch (_Window.ShowDialog(Document.ParentWindow))
+            switch (Window.ShowDialog(Document.ParentWindow))
             {
                 case DialogResult.OK:
 
@@ -205,7 +195,7 @@ namespace Miner.Interop
                         return this.Login(vbInitialLogin);
 
                     // Validate the system tables are present.
-                    if (!((IMMDefaultLoginObject2) _LoginObject).ValidateSystemTables(this.LoginWorkspace, _Window.Text))
+                    if (!((IMMDefaultLoginObject2) _LoginObject).ValidateSystemTables(this.LoginWorkspace, Window.Text))
                         return this.Login(vbInitialLogin);
 
                     return true;

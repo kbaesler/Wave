@@ -1,11 +1,9 @@
+using Miner.Framework;
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
-using Miner.ComCategories;
-using Miner.Framework;
 
 namespace Miner.Interop
 {
@@ -20,6 +18,8 @@ namespace Miner.Interop
     public abstract class BaseTreeTool : IMMTreeTool, IDisposable
     {
         #region Fields
+
+        private static readonly ILog Log = LogProvider.For<BaseTreeTool>();
 
         private Bitmap _Bitmap;
 
@@ -60,21 +60,16 @@ namespace Miner.Interop
 
         #endregion
 
-        #region IDisposable Members
+        #region Public Properties
 
         /// <summary>
-        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ///     Gets the bitmap.
         /// </summary>
-        public void Dispose()
+        /// <value>The bitmap.</value>
+        public int Bitmap
         {
-            this.Dispose(true);
-
-            GC.SuppressFinalize(this);
+            get { return (_Bitmap != null) ? _Bitmap.GetHbitmap().ToInt32() : 0; }
         }
-
-        #endregion
-
-        #region IMMTreeTool Members
 
         /// <summary>
         ///     Gets a value indicating whether the menu item as the default action to be performed when the user double-clicks the
@@ -85,15 +80,6 @@ namespace Miner.Interop
         ///     item.; otherwise, <c>false</c>.
         /// </value>
         public bool AllowAsDefault { get; protected set; }
-
-        /// <summary>
-        ///     Gets the bitmap.
-        /// </summary>
-        /// <value>The bitmap.</value>
-        public int Bitmap
-        {
-            get { return (_Bitmap != null) ? _Bitmap.GetHbitmap().ToInt32() : 0; }
-        }
 
         /// <summary>
         ///     Gets the category.
@@ -121,6 +107,24 @@ namespace Miner.Interop
         /// <value>The short cut.</value>
         public mmShortCutKey ShortCut { get; protected set; }
 
+        #endregion
+
+        #region IDisposable Members
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         ///     Executes the specified tree tool using the selected items.
         /// </summary>
@@ -134,7 +138,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, this.Name, e);
+                Log.Error(this.Name, e);
             }
         }
 
@@ -152,7 +156,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, this.Name, e);
+                Log.Error(this.Name, e);
             }
 
             return 0;
@@ -211,7 +215,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format("Error Updating Bitmap {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Updating Bitmap " + this.Name, e);
+                Log.Error("Error Updating Bitmap " + this.Name, e);
             }
         }
 

@@ -12,6 +12,8 @@ namespace Miner.Interop
     /// </summary>
     public static class RelationshipClassExtensions
     {
+        private static readonly ILog Log = LogProvider.For<IMMEditNotificationQueue>();
+
         #region Public Methods
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace Miner.Interop
                 }
                 catch (COMException com)
                 {
-                    Log.Error(typeof (IMMEditNotificationQueue), "You must be in an edit operation.\n" + com.GetErrorMessage(), com);
+                    Log.Error("You must be in an edit operation.\n" + com.GetErrorMessage(), com);
                 }
             }
         }

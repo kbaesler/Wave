@@ -6,9 +6,9 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-
 using Miner.ComCategories;
 using Miner.Framework;
+using ILog = System.Diagnostics.ILog;
 
 namespace Miner.Interop
 {
@@ -18,6 +18,12 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseNamer : IMMNamer
     {
+        #region Fields
+
+        private static readonly ILog Log = LogProvider.For<BaseNamer>();
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -31,19 +37,7 @@ namespace Miner.Interop
 
         #endregion
 
-        #region Protected Properties
-
-        /// <summary>
-        ///     Gets or sets the feature class.
-        /// </summary>
-        /// <value>
-        ///     The feature class.
-        /// </value>
-        protected IFeatureClass FeatureClass { get; set; }
-
-        #endregion
-
-        #region IMMNamer Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets or sets the name.
@@ -67,6 +61,37 @@ namespace Miner.Interop
         ///     Allows you to pass in any objects to be used.
         /// </remarks>
         public IPropertySet NamerProperties { get; protected set; }
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets or sets the feature class.
+        /// </summary>
+        /// <value>
+        ///     The feature class.
+        /// </value>
+        protected IFeatureClass FeatureClass { get; set; }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Initializes the namer with the specified <paramref name="featureClass" /> and <paramref name="namerProperties" />
+        /// </summary>
+        /// <param name="featureClass">The feature class.</param>
+        /// <param name="namerProperties">The namer properties.</param>
+        /// <remarks>
+        ///     This method initializes the instance using the data included in the PropertySet by the current map book.
+        ///     This is called immediately before NextFileName is called for the first time.
+        /// </remarks>
+        public virtual void Initialize(IFeatureClass featureClass, IPropertySet namerProperties)
+        {
+            this.FeatureClass = featureClass;
+            this.NamerProperties = namerProperties;
+        }
 
         /// <summary>
         ///     Called for each plot and should return a unique name for the file to be exported from Map Production.
@@ -92,25 +117,10 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format(@"Error Executing File Namer {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Executing File Namer " + this.Name, e);
+                Log.Error("Error Executing File Namer " + this.Name, e);
             }
 
             return string.Empty;
-        }
-
-        /// <summary>
-        ///     Initializes the namer with the specified <paramref name="featureClass" /> and <paramref name="namerProperties" />
-        /// </summary>
-        /// <param name="featureClass">The feature class.</param>
-        /// <param name="namerProperties">The namer properties.</param>
-        /// <remarks>
-        ///     This method initializes the instance using the data included in the PropertySet by the current map book.
-        ///     This is called immediately before NextFileName is called for the first time.
-        /// </remarks>
-        public virtual void Initialize(IFeatureClass featureClass, IPropertySet namerProperties)
-        {
-            this.FeatureClass = featureClass;
-            this.NamerProperties = namerProperties;
         }
 
         /// <summary>

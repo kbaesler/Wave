@@ -1,7 +1,6 @@
-﻿#if NET45
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 using Miner.Interop;
 
@@ -22,9 +21,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns a <see cref="IEnumerable{T}" /> representing the class model names assigned to the object class.
         /// </returns>
-        public static Task<IEnumerable<string>> GetClassModelNamesAsync(this IObjectClass source)
+        public static IEnumerable<string> GetClassModelNamesAsync(this IObjectClass source)
         {
-            return Task.Run(() => source.GetClassModelNames());
+            return Task.Wait(() => source.GetClassModelNames());
         }
 
 
@@ -39,9 +38,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns the  <see cref="Dictionary{Key, Value}" /> representing the field model name for the field indexes.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static Task<Dictionary<string, List<int>>> GetFieldIndexesAsync(this IObjectClass source, params string[] modelNames)
+        public static Dictionary<string, List<int>> GetFieldIndexesAsync(this IObjectClass source, params string[] modelNames)
         {
-            return Task.Run(() => source.GetFieldIndexes(modelNames));
+            return Task.Wait(() => source.GetFieldIndexes(modelNames));
         }
 
         /// <summary>
@@ -52,9 +51,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the class.
         /// </returns>
-        public static Task<IMMFieldManager> GetFieldManagerAsync(this IObjectClass source, int subtypeCode)
+        public static IMMFieldManager GetFieldManagerAsync(this IObjectClass source, int subtypeCode)
         {
-            return Task.Run(() => source.GetFieldManager(subtypeCode));
+            return Task.Wait(() => source.GetFieldManager(subtypeCode));
         }
 
         /// <summary>
@@ -66,9 +65,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <returns>
         ///     Returns the <see cref="IMMFieldManager" /> representing the properties for the class.
         /// </returns>
-        public static Task<IMMFieldManager> GetFieldManagerAsync(this IObjectClass source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder)
+        public static IMMFieldManager GetFieldManagerAsync(this IObjectClass source, int subtypeCode, IMMAuxiliaryFieldBuilder auxiliaryFieldBuilder)
         {
-            return Task.Run(() => source.GetFieldManager(subtypeCode, auxiliaryFieldBuilder));
+            return Task.Wait(() => source.GetFieldManager(subtypeCode, auxiliaryFieldBuilder));
         }
 
         /// <summary>
@@ -80,9 +79,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="Dictionary{Key, Value}" /> representing the model names assigned to the field.
         /// </returns>
         /// <exception cref="ArgumentNullException">field</exception>
-        public static Task<Dictionary<IField, List<string>>> GetFieldModelNamesAsync(this IObjectClass source)
+        public static Dictionary<IField, List<string>> GetFieldModelNamesAsync(this IObjectClass source)
         {
-            return Task.Run(() => source.GetFieldModelNames());
+            return Task.Wait(() => source.GetFieldModelNames());
         }
 
         /// <summary>
@@ -95,9 +94,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IEnumerable{T}" /> representing the model names assigned to the field.
         /// </returns>
         /// <exception cref="ArgumentNullException">field</exception>
-        public static Task<IEnumerable<string>> GetFieldModelNamesAsync(this IObjectClass source, IField field)
+        public static IEnumerable<string> GetFieldModelNamesAsync(this IObjectClass source, IField field)
         {
-            return Task.Run(() => source.GetFieldModelNames(field));
+            return Task.Wait(() => source.GetFieldModelNames(field));
         }
 
 
@@ -111,9 +110,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IEnumerable{T}" /> representing the name of the fields that are assigned the field model name.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<string>> GetFieldNamesAsync(this IObjectClass source, string modelName)
+        public static IEnumerable<string> GetFieldNamesAsync(this IObjectClass source, string modelName)
         {
-            return Task.Run(() => source.GetFieldNames(modelName));
+            return Task.Wait(() => source.GetFieldNames(modelName));
         }
 
         /// <summary>
@@ -126,9 +125,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns a <see cref="IEnumerable{T}" /> representing the name of the fields that are assigned the field model name.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static Task<IEnumerable<string>> GetFieldNamesAsync(this IObjectClass source, params string[] modelNames)
+        public static IEnumerable<string> GetFieldNamesAsync(this IObjectClass source, params string[] modelNames)
         {
-            return Task.Run(() => source.GetFieldNames(modelNames));
+            return Task.Wait(() => source.GetFieldNames(modelNames));
         }
 
         /// <summary>
@@ -141,9 +140,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     Returns the  <see cref="IEnumerable{IField}" /> that has been assigned the model name.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static Task<IEnumerable<IField>> GetFieldsAsync(this IObjectClass source, params string[] modelNames)
+        public static IEnumerable<IField> GetFieldsAsync(this IObjectClass source, params string[] modelNames)
         {
-            return Task.Run(() => source.GetFields(modelNames));
+            return Task.Wait(() => source.GetFields(modelNames));
         }
 
         /// <summary>
@@ -159,9 +158,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IRelationshipClass> GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string modelName)
+        public static IRelationshipClass GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string modelName)
         {
-            return Task.Run(() => source.GetRelationshipClass(relationshipRole, modelName));
+            return Task.Wait(() => source.GetRelationshipClass(relationshipRole, modelName));
         }
 
         /// <summary>
@@ -181,9 +180,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IRelationshipClass> GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string modelName, bool throwException)
+        public static IRelationshipClass GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetRelationshipClass(relationshipRole, modelName, throwException));
+            return Task.Wait(() => source.GetRelationshipClass(relationshipRole, modelName, throwException));
         }
 
         /// <summary>
@@ -199,9 +198,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IRelationshipClass> GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames)
+        public static IRelationshipClass GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames)
         {
-            return Task.Run(() => source.GetRelationshipClass(relationshipRole, modelNames));
+            return Task.Wait(() => source.GetRelationshipClass(relationshipRole, modelNames));
         }
 
         /// <summary>
@@ -221,9 +220,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IRelationshipClass> GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames, bool throwException)
+        public static IRelationshipClass GetRelationshipClassAsync(this IObjectClass source, esriRelRole relationshipRole, string[] modelNames, bool throwException)
         {
-            return Task.Run(() => source.GetRelationshipClass(relationshipRole, modelNames, throwException));
+            return Task.Wait(() => source.GetRelationshipClass(relationshipRole, modelNames, throwException));
         }
 
         /// <summary>
@@ -240,13 +239,11 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     representing those relationships that are assigned one or more of the class model names.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static Task<IEnumerable<IRelationshipClass>> GetRelationshipClassesAsync(this IObjectClass source, esriRelRole relationshipRole, params string[] modelNames)
+        public static IEnumerable<IRelationshipClass> GetRelationshipClassesAsync(this IObjectClass source, esriRelRole relationshipRole, params string[] modelNames)
         {
-            return Task.Run(() => source.GetRelationshipClasses(relationshipRole, modelNames));
+            return Task.Wait(() => source.GetRelationshipClasses(relationshipRole, modelNames));
         }
 
         #endregion
     }
 }
-
-#endif

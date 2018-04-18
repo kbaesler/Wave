@@ -1,6 +1,5 @@
-﻿#if NET45
-using System;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -10,23 +9,6 @@ namespace ESRI.ArcGIS.Geodatabase
     public static class DatasetAsyncExtensions
     {
         #region Public Methods
-
-        /// <summary>
-        ///     Finds the <see cref="IFeatureClass" /> that has been assigned the <paramref name="modelName" /> that is within the
-        ///     specified <paramref name="source" />.
-        /// </summary>
-        /// <param name="source">The workspace</param>
-        /// <param name="modelName">Name of the model.</param>
-        /// <returns>
-        ///     Returns a <see cref="IFeatureClass" /> representing the feature class that has been assigned the class model name,
-        ///     otherwise <c>null</c>.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">modelName</exception>
-        /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IFeatureClass> GetFeatureClassAsync(this IFeatureDataset source, string modelName)
-        {
-            return Task.Run(() => source.GetFeatureClass(modelName));
-        }
 
         /// <summary>
         ///     Finds the <see cref="IFeatureClass" /> that has been assigned the <paramref name="modelName" /> that is within the
@@ -44,13 +26,11 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IFeatureClass> GetFeatureClassAsync(this IFeatureDataset source, string modelName, bool throwException)
+        public static IFeatureClass GetFeatureClassAsync(this IFeatureDataset source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetFeatureClass(modelName, throwException));
+            return Task.Wait(() => source.GetFeatureClass(modelName, throwException));
         }
 
         #endregion
     }
 }
-
-#endif

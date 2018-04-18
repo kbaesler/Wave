@@ -1,8 +1,7 @@
+using Miner.ComCategories;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
-using Miner.ComCategories;
 
 namespace Miner.Interop.Process
 {
@@ -37,33 +36,7 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region Protected Properties
-
-        /// <summary>
-        ///     Gets the control.
-        /// </summary>
-        /// <value>
-        ///     The control.
-        /// </value>
-        protected IPxControlUI Control { get; private set; }
-
-        /// <summary>
-        ///     Gets the process application reference.
-        /// </summary>
-        /// <value>
-        ///     The process application reference.
-        /// </value>
-        protected IMMPxApplication PxApplication { get; private set; }
-
-        #endregion
-
-        #region IMMPxControl Members
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether this <see cref="BasePxControl" /> is enabled.
-        /// </summary>
-        /// <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
-        public bool Enabled { get; set; }
+        #region Public Properties
 
         /// <summary>
         ///     Gets the handle to the control.
@@ -78,6 +51,29 @@ namespace Miner.Interop.Process
                 return this.Control.Handle;
             }
         }
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is initialized.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is initialized; otherwise, <c>false</c>.
+        /// </value>
+        public virtual bool IsInitialized
+        {
+            get { return (this.PxApplication != null); }
+        }
+
+        /// <summary>
+        ///     Gets the display name.
+        /// </summary>
+        /// <value>The display name.</value>
+        public string DisplayName { get; private set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether this <see cref="BasePxControl" /> is enabled.
+        /// </summary>
+        /// <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
+        public bool Enabled { get; set; }
 
         /// <summary>
         ///     Gets the name.
@@ -99,17 +95,6 @@ namespace Miner.Interop.Process
                 _Node = value;
             }
             protected get { return _Node; }
-        }
-
-        /// <summary>
-        ///     Gets a value indicating whether this instance is initialized.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is initialized; otherwise, <c>false</c>.
-        /// </value>
-        public virtual bool IsInitialized
-        {
-            get { return (this.PxApplication != null); }
         }
 
         /// <summary>
@@ -144,6 +129,30 @@ namespace Miner.Interop.Process
             }
         }
 
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets the control.
+        /// </summary>
+        /// <value>
+        ///     The control.
+        /// </value>
+        protected IPxControlUI Control { get; private set; }
+
+        /// <summary>
+        ///     Gets the process application reference.
+        /// </summary>
+        /// <value>
+        ///     The process application reference.
+        /// </value>
+        protected IMMPxApplication PxApplication { get; private set; }
+
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         ///     Initializes the control with the specified <paramref name="vInitData" />.
         /// </summary>
@@ -152,10 +161,6 @@ namespace Miner.Interop.Process
         {
             this.PxApplication = vInitData as IMMPxApplication;
         }
-
-        #endregion
-
-        #region IMMPxControl2 Members
 
         /// <summary>
         ///     Called when the control is losing focus within the application.
@@ -171,16 +176,6 @@ namespace Miner.Interop.Process
                     this.Control.ApplyUpdates();
             }
         }
-
-        #endregion
-
-        #region IMMPxDisplayName Members
-
-        /// <summary>
-        ///     Gets the display name.
-        /// </summary>
-        /// <value>The display name.</value>
-        public string DisplayName { get; private set; }
 
         #endregion
 
