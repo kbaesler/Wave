@@ -17,6 +17,7 @@ namespace Miner.Interop
     {
         #region Fields
 
+        private static readonly ILog Log = LogProvider.For<BaseAbandonAU>();
         private readonly string _Name;
 
         #endregion
@@ -132,9 +133,9 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, "Error Executing Abandon AU " + _Name, e);
+                Log.Error("Error Executing Abandon AU " + _Name, e);
             else
-                Log.Error(this, e);
+                Log.Error( e);
         }
 
         #endregion

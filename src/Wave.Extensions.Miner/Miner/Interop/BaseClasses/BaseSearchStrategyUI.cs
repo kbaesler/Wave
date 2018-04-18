@@ -17,6 +17,8 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseSearchStrategyUI : IMMSearchStrategyUI
     {
+        private static readonly System.Diagnostics.ILog Log = LogProvider.For<BaseSearchStrategyUI>();
+
         #region Constructors
 
         /// <summary>
@@ -136,7 +138,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, this.Caption, e);
+                Log.Error(this.Caption, e);
             }
         }
 

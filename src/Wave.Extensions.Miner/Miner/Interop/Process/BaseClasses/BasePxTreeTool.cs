@@ -21,6 +21,8 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxTreeTool : IMMTreeViewTool, IMMTreeViewToolEx, IMMTreeViewTool2, IMMTreeViewToolEx2
     {
+        private static readonly ILog Log = LogProvider.For<BasePxTreeTool>();
+
         #region Constructors
 
         /// <summary>
@@ -98,7 +100,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Executing Tree Tool " + this.Name, e);
+                Log.Error("Error Executing Tree Tool " + this.Name, e);
             }
         }
 
@@ -117,7 +119,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Enabling Tree Tool " + this.Name, e);
+                Log.Error("Error Enabling Tree Tool " + this.Name, e);
             }
 
             return 0;
@@ -277,9 +279,9 @@ namespace Miner.Interop.Process
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, "Error Updating Bitmap " + this.Name, e);
+                    Log.Error("Error Updating Bitmap " + this.Name, e);
                 else
-                    Log.Error(this, e);
+                    Log.Error(e);
             }
         }
 
@@ -296,9 +298,9 @@ namespace Miner.Interop.Process
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, "Error Updating Bitmap " + this.Name, e);
+                    Log.Error("Error Updating Bitmap " + this.Name, e);
                 else
-                    Log.Error(this, e);
+                    Log.Error(e);
             }
         }
 

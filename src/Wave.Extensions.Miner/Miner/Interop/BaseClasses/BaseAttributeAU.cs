@@ -16,7 +16,7 @@ namespace Miner.Interop
     public abstract class BaseAttributeAU : IMMAttrAUStrategy
     {
         #region Fields
-
+        private static readonly ILog Log = LogProvider.For<BaseAttributeAU>();
         private readonly string _DomainName;
         private readonly esriFieldType _FieldType;
         private readonly string _Name;
@@ -167,9 +167,9 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, "Error Executing Attribute AU " + _Name, e);
+                Log.Error("Error Executing Attribute AU " + _Name, e);
             else
-                Log.Error(this, e);
+                Log.Error(e);
         }
 
         #endregion

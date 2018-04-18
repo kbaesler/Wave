@@ -10,6 +10,8 @@ namespace Miner.Interop.Process
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Px")]
     public abstract class BasePxReportingEngine : IMMWMSReportingEngine, IMMPxDisplayName
     {
+        private static readonly ILog Log = LogProvider.For<BasePxReportingEngine>();
+
         #region Constructors
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Executing Reporting Engine " + this.DisplayName, e);
+                Log.Error("Error Executing Reporting Engine " + this.DisplayName, e);
             }
 
             return string.Empty;
@@ -108,7 +110,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Initializing Reporting Engine " + this.DisplayName, e);
+                Log.Error("Error Initializing Reporting Engine " + this.DisplayName, e);
             }
 
             return false;

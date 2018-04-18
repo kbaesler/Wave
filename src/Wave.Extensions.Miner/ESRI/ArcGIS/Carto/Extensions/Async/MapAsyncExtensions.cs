@@ -1,7 +1,6 @@
-﻿#if NET45
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 using ESRI.ArcGIS.Geodatabase;
 
@@ -24,9 +23,9 @@ namespace ESRI.ArcGIS.Carto
         ///     the model name.
         /// </returns>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IFeatureClass> GetFeatureClassAsync(this IMap source, string modelName)
+        public static IFeatureClass GetFeatureClassAsync(this IMap source, string modelName)
         {
-            return Task.Run(() => source.GetFeatureClass(modelName));
+            return Task.Wait(() => source.GetFeatureClass(modelName, true));
         }
 
         /// <summary>
@@ -43,9 +42,9 @@ namespace ESRI.ArcGIS.Carto
         ///     the model name.
         /// </returns>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IFeatureClass> GetFeatureClassAsync(this IMap source, string modelName, bool throwException)
+        public static IFeatureClass GetFeatureClassAsync(this IMap source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetFeatureClass(modelName, throwException));
+            return Task.Wait(() => source.GetFeatureClass(modelName, throwException));
         }
 
         /// <summary>
@@ -58,9 +57,9 @@ namespace ESRI.ArcGIS.Carto
         ///     the model name.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<IFeatureClass>> GetFeatureClassesAsync(this IMap source, string modelName)
+        public static IEnumerable<IFeatureClass> GetFeatureClassesAsync(this IMap source, string modelName)
         {
-            return Task.Run(() => source.GetFeatureClasses(modelName));
+            return Task.Wait(() => source.GetFeatureClasses(modelName));
         }
 
         /// <summary>
@@ -74,9 +73,9 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IFeatureLayer> GetFeatureLayerAsync(this IMap source, string modelName)
+        public static IFeatureLayer GetFeatureLayerAsync(this IMap source, string modelName)
         {
-            return Task.Run(() => source.GetFeatureLayer(modelName));
+            return Task.Wait(() => source.GetFeatureLayer(modelName, true));
         }
 
         /// <summary>
@@ -94,9 +93,9 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IFeatureLayer> GetFeatureLayerAsync(this IMap source, string modelName, bool throwException)
+        public static IFeatureLayer GetFeatureLayerAsync(this IMap source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetFeatureLayer(modelName, throwException));
+            return Task.Wait(() => source.GetFeatureLayer(modelName, throwException));
         }
 
         /// <summary>
@@ -108,9 +107,9 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns the <see cref="IEnumerable{IFeatureLayer}" /> representing the layers that are assigned the model name.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<IFeatureLayer>> GetFeatureLayersAsync(this IMap source, string modelName)
+        public static IEnumerable<IFeatureLayer> GetFeatureLayersAsync(this IMap source, string modelName)
         {
-            return Task.Run(() => source.GetFeatureLayers(modelName));
+            return Task.Wait(() => source.GetFeatureLayers(modelName));
         }
 
         /// <summary>
@@ -124,9 +123,9 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<ITable> GetTableAsync(this IMap source, string modelName)
+        public static ITable GetTableAsync(this IMap source, string modelName)
         {
-            return Task.Run(() => source.GetTable(modelName));
+            return Task.Wait(() => source.GetTable(modelName));
         }
 
         /// <summary>
@@ -144,9 +143,9 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<ITable> GetTableAsync(this IMap source, string modelName, bool throwException)
+        public static ITable GetTableAsync(this IMap source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetTable(modelName, throwException));
+            return Task.Wait(() => source.GetTable(modelName, throwException));
         }
 
         /// <summary>
@@ -159,9 +158,9 @@ namespace ESRI.ArcGIS.Carto
         ///     name.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<ITable>> GetTablesAsync(this IMap source, string modelName)
+        public static IEnumerable<ITable> GetTablesAsync(this IMap source, string modelName)
         {
-            return Task.Run(() => source.GetTables(modelName));
+            return Task.Wait(() => source.GetTables(modelName));
         }
 
         /// <summary>
@@ -174,9 +173,9 @@ namespace ESRI.ArcGIS.Carto
         ///     Returns a <see cref="IWorkspace" /> representing the workspace in the map that is being edited.
         /// </returns>
         /// <exception cref="ArgumentNullException">predicate</exception>
-        public static Task<IWorkspace> GetWorkspaceAsync(this IMap source, Predicate<IWorkspace> predicate)
+        public static IWorkspace GetWorkspaceAsync(this IMap source, Predicate<IWorkspace> predicate)
         {
-            return Task.Run(() => source.GetWorkspace(predicate));
+            return Task.Wait(() => source.GetWorkspace(predicate));
         }
 
         /// <summary>
@@ -190,9 +189,9 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingDatabaseModelNameException"></exception>
-        public static Task<IWorkspace> GetWorkspaceAsync(this IMap source, string modelName)
+        public static IWorkspace GetWorkspaceAsync(this IMap source, string modelName)
         {
-            return Task.Run(() => source.GetWorkspace(modelName));
+            return Task.Wait(() => source.GetWorkspace(modelName));
         }
 
         /// <summary>
@@ -210,12 +209,11 @@ namespace ESRI.ArcGIS.Carto
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingDatabaseModelNameException"></exception>
-        public static Task<IWorkspace> GetWorkspaceAsync(this IMap source, string modelName, bool throwException)
+        public static IWorkspace GetWorkspaceAsync(this IMap source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetWorkspace(modelName, throwException));
+            return Task.Wait(() => source.GetWorkspace(modelName, throwException));
         }
 
         #endregion
     }
 }
-#endif

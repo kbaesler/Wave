@@ -311,7 +311,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>
-        ///     Returns a <see cref="TEntity" /> representing the entity object
+        ///     Returns a <see cref="Entity" /> representing the entity object
         /// </returns>
         public static TEntity ToEntity<TEntity>(this IRow source) where TEntity : Entity
         {

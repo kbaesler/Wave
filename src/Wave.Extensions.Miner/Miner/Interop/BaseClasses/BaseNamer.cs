@@ -18,6 +18,8 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseNamer : IMMNamer
     {
+        private static readonly System.Diagnostics.ILog Log = LogProvider.For<BaseNamer>();
+
         #region Constructors
 
         /// <summary>
@@ -92,7 +94,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format(@"Error Executing File Namer {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Executing File Namer " + this.Name, e);
+                Log.Error("Error Executing File Namer " + this.Name, e);
             }
 
             return string.Empty;

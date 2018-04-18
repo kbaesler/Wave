@@ -16,6 +16,8 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseAutoText : IMMAutoTextSource
     {
+        private static readonly ILog Log = LogProvider.For<BaseAutoText>();
+
         #region Constructors
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format("Error Executing Auto Text {0}", this.Caption), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Executing Auto Text " + this.Caption, e);
+                Log.Error("Error Executing Auto Text " + this.Caption, e);
             }
 
             // An empty string will remove the auto text element.

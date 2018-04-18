@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 

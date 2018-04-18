@@ -16,6 +16,8 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxSubtask : IMMPxSubtask, IMMPxSubtask2
     {
+        private static readonly ILog Log = LogProvider.For<BasePxSubtask>();
+
         #region Fields
 
         private readonly string _Name;
@@ -120,7 +122,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Enabling Subtask " + this.Name, e);
+                Log.Error("Error Enabling Subtask " + this.Name, e);
             }
 
             return false;
@@ -139,7 +141,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Executing Subtask " + this.Name, e);
+                Log.Error("Error Executing Subtask " + this.Name, e);
             }
 
             return false;
@@ -174,7 +176,7 @@ namespace Miner.Interop.Process
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format("Error Rollback Subtask {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Rollback Subtask " + this.Name, e);
+                Log.Error("Error Rollback Subtask " + this.Name, e);
             }
 
             return false;

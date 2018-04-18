@@ -17,6 +17,8 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxFilter : IMMPxFilter, IMMPxFilterEx
     {
+        private static readonly ILog Log = LogProvider.For<BasePxFilter>();
+
         #region Fields
 
         private readonly string _Category;
@@ -154,7 +156,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Executing Filter " + this.Name, e);
+                Log.Error("Error Executing Filter " + this.Name, e);
             }
 
             return null;

@@ -16,6 +16,8 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseDisplayNamer : IMMDisplayNamer
     {
+        private static readonly ILog Log = LogProvider.For<BaseDisplayNamer>();
+
         #region Fields
 
         private readonly string _Name;
@@ -67,7 +69,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format("Error Executing Display Namer {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Executing Display Namer " + this.Name, e);
+                Log.Error("Error Executing Display Namer " + this.Name, e);
             }
 
             return "<Error>";
@@ -89,7 +91,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format(@"Error Enabling Display Namer {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Enabling Display Namer " + this.Name, e);
+                Log.Error("Error Enabling Display Namer " + this.Name, e);
             }
 
             return false;

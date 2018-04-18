@@ -21,6 +21,8 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public abstract class BaseConflictWorkspaceExtension : BaseWorkspaceExtension, IConflictWorkspaceExtension, IVersionEvents, IVersionEvents2
     {
+        private static readonly ILog Log = LogProvider.For<BaseConflictWorkspaceExtension>();
+
         #region Constructors
 
         /// <summary>
@@ -209,7 +211,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 errorOccurred = true;
                 errorString = ex.Message;
 
-                Log.Error(this, ex);
+                Log.Error(ex);
             }
         }
 
@@ -224,7 +226,7 @@ namespace ESRI.ArcGIS.Geodatabase
             ConflictResolution[] values = (ConflictResolution[]) Enum.GetValues(typeof (ConflictResolution));
             foreach (var value in values)
             {
-                Log.Info(this, "There were {0} conflict(s) marked as '{1}' for the resolution.", this.Rows.Count(o => o.Resolution == value), value);
+                Log.Info("There were {0} conflict(s) marked as '{1}' for the resolution.", this.Rows.Count(o => o.Resolution == value), value);
             }
 
             if (this.IsSavedAfterReconcile)
@@ -476,14 +478,14 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="targetVersionName">Name of the target version.</param>
         protected virtual void BeforeReconcile(string targetVersionName)
         {
-            Log.Debug(this, "The {0} will be reconciled with the {1} version will use the following parameters:", ((IVersion) this.Workspace).VersionName, targetVersionName);
-            Log.Debug(this, "\t- AutoUpdaterMode = {0}.", this.AutoUpdaterMode);
-            Log.Debug(this, "\t- ChildWins = {0}.", this.ChildWins);
-            Log.Debug(this, "\t- ColumnLevel = {0}.", this.ColumnLevel);
-            Log.Debug(this, "\t- LockTarget = {0}.", this.LockTarget);
-            Log.Debug(this, "\t- IsRemovedAfterResolved = {0}.", this.IsRemovedAfterResolved);
-            Log.Debug(this, "\t- IsSavedAfterReconcile = {0}.", this.IsSavedAfterReconcile);
-            Log.Debug(this, "\t- IsRebuildingConnectivity = {0}.", this.IsRebuildingConnectivity);
+            Log.Debug("The {0} will be reconciled with the {1} version will use the following parameters:", ((IVersion) this.Workspace).VersionName, targetVersionName);
+            Log.Debug("\t- AutoUpdaterMode = {0}.", this.AutoUpdaterMode);
+            Log.Debug("\t- ChildWins = {0}.", this.ChildWins);
+            Log.Debug("\t- ColumnLevel = {0}.", this.ColumnLevel);
+            Log.Debug("\t- LockTarget = {0}.", this.LockTarget);
+            Log.Debug("\t- IsRemovedAfterResolved = {0}.", this.IsRemovedAfterResolved);
+            Log.Debug("\t- IsSavedAfterReconcile = {0}.", this.IsSavedAfterReconcile);
+            Log.Debug("\t- IsRebuildingConnectivity = {0}.", this.IsRebuildingConnectivity);
         }
 
         /// <summary>
@@ -512,7 +514,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 this.Callback.StatusMessage = string.Format(CultureInfo.CurrentCulture, message, args);
             }
 
-            Log.Debug(this, message, args);
+            Log.Debug(message, args);
         }
 
         /// <summary>
@@ -546,13 +548,13 @@ namespace ESRI.ArcGIS.Geodatabase
             this.NotifyCallback(1, "Rebuilding the network connectivity in the version.");
 
             // Load the differences in the versions (but only those that are network feature classes).
-            var dataChanges = sourceVersion.GetDataChanges(targetVersion, (s, t) => (t is INetworkClass), esriDataChangeType.esriDataChangeTypeInsert, esriDataChangeType.esriDataChangeTypeUpdate);
-            Log.Info(this, "Rebuilding the connectivity of {0} feature classes.", dataChanges.Keys.Count);
+            var dataChanges = sourceVersion.GetDataChanges(targetVersion, (mci) => mci.DatasetType == esriDatasetType.esriDTFeatureClass, esriDataChangeType.esriDataChangeTypeInsert, esriDataChangeType.esriDataChangeTypeUpdate);
+            Log.Info("Rebuilding the connectivity of {0} feature classes.", dataChanges.Keys.Count);
 
             // Iterate through all of the collection of changes.
             foreach (var dc in dataChanges)
             {
-                Log.Info(this, "Rebuilding the connectivity of {0} feature(s) in the {1} feature class.", dc.Value.Count, dc.Key);
+                Log.Info("Rebuilding the connectivity of {0} feature(s) in the {1} feature class.", dc.Value.Count, dc.Key);
                 this.NotifyCallback(1);
 
                 foreach (var row in dc.Value.GetRows())
@@ -582,14 +584,14 @@ namespace ESRI.ArcGIS.Geodatabase
                 // It is generally faster to call RebuildConnectivity2 on small individual areas rather than one large area that
                 // encompasses the smaller areas.
                 IFeature feature = (IFeature) networkFeature;
-                Log.Info(this, "Rebuilding the connectivity for the network feature with the OID of {0}.", feature.OID);
+                Log.Info("Rebuilding the connectivity for the network feature with the OID of {0}.", feature.OID);
 
                 IGeometricNetworkConnectivity2 networkConnectivity = (IGeometricNetworkConnectivity2) networkFeature.GeometricNetwork;
                 networkConnectivity.RebuildConnectivity2(feature.Shape.Envelope);
             }
             catch (COMException e)
             {
-                Log.Error(this, "Attempted to rebuild connectivity on a network feature that is outside of the edit session.", e);
+                Log.Error("Attempted to rebuild connectivity on a network feature that is outside of the edit session.", e);
             }
         }
 
@@ -613,12 +615,12 @@ namespace ESRI.ArcGIS.Geodatabase
             if (set == null) return false;
 
             string tableName = ((IDataset) conflictClass).Name;
-            Log.Info(this, "Resolving the '{0}' type of conflicts for {1} row(s) in the {2} class.", conflictType, set.Count, tableName);
+            Log.Info("Resolving the '{0}' type of conflicts for {1} row(s) in the {2} class.", conflictType, set.Count, tableName);
 
             var list = filters.Where(o => o.CanResolve(conflictType, conflictClass)).ToArray();
             if (list.Length == 0)
             {
-                Log.Warn(this, "There's no conflict filters available that support the conflict type of {0} for the {1} class.", conflictType, tableName);
+                Log.Warn("There's no conflict filters available that support the conflict type of {0} for the {1} class.", conflictType, tableName);
                 return false;
             }
 
@@ -650,7 +652,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                     // Determine the row conflict type at a granular level.
                     RowConflictType rowConflictType = this.GetRowConflictType(preReconcileRow, reconcileRow, commonAncestorRow, equalityComparer);
-                    Log.Info(this, "Resolving the '{0}' conflict type for the {1} row using {2} filter(s).", rowConflictType, oid, list.Length);
+                    Log.Info("Resolving the '{0}' conflict type for the {1} row using {2} filter(s).", rowConflictType, oid, list.Length);
 
                     // Use the filters to "attempt" to resolve the conflicts.
                     IConflictRow conflictRow = new ConflictRow(oid, tableName, rowConflictType);
@@ -659,7 +661,7 @@ namespace ESRI.ArcGIS.Geodatabase
                         conflictRow.Resolution = filter.Resolve(conflictRow, conflictClass, currentRow, preReconcileRow, reconcileRow, commonAncestorRow, this.ChildWins, this.ColumnLevel);
                     }
 
-                    Log.Info(this, "The resolution of the {0} row has been marked as '{1}'.", oid, conflictRow.Resolution);
+                    Log.Info("The resolution of the {0} row has been marked as '{1}'.", oid, conflictRow.Resolution);
 
                     // Save the changes when a resolution was determined.
                     if (conflictRow.Resolution != ConflictResolution.None)
@@ -685,7 +687,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
             // Output the statistics for the conflicts.
             int remainder = rows.Count - oids.Length;
-            Log.Info(this, "{0} of the {1} row(s) have been resolved and {2} remain in conflict.", oids.Length, rows.Count, remainder);
+            Log.Info("{0} of the {1} row(s) have been resolved and {2} remain in conflict.", oids.Length, rows.Count, remainder);
 
             // Return true when all of the conflicts have been resolved.
             return remainder == 0;
@@ -704,7 +706,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 // Iterate through all of the rows that have been marked as 'None' and group by the table.
                 foreach (var rows in this.Rows.Where(o => o.Resolution == ConflictResolution.None).GroupBy(o => o.TableName))
                 {
-                    Log.Info(this, "Calling store on {0} row(s) within the {1} class.", rows.Count(), rows.Key);
+                    Log.Info("Calling store on {0} row(s) within the {1} class.", rows.Count(), rows.Key);
 
                     using (ComReleaser cr = new ComReleaser())
                     {
@@ -760,7 +762,7 @@ namespace ESRI.ArcGIS.Geodatabase
                             // A requested feature object could not be located.
                         case (int) fdoError.FDO_E_FEATURE_NOT_FOUND:
 
-                            Log.Error(this, "The requested feature object could not be located.");
+                            Log.Error("The requested feature object could not be located.");
                             this.RebuildConnectivity(networkFeature);
 
                             break;
@@ -768,7 +770,7 @@ namespace ESRI.ArcGIS.Geodatabase
                             // Invalid network element id.
                         case (int) esriNetworkErrors.NETWORK_E_INVALID_ELEMENT_ID:
 
-                            Log.Error(this, "The network element id is invalid.");
+                            Log.Error("The network element id is invalid.");
                             this.RebuildConnectivity(networkFeature);
 
                             break;

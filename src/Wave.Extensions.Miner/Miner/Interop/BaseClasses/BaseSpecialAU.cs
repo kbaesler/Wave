@@ -15,6 +15,7 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseSpecialAU : IMMSpecialAUStrategy, IMMSpecialAUStrategyEx
     {
+        private static readonly System.Diagnostics.ILog Log = LogProvider.For<BaseSpecialAU>();
         #region Fields
 
         private readonly string _Name;
@@ -109,9 +110,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, "Error Enabling Special AU " + _Name, e);
+                    Log.Error("Error Enabling Special AU " + _Name, e);
                 else
-                    Log.Error(this, e);
+                    Log.Error(e);
             }
 
             return false;
@@ -204,9 +205,9 @@ namespace Miner.Interop
         private void LogException(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, "Error Executing Special AU " + _Name, e);
+                Log.Error("Error Executing Special AU " + _Name, e);
             else
-                Log.Error(this, e);
+                Log.Error(e);
         }
 
         #endregion

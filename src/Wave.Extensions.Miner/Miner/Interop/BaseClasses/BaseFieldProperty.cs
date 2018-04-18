@@ -12,6 +12,8 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseFieldProperty : IMMFieldProperty
     {
+        private static readonly ILog Log = LogProvider.For<BaseFieldProperty>();
+
         #region Constructors
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, e);
+                Log.Error(e);
             }
 
             return 0;

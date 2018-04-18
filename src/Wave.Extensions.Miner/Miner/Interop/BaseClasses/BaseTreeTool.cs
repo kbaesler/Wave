@@ -19,6 +19,8 @@ namespace Miner.Interop
     /// </remarks>
     public abstract class BaseTreeTool : IMMTreeTool, IDisposable
     {
+        private static readonly ILog Log = LogProvider.For<BaseTreeTool>();
+
         #region Fields
 
         private Bitmap _Bitmap;
@@ -134,7 +136,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, this.Name, e);
+                Log.Error(this.Name, e);
             }
         }
 
@@ -152,7 +154,7 @@ namespace Miner.Interop
             }
             catch (Exception e)
             {
-                Log.Error(this, this.Name, e);
+                Log.Error(this.Name, e);
             }
 
             return 0;
@@ -211,7 +213,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format("Error Updating Bitmap {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Updating Bitmap " + this.Name, e);
+                Log.Error("Error Updating Bitmap " + this.Name, e);
             }
         }
 

@@ -17,6 +17,8 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseValidationRule : IMMValidationRule, IMMExtObject, IDisposable
     {
+        private static readonly ILog Log = LogProvider.For<BaseValidationRule>();
+
         #region Fields
 
         /// <summary>
@@ -108,9 +110,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, "Error Enabling Validation Rule " + _Name, e);
+                    Log.Error("Error Enabling Validation Rule " + _Name, e);
                 else
-                    Log.Error(this, e);
+                    Log.Error(e);
             }
 
             return false;
@@ -137,9 +139,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, "Error Executing Validation Rule " + _Name, e);
+                    Log.Error("Error Executing Validation Rule " + _Name, e);
                 else
-                    Log.Error(this, e);
+                    Log.Error(e);
             }
 
             // Return the error list.

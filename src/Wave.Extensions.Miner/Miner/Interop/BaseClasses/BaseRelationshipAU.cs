@@ -15,6 +15,8 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseRelationshipAU : IMMRelationshipAUStrategy, IMMRelationshipAUStrategyEx
     {
+        private static readonly System.Diagnostics.ILog Log = LogProvider.For<BaseRelationshipAU>();
+
         #region Fields
 
         private readonly string _Name;
@@ -94,9 +96,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, "Error Enabling Relationship AU " + _Name, e);
+                    Log.Error("Error Enabling Relationship AU " + _Name, e);
                 else
-                    Log.Error(this, e);
+                    Log.Error(e);
             }
 
             return false;
@@ -123,9 +125,9 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error(this, "Error Enabling Relationship AU " + _Name, e);
+                    Log.Error("Error Enabling Relationship AU " + _Name, e);
                 else
-                    Log.Error(this, e);
+                    Log.Error(e);
             }
 
             return false;
@@ -218,9 +220,9 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, "Error Executing Relationship AU " + _Name, e);
+                Log.Error("Error Executing Relationship AU " + _Name, e);
             else
-                Log.Error(this, e);
+                Log.Error(e);
         }
 
         #endregion

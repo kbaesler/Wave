@@ -15,6 +15,8 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxDeleter : IMMPxDeleter, IMMPxDisplayName
     {
+        private static readonly ILog Log = LogProvider.For<BasePxDeleter>();
+
         #region Constructors
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, "Error Executing Deleter " + this.DisplayName, e);
+                Log.Error("Error Executing Deleter " + this.DisplayName, e);
                 this.Notify(e.Message, mmUserMessageType.mmUMTDataError);
             }
         }
@@ -166,7 +168,7 @@ namespace Miner.Interop.Process
             }
             catch (Exception e)
             {
-                Log.Error(this, e);
+                Log.Error(e);
             }
         }
 
