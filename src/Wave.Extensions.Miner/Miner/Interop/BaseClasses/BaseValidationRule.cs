@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
-
+using Miner.ComCategories;
 using stdole;
 
 namespace Miner.Interop

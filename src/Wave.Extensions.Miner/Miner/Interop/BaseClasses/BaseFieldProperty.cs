@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Miner.ComCategories;
+using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 

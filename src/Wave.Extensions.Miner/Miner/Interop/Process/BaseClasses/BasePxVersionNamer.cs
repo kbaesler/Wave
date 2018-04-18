@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using Miner.ComCategories;
+using System.Runtime.InteropServices;
 
 namespace Miner.Interop.Process
 {

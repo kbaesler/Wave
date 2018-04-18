@@ -6,7 +6,8 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-
+using Miner.ComCategories;
+using Miner.Framework;
 using ILog = System.Diagnostics.ILog;
 
 namespace Miner.Interop

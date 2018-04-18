@@ -7,6 +7,7 @@ using ADODB;
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using Miner.Framework;
 
 namespace Miner.Interop
 {
