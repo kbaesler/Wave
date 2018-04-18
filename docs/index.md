@@ -1,7 +1,5 @@
 # Wave
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e96cb13cfd345e4b4758550b3ebe5f1)](https://www.codacy.com/app/Jumpercables/Wave?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Jumpercables/Wave&amp;utm_campaign=Badge_Grade)
-
 ## Overview
 
 [Wave](https://github.com/Jumpercables/Wave) is a C# library that extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library and is built using [.NET Extension Methods](http://msdn.microsoft.com/en-us/library/bb383977.aspx) which allows for adding new features to existing interfaces and classes within the ArcGIS and ArcFM APIs. 
@@ -49,9 +47,9 @@ PM> Install-Package Wave.Extensions.Miner
 
 - ArcGIS for Desktop 10 (or higher)
 - ArcFM Solution 10 (or higher)
-- 3.5 SP 1 or 4.5 .NET Framework
-- Visual Studio 2010 (or higher)
+- 4.5 .NET Framework
+- Visual Studio 2015 (or higher)
 
 ### Third Party Libraries
 
-- log4net 2.0.3
+- log4net 2.0.3 (or higher)
