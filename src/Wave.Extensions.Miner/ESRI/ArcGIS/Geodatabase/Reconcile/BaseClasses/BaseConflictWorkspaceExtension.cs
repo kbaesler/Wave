@@ -21,12 +21,16 @@ namespace ESRI.ArcGIS.Geodatabase
     /// </summary>
     public abstract class BaseConflictWorkspaceExtension : BaseWorkspaceExtension, IConflictWorkspaceExtension, IVersionEvents, IVersionEvents2
     {
+        #region Fields
+
         private static readonly ILog Log = LogProvider.For<BaseConflictWorkspaceExtension>();
+
+        #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseConflictWorkspaceExtension" /> class.
+        ///     Initializes a new instance of the <see cref="BaseConflictWorkspaceExtension" /> class.
         /// </summary>
         /// <param name="extensionName">Name of the extension.</param>
         protected BaseConflictWorkspaceExtension(string extensionName)
@@ -41,19 +45,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
         #endregion
 
-        #region Protected Properties
-
-        /// <summary>
-        ///     Gets the rows that were (or still are) in conflict.
-        /// </summary>
-        /// <value>
-        ///     The rows.
-        /// </value>
-        protected IList<IConflictRow> Rows { get; private set; }
-
-        #endregion
-
-        #region IConflictWorkspaceExtension Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets or sets the auto updater mode.
@@ -122,6 +114,22 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     <c>true</c> if the target version is locked during reconcile; otherwise, <c>false</c>.
         /// </value>
         public bool LockTarget { get; set; }
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets the rows that were (or still are) in conflict.
+        /// </summary>
+        /// <value>
+        ///     The rows.
+        /// </value>
+        protected IList<IConflictRow> Rows { get; private set; }
+
+        #endregion
+
+        #region IConflictWorkspaceExtension Members
 
         /// <summary>
         ///     Returns the filters that will be used for resolving the reconcile conflicts.
@@ -223,7 +231,7 @@ namespace ESRI.ArcGIS.Geodatabase
         /// <param name="hasConflicts">if set to <c>true</c> if there are conflicts.</param>
         public void OnReconcile(string targetVersionName, bool hasConflicts)
         {
-            ConflictResolution[] values = (ConflictResolution[]) Enum.GetValues(typeof (ConflictResolution));
+            ConflictResolution[] values = (ConflictResolution[]) Enum.GetValues(typeof(ConflictResolution));
             foreach (var value in values)
             {
                 Log.Info("There were {0} conflict(s) marked as '{1}' for the resolution.", this.Rows.Count(o => o.Resolution == value), value);
@@ -319,6 +327,22 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
+        ///     Initializes the workspace extension before the conflict reconcilition begins.
+        /// </summary>
+        /// <param name="targetVersionName">Name of the target version.</param>
+        protected virtual void BeforeReconcile(string targetVersionName)
+        {
+            Log.Debug("The {0} will be reconciled with the {1} version will use the following parameters:", ((IVersion) this.Workspace).VersionName, targetVersionName);
+            Log.Debug("\t- AutoUpdaterMode = {0}.", this.AutoUpdaterMode);
+            Log.Debug("\t- ChildWins = {0}.", this.ChildWins);
+            Log.Debug("\t- ColumnLevel = {0}.", this.ColumnLevel);
+            Log.Debug("\t- LockTarget = {0}.", this.LockTarget);
+            Log.Debug("\t- IsRemovedAfterResolved = {0}.", this.IsRemovedAfterResolved);
+            Log.Debug("\t- IsSavedAfterReconcile = {0}.", this.IsSavedAfterReconcile);
+            Log.Debug("\t- IsRebuildingConnectivity = {0}.", this.IsRebuildingConnectivity);
+        }
+
+        /// <summary>
         ///     Gets the selection set that corresponds to the conflict class.
         /// </summary>
         /// <param name="conflictClass">The conflict class.</param>
@@ -355,7 +379,7 @@ namespace ESRI.ArcGIS.Geodatabase
         protected IList<IConflictClass> GetResolutionOrder(IEnumConflictClass enumConflictClasses)
         {
             List<ConflictClass> list = new List<ConflictClass>();
-            if (enumConflictClasses == null) return new IConflictClass[] {};
+            if (enumConflictClasses == null) return new IConflictClass[] { };
 
             enumConflictClasses.Reset();
             IConflictClass conflictClass;
@@ -473,22 +497,6 @@ namespace ESRI.ArcGIS.Geodatabase
         }
 
         /// <summary>
-        ///     Initializes the workspace extension before the conflict reconcilition begins.
-        /// </summary>
-        /// <param name="targetVersionName">Name of the target version.</param>
-        protected virtual void BeforeReconcile(string targetVersionName)
-        {
-            Log.Debug("The {0} will be reconciled with the {1} version will use the following parameters:", ((IVersion) this.Workspace).VersionName, targetVersionName);
-            Log.Debug("\t- AutoUpdaterMode = {0}.", this.AutoUpdaterMode);
-            Log.Debug("\t- ChildWins = {0}.", this.ChildWins);
-            Log.Debug("\t- ColumnLevel = {0}.", this.ColumnLevel);
-            Log.Debug("\t- LockTarget = {0}.", this.LockTarget);
-            Log.Debug("\t- IsRemovedAfterResolved = {0}.", this.IsRemovedAfterResolved);
-            Log.Debug("\t- IsSavedAfterReconcile = {0}.", this.IsSavedAfterReconcile);
-            Log.Debug("\t- IsRebuildingConnectivity = {0}.", this.IsRebuildingConnectivity);
-        }
-
-        /// <summary>
         ///     Notifies the callback of the progress change and allows the callback to refresh.
         /// </summary>
         /// <param name="progressValue">The progress value.</param>
@@ -558,7 +566,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 this.NotifyCallback(1);
 
                 foreach (var row in dc.Value.GetRows())
-                {                    
+                {
                     this.RebuildConnectivity(row as INetworkFeature);
                 }
             }
@@ -759,7 +767,7 @@ namespace ESRI.ArcGIS.Geodatabase
                 {
                     switch (ex.ErrorCode)
                     {
-                            // A requested feature object could not be located.
+                        // A requested feature object could not be located.
                         case (int) fdoError.FDO_E_FEATURE_NOT_FOUND:
 
                             Log.Error("The requested feature object could not be located.");
@@ -767,7 +775,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                             break;
 
-                            // Invalid network element id.
+                        // Invalid network element id.
                         case (int) esriNetworkErrors.NETWORK_E_INVALID_ELEMENT_ID:
 
                             Log.Error("The network element id is invalid.");
@@ -777,7 +785,7 @@ namespace ESRI.ArcGIS.Geodatabase
 
                         // SDE Error. (Shape or row not found)
                         // The feature has been deleted.
-                        case (int)fdoError.FDO_E_SE_ROW_NOEXIST:                            
+                        case (int) fdoError.FDO_E_SE_ROW_NOEXIST:
                         case (int) fdoError.FDO_E_FEATURE_DELETED:
                             break;
 

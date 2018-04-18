@@ -29,12 +29,6 @@ namespace Miner.Interop
         }
 
         /// <summary>
-        ///     Gets or sets the search control.
-        /// </summary>
-        /// <value>The search control.</value>
-        protected virtual IMMSearchControl SearchControl { get; set; }
-
-        /// <summary>
         ///     Gets a value indicating whether this <see cref="BaseSearchStrategy&lt;T&gt;" /> is stopped.
         /// </summary>
         /// <value>
@@ -52,6 +46,12 @@ namespace Miner.Interop
         }
 
         /// <summary>
+        ///     Gets or sets the search control.
+        /// </summary>
+        /// <value>The search control.</value>
+        protected virtual IMMSearchControl SearchControl { get; set; }
+
+        /// <summary>
         ///     Gets or sets a value indicating whether this instance has reached it's threshold.
         /// </summary>
         /// <value>
@@ -61,7 +61,7 @@ namespace Miner.Interop
 
         #endregion
 
-        #region IMMSearchStrategy Members
+        #region Public Methods
 
         /// <summary>
         ///     Finds the results using the specified <paramref name="pSearchConfig" /> parameters and
@@ -130,7 +130,7 @@ namespace Miner.Interop
 
             if (!(parameters is T))
             {
-                Debug.Fail(string.Format(CultureInfo.CurrentCulture, "The search parameters must be of type {0}.", typeof (T).Name));
+                Debug.Fail(string.Format(CultureInfo.CurrentCulture, "The search parameters must be of type {0}.", typeof(T).Name));
             }
         }
 

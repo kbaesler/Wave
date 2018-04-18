@@ -5,9 +5,6 @@ using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.ComCategories;
-using Miner.Framework;
-
 namespace Miner.Interop
 {
     /// <summary>
@@ -16,11 +13,9 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseDisplayNamer : IMMDisplayNamer
     {
-        private static readonly ILog Log = LogProvider.For<BaseDisplayNamer>();
-
         #region Fields
 
-        private readonly string _Name;
+        private static readonly ILog Log = LogProvider.For<BaseDisplayNamer>();
 
         #endregion
 
@@ -32,21 +27,22 @@ namespace Miner.Interop
         /// <param name="name">The name.</param>
         protected BaseDisplayNamer(string name)
         {
-            _Name = name;
+            Name = name;
         }
 
         #endregion
 
-        #region IMMDisplayNamer Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        public string Name { get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     The method that is used to determine the display.

@@ -6,9 +6,6 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.Framework.Search;
-using Miner.FrameworkUI.Search;
-
 namespace Miner.Interop
 {
     /// <summary>
@@ -17,7 +14,11 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseSearchStrategyUI : IMMSearchStrategyUI
     {
-        private static readonly System.Diagnostics.ILog Log = LogProvider.For<BaseSearchStrategyUI>();
+        #region Fields
+
+        private static readonly ILog Log = LogProvider.For<BaseSearchStrategyUI>();
+
+        #endregion
 
         #region Constructors
 
@@ -42,19 +43,36 @@ namespace Miner.Interop
 
         #endregion
 
-        #region Protected Properties
+        #region Public Properties
 
         /// <summary>
-        ///     Gets the control.
+        ///     Gets the COM prog ID.
+        /// </summary>
+        /// <remarks>
+        ///     If the search strategy has been written in VB6, this property requires its ProgID.
+        ///     If the search strategy has been written in C#, this returns an empty string.
+        /// </remarks>
+        public virtual string COMProgID
+        {
+            get { return string.Empty; }
+        }
+
+        /// <summary>
+        ///     Gets the results processor.
         /// </summary>
         /// <value>
-        ///     The control.
+        ///     The results processor.
         /// </value>
-        protected UserControl Control { get; private set; }
-
-        #endregion
-
-        #region IMMSearchStrategyUI Members
+        /// <remarks>
+        ///     This optional property returns an <see cref="Miner.Interop.IMMResultsProcessor" /> object.
+        ///     This object allows you to determine how the objects in the tree appear (e.g., grouped). Enter a value of Null to
+        ///     use the standard format as it is displayed in the Attribute Editor.
+        ///     While in Feeder Manager mode, the results processor for Feeder Manager is always used.
+        /// </remarks>
+        public virtual IMMResultsProcessor ResultsProcessor
+        {
+            get { return new StandardResultsProcessor(); }
+        }
 
         /// <summary>
         ///     Gets the caption.
@@ -91,56 +109,21 @@ namespace Miner.Interop
         /// </remarks>
         public IMMSearchStrategy SearchStrategy { get; protected set; }
 
-        /// <summary>
-        ///     Gets the COM prog ID.
-        /// </summary>
-        /// <remarks>
-        ///     If the search strategy has been written in VB6, this property requires its ProgID.
-        ///     If the search strategy has been written in C#, this returns an empty string.
-        /// </remarks>
-        public virtual string COMProgID
-        {
-            get { return string.Empty; }
-        }
+        #endregion
+
+        #region Protected Properties
 
         /// <summary>
-        ///     Gets the results processor.
+        ///     Gets the control.
         /// </summary>
         /// <value>
-        ///     The results processor.
+        ///     The control.
         /// </value>
-        /// <remarks>
-        ///     This optional property returns an <see cref="Miner.Interop.IMMResultsProcessor" /> object.
-        ///     This object allows you to determine how the objects in the tree appear (e.g., grouped). Enter a value of Null to
-        ///     use the standard format as it is displayed in the Attribute Editor.
-        ///     While in Feeder Manager mode, the results processor for Feeder Manager is always used.
-        /// </remarks>
-        public virtual IMMResultsProcessor ResultsProcessor
-        {
-            get { return new StandardResultsProcessor(); }
-        }
+        protected UserControl Control { get; private set; }
 
-        /// <summary>
-        ///     Uses the map and an object class to initialize the search strategy.
-        /// </summary>
-        /// <param name="map">The map.</param>
-        /// <param name="classFilter">The class filter.</param>
-        /// <remarks>
-        ///     It may be called several times during the lifetime of the application depending on changes to the map and map
-        ///     layers.
-        ///     This method is called each time items are added or removed from the map.
-        /// </remarks>
-        public void InitializeStrategyUI(IMap map, IObjectClass classFilter)
-        {
-            try
-            {
-                this.InitializeComponent(this.Control, map, classFilter);
-            }
-            catch (Exception e)
-            {
-                Log.Error(this.Caption, e);
-            }
-        }
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Notifies a current open locator that the user has selected another locator and provides the opportunity to perform
@@ -164,6 +147,28 @@ namespace Miner.Interop
             IMMSearchConfiguration config = new SearchConfiguration();
             config.SearchParameters = this.GetSearchParameters(optionFlags);
             return config;
+        }
+
+        /// <summary>
+        ///     Uses the map and an object class to initialize the search strategy.
+        /// </summary>
+        /// <param name="map">The map.</param>
+        /// <param name="classFilter">The class filter.</param>
+        /// <remarks>
+        ///     It may be called several times during the lifetime of the application depending on changes to the map and map
+        ///     layers.
+        ///     This method is called each time items are added or removed from the map.
+        /// </remarks>
+        public void InitializeStrategyUI(IMap map, IObjectClass classFilter)
+        {
+            try
+            {
+                this.InitializeComponent(this.Control, map, classFilter);
+            }
+            catch (Exception e)
+            {
+                Log.Error(this.Caption, e);
+            }
         }
 
         /// <summary>

@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.ComCategories;
 using Miner.Framework;
 
 namespace Miner.Interop
@@ -15,11 +14,9 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseRelationshipAU : IMMRelationshipAUStrategy, IMMRelationshipAUStrategyEx
     {
-        private static readonly System.Diagnostics.ILog Log = LogProvider.For<BaseRelationshipAU>();
-
         #region Fields
 
-        private readonly string _Name;
+        private static readonly ILog Log = LogProvider.For<BaseRelationshipAU>();
 
         #endregion
 
@@ -31,21 +28,22 @@ namespace Miner.Interop
         /// <param name="name">The name.</param>
         protected BaseRelationshipAU(string name)
         {
-            _Name = name;
+            Name = name;
         }
 
         #endregion
 
-        #region IMMRelationshipAUStrategy Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        public string Name { get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Executes the specified relationship AU.
@@ -70,7 +68,7 @@ namespace Miner.Interop
                 // If the MM_E_CANCELEDIT error is thrown, let it out.
                 if (e.ErrorCode == (int) mmErrorCodes.MM_E_CANCELEDIT)
                     throw;
-                
+
                 this.WriteError(e);
             }
             catch (Exception e)
@@ -96,17 +94,13 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error("Error Enabling Relationship AU " + _Name, e);
+                    Log.Error("Error Enabling Relationship AU " + Name, e);
                 else
                     Log.Error(e);
             }
 
             return false;
         }
-
-        #endregion
-
-        #region IMMRelationshipAUStrategyEx Members
 
         /// <summary>
         ///     Gets whether the specified AU is enabled.
@@ -125,7 +119,7 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error("Error Enabling Relationship AU " + _Name, e);
+                    Log.Error("Error Enabling Relationship AU " + Name, e);
                 else
                     Log.Error(e);
             }
@@ -220,7 +214,7 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error("Error Executing Relationship AU " + _Name, e);
+                Log.Error("Error Executing Relationship AU " + Name, e);
             else
                 Log.Error(e);
         }

@@ -4,9 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-using Miner.ComCategories;
-using Miner.Framework;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -16,15 +13,9 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxSubtask : IMMPxSubtask, IMMPxSubtask2
     {
-        private static readonly ILog Log = LogProvider.For<BasePxSubtask>();
-
         #region Fields
 
-        private readonly string _Name;
-
-        private IMMPxApplication _PxApp;
-        private IMMEnumExtensionNames _SupportedExtensions;
-        private IDictionary _SupportedParameters;
+        private static readonly ILog Log = LogProvider.For<BasePxSubtask>();
 
         #endregion
 
@@ -36,8 +27,44 @@ namespace Miner.Interop.Process
         /// <param name="name">The name </param>
         protected BasePxSubtask(string name)
         {
-            _Name = name;
+            Name = name;
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
+        public string Name { get; }
+
+        /// <summary>
+        ///     Gets the supported extensions.
+        /// </summary>
+        /// <value>The supported extensions.</value>
+        public IMMEnumExtensionNames SupportedExtensions { get; private set; }
+
+        /// <summary>
+        ///     Gets the supported parameter names.
+        /// </summary>
+        /// <value>The supported parameter names.</value>
+        public IDictionary SupportedParameterNames { get; private set; }
+
+        /// <summary>
+        ///     Sets the parameters.
+        /// </summary>
+        /// <value>The parameters.</value>
+        public IDictionary Parameters { protected get; set; }
+
+        /// <summary>
+        ///     Sets the task.
+        /// </summary>
+        /// <value>
+        ///     The task.
+        /// </value>
+        public IMMPxTask Task { protected get; set; }
 
         #endregion
 
@@ -91,23 +118,11 @@ namespace Miner.Interop.Process
         /// <value>
         ///     The process application reference.
         /// </value>
-        protected IMMPxApplication PxApplication
-        {
-            get { return _PxApp; }
-        }
+        protected IMMPxApplication PxApplication { get; private set; }
 
         #endregion
 
-        #region IMMPxSubtask Members
-
-        /// <summary>
-        ///     Gets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        #region Public Methods
 
         /// <summary>
         ///     Gets if the subtask is enabled for the specified px node.
@@ -156,7 +171,7 @@ namespace Miner.Interop.Process
         /// </returns>
         public virtual bool Initialize(IMMPxApplication pPxApp)
         {
-            _PxApp = pPxApp;
+            PxApplication = pPxApp;
             return true;
         }
 
@@ -181,42 +196,6 @@ namespace Miner.Interop.Process
 
             return false;
         }
-
-        #endregion
-
-        #region IMMPxSubtask2 Members
-
-        /// <summary>
-        ///     Sets the parameters.
-        /// </summary>
-        /// <value>The parameters.</value>
-        public IDictionary Parameters { protected get; set; }
-
-        /// <summary>
-        ///     Gets the supported extensions.
-        /// </summary>
-        /// <value>The supported extensions.</value>
-        public IMMEnumExtensionNames SupportedExtensions
-        {
-            get { return _SupportedExtensions; }
-        }
-
-        /// <summary>
-        ///     Gets the supported parameter names.
-        /// </summary>
-        /// <value>The supported parameter names.</value>
-        public IDictionary SupportedParameterNames
-        {
-            get { return _SupportedParameters; }
-        }
-
-        /// <summary>
-        ///     Sets the task.
-        /// </summary>
-        /// <value>
-        ///     The task.
-        /// </value>
-        public IMMPxTask Task { protected get; set; }
 
         #endregion
 
@@ -252,10 +231,10 @@ namespace Miner.Interop.Process
         /// <param name="extensionName">Name of the extension.</param>
         protected void AddExtension(string extensionName)
         {
-            if (_SupportedExtensions == null)
-                _SupportedExtensions = new PxExtensionNamesClass();
+            if (SupportedExtensions == null)
+                SupportedExtensions = new PxExtensionNamesClass();
 
-            _SupportedExtensions.Add(extensionName);
+            SupportedExtensions.Add(extensionName);
         }
 
         /// <summary>
@@ -265,12 +244,12 @@ namespace Miner.Interop.Process
         /// <param name="description">The description of the parameter.</param>
         protected void AddParameter(string key, string description)
         {
-            if (_SupportedParameters == null)
-                _SupportedParameters = new MMPxNodeListClass();
+            if (SupportedParameterNames == null)
+                SupportedParameterNames = new MMPxNodeListClass();
 
             object k = key;
             object d = description;
-            _SupportedParameters.Add(ref k, ref d);
+            SupportedParameterNames.Add(ref k, ref d);
         }
 
         /// <summary>
@@ -280,7 +259,7 @@ namespace Miner.Interop.Process
         /// <returns>Returns a <see cref="string" /> representing the configuration parameter.</returns>
         protected string GetConfiguration(string configName)
         {
-            IMMPxHelper2 helper = (IMMPxHelper2) _PxApp.Helper;
+            IMMPxHelper2 helper = (IMMPxHelper2) PxApplication.Helper;
             return helper.GetConfigValue(configName);
         }
 

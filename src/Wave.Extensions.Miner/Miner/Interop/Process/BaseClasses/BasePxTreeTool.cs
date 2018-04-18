@@ -7,8 +7,6 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.ADF.COMSupport;
 
-using Miner.Framework;
-
 using stdole;
 
 namespace Miner.Interop.Process
@@ -21,7 +19,11 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxTreeTool : IMMTreeViewTool, IMMTreeViewToolEx, IMMTreeViewTool2, IMMTreeViewToolEx2
     {
+        #region Fields
+
         private static readonly ILog Log = LogProvider.For<BasePxTreeTool>();
+
+        #endregion
 
         #region Constructors
 
@@ -48,6 +50,72 @@ namespace Miner.Interop.Process
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets a value indicating whether there are allow as default tool.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if there are allow as default tool; otherwise, <c>false</c>.
+        /// </value>
+        public bool AllowAsDefaultTool { get; protected set; }
+
+        /// <summary>
+        ///     Gets the bitmap.
+        /// </summary>
+        /// <value>The bitmap.</value>
+        public IPictureDisp Bitmap { get; protected set; }
+
+        /// <summary>
+        ///     Gets the category.
+        /// </summary>
+        /// <value>The category.</value>
+        public int Category { get; protected set; }
+
+        /// <summary>
+        ///     Gets the name of the category.
+        /// </summary>
+        /// <value>The name of the category.</value>
+        public string CategoryName { get; protected set; }
+
+        /// <summary>
+        ///     Gets a value indicating whether this <see cref="BasePxTreeTool" /> is checked.
+        /// </summary>
+        /// <value><c>true</c> if checked; otherwise, <c>false</c>.</value>
+        public virtual bool Checked { get; protected set; }
+
+        /// <summary>
+        ///     Gets the name of the extension.
+        /// </summary>
+        /// <value>The name of the extension.</value>
+        public string ExtensionName { get; protected set; }
+
+        /// <summary>
+        ///     Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
+        public string Name { get; protected set; }
+
+        /// <summary>
+        ///     Gets the priority.
+        /// </summary>
+        /// <value>The priority.</value>
+        public int Priority { get; protected set; }
+
+        /// <summary>
+        ///     Gets the sub category.
+        /// </summary>
+        /// <value>The sub category.</value>
+        public int SubCategory { get; protected set; }
+
+        /// <summary>
+        ///     Gets the tool tip.
+        /// </summary>
+        /// <value>The tool tip.</value>
+        public string ToolTip { get; protected set; }
+
+        #endregion
+
         #region Protected Properties
 
         /// <summary>
@@ -68,25 +136,19 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region IMMTreeViewTool Members
+        #region Public Methods
 
         /// <summary>
-        ///     Gets the category.
+        ///     Returns <c>true</c> if the tool should be enabled for the specified selection of items.
         /// </summary>
-        /// <value>The category.</value>
-        public int Category { get; protected set; }
-
-        /// <summary>
-        ///     Gets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; protected set; }
-
-        /// <summary>
-        ///     Gets the priority.
-        /// </summary>
-        /// <value>The priority.</value>
-        public int Priority { get; protected set; }
+        /// <param name="vSelection">The selection.</param>
+        /// <returns>
+        ///     <c>true</c> if the tool should be enabled; otherwise <c>false</c>
+        /// </returns>
+        public int EnabledEx(object vSelection)
+        {
+            return get_Enabled((IMMTreeViewSelection) vSelection);
+        }
 
         /// <summary>
         ///     Executes the specified tree tool using the selected items.
@@ -102,6 +164,17 @@ namespace Miner.Interop.Process
             {
                 Log.Error("Error Executing Tree Tool " + this.Name, e);
             }
+        }
+
+        /// <summary>
+        ///     Executes the specified tree tool using the selected items.
+        /// </summary>
+        /// <param name="vSelection">The selection.</param>
+        /// <returns><c>true</c> if the tool executed; otherwise <c>false</c>.</returns>
+        public bool ExecuteEx(object vSelection)
+        {
+            this.Execute((IMMTreeViewSelection) vSelection);
+            return true;
         }
 
         /// <summary>
@@ -125,75 +198,6 @@ namespace Miner.Interop.Process
             return 0;
         }
 
-        #endregion
-
-        #region IMMTreeViewTool2 Members
-
-        /// <summary>
-        ///     Gets a value indicating whether there are allow as default tool.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if there are allow as default tool; otherwise, <c>false</c>.
-        /// </value>
-        public bool AllowAsDefaultTool { get; protected set; }
-
-        #endregion
-
-        #region IMMTreeViewToolEx Members
-
-        /// <summary>
-        ///     Gets the bitmap.
-        /// </summary>
-        /// <value>The bitmap.</value>
-        public IPictureDisp Bitmap { get; protected set; }
-
-        /// <summary>
-        ///     Gets the name of the category.
-        /// </summary>
-        /// <value>The name of the category.</value>
-        public string CategoryName { get; protected set; }
-
-        /// <summary>
-        ///     Gets the sub category.
-        /// </summary>
-        /// <value>The sub category.</value>
-        public int SubCategory { get; protected set; }
-
-        /// <summary>
-        ///     Gets the tool tip.
-        /// </summary>
-        /// <value>The tool tip.</value>
-        public string ToolTip { get; protected set; }
-
-        /// <summary>
-        ///     Gets a value indicating whether this <see cref="BasePxTreeTool" /> is checked.
-        /// </summary>
-        /// <value><c>true</c> if checked; otherwise, <c>false</c>.</value>
-        public virtual bool Checked { get; protected set; }
-
-        /// <summary>
-        ///     Returns <c>true</c> if the tool should be enabled for the specified selection of items.
-        /// </summary>
-        /// <param name="vSelection">The selection.</param>
-        /// <returns>
-        ///     <c>true</c> if the tool should be enabled; otherwise <c>false</c>
-        /// </returns>
-        public int EnabledEx(object vSelection)
-        {
-            return get_Enabled((IMMTreeViewSelection) vSelection);
-        }
-
-        /// <summary>
-        ///     Executes the specified tree tool using the selected items.
-        /// </summary>
-        /// <param name="vSelection">The selection.</param>
-        /// <returns><c>true</c> if the tool executed; otherwise <c>false</c>.</returns>
-        public bool ExecuteEx(object vSelection)
-        {
-            this.Execute((IMMTreeViewSelection) vSelection);
-            return true;
-        }
-
         /// <summary>
         ///     Initializes the specified v init data.
         /// </summary>
@@ -202,16 +206,6 @@ namespace Miner.Interop.Process
         {
             this.PxApplication = vInitData as IMMPxApplication;
         }
-
-        #endregion
-
-        #region IMMTreeViewToolEx2 Members
-
-        /// <summary>
-        ///     Gets the name of the extension.
-        /// </summary>
-        /// <value>The name of the extension.</value>
-        public string ExtensionName { get; protected set; }
 
         #endregion
 

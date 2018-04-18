@@ -4,9 +4,6 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.ComCategories;
-using Miner.Framework;
-
 using stdole;
 
 namespace Miner.Interop
@@ -17,8 +14,6 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseValidationRule : IMMValidationRule, IMMExtObject, IDisposable
     {
-        private static readonly ILog Log = LogProvider.For<BaseValidationRule>();
-
         #region Fields
 
         /// <summary>
@@ -30,6 +25,8 @@ namespace Miner.Interop
         ///     The name of the validation rule. This name will be displayed in ArcCatalog in the ArcFM Properties
         /// </summary>
         private readonly string _Name;
+
+        private static readonly ILog Log = LogProvider.For<BaseValidationRule>();
 
         /// <summary>
         ///     D8List of the validation errors. Use the AddError method to add errors to this list.
@@ -62,21 +59,7 @@ namespace Miner.Interop
 
         #endregion
 
-        #region IDisposable Members
-
-        /// <summary>
-        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-            this.Dispose(true);
-
-            GC.SuppressFinalize(this);
-        }
-
-        #endregion
-
-        #region IMMExtObject Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the bitmap.
@@ -95,6 +78,24 @@ namespace Miner.Interop
         {
             get { return _Name; }
         }
+
+        #endregion
+
+        #region IDisposable Members
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Gets if this validation rule is enabled.
@@ -117,10 +118,6 @@ namespace Miner.Interop
 
             return false;
         }
-
-        #endregion
-
-        #region IMMValidationRule Members
 
         /// <summary>
         ///     Determines whether the specified row is valid.

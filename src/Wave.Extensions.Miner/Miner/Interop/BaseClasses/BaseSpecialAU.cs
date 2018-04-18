@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.ComCategories;
 using Miner.Framework;
 
 namespace Miner.Interop
@@ -15,10 +14,9 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseSpecialAU : IMMSpecialAUStrategy, IMMSpecialAUStrategyEx
     {
-        private static readonly System.Diagnostics.ILog Log = LogProvider.For<BaseSpecialAU>();
         #region Fields
 
-        private readonly string _Name;
+        private static readonly ILog Log = LogProvider.For<BaseSpecialAU>();
 
         #endregion
 
@@ -30,21 +28,22 @@ namespace Miner.Interop
         /// <param name="name">The name.</param>
         protected BaseSpecialAU(string name)
         {
-            _Name = name;
+            Name = name;
         }
 
         #endregion
 
-        #region IMMSpecialAUStrategy Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        public string Name { get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Executes the specified special AU for the ESRI object.
@@ -54,10 +53,6 @@ namespace Miner.Interop
         {
             this.Execute(pObj, mmAutoUpdaterMode.mmAUMArcMap, mmEditEvent.mmEventUnspecified);
         }
-
-        #endregion
-
-        #region IMMSpecialAUStrategyEx Members
 
         /// <summary>
         ///     Executes the specified special AU for the ESRI Object.
@@ -110,7 +105,7 @@ namespace Miner.Interop
             catch (Exception e)
             {
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                    Log.Error("Error Enabling Special AU " + _Name, e);
+                    Log.Error("Error Enabling Special AU " + Name, e);
                 else
                     Log.Error(e);
             }
@@ -157,6 +152,18 @@ namespace Miner.Interop
         }
 
         /// <summary>
+        ///     Determines whether this instance can execute using the specified AU mode.
+        /// </summary>
+        /// <param name="mode">The auto updater mode.</param>
+        /// <returns>
+        ///     <c>true</c> if this instance can execute using the specified AU mode; otherwise, <c>false</c>.
+        /// </returns>
+        protected virtual bool CanExecute(mmAutoUpdaterMode mode)
+        {
+            return (mode != mmAutoUpdaterMode.mmAUMNoEvents);
+        }
+
+        /// <summary>
         ///     Implementation of enabled method for derived classes.
         /// </summary>
         /// <param name="objectClass">The object class.</param>
@@ -182,18 +189,6 @@ namespace Miner.Interop
         /// </remarks>
         protected abstract void InternalExecute(IObject obj, mmAutoUpdaterMode mode, mmEditEvent editEvent);
 
-        /// <summary>
-        ///     Determines whether this instance can execute using the specified AU mode.
-        /// </summary>
-        /// <param name="mode">The auto updater mode.</param>
-        /// <returns>
-        ///     <c>true</c> if this instance can execute using the specified AU mode; otherwise, <c>false</c>.
-        /// </returns>
-        protected virtual bool CanExecute(mmAutoUpdaterMode mode)
-        {
-            return (mode != mmAutoUpdaterMode.mmAUMNoEvents);
-        }
-
         #endregion
 
         #region Private Methods
@@ -205,7 +200,7 @@ namespace Miner.Interop
         private void LogException(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error("Error Executing Special AU " + _Name, e);
+                Log.Error("Error Executing Special AU " + Name, e);
             else
                 Log.Error(e);
         }

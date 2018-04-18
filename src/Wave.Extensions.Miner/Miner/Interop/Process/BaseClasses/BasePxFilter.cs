@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-using Miner.ComCategories;
-
 using stdole;
 
 namespace Miner.Interop.Process
@@ -17,19 +15,12 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxFilter : IMMPxFilter, IMMPxFilterEx
     {
-        private static readonly ILog Log = LogProvider.For<BasePxFilter>();
-
         #region Fields
 
-        private readonly string _Category;
         private readonly string _DisplayName;
-        private readonly string _ExtensionName;
-        private readonly string _Name;
         private readonly string _NodeTypeName;
-        private readonly int _Priority;
         private readonly string _ProgID;
-
-        private IMMPxApplication _PxApp;
+        private static readonly ILog Log = LogProvider.For<BasePxFilter>();
 
         #endregion
 
@@ -47,64 +38,41 @@ namespace Miner.Interop.Process
         /// <param name="displayName">The display name of the top level node.</param>
         protected BasePxFilter(string name, string progID, int priority, string category, string extensionName, string nodeTypeName, string displayName)
         {
-            _Name = name;
+            Name = name;
             _ProgID = progID;
-            _Priority = priority;
-            _Category = category;
-            _ExtensionName = extensionName;
+            Priority = priority;
+            Category = category;
+            ExtensionName = extensionName;
             _NodeTypeName = nodeTypeName;
             _DisplayName = displayName;
         }
 
         #endregion
 
-        #region Protected Properties
-
-        /// <summary>
-        ///     Gets the px application.
-        /// </summary>
-        protected IMMPxApplication PxApplication
-        {
-            get { return _PxApp; }
-        }
-
-        #endregion
-
-        #region IMMPxFilter Members
-
-        /// <summary>
-        ///     Gets the large image.
-        /// </summary>
-        public virtual IPictureDisp LargeImage { get; protected set; }
-
-        /// <summary>
-        ///     Gets the small image.
-        /// </summary>
-        public virtual IPictureDisp SmallImage { get; protected set; }
+        #region Public Properties
 
         /// <summary>
         ///     Gets the category.
         /// </summary>
-        public string Category
-        {
-            get { return _Category; }
-        }
+        public string Category { get; }
+
+        /// <summary>
+        ///     Gets the name of the extension.
+        /// </summary>
+        /// <value>
+        ///     The name of the extension.
+        /// </value>
+        public string ExtensionName { get; }
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        public string Name { get; }
 
         /// <summary>
         ///     Gets the priority.
         /// </summary>
-        public int Priority
-        {
-            get { return _Priority; }
-        }
+        public int Priority { get; }
 
         /// <summary>
         ///     Gets a value indicating whether this <see cref="BasePxFilter" /> is visible.
@@ -116,31 +84,34 @@ namespace Miner.Interop.Process
         {
             get
             {
-                if (_PxApp == null) return false;
+                if (PxApplication == null) return false;
 
-                return _PxApp.FilterVisible(_NodeTypeName);
+                return PxApplication.FilterVisible(_NodeTypeName);
             }
         }
 
         /// <summary>
-        ///     Gets the ProgID that has been assigned to the filter.
+        ///     Gets the large image.
         /// </summary>
-        /// <returns>
-        ///     A <see cref="string" /> of the ProgID assigned to the filter.
-        /// </returns>
-        public string FilterProgID()
-        {
-            return _ProgID;
-        }
+        public virtual IPictureDisp LargeImage { get; protected set; }
 
         /// <summary>
-        ///     Initializes the filter using the initialization data.
+        ///     Gets the small image.
         /// </summary>
-        /// <param name="vInitData">The initialization data.</param>
-        public void Initialize(object vInitData)
-        {
-            _PxApp = (IMMPxApplication) vInitData;
-        }
+        public virtual IPictureDisp SmallImage { get; protected set; }
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        ///     Gets the px application.
+        /// </summary>
+        protected IMMPxApplication PxApplication { get; private set; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Executes the filter and returns the <see cref="ID8ListItem" /> of the results.
@@ -162,19 +133,24 @@ namespace Miner.Interop.Process
             return null;
         }
 
-        #endregion
-
-        #region IMMPxFilterEx Members
+        /// <summary>
+        ///     Gets the ProgID that has been assigned to the filter.
+        /// </summary>
+        /// <returns>
+        ///     A <see cref="string" /> of the ProgID assigned to the filter.
+        /// </returns>
+        public string FilterProgID()
+        {
+            return _ProgID;
+        }
 
         /// <summary>
-        ///     Gets the name of the extension.
+        ///     Initializes the filter using the initialization data.
         /// </summary>
-        /// <value>
-        ///     The name of the extension.
-        /// </value>
-        public string ExtensionName
+        /// <param name="vInitData">The initialization data.</param>
+        public void Initialize(object vInitData)
         {
-            get { return _ExtensionName; }
+            PxApplication = (IMMPxApplication) vInitData;
         }
 
         #endregion
@@ -220,7 +196,7 @@ namespace Miner.Interop.Process
         /// </returns>
         protected virtual ID8ListItem InternalExecute()
         {
-            int nodeTypeID = _PxApp.Helper.GetNodeTypeID(_NodeTypeName);
+            int nodeTypeID = PxApplication.Helper.GetNodeTypeID(_NodeTypeName);
             if (nodeTypeID == 0) return null;
 
             // Create the top level node.
@@ -228,11 +204,11 @@ namespace Miner.Interop.Process
             ((IMMPxNodeEdit2) nodeEdit).IsPxTopLevel = true;
             nodeEdit.Initialize(nodeTypeID, _NodeTypeName, 0);
             nodeEdit.DisplayName = _DisplayName;
-            ((IMMPxApplicationEx) _PxApp).HydrateNodeFromDB((IMMPxNode) nodeEdit);
+            ((IMMPxApplicationEx) PxApplication).HydrateNodeFromDB((IMMPxNode) nodeEdit);
 
             // Use the builder to create the list.
             IMMDynamicList list = (IMMDynamicList) nodeEdit;
-            list.BuildObject = this.GetNodeBuilder(_PxApp);
+            list.BuildObject = this.GetNodeBuilder(PxApplication);
             list.Build(false);
 
             return (ID8ListItem) nodeEdit;

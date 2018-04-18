@@ -30,7 +30,7 @@
 
         #endregion
 
-        #region IMMListBuilder Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the name.
@@ -39,6 +39,18 @@
         ///     The name.
         /// </value>
         public string Name { get; private set; }
+
+        /// <summary>
+        ///     Sets the process framework application reference.
+        /// </summary>
+        /// <value>
+        ///     The process framework application reference.
+        /// </value>
+        public IMMPxApplication PxApplication { set; protected get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Performs the queries necessary to build the list.
@@ -58,18 +70,6 @@
         public virtual void UpdateNode(ref object vData, ID8ListItem pListItem)
         {
         }
-
-        #endregion
-
-        #region IMMPxListBuilderInit Members
-
-        /// <summary>
-        ///     Sets the process framework application reference.
-        /// </summary>
-        /// <value>
-        ///     The process framework application reference.
-        /// </value>
-        public IMMPxApplication PxApplication { set; protected get; }
 
         #endregion
     }

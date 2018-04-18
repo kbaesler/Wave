@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
 
-using Miner.ComCategories;
 using Miner.Framework;
 
 namespace Miner.Interop
@@ -18,7 +17,6 @@ namespace Miner.Interop
         #region Fields
 
         private static readonly ILog Log = LogProvider.For<BaseAbandonAU>();
-        private readonly string _Name;
 
         #endregion
 
@@ -30,21 +28,22 @@ namespace Miner.Interop
         /// <param name="name">The name.</param>
         protected BaseAbandonAU(string name)
         {
-            _Name = name;
+            Name = name;
         }
 
         #endregion
 
-        #region IMMAbandonAUStrategy Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        public string Name { get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Executes the additional abandoned logic using the (pre-abandoned) <paramref name="pObj" /> object
@@ -56,9 +55,9 @@ namespace Miner.Interop
         {
             try
             {
-                if (InoperableAutoUpdaters.Instance.Contains(pObj.Class.ObjectClassID, ((IRowSubtypes)pObj).SubtypeCode, this.GetType()))
+                if (InoperableAutoUpdaters.Instance.Contains(pObj.Class.ObjectClassID, ((IRowSubtypes) pObj).SubtypeCode, this.GetType()))
                     return;
-               
+
                 this.InternalExecute(pObj, pNewObj);
             }
             catch (COMException e)
@@ -133,9 +132,9 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error("Error Executing Abandon AU " + _Name, e);
+                Log.Error("Error Executing Abandon AU " + Name, e);
             else
-                Log.Error( e);
+                Log.Error(e);
         }
 
         #endregion

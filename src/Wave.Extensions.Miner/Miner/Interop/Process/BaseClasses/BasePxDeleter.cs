@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-using Miner.ComCategories;
-
 namespace Miner.Interop.Process
 {
     /// <summary>
@@ -15,7 +13,11 @@ namespace Miner.Interop.Process
     [ComVisible(true)]
     public abstract class BasePxDeleter : IMMPxDeleter, IMMPxDisplayName
     {
+        #region Fields
+
         private static readonly ILog Log = LogProvider.For<BasePxDeleter>();
+
+        #endregion
 
         #region Constructors
 
@@ -30,7 +32,13 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region IMMPxDeleter Members
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets the display name.
+        /// </summary>
+        /// <value>The display name.</value>
+        public string DisplayName { get; private set; }
 
         /// <summary>
         ///     Gets or sets the px application.
@@ -39,6 +47,10 @@ namespace Miner.Interop.Process
         ///     The px application.
         /// </value>
         public IMMPxApplication PxApplication { set; protected get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Deletes the specified px node from the process framework database table.
@@ -49,10 +61,10 @@ namespace Miner.Interop.Process
         public virtual void Delete(IMMPxNode pPxNode, ref string sMsg, ref int status)
         {
             try
-            {                
+            {
                 this.InternalDelete(pPxNode, ref sMsg, ref status);
 
-                if(string.IsNullOrEmpty(sMsg) && this.PxApplication != null)
+                if (string.IsNullOrEmpty(sMsg) && this.PxApplication != null)
                     sMsg = string.Format("{0} {1} deleted successfully.", this.PxApplication.GetNodeTypeName(pPxNode), pPxNode.Id);
             }
             catch (Exception e)
@@ -61,16 +73,6 @@ namespace Miner.Interop.Process
                 this.Notify(e.Message, mmUserMessageType.mmUMTDataError);
             }
         }
-
-        #endregion
-
-        #region IMMPxDisplayName Members
-
-        /// <summary>
-        ///     Gets the display name.
-        /// </summary>
-        /// <value>The display name.</value>
-        public string DisplayName { get; private set; }
 
         #endregion
 

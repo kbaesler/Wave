@@ -5,11 +5,6 @@ using System.Xml;
 
 using ESRI.ArcGIS.esriSystem;
 
-using Miner.Controls;
-using Miner.Controls.XmlLogin;
-using Miner.Framework;
-using Miner.FrameworkUI;
-
 namespace Miner.Interop
 {
     /// <summary>
@@ -94,7 +89,7 @@ namespace Miner.Interop
             IMMRegistry registry = new MMRegistry();
             registry.OpenKey(mmHKEY.mmHKEY_LOCAL_MACHINE, mmBaseKey.mmEngineViewer, "Login");
 
-            string fileName = (string)registry.Read("DatabaseConnectionsXMLPath", string.Empty);
+            string fileName = (string) registry.Read("DatabaseConnectionsXMLPath", string.Empty);
             if (_XmlLogin.Initialize(fileName))
             {
                 Connections connections = XmlSerialization.Deserialize<Connections>(fileName);

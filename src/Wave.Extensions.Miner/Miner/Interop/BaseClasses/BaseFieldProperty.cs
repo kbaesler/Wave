@@ -2,8 +2,6 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-using Miner.ComCategories;
-
 namespace Miner.Interop
 {
     /// <summary>
@@ -12,7 +10,11 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseFieldProperty : IMMFieldProperty
     {
+        #region Fields
+
         private static readonly ILog Log = LogProvider.For<BaseFieldProperty>();
+
+        #endregion
 
         #region Constructors
 
@@ -27,7 +29,7 @@ namespace Miner.Interop
 
         #endregion
 
-        #region IMMFieldProperty Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets or sets the display name of the field property.
@@ -36,6 +38,10 @@ namespace Miner.Interop
         ///     The name.
         /// </value>
         public string Name { get; protected set; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Determines if the field manager contains the properties for the field strategy.

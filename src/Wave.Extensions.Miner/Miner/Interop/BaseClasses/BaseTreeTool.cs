@@ -4,9 +4,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-using Miner.ComCategories;
-using Miner.Framework;
-
 namespace Miner.Interop
 {
     /// <summary>
@@ -19,9 +16,9 @@ namespace Miner.Interop
     /// </remarks>
     public abstract class BaseTreeTool : IMMTreeTool, IDisposable
     {
-        private static readonly ILog Log = LogProvider.For<BaseTreeTool>();
-
         #region Fields
+
+        private static readonly ILog Log = LogProvider.For<BaseTreeTool>();
 
         private Bitmap _Bitmap;
 
@@ -62,21 +59,16 @@ namespace Miner.Interop
 
         #endregion
 
-        #region IDisposable Members
+        #region Public Properties
 
         /// <summary>
-        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ///     Gets the bitmap.
         /// </summary>
-        public void Dispose()
+        /// <value>The bitmap.</value>
+        public int Bitmap
         {
-            this.Dispose(true);
-
-            GC.SuppressFinalize(this);
+            get { return (_Bitmap != null) ? _Bitmap.GetHbitmap().ToInt32() : 0; }
         }
-
-        #endregion
-
-        #region IMMTreeTool Members
 
         /// <summary>
         ///     Gets a value indicating whether the menu item as the default action to be performed when the user double-clicks the
@@ -87,15 +79,6 @@ namespace Miner.Interop
         ///     item.; otherwise, <c>false</c>.
         /// </value>
         public bool AllowAsDefault { get; protected set; }
-
-        /// <summary>
-        ///     Gets the bitmap.
-        /// </summary>
-        /// <value>The bitmap.</value>
-        public int Bitmap
-        {
-            get { return (_Bitmap != null) ? _Bitmap.GetHbitmap().ToInt32() : 0; }
-        }
 
         /// <summary>
         ///     Gets the category.
@@ -122,6 +105,24 @@ namespace Miner.Interop
         /// </summary>
         /// <value>The short cut.</value>
         public mmShortCutKey ShortCut { get; protected set; }
+
+        #endregion
+
+        #region IDisposable Members
+
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Executes the specified tree tool using the selected items.
