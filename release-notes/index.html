@@ -1,10 +1,14 @@
 
+
+
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="C# extensions for ArcFM Solution and ArcGIS for Desktop development.">
       
@@ -15,9 +19,26 @@
         <meta name="author" content="Kyle Baesler">
       
       
-        <link rel="shortcut icon" href="../assets/images/favicon.png">
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.6.3">
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.2">
     
     
       
@@ -25,19 +46,15 @@
       
     
     
-      <script src="../assets/javascripts/modernizr-56ade86843.js"></script>
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/application-e2807e330f.css">
-      
-        <link rel="stylesheet" href="../assets/stylesheets/application-f78e5cb881.palette.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
       
     
     
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        
-        
-        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
@@ -47,61 +64,88 @@
     
   </head>
   
-  
-  
-  
-    <body data-md-color-primary="red" data-md-color-accent="teal">
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
         
         
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#release-notes" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <a href="http://jumpercables.github.io/Wave/" title="Wave" class="md-icon md-icon--home md-header-nav__button">
-          </a>
-        
+        <a href="http://jumpercables.github.io/Wave/" title="Wave" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
+              <span class="md-header-nav__topic">
+                Wave
+              </span>
+              <span class="md-header-nav__topic">
+                Release Notes
+              </span>
             
-            Release Notes
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
-<div class="md-search" data-md-component="search">
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+          <div class="md-search-result__meta">
             Type to start searching
           </div>
           <ol class="md-search-result__list"></ol>
@@ -110,11 +154,12 @@
     </div>
   </div>
 </div>
+          
         
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <div class="md-header-nav__source">
-          
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
             
 
 
@@ -134,14 +179,16 @@
     </div>
   </a>
 
-          
+          </div>
         </div>
-      </div>
+      
     </div>
   </nav>
 </header>
     
     <div class="md-container">
+      
+        
       
       
       <main class="md-main">
@@ -153,9 +200,11 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    
-      <i class="md-icon md-icon--home md-nav__button"></i>
-    
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
     Wave
   </label>
   
@@ -331,6 +380,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#version-106" title="Version 1.0.6" class="md-nav__link">
+    Version 1.0.6
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" title="Changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new" title="New" class="md-nav__link">
+    New
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-105-2017-05-22" title="Version 1.0.5 - 2017-05-22" class="md-nav__link">
     Version 1.0.5 - 2017-05-22
   </a>
@@ -339,7 +422,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#new" title="New" class="md-nav__link">
+  <a href="#new_1" title="New" class="md-nav__link">
     New
   </a>
   
@@ -353,7 +436,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#changed" title="Changed" class="md-nav__link">
+  <a href="#changed_1" title="Changed" class="md-nav__link">
     Changed
   </a>
   
@@ -373,7 +456,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#new_1" title="New" class="md-nav__link">
+  <a href="#new_2" title="New" class="md-nav__link">
     New
   </a>
   
@@ -390,6 +473,8 @@
     </nav>
   
 </li>
+      
+      
       
       
       
@@ -488,6 +573,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#version-106" title="Version 1.0.6" class="md-nav__link">
+    Version 1.0.6
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" title="Changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new" title="New" class="md-nav__link">
+    New
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-105-2017-05-22" title="Version 1.0.5 - 2017-05-22" class="md-nav__link">
     Version 1.0.5 - 2017-05-22
   </a>
@@ -496,7 +615,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#new" title="New" class="md-nav__link">
+  <a href="#new_1" title="New" class="md-nav__link">
     New
   </a>
   
@@ -510,7 +629,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#changed" title="Changed" class="md-nav__link">
+  <a href="#changed_1" title="Changed" class="md-nav__link">
     Changed
   </a>
   
@@ -530,7 +649,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#new_1" title="New" class="md-nav__link">
+  <a href="#new_2" title="New" class="md-nav__link">
     New
   </a>
   
@@ -550,6 +669,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -562,6 +683,8 @@
             <article class="md-content__inner md-typeset">
               
                 
+                  <a href="https://github.com/Jumpercables/Wave/edit/master/docs/release-notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
                 
                 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">#</a></h1>
 <p>This will serve as a reference to the release notes with regards to the <code class="codehilite">release</code> version of the NuGet packages that are published.</p>
@@ -571,8 +694,24 @@
 <p class="admonition-title">Unpublished</p>
 <p>The changes, additions, removals and new features that are part of the backlog have not been published to the public (i.e. <code class="codehilite">master</code> branch).</p>
 </div>
-<h2 id="version-105-2017-05-22">Version 1.0.5 - 2017-05-22<a class="headerlink" href="#version-105-2017-05-22" title="Permanent link">#</a></h2>
+<hr />
+<h2 id="version-106">Version 1.0.6<a class="headerlink" href="#version-106" title="Permanent link">#</a></h2>
+<h3 id="fixes">Fixes<a class="headerlink" href="#fixes" title="Permanent link">#</a></h3>
+<ul>
+<li>The entity update method will now only update those fields that are editable.</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
+<ul>
+<li>The entity extensions now use the generic methods instead of type parameters.</li>
+<li>The impersonation has changed to use microsoft enumeration.</li>
+</ul>
 <h3 id="new">New<a class="headerlink" href="#new" title="Permanent link">#</a></h3>
+<ul>
+<li>Ability to schedule reoccuring jobs (in memory).</li>
+</ul>
+<hr />
+<h2 id="version-105-2017-05-22">Version 1.0.5 - 2017-05-22<a class="headerlink" href="#version-105-2017-05-22" title="Permanent link">#</a></h2>
+<h3 id="new_1">New<a class="headerlink" href="#new_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Added <code class="codehilite">Task</code> static class that provides the ability to execute delegates on STA threads using <code class="codehilite">BackgroundWorker</code> and <code class="codehilite">STASynchronizationContext</code> in a simplified manner. <sup id="fnref19:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code class="codehilite">RegexValidationRule</code> that is used for validation text input using regular expressions. <sup id="fnref20:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
@@ -588,13 +727,14 @@
 <ul>
 <li>The <code class="codehilite">AutoCompleteBox</code> control now supports case-sensitivity and a timed delay (using the <code class="codehilite">DelayedTextBox</code>) to delay drop down. <sup id="fnref18:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 </ul>
-<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
 <ul>
 <li>The <code class="codehilite">V10</code> compilier directive has been removed.</li>
 <li>The <code class="codehilite">Error</code> methods in the <code class="codehilite">Log</code> have been simplified to remove confusing overloads. <sup id="fnref17:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> </li>
 </ul>
+<hr />
 <h2 id="version-104-2016-11-08">Version 1.0.4 - 2016-11-08<a class="headerlink" href="#version-104-2016-11-08" title="Permanent link">#</a></h2>
-<h3 id="new_1">New<a class="headerlink" href="#new_1" title="Permanent link">#</a></h3>
+<h3 id="new_2">New<a class="headerlink" href="#new_2" title="Permanent link">#</a></h3>
 <ul>
 <li>The <code class="codehilite">Wave.log4net.config</code> file is included in the packages. <sup id="fnref6:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>Added <code class="codehilite">Version</code> and <code class="codehilite">BuildNumber</code> to the <code class="codehilite">ArcFM</code> static class. <sup id="fnref15:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
@@ -611,8 +751,9 @@
 <li>Fixed issue with <code class="codehilite">GetAutoValue</code> extension methods were recursively searching too deep for the auto values.</li>
 <li>Fixed issue with <code class="codehilite">ReadCsv</code> extension method for the <code class="codehilite">DataTable</code> that wasn&rsquo;t opening the ADO connection prior to executing the read, which was causing an exception.</li>
 </ul>
+<hr />
 <h1 id="version-103-2016-04-04">Version 1.0.3 - 2016-04-04<a class="headerlink" href="#version-103-2016-04-04" title="Permanent link">#</a></h1>
-<h3 id="new_2">New<a class="headerlink" href="#new_2" title="Permanent link">#</a></h3>
+<h3 id="new_3">New<a class="headerlink" href="#new_3" title="Permanent link">#</a></h3>
 <ul>
 <li>Added <code class="codehilite">PerformOperation</code> extension methods to the <code class="codehilite">IEditor</code>, <code class="codehilite">IMMEditor</code>, <code class="codehilite">IWorkspace</code> and <code class="codehilite">IWorkspaceEdit</code> interfaces that wrap the start / stop operation constructs. <sup id="fnref5:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>Added <code class="codehilite">ExecuteTask</code> extension method on the <code class="codehilite">IMMPxNode</code> object to execute tasks based on name. <sup id="fnref11:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
@@ -621,7 +762,7 @@
 <li>Added <code class="codehilite">Pan</code>, <code class="codehilite">Zoom</code>, and <code class="codehilite">Flash</code> extension methods to the <code class="codehilite">IFeature</code> interface to allow for performing these actions when the proper hook is supplied. <sup id="fnref9:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></li>
 <li>Added <code class="codehilite">Unhighlight</code> extension method for unhighlighting features. <sup id="fnref14:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
 </ul>
-<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
 <ul>
 <li>The <code class="codehilite">GetDataChanges</code> extension methods on the <code class="codehilite">IVersion</code> interface returns a <code class="codehilite">DeltaRowCollection</code> instead of a <code class="codehilite">List{DeltaRow}</code> as the accessor methods on the <code class="codehilite">DeltaRow</code> have been moved to the <code class="codehilite">DeltaRowCollection</code> class to allow for better performance. <sup id="fnref6:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref5:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 <li>The <code class="codehilite">ESRI.ArcGIS.Framework.BaseClasses</code> namespace was replaced with the <code class="codehilite">ESRI.ArcGIS.ADF.BaseClasses</code> namespace. <sup id="fnref7:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> <sup id="fnref6:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
@@ -636,7 +777,7 @@
 </ul>
 <hr />
 <h2 id="version-101-2016-03-01">Version 1.0.1 - 2016-03-01<a class="headerlink" href="#version-101-2016-03-01" title="Permanent link">#</a></h2>
-<h3 id="new_3">New<a class="headerlink" href="#new_3" title="Permanent link">#</a></h3>
+<h3 id="new_4">New<a class="headerlink" href="#new_4" title="Permanent link">#</a></h3>
 <ul>
 <li>The packages now support the 3.5 and 4.5 .NET Framework. <sup id="fnref3:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>The 4.5 .NET Framework packages now include supporting <code class="codehilite">async</code> methods. <sup id="fnref4:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
@@ -655,7 +796,7 @@
 <li>The <code class="codehilite">CreateNew</code> and <code class="codehilite">Initialize</code> methods on the <code class="codehilite">IPxNode</code> interface have been removed. <sup id="fnref3:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref3:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 <li>The <code class="codehilite">ReferenceDictionary</code> has been replaced with the <code class="codehilite">ToDictionary</code> extension method on the <code class="codehilite">Miner.Interop.Process.IDictionary</code> which converts it to <code class="codehilite">Dictionary{String, Object}</code>. <sup id="fnref4:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> <sup id="fnref4:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
-<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">#</a></h3>
 <ul>
 <li>Using overloading mechanism instead of the optional parameters. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 <li>The <code class="codehilite">Session</code>, <code class="codehilite">Design</code> and <code class="codehilite">WorkRequest</code> classes updated to reflect changes to the <code class="codehilite">IPxNode</code> interface and now create and initialize based on the constructor parameters. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
@@ -669,7 +810,7 @@
 </ul>
 <hr />
 <h2 id="version-100-2016-02-06">Version 1.0.0 - 2016-02-06<a class="headerlink" href="#version-100-2016-02-06" title="Permanent link">#</a></h2>
-<h3 id="new_4">New<a class="headerlink" href="#new_4" title="Permanent link">#</a></h3>
+<h3 id="new_5">New<a class="headerlink" href="#new_5" title="Permanent link">#</a></h3>
 <ul>
 <li>Initial support for version 10 of the ArcFM Solution and ArcGIS for Desktop products</li>
 </ul>
@@ -703,6 +844,8 @@
               
               
                 
+
+
               
             </article>
           </div>
@@ -756,9 +899,9 @@
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="http://www.mkdocs.org">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
@@ -780,8 +923,9 @@
       
     </div>
     
-      <script src="../assets/javascripts/application-6b4ff16fa7.js"></script>
-      <script>app.initialize({url:{base:".."}})</script>
+      <script src="../assets/javascripts/application.b438e6c5.js"></script>
+      
+      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
       
     
     
