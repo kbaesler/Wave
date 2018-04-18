@@ -273,7 +273,6 @@
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\VersionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geodatabase\Extensions\WorkspaceExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\GeometryExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\Extensions\BaseFunctionExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Miner\ArcFM.cs" />
     <Compile Include="Miner\Framework\IInoperableAutoUpdaters.cs" />

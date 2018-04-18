@@ -20,21 +20,6 @@ namespace ESRI.ArcGIS.Carto
         /// </summary>
         /// <param name="source">The map.</param>
         /// <param name="modelName">The class model name.</param>
-        /// <returns>
-        ///     Returns a <see cref="ESRI.ArcGIS.Geodatabase.IFeatureClass" /> representing the feature class that is assigned
-        ///     the model name.
-        /// </returns>
-        /// <exception cref="MissingClassModelNameException"></exception>
-        public static IFeatureClass GetFeatureClass(this IMap source, string modelName)
-        {
-            return source.GetFeatureClass(modelName, true);
-        }
-
-        /// <summary>
-        ///     Returns the feature class that is assigned the <paramref name="modelName" /> that is in the map.
-        /// </summary>
-        /// <param name="source">The map.</param>
-        /// <param name="modelName">The class model name.</param>
         /// <param name="throwException">
         ///     if set to <c>true</c> if an exception should be thrown when the model name is not
         ///     assigned.

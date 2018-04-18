@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 using ESRI.ArcGIS.Geodatabase;
-
 using Miner.ComCategories;
 using Miner.Framework;
 
@@ -17,9 +16,7 @@ namespace Miner.Interop
     {
         #region Fields
 
-        private readonly string _DomainName;
-        private readonly esriFieldType _FieldType;
-        private readonly string _Name;
+        private static readonly ILog Log = LogProvider.For<BaseAttributeAU>();
 
         #endregion
 
@@ -33,41 +30,36 @@ namespace Miner.Interop
         /// <param name="fieldType">Type of the field.</param>
         protected BaseAttributeAU(string name, string domainName, esriFieldType fieldType)
         {
-            _Name = name;
-            _DomainName = domainName;
-            _FieldType = fieldType;
+            Name = name;
+            DomainName = domainName;
+            FieldType = fieldType;
         }
 
         #endregion
 
-        #region IMMAttrAUStrategy Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the name of the domain.
         /// </summary>
         /// <value>The name of the domain.</value>
-        public string DomainName
-        {
-            get { return _DomainName; }
-        }
+        public string DomainName { get; }
 
         /// <summary>
         ///     Gets the type of the field.
         /// </summary>
         /// <value>The type of the field.</value>
-        public esriFieldType FieldType
-        {
-            get { return _FieldType; }
-        }
+        public esriFieldType FieldType { get; }
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        public string Name { get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Returns the value for the field on the <paramref name="pObj" /> object.
@@ -81,7 +73,7 @@ namespace Miner.Interop
             try
             {
                 if (InoperableAutoUpdaters.Instance.Contains(pObj.Class.ObjectClassID, ((IRowSubtypes) pObj).SubtypeCode, this.GetType()))
-                    return null;               
+                    return null;
 
                 return this.InternalExecute(pObj);
             }
@@ -167,9 +159,9 @@ namespace Miner.Interop
         private void WriteError(Exception e)
         {
             if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
-                Log.Error(this, "Error Executing Attribute AU " + _Name, e);
+                Log.Error("Error Executing Attribute AU " + Name, e);
             else
-                Log.Error(this, e);
+                Log.Error(e);
         }
 
         #endregion

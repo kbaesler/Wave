@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
-
 using Miner.ComCategories;
 using Miner.Framework;
 
@@ -18,7 +17,7 @@ namespace Miner.Interop
     {
         #region Fields
 
-        private readonly string _Name;
+        private static readonly ILog Log = LogProvider.For<BaseDisplayNamer>();
 
         #endregion
 
@@ -30,21 +29,22 @@ namespace Miner.Interop
         /// <param name="name">The name.</param>
         protected BaseDisplayNamer(string name)
         {
-            _Name = name;
+            Name = name;
         }
 
         #endregion
 
-        #region IMMDisplayNamer Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name
-        {
-            get { return _Name; }
-        }
+        public string Name { get; }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     The method that is used to determine the display.
@@ -67,7 +67,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format("Error Executing Display Namer {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Executing Display Namer " + this.Name, e);
+                Log.Error("Error Executing Display Namer " + this.Name, e);
             }
 
             return "<Error>";
@@ -89,7 +89,7 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format(@"Error Enabling Display Namer {0}", this.Name), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Enabling Display Namer " + this.Name, e);
+                Log.Error("Error Enabling Display Namer " + this.Name, e);
             }
 
             return false;

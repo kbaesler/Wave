@@ -631,8 +631,17 @@ namespace ESRI.ArcGIS.Geodatabase
     /// <summary>Delta Row Change Version.</summary>
     public enum DeltaRowChangeVersion
     {
+        /// <summary>
+        /// The source version.
+        /// </summary>
         SourceVersion,
+        /// <summary>
+        /// The target version.
+        /// </summary>
         TargetVersion,
+        /// <summary>
+        /// The common ancestor version.
+        /// </summary>
         CommonAncestorVersion
     }
 

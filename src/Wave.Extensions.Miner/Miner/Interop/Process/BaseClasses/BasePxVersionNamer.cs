@@ -1,6 +1,5 @@
-﻿using System.Runtime.InteropServices;
-
-using Miner.ComCategories;
+﻿using Miner.ComCategories;
+using System.Runtime.InteropServices;
 
 namespace Miner.Interop.Process
 {
@@ -24,7 +23,7 @@ namespace Miner.Interop.Process
 
         #endregion
 
-        #region IMMPxDisplayName Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets or sets the display name.
@@ -34,9 +33,17 @@ namespace Miner.Interop.Process
         /// </value>
         public string DisplayName { get; protected set; }
 
+        /// <summary>
+        ///     Gets or sets the application.
+        /// </summary>
+        /// <value>
+        ///     The application.
+        /// </value>
+        public IMMPxApplication PxApplication { set; protected get; }
+
         #endregion
 
-        #region IMMPxSDEVersionNamer Members
+        #region Public Methods
 
         /// <summary>
         ///     Gets the name of the base version.
@@ -51,14 +58,6 @@ namespace Miner.Interop.Process
         /// <param name="lNodeID">The node identifier.</param>
         /// <returns>Returns a <see cref="string" /> representing the name of the version.</returns>
         public abstract string GetVersionName(int lNodeID);
-
-        /// <summary>
-        ///     Gets or sets the application.
-        /// </summary>
-        /// <value>
-        ///     The application.
-        /// </value>
-        public IMMPxApplication PxApplication { set; protected get; }
 
         #endregion
 

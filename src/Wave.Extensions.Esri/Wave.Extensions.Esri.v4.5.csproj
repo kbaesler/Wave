@@ -103,14 +103,14 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ESRI.ArcGIS.ADF, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.ADF.Connection.Local.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.ADF.Local.dll</HintPath>
     </Reference>
     <Reference Include="ESRI.ArcGIS.AnalysisTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -203,9 +203,8 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
@@ -302,19 +301,11 @@
     <Compile Include="ESRI\ArcGIS\Geometry\Extensions\SegmentationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolbox.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\BaseClasses\BaseToolboxTool.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\AnalysisTools\AnalysisToolsExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\DataManagementToolsExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\FeatureVerticesToPointsExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DataManagementTools\TableCompareExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\DEExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\EditingTools\EditingToolsExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GeoprocessingExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPFunctionExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMessagesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPMultiValueExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPUtilitiesExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\GPValueExtensions.cs" />
-    <Compile Include="ESRI\ArcGIS\Geoprocessing\Extensions\LinearReferencingTools\LinearReferencingToolsExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\ConcatenateRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\DissolveRouteOperationExtensions.cs" />
     <Compile Include="ESRI\ArcGIS\Location\Extensions\OverlayRouteOperationExtensions.cs" />

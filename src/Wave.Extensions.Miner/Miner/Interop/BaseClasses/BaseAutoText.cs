@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Miner.ComCategories;
+using Miner.Framework;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
-using Miner.ComCategories;
-using Miner.Framework;
 
 namespace Miner.Interop
 {
@@ -16,6 +15,12 @@ namespace Miner.Interop
     [ComVisible(true)]
     public abstract class BaseAutoText : IMMAutoTextSource
     {
+        #region Fields
+
+        private static readonly ILog Log = LogProvider.For<BaseAutoText>();
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -25,12 +30,12 @@ namespace Miner.Interop
         protected BaseAutoText(string caption)
         {
             this.Caption = caption;
-            this.ProgID = this.GetType().GetCustomAttributes(typeof (ProgIdAttribute), true).Cast<ProgIdAttribute>().Select(o => o.Value).FirstOrDefault();
+            this.ProgID = this.GetType().GetCustomAttributes(typeof(ProgIdAttribute), true).Cast<ProgIdAttribute>().Select(o => o.Value).FirstOrDefault();
         }
 
         #endregion
 
-        #region IMMAutoTextSource Members
+        #region Public Properties
 
         /// <summary>
         ///     Gets the caption.
@@ -52,6 +57,23 @@ namespace Miner.Interop
         ///     The program ID is from the class module that implements this interface.
         /// </remarks>
         public virtual string ProgID { get; private set; }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Returns a boolean value indicating whether the element should be refreshed based on the
+        ///     <paramref name="eTextEvent" /> value.
+        /// </summary>
+        /// <param name="eTextEvent">The text event.</param>
+        /// <returns>
+        ///     Returns a boolean value indicating whether the element should be refreshed based on the mmAutoTextEvents value.
+        /// </returns>
+        public virtual bool NeedRefresh(mmAutoTextEvents eTextEvent)
+        {
+            return true;
+        }
 
         /// <summary>
         ///     Returns the text string that will appear on the map layout based on the <paramref name="eTextEvent" /> value
@@ -76,7 +98,7 @@ namespace Miner.Interop
             var value = " ";
 
             try
-            {                              
+            {
                 switch (eTextEvent)
                 {
                     case mmAutoTextEvents.mmCreate:
@@ -113,24 +135,11 @@ namespace Miner.Interop
                 if (MinerRuntimeEnvironment.IsUserInterfaceSupported)
                     MessageBox.Show(Document.ParentWindow, e.Message, string.Format("Error Executing Auto Text {0}", this.Caption), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Log.Error(this, "Error Executing Auto Text " + this.Caption, e);
+                Log.Error("Error Executing Auto Text " + this.Caption, e);
             }
 
             // An empty string will remove the auto text element.
             return string.IsNullOrEmpty(value) ? " " : value;
-        }
-
-        /// <summary>
-        ///     Returns a boolean value indicating whether the element should be refreshed based on the
-        ///     <paramref name="eTextEvent" /> value.
-        /// </summary>
-        /// <param name="eTextEvent">The text event.</param>
-        /// <returns>
-        ///     Returns a boolean value indicating whether the element should be refreshed based on the mmAutoTextEvents value.
-        /// </returns>
-        public virtual bool NeedRefresh(mmAutoTextEvents eTextEvent)
-        {
-            return true;
         }
 
         #endregion
@@ -168,7 +177,7 @@ namespace Miner.Interop
         /// <param name="mapProdInfo">The map prod info.</param>
         /// <returns></returns>
         /// <remarks>
-        ///     This method should always return a non-empty string. 
+        ///     This method should always return a non-empty string.
         /// </remarks>
         /// Returns the text string that will appear on the map layout based on the status of the
         /// <paramref name="mapProdInfo" />
@@ -180,7 +189,7 @@ namespace Miner.Interop
         /// </summary>
         /// <returns>Returns the text string that will appear on the map layout</returns>
         /// <remarks>
-        ///     This method should always return a non-empty string. 
+        ///     This method should always return a non-empty string.
         /// </remarks>
         protected virtual string OnCreate()
         {
@@ -192,7 +201,7 @@ namespace Miner.Interop
         /// </summary>
         /// <returns>Returns the text string that will appear on the map layout</returns>
         /// <remarks>
-        ///     This method should always return a non-empty string. 
+        ///     This method should always return a non-empty string.
         /// </remarks>
         protected virtual string OnDraw()
         {
@@ -204,7 +213,7 @@ namespace Miner.Interop
         /// </summary>
         /// <returns>Returns the text string that will appear on the map layout</returns>
         /// <remarks>
-        ///     This method should always return a non-empty string. 
+        ///     This method should always return a non-empty string.
         /// </remarks>
         protected virtual string OnFinish()
         {
@@ -233,7 +242,7 @@ namespace Miner.Interop
         ///     Returns the text string that will appear on the map layout
         /// </returns>
         /// <remarks>
-        ///     This method should always return a non-empty string. 
+        ///     This method should always return a non-empty string.
         /// </remarks>
         protected virtual string OnRefresh()
         {
@@ -248,7 +257,7 @@ namespace Miner.Interop
         ///     Returns the text string that will appear on the map layout
         /// </returns>
         /// <remarks>
-        ///     This method should always return a non-empty string. 
+        ///     This method should always return a non-empty string.
         /// </remarks>
         protected virtual string OnStart(IMMMapProductionInfo mapProdInfo)
         {

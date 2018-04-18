@@ -1,7 +1,6 @@
-﻿#if NET45
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ESRI.ArcGIS.Geodatabase
 {
@@ -27,9 +26,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     otherwise <c>null</c>.
         /// </returns>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IFeatureClass> GetFeatureClassAsync(this IWorkspace source, string modelName, bool throwException)
+        public static IFeatureClass GetFeatureClassAsync(this IWorkspace source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetFeatureClass(modelName, throwException));
+            return Task.Wait(() => source.GetFeatureClass(modelName, throwException));
         }
 
         /// <summary>
@@ -42,9 +41,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     An <see cref="IEnumerable{T}" /> that contains the feature classes from the input source.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<IFeatureClass>> GetFeatureClassesAsync(this IWorkspace source, string modelName)
+        public static IEnumerable<IFeatureClass> GetFeatureClassesAsync(this IWorkspace source, string modelName)
         {
-            return Task.Run(() => source.GetFeatureClasses(modelName));
+            return Task.Wait(() => source.GetFeatureClasses(modelName));
         }
 
         /// <summary>
@@ -57,9 +56,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     An <see cref="IEnumerable{T}" /> that contains the feature classes from the input source.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static Task<IEnumerable<IFeatureClass>> GetFeatureClassesAsync(this IWorkspace source, params string[] modelNames)
+        public static IEnumerable<IFeatureClass> GetFeatureClassesAsync(this IWorkspace source, params string[] modelNames)
         {
-            return Task.Run(() => source.GetFeatureClasses(modelNames));
+            return Task.Wait(() => source.GetFeatureClasses(modelNames));
         }
 
         /// <summary>
@@ -74,9 +73,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IObjectClass> GetObjectClassAsync(this IWorkspace source, string modelName)
+        public static IObjectClass GetObjectClassAsync(this IWorkspace source, string modelName)
         {
-            return Task.Run(() => source.GetObjectClass(modelName));
+            return Task.Wait(() => source.GetObjectClass(modelName));
         }
 
         /// <summary>
@@ -95,9 +94,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<IObjectClass> GetObjectClassAsync(this IWorkspace source, string modelName, bool throwException)
+        public static IObjectClass GetObjectClassAsync(this IWorkspace source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetObjectClass(modelName, throwException));
+            return Task.Wait(() => source.GetObjectClass(modelName, throwException));
         }
 
         /// <summary>
@@ -110,9 +109,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     An <see cref="IEnumerable{T}" /> that contains the object classes from the input source.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<IObjectClass>> GetObjectClassesAsync(this IWorkspace source, string modelName)
+        public static IEnumerable<IObjectClass> GetObjectClassesAsync(this IWorkspace source, string modelName)
         {
-            return Task.Run(() => source.GetObjectClasses(modelName));
+            return Task.Wait(() => source.GetObjectClasses(modelName));
         }
 
         /// <summary>
@@ -125,9 +124,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     An <see cref="IEnumerable{T}" /> that contains the object classes from the input source.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<IObjectClass>> GetObjectClassesAsync(this IWorkspace source, params string[] modelNames)
+        public static IEnumerable<IObjectClass> GetObjectClassesAsync(this IWorkspace source, params string[] modelNames)
         {
-            return Task.Run(() => source.GetObjectClasses(modelNames));
+            return Task.Wait(() => source.GetObjectClasses(modelNames));
         }
        
         /// <summary>
@@ -146,9 +145,9 @@ namespace ESRI.ArcGIS.Geodatabase
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
         /// <exception cref="MissingClassModelNameException"></exception>
-        public static Task<ITable> GetTableAsync(this IWorkspace source, string modelName, bool throwException)
+        public static ITable GetTableAsync(this IWorkspace source, string modelName, bool throwException)
         {
-            return Task.Run(() => source.GetTable(modelName, throwException));
+            return Task.Wait(() => source.GetTable(modelName, throwException));
         }
 
         /// <summary>
@@ -160,10 +159,9 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     An <see cref="IEnumerable{T}" /> that contains the tables from the input source.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelName</exception>
-        public static Task<IEnumerable<ITable>> GetTablesAsync(this IWorkspace source, string modelName)
+        public static IEnumerable<ITable> GetTablesAsync(this IWorkspace source, string modelName)
         {
-            return Task.Run(() => source.GetTables(modelName));
-            ;
+            return Task.Wait(() => source.GetTables(modelName));
         }
 
         /// <summary>
@@ -175,13 +173,11 @@ namespace ESRI.ArcGIS.Geodatabase
         ///     An <see cref="IEnumerable{T}" /> that contains the tables from the input source.
         /// </returns>
         /// <exception cref="ArgumentNullException">modelNames</exception>
-        public static Task<IEnumerable<ITable>> GetTablesAsync(this IWorkspace source, params string[] modelNames)
+        public static IEnumerable<ITable> GetTablesAsync(this IWorkspace source, params string[] modelNames)
         {
-            return Task.Run(() => source.GetTables(modelNames));
+            return Task.Wait(() => source.GetTables(modelNames));
         }
 
         #endregion
     }
 }
-
-#endif
