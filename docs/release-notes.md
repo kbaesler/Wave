@@ -11,20 +11,22 @@ These are the changes, additions, removals that are actively being worked on and
 
 ---
 
-## Version 1.0.6
+## Version 1.0.6 - 2018-04-18
+
+### New
+
+- Ability to schedule recurring jobs (in memory) via `RecurringJob`.
 
 ### Fixes
 
 - The entity update method will now only update those fields that are editable.
+- The logging framework has been changed to use `LogProviders` that can be customized or use the internal `log4net` usage.
 
 ### Changed
 
 - The entity extensions now use the generic methods instead of type parameters.
 - The impersonation has changed to use microsoft enumeration.
-
-### New
-
-- Ability to schedule reoccuring jobs (in memory).
+- The `async` version of the methods have been changed to use the `Task` class that uses STA threads instead of the TPL as COM Objects require STA threads.
 
 ---
 
