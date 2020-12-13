@@ -1,6 +1,4 @@
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e96cb13cfd345e4b4758550b3ebe5f1)](https://www.codacy.com/app/Jumpercables/Wave?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Jumpercables/Wave&amp;utm_campaign=Badge_Grade)
-
 # Wave #
 Wave is C# library extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library.
 
