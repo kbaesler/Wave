@@ -5,7 +5,7 @@
 Wave is C# library extends the ArcGIS for Desktop and ArcFM Solution APIs in an effort to simplify customizing these products. The library has been designed to use extension methods to expose the features of the library.
 
 **Documentation**
-The documentation is located on the [Wave GitHub Page](http://jumpercables.github.io/Wave/)
+The documentation is located on the [Wave GitHub Page](http://kbaesler.github.io/Wave/)
 
 
 **Wave Extensions for ArcGIS**
